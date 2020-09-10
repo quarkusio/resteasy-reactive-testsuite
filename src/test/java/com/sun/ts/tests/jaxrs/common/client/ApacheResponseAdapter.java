@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import jakarta.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.MultivaluedMap;
 
 import org.apache.commons.httpclient.Header;
 
@@ -28,20 +28,20 @@ import com.sun.ts.tests.common.webclient.http.HttpResponse;
 
 public class ApacheResponseAdapter extends HttpResponse {
 
-  public ApacheResponseAdapter(jakarta.ws.rs.core.Response response, String host,
+  public ApacheResponseAdapter(javax.ws.rs.core.Response response, String host,
       int port) {
     super(host, port, port == 443, null, null);
     this.response = response;
     this.caser = TextCaser.NONE;
   }
 
-  public ApacheResponseAdapter(jakarta.ws.rs.core.Response response, String host,
+  public ApacheResponseAdapter(javax.ws.rs.core.Response response, String host,
       int port, TextCaser caser) {
     this(response, host, port);
     this.caser = caser;
   }
 
-  private jakarta.ws.rs.core.Response response;
+  private javax.ws.rs.core.Response response;
 
   private String entity = null;
 

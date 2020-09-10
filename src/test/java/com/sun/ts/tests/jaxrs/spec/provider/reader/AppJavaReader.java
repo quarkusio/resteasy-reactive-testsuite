@@ -19,9 +19,9 @@ package com.sun.ts.tests.jaxrs.spec.provider.reader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 @Consumes("application/java")

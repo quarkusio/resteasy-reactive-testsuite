@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.pathparam.sub;
 
-import jakarta.ws.rs.Path;
+import javax.ws.rs.Path;
 
 import com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest;
 

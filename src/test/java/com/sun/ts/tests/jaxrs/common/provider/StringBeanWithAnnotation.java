@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.common.provider;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 

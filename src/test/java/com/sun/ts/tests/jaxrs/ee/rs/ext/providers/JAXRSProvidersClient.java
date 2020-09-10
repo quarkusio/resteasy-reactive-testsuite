@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.providers;
 
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response.Status;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.ee.rs.ext.contextresolver.EnumProvider;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritableEntity;

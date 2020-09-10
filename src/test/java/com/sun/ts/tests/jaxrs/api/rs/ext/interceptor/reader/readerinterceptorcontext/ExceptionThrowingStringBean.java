@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorco
 
 import java.io.IOException;
 
-import jakarta.ws.rs.WebApplicationException;
+import javax.ws.rs.WebApplicationException;
 
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;

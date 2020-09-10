@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.runtimetype;
 
-import jakarta.ws.rs.RuntimeType;
+import javax.ws.rs.RuntimeType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 

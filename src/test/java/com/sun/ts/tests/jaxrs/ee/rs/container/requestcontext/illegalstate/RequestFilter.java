@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.ext.Provider;
 
 /**
  * The methods are called here by reflection from the superclass

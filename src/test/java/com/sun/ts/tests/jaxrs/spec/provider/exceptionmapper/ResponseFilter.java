@@ -19,10 +19,10 @@ package com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
-import jakarta.ws.rs.container.ContainerRequestContext;
-import jakarta.ws.rs.container.ContainerResponseContext;
-import jakarta.ws.rs.container.ContainerResponseFilter;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 public class ResponseFilter implements ContainerResponseFilter {

@@ -19,10 +19,10 @@ package com.sun.ts.tests.jaxrs.ee.rs.core.configurable;
 import java.io.IOException;
 
 import jakarta.annotation.Priority;
-import jakarta.ws.rs.client.ClientRequestContext;
-import jakarta.ws.rs.client.ClientRequestFilter;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.client.ClientRequestContext;
+import javax.ws.rs.client.ClientRequestFilter;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 @Priority(200)

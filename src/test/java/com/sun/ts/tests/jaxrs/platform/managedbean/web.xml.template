@@ -22,7 +22,7 @@
         <servlet-name>CTSJAX-MANAGED</servlet-name>
         <servlet-class>servlet_adaptor</servlet-class>
         <init-param>
-            <param-name>jakarta.ws.rs.Application</param-name>
+            <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.sun.ts.tests.jaxrs.platform.managedbean.TSAppConfig</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp;
 import jakarta.json.Json;
 import jakarta.json.JsonNumber;
 import jakarta.json.JsonString;
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 

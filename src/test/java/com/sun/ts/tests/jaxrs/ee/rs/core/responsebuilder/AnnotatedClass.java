@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 @Consumes

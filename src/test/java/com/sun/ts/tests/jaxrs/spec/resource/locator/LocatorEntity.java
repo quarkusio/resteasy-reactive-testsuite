@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.locator;
 
-import jakarta.ws.rs.MatrixParam;
+import javax.ws.rs.MatrixParam;
 
 public class LocatorEntity {
   @MatrixParam("entity")

@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.servletnoapp;
 
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
@@ -46,7 +46,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @assertion_ids: JAXRS:SPEC:23; JAXRS:SPEC:48; JAXRS:SPEC:56;
    * 
-   * @test_Strategy: Create a servlet with name jakarta.ws.rs.core.Application in
+   * @test_Strategy: Create a servlet with name javax.ws.rs.core.Application in
    * web.xml; Package all resource in web.war file; Client sends a request on a
    * resource at /InheritanceTest, Verify that inheritance works; Verify deploy
    * JAX-RS resource as Servlet application w/o Application works;.
@@ -65,7 +65,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @assertion_ids: JAXRS:SPEC:24; JAXRS:SPEC:48; JAXRS:SPEC:56;
    * 
-   * @test_Strategy: Create a servlet with name jakarta.ws.rs.core.Application in
+   * @test_Strategy: Create a servlet with name javax.ws.rs.core.Application in
    * web.xml; Package all resource in web.war file; Client sends a request on a
    * resource at /InheritanceTest1, Verify that inheritance works. Verify deploy
    * JAX-RS resource as Servlet application w/o Application works;.

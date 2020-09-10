@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.produceconsume;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 

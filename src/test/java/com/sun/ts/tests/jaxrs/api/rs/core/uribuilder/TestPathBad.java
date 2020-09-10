@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.uribuilder;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.core.Response;
+import javax.ws.rs.GET;
+import javax.ws.rs.core.Response;
 
 public class TestPathBad {
   @GET

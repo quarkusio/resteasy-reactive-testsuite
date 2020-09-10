@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.delete;
 
-import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 @Path(value = "/DeleteTest")
 

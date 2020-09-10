@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.constrainedto;
 
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response.Status;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
@@ -61,7 +61,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
   public void serverSideReaderIsUsedOnServerTest() throws Fault {
     setProperty(Property.CONTENT, "Anything");
@@ -77,7 +77,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
   public void clientSideReaderIsNotUsedOnServerTest() throws Fault {
     setProperty(Property.CONTENT, Resource.MESSAGE);
@@ -93,7 +93,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
   public void serverSideWriterIsUsedOnServerTest() throws Fault {
     setProperty(Property.CONTENT, Resource.MESSAGE);
@@ -109,7 +109,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
   public void clientSideWriterIsNotUsedOnServerTest() throws Fault {
     setPrintEntity(true);
@@ -126,7 +126,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
   public void serverSideReaderIsNotUsedOnClientTest() throws Fault {
     addProviders();
@@ -143,7 +143,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
   public void clientSideReaderIsUsedOnClientTest() throws Fault {
     addProviders();
@@ -160,7 +160,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
   public void serverSideWriterIsNotUsedOnClientTest() throws Fault {
     addProviders();
@@ -177,7 +177,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @assertion_ids: JAXRS:JAVADOC:969;
    * 
-   * @test_Strategy: jakarta.ws.rs.ConstrainedTo.value is used this goes to
+   * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used this goes to
    * special resource method with response 204 to check the ClientSideWriter
    * worked on client rather then let it (wrongly) work on server and falsely
    * pass

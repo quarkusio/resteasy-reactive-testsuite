@@ -19,9 +19,9 @@ package com.sun.ts.tests.jaxrs.spec.filter.exception;
 import java.io.IOException;
 
 import jakarta.annotation.Priority;
-import jakarta.ws.rs.WebApplicationException;
-import jakarta.ws.rs.ext.Provider;
-import jakarta.ws.rs.ext.ReaderInterceptorContext;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.ext.Provider;
+import javax.ws.rs.ext.ReaderInterceptorContext;
 
 @Provider
 @Priority(500)

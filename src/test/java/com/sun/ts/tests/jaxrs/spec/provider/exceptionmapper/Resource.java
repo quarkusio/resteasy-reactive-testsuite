@@ -16,10 +16,10 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper;
 
-import jakarta.ws.rs.ClientErrorException;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.WebApplicationException;
+import javax.ws.rs.ClientErrorException;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.WebApplicationException;
 
 @Path("resource")
 public class Resource {

@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.api.client.invocationbuilder;
 
-import jakarta.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.ClientBuilder;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 

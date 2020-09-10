@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.spec.returntype;
 
 import java.util.UUID;
 
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response.Status;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 

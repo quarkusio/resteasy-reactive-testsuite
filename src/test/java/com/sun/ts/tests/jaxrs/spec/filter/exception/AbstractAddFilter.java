@@ -19,10 +19,10 @@ package com.sun.ts.tests.jaxrs.spec.filter.exception;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
-import jakarta.ws.rs.container.ContainerRequestContext;
-import jakarta.ws.rs.container.ContainerResponseContext;
-import jakarta.ws.rs.container.ContainerResponseFilter;
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.core.MediaType;
 
 public abstract class AbstractAddFilter implements ContainerResponseFilter {
 

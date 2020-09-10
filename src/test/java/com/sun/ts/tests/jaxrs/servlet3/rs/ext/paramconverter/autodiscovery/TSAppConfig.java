@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.servlet3.rs.ext.paramconverter.autodiscovery;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 }

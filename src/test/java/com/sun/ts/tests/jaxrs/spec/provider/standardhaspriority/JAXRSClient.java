@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority;
 
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.MultivaluedHashMap;
-import jakarta.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
 import jakarta.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 

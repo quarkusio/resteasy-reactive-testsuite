@@ -16,10 +16,10 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature;
 
-import jakarta.ws.rs.container.DynamicFeature;
-import jakarta.ws.rs.container.ResourceInfo;
-import jakarta.ws.rs.core.FeatureContext;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.container.DynamicFeature;
+import javax.ws.rs.container.ResourceInfo;
+import javax.ws.rs.core.FeatureContext;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 public class AddDynamicFeature implements DynamicFeature {

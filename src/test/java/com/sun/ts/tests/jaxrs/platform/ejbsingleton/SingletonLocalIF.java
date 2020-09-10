@@ -20,7 +20,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.ejbsingleton;
 
-import jakarta.ws.rs.GET;
+import javax.ws.rs.GET;
 
 public interface SingletonLocalIF {
 

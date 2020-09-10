@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator;
 
-import jakarta.ws.rs.GET;
+import javax.ws.rs.GET;
 
 public class SubResource {
   @GET

@@ -19,9 +19,9 @@ package com.sun.ts.tests.jaxrs.spec.filter.exception;
 import java.io.IOException;
 
 import jakarta.annotation.Priority;
-import jakarta.ws.rs.container.ContainerRequestContext;
-import jakarta.ws.rs.container.ContainerResponseContext;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 @ExceptionNameBinding

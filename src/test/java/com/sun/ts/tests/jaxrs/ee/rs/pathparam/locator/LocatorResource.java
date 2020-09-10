@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator;
 
-import jakarta.ws.rs.Encoded;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import javax.ws.rs.Encoded;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName;
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException;

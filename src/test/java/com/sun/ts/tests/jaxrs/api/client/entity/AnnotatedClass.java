@@ -17,9 +17,9 @@
 package com.sun.ts.tests.jaxrs.api.client.entity;
 
 import jakarta.annotation.Priority;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 @Priority(Integer.MAX_VALUE)

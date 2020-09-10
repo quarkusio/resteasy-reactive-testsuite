@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.inheritance;
 
-import jakarta.ws.rs.Path;
+import javax.ws.rs.Path;
 
 @Path(value = "/InheritanceTest")
 public class ChildResource implements ParentResource {

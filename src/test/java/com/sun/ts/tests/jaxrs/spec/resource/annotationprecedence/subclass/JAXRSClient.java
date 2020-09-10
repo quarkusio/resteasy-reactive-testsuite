@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass;
 
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response.Status;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 

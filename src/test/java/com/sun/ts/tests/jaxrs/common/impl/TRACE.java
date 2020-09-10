@@ -21,7 +21,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import jakarta.ws.rs.HttpMethod;
+import javax.ws.rs.HttpMethod;
 
 @HttpMethod("TRACE")
 @Target(value = ElementType.METHOD)

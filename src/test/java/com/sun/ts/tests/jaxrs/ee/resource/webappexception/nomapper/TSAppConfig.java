@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.resource.webappexception.nomapper;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 import java.util.Set;
 import java.util.HashSet;
 

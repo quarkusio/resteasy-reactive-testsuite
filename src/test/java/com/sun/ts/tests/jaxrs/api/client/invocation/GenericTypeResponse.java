@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.api.client.invocation;
 
-import jakarta.ws.rs.core.GenericType;
-import jakarta.ws.rs.core.Response;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
 
 public class GenericTypeResponse extends GenericType<Response> {
 }

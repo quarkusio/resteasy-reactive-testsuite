@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.api.client.clientrequestcontext;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import jakarta.ws.rs.client.ClientRequestContext;
-import jakarta.ws.rs.core.Response;
+import javax.ws.rs.client.ClientRequestContext;
+import javax.ws.rs.core.Response;
 
 import com.sun.ts.lib.harness.EETest.Fault;
 

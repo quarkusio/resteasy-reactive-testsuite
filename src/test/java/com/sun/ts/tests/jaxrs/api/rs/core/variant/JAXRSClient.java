@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Variant;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Variant;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
@@ -59,8 +59,8 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType()
    */
   public void constructorTest1() throws Fault {
-    String type = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
-    String subtype = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    String type = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    String subtype = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
     String encoding = "ISO8859-15";
     Locale lang = new Locale("en", "US");
 
@@ -249,8 +249,8 @@ public class JAXRSClient extends JAXRSCommonClient {
     StringBuffer sb = new StringBuffer();
     boolean pass;
 
-    String type = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
-    String subtype = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    String type = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    String subtype = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
 
     MediaType mt1 = new MediaType();
     pass = checkMediaTypeForEqualTest1(sb, mt1);
@@ -450,8 +450,8 @@ public class JAXRSClient extends JAXRSCommonClient {
 
     MediaType mt1 = new MediaType(type, subtype);
 
-    type = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
-    subtype = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    type = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    subtype = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
 
     MediaType mt2 = new MediaType();
 

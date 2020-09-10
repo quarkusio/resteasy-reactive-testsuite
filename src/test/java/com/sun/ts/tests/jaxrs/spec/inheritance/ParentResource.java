@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.spec.inheritance;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Produces;
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
 
 public interface ParentResource {
 

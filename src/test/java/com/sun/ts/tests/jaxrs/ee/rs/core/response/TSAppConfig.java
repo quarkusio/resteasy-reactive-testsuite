@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.response;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 
 import com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler;
 import com.sun.ts.tests.jaxrs.common.provider.StringBeanHeaderDelegate;

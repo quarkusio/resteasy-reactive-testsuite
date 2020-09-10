@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.beanparam;
 
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 import com.sun.ts.tests.jaxrs.ee.rs.Constants;

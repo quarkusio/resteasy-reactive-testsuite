@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.platform.container.asyncresponse;
 
 import java.util.concurrent.TimeUnit;
 
-import jakarta.ws.rs.container.AsyncResponse;
-import jakarta.ws.rs.container.TimeoutHandler;
+import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.TimeoutHandler;
 
 public class TckTimeoutHandler implements TimeoutHandler {
 

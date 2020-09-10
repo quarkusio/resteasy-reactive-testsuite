@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence;
 
-import jakarta.ws.rs.Path;
+import javax.ws.rs.Path;
 
 @Path("resource")
 public class Resource extends SuperClass implements ResourceInterface {

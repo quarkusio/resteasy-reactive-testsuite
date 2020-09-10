@@ -27,21 +27,21 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.ClientRequestContext;
-import jakarta.ws.rs.client.Entity;
-import jakarta.ws.rs.client.Invocation;
-import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.Configuration;
-import jakarta.ws.rs.core.Cookie;
-import jakarta.ws.rs.core.GenericEntity;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.MultivaluedMap;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.Response.Status;
-import jakarta.ws.rs.core.Variant;
-import jakarta.ws.rs.ext.RuntimeDelegate;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.ClientRequestContext;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Configuration;
+import javax.ws.rs.core.Cookie;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.Variant;
+import javax.ws.rs.ext.RuntimeDelegate;
 
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -582,7 +582,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the annotations attached to the entity. Note that the
    * returned annotations array contains only those annotations explicitly
    * attached to entity instance (such as the ones attached using
-   * Entity.Entity(Object, jakarta.ws.rs.core.MediaType,
+   * Entity.Entity(Object, javax.ws.rs.core.MediaType,
    * java.lang.annotation.Annotation[]) method).
    * 
    * ClientRequestFilter.abortWith
@@ -619,7 +619,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the annotations attached to the entity. Note that the
    * returned annotations array contains only those annotations explicitly
    * attached to entity instance (such as the ones attached using
-   * Entity.Entity(Object, jakarta.ws.rs.core.MediaType,
+   * Entity.Entity(Object, javax.ws.rs.core.MediaType,
    * java.lang.annotation.Annotation[]) method). The entity instance annotations
    * array does not include annotations declared on the entity implementation
    * class or its ancestors.
@@ -1397,7 +1397,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Set a new response message entity. It is the callers
    * responsibility to wrap the actual entity with
-   * jakarta.ws.rs.core.GenericEntity if preservation of its generic type is
+   * javax.ws.rs.core.GenericEntity if preservation of its generic type is
    * required.
    * 
    * ClientRequestFilter.abortWith

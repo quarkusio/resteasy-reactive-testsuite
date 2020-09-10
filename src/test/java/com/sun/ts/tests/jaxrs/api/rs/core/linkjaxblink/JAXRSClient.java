@@ -20,7 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 
-import jakarta.ws.rs.core.Link;
+import javax.ws.rs.core.Link;
 import javax.xml.namespace.QName;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;

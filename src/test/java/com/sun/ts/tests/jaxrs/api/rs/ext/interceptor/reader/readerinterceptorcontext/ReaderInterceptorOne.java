@@ -17,7 +17,7 @@
 package com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext;
 
 import jakarta.annotation.Priority;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.ext.Provider;
 
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.TemplateReaderInterceptor;
 

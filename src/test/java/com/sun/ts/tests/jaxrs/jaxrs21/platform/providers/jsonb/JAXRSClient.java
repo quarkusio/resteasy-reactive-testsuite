@@ -26,7 +26,7 @@ import java.net.URL;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 

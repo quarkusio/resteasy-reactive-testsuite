@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.spec.context.client;
 
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 
 @Path("resource")
 public class Resource {

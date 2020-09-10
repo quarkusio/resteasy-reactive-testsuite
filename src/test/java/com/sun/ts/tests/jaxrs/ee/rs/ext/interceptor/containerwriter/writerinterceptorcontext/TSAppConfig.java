@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerwriter.writerinter
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InputStreamReaderProvider;
 import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;

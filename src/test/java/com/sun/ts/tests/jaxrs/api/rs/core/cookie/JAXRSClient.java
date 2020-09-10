@@ -16,7 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.cookie;
 
-import jakarta.ws.rs.core.Cookie;
+import javax.ws.rs.core.Cookie;
+
+import org.junit.jupiter.api.Test;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
@@ -49,6 +51,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a Cookie instance using Constructor Cookie(String,
    * String)
    */
+  @Test
   public void constructorTest1() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -157,7 +160,7 @@ public class JAXRSClient extends JAXRSCommonClient {
     String domain = "";
     int version = 0;
 
-    Cookie ck6 = jakarta.ws.rs.core.Cookie.valueOf(cookie_toParse);
+    Cookie ck6 = javax.ws.rs.core.Cookie.valueOf(cookie_toParse);
     verifyCookie(ck6, name, value, path, domain, version);
   }
 
@@ -178,7 +181,7 @@ public class JAXRSClient extends JAXRSCommonClient {
     String domain = "";
     int version = 1;
 
-    Cookie ck7 = jakarta.ws.rs.core.Cookie.valueOf(cookie_toParse);
+    Cookie ck7 = javax.ws.rs.core.Cookie.valueOf(cookie_toParse);
 
     verifyCookie(ck7, name, value, path, domain, version);
   }
@@ -193,7 +196,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    */
   public void parseTest3() throws Fault {
     try {
-      jakarta.ws.rs.core.Cookie.valueOf(null);
+      javax.ws.rs.core.Cookie.valueOf(null);
       throw new Fault(
           "Expectecd IllegalArgumentException not thrown.  Test Failed");
     } catch (java.lang.IllegalArgumentException ilex) {

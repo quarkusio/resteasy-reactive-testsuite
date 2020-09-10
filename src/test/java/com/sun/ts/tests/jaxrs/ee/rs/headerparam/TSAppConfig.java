@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.headerparam;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 
 import com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper;
 import com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper;

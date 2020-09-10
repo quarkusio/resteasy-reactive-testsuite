@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.api.rs.core.nocontentexception;
 
 import java.io.IOException;
 
-import jakarta.ws.rs.core.NoContentException;
+import javax.ws.rs.core.NoContentException;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 

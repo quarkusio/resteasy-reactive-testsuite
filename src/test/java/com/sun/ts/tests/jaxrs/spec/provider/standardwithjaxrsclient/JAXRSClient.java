@@ -18,9 +18,9 @@ package com.sun.ts.tests.jaxrs.spec.provider.standardwithjaxrsclient;
 
 import java.math.BigDecimal;
 
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.MultivaluedHashMap;
-import jakarta.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 

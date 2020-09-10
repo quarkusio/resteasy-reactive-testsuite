@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.writer;
 
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 

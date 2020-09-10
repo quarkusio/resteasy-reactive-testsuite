@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.linkjaxbadapter;
 
-import jakarta.ws.rs.core.Link;
-import jakarta.ws.rs.ext.RuntimeDelegate;
+import javax.ws.rs.core.Link;
+import javax.ws.rs.ext.RuntimeDelegate;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;

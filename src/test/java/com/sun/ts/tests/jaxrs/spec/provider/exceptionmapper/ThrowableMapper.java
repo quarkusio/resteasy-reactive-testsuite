@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper;
 
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.ext.ExceptionMapper;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 public class ThrowableMapper implements ExceptionMapper<Throwable> {

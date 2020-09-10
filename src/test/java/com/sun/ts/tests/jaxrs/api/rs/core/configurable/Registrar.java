@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.configurable;
 
-import jakarta.ws.rs.core.Configurable;
+import javax.ws.rs.core.Configurable;
 
 /**
  * We need the possibility to override the way the registerable is registered

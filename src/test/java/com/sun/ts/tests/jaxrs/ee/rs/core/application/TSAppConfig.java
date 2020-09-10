@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.application;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 
 import java.util.Map;
 import java.util.Set;

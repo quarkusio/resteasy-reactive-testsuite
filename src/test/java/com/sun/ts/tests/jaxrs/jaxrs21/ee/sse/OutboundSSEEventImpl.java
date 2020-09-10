@@ -18,9 +18,9 @@ package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse;
 
 import java.lang.reflect.Type;
 
-import jakarta.ws.rs.core.GenericType;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.sse.OutboundSseEvent;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.sse.OutboundSseEvent;
 
 public class OutboundSSEEventImpl extends SSEEventImpl
     implements OutboundSseEvent {

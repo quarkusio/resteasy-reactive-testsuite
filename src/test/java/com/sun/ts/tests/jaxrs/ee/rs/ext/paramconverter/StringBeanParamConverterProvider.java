@@ -19,9 +19,9 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-import jakarta.ws.rs.ext.ParamConverter;
-import jakarta.ws.rs.ext.ParamConverterProvider;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.ext.ParamConverter;
+import javax.ws.rs.ext.ParamConverterProvider;
+import javax.ws.rs.ext.Provider;
 
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 

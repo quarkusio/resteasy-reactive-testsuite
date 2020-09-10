@@ -22,7 +22,7 @@
         <servlet-name>CTS_JAXRS_PLATFORM_PROVIDER_JSONP</servlet-name>
         <servlet-class>servlet_adaptor</servlet-class>
         <init-param>
-            <param-name>jakarta.ws.rs.Application</param-name>
+            <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.sun.ts.tests.jaxrs.platform.provider.jsonp.TSAppConfig</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

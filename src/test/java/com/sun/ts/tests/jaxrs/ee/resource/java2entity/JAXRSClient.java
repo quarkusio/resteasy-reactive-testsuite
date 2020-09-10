@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.resource.java2entity;
 
-import jakarta.ws.rs.core.Response;
+import javax.ws.rs.core.Response;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 

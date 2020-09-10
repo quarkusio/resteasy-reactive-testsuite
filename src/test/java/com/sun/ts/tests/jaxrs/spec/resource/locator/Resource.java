@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.locator;
 
-import jakarta.ws.rs.MatrixParam;
-import jakarta.ws.rs.Path;
+import javax.ws.rs.MatrixParam;
+import javax.ws.rs.Path;
 
 @Path("resource")
 public class Resource {

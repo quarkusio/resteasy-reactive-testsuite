@@ -19,7 +19,7 @@
  */
 package com.sun.ts.tests.jaxrs.ee.rs.queryparam;
 
-import jakarta.ws.rs.core.Response.Status;
+import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient;
 

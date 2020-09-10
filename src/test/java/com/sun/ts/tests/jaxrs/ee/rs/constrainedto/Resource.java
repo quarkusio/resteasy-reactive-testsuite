@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.constrainedto;
 
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.core.Response;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
 
 @Path("resource")
 public class Resource {

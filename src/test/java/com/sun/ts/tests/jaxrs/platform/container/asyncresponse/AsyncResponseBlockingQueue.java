@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.platform.container.asyncresponse;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
-import jakarta.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.AsyncResponse;
 
 public class AsyncResponseBlockingQueue
     extends ArrayBlockingQueue<AsyncResponse> {

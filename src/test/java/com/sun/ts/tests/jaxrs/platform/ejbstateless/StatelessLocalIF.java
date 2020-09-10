@@ -20,7 +20,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.ejbstateless;
 
-import jakarta.ws.rs.GET;
+import javax.ws.rs.GET;
 
 public interface StatelessLocalIF {
 

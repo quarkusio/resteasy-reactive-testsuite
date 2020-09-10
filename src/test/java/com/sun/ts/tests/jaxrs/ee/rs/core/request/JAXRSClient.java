@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.request;
 
-import jakarta.ws.rs.core.Response.Status;
+import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.httpclient.Header;
 

@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.common;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import jakarta.ws.rs.Path;
+import javax.ws.rs.Path;
 
 /**
  * This class is a superclass used in MessageBodyWriters which need to check

@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.api.rs.core.mediatype;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
@@ -49,8 +49,8 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType()
    */
   public void constructorTest1() throws Fault {
-    String type = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
-    String subtype = jakarta.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    String type = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
+    String subtype = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
 
     MediaType mt1 = new MediaType();
     verifyMediaType(mt1, type, subtype);
@@ -130,7 +130,7 @@ public class JAXRSClient extends JAXRSCommonClient {
 
     MediaType mt3 = new MediaType(type, subtype);
 
-    if (!mt3.isCompatible(jakarta.ws.rs.core.MediaType.TEXT_PLAIN_TYPE)) {
+    if (!mt3.isCompatible(javax.ws.rs.core.MediaType.TEXT_PLAIN_TYPE)) {
       throw new Fault("isCompatible test failed.");
     }
   }
@@ -197,10 +197,10 @@ public class JAXRSClient extends JAXRSCommonClient {
 
     MediaType mt3 = new MediaType(type, subtype);
 
-    if (mt3.hashCode() != jakarta.ws.rs.core.MediaType.TEXT_PLAIN_TYPE
+    if (mt3.hashCode() != javax.ws.rs.core.MediaType.TEXT_PLAIN_TYPE
         .hashCode()) {
       throw new Fault("hashCode test failed." + " Expecting " + mt3.hashCode()
-          + ", got " + jakarta.ws.rs.core.MediaType.TEXT_PLAIN_TYPE.hashCode());
+          + ", got " + javax.ws.rs.core.MediaType.TEXT_PLAIN_TYPE.hashCode());
     }
   }
 
@@ -269,7 +269,7 @@ public class JAXRSClient extends JAXRSCommonClient {
 
     MediaType mt4 = new MediaType(type, subtype);
 
-    if (!mt4.equals(jakarta.ws.rs.core.MediaType.TEXT_HTML_TYPE)) {
+    if (!mt4.equals(javax.ws.rs.core.MediaType.TEXT_HTML_TYPE)) {
       throw new Fault("Equals test failed" + "Expecting "
           + MediaType.TEXT_PLAIN_TYPE.toString() + ", got " + mt4.toString());
     }

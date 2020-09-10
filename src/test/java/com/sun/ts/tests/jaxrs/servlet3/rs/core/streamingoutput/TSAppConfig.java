@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput;
 
-import jakarta.ws.rs.core.Application;
+import javax.ws.rs.core.Application;
 import java.util.Set;
 import java.util.HashSet;
 

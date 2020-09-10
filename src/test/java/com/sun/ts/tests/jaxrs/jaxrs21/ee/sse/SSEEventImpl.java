@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse;
 
-import jakarta.ws.rs.sse.SseEvent;
+import javax.ws.rs.sse.SseEvent;
 
 public abstract class SSEEventImpl implements SseEvent {
 

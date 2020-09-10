@@ -24,13 +24,13 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.interceptor.Interceptors;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.MatrixParam;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.core.Application;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.ext.Providers;
+import javax.ws.rs.GET;
+import javax.ws.rs.MatrixParam;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ext.Providers;
 
 @Path("/managedbean")
 @RequestScoped // TODO: remove in MR when cdi bean manager is available even

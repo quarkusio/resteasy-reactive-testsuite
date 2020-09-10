@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.api.rs.ext.interceptor;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-import jakarta.ws.rs.ext.InterceptorContext;
+import javax.ws.rs.ext.InterceptorContext;
 
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 

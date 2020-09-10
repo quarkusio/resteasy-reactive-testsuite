@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.get;
 
-import jakarta.ws.rs.GET;
+import javax.ws.rs.GET;
 
 public class SubResource {
   public static final String ID = "JAXRS:DIRECT";

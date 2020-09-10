@@ -23,8 +23,8 @@ import java.lang.annotation.Annotation;
 import java.util.Calendar;
 import java.util.Date;
 
-import jakarta.ws.rs.core.GenericType;
-import jakarta.ws.rs.core.Response;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 

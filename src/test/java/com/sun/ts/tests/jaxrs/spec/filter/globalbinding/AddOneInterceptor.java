@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.globalbinding;
 
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 @GlobalNameBinding

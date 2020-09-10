@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.spec.resourceconstructor;
 
-import jakarta.ws.rs.CookieParam;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
+import javax.ws.rs.CookieParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 
 @Path("resource/cookie")
 public class CookieResource {

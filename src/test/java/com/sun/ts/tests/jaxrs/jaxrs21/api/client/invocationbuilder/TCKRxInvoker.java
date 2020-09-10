@@ -19,9 +19,9 @@ package com.sun.ts.tests.jaxrs.jaxrs21.api.client.invocationbuilder;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
-import jakarta.ws.rs.client.Entity;
-import jakarta.ws.rs.client.RxInvoker;
-import jakarta.ws.rs.core.GenericType;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.RxInvoker;
+import javax.ws.rs.core.GenericType;
 
 public class TCKRxInvoker implements RxInvoker<CompletionStage<String>> {
 

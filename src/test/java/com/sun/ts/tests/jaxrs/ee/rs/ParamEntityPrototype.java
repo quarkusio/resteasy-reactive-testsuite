@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs;
 
-import jakarta.ws.rs.FormParam;
+import javax.ws.rs.FormParam;
 
 /**
  * This class is to be used with {Any}Param#value

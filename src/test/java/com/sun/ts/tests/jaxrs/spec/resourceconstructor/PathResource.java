@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.spec.resourceconstructor;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 @Path("resource/path/{param}")
 public class PathResource {

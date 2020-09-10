@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.common.provider;
 
-import jakarta.ws.rs.ext.Provider;
-import jakarta.ws.rs.ext.RuntimeDelegate.HeaderDelegate;
+import javax.ws.rs.ext.Provider;
+import javax.ws.rs.ext.RuntimeDelegate.HeaderDelegate;
 
 @Provider
 public class StringBeanHeaderDelegate implements HeaderDelegate<StringBean> {

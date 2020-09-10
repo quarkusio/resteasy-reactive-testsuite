@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.locator;
 
-import jakarta.ws.rs.MatrixParam;
-import jakarta.ws.rs.POST;
+import javax.ws.rs.MatrixParam;
+import javax.ws.rs.POST;
 
 public class SubResource {
 

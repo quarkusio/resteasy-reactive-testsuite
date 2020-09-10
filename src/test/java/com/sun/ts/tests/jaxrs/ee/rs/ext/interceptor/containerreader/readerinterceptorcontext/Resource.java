@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerreader.readerinterceptorcontext;
 
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBean;
 

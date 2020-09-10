@@ -20,10 +20,10 @@ import java.security.Principal;
 import java.util.Collection;
 
 import jakarta.annotation.Priority;
-import jakarta.ws.rs.container.PreMatching;
-import jakarta.ws.rs.core.MultivaluedMap;
-import jakarta.ws.rs.core.SecurityContext;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.container.PreMatching;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.ext.Provider;
 
 /**
  * The methods are called here by reflection from the superclass This is a

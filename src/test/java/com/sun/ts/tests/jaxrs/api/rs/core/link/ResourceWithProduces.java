@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.link;
 
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path("producesresource")
 @Produces(MediaType.TEXT_HTML)

@@ -17,7 +17,7 @@
 package com.sun.ts.tests.jaxrs.spec.filter.exception;
 
 import jakarta.annotation.Priority;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.ext.Provider;
 
 @Provider
 @Priority(200)

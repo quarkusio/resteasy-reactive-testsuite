@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate;
 
 import java.util.Collection;
 
-import jakarta.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestContext;
 
 public class TemplateFilter {
 

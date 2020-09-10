@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput;
 
-import jakarta.ws.rs.core.Response.Status;
+import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
