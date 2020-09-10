@@ -32,7 +32,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;

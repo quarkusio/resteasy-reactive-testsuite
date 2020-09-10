@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext;
 import java.io.ByteArrayInputStream;
 import java.util.Locale;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;

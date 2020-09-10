@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext;
 import java.security.Principal;
 import java.util.Collection;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.SecurityContext;

@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.api.client.clientresponsecontext;
 
 import java.io.IOException;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientResponseContext;
 import javax.ws.rs.client.ClientResponseFilter;

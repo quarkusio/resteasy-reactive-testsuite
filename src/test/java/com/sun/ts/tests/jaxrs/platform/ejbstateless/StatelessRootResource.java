@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.ejbstateless;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;

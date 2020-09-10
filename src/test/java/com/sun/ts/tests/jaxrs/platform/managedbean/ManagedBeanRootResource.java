@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.platform.managedbean;
 
 import java.lang.annotation.Annotation;
 
-import jakarta.annotation.ManagedBean;
-import jakarta.annotation.PostConstruct;
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.interceptor.Interceptors;
 import javax.naming.InitialContext;

@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext;
 
 import java.lang.annotation.Annotation;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;

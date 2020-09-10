@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.priority;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;

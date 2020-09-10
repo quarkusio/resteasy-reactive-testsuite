@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.jaxrs21.ee.priority;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.ext.ParamConverter;
 import javax.ws.rs.ext.ParamConverterProvider;
 import javax.ws.rs.ext.Provider;

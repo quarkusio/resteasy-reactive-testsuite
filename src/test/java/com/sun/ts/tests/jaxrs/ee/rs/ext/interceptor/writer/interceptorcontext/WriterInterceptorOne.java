@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.interceptorcontext;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.WriterInterceptorContext;
 

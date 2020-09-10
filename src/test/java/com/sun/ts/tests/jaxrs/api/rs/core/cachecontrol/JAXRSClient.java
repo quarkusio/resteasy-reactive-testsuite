@@ -23,6 +23,8 @@ import java.util.Map.Entry;
 
 import javax.ws.rs.core.CacheControl;
 
+import org.junit.jupiter.api.AfterEach;
+
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
@@ -749,7 +751,7 @@ public class JAXRSClient extends JAXRSCommonClient {
     TestUtil.logTrace("Test passed. " + sb.toString());
   }
 
-  @Override
+  @AfterEach
   public void cleanup() {
     expected[0] = true;
     expected[1] = false; // Private

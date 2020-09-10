@@ -21,8 +21,8 @@ import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-import jakarta.annotation.ManagedBean;
-import jakarta.annotation.PostConstruct;
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import jakarta.interceptor.Interceptors;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Application;

@@ -21,7 +21,7 @@ import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 import jakarta.inject.Singleton;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Application;

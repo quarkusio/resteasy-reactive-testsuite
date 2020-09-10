@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.api.rs.bindingpriority;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import jakarta.annotation.Priority;
+import javax.annotation.Priority;
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.core.Response;
 
