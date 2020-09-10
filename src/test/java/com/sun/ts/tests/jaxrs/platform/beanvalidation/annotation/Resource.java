@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

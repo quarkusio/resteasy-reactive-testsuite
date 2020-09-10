@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.platform.container.asyncejb;
 
-import jakarta.ejb.Asynchronous;
-import jakarta.ejb.Singleton;
+import javax.ejb.Asynchronous;
+import javax.ejb.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.container.AsyncResponse;

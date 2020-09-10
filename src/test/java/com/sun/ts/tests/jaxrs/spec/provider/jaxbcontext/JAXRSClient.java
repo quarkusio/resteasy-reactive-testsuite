@@ -60,7 +60,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @assertion_ids: JAXRS:SPEC:34
    * 
    * @test_Strategy: The implementation-supplied entity provider(s) for
-   * jakarta.xml.bind.JAXBElement and application supplied JAXB classes MUST use
+   * javax.xml.bind.JAXBElement and application supplied JAXB classes MUST use
    * JAXBContext instances provided by application-supplied context resolvers,
    * see Section 4.3.
    */

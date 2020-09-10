@@ -26,7 +26,7 @@ public class ConstraintDefinitionResource {
 
   @POST
   @Path("constraintdefinitionexception")
-  // jakarta.validation.ConstraintDefinitionException: HV000074:
+  // javax.validation.ConstraintDefinitionException: HV000074:
   // com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.ConstraintViolationAnnotation
   // contains Constraint annotation, but does not contain a message parameter.
   public String constraintDefinitionException(

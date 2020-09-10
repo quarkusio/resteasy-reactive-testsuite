@@ -30,7 +30,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
 @Provider

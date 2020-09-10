@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
-import jakarta.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;

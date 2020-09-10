@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation;
 
-import jakarta.validation.Valid;
-import jakarta.validation.executable.ExecutableType;
-import jakarta.validation.executable.ValidateOnExecution;
+import javax.validation.Valid;
+import javax.validation.executable.ExecutableType;
+import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 

@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import jakarta.activation.DataSource;
+import javax.activation.DataSource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.DefaultValue;

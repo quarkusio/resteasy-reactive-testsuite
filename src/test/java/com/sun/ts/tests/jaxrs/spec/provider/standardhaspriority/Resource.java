@@ -21,7 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response.Status;
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 import javax.xml.transform.Source;
 
 @Path("resource")

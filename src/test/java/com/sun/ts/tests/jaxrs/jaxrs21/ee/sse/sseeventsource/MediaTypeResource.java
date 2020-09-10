@@ -24,7 +24,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.sse.Sse;
 import javax.ws.rs.sse.SseEventSink;
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
 import com.sun.ts.tests.jaxrs.common.impl.JaxbKeyValueBean;

@@ -25,7 +25,7 @@ public class ConstraintDeclarationResource {
   @POST
   @Path("constraintdeclarationexception")
   // Actually a subclass UnexpectedTypeException is thrown:
-  // jakarta.validation.UnexpectedTypeException: HV000030: No validator could be
+  // javax.validation.UnexpectedTypeException: HV000030: No validator could be
   // found for type: java.lang.String.
   public String constraintDeclarationException(
       @ConstraintDeclarationAnnotation String content) {

@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 

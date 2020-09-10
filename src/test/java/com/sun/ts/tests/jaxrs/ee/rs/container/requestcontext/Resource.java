@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.Path;

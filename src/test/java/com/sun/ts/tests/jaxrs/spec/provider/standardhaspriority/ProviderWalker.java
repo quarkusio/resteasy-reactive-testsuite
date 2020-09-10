@@ -25,7 +25,7 @@ import java.lang.reflect.Type;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 import javax.xml.transform.Source;
 
 public class ProviderWalker {

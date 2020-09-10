@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-import jakarta.activation.DataSource;
+import javax.activation.DataSource;
 import javax.ws.rs.ext.ParamConverter;
 import javax.ws.rs.ext.ParamConverterProvider;
 import javax.ws.rs.ext.Provider;

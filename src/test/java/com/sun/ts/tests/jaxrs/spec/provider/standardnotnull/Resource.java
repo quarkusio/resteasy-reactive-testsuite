@@ -22,14 +22,14 @@ import java.io.Reader;
 import java.math.BigDecimal;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import jakarta.activation.DataSource;
+import javax.activation.DataSource;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.StreamingOutput;
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 import javax.xml.transform.Source;
 
 import com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput;

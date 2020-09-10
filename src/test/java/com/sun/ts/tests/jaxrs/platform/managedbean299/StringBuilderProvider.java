@@ -22,7 +22,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 import javax.annotation.PostConstruct;
-import jakarta.inject.Singleton;
+import javax.inject.Singleton;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;

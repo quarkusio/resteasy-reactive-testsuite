@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.constraintviolationexceptionmapper;
 
-import jakarta.validation.ConstraintViolationException;
+import javax.validation.ConstraintViolationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 

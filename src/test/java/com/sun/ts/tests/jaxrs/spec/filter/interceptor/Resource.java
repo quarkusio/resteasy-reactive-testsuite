@@ -25,7 +25,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
 
-import jakarta.activation.DataSource;
+import javax.activation.DataSource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -38,7 +38,7 @@ import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import javax.xml.transform.Source;
 

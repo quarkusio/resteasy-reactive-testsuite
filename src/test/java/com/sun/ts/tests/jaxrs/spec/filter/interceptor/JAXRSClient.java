@@ -24,9 +24,9 @@ import java.io.InputStreamReader;
 
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.JAXBException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;

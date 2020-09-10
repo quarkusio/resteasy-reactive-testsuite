@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.Reader;
 
-import jakarta.activation.DataSource;
+import javax.activation.DataSource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -30,7 +30,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.StreamingOutput;
-import jakarta.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBElement;
 import javax.xml.transform.Source;
 
 import com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput;

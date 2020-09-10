@@ -32,8 +32,8 @@ import java.util.OptionalInt;
 import java.util.OptionalLong;
 import java.util.TimeZone;
 
-import jakarta.json.JsonNumber;
-import jakarta.json.JsonString;
+import javax.json.JsonNumber;
+import javax.json.JsonString;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.platform.ejbstateless;
 
-import jakarta.ejb.Local;
-import jakarta.ejb.Stateless;
+import javax.ejb.Local;
+import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;

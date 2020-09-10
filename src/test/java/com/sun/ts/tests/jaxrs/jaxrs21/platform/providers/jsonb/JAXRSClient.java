@@ -23,9 +23,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
-import jakarta.json.bind.JsonbException;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
+import javax.json.bind.JsonbException;
 import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;

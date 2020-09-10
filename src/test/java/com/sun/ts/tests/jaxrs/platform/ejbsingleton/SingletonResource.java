@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.platform.ejbsingleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import jakarta.ejb.Singleton;
+import javax.ejb.Singleton;
 
 @Singleton
 public class SingletonResource {

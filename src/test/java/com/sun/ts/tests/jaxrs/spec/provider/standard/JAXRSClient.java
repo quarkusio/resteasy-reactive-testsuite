@@ -275,7 +275,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * MessageBodyReader and MessageBodyWriter implementations for the following
    * Java and media type combinations
    * 
-   * jakarta.xml.bind.JAXBElement and application-supplied JAXB classes XML media
+   * javax.xml.bind.JAXBElement and application-supplied JAXB classes XML media
    * types (text/xml, application/xml and application/*+xml)
    */
   public void jaxbElementProviderTest() throws Fault {

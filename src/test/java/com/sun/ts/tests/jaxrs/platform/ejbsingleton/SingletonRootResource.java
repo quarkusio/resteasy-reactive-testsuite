@@ -17,9 +17,9 @@
 package com.sun.ts.tests.jaxrs.platform.ejbsingleton;
 
 import javax.annotation.PostConstruct;
-import jakarta.ejb.EJB;
-import jakarta.ejb.EJBException;
-import jakarta.ejb.Singleton;
+import javax.ejb.EJB;
+import javax.ejb.EJBException;
+import javax.ejb.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.WebApplicationException;

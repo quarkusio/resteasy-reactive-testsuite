@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.platform.ejbstateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import jakarta.ejb.Stateless;
+import javax.ejb.Stateless;
 
 @Stateless
 public class StatelessResource {

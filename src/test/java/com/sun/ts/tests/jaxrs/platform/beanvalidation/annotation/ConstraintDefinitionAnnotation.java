@@ -21,7 +21,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import jakarta.validation.Constraint;
+import javax.validation.Constraint;
 
 @Target({ ElementType.FIELD, ElementType.TYPE, ElementType.CONSTRUCTOR,
     ElementType.PARAMETER, ElementType.METHOD })

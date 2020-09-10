@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext;
 
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
-import jakarta.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBContext;
 
 @Provider
 public class JaxbContextProvider implements ContextResolver<JAXBContext> {
