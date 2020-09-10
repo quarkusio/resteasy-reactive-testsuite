@@ -23,7 +23,7 @@ import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import com.sun.ts.lib.harness.EETest.Fault;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 @Provider
 /**

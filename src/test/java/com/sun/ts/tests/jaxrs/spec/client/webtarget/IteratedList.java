@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.sun.ts.lib.harness.EETest.Fault;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 import com.sun.ts.lib.util.TestUtil;
 
 /**

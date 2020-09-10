@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.core.Response;
 
-import com.sun.ts.lib.harness.EETest.Fault;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 public class GetPropertyNamesProvider extends ContextProvider {

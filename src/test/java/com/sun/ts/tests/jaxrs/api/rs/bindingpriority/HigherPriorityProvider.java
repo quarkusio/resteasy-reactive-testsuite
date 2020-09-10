@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Priority;
 import javax.ws.rs.client.ClientRequestContext;
 
-import com.sun.ts.lib.harness.EETest.Fault;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 @Priority(Integer.MIN_VALUE)
 // the lower the number the higher the priority

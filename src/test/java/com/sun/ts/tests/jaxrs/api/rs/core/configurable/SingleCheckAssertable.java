@@ -20,7 +20,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Configurable;
 
-import com.sun.ts.lib.harness.EETest.Fault;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 public abstract class SingleCheckAssertable extends Assertable {
 

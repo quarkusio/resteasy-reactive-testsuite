@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.api.rs.core.configurable;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 
-import com.sun.ts.lib.harness.EETest.Fault;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 public abstract class Assertable {
   final static String[] LOCATION = { "Client", "WebTarget",
