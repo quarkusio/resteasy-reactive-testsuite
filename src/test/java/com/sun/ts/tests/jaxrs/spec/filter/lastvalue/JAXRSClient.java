@@ -51,7 +51,6 @@ public class JAXRSClient extends JaxrsCommonClient {
                             .addClasses(
                             com.sun.ts.tests.jaxrs.spec.filter.lastvalue.FirstWriterInterceptor.class
                             , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.SecondWriterInterceptor.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.Resource.1.class
                             , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
                             , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.LinkedListEntityProvider.class
                             , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.FirstReaderInterceptor.class

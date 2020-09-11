@@ -62,10 +62,8 @@ public class JAXRSClient extends JaxrsCommonClient {
                             com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource.class
                             , com.sun.ts.tests.jaxrs.spec.filter.interceptor.EntityReaderInterceptor.class
                             , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource.2.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
                             , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource.1.class
                             , com.sun.ts.tests.jaxrs.common.impl.StringSource.class
                             , com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput.class
                             , com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream.class

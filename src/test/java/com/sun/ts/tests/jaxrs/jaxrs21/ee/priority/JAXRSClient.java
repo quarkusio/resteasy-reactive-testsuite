@@ -42,12 +42,9 @@ public class JAXRSClient extends JAXRSCommonClient {
                             .addClasses(
                             com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TckPriorityException.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperThree.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderOne.1.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderAnother.1.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionResource.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderOne.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderAnother.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderTwo.1.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterResource.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperOne.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperTwo.class

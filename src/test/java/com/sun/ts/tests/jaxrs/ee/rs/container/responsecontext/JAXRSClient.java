@@ -52,15 +52,13 @@ public class JAXRSClient extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.ResponseFilter.2.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.SecondResponseFilter.class
+                            com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.SecondResponseFilter.class
                             , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.TemplateFilter.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.ContextOperation.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.ResponseFilter.class
                             , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.Resource.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext.ResponseFilter.1.class
                             );
                 }
             });

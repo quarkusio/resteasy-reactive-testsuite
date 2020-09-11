@@ -36,6 +36,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBeanEntityProvider;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
 import com.sun.ts.tests.jaxrs.platform.container.asyncresponse.Resource;
@@ -61,7 +62,7 @@ public class JAXRSClient extends JaxrsCommonClient {
                             com.sun.ts.tests.jaxrs.platform.container.completioncallback.CallbackResource.class
                             , com.sun.ts.tests.jaxrs.platform.container.asyncresponse.AsyncResponseBlockingQueue.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
-                            , com.sun.ts.tests.jaxrs.common.provider.ExceptionThrowingStringBeanEntityProvider.class
+                            , ExceptionThrowingStringBeanEntityProvider.class
                             , com.sun.ts.tests.jaxrs.platform.container.completioncallback.SettingCompletionCallback.class
                             , com.sun.ts.tests.jaxrs.platform.container.completioncallback.ExceptionThrowingStringBean.class
                             , com.sun.ts.tests.jaxrs.platform.container.completioncallback.SecondSettingCompletionCallback.class

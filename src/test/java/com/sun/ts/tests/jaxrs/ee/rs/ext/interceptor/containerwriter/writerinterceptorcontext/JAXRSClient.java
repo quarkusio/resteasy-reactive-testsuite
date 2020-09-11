@@ -58,7 +58,6 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ContextOperation.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ReaderInterceptorOne.class
                             , com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ProceedException.1.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.InterceptorOneBody.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.ReaderInterceptorOne.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ProceedException.class
@@ -67,7 +66,6 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyTwo.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerwriter.writerinterceptorcontext.Resource.class
-                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient.1.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.TemplateWriterInterceptor.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.TemplateReaderInterceptor.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ContextOperation.class

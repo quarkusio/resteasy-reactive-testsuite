@@ -71,7 +71,8 @@ public class JAXRSClient extends JaxrsCommonClient {
                             .addClasses(
                             com.sun.ts.tests.jaxrs.api.rs.core.configurable.CallableProvider.class
                             , com.sun.ts.tests.jaxrs.api.rs.core.configurable.SingleCheckAssertable.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.core.configurable.Resource.class      com.sun.ts.tests.jaxrs.api.rs.core.configurable.Assertable.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.core.configurable.Resource.class
+                            , com.sun.ts.tests.jaxrs.api.rs.core.configurable.Assertable.class
                             , com.sun.ts.tests.jaxrs.api.rs.core.configurable.ConfigurableObject.class
                             , com.sun.ts.tests.jaxrs.api.rs.core.configurable.Registrar.class
                             );

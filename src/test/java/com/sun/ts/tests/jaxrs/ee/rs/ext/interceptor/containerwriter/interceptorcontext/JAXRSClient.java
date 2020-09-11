@@ -68,7 +68,6 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.JAXRSClient.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.interceptorcontext.WriterInterceptorOne.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyTwo.class
-                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient.1.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.TemplateWriterInterceptor.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.TemplateReaderInterceptor.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ContextOperation.class

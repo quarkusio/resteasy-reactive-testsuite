@@ -54,7 +54,6 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.JAXRSClient.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyOne.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyTwo.class
-                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient.1.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorCallbackMethods.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBeanEntityProvider.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InputStreamReaderProvider.class

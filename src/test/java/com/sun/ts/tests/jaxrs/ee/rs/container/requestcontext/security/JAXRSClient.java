@@ -29,6 +29,7 @@ import java.util.Properties;
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+import com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.ContextOperation;
 
 /*
  * @class.setup_props: webServerHost;
@@ -46,7 +47,7 @@ public class JAXRSClient extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security.ContextOperation.class
+                            ContextOperation.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security.RequestFilter.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security.Resource.class
                             );

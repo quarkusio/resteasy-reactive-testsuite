@@ -69,7 +69,6 @@ public class JAXRSClient extends SSEJAXRSClient {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
                             com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource.ServiceUnavailableResource.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.OutboundSSEEventImpl.1.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource.MediaTypeResource.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.OutboundSSEEventImpl.class
