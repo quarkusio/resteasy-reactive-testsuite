@@ -86,6 +86,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteTest() throws Fault {
     return super.deleteTest();
   }
@@ -98,6 +99,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithStringClassWhileServerWaitTest()
       throws Fault {
     return super.deleteWithStringClassWhileServerWaitTest();
@@ -111,6 +113,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithResponseClassWhileServerWaitTest()
       throws Fault {
     return super.deleteWithResponseClassWhileServerWaitTest();
@@ -124,6 +127,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     return super.deleteWithGenericTypeStringWhileServerWaitTest();
@@ -137,6 +141,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     return super.deleteWithGenericTypeResponseWhileServerWaitTest();
@@ -150,6 +155,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithCallbackWhileServerWaitTest() throws Fault {
     return super.deleteWithCallbackWhileServerWaitTest();
   }
@@ -162,6 +168,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithCallbackStringWhileServerWaitTest()
       throws Fault {
     return super.deleteWithCallbackStringWhileServerWaitTest();
@@ -178,6 +185,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getTest() throws Fault {
     return super.getTest();
   }
@@ -190,6 +198,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithStringClassWhileServerWaitTest() throws Fault {
     return super.getWithStringClassWhileServerWaitTest();
   }
@@ -202,6 +211,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithResponseClassWhileServerWaitTest()
       throws Fault {
     return super.deleteWithResponseClassWhileServerWaitTest();
@@ -215,6 +225,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     return super.getWithGenericTypeStringWhileServerWaitTest();
@@ -228,6 +239,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     return super.getWithGenericTypeResponseWhileServerWaitTest();
@@ -241,6 +253,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithCallbackWhileServerWaitTest() throws Fault {
     return super.getWithCallbackWhileServerWaitTest();
   }
@@ -253,6 +266,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithCallbackStringWhileServerWaitTest()
       throws Fault {
     return super.getWithCallbackStringWhileServerWaitTest();
@@ -270,6 +284,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP HEAD method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> headTest() throws Fault {
     return super.headTest();
   }
@@ -282,6 +297,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP HEAD method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> headWithCallbackWhileServerWaitTest() throws Fault {
     return super.headWithCallbackWhileServerWaitTest();
   }
@@ -298,6 +314,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodTest() throws Fault {
     return super.methodTest();
   }
@@ -310,6 +327,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithStringClassWhileServerWaitTest()
       throws Fault {
     return super.methodWithStringClassWhileServerWaitTest();
@@ -323,6 +341,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithResponseClassWhileServerWaitTest()
       throws Fault {
     return super.methodWithResponseClassWhileServerWaitTest();
@@ -336,6 +355,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     return super.methodWithGenericTypeStringWhileServerWaitTest();
@@ -349,6 +369,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     return super.methodWithGenericTypeResponseWhileServerWaitTest();
@@ -362,6 +383,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithCallbackWhileServerWaitTest() throws Fault {
     return super.methodWithCallbackWhileServerWaitTest();
   }
@@ -374,6 +396,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithCallbackStringWhileServerWaitTest()
       throws Fault {
     return super.methodWithCallbackStringWhileServerWaitTest();
@@ -387,6 +410,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithEntityWhileServerWaitTest() throws Fault {
     return super.methodWithEntityWhileServerWaitTest();
   }
@@ -399,6 +423,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithStringClassWithEntityWhileServerWaitTest()
       throws Fault {
     return super.methodWithStringClassWithEntityWhileServerWaitTest();
@@ -412,6 +437,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithResponseClassWithEntityWhileServerWaitTest()
       throws Fault {
     return super.methodWithResponseClassWithEntityWhileServerWaitTest();
@@ -425,6 +451,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithGenericTypeStringWithEntityWhileServerWaitTest()
       throws Fault {
     return super.methodWithGenericTypeStringWithEntityWhileServerWaitTest();
@@ -438,6 +465,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithGenericTypeResponseWithEntityWhileServerWaitTest()
       throws Fault {
     return super.methodWithGenericTypeResponseWithEntityWhileServerWaitTest();
@@ -451,6 +479,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithCallbackWithEntityWhileServerWaitTest()
       throws Fault {
     return super.methodWithCallbackWithEntityWhileServerWaitTest();
@@ -464,6 +493,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithCallbackStringWithEntityWhileServerWaitTest()
       throws Fault {
     return super.methodWithCallbackStringWithEntityWhileServerWaitTest();
@@ -481,6 +511,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsTest() throws Fault {
     return super.optionsTest();
   }
@@ -493,6 +524,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithStringClassWhileServerWaitTest()
       throws Fault {
     return super.optionsWithStringClassWhileServerWaitTest();
@@ -506,6 +538,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithResponseClassWhileServerWaitTest()
       throws Fault {
     return super.optionsWithResponseClassWhileServerWaitTest();
@@ -519,6 +552,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     return super.optionsWithGenericTypeStringWhileServerWaitTest();
@@ -532,6 +566,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     return super.optionsWithGenericTypeResponseWhileServerWaitTest();
@@ -545,6 +580,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithCallbackWhileServerWaitTest()
       throws Fault {
     return super.optionsWithCallbackWhileServerWaitTest();
@@ -558,6 +594,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithStringCallbackWhileServerWaitTest()
       throws Fault {
     return super.optionsWithStringCallbackWhileServerWaitTest();
@@ -575,6 +612,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postTest() throws Fault {
     return super.postTest();
   }
@@ -587,6 +625,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithStringClassWhileServerWaitTest() throws Fault {
     return super.postWithStringClassWhileServerWaitTest();
   }
@@ -599,6 +638,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithResponseClassWhileServerWaitTest()
       throws Fault {
     return super.postWithResponseClassWhileServerWaitTest();
@@ -612,6 +652,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     return super.postWithGenericTypeStringWhileServerWaitTest();
@@ -625,6 +666,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     return super.postWithGenericTypeResponseWhileServerWaitTest();
@@ -638,6 +680,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithCallbackWhileServerWaitTest() throws Fault {
     return super.postWithCallbackWhileServerWaitTest();
   }
@@ -654,6 +697,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP PUT method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putTest() throws Fault {
     return super.putTest();
   }
@@ -666,6 +710,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithStringClassWhileServerWaitTest() throws Fault {
     return super.putWithStringClassWhileServerWaitTest();
   }
@@ -678,6 +723,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithResponseClassWhileServerWaitTest()
       throws Fault {
     return super.putWithResponseClassWhileServerWaitTest();
@@ -691,6 +737,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     return super.putWithGenericTypeStringWhileServerWaitTest();
@@ -704,6 +751,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     return super.putWithGenericTypeResponseWhileServerWaitTest();
@@ -717,6 +765,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithCallbackWhileServerWaitTest() throws Fault {
     return super.putWithCallbackWhileServerWaitTest();
   }
@@ -729,6 +778,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithStringCallbackWhileServerWaitTest()
       throws Fault {
     return super.putWithStringCallbackWhileServerWaitTest();
@@ -746,6 +796,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceTest() throws Fault {
     return super.traceTest();
   }
@@ -758,6 +809,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithStringClassWhileServerWaitTest() throws Fault {
     return super.traceWithStringClassWhileServerWaitTest();
   }
@@ -770,6 +822,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithResponseClassWhileServerWaitTest()
       throws Fault {
     return super.traceWithResponseClassWhileServerWaitTest();
@@ -783,6 +836,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     return super.traceWithGenericTypeStringWhileServerWaitTest();
@@ -796,6 +850,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     return super.traceWithGenericTypeResponseWhileServerWaitTest();
@@ -809,6 +864,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithCallbackWhileServerWaitTest() throws Fault {
     return super.traceWithCallbackWhileServerWaitTest();
   }
@@ -821,6 +877,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithStringCallbackWhileServerWaitTest()
       throws Fault {
     return super.traceWithStringCallbackWhileServerWaitTest();

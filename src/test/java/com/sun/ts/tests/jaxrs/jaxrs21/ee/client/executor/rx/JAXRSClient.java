@@ -99,6 +99,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP DELETE method for the current request.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteTest() throws Fault {
     return super.deleteTest();
   }
@@ -111,6 +112,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * 
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithStringClassTest() throws Fault {
     return super.deleteWithStringClassTest();
   }
@@ -123,6 +125,7 @@ public class JAXRSClient
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * 
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithResponseClassTest() throws Fault {
     return super.deleteWithResponseClassTest();
   }
@@ -134,6 +137,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithGenericTypeStringTest() throws Fault {
     return super.deleteWithGenericTypeStringTest();
   }
@@ -145,6 +149,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithGenericTypeResponseTest() throws Fault {
     return super.deleteWithGenericTypeResponseTest();
   }
@@ -160,6 +165,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getTest() throws Fault {
     return super.getTest();
   }
@@ -171,6 +177,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithStringClassTest() throws Fault {
     return super.getWithStringClassTest();
   }
@@ -182,6 +189,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithResponseClassTest() throws Fault {
     return super.getWithResponseClassTest();
   }
@@ -193,6 +201,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithGenericTypeStringTest() throws Fault {
     return super.getWithGenericTypeStringTest();
   }
@@ -204,6 +213,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithGenericTypeResponseTest() throws Fault {
     return super.getWithGenericTypeResponseTest();
   }
@@ -219,6 +229,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP HEAD method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> headTest() throws Fault {
     return super.headTest();
   }
@@ -234,6 +245,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsTest() throws Fault {
     return super.optionsTest();
   }
@@ -245,6 +257,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithStringClassTest() throws Fault {
     return super.optionsWithStringClassTest();
   }
@@ -256,6 +269,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithResponseClassTest() throws Fault {
     return super.optionsWithResponseClassTest();
   }
@@ -267,6 +281,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithGenericTypeStringTest() throws Fault {
     return super.optionsWithGenericTypeStringTest();
   }
@@ -278,6 +293,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithGenericTypeResponseTest() throws Fault {
     return super.optionsWithGenericTypeResponseTest();
   }
@@ -293,6 +309,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postTest() throws Fault {
     return super.postTest();
   }
@@ -304,6 +321,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithStringClassTest() throws Fault {
     return super.postWithStringClassTest();
   }
@@ -315,6 +333,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithResponseClassTest() throws Fault {
     return super.postWithResponseClassTest();
   }
@@ -326,6 +345,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithGenericTypeStringTest() throws Fault {
     return super.postWithGenericTypeStringTest();
   }
@@ -337,6 +357,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithGenericTypeResponseTest() throws Fault {
     return super.postWithGenericTypeResponseTest();
   }
@@ -352,6 +373,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP PUT method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putTest() throws Fault {
     return super.putTest();
   }
@@ -363,6 +385,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithStringClassTest() throws Fault {
     return super.putWithStringClassTest();
   }
@@ -374,6 +397,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithResponseClassTest() throws Fault {
     return super.putWithResponseClassTest();
   }
@@ -385,6 +409,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithGenericTypeStringTest() throws Fault {
     return super.putWithGenericTypeStringTest();
   }
@@ -396,6 +421,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithGenericTypeResponseTest() throws Fault {
     return super.putWithGenericTypeResponseTest();
   }
@@ -411,6 +437,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceTest() throws Fault {
     return super.traceTest();
   }
@@ -422,6 +449,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithStringClassTest() throws Fault {
     return super.traceWithStringClassTest();
   }
@@ -433,6 +461,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithResponseClassTest() throws Fault {
     return super.traceWithResponseClassTest();
   }
@@ -444,6 +473,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithGenericTypeStringTest() throws Fault {
     return super.traceWithGenericTypeStringTest();
   }
@@ -455,6 +485,7 @@ public class JAXRSClient
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithGenericTypeResponseTest() throws Fault {
     return super.traceWithGenericTypeResponseTest();
   }

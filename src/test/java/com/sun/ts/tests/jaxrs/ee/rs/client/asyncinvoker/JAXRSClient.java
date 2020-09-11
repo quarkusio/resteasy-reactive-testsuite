@@ -99,6 +99,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("delete");
     Future<Response> future = async.delete();
@@ -114,6 +115,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
     Future<Response> future = async.delete();
@@ -147,6 +149,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithStringClassWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -163,6 +166,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithResponseClassWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -234,6 +238,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -251,6 +256,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -329,6 +335,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithCallbackWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
     InvocationCallback<Response> callback = createCallback(true);
@@ -346,6 +353,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithCallbackStringWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -427,6 +435,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("get");
     Future<Response> future = async.get();
@@ -442,6 +451,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
     Future<Response> future = async.get();
@@ -475,6 +485,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithStringClassWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
     Future<String> future = async.get(String.class);
@@ -490,6 +501,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithResponseClassWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -561,6 +573,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -578,6 +591,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -654,6 +668,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithCallbackWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
     InvocationCallback<Response> callback = createCallback(true);
@@ -671,6 +686,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP GET method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithCallbackStringWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -753,6 +769,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP HEAD method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> headTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("head");
     Future<Response> future = async.head();
@@ -768,6 +785,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP HEAD method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> headWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("headandwait");
     Future<Response> future = async.head();
@@ -801,6 +819,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP HEAD method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> headWithCallbackWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("headandwait");
     InvocationCallback<Response> callback = createCallback(true);
@@ -842,6 +861,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodTest() throws Fault {
     Future<Response> future = null;
     for (String method : METHODS) {
@@ -860,6 +880,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWhileServerWaitTest() throws Fault {
     Future<Response> future = null;
     for (String method : METHODS) {
@@ -900,6 +921,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithStringClassWhileServerWaitTest()
       throws Fault {
     Future<String> future = null;
@@ -920,6 +942,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithResponseClassWhileServerWaitTest()
       throws Fault {
     Future<Response> future = null;
@@ -1006,6 +1029,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     GenericType<String> generic = createGeneric(String.class);
@@ -1027,6 +1051,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
@@ -1120,6 +1145,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithCallbackWhileServerWaitTest() throws Fault {
     InvocationCallback<Response> callback = createCallback(true);
     Future<Response> future = null;
@@ -1141,6 +1167,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithCallbackStringWhileServerWaitTest()
       throws Fault {
     InvocationCallback<String> callback = createStringCallback(true);
@@ -1233,6 +1260,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithEntityWhileServerWaitTest() throws Fault {
     Future<Response> future = null;
     for (String method : ENTITY_METHODS) {
@@ -1275,6 +1303,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithStringClassWithEntityWhileServerWaitTest()
       throws Fault {
     Future<String> future = null;
@@ -1296,6 +1325,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithResponseClassWithEntityWhileServerWaitTest()
       throws Fault {
     Future<Response> future = null;
@@ -1389,6 +1419,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithGenericTypeStringWithEntityWhileServerWaitTest()
       throws Fault {
     Future<String> future = null;
@@ -1411,6 +1442,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithGenericTypeResponseWithEntityWhileServerWaitTest()
       throws Fault {
     Future<Response> future = null;
@@ -1508,6 +1540,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithCallbackWithEntityWhileServerWaitTest()
       throws Fault {
     Future<Response> future = null;
@@ -1531,6 +1564,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithCallbackStringWithEntityWhileServerWaitTest()
       throws Fault {
     Future<String> future = null;
@@ -1633,6 +1667,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("options");
     Future<Response> future = async.options();
@@ -1648,6 +1683,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
     Future<Response> future = async.options();
@@ -1681,6 +1717,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithStringClassWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1697,6 +1734,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithResponseClassWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1768,6 +1806,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1785,6 +1824,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1863,6 +1903,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithCallbackWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1881,6 +1922,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP options method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithStringCallbackWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1963,6 +2005,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("post");
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1979,6 +2022,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("postandwait");
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2014,6 +2058,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithStringClassWhileServerWaitTest() throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
     AsyncInvoker async = startAsyncInvokerForMethod("postandwait");
@@ -2030,6 +2075,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithResponseClassWhileServerWaitTest()
       throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2105,6 +2151,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     GenericType<String> generic = createGeneric(String.class);
@@ -2123,6 +2170,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
@@ -2204,6 +2252,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP post method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithCallbackWhileServerWaitTest() throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
     InvocationCallback<Response> callback = createCallback(true);
@@ -2287,6 +2336,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP PUT method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("put");
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2303,6 +2353,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP PUT method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("putandwait");
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2338,6 +2389,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithStringClassWhileServerWaitTest() throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
     AsyncInvoker async = startAsyncInvokerForMethod("putandwait");
@@ -2354,6 +2406,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithResponseClassWhileServerWaitTest()
       throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2429,6 +2482,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     GenericType<String> generic = createGeneric(String.class);
@@ -2447,6 +2501,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
@@ -2527,6 +2582,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithCallbackWhileServerWaitTest() throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
     InvocationCallback<Response> callback = createCallback(true);
@@ -2545,6 +2601,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP put method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithStringCallbackWhileServerWaitTest()
       throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2629,6 +2686,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("trace");
     Future<Response> future = async.trace();
@@ -2644,6 +2702,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
     Future<Response> future = async.trace();
@@ -2677,6 +2736,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithStringClassWhileServerWaitTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
     Future<String> future = async.trace(String.class);
@@ -2692,6 +2752,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithResponseClassWhileServerWaitTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
@@ -2763,6 +2824,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithGenericTypeStringWhileServerWaitTest()
       throws Fault {
     GenericType<String> generic = createGeneric(String.class);
@@ -2780,6 +2842,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithGenericTypeResponseWhileServerWaitTest()
       throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
@@ -2857,6 +2920,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithCallbackWhileServerWaitTest() throws Fault {
     InvocationCallback<Response> callback = createCallback(true);
     AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
@@ -2874,6 +2938,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke HTTP trace method for the current request
    * asynchronously.
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithStringCallbackWhileServerWaitTest()
       throws Fault {
     InvocationCallback<String> callback = createStringCallback(true);

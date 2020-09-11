@@ -54,6 +54,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * application with Application works; Verify servlet-mapping
    * overrides @ApplicationPath;
    */
+  @org.junit.jupiter.api.Test
   public void test1() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -76,6 +77,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * application with Application works; Verify servlet-mapping
    * overrides @ApplicationPath;
    */
+  @org.junit.jupiter.api.Test
   public void test2() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));

@@ -232,6 +232,8 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
           int nextSlash = root.indexOf("/", 1);
           if(nextSlash != -1) {
               root = root.substring(nextSlash);
+          } else {
+              root = "";
           }
       }
     TestUtil.logTrace("[JAXRSCommonClient] Contextroot set at " + root);

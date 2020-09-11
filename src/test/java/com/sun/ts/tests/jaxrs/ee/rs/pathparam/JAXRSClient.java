@@ -85,6 +85,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * /PathParamTest; Verify that right Method is invoked while using PathParam
    * with primitive type String.
    */
+  @org.junit.jupiter.api.Test
   public void test1() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -102,6 +103,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * /PathParamTest; Verify that right Method is invoked while using PathParam
    * primitive type String and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "a/b"));
     setProperty(Property.SEARCH_STRING, "double=ab");
@@ -117,6 +119,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * /PathParamTest; Verify that right Method is invoked while using PathParam
    * primitive type int, float and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test3() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "2147483647/b/12.345"));
@@ -138,6 +141,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * /PathParamTest; Verify that right Method is invoked using PathParam
    * primitive type double, boolean, byte, and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test4() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "123.1/true/127/tmp"));
@@ -159,6 +163,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * /PathParamTest; Verify that right Method is invoked using PathParam
    * primitive type long, String, short, boolean and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test5() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "-9223372036854775808/b/32767/true/abc"));
@@ -182,6 +187,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * /PathParamTest; Verify that right Method is invoked using PathParam
    * primitive type List<String>.
    */
+  @org.junit.jupiter.api.Test
   public void test6() throws Fault {
     String[] headers = { "list=abcdef", "list=fedcba" };
 
@@ -210,6 +216,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * /PathParamTest with Matrix parameter; Verify that right Method is invoked
    * using PathParam PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test7() throws Fault {
     String[] headers = { "matrix=/a;boolean1=false;boolean2=true",
         "matrix=/a;boolean2=true;boolean1=false" };

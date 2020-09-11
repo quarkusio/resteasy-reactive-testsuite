@@ -73,6 +73,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client sends a request on a resource at /InheritanceTest,
    * Verify that inheritance works.
    */
+  @org.junit.jupiter.api.Test
   public void test1() throws Fault {
     setProperty(REQUEST_HEADERS, buildAccept(MediaType.TEXT_PLAIN_TYPE));
     setProperty(REQUEST, buildRequest(Request.GET, "InheritanceTest"));
@@ -88,6 +89,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client sends a request on a resource at /InheritanceTest1,
    * Verify that inheritance works.
    */
+  @org.junit.jupiter.api.Test
   public void test2() throws Fault {
     setProperty(REQUEST_HEADERS, buildAccept(MediaType.TEXT_HTML_TYPE));
     setProperty(REQUEST, buildRequest(Request.GET, "InheritanceTest1"));

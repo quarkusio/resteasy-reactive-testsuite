@@ -83,6 +83,7 @@ public class JAXRSLocatorClient
    * Verify that right Method is invoked while using PathParam with primitive
    * type String.
    */
+  @org.junit.jupiter.api.Test
   public void test1() throws Fault {
     super.test1();
   }
@@ -97,6 +98,7 @@ public class JAXRSLocatorClient
    * Verify that right Method is invoked while using PathParam primitive type
    * String and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test2() throws Fault {
     super.test2();
   }
@@ -111,6 +113,7 @@ public class JAXRSLocatorClient
    * Verify that right Method is invoked while using PathParam primitive type
    * int, float and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test3() throws Fault {
     super.test3();
   }
@@ -125,6 +128,7 @@ public class JAXRSLocatorClient
    * Verify that right Method is invoked using PathParam primitive type double,
    * boolean, byte, and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test4() throws Fault {
     super.test4();
   }
@@ -139,6 +143,7 @@ public class JAXRSLocatorClient
    * Verify that right Method is invoked using PathParam primitive type long,
    * String, short, boolean and PathSegment.
    */
+  @org.junit.jupiter.api.Test
   public void test5() throws Fault {
     super.test5();
   }
@@ -153,6 +158,7 @@ public class JAXRSLocatorClient
    * Verify that right Method is invoked using PathParam primitive type
    * List<String>.
    */
+  @org.junit.jupiter.api.Test
   public void test6() throws Fault {
     super.test6();
   }

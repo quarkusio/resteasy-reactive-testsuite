@@ -60,6 +60,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client sends a request on a resource at /TemplateTest/{id},
    * Verify that correct resource method invoked through use of URI Template
    */
+  @org.junit.jupiter.api.Test
   public void Test1() throws Fault {
     setProperty(REQUEST,
         "GET " + "/jaxrs_spec_templateTest_web/TemplateTest/xyz HTTP/1.1");
@@ -76,6 +77,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
    * Verify that correct resource method invoked through use of URI Template
    */
+  @org.junit.jupiter.api.Test
   public void Test2() throws Fault {
     setProperty(REQUEST,
         "GET " + "/jaxrs_spec_templateTest_web/TemplateTest/xyz/abc HTTP/1.1");
@@ -92,6 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
    * Verify that correct resource method invoked through use of URI Template
    */
+  @org.junit.jupiter.api.Test
   public void Test3() throws Fault {
     setProperty(REQUEST, "GET "
         + "/jaxrs_spec_templateTest_web/TemplateTest/xyz/abc/def HTTP/1.1");
@@ -108,6 +111,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
    * Verify that correct resource method invoked through use of URI Template
    */
+  @org.junit.jupiter.api.Test
   public void Test4() throws Fault {
     setProperty(REQUEST, "GET "
         + "/jaxrs_spec_templateTest_web/TemplateTest/xy/abc/def HTTP/1.1");
@@ -124,6 +128,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
    * Verify that correct resource method invoked through use of URI Template
    */
+  @org.junit.jupiter.api.Test
   public void Test5() throws Fault {
     setProperty(REQUEST, "GET "
         + "/jaxrs_spec_templateTest_web/TemplateTest/abc/test.html HTTP/1.1");
@@ -140,6 +145,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
    * Verify that correct resource method invoked through use of URI Template
    */
+  @org.junit.jupiter.api.Test
   public void Test6() throws Fault {
     setProperty(REQUEST, "GET "
         + "/jaxrs_spec_templateTest_web/TemplateTest/abc/def/test.xml HTTP/1.1");

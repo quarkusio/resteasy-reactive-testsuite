@@ -105,6 +105,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP DELETE method for the current request.
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("delete");
     Future<Response> future = rx.delete().toCompletableFuture();
@@ -137,6 +138,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * 
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithStringClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("delete");
     Future<String> future = rx.delete(String.class).toCompletableFuture();
@@ -152,6 +154,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    * 
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithResponseClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("delete");
     Future<Response> future = rx.delete(Response.class).toCompletableFuture();
@@ -216,6 +219,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> deleteWithGenericTypeStringTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("delete");
     GenericType<String> generic = createGeneric(String.class);
@@ -231,6 +235,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP DELETE method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> deleteWithGenericTypeResponseTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("delete");
     GenericType<Response> generic = createGeneric(Response.class);
@@ -306,6 +311,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
     Future<Response> future = rx.get().toCompletableFuture();
@@ -337,6 +343,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithStringClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
     Future<String> future = rx.get(String.class).toCompletableFuture();
@@ -351,6 +358,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithResponseClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
     Future<Response> future = rx.get(Response.class).toCompletableFuture();
@@ -415,6 +423,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> getWithGenericTypeStringTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
     GenericType<String> generic = createGeneric(String.class);
@@ -430,6 +439,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP GET method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> getWithGenericTypeResponseTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
     GenericType<Response> generic = createGeneric(Response.class);
@@ -503,6 +513,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP HEAD method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> headTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("head");
     Future<Response> future = rx.head().toCompletableFuture();
@@ -538,6 +549,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodTest() throws Fault {
     Future<Response> future = null;
     for (String method : METHODS) {
@@ -577,6 +589,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithStringClassTest() throws Fault {
     Future<String> future = null;
     for (String method : METHODS) {
@@ -595,6 +608,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithResponseClassTest() throws Fault {
     Future<Response> future = null;
     for (String method : METHODS) {
@@ -675,6 +689,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithGenericTypeStringTest() throws Fault {
     GenericType<String> generic = createGeneric(String.class);
     Future<String> future = null;
@@ -694,6 +709,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithGenericTypeResponseTest() throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
     Future<Response> future = null;
@@ -781,6 +797,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithEntityTest() throws Fault {
     Future<Response> future = null;
     for (String method : ENTITY_METHODS) {
@@ -822,6 +839,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithStringClassWithEntityTest() throws Fault {
     Future<String> future = null;
     for (String method : ENTITY_METHODS) {
@@ -841,6 +859,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithResponseClassWithEntityTest() throws Fault {
     Future<Response> future = null;
     for (String method : ENTITY_METHODS) {
@@ -928,6 +947,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> methodWithGenericTypeStringWithEntityTest()
       throws Fault {
     Future<String> future = null;
@@ -949,6 +969,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke an arbitrary method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> methodWithGenericTypeResponseWithEntityTest()
       throws Fault {
     Future<Response> future = null;
@@ -1045,6 +1066,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("options");
     Future<Response> future = rx.options().toCompletableFuture();
@@ -1076,6 +1098,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithStringClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("options");
     Future<String> future = rx.options(String.class).toCompletableFuture();
@@ -1090,6 +1113,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithResponseClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("options");
     Future<Response> future = rx.options(Response.class).toCompletableFuture();
@@ -1154,6 +1178,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> optionsWithGenericTypeStringTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("options");
     GenericType<String> generic = createGeneric(String.class);
@@ -1169,6 +1194,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP options method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> optionsWithGenericTypeResponseTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("options");
     GenericType<Response> generic = createGeneric(Response.class);
@@ -1244,6 +1270,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("post");
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1277,6 +1304,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithStringClassTest() throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("post");
@@ -1292,6 +1320,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithResponseClassTest() throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("post");
@@ -1362,6 +1391,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> postWithGenericTypeStringTest() throws Fault {
     GenericType<String> generic = createGeneric(String.class);
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1378,6 +1408,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP post method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> postWithGenericTypeResponseTest() throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1456,6 +1487,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP PUT method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("put");
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -1489,6 +1521,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithStringClassTest() throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("put");
@@ -1504,6 +1537,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithResponseClassTest() throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("put");
@@ -1574,6 +1608,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> putWithGenericTypeStringTest() throws Fault {
     GenericType<String> generic = createGeneric(String.class);
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -1590,6 +1625,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP put method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> putWithGenericTypeResponseTest() throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -1667,6 +1703,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("trace");
     Future<Response> future = rx.trace().toCompletableFuture();
@@ -1698,6 +1735,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithStringClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("trace");
     Future<String> future = rx.trace(String.class).toCompletableFuture();
@@ -1712,6 +1750,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithResponseClassTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("trace");
     Future<Response> future = rx.trace(Response.class).toCompletableFuture();
@@ -1776,6 +1815,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<String> traceWithGenericTypeStringTest() throws Fault {
     GenericType<String> generic = createGeneric(String.class);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("trace");
@@ -1791,6 +1831,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Invoke HTTP trace method for the current request
    */
+  @org.junit.jupiter.api.Test
   public Future<Response> traceWithGenericTypeResponseTest() throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("trace");

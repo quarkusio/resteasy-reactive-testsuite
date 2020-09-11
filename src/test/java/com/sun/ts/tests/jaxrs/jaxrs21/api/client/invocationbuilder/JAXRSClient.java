@@ -54,6 +54,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclass. Note that corresponding RxInvokerProvider must be registered to
    * client runtime.
    */
+  @org.junit.jupiter.api.Test
   public void testRxClassGetsClassInstance() throws Fault {
     TCKRxInvoker invoker = ClientBuilder.newClient()
         .register(TCKRxInvokerProvider.class).target("somewhere").request()
@@ -80,6 +81,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclass. Note that corresponding RxInvokerProvider must be registered to
    * client runtime.
    */
+  @org.junit.jupiter.api.Test
   public void testRxClassThrowsWhenNotRegistered() throws Fault {
     try {
       ClientBuilder.newClient().target("somewhere").request()
@@ -101,6 +103,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclass. Note that corresponding RxInvokerProvider must be registered to
    * client runtime.
    */
+  @org.junit.jupiter.api.Test
   public void testRxClassExceutorServiceGetsClassInstance() throws Fault {
     TCKRxInvoker invoker = ClientBuilder.newClient()
         .register(TCKRxInvokerProvider.class).target("somewhere").request()
@@ -127,6 +130,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclass. Note that corresponding RxInvokerProvider must be registered to
    * client runtime.
    */
+  @org.junit.jupiter.api.Test
   public void testRxClassExecutorServiceThrowsWhenNotRegistered() throws Fault {
     try {
       ClientBuilder.newClient().target("somewhere").request()
