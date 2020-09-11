@@ -53,6 +53,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception, an implementation MUST use the provider whose generic type is
    * the nearest superclass of the exception.
    */
+  @org.junit.jupiter.api.Test
   public void throwableTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "throwable"));
     setProperty(Property.SEARCH_STRING, ThrowableMapper.class.getName());
@@ -68,6 +69,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception, an implementation MUST use the provider whose generic type is
    * the nearest superclass of the exception.
    */
+  @org.junit.jupiter.api.Test
   public void exceptionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "exception"));
     setProperty(Property.SEARCH_STRING, PlainExceptionMapper.class.getName());
@@ -83,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception, an implementation MUST use the provider whose generic type is
    * the nearest superclass of the exception.
    */
+  @org.junit.jupiter.api.Test
   public void runtimeExceptionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "runtime"));
     setProperty(Property.SEARCH_STRING, RuntimeExceptionMapper.class.getName());
@@ -98,6 +101,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception, an implementation MUST use the provider whose generic type is
    * the nearest superclass of the exception.
    */
+  @org.junit.jupiter.api.Test
   public void webapplicationExceptionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "webapp"));
     setProperty(Property.SEARCH_STRING, WebAppExceptionMapper.class.getName());
@@ -113,6 +117,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception, an implementation MUST use the provider whose generic type is
    * the nearest superclass of the exception.
    */
+  @org.junit.jupiter.api.Test
   public void clientErrorExceptionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "clienterror"));
     setProperty(Property.SEARCH_STRING,
@@ -132,6 +137,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Section 3.3.3. In particular, a mapped Response MUST be processed using the
    * ContainerResponse filter chain defined in Chapter 6.
    */
+  @org.junit.jupiter.api.Test
   public void filterChainTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "chain"));
     setProperty(Property.SEARCH_STRING, ResponseFilter.class.getName());
@@ -152,6 +158,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    */
   // TODO : Use a servlet filter to verify the exception has been passed
   // to underlying container, JIRA 1613
+  @org.junit.jupiter.api.Test
   public void mappedExceptionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "mapped"));
     setProperty(Property.UNEXPECTED_RESPONSE_MATCH,

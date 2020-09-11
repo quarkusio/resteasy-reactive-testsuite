@@ -206,6 +206,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -217,6 +218,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathParamEntityWithValueOfTest() throws Fault {
     super.paramEntityWithValueOfTest();
   }
@@ -228,6 +230,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathParamEntityWithFromStringTest() throws Fault {
     searchEqualsEncoded = true;
     super.paramEntityWithFromStringTest();
@@ -240,6 +243,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathParamSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -251,6 +255,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathParamSortedSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -262,6 +267,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathParamListEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -273,6 +279,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathFieldParamEntityWithConstructorTest() throws Fault {
     super.fieldEntityWithConstructorTest();
   }
@@ -284,6 +291,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathFieldParamEntityWithValueOfTest() throws Fault {
     super.fieldEntityWithValueOfTest();
   }
@@ -295,6 +303,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathFieldParamEntityWithFromStringTest() throws Fault {
     super.fieldEntityWithFromStringTest();
   }
@@ -306,6 +315,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathFieldParamSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -317,6 +327,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -328,6 +339,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void pathFieldParamListEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -339,6 +351,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named PathParam @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void pathParamEntityWithEncodedTest() throws Fault {
     searchEqualsEncoded = true;
     super.paramEntityWithEncodedTest();
@@ -353,6 +366,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void pathParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
   }
@@ -371,6 +385,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * WebApplicationException that wraps the thrown exception with a not found
    * response (404 status) and no entity;
    */
+  @org.junit.jupiter.api.Test
   public void pathParamThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
     super.paramThrowingIllegalArgumentExceptionTest();

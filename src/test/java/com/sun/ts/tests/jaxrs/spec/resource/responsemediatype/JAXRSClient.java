@@ -55,6 +55,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * metadata includes the response media type (Mspecified) then set Mselected =
    * Mspecified, finish.
    */
+  @org.junit.jupiter.api.Test
   public void responseOverrideTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/responseoverride"));
@@ -74,6 +75,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * There is no way to get method body through Accept/Produces
    */
+  @org.junit.jupiter.api.Test
   public void responseNotAllowedToOverrideTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/responseoverride"));
@@ -92,6 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * metadata includes the response media type (Mspecified) then set Mselected =
    * Mspecified, finish.
    */
+  @org.junit.jupiter.api.Test
   public void responseOverrideNoProducesTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "nomedia/responseoverride"));
@@ -111,6 +114,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * (method) where V (t) represents the values of @Produces on the specified
    * target t.
    */
+  @org.junit.jupiter.api.Test
   public void methodProducesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "resource/method"));
     setProperty(Property.EXPECTED_HEADERS,
@@ -126,6 +130,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Else if the class is annotated with @Produces, set P = V
    * (class)..
    */
+  @org.junit.jupiter.api.Test
   public void classProducesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.HEAD, "resource/class"));
     setProperty(Property.EXPECTED_HEADERS,
@@ -141,6 +146,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Else set P = V (writers) where writers is the set of
    * MessageBodyWriter that support the class of the returned entity object.
    */
+  @org.junit.jupiter.api.Test
   public void mesageBodyWriterProducesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "nomedia/list"));
     setProperty(Property.EXPECTED_HEADERS,
@@ -154,6 +160,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: If P = {}, set P = {*\*}. untestable
    */
+  @org.junit.jupiter.api.Test
   public void noProducesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "nomedia/nothing"));
     setProperty(Property.SEARCH_STRING, "nothing");
@@ -167,6 +174,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: If P = {}, set P = {*\*}. untestable
    */
+  @org.junit.jupiter.api.Test
   public void noProducesResponseReturnTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "nomedia/response"));
@@ -187,6 +195,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void noPreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.SEARCH_STRING, MediaType.TEXT_PLAIN);
@@ -204,6 +213,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void textPreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.REQUEST_HEADERS, "Accept: text/*");
@@ -222,6 +232,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void appPreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.REQUEST_HEADERS,
@@ -241,6 +252,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void imagePreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.REQUEST_HEADERS, "Accept: image/*");
@@ -258,6 +270,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void clientImagePreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.REQUEST_HEADERS,
@@ -276,6 +289,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void clientXmlHtmlPreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.REQUEST_HEADERS,
@@ -295,6 +309,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void clientXmlHtmlPreferenceNoWeightOnServerTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "resource"));
     setProperty(Property.REQUEST_HEADERS,
@@ -314,6 +329,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void clientHtmlXmlPreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.REQUEST_HEADERS,
@@ -333,6 +349,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * specificity (n/m > n\* > *\*), a secondary key of q-value and a tertiary
    * key of qs-value.
    */
+  @org.junit.jupiter.api.Test
   public void clientAnyPreferenceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "weight"));
     setProperty(Property.REQUEST_HEADERS, "Accept: */*;q=0.8, text/xml;q=0.3");
@@ -353,6 +370,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * response (HTTP 406 status) and no entity. The exception MUST be processed
    * as described in section 3.3.4. Finish.
    */
+  @org.junit.jupiter.api.Test
   public void defaultErrorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "error"));
     setProperty(Property.REQUEST_HEADERS, "Accept: text/*");
@@ -369,6 +387,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * response (HTTP 406 status) and no entity. The exception MUST be processed
    * as described in section 3.3.4. Finish.
    */
+  @org.junit.jupiter.api.Test
   public void defaultResponseErrorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "error"));
     setProperty(Property.CONTENT, "anything");

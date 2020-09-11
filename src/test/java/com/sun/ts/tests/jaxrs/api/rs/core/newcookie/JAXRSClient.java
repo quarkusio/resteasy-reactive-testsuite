@@ -55,6 +55,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a NewCookie instance using constructor
    * Cookie(String, String) NewCookie(Cookie)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest1() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -82,6 +83,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a NewCookie instance using constructor
    * Cookie(String, String, String, String) NewCookie(Cookie)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest2() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -109,6 +111,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a NewCookie instance using constructor
    * Cookie(String, String, String, String) NewCookie(Cookie)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest3() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -136,6 +139,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a version 1 NewCookie instance using constructor
    * Cookie(String, String, String, String, int) NewCookie(Cookie)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest4() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -163,6 +167,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a version 0 NewCookie instance using constructor
    * Cookie(String, String, String, String, int) NewCookie(Cookie)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest5() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -190,6 +195,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a version 0 NewCookie instance using constructor
    * NewCookie(String, String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest6() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -218,6 +224,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, java.lang.String comment, int maxAge,
    * boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest7() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -247,6 +254,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, java.lang.String comment, int maxAge,
    * boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest8() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -276,6 +284,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, java.lang.String comment, int maxAge,
    * boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest9() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -305,6 +314,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, java.lang.String comment, int maxAge,
    * boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest10() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -334,6 +344,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, java.lang.String comment, int maxAge,
    * boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest11() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -363,6 +374,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, int version, java.lang.String comment, int
    * maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest12() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -392,6 +404,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, int version, java.lang.String comment, int
    * maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest13() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -421,6 +434,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, int version, java.lang.String comment, int
    * maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest14() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -450,6 +464,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, int version, java.lang.String comment, int
    * maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest15() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -479,6 +494,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, int version, java.lang.String comment, int
    * maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest16() throws Fault {
     // ToDo: Create a list of name, value, path, domain
     String name = "name_1";
@@ -509,6 +525,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * path, java.lang.String domain, int version, java.lang.String comment, int
    * maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest17() throws Fault {
     // ToDo: Create a list of name, value, path, domain
     String name = "name_1";
@@ -538,6 +555,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String) NewCookie(Cookie, String comment, int maxAge,
    * boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest18() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -566,6 +584,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String) NewCookie(Cookie, String comment,
    * int maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest19() throws Fault {
 
     String name = "name_1";
@@ -595,6 +614,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String) NewCookie(Cookie, String comment,
    * int maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest20() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -623,6 +643,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String, int) NewCookie(Cookie, String
    * comment, int maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest21() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -651,6 +672,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String, int) NewCookie(Cookie, String
    * comment, int maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest22() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -679,6 +701,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String, int) NewCookie(Cookie, String
    * comment, int maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest23() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -707,6 +730,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String, int) NewCookie(Cookie, String
    * comment, int maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest24() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -735,6 +759,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String, int) NewCookie(Cookie, String
    * comment, int maxAge, boolean secure)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest25() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -761,6 +786,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a version 0 Cookie instance by Parsing a String
    */
+  @org.junit.jupiter.api.Test
   public void parseTest1() throws Fault {
     String NewCookie_toParse = "NAME_1=Value_1;";
     String name = "name_1";
@@ -783,6 +809,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a version 0 NewCookie instance by Parsing a String
    */
+  @org.junit.jupiter.api.Test
   public void parseTest2() throws Fault {
     String newCookie_toParse = "Customer=WILE_E_COYOTE; Path=/acme; Version=1";
 
@@ -805,6 +832,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a NewCookie instance by Parsing a null String.
    * Verify that IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void parseTest3() throws Fault {
     try {
       javax.ws.rs.core.NewCookie.valueOf(null);
@@ -826,6 +854,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value, String path, String domain, int version, String comment, int maxAge,
    * boolean secure) Verify that equals and hashCode methods work.
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -886,6 +915,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * boolean secure) Verify that toCookie method works by using .equals and
    * hashCode method.
    */
+  @org.junit.jupiter.api.Test
   public void toCookieTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -928,6 +958,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value, String path, String domain, int version, String comment, int maxAge,
    * boolean secure) Verify that toString method works.
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();

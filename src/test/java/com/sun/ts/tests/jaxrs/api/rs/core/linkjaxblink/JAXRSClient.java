@@ -51,6 +51,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Default constructor needed during unmarshalling.
    * JaxbLink.getParams; JaxbLink.getUri
    */
+  @org.junit.jupiter.api.Test
   public void defaultConstructorTest() throws Fault {
     Link.JaxbLink jaxbLink = new Link.JaxbLink();
     boolean getUri = jaxbLink.getUri() == null
@@ -74,6 +75,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Construct an instance from a URI and no parameters.
    * JaxbLink.getParams; JaxbLink.getUri
    */
+  @org.junit.jupiter.api.Test
   public void uriConstructorTest() throws Fault {
     String uri = "protocol://domain2.domain1:port";
     URI fromString = uriFromString(uri);
@@ -99,6 +101,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Construct an instance from a URI and some parameters.
    * JaxbLink.getParams; JaxbLink.getUri
    */
+  @org.junit.jupiter.api.Test
   public void uriParamsConstructorTest() throws Fault {
     String uri = "protocol://domain2.domain1:port";
     String q = "qName";

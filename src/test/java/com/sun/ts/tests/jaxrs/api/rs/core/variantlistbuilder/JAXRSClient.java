@@ -58,6 +58,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.VariantListBuilder.newInstance() Verify that no Variant in the
    * returned List
    */
+  @org.junit.jupiter.api.Test
   public void newInstanceTest() throws Fault {
     List<Variant> vt = Variant.VariantListBuilder.newInstance().build();
     if (!vt.isEmpty()) {
@@ -77,6 +78,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.VariantListBuilder.newInstance(); Add two MediaType to it; Verify
    * that two Variant in the returned List
    */
+  @org.junit.jupiter.api.Test
   public void mediaTypesTest1() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -113,6 +115,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.VariantListBuilder.newInstance(); Add three MediaType to it; Verify
    * that two Variant in the returned List
    */
+  @org.junit.jupiter.api.Test
   public void mediaTypesTest2() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -151,6 +154,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.VariantListBuilder.newInstance(); Add one MediaType to it with
    * three languages; Verify that three Variant in the returned List
    */
+  @org.junit.jupiter.api.Test
   public void languageTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -187,6 +191,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.VariantListBuilder.newInstance(); Add one MediaType to it with two
    * encodings; Verify that two variants in the returned List
    */
+  @org.junit.jupiter.api.Test
   public void encodingTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -222,6 +227,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * three language and two encodings; Verify that 12 variants in the returned
    * List
    */
+  @org.junit.jupiter.api.Test
   public void complexTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();

@@ -69,6 +69,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorObjectsTest() throws Fault {
     NotAuthorizedException e = new NotAuthorizedException((Object) CHALLENGE[0],
         CHALLENGE[1], CHALLENGE[2]);
@@ -84,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.NullPointerException - in case the
    * challenge parameter is null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorObjectsThrowsNPEWhenNullTest() throws Fault {
     try {
       NotAuthorizedException e = new NotAuthorizedException((Object) null,
@@ -108,6 +110,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseTest() throws Fault {
     NotAuthorizedException e = new NotAuthorizedException(
         buildResponse(STATUS));
@@ -123,6 +126,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 401.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -151,6 +155,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorThrowableObjectTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -172,6 +177,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 401. getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -192,6 +198,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 401.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -220,6 +227,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringObjectsTest() throws Fault {
     NotAuthorizedException e = new NotAuthorizedException(MESSAGE,
         (Object) CHALLENGE[0], CHALLENGE[1], CHALLENGE[2]);
@@ -236,6 +244,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.NullPointerException - in case the
    * challenge parameter is null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringObjectsThrowsNPEWhenNullTest() throws Fault {
     try {
       NotAuthorizedException e = new NotAuthorizedException(MESSAGE,
@@ -258,6 +267,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     NotAuthorizedException e = new NotAuthorizedException(MESSAGE,
         buildResponse(STATUS));
@@ -274,6 +284,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 401.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -302,6 +313,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableObjectsTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -322,6 +334,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Construct a new "not authorized" exception. getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -343,6 +356,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 401.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {

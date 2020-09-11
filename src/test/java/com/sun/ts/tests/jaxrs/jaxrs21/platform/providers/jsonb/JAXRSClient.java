@@ -57,6 +57,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * used. This is intentional for JAXRS spec not to allow other MBW to send
    * Strings
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBStringReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tostring"));
     setProperty(Property.SEARCH_STRING, Resource.MESSAGE);
@@ -72,6 +73,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: For CHAR and other than String data types, JSONB MBW is
    * used, since unlike String, they have text/plain MBW in 4.2.4.
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBCharReturnTest() throws Fault {
     Jsonb jsonb = JsonbBuilder.create();
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tochar"));
@@ -88,6 +90,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBByteReturnTest() throws Fault {
     Jsonb jsonb = JsonbBuilder.create();
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tobyte"));
@@ -103,6 +106,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBShortReturnTest() throws Fault {
     Jsonb jsonb = JsonbBuilder.create();
     setProperty(Property.REQUEST, buildRequest(Request.GET, "toshort"));
@@ -118,6 +122,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBIntReturnTest() throws Fault {
     Jsonb jsonb = JsonbBuilder.create();
     setProperty(Property.REQUEST, buildRequest(Request.GET, "toint"));
@@ -133,6 +138,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBLongReturnTest() throws Fault {
     Jsonb jsonb = JsonbBuilder.create();
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tolong"));
@@ -148,6 +154,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBNumberReturnTest() throws Fault {
     Jsonb jsonb = JsonbBuilder.create();
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tonumber"));
@@ -164,6 +171,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBBigIntegerReturnTest() throws Fault {
     Jsonb jsonb = JsonbBuilder.create();
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tobiginteger"));
@@ -180,6 +188,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBURIReturnTest()
       throws Fault, JsonbException, URISyntaxException {
     Jsonb jsonb = JsonbBuilder.create();
@@ -196,6 +205,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonBURLReturnTest()
       throws Fault, JsonbException, MalformedURLException {
     Jsonb jsonb = JsonbBuilder.create();

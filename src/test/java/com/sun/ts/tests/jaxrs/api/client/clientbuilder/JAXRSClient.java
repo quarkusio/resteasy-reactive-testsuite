@@ -50,6 +50,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create new client instance using the default client builder
    * factory provided by the JAX-RS implementation provider.
    */
+  @org.junit.jupiter.api.Test
   public void newClientNoParamTest() throws Fault {
     Client client = ClientBuilder.newClient();
     assertFault(client != null, "could not create Client instance");
@@ -63,6 +64,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create new configured client instance using the default
    * client builder factory provided by the JAX-RS implementation provider.
    */
+  @org.junit.jupiter.api.Test
   public void newClientWithConfigurationTest() throws Fault {
     String property = "JAXRSTCK";
     Client client = ClientBuilder.newClient();

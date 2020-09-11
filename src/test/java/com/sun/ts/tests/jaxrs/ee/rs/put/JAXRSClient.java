@@ -48,6 +48,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client invokes PUT on root resource at /PutTest; Verify
    * that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void putTest1() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Accept:text/plain");
     setProperty(Property.CONTENT, "dummy");
@@ -65,6 +66,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client invokes PUT on root resource at /PutTest; Verify
    * that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void putTest2() throws Fault {
     setProperty(Property.CONTENT, "dummy");
     setProperty(Property.REQUEST_HEADERS, "Accept:text/html");
@@ -82,6 +84,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client invokes PUT on a sub resource at /PutTest/sub;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void putSubTest() throws Fault {
     setProperty(Property.CONTENT, "dummy");
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "PutTest/sub"));

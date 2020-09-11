@@ -71,6 +71,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverByteArrayProviderTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Resource.NOTNULL);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "bytearray"));
@@ -87,6 +88,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientByteArrayProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -108,6 +110,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverStringProviderTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Resource.NOTNULL);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "string"));
@@ -124,6 +127,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientStringProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -144,6 +148,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverInputStreamProviderTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Resource.NOTNULL);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "inputstream"));
@@ -160,6 +165,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientInputStreamProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -187,6 +193,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverReaderProviderTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Resource.NOTNULL);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "reader"));
@@ -203,6 +210,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientReaderProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -230,6 +238,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverFileProviderTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Resource.NOTNULL);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "file"));
@@ -246,6 +255,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientFileProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -273,6 +283,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverDataSourceProviderTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Resource.NOTNULL);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "datasource"));
@@ -289,6 +300,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientDataSourceProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -316,6 +328,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverSourceProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_XML_TYPE));
@@ -333,6 +346,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientSourceProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -360,6 +374,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @org.junit.jupiter.api.Test
   public void serverMultivaluedMapProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_FORM_URLENCODED_TYPE));
@@ -378,6 +393,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientMultivaluedMapProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -402,6 +418,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * WebApplicationException with a client error response (HTTP 400) for
    * zero-length request entities.
    */
+  @org.junit.jupiter.api.Test
   public void serverJaxbProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_XML_TYPE));
@@ -420,6 +437,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @org.junit.jupiter.api.Test
   public void clientJaxbProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "null"));
     setProperty(Property.REQUEST_HEADERS,
@@ -445,6 +463,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * WebApplicationException with a client error response (HTTP 400) for
    * zero-length request entities.
    */
+  @org.junit.jupiter.api.Test
   public void serverStreamingOutputProviderTest() throws Fault {
     String content = "StreamingOutput";
     setProperty(Property.REQUEST,
@@ -465,6 +484,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @org.junit.jupiter.api.Test
   public void serverBooleanProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -485,6 +505,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * readEntity throws Processing Exception
    */
+  @org.junit.jupiter.api.Test
   public void clientBooleanProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -514,6 +535,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @org.junit.jupiter.api.Test
   public void serverCharProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -534,6 +556,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * readEntity throws Processing Exception
    */
+  @org.junit.jupiter.api.Test
   public void clientCharProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -563,6 +586,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @org.junit.jupiter.api.Test
   public void serverIntegerProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -583,6 +607,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * readEntity throws Processing Exception
    */
+  @org.junit.jupiter.api.Test
   public void clientIntegerProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();
@@ -612,6 +637,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @org.junit.jupiter.api.Test
   public void serverBigDecimalProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -632,6 +658,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * readEntity throws Processing Exception
    */
+  @org.junit.jupiter.api.Test
   public void clientBigDecimalProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));
     invoke();

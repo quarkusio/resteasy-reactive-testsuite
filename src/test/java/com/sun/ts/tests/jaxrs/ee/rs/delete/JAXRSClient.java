@@ -52,6 +52,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void deleteTest1() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/plain");
     setProperty(REQUEST, "DELETE " + getContextRoot() + "/DeleteTest HTTP/1.1");
@@ -67,6 +68,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void deleteTest2() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/html");
     setProperty(REQUEST,
@@ -84,6 +86,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void deleteSubTest() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/html");
     setProperty(REQUEST,
@@ -101,6 +104,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
    * Verify that no Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void deleteSubTest1() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/plain");
     setProperty(REQUEST,

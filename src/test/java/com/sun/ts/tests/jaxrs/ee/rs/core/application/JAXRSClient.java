@@ -59,6 +59,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check that vi does not modify the getSingletons()
    */
+  @org.junit.jupiter.api.Test
   public void getSingletonsTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "GetSingletons"));
     setProperty(STATUS_CODE, getStatusCode(Status.OK));
@@ -75,6 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check the implementation injects TSAppConfig
    */
+  @org.junit.jupiter.api.Test
   public void getClassesTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "GetClasses"));
     setProperty(STATUS_CODE, getStatusCode(Status.OK));
@@ -93,6 +95,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * configuration passed to the server-side features or injected into
    * server-side JAX-RS components.
    */
+  @org.junit.jupiter.api.Test
   public void getPropertiesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "properties"));
     setProperty(Property.STATUS_CODE, getStatusCode(Status.OK));
@@ -107,6 +110,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: The default implementation returns an empty set.
    */
+  @org.junit.jupiter.api.Test
   public void defaultGetPropertiesIsEmptyTest() throws Fault {
     Application application = new Application();
     Map<String, Object> properties = application.getProperties();

@@ -61,6 +61,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest() throws Fault {
     NotSupportedException e = new NotSupportedException();
     assertResponse(e);
@@ -77,6 +78,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseTest() throws Fault {
     NotSupportedException e = new NotSupportedException(buildResponse(STATUS));
     assertResponse(e, HOST);
@@ -91,6 +93,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 415.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -116,6 +119,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -135,6 +139,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 415. getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -155,6 +160,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 415.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -180,6 +186,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringTest() throws Fault {
     NotSupportedException e = new NotSupportedException(MESSAGE);
     assertResponse(e);
@@ -197,6 +204,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     NotSupportedException e = new NotSupportedException(MESSAGE,
         buildResponse(STATUS));
@@ -213,6 +221,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 415.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -238,6 +247,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -257,6 +267,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Construct a new unsupported media type exception.
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -278,6 +289,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 415.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {

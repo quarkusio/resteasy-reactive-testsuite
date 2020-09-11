@@ -47,6 +47,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create an EntityTag instance using entityTag(String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest1() throws Fault {
     String value = "cts test entity tag test";
     boolean strong = true;
@@ -63,6 +64,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an EntityTag instance using entityTag(String,
    * boolean)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest2() throws Fault {
     String value = "cts test entity tag test weak";
     boolean strong = false;
@@ -88,6 +90,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * entityTag(String, boolean) and entityTag(String). Verify
    * EntityTag.equals(Object) and hashCode() work
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -137,6 +140,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * entityTag(String, boolean) and entityTag(String). Verify
    * EntityTag.toString() works
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -178,6 +182,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an EntityTag instances using EntityTag.valueOf(null)
    * Verify IllegalArgumentException thrown
    */
+  @org.junit.jupiter.api.Test
   public void valueOfTest() throws Fault {
     try {
       EntityTag.valueOf(null);
@@ -195,6 +200,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: EntityTag.valueOf(value) does not throw Exception
    */
+  @org.junit.jupiter.api.Test
   public void valueOfTest1() throws Fault {
     String value = "\"cts test Strong EntityTag test\"";
     try {

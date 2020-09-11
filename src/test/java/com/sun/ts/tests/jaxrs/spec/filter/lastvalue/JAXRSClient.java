@@ -62,6 +62,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
+  @org.junit.jupiter.api.Test
   public void readerContextOnContainerTest() throws Fault {
     addInterceptors(FirstReaderInterceptor.class);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "postlist"));
@@ -85,6 +86,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
+  @org.junit.jupiter.api.Test
   public void readerContextOnClientTest() throws Fault {
     addProvider(FirstReaderInterceptor.class);
     addProvider(SecondReaderInterceptor.class);
@@ -121,6 +123,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
+  @org.junit.jupiter.api.Test
   public void writerContextOnContainerTest() throws Fault {
     addInterceptors(FirstWriterInterceptor.class);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getlist"));
@@ -143,6 +146,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
+  @org.junit.jupiter.api.Test
   public void writerContextOnClientTest() throws Fault {
     addProvider(FirstReaderInterceptor.class);
     addProvider(SecondReaderInterceptor.class);

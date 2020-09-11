@@ -58,6 +58,7 @@ public class JAXRSBasicClient
    * 
    * @test_Strategy: Send no authorization, make sure of 401 response
    */
+  @org.junit.jupiter.api.Test
   public void noAuthorizationTest() throws Fault {
     super.noAuthorizationTest();
   }
@@ -70,6 +71,7 @@ public class JAXRSBasicClient
    * 
    * @test_Strategy: Send basic authorization, check security context
    */
+  @org.junit.jupiter.api.Test
   public void basicAuthorizationAdminTest() throws Fault {
     setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
     setProperty(Property.BASIC_AUTH_USER, user);
@@ -89,6 +91,7 @@ public class JAXRSBasicClient
    * 
    * @test_Strategy: Send basic authorization, check security context
    */
+  @org.junit.jupiter.api.Test
   public void basicAuthorizationIncorrectUserTest() throws Fault {
     setProperty(Property.STATUS_CODE,
         getStatusCode(Response.Status.UNAUTHORIZED));
@@ -104,6 +107,7 @@ public class JAXRSBasicClient
    * 
    * @test_Strategy: Send basic authorization, check security context
    */
+  @org.junit.jupiter.api.Test
   public void basicAuthorizationIncorrectPasswordTest() throws Fault {
     setProperty(Property.STATUS_CODE,
         getStatusCode(Response.Status.UNAUTHORIZED));
@@ -121,6 +125,7 @@ public class JAXRSBasicClient
    * @test_Strategy: Send basic authorization with made up Realm, check security
    * context
    */
+  @org.junit.jupiter.api.Test
   public void basicAuthorizationStandardUserTest() throws Fault {
     setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
     setProperty(Property.BASIC_AUTH_USER, authuser);

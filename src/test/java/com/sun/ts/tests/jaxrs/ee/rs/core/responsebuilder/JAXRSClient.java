@@ -59,6 +59,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Set the message entity content encoding.
    */
+  @org.junit.jupiter.api.Test
   public void entityObjectTest() throws Fault {
     Date date = Calendar.getInstance().getTime();
     String entity = DateContainerReaderWriter.dateToString(date);

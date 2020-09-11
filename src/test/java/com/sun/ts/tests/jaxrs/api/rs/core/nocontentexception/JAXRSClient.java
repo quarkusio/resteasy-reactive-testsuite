@@ -53,6 +53,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * detail message (which is saved for later retrieval by the
    * Throwable.getMessage() method).
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringTest() throws Fault {
     NoContentException e = new NoContentException(MESSAGE);
     assertMessage(MESSAGE, e);
@@ -67,6 +68,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * detail message (which is saved for later retrieval by the
    * Throwable.getMessage() method).
    */
+  @org.junit.jupiter.api.Test
   public void constructorNullStringTest() throws Fault {
     NoContentException e = new NoContentException((String) null);
     assertNullMessage(e);
@@ -79,6 +81,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Construct a new NoContentException instance.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -100,6 +103,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Construct a new NoContentException instance.
    */
+  @org.junit.jupiter.api.Test
   public void constructorThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };

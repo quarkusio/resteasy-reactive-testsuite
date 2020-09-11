@@ -67,6 +67,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the immutable bag of configuration properties. Set the
    * new configuration property
    */
+  @org.junit.jupiter.api.Test
   public void getPropertiesTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -100,6 +101,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the immutable bag of configuration properties. Set the
    * new configuration property
    */
+  @org.junit.jupiter.api.Test
   public void getPropertiesIsImmutableTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -144,6 +146,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the value for the property with a given name. Set the
    * new configuration property
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -177,6 +180,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: null if the property with such name is not configured.
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyIsNullTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
       void assertPropertyIsNull(Configurable<?> config) throws Fault {
@@ -207,6 +211,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Register a provider class to be instantiated
    */
+  @org.junit.jupiter.api.Test
   public void getClassesTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -246,6 +251,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * Register a provider class to be instantiated
    */
+  @org.junit.jupiter.api.Test
   public void getClassesIsImmutableTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -295,6 +301,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * Register a provider ("singleton") instance
    */
+  @org.junit.jupiter.api.Test
   public void getClassesIsNeverNullTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
 
@@ -322,6 +329,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Register a provider ("singleton") instance
    */
+  @org.junit.jupiter.api.Test
   public void getInstancesTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -358,6 +366,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Register a provider ("singleton") instance
    */
+  @org.junit.jupiter.api.Test
   public void getInstancesIsImmutableTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
       @Override
@@ -394,6 +403,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the extension contract registration information for a
    * component of a given class.
    */
+  @org.junit.jupiter.api.Test
   public void getContractsTest() throws Fault {
     final int priority = 124;
     Assertable assertable = new SingleCheckAssertable() {
@@ -436,6 +446,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the extension contract registration information for a
    * component of a given class. Method does not return null.
    */
+  @org.junit.jupiter.api.Test
   public void getContractsIsNeverNullTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
 
@@ -464,6 +475,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * Register a provider ("singleton") instance
    */
+  @org.junit.jupiter.api.Test
   public void getInstancesIsNeverNullTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
 
@@ -489,6 +501,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns an immutable collection containing the property
    * names available within the context of the current configuration instance.
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyNamesTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -523,6 +536,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * names available within the context of the current configuration instance.
    * Set the new configuration property
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyNamesIsImmutableTest() throws Fault {
     Assertable assertable = new Assertable() {
 
@@ -566,6 +580,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the runtime type of this configuration context.
    */
+  @org.junit.jupiter.api.Test
   public void getRuntimeTypeTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
 
@@ -599,6 +614,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * instance is already present among the components previously registered in
    * the configuration context.
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredProviderRegisteredInstanceTest() throws Fault {
     Assertable assertable = new Assertable() {
       CallableProvider1 p1 = new CallableProvider1();
@@ -655,6 +671,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers or features) has been previously registered in the runtime
    * configuration context.
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredProviderRegisteredClassTest() throws Fault {
     Assertable assertable = new Assertable() {
 

@@ -63,6 +63,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Get the injectable security context information for the
    * current request, the user is authenticated.
    */
+  @org.junit.jupiter.api.Test
   public void getSecurityContextTest() throws Fault {
     setProperty(Property.BASIC_AUTH_USER, user);
     setProperty(Property.BASIC_AUTH_PASSWD, password);
@@ -79,6 +80,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure the authorization is needed
    */
+  @org.junit.jupiter.api.Test
   public void noSecurityTest() throws Fault {
     String request = buildRequest(Request.POST, "");
     setProperty(Property.REQUEST, request);

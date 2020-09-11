@@ -79,6 +79,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * (application/x-www-form-urlencoded).
    */
   @SuppressWarnings("unchecked")
+  @org.junit.jupiter.api.Test
   public void mapElementProviderTest() throws Fault {
     String element = "map";
     MultivaluedMap<String, String> map = new MultivaluedHashMap<String, String>();
@@ -106,6 +107,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * primitive types supported via boxing/unboxing conversion.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderBoolTest() throws Fault {
     setProperty(Property.CONTENT, "false");
     setProperty(Property.SEARCH_STRING, "false");
@@ -121,6 +123,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * primitive types supported via boxing/unboxing conversion.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderBooleanTest() throws Fault {
     Boolean bool = Boolean.valueOf(true);
     setRequestContentEntity(bool);
@@ -136,6 +139,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Character. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderCharTest() throws Fault {
     setProperty(Property.CONTENT, "x");
     setProperty(Property.SEARCH_STRING, "x");
@@ -150,6 +154,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Character. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderCharacterTest() throws Fault {
     Character c = Character.valueOf('x');
     setRequestContentEntity(c);
@@ -165,6 +170,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Number. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderIntTest() throws Fault {
     setProperty(Property.CONTENT, String.valueOf(Integer.MAX_VALUE));
     setProperty(Property.SEARCH_STRING, String.valueOf(Integer.MAX_VALUE));
@@ -179,6 +185,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Number. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderLongTest() throws Fault {
     setProperty(Property.CONTENT, String.valueOf(Long.MAX_VALUE));
     setProperty(Property.SEARCH_STRING, String.valueOf(Long.MAX_VALUE));
@@ -193,6 +200,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Number. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderIntegerTest() throws Fault {
     Integer i = new Integer(Integer.MAX_VALUE);
     setRequestContentEntity(i);
@@ -208,6 +216,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Number. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderBigLongTest() throws Fault {
     Long l = new Long(Long.MAX_VALUE);
     setRequestContentEntity(l);
@@ -223,6 +232,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Number. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderDoubleTest() throws Fault {
     Double pi = Math.PI;
     setRequestContentEntity(pi);
@@ -238,6 +248,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: java.lang.Number. Only for text/plain. Corresponding
    * primitive types supported via boxing/unboxing conversion.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderBigDecimalTest() throws Fault {
     BigDecimal bd = new BigDecimal(Integer.MAX_VALUE);
     setRequestContentEntity(bd);

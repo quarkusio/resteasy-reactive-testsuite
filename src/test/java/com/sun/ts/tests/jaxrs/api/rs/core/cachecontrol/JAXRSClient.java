@@ -62,6 +62,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void emptyConstructorTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -81,6 +82,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void maxAgeTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -111,6 +113,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void sMaxAgeTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -141,6 +144,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void revalidateTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -174,6 +178,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void noCacheTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -205,6 +210,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void noStoreTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -236,6 +242,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void noTransformTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -267,6 +274,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void privateTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -298,6 +306,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate a CacheControl instance using
    * Constructor CacheControl(). Verify all values are set correctly.
    */
+  @org.junit.jupiter.api.Test
   public void proxyRevalidateTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -330,6 +339,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Constructor CacheControl(). Setting all their properties one by one, verify
    * hashCode and equals methods work correctly and accordingly.
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -535,6 +545,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Constructor CacheControl(). Setting all their properties verify toString
    * method work correctly and accordingly.
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -604,6 +615,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client instantiate one CacheControl instance using
    * Constructor CacheControl(). verify getCacheExtension method work correctly.
    */
+  @org.junit.jupiter.api.Test
   public void getExtensionTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -665,6 +677,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Constructor CacheControl.valueOf(String). verify valueOf method work
    * correctly.
    */
+  @org.junit.jupiter.api.Test
   public void valueOfTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -730,6 +743,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Constructor CacheControl.valueOf(null). verify IllegalArgumentException is
    * thrown.
    */
+  @org.junit.jupiter.api.Test
   public void valueOfTest1() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();

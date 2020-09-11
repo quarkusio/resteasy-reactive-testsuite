@@ -49,6 +49,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a Cookie instance using Constructor Cookie(String,
    * String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest1() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -69,6 +70,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a Cookie instance using Constructor Cookie(String,
    * String, String, String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest2() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -90,6 +92,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a Cookie instance using Constructor Cookie(String,
    * String, String, String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest3() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -110,6 +113,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a version 1 Cookie instance using Constructor
    * Cookie(String, String, String, String, int)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest4() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -130,6 +134,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a version 0 Cookie instance using Constructor
    * Cookie(String, String, String, String, int)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest5() throws Fault {
     String name = "name_1";
     String value = "value_1";
@@ -149,6 +154,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a version 0 Cookie instance by Parsing a String
    */
+  @org.junit.jupiter.api.Test
   public void parseTest1() throws Fault {
     String cookie_toParse = "NAME_1=Value_1;";
     String name = "name_1";
@@ -169,6 +175,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a version 0 Cookie instance by Parsing a String
    */
+  @org.junit.jupiter.api.Test
   public void parseTest2() throws Fault {
     String cookie_toParse = "$Version=\"1\"; Customer=\"WILE_E_COYOTE\"; $Path=\"/acme\"";
 
@@ -191,6 +198,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Testing Correcting exception thrown when calling
    * Cookie.valueOf(null)
    */
+  @org.junit.jupiter.api.Test
   public void parseTest3() throws Fault {
     try {
       javax.ws.rs.core.Cookie.valueOf(null);
@@ -210,6 +218,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String, int). Change the parameters one by
    * one, make sure hashCode() and equals method work.
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -305,6 +314,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Cookie(String, String, String, String, int). Change the parameters one by
    * one, make sure hashCode() and equals method work.
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();

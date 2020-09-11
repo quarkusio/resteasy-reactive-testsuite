@@ -59,6 +59,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Finish building this link and return the instance
    */
+  @org.junit.jupiter.api.Test
   public void buildNoArgTest() throws Fault {
     Link link = builderFromResource("get").build();
     assertFault(link != null, "#build should return an instance");
@@ -74,6 +75,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws UriBuilderException if a URI cannot be constructed
    * based on the current state of the underlying URI builder.
    */
+  @org.junit.jupiter.api.Test
   public void buildNoArgsThrowsUriBuilderExceptionTest() throws Fault {
     Link.Builder builder = Link.fromUri("http://:@");
     try {
@@ -92,6 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Finish building this link using the supplied values as URI
    * parameters.
    */
+  @org.junit.jupiter.api.Test
   public void buildObjectsTest() throws Fault {
     StringBuilder path1 = new StringBuilder().append("p1");
     ByteArrayInputStream path2 = new ByteArrayInputStream(
@@ -124,6 +127,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.IllegalArgumentException - if there are
    * any URI template parameters without a supplied value
    */
+  @org.junit.jupiter.api.Test
   public void buildThrowsIAEWhenSuppliedJustOneValueOutOfThreeTest()
       throws Fault {
     Builder linkBuilder = Link.fromUri(url() + "{x1}/{x2}/{x3}"); // rfc6570
@@ -146,6 +150,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws UriBuilderException if a URI cannot be constructed
    * based on the current state of the underlying URI builder.
    */
+  @org.junit.jupiter.api.Test
   public void buildObjectsThrowsUriBuilderExceptionTest() throws Fault {
     Link.Builder builder = Link.fromUri("http://:@");
     try {
@@ -165,6 +170,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void paramTest() throws Fault {
     String[] params = { "param1", "param2" };
     String[] values = { "param1value1", "param1value2" };
@@ -187,6 +193,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void paramThrowsExceptionWhenNullNameTest() throws Fault {
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
         .uri(url());
@@ -208,6 +215,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder *
    */
+  @org.junit.jupiter.api.Test
   public void paramThrowsExceptionWhenNullValueTest() throws Fault {
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
         .uri(url());
@@ -229,6 +237,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void relTest() throws Fault {
     String[] names = { "name1", "name2" };
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
@@ -253,6 +262,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void relMoreNamesTest() throws Fault {
     String[] names = { "name1", "name2" };
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
@@ -276,6 +286,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void titleTest() throws Fault {
     String[] titles = { "tiTle1", "titlE2", "titLe3" };
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
@@ -299,6 +310,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void typeTest() throws Fault {
     String[] types = { "type1", "type2", "type3" };
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
@@ -320,6 +332,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void uriUriTest() throws Fault {
     URI uri = uri("get");
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
@@ -340,6 +353,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void uriStringTest() throws Fault {
     Link.Builder builder = RuntimeDelegate.getInstance().createLinkBuilder()
         .uri(url());
@@ -359,6 +373,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void uriStringThrowsIAETest() throws Fault {
     try {
       RuntimeDelegate.getInstance().createLinkBuilder().uri((String) null)
@@ -379,6 +394,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void uriBuilderTest() throws Fault {
     String segment = "goto/label/ten/";
     Link link = Link.fromUri(uri(segment)).build();
@@ -402,6 +418,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void baseUriURITest() throws Fault {
     URI uri = null;
     try {
@@ -426,6 +443,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void baseUriIsNotJustBaseURITest() throws Fault {
     URI uri = uri("something");
     Builder linkBuilder = RuntimeDelegate.getInstance().createLinkBuilder();
@@ -448,6 +466,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void baseUriIsIgnoredURITest() throws Fault {
     String ignored = "http://ignored.com";
     URI ignoredUri = null;
@@ -478,6 +497,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void baseUriStringTest() throws Fault {
     URI uri = null;
     try {
@@ -502,6 +522,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void baseUriStringThrowsIAETest() throws Fault {
     Builder linkBuilder = RuntimeDelegate.getInstance().createLinkBuilder();
     try {
@@ -523,6 +544,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void baseUriIsNotJustBaseStringTest() throws Fault {
     URI uri = uri("something");
     Builder linkBuilder = RuntimeDelegate.getInstance().createLinkBuilder();
@@ -543,6 +565,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: If the underlying URI is already absolute, the base URI is
    * ignored. javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void baseUriIsIgnoredStringTest() throws Fault {
     String ignored = "http://ignored.com";
     URI uri = uri("something");
@@ -566,6 +589,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * parameters and relativize the result with respect to the supplied URI.
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void buildRelativizedTest() throws Fault {
     String relative = "a/b/c";
     URI underlay = uri(relative), respect = uri("");
@@ -588,6 +612,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * prefix with the supplied URI, this method is equivalent to calling
    * build(java.lang.Object[])
    */
+  @org.junit.jupiter.api.Test
   public void buildRelativizedDoesNotSharePrefixTest() throws Fault {
     String relative = "a/b/c";
     String prefix = "ssh";
@@ -617,6 +642,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.IllegalArgumentException - if there are
    * any URI template parameters without a supplied value
    */
+  @org.junit.jupiter.api.Test
   public void buildRelativizedThrowsIAEWhenNotSuppliedValuesTest()
       throws Fault {
     Builder linkBuilder = Link.fromUri(url() + "{x1}/{x2}/{x3}"); // rfc6570
@@ -645,6 +671,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.IllegalArgumentException - if there are
    * any URI template parameters without a supplied value
    */
+  @org.junit.jupiter.api.Test
   public void buildRelativizedThrowsIAEWhenSuppliedJustOneValueOutOfThreeTest()
       throws Fault {
     Builder linkBuilder = Link.fromUri(url() + "{x1}/{x2}/{x3}"); // rfc6570
@@ -673,6 +700,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.IllegalArgumentException - if a value is
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void buildRelativizedThrowsIAEWhenSuppliedValueIsNullTest()
       throws Fault {
     Builder linkBuilder = Link.fromUri(url() + "{x1}/{x2}/{x3}"); // rfc6570
@@ -703,6 +731,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * constructed based on the current state of the underlying URI builder.
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void buildRelativizedThrowsUriBuilderExceptionTest() throws Fault {
     Builder linkBuilder = RuntimeDelegate.getInstance().createLinkBuilder();
     URI respect = null;
@@ -728,6 +757,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * and copies all parameters.
    * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
    */
+  @org.junit.jupiter.api.Test
   public void linkLinkTest() throws Fault {
     String title = "Ttttlll";
     String rel = "RlrL";
@@ -761,6 +791,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Initialize builder using another link represented as a
    * string. Uses simple parser to convert string representation into a link.
    */
+  @org.junit.jupiter.api.Test
   public void linkStringTest() throws Fault {
     String title = "Ttttlll";
     String rel = "RlrL";
@@ -796,6 +827,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.IllegalArgumentException - if string
    * representation of URI is invalid.
    */
+  @org.junit.jupiter.api.Test
   public void linkStringThrowsIAETest() throws Fault {
     Builder lb = RuntimeDelegate.getInstance().createLinkBuilder();
     try {

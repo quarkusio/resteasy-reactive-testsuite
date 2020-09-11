@@ -49,6 +49,7 @@ public class JAXRSClient extends JAXRSDelegateClient {
    * @test_Strategy: Set new RuntimeDelegate and check it is TckRuntimeDelegate
    * 
    */
+  @org.junit.jupiter.api.Test
   public void askForTckRuntimeDelegateGivenBySetInstanceTest() throws Fault {
     RuntimeDelegate original = RuntimeDelegate.getInstance();
     RuntimeDelegate.setInstance(new TckRuntimeDelegate());
@@ -67,6 +68,7 @@ public class JAXRSClient extends JAXRSDelegateClient {
    * 
    * @test_Strategy: Check by default, it is not our RuntimeDelegate
    */
+  @org.junit.jupiter.api.Test
   public void checkTckRuntimeDelegateIsNotDefaultTest() throws Fault {
     assertRuntimeDelegate(false);
   }

@@ -108,6 +108,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void deleteThrowsExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("delete");
@@ -157,6 +158,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("delete");
@@ -175,6 +177,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithClassThrowsWebApplicationExceptionTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
     Future<String> future = async.delete(String.class);
@@ -192,6 +195,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -243,6 +247,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithGenericTypeThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -263,6 +268,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -283,6 +289,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -336,6 +343,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithCallbackStringThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -356,6 +364,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithCallbackStringThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -375,6 +384,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void deleteWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -426,6 +436,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void getThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("get");
@@ -474,6 +485,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void getWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("get");
@@ -492,6 +504,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void getWithClassThrowsWebApplicationExceptionTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
     Future<String> future = async.get(String.class);
@@ -509,6 +522,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void getWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -560,6 +574,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void getWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("get");
@@ -579,6 +594,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void getWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -598,6 +614,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void getWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -651,6 +668,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void getWithCallbackStringThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -671,6 +689,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void getWithCallbackStringThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -690,6 +709,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void getWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -742,6 +762,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void headThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("head");
@@ -776,6 +797,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void headWithCallbackStringThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -836,6 +858,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Future<Response> future = null;
@@ -896,6 +919,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Future<String> future = null;
@@ -917,6 +941,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithClassThrowsWebApplicationExceptionTest() throws Fault {
     Future<String> future = null;
     for (String method : METHODS) {
@@ -938,6 +963,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -1001,6 +1027,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithGenericTypeThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -1024,6 +1051,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -1048,6 +1076,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -1113,6 +1142,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithCallbackThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Future<String> future = null;
@@ -1135,6 +1165,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithCallbackThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -1158,6 +1189,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -1200,6 +1232,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithEntityThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Future<Response> future = null;
@@ -1263,6 +1296,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithClassWithEntityThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -1286,6 +1320,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithClassWithEntityThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -1310,6 +1345,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithClassWithEntityThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -1376,6 +1412,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithGenericTypeWithEntityThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -1400,6 +1437,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithGenericTypeWithEntityThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -1425,6 +1463,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithGenericTypeWithEntityThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -1494,6 +1533,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithCallbackWithEntityThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -1518,6 +1558,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithCallbackWithEntityThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -1543,6 +1584,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void methodWithCallbackWithEntityThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -1600,6 +1642,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void optionsThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("options");
@@ -1649,6 +1692,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("options");
@@ -1667,6 +1711,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithClassThrowsWebApplicationExceptionTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
     Future<String> future = async.options(String.class);
@@ -1684,6 +1729,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1735,6 +1781,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithGenericTypeThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -1755,6 +1802,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1775,6 +1823,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1829,6 +1878,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithCallbackThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("options");
@@ -1848,6 +1898,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithCallbackThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1868,6 +1919,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void optionsWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1922,6 +1974,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void postThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("post");
@@ -1973,6 +2026,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void postWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1992,6 +2046,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void postWithClassThrowsWebApplicationExceptionTest() throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
     AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2010,6 +2065,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void postWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2064,6 +2120,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void postWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2084,6 +2141,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void postWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2105,6 +2163,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void postWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2142,6 +2201,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void postWithCallbackThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2162,6 +2222,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void postWithCallbackThrowsWebApplicationExceptionTest() throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
     InvocationCallback<String> callback = createStringCallback(false);
@@ -2181,6 +2242,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void postWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2236,6 +2298,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void putThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("put");
@@ -2287,6 +2350,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void putWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2306,6 +2370,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void putWithClassThrowsWebApplicationExceptionTest() throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
     AsyncInvoker async = startAsyncInvokerForMethod("putnotok");
@@ -2324,6 +2389,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void putWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2378,6 +2444,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void putWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     GenericType<String> generic = createGeneric(String.class);
@@ -2398,6 +2465,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void putWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     GenericType<String> generic = createGeneric(String.class);
@@ -2418,6 +2486,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void putWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2474,6 +2543,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void putWithCallbackThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     InvocationCallback<String> callback = createStringCallback(false);
@@ -2494,6 +2564,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void putWithCallbackThrowsWebApplicationExceptionTest() throws Fault {
     InvocationCallback<String> callback = createStringCallback(false);
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2513,6 +2584,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void putWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2566,6 +2638,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void traceThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("trace");
@@ -2614,6 +2687,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     AsyncInvoker async = startAsyncInvokerForMethod("trace");
@@ -2632,6 +2706,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithClassThrowsWebApplicationExceptionTest() throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
     Future<String> future = async.trace(String.class);
@@ -2649,6 +2724,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -2700,6 +2776,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     GenericType<String> generic = createGeneric(String.class);
@@ -2719,6 +2796,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -2739,6 +2817,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -2792,6 +2871,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * javax.ws.rs.ProcessingException thrown in case of an invocation processing
    * failure.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithCallbackThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     InvocationCallback<String> callback = createStringCallback(false);
@@ -2811,6 +2891,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithCallbackThrowsWebApplicationExceptionTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -2830,6 +2911,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * received response status code is not successful and the specified response
    * type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void traceWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");

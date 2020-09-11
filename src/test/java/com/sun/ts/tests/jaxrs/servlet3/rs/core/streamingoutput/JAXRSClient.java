@@ -54,6 +54,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request. Verify that
    * StreamingOutput.write(OutputStream) works.
    */
+  @org.junit.jupiter.api.Test
   public void writeTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "Test1"));
     setProperty(SEARCH_STRING, "StreamingOutputTest1");
@@ -69,6 +70,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * StreamingOutput.write(OutputStream) throws IOException (Servlet container
    * shall return 500 - ResponseBuilder responsibility).
    */
+  @org.junit.jupiter.api.Test
   public void writeIOExceptionTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "IOExceptionTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
@@ -83,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request. Verify that
    * StreamingOutput.write(OutputStream) throws WebApplicationException works.
    */
+  @org.junit.jupiter.api.Test
   public void writeWebApplicationExceptionTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "Test2"));
     setProperty(STATUS_CODE, getStatusCode(Status.NOT_FOUND));

@@ -52,6 +52,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /GetTest; Verify
    * that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void getTest1() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -69,6 +70,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /GetTest; Verify
    * that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void getTest2() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -86,6 +88,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on a sub resource at /GetTest/sub;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void getSubTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -104,6 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * request method designated for HEAD; Verify that corresponding GET Method is
    * invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headTest1() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -122,6 +126,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * request method designated for HEAD; Verify that corresponding GET Method is
    * invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headTest2() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -140,6 +145,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * no request method designated for HEAD; Verify that corresponding GET Method
    * is invoked instead.
    */
+  @org.junit.jupiter.api.Test
   public void headSubTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -158,6 +164,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which no request method designated for OPTIONS. Verify that an automatic
    * response is generated.
    */
+  @org.junit.jupiter.api.Test
   public void optionSubTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -174,6 +181,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: The presence or absence of a request method designator
    * (e.g. @GET) differentiates between the two: o Absent
    */
+  @org.junit.jupiter.api.Test
   public void dynamicGetTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "123"));
     setProperty(Property.SEARCH_STRING, SubResource.ID);
@@ -193,6 +201,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the request
    * 
    */
+  @org.junit.jupiter.api.Test
   public void recursiveResourceLocatorTest() throws Fault {
     StringBuilder sb = new StringBuilder();
     sb.append("recursive");

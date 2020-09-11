@@ -90,6 +90,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void sseBroadcastTest() throws Fault {
     int MSG_MAX = 7;
     int wait = 25;

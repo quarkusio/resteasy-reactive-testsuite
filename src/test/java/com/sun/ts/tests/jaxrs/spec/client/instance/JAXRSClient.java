@@ -67,6 +67,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: This interface supports configuration of: Features,
    * Properties, Providers
    */
+  @org.junit.jupiter.api.Test
   public void defaultClientConfigurationPresetTest() throws Fault {
     Client client = ClientBuilder.newClient();
     checkConfig(client, registeredProviderCnt, registeredPropertyCnt);
@@ -80,6 +81,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: This interface supports configuration of: Features,
    * Properties, Providers
    */
+  @org.junit.jupiter.api.Test
   public void clientConfiguredTest() throws Fault {
     Client client = ClientBuilder.newClient();
     client.register(new StringBeanEntityProvider());

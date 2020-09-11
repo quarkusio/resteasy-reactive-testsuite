@@ -52,6 +52,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes HEAD on root resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamStringTest() throws Fault {
     super.headerParamStringTest();
   }
@@ -65,6 +66,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamNoQueryTest() throws Fault {
     super.headerParamNoQueryTest();
   }
@@ -78,6 +80,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamIntTest() throws Fault {
     super.headerParamIntTest();
   }
@@ -91,6 +94,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamDoubleTest() throws Fault {
     super.headerParamDoubleTest();
   }
@@ -104,6 +108,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamFloatTest() throws Fault {
     super.headerParamFloatTest();
   }
@@ -117,6 +122,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a sub resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamLongTest() throws Fault {
     super.headerParamLongTest();
   }
@@ -130,6 +136,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a sub resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamShortTest() throws Fault {
     super.headerParamShortTest();
   }
@@ -143,6 +150,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a sub resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamByteTest() throws Fault {
     super.headerParamByteTest();
   }
@@ -156,6 +164,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a sub resource at /HeaderParamTest;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamBooleanTest() throws Fault {
     super.headerParamBooleanTest();
   }
@@ -168,6 +177,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void headerParamEntityWithConstructorTest() throws Fault {
     super.headerParamEntityWithConstructorTest();
   }
@@ -180,6 +190,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void headerParamEntityWithValueOfTest() throws Fault {
     super.headerParamEntityWithValueOfTest();
   }
@@ -192,6 +203,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void headerParamEntityWithFromStringTest() throws Fault {
     super.headerParamEntityWithFromStringTest();
   }
@@ -204,6 +216,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void headerParamSetEntityWithFromStringTest() throws Fault {
     super.headerParamSetEntityWithFromStringTest();
   }
@@ -216,6 +229,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void headerParamSortedSetEntityWithFromStringTest() throws Fault {
     super.headerParamSortedSetEntityWithFromStringTest();
   }
@@ -228,6 +242,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void headerParamListEntityWithFromStringTest() throws Fault {
     super.headerParamListEntityWithFromStringTest();
   }
@@ -240,6 +255,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldParamEntityWithConstructorTest() throws Fault {
     super.headerFieldParamEntityWithConstructorTest();
   }
@@ -256,6 +272,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldParamEntityWithValueOfTest() throws Fault {
     super.headerFieldParamEntityWithValueOfTest();
   }
@@ -272,6 +289,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldParamEntityWithFromStringTest() throws Fault {
     super.headerFieldParamEntityWithFromStringTest();
   }
@@ -288,6 +306,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldParamSetEntityWithFromStringTest() throws Fault {
     super.headerFieldParamSetEntityWithFromStringTest();
   }
@@ -304,6 +323,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     super.headerFieldParamSortedSetEntityWithFromStringTest();
   }
@@ -320,6 +340,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldParamListEntityWithFromStringTest() throws Fault {
     super.headerFieldParamListEntityWithFromStringTest();
   }
@@ -333,6 +354,7 @@ public class JAXRSSubClient
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamThrowingWebApplicationExceptionTest() throws Fault {
     super.headerParamThrowingWebApplicationExceptionTest();
   }
@@ -351,6 +373,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.headerFieldThrowingWebApplicationExceptionTest();
   }
@@ -364,6 +387,7 @@ public class JAXRSSubClient
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void headerParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.headerParamThrowingIllegalArgumentExceptionTest();
   }
@@ -386,6 +410,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void headerFieldThrowingIllegalArgumentExceptionTest() throws Fault {
     super.headerFieldThrowingIllegalArgumentExceptionTest();
   }

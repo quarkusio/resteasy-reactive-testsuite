@@ -61,6 +61,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -79,6 +80,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -103,6 +105,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusNullThrowsExceptionTest() throws Fault {
     try {
       ClientErrorException e = new ClientErrorException((Status) null);
@@ -127,6 +130,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -147,6 +151,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -173,6 +178,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntNotValidStatusThrowsExceptionTest() throws Fault {
     for (int status : new int[] { -1, 999, Integer.MIN_VALUE,
         Integer.MAX_VALUE })
@@ -198,6 +204,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -217,6 +224,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response status code is
    * not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -244,6 +252,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -267,6 +276,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -292,6 +302,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusNullThrowableThrowsExceptionTest() throws Fault {
     try {
       ClientErrorException e = new ClientErrorException((Status) null,
@@ -317,6 +328,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -342,6 +354,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -368,6 +381,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntNotValidStatusThrowableThrowsExceptionTest()
       throws Fault {
     for (int status : new int[] { -1, 999, Integer.MIN_VALUE,
@@ -395,6 +409,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -420,6 +435,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response status code is
    * not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -444,6 +460,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Construct a new client error exception. getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -463,6 +480,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -487,6 +505,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusNullThrowsIAETest() throws Fault {
     try {
       ClientErrorException e = new ClientErrorException(MESSAGE, (Status) null);
@@ -511,6 +530,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -532,6 +552,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -558,6 +579,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntNotValidStatusThrowsExceptionTest()
       throws Fault {
     for (int status : new int[] { -1, 999, Integer.MIN_VALUE,
@@ -582,6 +604,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -602,6 +625,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response status code is
    * not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowsIEATest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -625,6 +649,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Construct a new client error exception. getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -650,6 +675,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusThrowableThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -675,6 +701,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or if
    * it is not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusNullThrowableThrowsIAETest() throws Fault {
     try {
       ClientErrorException e = new ClientErrorException(MESSAGE, (Status) null,
@@ -697,6 +724,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -723,6 +751,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntThrowableThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family
@@ -749,6 +778,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or if it is not from the
    * Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntNotValidStatusThrowableThrowsIAETest()
       throws Fault {
     for (int status : new int[] { -1, 999, Integer.MIN_VALUE,
@@ -776,6 +806,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -802,6 +833,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response status code is
    * not from the Response.Status.Family.CLIENT_ERROR status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (Status.Family

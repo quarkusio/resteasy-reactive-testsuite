@@ -56,6 +56,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
+  @org.junit.jupiter.api.Test
   public void contextResolverTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "contextresolver"));
     setProperty(Property.SEARCH_STRING, HolderClass.OK);
@@ -74,6 +75,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
+  @org.junit.jupiter.api.Test
   public void exceptionMapperTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "exceptionmapper"));
     setProperty(Property.SEARCH_STRING, HolderClass.OK);
@@ -92,6 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
+  @org.junit.jupiter.api.Test
   public void bodyWriterTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "bodywriter"));
     setProperty(Property.SEARCH_STRING, HolderClass.OK);
@@ -110,6 +113,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
+  @org.junit.jupiter.api.Test
   public void bodyReaderTest() throws Fault {
     MediaType type = new MediaType("text", "tck");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "bodyreader"));

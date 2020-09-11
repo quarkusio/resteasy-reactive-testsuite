@@ -54,6 +54,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Priority defined for a filter or interceptor.
    */
+  @org.junit.jupiter.api.Test
   public void checkBindingPriorityHigherRegisteredFirstTest() throws Fault {
     AtomicInteger ai = new AtomicInteger(0);
     ContextProvider lowerProiority = new LowerPriorityProvider(ai);
@@ -71,6 +72,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Priority defined for a filter or interceptor.
    */
+  @org.junit.jupiter.api.Test
   public void checkBindingPriorityLowerRegisteredFirstTest() throws Fault {
     AtomicInteger ai = new AtomicInteger(0);
     ContextProvider lowerProiority = new LowerPriorityProvider(ai);

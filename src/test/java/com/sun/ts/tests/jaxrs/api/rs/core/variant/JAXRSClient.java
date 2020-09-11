@@ -58,6 +58,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create an MediaType instance using MediaType()
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest1() throws Fault {
     String type = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
     String subtype = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
@@ -79,6 +80,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType(String,
    * String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest2() throws Fault {
     String type = "application";
     String subtype = "atom+xml";
@@ -100,6 +102,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType(String,
    * String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest3() throws Fault {
     String type = "application";
     String subtype = "x-www-form-urlencoded";
@@ -119,6 +122,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a Variant(MediaType, String, String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorMediaStringStringTest() throws Fault {
     Variant vt = null;
     String[] encodings = { null, "CP1250", "UTF8", "ISO8859-2" };
@@ -141,6 +145,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws IllegalArgumentException - if all the parameters are
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorMediaStringStringThrowsIllegalArgumentExceptionTest()
       throws Fault {
     try {
@@ -158,6 +163,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a Variant(MediaType, String, String, String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorMediaStringStringStringTest() throws Fault {
     Variant vt = null;
     String[] encodings = { null, "CP1250", "UTF8", "ISO8859-2" };
@@ -182,6 +188,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws IllegalArgumentException - if all the parameters are
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorMediaStringStringStringThrowsIllegalArgumentExceptionTest()
       throws Fault {
     try {
@@ -200,6 +207,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a Variant(MediaType, String, String, String, String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorMediaStringStringStringStringTest() throws Fault {
     Variant vt = null;
     String[] encodings = { null, "CP1250", "UTF8", "ISO8859-2" };
@@ -225,6 +233,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws IllegalArgumentException - if all the parameters are
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorMediaStringStringStringStringThrowsIllegalArgumentExceptionTest()
       throws Fault {
     try {
@@ -245,6 +254,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.equals and Variant.hasCode methods work properly using those two
    * Variant objects.
    */
+  @org.junit.jupiter.api.Test
   public void equalTest1() throws Fault {
     StringBuffer sb = new StringBuffer();
     boolean pass;
@@ -295,6 +305,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.equals and Variant.hasCode methods work properly using those two
    * Variant objects.
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest2() throws Fault {
     StringBuffer sb = new StringBuffer();
     Boolean pass = true;
@@ -336,6 +347,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Variant.equals and Variant.hasCode methods work properly using those two
    * Variant objects.
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest3() throws Fault {
     StringBuffer sb = new StringBuffer();
     Boolean pass = true;
@@ -375,6 +387,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Variant.languages(Locale ...) with three Locales,
    * Verify that three Variant instances created properly
    */
+  @org.junit.jupiter.api.Test
   public void languagesTest() throws Fault {
     List<String> encodingS = null;
     List<MediaType> mts = null;
@@ -392,6 +405,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the string representation of the variant language
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageStringTest() throws Fault {
     Locale[] langs = { null, Locale.CHINA, Locale.PRC, Locale.CANADA_FRENCH,
         Locale.GERMAN };
@@ -416,6 +430,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Variant.encodings(String ...) with three Encodings,
    * Verify that three Variant instances created properly
    */
+  @org.junit.jupiter.api.Test
   public void encodingsTest() throws Fault {
     String encoding1 = "ISO8859-15";
     String encoding2 = "GB2312";
@@ -439,6 +454,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Variant.mediaTypes(MediaType ...) with three MediaType
    * objects, Verify that three Variant instances created properly
    */
+  @org.junit.jupiter.api.Test
   public void mediaTypesTest() throws Fault {
     String type = "application";
     String subtype = "x-www-form-urlencoded";

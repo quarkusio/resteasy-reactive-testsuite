@@ -54,6 +54,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * annotation, the application subclass must be annotated as shown above in
    * order for those filters or interceptors to be globally bound
    */
+  @org.junit.jupiter.api.Test
   public void nameBoundResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "bind"));
     setProperty(Property.CONTENT, "0");
@@ -71,6 +72,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * annotation, the application subclass must be annotated as shown above in
    * order for those filters or interceptors to be globally bound
    */
+  @org.junit.jupiter.api.Test
   public void globalBoundResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "nobind"));
     setProperty(Property.CONTENT, "0");

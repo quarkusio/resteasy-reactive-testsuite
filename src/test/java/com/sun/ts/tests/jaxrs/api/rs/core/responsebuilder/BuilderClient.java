@@ -75,6 +75,7 @@ public class BuilderClient
    * Setting status using ResponseBuilder.status(int); verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest1() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -99,6 +100,7 @@ public class BuilderClient
    * Setting status using ResponseBuilder.status(Status); verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest2() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -121,6 +123,7 @@ public class BuilderClient
    * @test_Strategy: Set Expires to ResponseBuilder, build a response and check
    * expires timestamp.
    */
+  @org.junit.jupiter.api.Test
   public void expiresTest() throws Fault {
     Date now = Calendar.getInstance().getTime();
     ResponseBuilder rs = Response.ok();
@@ -153,6 +156,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Set the list of allowed methods for the resource.
    */
+  @org.junit.jupiter.api.Test
   public void allowStringArrayTest() throws Fault {
     String[] methods = { Request.OPTIONS.name(), Request.TRACE.name() };
     ResponseBuilder rb = RuntimeDelegate.getInstance().createResponseBuilder();
@@ -174,6 +178,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Set the list of allowed methods for the resource.
    */
+  @org.junit.jupiter.api.Test
   public void allowStringArrayTruncateDuplicatesTest() throws Fault {
     String[] methods = { Request.OPTIONS.name(), Request.OPTIONS.name() };
     ResponseBuilder rb = RuntimeDelegate.getInstance().createResponseBuilder();
@@ -192,6 +197,7 @@ public class BuilderClient
    * 
    * @test_Strategy: if null any existing allowed method list will be removed.
    */
+  @org.junit.jupiter.api.Test
   public void allowStringArrayNullRemovesAllTest() throws Fault {
     String[] methods = { Request.OPTIONS.name(), Request.GET.name() };
     ResponseBuilder rb = RuntimeDelegate.getInstance().createResponseBuilder();
@@ -208,6 +214,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Set the list of allowed methods for the resource.
    */
+  @org.junit.jupiter.api.Test
   public void allowStringSetTest() throws Fault {
     Set<String> methods = new TreeSet<String>();
     methods.add(Request.OPTIONS.name());
@@ -232,6 +239,7 @@ public class BuilderClient
    * 
    * @test_Strategy: if null any existing allowed method list will be removed.
    */
+  @org.junit.jupiter.api.Test
   public void allowStringSetNullRemovesAllTest() throws Fault {
     Set<String> methods = new TreeSet<String>();
     methods.add(Request.OPTIONS.name());
@@ -251,6 +259,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Set the message entity content encoding.
    */
+  @org.junit.jupiter.api.Test
   public void encodingTest() throws Fault {
     String[] encodings = { "gzip", "ccitt", "pic" };
     VerificationResult vr = new VerificationResult();
@@ -270,6 +279,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Add a link header.
    */
+  @org.junit.jupiter.api.Test
   public void linkUriStringTest() throws Fault {
     URI uri;
     try {
@@ -293,6 +303,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Add a link header.
    */
+  @org.junit.jupiter.api.Test
   public void linkStringStringTest() throws Fault {
     String rel = "REL";
     Response response = Response.ok().link(URL, rel).build();
@@ -310,6 +321,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Add one or more link headers.
    */
+  @org.junit.jupiter.api.Test
   public void linksTest() throws Fault {
     String rel = "REL";
     Link link1 = Link.fromUri(URL).rel(rel + "1").build();
@@ -341,6 +353,7 @@ public class BuilderClient
    * @test_Strategy: Replaces all existing headers with the newly supplied
    * headers.
    */
+  @org.junit.jupiter.api.Test
   public void replaceAllTest() throws Fault {
     String[] headers = { "header1", "header2", "header3" };
     String header99 = "header99";
@@ -365,6 +378,7 @@ public class BuilderClient
    * @test_Strategy: Replaces all existing headers with the newly supplied
    * headers. if null all existing headers will be removed.
    */
+  @org.junit.jupiter.api.Test
   public void replaceAllByNullTest() throws Fault {
     String[] headers = { "header1", "header2", "header3" };
     Response response = Response.ok().header(headers[0], headers[0])
@@ -382,6 +396,7 @@ public class BuilderClient
    * 
    * @test_Strategy: Add a Vary header that lists the available variants.
    */
+  @org.junit.jupiter.api.Test
   public void variantsTest() throws Fault {
     List<String> encoding = Arrays.asList("gzip", "compress");
     List<String> vars = Arrays.asList(HttpHeaders.ACCEPT_LANGUAGE,

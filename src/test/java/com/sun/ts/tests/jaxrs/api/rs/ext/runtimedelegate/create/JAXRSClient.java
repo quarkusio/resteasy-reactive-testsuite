@@ -76,6 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Note that these assertions are almost untestable, as it can either create
    * an instance or throw one exception or the other.
    */
+  @org.junit.jupiter.api.Test
   public void createEndpointTest() throws Fault {
     Application application = new Application() {
       public java.util.Set<java.lang.Class<?>> getClasses() {
@@ -109,6 +110,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException - if application is null or the
    * requested endpoint type is not supported.
    */
+  @org.junit.jupiter.api.Test
   public void createEndpointThrowsIllegalArgumentExceptionTest() throws Fault {
     try {
       delegate.createEndpoint((Application) null,
@@ -128,6 +130,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception and is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedUriBuilderTest() throws Fault {
     UriBuilder builder = delegate.createUriBuilder();
     assertFault(builder != null, "UriBuilder has not been created");
@@ -142,6 +145,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * no exception and is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedVariantListBuilderTest() throws Fault {
     VariantListBuilder builder = delegate.createVariantListBuilder();
     assertFault(builder != null, "VariantListBuilder has not been created");
@@ -156,6 +160,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception and is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedResponseBuilderTest() throws Fault {
     ResponseBuilder builder = delegate.createResponseBuilder();
     assertFault(builder != null, "ResponseBuilderTest has not been created");
@@ -170,6 +175,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * makes no exception and is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedHeaderDelegateCookieTest() throws Fault {
     String cookieName = "cookieName";
     String cookieValue = "cookieValue";
@@ -193,6 +199,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedHeaderDelegateCacheControlTest() throws Fault {
     HeaderDelegate<CacheControl> hdcc = delegate
         .createHeaderDelegate(CacheControl.class);
@@ -223,6 +230,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * makes no exception and is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedHeaderDelegateEntityTagTest() throws Fault {
     String tagValue = "tagValue";
     HeaderDelegate<EntityTag> hdet = delegate
@@ -246,6 +254,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * makes no exception and is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedHeaderDelegateNewCookieTest() throws Fault {
     String cookieName = "cookieName";
     String cookieValue = "cookieValue";
@@ -271,6 +280,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * makes no exception and is not null
    * 
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedHeaderDelegateMediaTypeTest() throws Fault {
     HeaderDelegate<MediaType> hdmt = delegate
         .createHeaderDelegate(MediaType.class);
@@ -292,6 +302,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * makes no exception and is not null, but .toString(null) and
    * fromString(null) throw IAE
    */
+  @org.junit.jupiter.api.Test
   public void checkCreatedHeaderDelegateNullPointerTest() throws Fault {
     HeaderDelegate<MediaType> hdmt = delegate
         .createHeaderDelegate(MediaType.class);
@@ -320,6 +331,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Check that RuntimeDelegate.createHeaderDelegate
    * ((Class)null) throws IAE
    */
+  @org.junit.jupiter.api.Test
   public void createHeaderDelegateThrowsIllegalArgumentExceptionTest()
       throws Fault {
     try {

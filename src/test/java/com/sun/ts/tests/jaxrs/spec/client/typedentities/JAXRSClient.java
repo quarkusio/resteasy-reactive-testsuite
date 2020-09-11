@@ -71,6 +71,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: JAX-RS implementations are REQUIRED to use entity providers
    */
+  @org.junit.jupiter.api.Test
   public void clientAnyReaderUsageTest() throws Fault {
     addProvider(new EntityMessageReader());
     setProperty(Property.REQUEST, buildRequest(Request.GET, "readerprovider"));
@@ -93,6 +94,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: JAX-RS implementations are REQUIRED to use entity providers
    */
+  @org.junit.jupiter.api.Test
   public void clientAnyWriterUsageTest() throws Fault {
     ReadableWritableEntity entity = new ReadableWritableEntity(
         String.valueOf(serialVersionUID));
@@ -115,6 +117,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientByteArrayReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
     toStringTest(byte[].class);
@@ -128,6 +131,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientStringReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
     toStringTest(String.class);
@@ -141,6 +145,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientInputStreamReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
     InputStream responseEntity = getResponse().readEntity(InputStream.class);
@@ -157,6 +162,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientReaderReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
     Reader responseEntity = getResponse().readEntity(Reader.class);
@@ -172,6 +178,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientFileReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
     File responseEntity = getResponse().readEntity(File.class);
@@ -194,6 +201,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientDataSourceReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
     DataSource responseEntity = getResponse().readEntity(DataSource.class);
@@ -215,6 +223,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientSourceReaderTest() throws Fault {
     standardReaderInvocation(MediaType.TEXT_XML_TYPE);
     Source responseEntity = getResponse().readEntity(Source.class);
@@ -237,6 +246,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientJaxbElementReaderTest() throws Fault {
     GenericType<JAXBElement<String>> type = new GenericType<JAXBElement<String>>() {
     };
@@ -265,6 +275,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientMultivaluedMapReaderTest() throws Fault {
     standardReaderInvocation(MediaType.APPLICATION_FORM_URLENCODED_TYPE);
     @SuppressWarnings("unchecked")
@@ -288,6 +299,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientByteArrayWriterTest() throws Fault {
     standardWriterInvocation(entity.getBytes());
   }
@@ -300,6 +312,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientStringWriterTest() throws Fault {
     standardWriterInvocation(entity);
   }
@@ -312,6 +325,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientInputStreamWriterTest() throws Fault {
     ByteArrayInputStream bais = new ByteArrayInputStream(entity.getBytes());
     standardWriterInvocation(bais);
@@ -326,6 +340,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientReaderWriterTest() throws Fault {
     ByteArrayInputStream bais = new ByteArrayInputStream(entity.getBytes());
     Reader reader = new InputStreamReader(bais);
@@ -341,6 +356,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientFileWriterTest() throws Fault {
     File file = createFileEntity(entity);
     standardWriterInvocation(file);
@@ -355,6 +371,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientDataSourceWriterTest() throws Fault {
     DataSource ds = new StringDataSource(entity, MediaType.WILDCARD_TYPE);
     standardWriterInvocation(ds);
@@ -368,6 +385,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientSourceWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_XML_TYPE));
@@ -385,6 +403,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientJaxbElementWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_XML_TYPE));
@@ -401,6 +420,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientMultivaluedMapWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_FORM_URLENCODED_TYPE));
@@ -417,6 +437,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @org.junit.jupiter.api.Test
   public void clientStreamingOutputWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_FORM_URLENCODED_TYPE));

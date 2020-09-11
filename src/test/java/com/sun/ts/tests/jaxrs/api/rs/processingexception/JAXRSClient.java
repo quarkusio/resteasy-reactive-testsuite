@@ -55,6 +55,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the specified cause and a detail message of (cause==null ? null :
    * cause.toString())
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithRuntimeExceptionTest() throws Fault {
     IllegalStateException ile = new IllegalStateException("TCK exception");
     ProcessingException mpe = new ProcessingException(ile);
@@ -73,6 +74,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the specified cause and a detail message of (cause==null ? null :
    * cause.toString())
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCheckedExceptionTest() throws Fault {
     IOException ioe = new IOException("TCK exception");
     ProcessingException mpe = new ProcessingException(ioe);
@@ -91,6 +93,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the specified cause and a detail message of (cause==null ? null :
    * cause.toString())
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullThrowableTest() throws Fault {
     ProcessingException mpe = new ProcessingException((Throwable) null);
     assertFault(mpe.getCause() == null,
@@ -107,6 +110,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message and cause.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullThrowableNullMessageTest() throws Fault {
     ProcessingException mpe = new ProcessingException((String) null,
         (Throwable) null);
@@ -124,6 +128,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message and cause.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullThrowableNotNullMessageTest() throws Fault {
     String msg = "TCK Message";
     ProcessingException mpe = new ProcessingException(msg, (Throwable) null);
@@ -141,6 +146,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message and cause.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithRuntimeExceptionNullMessageTest() throws Fault {
     IllegalStateException ise = new IllegalStateException(
         "JAXRS TCK exception");
@@ -159,6 +165,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message and cause.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCheckedExceptionNullMessageTest() throws Fault {
     IOException ioe = new IOException("JAXRS TCK exception");
     ProcessingException mpe = new ProcessingException((String) null, ioe);
@@ -176,6 +183,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message and cause.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithRuntimeExceptionAndNotNullMessageTest()
       throws Fault {
     String msg = "TCK Message";
@@ -196,6 +204,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message and cause.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCheckedExceptionAndNotNullMessageTest()
       throws Fault {
     String msg = "TCK Message";
@@ -215,6 +224,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNotNullMessageTest() throws Fault {
     String msg = "TCK Message";
     ProcessingException mpe = new ProcessingException(msg);
@@ -232,6 +242,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
    * the specified detail message.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullMessageTest() throws Fault {
     ProcessingException mpe = new ProcessingException((String) null);
     assertFault(mpe.getCause() == null,

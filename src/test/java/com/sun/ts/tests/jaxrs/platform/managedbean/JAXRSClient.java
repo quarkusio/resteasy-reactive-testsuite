@@ -51,6 +51,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * check postconstruct has been called (managed been property)
    */
+  @org.junit.jupiter.api.Test
   public void postConstructOnResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "resourcevalue"));
     setProperty(SEARCH_STRING, "1000");
@@ -67,6 +68,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * check postconstruct has been called (managed been property)
    */
+  @org.junit.jupiter.api.Test
   public void postConstructOnProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "providervalue"));
     setProperty(SEARCH_STRING, "1000");
@@ -83,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * check postconstruct has been called (managed been property)
    */
+  @org.junit.jupiter.api.Test
   public void postConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "applicationvalue"));
@@ -101,6 +104,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * increase value on stringbuilderprovider by writing then checked it was
    * intercepted (managed bean property)
    */
+  @org.junit.jupiter.api.Test
   public void interceptorOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "interceptedresourcevalue"));
@@ -118,6 +122,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * try JNDI lookup
    */
+  @org.junit.jupiter.api.Test
   public void rootResourceManagedBeanJndiLookupTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "lookup"));
     setProperty(SEARCH_STRING, "1000");
@@ -137,6 +142,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @PostConstruct annotated method
    */
+  @org.junit.jupiter.api.Test
   public void injectPriorPostConstructOnRootResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorroot"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -156,6 +162,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @PostConstruct annotated method
    */
+  @org.junit.jupiter.api.Test
   public void injectPriorPostConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorapp"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -175,6 +182,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @PostConstruct annotated method
    */
+  @org.junit.jupiter.api.Test
   public void injectPriorPostConstructOnProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorprovider"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -195,6 +203,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Implementations MAY support such usage but SHOULD warn users about
    * non-portability.
    */
+  @org.junit.jupiter.api.Test
   public void noInjectOrResourceKeywordTest() throws Fault {
     String req = buildRequest(Request.GET, "nokeyword;matrix=",
         String.valueOf(serialVersionUID));

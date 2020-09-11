@@ -52,6 +52,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void subResourceLocatorAsClassTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "sub"));
     setProperty(Property.SEARCH_STRING, "OK");

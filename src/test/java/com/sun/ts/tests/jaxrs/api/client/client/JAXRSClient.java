@@ -76,6 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientConfigTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "getConfiguration");
@@ -94,6 +95,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientInvocationWithLinkTest() throws Fault {
     client.close();
     Link link = Link.fromUri("cts").build();
@@ -113,6 +115,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientTargetWithLinkTest() throws Fault {
     client.close();
     Link link = Link.fromUri("cts").build();
@@ -132,6 +135,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientTargetWithStringTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "target", "cts");
@@ -150,6 +154,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientTargetWithUriTest() throws Fault {
     client.close();
     URI uri = URI.create("cts");
@@ -169,6 +174,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterClassTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "register",
@@ -188,6 +194,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterObjectTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "register",
@@ -207,6 +214,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterClassWithContractsTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "register",
@@ -227,6 +235,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterClassWithPriorityTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "register",
@@ -246,6 +255,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterClassMapTest() throws Fault {
     client.close();
     Map<Class<?>, Integer> contracts = new HashMap<Class<?>, Integer>();
@@ -267,6 +277,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterObjectWithContractsTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "register",
@@ -287,6 +298,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterObjectWithPriorityTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, client, "register",
@@ -306,6 +318,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientRegisterObjectWithMapTest() throws Fault {
     client.close();
     Map<Class<?>, Integer> contracts = new HashMap<Class<?>, Integer>();
@@ -327,6 +340,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientPropertyTest() throws Fault {
     client.close();
     Map<Class<?>, Integer> contracts = new HashMap<Class<?>, Integer>();
@@ -347,6 +361,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnClientTargetWithUriBuilderTest() throws Fault {
     client.close();
     Link link = Link.fromUri("cts").build();
@@ -367,6 +382,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetConfigTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "getConfiguration");
@@ -385,6 +401,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetGetUriTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "getUri");
@@ -403,6 +420,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetGetUriBuilderTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "getUriBuilder");
@@ -421,6 +439,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetMatrixParamTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "matrixParam", "cts",
@@ -440,6 +459,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetPathTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "path", "cts");
@@ -458,6 +478,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetQueryParamTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "queryParam", "cts",
@@ -477,6 +498,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterClassTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "register",
@@ -496,6 +518,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterObjectTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "register",
@@ -515,6 +538,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterClassWithContractsTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "register",
@@ -535,6 +559,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterClassWithPriorityTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "register",
@@ -554,6 +579,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterClassMapTest() throws Fault {
     client.close();
     Map<Class<?>, Integer> contracts = new HashMap<Class<?>, Integer>();
@@ -575,6 +601,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterObjectWithContractsTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "register",
@@ -595,6 +622,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterObjectWithPriorityTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "register",
@@ -614,6 +642,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRegisterObjectWithMapTest() throws Fault {
     client.close();
     Map<Class<?>, Integer> contracts = new HashMap<Class<?>, Integer>();
@@ -635,6 +664,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRequestTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "request");
@@ -653,6 +683,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRequestWithMediaTypeTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "request",
@@ -672,6 +703,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetRequestWithMediaTypeNameTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "request",
@@ -691,6 +723,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetResolveTemplateStringObjectTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target, "resolveTemplate",
@@ -710,6 +743,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetResolveTemplateStringObjectBooleanTest()
       throws Fault {
     client.close();
@@ -730,6 +764,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetResolveTemplateFromEncodedTest() throws Fault {
     client.close();
     assertException(IllegalStateException.class, target,
@@ -749,6 +784,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetResolveTemplatesMapTest() throws Fault {
     client.close();
     Map<String, Object> map = new HashMap<String, Object>();
@@ -769,6 +805,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetResolveTemplatesMapBooleanTest() throws Fault {
     client.close();
     Map<String, Object> map = new HashMap<String, Object>();
@@ -789,6 +826,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetPropertyTest() throws Fault {
     client.close();
     Map<Class<?>, Integer> contracts = new HashMap<Class<?>, Integer>();
@@ -809,6 +847,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Invoking any method on such targets once the client is closed would result
    * in an IllegalStateException being thrown.
    */
+  @org.junit.jupiter.api.Test
   public void closeOnWebTargetResolveTemplatesFromEncodedTest() throws Fault {
     client.close();
     Map<String, Object> map = new HashMap<String, Object>();
@@ -824,6 +863,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: javax.ws.rs.client.Client.invocation( Link ) throws
    * NullPointerException in case argument is null.
    */
+  @org.junit.jupiter.api.Test
   public void invocationFromLinkExceptionNoLinkTest() throws Fault {
     String exceptionMessage = "NullPointerException successfully thrown when no link";
     String noExceptionMessage = "NullPointerException not thrown when no link";
@@ -838,6 +878,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Build a new web resource target.
    */
+  @org.junit.jupiter.api.Test
   public void targetStringTest() throws Fault {
     // setClientAndWebTarget is called in constructor
     assertFault(target != null, "WebTarget is null");
@@ -852,6 +893,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * IllegalArgumentException in case the supplied string is not a valid URI
    * template.
    */
+  @org.junit.jupiter.api.Test
   public void targetWithStringIllegalArgumentExceptionTest() throws Fault {
     String sWebTarget = ":cts:8080//tck:90090//jaxrs ";
     try {
@@ -879,6 +921,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: javax.ws.rs.client.Client.target( String ) throws throws
    * NullPointerException in case the supplied argument is null.
    */
+  @org.junit.jupiter.api.Test
   public void targetWithStringNullPointerExceptionTest() throws Fault {
     String sWebTarget = null;
     try {
@@ -897,6 +940,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Build a new web resource target.
    */
+  @org.junit.jupiter.api.Test
   public void targetUriTest() throws Fault {
     URI uri = URI.create(getUrl("call"));
     target = client.target(uri);
@@ -911,6 +955,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: javax.ws.rs.client.Client.target( URI ) throws throws
    * NullPointerException in case the supplied argument is null.
    */
+  @org.junit.jupiter.api.Test
   public void targetWithUriNullPointerExceptionTest() throws Fault {
     URI uri = null;
     try {
@@ -929,6 +974,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Build a new web resource target.
    */
+  @org.junit.jupiter.api.Test
   public void targetUriBuilderTest() throws Fault {
     UriBuilder builder = UriBuilder.fromUri(getUrl("call"));
     target = client.target(builder);
@@ -943,6 +989,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: javax.ws.rs.client.Client.target( URI ) throws throws
    * NullPointerException in case the supplied argument is null.
    */
+  @org.junit.jupiter.api.Test
   public void targetWithUriBuilderNullPointerExceptionTest() throws Fault {
     UriBuilder builder = null;
     try {
@@ -961,6 +1008,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Build a new web resource target.
    */
+  @org.junit.jupiter.api.Test
   public void targetLinkTest() throws Fault {
     URI uri = UriBuilder.fromPath(getUrl("call")).build();
     Link link = Link.fromUri(uri).build();
@@ -976,6 +1024,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: javax.ws.rs.client.Client.target( URI ) throws throws
    * NullPointerException in case the supplied argument is null.
    */
+  @org.junit.jupiter.api.Test
   public void targetWithLinkNullPointerExceptionTest() throws Fault {
     Link link = null;
     try {

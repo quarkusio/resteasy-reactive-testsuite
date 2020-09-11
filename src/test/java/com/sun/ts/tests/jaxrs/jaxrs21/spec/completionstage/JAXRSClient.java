@@ -50,6 +50,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void completionStageReturnedTest() throws Fault {
     Future<Response> f = ClientBuilder.newClient()
         .register(new JdkLoggingFilter(false)).target(getAbsoluteUrl("async"))

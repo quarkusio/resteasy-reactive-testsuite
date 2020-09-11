@@ -54,6 +54,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *//*
       * @produces text/plain
       */
+  @org.junit.jupiter.api.Test
   public void anyPlainTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "plain"));
     setProperty(Property.SEARCH_STRING, MediaType.TEXT_PLAIN);
@@ -70,6 +71,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *//*
       * @produces text/plain
       */
+  @org.junit.jupiter.api.Test
   public void anyWidgetsxmlTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "widgetsxml"));
     setProperty(Property.SEARCH_STRING, Resource.WIDGETS_XML);
@@ -86,6 +88,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *//*
       * @produces unknown/unknown
       */
+  @org.junit.jupiter.api.Test
   public void anyUnknownTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "unknown"));
     setProperty(Property.SEARCH_STRING, Resource.UNKNOWN);
@@ -101,6 +104,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Produces does not match the request Accept header. test accept
    * text/plain @produces *.*
    */
+  @org.junit.jupiter.api.Test
   public void widgetsXmlAnyTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Accept: " + Resource.WIDGETS_XML);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "any"));
@@ -117,6 +121,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Produces does not match the request Accept header. test accept
    * text/plain @produces *.*
    */
+  @org.junit.jupiter.api.Test
   public void plainAnyTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -134,6 +139,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Produces does not match the request Accept header. test accept
    * unknown/unknown @produces *.*
    */
+  @org.junit.jupiter.api.Test
   public void unknownAnyTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Accept: " + Resource.UNKNOWN);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "any"));
@@ -150,6 +156,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Produces does not match the request Accept header. test accept
    * text/plain @produces text/html
    */
+  @org.junit.jupiter.api.Test
   public void htmlPlainTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -167,6 +174,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Produces does not match the request Accept header. test accept
    * text/plain @produces unknown/unknown
    */
+  @org.junit.jupiter.api.Test
   public void htmlUnknownTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -185,6 +193,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Accept header. accept
    * text/plain @Consumes text/plain+xml
    */
+  @org.junit.jupiter.api.Test
   public void plainPlusProducePlainTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -205,6 +214,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Accept header. accept
    * text/plain @Consumes text/plain+xml
    */
+  @org.junit.jupiter.api.Test
   public void plainPlusProduceXmlTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
     setProperty(Property.REQUEST_HEADERS,
@@ -226,6 +236,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *//*
       * @Consumes text/plain
       */
+  @org.junit.jupiter.api.Test
   public void anyPlainConsumesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "plain"));
     setProperty(Property.SEARCH_STRING, MediaType.TEXT_PLAIN);
@@ -243,6 +254,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *//*
       * @Consumes text/plain
       */
+  @org.junit.jupiter.api.Test
   public void anyWidgetsxmlConsumesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "widgetsxml"));
     setProperty(Property.SEARCH_STRING, Resource.WIDGETS_XML);
@@ -260,6 +272,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *//*
       * @Consumes unknown/unknown
       */
+  @org.junit.jupiter.api.Test
   public void anyUnknownConsumesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "unknown"));
     setProperty(Property.SEARCH_STRING, Resource.UNKNOWN);
@@ -275,6 +288,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Content-Type header. test
    * content-type text/plain @Consumes *.*
    */
+  @org.junit.jupiter.api.Test
   public void widgetsXmlAnyConsumesTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         "Content-Type: " + Resource.WIDGETS_XML);
@@ -292,6 +306,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Content-Type header. test
    * content-type text/plain @Consumes *.*
    */
+  @org.junit.jupiter.api.Test
   public void plainAnyConsumesTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -309,6 +324,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Content-Type header. test
    * content-type unknown/unknown @Consumes *.*
    */
+  @org.junit.jupiter.api.Test
   public void unknownAnyConsumesTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Content-type: " + Resource.UNKNOWN);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "any"));
@@ -325,6 +341,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Content-Type header. test
    * content-type text/html @Consumes text/plain
    */
+  @org.junit.jupiter.api.Test
   public void htmlPlainConsumesTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_HTML_TYPE));
@@ -343,6 +360,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Content-Type header. test
    * content-type text/html @Consumes text/plain
    */
+  @org.junit.jupiter.api.Test
   public void htmlUnknownConsumesTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_HTML_TYPE));
@@ -361,6 +379,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Content-Type header.
    * content-type text/plain @Consumes text/plain+xml
    */
+  @org.junit.jupiter.api.Test
   public void plainPlusConsumePlainTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -378,6 +397,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value of @Consumes does not match the request Content-Type header.
    * content-type text/plain @Consumes text/plain+xml
    */
+  @org.junit.jupiter.api.Test
   public void plainPlusConsumeXmlTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_XML_TYPE));

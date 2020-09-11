@@ -74,6 +74,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
+  @org.junit.jupiter.api.Test
   public void readWriteJaxbProviderTest() throws Fault {
     JAXBElement<String> element = new JAXBElement<String>(new QName("jaxb"),
         String.class, "jaxb");
@@ -93,6 +94,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
+  @org.junit.jupiter.api.Test
   public void readWriteMapProviderTest() throws Fault {
     MultivaluedMap<String, String> map = new MultivaluedHashMap<String, String>();
     map.add("map", "map");
@@ -112,6 +114,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
+  @org.junit.jupiter.api.Test
   public void readWriteBooleanProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "boolean"));
@@ -134,6 +137,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
+  @org.junit.jupiter.api.Test
   public void readWriteCharacterProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "character"));
@@ -156,6 +160,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
+  @org.junit.jupiter.api.Test
   public void readWriteIntegerProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "number"));

@@ -67,6 +67,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusUriTest() throws Fault {
     for (Status status : getStatusesFromFamily()) {
       RedirectionException e = new RedirectionException(status, LOCATION);
@@ -84,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or is
    * not from Response.Status.Family.REDIRECTION status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusUriThrowsExceptionTest() throws Fault {
     for (Status status : getStatusesOutsideFamily()) {
       try {
@@ -107,6 +109,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or is
    * not from Response.Status.Family.REDIRECTION status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStatusNullUriThrowsExceptionTest() throws Fault {
     try {
       RedirectionException e = new RedirectionException((Status) null,
@@ -133,6 +136,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntUriTest() throws Fault {
     for (Status status : getStatusesFromFamily()) {
       RedirectionException e = new RedirectionException(status.getStatusCode(),
@@ -152,6 +156,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or is not from Response.Status.Family.REDIRECTION status
    * code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntUriThrowsExceptionTest() throws Fault {
     for (Status status : getStatusesOutsideFamily()) {
       try {
@@ -177,6 +182,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or is not from Response.Status.Family.REDIRECTION status
    * code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorIntNotValidStatusThrowsExceptionTest() throws Fault {
     for (int status : new int[] { -1, Integer.MAX_VALUE, Integer.MIN_VALUE }) {
       try {
@@ -202,6 +208,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseTest() throws Fault {
     for (Status status : getStatusesFromFamily()) {
       RedirectionException e = new RedirectionException(buildResponse(status));
@@ -218,6 +225,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response status code is
    * not from the Response.Status.Family.REDIRECTION status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowsExceptionTest() throws Fault {
     for (Status status : getStatusesOutsideFamily())
       try {
@@ -245,6 +253,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusUriTest() throws Fault {
     for (Status status : getStatusesFromFamily()) {
       RedirectionException e = new RedirectionException(MESSAGE, status,
@@ -264,6 +273,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or is
    * not from Response.Status.Family.REDIRECTION status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusUriThrowsIAETest() throws Fault {
     for (Status status : getStatusesOutsideFamily()) {
       try {
@@ -288,6 +298,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code is null or is
    * not from Response.Status.Family.REDIRECTION status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusNullUriThrowsIAETest() throws Fault {
     try {
       RedirectionException e = new RedirectionException(MESSAGE, (Status) null,
@@ -314,6 +325,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntUriTest() throws Fault {
     for (Status status : getStatusesFromFamily()) {
       RedirectionException e = new RedirectionException(MESSAGE,
@@ -334,6 +346,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or is not from Response.Status.Family.REDIRECTION status
    * code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntUriThrowsIAETest() throws Fault {
     for (Status status : getStatusesOutsideFamily()) {
       try {
@@ -359,6 +372,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * HTTP status code or is not from Response.Status.Family.REDIRECTION status
    * code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntNotValidStatusThrowsIAETest() throws Fault {
     for (int status : new int[] { -1, Integer.MAX_VALUE, Integer.MIN_VALUE }) {
       try {
@@ -385,6 +399,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     for (Status status : getStatusesFromFamily()) {
       RedirectionException e = new RedirectionException(MESSAGE,
@@ -403,6 +418,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response status code is
    * not from the Response.Status.Family.REDIRECTION status code family.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowsIAETest() throws Fault {
     for (Status status : getStatusesOutsideFamily())
       try {

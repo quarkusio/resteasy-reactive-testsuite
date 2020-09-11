@@ -54,6 +54,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * value of the entity property
    * 
    */
+  @org.junit.jupiter.api.Test
   public void responseSubClassTest() throws Fault {
     setWriter(AppAnyEntityWriter.class);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "subresponse"));
@@ -79,6 +80,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * object class are sorted first and a secondary key of media type (see
    * Section 4.2.3).
    */
+  @org.junit.jupiter.api.Test
   public void supportXmlByDefaultWriterTest() throws Fault {
     setWriter(DefaultEntityWriter.class);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "supportxml"));
@@ -105,6 +107,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * object class are sorted first and a secondary key of media type (see
    * Section 4.2.3).
    */
+  @org.junit.jupiter.api.Test
   public void supportXmlByXmlWriterTest() throws Fault {
     setWriter(AppXmlObjectWriter.class);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "supportxml"));
@@ -133,6 +136,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * object class are sorted first and a secondary key of media type (see
    * Section 4.2.3).
    */
+  @org.junit.jupiter.api.Test
   public void supportAllTest() throws Fault {
     setWriter(DefaultEntityWriter.class);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "supportall"));
@@ -161,6 +165,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * object class are sorted first and a secondary key of media type (see
    * Section 4.2.3).
    */
+  @org.junit.jupiter.api.Test
   public void supportAppJavaTest() throws Fault {
     setWriter(AppJavaEntityWriter.class);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "supportmedia"));

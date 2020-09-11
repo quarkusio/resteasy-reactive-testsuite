@@ -55,6 +55,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that
    * UriInfo.getQueryParameters() works.
    */
+  @org.junit.jupiter.api.Test
   public void queryTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "query?stringtest=cts&inttest=-2147483648?"));
@@ -72,6 +73,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that
    * UriInfo.getQueryParameters(true) works.
    */
+  @org.junit.jupiter.api.Test
   public void queryTest1() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET,
         "query1?stringtest=cts%20&inttest=-2147483648?%2010"));
@@ -89,6 +91,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that
    * UriInfo.getQueryParameters(false) works.
    */
+  @org.junit.jupiter.api.Test
   public void queryTest2() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "query2?stringtest=cts%20&inttest=-2147483648%2010"));
@@ -106,6 +109,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * request using UriInfo. Verify that UriInfo.getAbsolutePath() and
    * getAbsolutePathBuilder() work.
    */
+  @org.junit.jupiter.api.Test
   public void aPathTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "apath"));
     setProperty(Property.SEARCH_STRING,
@@ -123,6 +127,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * request using UriInfo. Verify that UriInfo.getBaseUri() and
    * getBaseUriBuilder() work.
    */
+  @org.junit.jupiter.api.Test
   public void baseUriTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "baseuri"));
     setProperty(Property.SEARCH_STRING,
@@ -139,6 +144,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPath() work.
    */
+  @org.junit.jupiter.api.Test
   public void pathTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "path"));
     setProperty(Property.SEARCH_STRING, RESOURCE + "/path");
@@ -154,6 +160,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPath(true) work.
    */
+  @org.junit.jupiter.api.Test
   public void pathTest1() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "path1%20/%2010"));
     setProperty(Property.SEARCH_STRING, RESOURCE + "/path1 / 10");
@@ -169,6 +176,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPath(false) work.
    */
+  @org.junit.jupiter.api.Test
   public void pathTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "path2%20/%2010"));
     setProperty(Property.SEARCH_STRING, RESOURCE + "/path2%20/%2010");
@@ -184,6 +192,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathSegments() work.
    */
+  @org.junit.jupiter.api.Test
   public void pathSegTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathseg"));
     setProperty(Property.UNORDERED_SEARCH_STRING, RESOURCE);
@@ -200,6 +209,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathSegments(true) work.
    */
+  @org.junit.jupiter.api.Test
   public void pathSegTest1() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathseg1%20/%2010"));
     setProperty(Property.UNORDERED_SEARCH_STRING, RESOURCE);
@@ -216,6 +226,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathSegments(false) work.
    */
+  @org.junit.jupiter.api.Test
   public void pathSegTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathseg2%20/%2010"));
     setProperty(Property.UNORDERED_SEARCH_STRING, RESOURCE);
@@ -232,6 +243,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathParameters() work.
    */
+  @org.junit.jupiter.api.Test
   public void pathParamTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathparam/a/b"));
     setProperty(Property.UNORDERED_SEARCH_STRING, "a=a|b=b");
@@ -246,6 +258,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathParameters(true) work.
    */
+  @org.junit.jupiter.api.Test
   public void pathParamTest1() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathparam1/%20/%2010"));
     setProperty(Property.UNORDERED_SEARCH_STRING, "a= |b= 10");
@@ -261,6 +274,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathParameters(false) work.
    */
+  @org.junit.jupiter.api.Test
   public void pathParamTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathparam2/%20/%2010"));
     setProperty(Property.UNORDERED_SEARCH_STRING, "a=%20|b=%2010");
@@ -277,6 +291,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that getRequestUri() and
    * getRequestUriBuilder() work.
    */
+  @org.junit.jupiter.api.Test
   public void requestURITest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "request?stringtest=cts&inttest=-2147483648"));
@@ -296,6 +311,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that getMatchedResources()
    * work.
    */
+  @org.junit.jupiter.api.Test
   public void getMatchedResourcesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "resource"));
     setProperty(Property.SEARCH_STRING, URIInfoTest.class.getName());
@@ -310,6 +326,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request with query parameters to a resource,
    * which handles the request using UriInfo. Verify that getMatchedURIs() work.
    */
+  @org.junit.jupiter.api.Test
   public void getMatchedURIsTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "uri"));
     setProperty(Property.SEARCH_STRING, RESOURCE + "/uri");
@@ -327,6 +344,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that getMatchedURIs(true)
    * work.
    */
+  @org.junit.jupiter.api.Test
   public void getMatchedURIsTest1() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "uri1"));
     setProperty(Property.SEARCH_STRING, RESOURCE + "/uri1");
@@ -344,6 +362,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that getMatchedURIs(false)
    * work.
    */
+  @org.junit.jupiter.api.Test
   public void getMatchedURIsTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "uri2"));
     setProperty(Property.SEARCH_STRING, RESOURCE + "/uri2");
@@ -360,6 +379,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: The normalized request URI MUST be reflected in the URIs
    * obtained from an injected UriInfo
    */
+  @org.junit.jupiter.api.Test
   public void getNormalizedUriTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, URIInfoTest.DECODED));
     invoke();

@@ -53,6 +53,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * implementation will recognize such values and will not double encode the
    * '%' character.
    */
+  @org.junit.jupiter.api.Test
   public void applicationPathAnnotationEncodedTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "ApplicationPath!/Resource"));
@@ -66,6 +67,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check the ApplicationPath is used properly
    */
+  @org.junit.jupiter.api.Test
   public void applicationPathAnnotationNotUsedTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "Resource"));
     setProperty(Property.STATUS_CODE, "-1");

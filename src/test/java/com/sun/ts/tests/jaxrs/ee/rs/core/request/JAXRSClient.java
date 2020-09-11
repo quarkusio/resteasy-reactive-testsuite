@@ -60,6 +60,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.getMethod works.
    */
+  @org.junit.jupiter.api.Test
   public void getMethodGetRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "GetMethodGetTest"));
     setProperty(SEARCH_STRING, "PASSED");
@@ -74,6 +75,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.getMethod works.
    */
+  @org.junit.jupiter.api.Test
   public void getMethodPutRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest("PUT", "GetMethodPutTest"));
     setProperty(SEARCH_STRING, "PASSED");
@@ -88,6 +90,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.getMethod works.
    */
+  @org.junit.jupiter.api.Test
   public void getMethodPostRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest("POST", "GetMethodPostTest"));
     setProperty(SEARCH_STRING, "PASSED");
@@ -102,6 +105,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.getMethod works.
    */
+  @org.junit.jupiter.api.Test
   public void getMethodDeleteRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest("DELETE", "GetMethodDeleteTest"));
     setProperty(SEARCH_STRING, "PASSED");
@@ -116,6 +120,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.getMethod works.
    */
+  @org.junit.jupiter.api.Test
   public void getMethodHeadRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest("HEAD", "GetMethodHeadTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.OK));
@@ -130,6 +135,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.selectVariantTest(List vs) works when vs is null.
    */
+  @org.junit.jupiter.api.Test
   public void selectVariantGetRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "SelectVariantTestGet"));
     setProperty(SEARCH_STRING, "PASSED");
@@ -144,6 +150,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.selectVariantTest(List vs) works when vs is null.
    */
+  @org.junit.jupiter.api.Test
   public void selectVariantPutRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest("PUT", "SelectVariantTestPut"));
     setProperty(SEARCH_STRING, "PASSED");
@@ -158,6 +165,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.selectVariantTest(List vs) works when vs is null.
    */
+  @org.junit.jupiter.api.Test
   public void selectVariantPostRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest("POST", "SelectVariantTestPost"));
     setProperty(Property.CONTENT, "POST");
@@ -173,6 +181,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send request to a resource, verify that
    * Request.selectVariantTest(List vs) works when vs is null.
    */
+  @org.junit.jupiter.api.Test
   public void selectVariantDeleteRequestTest() throws Fault {
     setProperty(REQUEST, buildRequest("DELETE", "SelectVariantTestDelete"));
     setProperty(SEARCH_STRING, "PASSED");
@@ -186,6 +195,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check if the response contains VARY
    */
+  @org.junit.jupiter.api.Test
   public void selectVariantResponseVaryTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "SelectVariantTestResponse"));
@@ -219,6 +229,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify null and Simple Tag for GET
    * 
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagNullAndSimpleGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsSimpleGet"));
     setProperty(STATUS_CODE, getStatusCode(Status.OK));
@@ -232,6 +243,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify evaluatePreconditions for If-Match: AAA Tag for GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsEntityTagIfMatchAAAGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsAAAGet"));
     setProperty(REQUEST_HEADERS, "If-Match: \"AAA\"");
@@ -246,6 +258,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify evaluatePreconditions for If-Match: BBB Tag for GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsEntityTagIfMatchBBBGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsAAAGet"));
     setProperty(REQUEST_HEADERS, "If-Match: \"BBB\"");
@@ -260,6 +273,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify evaluatePreconditions for If-Match: AAA Tag for PUT
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsEntityTagIfMatchAAAPutTest() throws Fault {
     setProperty(REQUEST, buildRequest("PUT", "preconditionsAAAPut"));
     setProperty(REQUEST_HEADERS, "If-Match: \"AAA\"");
@@ -274,6 +288,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify evaluatePreconditions for If-Match: BBB Tag for PUT
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsEntityTagIfMatchBBBPutTest() throws Fault {
     setProperty(REQUEST, buildRequest("PUT", "preconditionsAAAPut"));
     setProperty(REQUEST_HEADERS, "If-Match: \"BBB\"");
@@ -289,6 +304,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-None-Match: AAA Tag for
    * GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfNonMatchAAAGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsAAAGet"));
     setProperty(REQUEST_HEADERS, IF_NONE_MATCH);
@@ -304,6 +320,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-None-Match: AAA Tag for
    * PUT
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfNonMatchAAAPutTest() throws Fault {
     setProperty(REQUEST, buildRequest("PUT", "preconditionsAAAPut"));
     setProperty(REQUEST_HEADERS, IF_NONE_MATCH);
@@ -319,6 +336,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-None-Match No Tag for
    * GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfNonMatchGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsGet"));
     setProperty(REQUEST_HEADERS, IF_NONE_MATCH);
@@ -334,6 +352,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-None-Match: AAA Tag for
    * HEAD
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfNonMatchAAAHeadTest() throws Fault {
     setProperty(REQUEST, buildRequest("HEAD", "preconditionsAAAHead"));
     setProperty(REQUEST_HEADERS, IF_NONE_MATCH);
@@ -349,6 +368,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-None-Match No Tag for
    * HEAD
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsIfNonMatchHeadTest() throws Fault {
     setProperty(REQUEST, buildRequest("HEAD", "preconditionsHead"));
     setProperty(REQUEST_HEADERS, IF_NONE_MATCH);
@@ -364,6 +384,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Modified-Since, but was
    * not modified for GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsIfModSinceAgesAgoGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsAgesAgoGet"));
     setProperty(REQUEST_HEADERS, IF_MODIFIED_SINCE);
@@ -379,6 +400,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Unmodified-Since, but
    * was not modified for GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsIfUnmodSinceAgesAgoGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsAgesAgoGet"));
     setProperty(REQUEST_HEADERS, IF_UNMODIFIED_SINCE);
@@ -394,6 +416,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Modified-Since for GET,
    * was modified
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsIfModSinceNowGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsNowGet"));
     setProperty(REQUEST_HEADERS, IF_MODIFIED_SINCE);
@@ -409,6 +432,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Modified-Since for GET,
    * was modified
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsIfUnmodSinceNowGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsNowGet"));
     setProperty(REQUEST_HEADERS, IF_UNMODIFIED_SINCE);
@@ -424,6 +448,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Modified-Since, but was
    * not modified for GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfModAAASinceGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsAAAAgesAgoGet"));
     setProperty(REQUEST_HEADERS, IF_MODIFIED_SINCE);
@@ -439,6 +464,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Unmodified-Since, but
    * was not modified for GET
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfUnmodSinceAAAGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsAAAAgesAgoGet"));
     setProperty(REQUEST_HEADERS, IF_UNMODIFIED_SINCE);
@@ -454,6 +480,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Modified-Since for GET,
    * was modified
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfModSinceNowAAAGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsNowAAAGet"));
     setProperty(REQUEST_HEADERS, IF_MODIFIED_SINCE);
@@ -469,6 +496,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify evaluatePreconditions for If-Modified-Since for GET,
    * was modified
    */
+  @org.junit.jupiter.api.Test
   public void evaluatePreconditionsTagIfUnmodSinceNowAAAGetTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "preconditionsNowAAAGet"));
     setProperty(REQUEST_HEADERS, IF_UNMODIFIED_SINCE);

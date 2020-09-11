@@ -53,6 +53,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: An implementation MUST NOT use an entity provider for a
    * media type that is not supported by that provider.
    */
+  @org.junit.jupiter.api.Test
   public void noEntityProviderTest() throws Fault {
     enableAppJava(false);
     String ct = buildContentType(AbstractReader.NO_PROVIDER_MEDIATYPE);
@@ -72,6 +73,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Obtain the media type of the request. If the request does
    * not contain a Content-Type header then use application/octet-stream
    */
+  @org.junit.jupiter.api.Test
   public void meadiaTypeContentTypeTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "plain"));
     setProperty(Property.REQUEST_HEADERS,
@@ -90,6 +92,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Obtain the media type of the request. If the request does
    * not contain a Content-Type header then use application/octet-stream
    */
+  @org.junit.jupiter.api.Test
   public void meadiaTypeDefaultTest() throws Fault {
     enableAppJava(false);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "plain"));
@@ -108,6 +111,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void iterateAllAppJavaReadersTest() throws Fault {
     enableAppJava(false);
     MediaType mt = new MediaType("application", "java");
@@ -131,6 +135,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void iterateFirstAppJavaReaderTest() throws Fault {
     enableAppJava(true);
     MediaType mt = new MediaType("application", "java");

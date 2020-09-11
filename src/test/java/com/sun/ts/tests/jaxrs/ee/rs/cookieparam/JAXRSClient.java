@@ -57,6 +57,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * received using CookieParam in the resource; Verify on the client side from
    * response.
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamTest() throws Fault {
     StringBuffer sb = new StringBuffer();
     boolean pass = true;
@@ -93,6 +94,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -105,6 +107,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithValueOfTest() throws Fault {
     super.paramEntityWithValueOfTest();
   }
@@ -117,6 +120,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithFromStringTest() throws Fault {
     super.paramEntityWithFromStringTest();
   }
@@ -129,6 +133,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -141,6 +146,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamListEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -153,6 +159,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSortedSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -164,6 +171,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamEntityWithConstructorTest() throws Fault {
     super.fieldEntityWithConstructorTest();
   }
@@ -175,6 +183,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamEntityWithValueOfTest() throws Fault {
     super.fieldEntityWithValueOfTest();
   }
@@ -186,6 +195,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamEntityWithFromStringTest() throws Fault {
     super.fieldEntityWithFromStringTest();
   }
@@ -197,6 +207,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -208,6 +219,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamListEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -219,6 +231,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named CookieParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldSortedSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -233,6 +246,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * bean property values, see section 3.2.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
   }
@@ -246,6 +260,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.fieldThrowingWebApplicationExceptionTest();
   }
@@ -263,6 +278,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * the thrown exception with a client error response (400 status) and no
    * entity.
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.paramThrowingIllegalArgumentExceptionTest();
   }
@@ -276,6 +292,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamThrowingIllegalArgumentExceptionTest()
       throws Fault {
     super.fieldThrowingIllegalArgumentExceptionTest();

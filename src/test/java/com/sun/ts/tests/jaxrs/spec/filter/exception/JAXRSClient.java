@@ -60,6 +60,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * invoked;
    * 
    */
+  @org.junit.jupiter.api.Test
   public void throwExceptionOnPostMatchingFilterTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
     setProperty(Property.REQUEST_HEADERS,
@@ -81,6 +82,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Otherwise, only globally bound filters in the Container Response chain MUST
    * be invoked
    */
+  @org.junit.jupiter.api.Test
   public void throwExceptionOnPreMatchingFilterTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
     setProperty(Property.REQUEST_HEADERS,
@@ -99,6 +101,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: When a filter or interceptor method throws an exception,
    * the JAX-RS runtime will attempt to map the exception
    */
+  @org.junit.jupiter.api.Test
   public void throwExceptionOnInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
     setProperty(Property.REQUEST_HEADERS,
@@ -116,6 +119,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Just to be sure we have only one global binding interceptor
    */
+  @org.junit.jupiter.api.Test
   public void noNameBoundInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "nobinding"));
     setProperty(Property.CONTENT, "0");
@@ -135,6 +139,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * At most one exception mapper will be used in a single request processing
    * cycle to avoid potentially infinite loops.
    */
+  @org.junit.jupiter.api.Test
   public void throwSecondExceptionFromMapperFirstFromInterceptorTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -159,6 +164,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * At most one exception mapper will be used in a single request processing
    * cycle to avoid potentially infinite loops.
    */
+  @org.junit.jupiter.api.Test
   public void throwSecondExceptionFromMapperFirstFromPreMatchingFilterTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -183,6 +189,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * At most one exception mapper will be used in a single request processing
    * cycle to avoid potentially infinite loops.
    */
+  @org.junit.jupiter.api.Test
   public void throwSecondExceptionFromMapperFirstFromPostMatchingFilterTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -207,6 +214,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * At most one exception mapper will be used in a single request processing
    * cycle to avoid potentially infinite loops.
    */
+  @org.junit.jupiter.api.Test
   public void throwSecondExceptionFromInterceptorFirstFromInterceptorTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -232,6 +240,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * At most one exception mapper will be used in a single request processing
    * cycle to avoid potentially infinite loops.
    */
+  @org.junit.jupiter.api.Test
   public void throwSecondExceptionFromInterceptorFirstFromPreMatchingFilterTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -257,6 +266,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * At most one exception mapper will be used in a single request processing
    * cycle to avoid potentially infinite loops.
    */
+  @org.junit.jupiter.api.Test
   public void throwSecondExceptionFromInterceptorFirstFromPostMatchingFilterTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -281,6 +291,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * At most one exception mapper will be used in a single request processing
    * cycle to avoid potentially infinite loops.
    */
+  @org.junit.jupiter.api.Test
   public void throwNoExceptionFromPostMatchingFilterFirstFromInterceptorTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -307,6 +318,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * The request filter is not used on response from mapper
    */
+  @org.junit.jupiter.api.Test
   public void throwNoExceptionFromPostMatchingFilterFirstFromPostMatchingFilterTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
@@ -333,6 +345,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * The request filter is not used on response from mapper
    */
+  @org.junit.jupiter.api.Test
   public void throwNoExceptionFromPostMatchingFilterFirstFromPreMatchingFilterTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));

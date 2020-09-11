@@ -52,6 +52,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Other | Return type or subclass | Class of instance |
    * Generic type of return type
    */
+  @org.junit.jupiter.api.Test
   public void directClassTypeTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "linkedlist"));
     setProperty(SEARCH_STRING, Response.Status.OK.name());
@@ -69,6 +70,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Response | Object or subclass | Class of instance | Class
    * of instance
    */
+  @org.junit.jupiter.api.Test
   public void responseDirectClassTypeTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "response/linkedlist"));
     setProperty(SEARCH_STRING, Response.Status.OK.name());
@@ -86,6 +88,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Response | GenericEntity or subclass | RawType property |
    * Type property
    */
+  @org.junit.jupiter.api.Test
   public void responseGenericEntityTest() throws Fault {
     setProperty(REQUEST,
         buildRequest(GET, "response/genericentity/linkedlist"));
@@ -104,6 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: GenericEntity | GenericEntity or subclass | RawType
    * property | Type property
    */
+  @org.junit.jupiter.api.Test
   public void genericEntityTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "genericentity/linkedlist"));
     setProperty(SEARCH_STRING, Response.Status.OK.name());

@@ -64,6 +64,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that WebApplicationException(Status Null) works.
    */
+  @org.junit.jupiter.api.Test
   public void statusNullTest() throws Fault {
     Response.Status st = null;
     try {
@@ -84,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Verify that WebApplicationException(Throwable, Status Null)
    * works.
    */
+  @org.junit.jupiter.api.Test
   public void throwableStatusTest1() throws Fault {
     Response.Status st = null;
     try {
@@ -107,6 +109,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringTest() throws Fault {
     WebApplicationException e = new WebApplicationException(MESSAGE);
     assertResponse(e, STATUS);
@@ -122,6 +125,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     for (Status status : Status.values()) {
       Response response = buildResponse(status);
@@ -143,6 +147,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringNullResponseTest() throws Fault {
     WebApplicationException e = new WebApplicationException(MESSAGE,
         (Response) null);
@@ -160,6 +165,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringIntTest() throws Fault {
     for (Status status : Status.values()) {
       WebApplicationException e = new WebApplicationException(MESSAGE,
@@ -179,6 +185,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStatusTest() throws Fault {
     for (Status status : Status.values()) {
       WebApplicationException e = new WebApplicationException(MESSAGE, status);
@@ -195,6 +202,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws java.lang.IllegalArgumentException - if status is
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringNullStatusThrowsIAETest() throws Fault {
     try {
       WebApplicationException e = new WebApplicationException(MESSAGE,
@@ -217,6 +225,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -237,6 +246,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableResponseTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -263,6 +273,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableNullResponseTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -285,6 +296,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableIntTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -309,6 +321,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableStatusTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -331,6 +344,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws java.lang.IllegalArgumentException - if status is
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableNullStatusThrowsIAETest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };

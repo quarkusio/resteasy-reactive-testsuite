@@ -56,6 +56,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Get the entity output stream. Set a new entity output
    * stream.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityStreamTest() throws Fault {
     final String entityStreamWorks = "ENTITY_STREAM_WORKS";
     ContextProvider provider = new ContextProvider() {
@@ -86,6 +87,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the generic entity type information.
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersIsMutableTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -114,6 +116,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Set the request method.
    */
+  @org.junit.jupiter.api.Test
   public void setMethodTest() throws Fault {
     String entity = "ENTITY";
     ContextProvider provider = new ContextProvider() {
@@ -140,6 +143,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Set a new request URI. Get the request URI.
    */
+  @org.junit.jupiter.api.Test
   public void setUriTest() throws Fault {
     String entity = "ENTITY";
     ContextProvider provider = new ContextProvider() {

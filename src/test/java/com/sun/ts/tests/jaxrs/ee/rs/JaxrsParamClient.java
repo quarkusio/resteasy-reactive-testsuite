@@ -73,6 +73,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void paramEntityWithConstructorTest() throws Fault {
     fieldOrParamEntityName(ParamEntityWithConstructor.class, "JAXRS_SPEC_5.2",
         "");
@@ -83,6 +84,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void paramEntityWithValueOfTest() throws Fault {
     fieldOrParamEntityName(ParamEntityWithValueOf.class, "JAXRS_SPEC_5.3", "");
   }
@@ -92,6 +94,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void paramEntityWithFromStringTest() throws Fault {
     fieldOrParamEntityName(ParamEntityWithFromString.class, "JAXRS_SPEC_5.3",
         "");
@@ -118,6 +121,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void fieldEntityWithConstructorTest() throws Fault {
     fieldOrParamEntityName(ParamEntityWithConstructor.class, "JAXRS_SPEC_5.2",
         ParamTest.FIELD);
@@ -128,6 +132,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void fieldEntityWithValueOfTest() throws Fault {
     fieldOrParamEntityName(ParamEntityWithValueOf.class, "JAXRS_SPEC_5.3",
         ParamTest.FIELD);
@@ -138,6 +143,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void fieldEntityWithFromStringTest() throws Fault {
     fieldOrParamEntityName(ParamEntityWithFromString.class, "JAXRS_SPEC_5.3",
         ParamTest.FIELD);
@@ -179,6 +185,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void paramEntityWithEncodedTest() throws Fault {
     fieldOrParamEncodedTest("");
   }
@@ -188,6 +195,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Verify that named Param @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void fieldEntityWithEncodedTest() throws Fault {
     fieldOrParamEncodedTest(ParamTest.FIELD);
   }
@@ -263,6 +271,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void paramThrowingIllegalArgumentExceptionTest() throws Fault {
     fieldOrParamThrowingIllegalArgumentExceptionTest("");
   }
@@ -285,6 +294,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
    * the thrown exception with a client error response (400 status) and no
    * entity.
    */
+  @org.junit.jupiter.api.Test
   public void fieldThrowingIllegalArgumentExceptionTest() throws Fault {
     fieldOrParamThrowingIllegalArgumentExceptionTest(ParamTest.FIELD);
   }

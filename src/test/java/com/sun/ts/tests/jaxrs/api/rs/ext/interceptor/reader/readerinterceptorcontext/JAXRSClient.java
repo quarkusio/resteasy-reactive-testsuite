@@ -54,6 +54,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom If abortWith is invoked, execution is
    * aborted
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersOperationSetTest() throws Fault {
     ResponseBuilder builder = createResponse(ContextOperation.GETHEADERS);
     Response fake = builder.build();
@@ -74,6 +75,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom If abortWith is invoked, execution is
    * aborted
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersHeadersSetTest() throws Fault {
     ResponseBuilder builder = createResponse(ContextOperation.GETHEADERS);
     for (int i = 0; i != 5; i++) {
@@ -101,6 +103,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom If abortWith is invoked, execution is
    * aborted
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersIsMutableTest() throws Fault {
     ResponseBuilder builder = createResponse(
         ContextOperation.GETHEADERSISMUTABLE);
@@ -121,6 +124,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom If abortWith is invoked, execution is
    * aborted
    */
+  @org.junit.jupiter.api.Test
   public void getInputStreamTest() throws Fault {
     String entity = "getInputStreamEntity";
     ResponseBuilder builder = createResponse(ContextOperation.GETINPUTSTREAM);
@@ -144,6 +148,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom If abortWith is invoked, execution is
    * aborted
    */
+  @org.junit.jupiter.api.Test
   public void proceedThrowsIOExceptionTest() throws Fault {
     ResponseBuilder builder = createResponse(
         ContextOperation.PROCEEDTHROWSIOEXCEPTION);
@@ -168,6 +173,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom If abortWith is invoked, execution is
    * aborted
    */
+  @org.junit.jupiter.api.Test
   public void proceedThrowsWebApplicationExceptionTest() throws Fault {
     ResponseBuilder builder = createResponse(
         ContextOperation.PROCEEDTHROWSWEBAPPEXCEPTION);
@@ -194,6 +200,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom If abortWith is invoked, execution is
    * aborted
    */
+  @org.junit.jupiter.api.Test
   public void setInputStreamTest() throws Fault {
     ResponseBuilder builder = createResponse(ContextOperation.SETINPUTSTREAM);
     Response fake = builder.build();

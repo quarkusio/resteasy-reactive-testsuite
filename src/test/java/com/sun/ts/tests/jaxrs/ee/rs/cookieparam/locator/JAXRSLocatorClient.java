@@ -42,6 +42,7 @@ public class JAXRSLocatorClient
    * received using CookieParam in the resource; Verify on the client side from
    * response.
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSubTest() throws Fault {
     super.cookieParamTest();
   }
@@ -54,6 +55,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -66,6 +68,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithValueOfTest() throws Fault {
     super.paramEntityWithValueOfTest();
   }
@@ -78,6 +81,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithFromStringTest() throws Fault {
     super.paramEntityWithFromStringTest();
   }
@@ -90,6 +94,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -102,6 +107,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamListEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -114,6 +120,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSortedSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -129,6 +136,7 @@ public class JAXRSLocatorClient
    * bean property values, see section 3.2.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
   }
@@ -148,6 +156,7 @@ public class JAXRSLocatorClient
    * entity.
    *
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.paramThrowingIllegalArgumentExceptionTest();
   }

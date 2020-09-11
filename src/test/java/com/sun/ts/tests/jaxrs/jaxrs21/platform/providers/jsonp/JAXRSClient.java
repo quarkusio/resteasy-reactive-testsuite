@@ -50,6 +50,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonStringReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tostring"));
     setProperty(Property.SEARCH_STRING, Resource.MESSAGE);
@@ -73,6 +74,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonNumberReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tonumber"));
     setProperty(Property.SEARCH_STRING, String.valueOf(Long.MIN_VALUE));
@@ -87,6 +89,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonStringArgumentTest() throws Fault {
     String entity = getClass().getName();
     JsonString json = Json.createValue(entity);
@@ -104,6 +107,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonNumberArgumentTest() throws Fault {
     JsonNumber number = Json.createValue(Long.MIN_VALUE);
     setRequestContentEntity(number);

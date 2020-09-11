@@ -75,6 +75,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @QueryParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void queryParamInParamTest() throws Fault {
     String[] reqArgs = getRequestArguments("Query");
     String request = buildRequestQuery(Request.POST, "queryparam", reqArgs[0],
@@ -89,6 +90,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @QueryParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void queryParamOnFieldTest() throws Fault {
     String[] reqArgs = getRequestArguments("Query");
     String request = buildRequestQuery(Request.POST, "queryfield", reqArgs[0],
@@ -103,6 +105,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @FormParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void formParamInParamTest() throws Fault {
     String[] reqArgs = getRequestArguments("Form");
     String request = buildRequest(Request.POST, "formparam");
@@ -116,6 +119,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @FormParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void formParamOnFieldTest() throws Fault {
     String[] reqArgs = getRequestArguments("Form");
     String request = buildRequest(Request.POST, "formfield");
@@ -129,6 +133,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @HeaderParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void headerParamInParamTest() throws Fault {
     String[] reqArgs = getRequestArguments("Header");
     String request = buildRequest(Request.POST, "headerparam");
@@ -144,6 +149,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @HeaderParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void headerParamOnFieldTest() throws Fault {
     String[] reqArgs = getRequestArguments("Header");
     String request = buildRequest(Request.POST, "headerfield");
@@ -159,6 +165,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @PathParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void pathParamInParamTest() throws Fault {
     String request = buildRequest(Request.POST, "pathparam/", FIRST, "/",
         SECOND);
@@ -172,6 +179,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @PathParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void pathParamOnFieldTest() throws Fault {
     String request = buildRequest(Request.POST, "pathfield/", FIRST, "/",
         SECOND);
@@ -185,6 +193,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @MatrixParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamInParamTest() throws Fault {
     String[] reqArgs = getRequestArguments("Matrix");
     String request = buildRequest(Request.POST, "matrixparam;", reqArgs[0], ";",
@@ -199,6 +208,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @MatrixParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamOnFieldTest() throws Fault {
     String[] reqArgs = getRequestArguments("Matrix");
     String request = buildRequest(Request.POST, "matrixfield;", reqArgs[0], ";",
@@ -213,6 +223,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @CookieParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamInParamTest() throws Fault {
     String request = buildRequest(Request.POST, "cookieparam");
     buildCookie();
@@ -226,6 +237,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure @CookieParam works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamOnFieldTest() throws Fault {
     String request = buildRequest(Request.POST, "cookiefield");
     buildCookie();
@@ -240,6 +252,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure all params works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void allParamsInParamTest() throws Fault {
     allParamsTest("allparam");
   }
@@ -252,6 +265,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure all params works in @BeanParam annotated bean
    */
+  @org.junit.jupiter.api.Test
   public void allParamsOnFieldTest() throws Fault {
     allParamsTest("allfield");
   }

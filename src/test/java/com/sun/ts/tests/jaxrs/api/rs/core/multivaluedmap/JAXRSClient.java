@@ -70,6 +70,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Ensure getFirst works for empty map
    */
+  @org.junit.jupiter.api.Test
   public void getFirstWhenEmptyTest() throws Fault {
     assertFault(map.getFirst(KEYS[0]) == null,
         "EmptyMultivaluedMap#getFirst() should return null");
@@ -84,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Ensure getFirst works for a single item
    */
+  @org.junit.jupiter.api.Test
   public void getFirstWhenSingleItemTest() throws Fault {
     map.add(KEYS[0], this);
     assertFault(map.size() == 1,
@@ -100,6 +102,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Ensure getFirst works for more items
    */
+  @org.junit.jupiter.api.Test
   public void getFirstWhenMoreItemsTest() throws Fault {
     map.add(KEYS[0], this);
     map.add(KEYS[0], vec);
@@ -119,6 +122,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Ensure getFirst works getFirst() item is erased
    */
+  @org.junit.jupiter.api.Test
   public void getFirstWhenFirstErasedTest() throws Fault {
     map.add(KEYS[0], this);
     map.add(KEYS[0], vec);
@@ -144,6 +148,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Try what to happen when remove all items in a list
    */
+  @org.junit.jupiter.api.Test
   public void getFirstWhenListClearedTest() throws Fault {
     map.add(KEYS[0], this);
     map.add(KEYS[0], vec);
@@ -159,6 +164,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Try the null key
    */
+  @org.junit.jupiter.api.Test
   public void getFirstWhenKeyIsNullTest() throws Fault {
     map.add(KEYS[0], this);
     map.add(null, vec);
@@ -178,6 +184,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Try putSingle with a key and null key
    */
+  @org.junit.jupiter.api.Test
   public void putSingleTest() throws Fault {
     map.putSingle(KEYS[0], this);
     map.putSingle(KEYS[0], vec);
@@ -202,6 +209,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied key. If the supplied array of new values is empty, method returns
    * immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllValuesTest() throws Fault {
     JAXRSClient client1 = new JAXRSClient();
     map.addAll(KEYS[0], this, vec, client1);
@@ -225,6 +233,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied key. If the supplied array of new values is empty, method returns
    * immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllValuesNullKeyTest() throws Fault {
     JAXRSClient client1 = new JAXRSClient();
     map.addAll(null, this, vec, client1);
@@ -248,6 +257,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied key. If the supplied array of new values is empty, method returns
    * immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllValuesEmptyReturnsImmediatellyTest() throws Fault {
     map.addAll(KEYS[0], new Object[0]);
     assertFault(!map.containsKey(KEYS[0]),
@@ -263,6 +273,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Method throws a NullPointerException if the supplied array
    * of values is null.
    */
+  @org.junit.jupiter.api.Test
   public void addAllValuesThrowNPETest() throws Fault {
     try {
       map.addAll(KEYS[0], (Object[]) null);
@@ -281,6 +292,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * current list of values for the supplied key. If the supplied value list is
    * empty, method returns immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllListTest() throws Fault {
     JAXRSClient client1 = new JAXRSClient();
     map.addAll(KEYS[0], Arrays.asList((Object) this, vec, client1));
@@ -304,6 +316,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * current list of values for the supplied key. If the supplied value list is
    * empty, method returns immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllListNullKeyTest() throws Fault {
     JAXRSClient client1 = new JAXRSClient();
     map.addAll(null, Arrays.asList((Object) this, vec, client1));
@@ -327,6 +340,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * current list of values for the supplied key. If the supplied value list is
    * empty, method returns immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllListEmptyReturnsImmediatellyTest() throws Fault {
     map.addAll(KEYS[0], new ArrayList<Object>());
     assertFault(!map.containsKey(KEYS[0]),
@@ -342,6 +356,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws NullPointerException - if the supplied value list is
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void addAllListThrowNPETest() throws Fault {
     try {
       map.addAll(KEYS[0], (List<Object>) null);
@@ -359,6 +374,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Add a value to the first position in the current list of
    * values for the supplied key.
    */
+  @org.junit.jupiter.api.Test
   public void addFirstTest() throws Fault {
     map.addAll(null, vec, this);
     map.addFirst(null, new StringBuilder().append("test"));
@@ -377,6 +393,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the order of values for each key. Specifically, the values associated with
    * each key are compared as if they were ordered lists.
    */
+  @org.junit.jupiter.api.Test
   public void equalsIgnoreValueOrderTest() throws Fault {
     Object o1 = new StringBuilder().append(KEYS[0]);
     Object o2 = new StringBuffer().append(KEYS[1]);

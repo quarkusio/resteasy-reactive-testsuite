@@ -42,6 +42,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonArray
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonArrayReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "toarray"));
     bufferEntity(true);
@@ -58,6 +59,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonStructure
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonStructureReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tostructure"));
     bufferEntity(true);
@@ -74,6 +76,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonObject
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonObjectReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "toobject"));
     bufferEntity(true);
@@ -89,6 +92,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonArray
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonArrayArgumentTest() throws Fault {
     String entity = Resource.createArray().toString();
     setProperty(Property.REQUEST, buildRequest(Request.POST, "fromarray"));
@@ -106,6 +110,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonStructure
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonStructureArgumentTest() throws Fault {
     String entity = Resource.createArray().toString();
     setProperty(Property.REQUEST, buildRequest(Request.POST, "fromstructure"));
@@ -123,6 +128,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonObject
    */
+  @org.junit.jupiter.api.Test
   public void serverJsonObjectArgumentTest() throws Fault {
     String entity = Resource.createObject(1).toString();
     setProperty(Property.REQUEST, buildRequest(Request.POST, "fromobject"));

@@ -63,6 +63,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithRuntimeExceptionTest() throws Fault {
     Response response = buildResponse(STATUS);
     IllegalStateException ile = new IllegalStateException("TCK exception");
@@ -84,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCheckedExceptionTest() throws Fault {
     Response response = buildResponse(STATUS);
     IOException ioe = new IOException("TCK exception");
@@ -105,6 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullThrowableTest() throws Fault {
     Response response = buildResponse(STATUS);
     ResponseProcessingException mpe = new ResponseProcessingException(response,
@@ -126,6 +129,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullThrowableNullMessageTest() throws Fault {
     Response response = buildResponse(STATUS);
     ResponseProcessingException mpe = new ResponseProcessingException(response,
@@ -147,6 +151,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullThrowableNotNullMessageTest() throws Fault {
     Response response = buildResponse(STATUS);
     ResponseProcessingException mpe = new ResponseProcessingException(response,
@@ -167,6 +172,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithRuntimeExceptionNullMessageTest() throws Fault {
     Response response = buildResponse(STATUS);
     IllegalStateException ise = new IllegalStateException(
@@ -189,6 +195,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCheckedExceptionNullMessageTest() throws Fault {
     Response response = buildResponse(STATUS);
     IOException ioe = new IOException("JAXRS TCK exception");
@@ -210,6 +217,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithRuntimeExceptionAndNotNullMessageTest()
       throws Fault {
     Response response = buildResponse(STATUS);
@@ -232,6 +240,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCheckedExceptionAndNotNullMessageTest()
       throws Fault {
     Response response = buildResponse(STATUS);
@@ -253,6 +262,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNotNullMessageTest() throws Fault {
     Response response = buildResponse(STATUS);
     ResponseProcessingException mpe = new ResponseProcessingException(response,
@@ -273,6 +283,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ResponseProcessingException.getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithNullMessageTest() throws Fault {
     Response response = buildResponse(STATUS);
     ResponseProcessingException mpe = new ResponseProcessingException(response,

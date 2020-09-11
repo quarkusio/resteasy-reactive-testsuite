@@ -64,6 +64,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Called when the invocation was successfully completed.
    */
+  @org.junit.jupiter.api.Test
   public void completedTest() throws Fault {
     AtomicInteger ai = new AtomicInteger(0);
     CountDownLatch countDownLatch = new CountDownLatch(1);
@@ -89,6 +90,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Called when the invocation has failed for any reason.
    */
+  @org.junit.jupiter.api.Test
   public void failedTest() throws Fault {
     AtomicInteger ai = new AtomicInteger(0);
     CountDownLatch countDownLatch = new CountDownLatch(1);

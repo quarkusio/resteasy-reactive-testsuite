@@ -91,6 +91,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the class of status code
    */
+  @org.junit.jupiter.api.Test
   public void getFamilyTest() throws Fault {
     Response response;
     for (int i = 0; i != status_codes.length; i++) {
@@ -110,6 +111,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the reason phrase
    */
+  @org.junit.jupiter.api.Test
   public void getReasonPhraseTest() throws Fault {
     Response response;
     for (int i = 0; i != status_codes.length; i++) {
@@ -130,6 +132,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the associated status code.
    */
+  @org.junit.jupiter.api.Test
   public void getStatusCodeTest() throws Fault {
     Response response;
     for (int i = 0; i != status_codes.length; i++) {
@@ -149,6 +152,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the response status family for the status code.
    */
+  @org.junit.jupiter.api.Test
   public void familyOfTest() throws Fault {
     for (int i = 0; i != status_codes.length; i++) {
       Family family = Status.Family.familyOf(status_codes[i]);

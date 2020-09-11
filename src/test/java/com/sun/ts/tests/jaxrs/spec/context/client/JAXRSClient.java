@@ -61,6 +61,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method is fully managed by the JAX-RS implementation or any underlying IoC
    * container supported by the implementation.
    */
+  @org.junit.jupiter.api.Test
   public void clientWriterTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity(new StringBean("stringbean"));
@@ -85,6 +86,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method is fully managed by the JAX-RS implementation or any underlying IoC
    * container supported by the implementation.
    */
+  @org.junit.jupiter.api.Test
   public void clientReaderTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity("stringbean");

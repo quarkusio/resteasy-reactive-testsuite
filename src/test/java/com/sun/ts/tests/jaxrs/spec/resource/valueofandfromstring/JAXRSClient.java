@@ -51,6 +51,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void enumHeaderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "param:" + DATA);
     setProperty(Property.REQUEST,
@@ -68,6 +69,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void enumCookieTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Cookie: param=" + DATA);
     setProperty(Property.REQUEST,
@@ -85,6 +87,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void enumMaxtrixTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/enummatrix;param=" + DATA));
@@ -101,6 +104,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void enumQueryTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/enumquery?param=" + DATA));
@@ -117,6 +121,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void enumPathTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/enumpath/" + DATA));
@@ -133,6 +138,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void entityHeaderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "param:" + DATA);
     setProperty(Property.REQUEST,
@@ -150,6 +156,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void entityCookieTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Cookie: param=" + DATA);
     setProperty(Property.REQUEST,
@@ -167,6 +174,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void entityMaxtrixTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/entitymatrix;param=" + DATA));
@@ -183,6 +191,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void entityQueryTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/entityquery?param=" + DATA));
@@ -199,6 +208,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
+  @org.junit.jupiter.api.Test
   public void entityPathTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/entitypath/" + DATA));

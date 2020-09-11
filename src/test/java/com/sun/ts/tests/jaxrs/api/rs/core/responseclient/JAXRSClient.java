@@ -157,6 +157,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using Response.ok().build()
    * verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void okTest1() throws Fault {
     VerificationResult result;
     Response response = null;
@@ -176,6 +177,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using
    * Response.ok(String).build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void okTest2() throws Fault {
     VerificationResult result;
     Response resp = null;
@@ -197,6 +199,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using Response.ok(String,
    * String).build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void okTest3() throws Fault {
     VerificationResult result;
     Response resp = null;
@@ -220,6 +223,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using Response.ok(String,
    * MediaType).build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void okTest4() throws Fault {
     VerificationResult result;
     Response resp = null;
@@ -247,6 +251,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using Response.ok(String,
    * Variant).build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void okTest5() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -280,6 +285,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using
    * Response.noContent().build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void noContentTest() throws Fault {
     VerificationResult result;
 
@@ -304,6 +310,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.notAcceptable(vts).build() verify that correct status code is
    * returned
    */
+  @org.junit.jupiter.api.Test
   public void notAcceptableTest() throws Fault {
     VerificationResult result;
 
@@ -330,6 +337,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using
    * Response.notModified().build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void notModifiedTest1() throws Fault {
     VerificationResult result;
 
@@ -352,6 +360,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.notModified(String).build() verify that correct status code is
    * returned
    */
+  @org.junit.jupiter.api.Test
   public void notModifiedTest2() throws Fault {
     VerificationResult result;
     Response resp = null;
@@ -377,6 +386,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.notModified(EntityTag).build() verify that correct status code is
    * returned
    */
+  @org.junit.jupiter.api.Test
   public void notModifiedTest3() throws Fault {
     VerificationResult result;
     Response resp = null;
@@ -404,6 +414,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using
    * Response.status(int).build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest1() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -426,6 +437,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.status(Response.Status).build() verify that correct status code is
    * returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest2() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -448,6 +460,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.status(int).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest3() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -470,6 +483,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.status(Response.Status).build() verify that
    * correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest4() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -491,6 +505,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using
    * Response.created(URI).build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void createdTest() throws Fault {
     VerificationResult result = new VerificationResult();
 
@@ -529,6 +544,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using
    * Response.serverError().build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void serverErrorTest() throws Fault {
     VerificationResult result;
 
@@ -547,6 +563,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an instance of Response using
    * Response.seeOther(URI).build() verify that correct status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void seeOtherTest() throws Fault {
     VerificationResult result = new VerificationResult();
 
@@ -578,6 +595,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.temporaryRedirect(URI).build() verify that correct status code is
    * returned
    */
+  @org.junit.jupiter.api.Test
   public void temporaryRedirectTest() throws Fault {
     VerificationResult result = new VerificationResult();
 
@@ -609,6 +627,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.fromResponse(Response).build() verify that correct status code is
    * returned
    */
+  @org.junit.jupiter.api.Test
   public void fromResponseTest() throws Fault {
     VerificationResult result = new VerificationResult();
 
@@ -645,6 +664,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.entity(String).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void entityTest() throws Fault {
     VerificationResult result = new VerificationResult();
 
@@ -668,6 +688,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.language(String).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void languageTest() throws Fault {
     VerificationResult result = new VerificationResult();
 
@@ -693,6 +714,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.language(Locale).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void languageTest1() throws Fault {
     VerificationResult result = new VerificationResult();
     int status = 200;
@@ -716,6 +738,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.type(String).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void typeTest() throws Fault {
     VerificationResult result = new VerificationResult();
     int status = 200;
@@ -738,6 +761,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.type(MediaType).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void typeTest1() throws Fault {
     VerificationResult result;
 
@@ -764,6 +788,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.tag(String).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void tagTest1() throws Fault {
     VerificationResult result;
 
@@ -789,6 +814,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.tag(EntityTag).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void tagTest2() throws Fault {
     VerificationResult result;
     int status = 200;
@@ -815,6 +841,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.status(int).variant(Variant).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void variantTest() throws Fault {
     VerificationResult result = new VerificationResult();
     Response resp = null;
@@ -845,6 +872,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.status(int).variants(List<Variant>).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void variantsTest() throws Fault {
     VerificationResult result;
     Response resp = null;
@@ -872,6 +900,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.status(status).location(URI).build() verify that correct status
    * code is returned
    */
+  @org.junit.jupiter.api.Test
   public void locationTest() throws Fault {
     VerificationResult result = new VerificationResult();
     int status = 200;
@@ -911,6 +940,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.status(status).contentLocation(URI).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void contentLocationTest() throws Fault {
     VerificationResult result = new VerificationResult();
     int status = 200;
@@ -950,6 +980,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.cacheControl(String).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void cacheControlTest() throws Fault {
     VerificationResult result;
     int status = 200;
@@ -977,6 +1008,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.cookie(NewCookie).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void cookieTest() throws Fault {
     VerificationResult result;
     int status = 200;
@@ -1024,6 +1056,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.lastModified(Date).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void lastModifiedTest() throws Fault {
     VerificationResult result;
     int status = 200;
@@ -1049,6 +1082,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.header(String, Object).build() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void headerTest() throws Fault {
     VerificationResult result;
     int status = 200;
@@ -1090,6 +1124,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Response.ResponseBuilder.clone() verify that correct status code is
    * returned
    */
+  @org.junit.jupiter.api.Test
   public void cloneTest() throws Fault {
     VerificationResult result;
     int status = 200;
@@ -1148,6 +1183,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.fromStatusCode(int) verify that
    * correct Response.Status is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest5() throws Fault {
     VerificationResult result = new VerificationResult();
     Response.Status tmp = null;
@@ -1173,6 +1209,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.getFamily() verify that correct
    * Response.Status.Family is returned
    */
+  @org.junit.jupiter.api.Test
   public void getFamilyTest() throws Fault {
     VerificationResult result = new VerificationResult();
     Response.Status.Family tmp = null;
@@ -1201,6 +1238,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.getStatusCode() verify that correct
    * status code is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusTest7() throws Fault {
     VerificationResult result = new VerificationResult();
     int tmp = 0;
@@ -1228,6 +1266,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.toString() verify that correct reason
    * phase is returned
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     VerificationResult result = new VerificationResult();
     String tmp = null;
@@ -1255,6 +1294,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.getReasonPhrase() verify that correct
    * reason phase is returned
    */
+  @org.junit.jupiter.api.Test
   public void getReasonPhraseTest() throws Fault {
     VerificationResult result = new VerificationResult();
     String tmp = null;
@@ -1285,6 +1325,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.valueOf(String) verify that correct
    * Status is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusValueOfTest() throws Fault {
     VerificationResult result = new VerificationResult();
     Response.Status tmp = null;
@@ -1318,6 +1359,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.Family.valueOf() verify that correct
    * Family is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusFamilyValueOfTest() throws Fault {
     Response.Status.Family[] families = Response.Status.Family.values();
     assertFault(families.length == status_family_list.length,
@@ -1338,6 +1380,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call Response.Status.Family.values() verify that correct
    * Family is returned
    */
+  @org.junit.jupiter.api.Test
   public void statusFamilyValuesTest() throws Fault {
     Response.Status.Family[] families = Response.Status.Family.values();
     assertFault(families.length == status_family_list.length,
@@ -1356,6 +1399,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a new ResponseBuilder with an ACCEPTED status.
    */
+  @org.junit.jupiter.api.Test
   public void acceptedNoArgTest() throws Fault {
     VerificationResult result;
     Response response = null;
@@ -1375,6 +1419,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * actual entity with GenericEntity if preservation of its generic type is
    * required.
    */
+  @org.junit.jupiter.api.Test
   public void acceptedStringTest() throws Fault {
     VerificationResult result;
     String entity = "ENtiTy";
@@ -1396,6 +1441,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * actual entity with GenericEntity if preservation of its generic type is
    * required.
    */
+  @org.junit.jupiter.api.Test
   public void acceptedGenericEntityTest() throws Fault {
     VerificationResult result;
     String entity = "ENtiTy";
@@ -1417,6 +1463,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * unconsumed input stream an invocation of bufferEntity method is ignored and
    * the method returns false.
    */
+  @org.junit.jupiter.api.Test
   public void bufferEntityIgnoreNoBackingStreamTest() throws Fault {
     Response response = Response.ok().build();
     boolean result = response.bufferEntity();
@@ -1432,6 +1479,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws IllegalStateException - in case the response has
    * been #close() closed.
    */
+  @org.junit.jupiter.api.Test
   public void bufferEntityThrowsIllegalStateExceptionTest() throws Fault {
     Response response = Response.ok().build();
     response.close();
@@ -1450,6 +1498,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the allowed HTTP methods from the Allow HTTP header.
    */
+  @org.junit.jupiter.api.Test
   public void getAllowedMethodsTest() throws Fault {
     Response response = Response.ok()
         .header(HttpHeaders.ALLOW, Request.POST.name())
@@ -1474,6 +1523,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get any new cookies set on the response message.
    */
+  @org.junit.jupiter.api.Test
   public void getCookiesTest() throws Fault {
     NewCookie cookie1 = new NewCookie("c1", "v1");
     NewCookie cookie2 = new NewCookie("c2", "v2");
@@ -1506,6 +1556,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: returns a read-only map of cookie name (String) to Cookie.
    */
+  @org.junit.jupiter.api.Test
   public void getCookiesIsImmutableTest() throws Fault {
     NewCookie cookie1 = new NewCookie("c1", "v1");
     NewCookie cookie2 = new NewCookie("c2", "v2");
@@ -1531,6 +1582,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get message date.
    */
+  @org.junit.jupiter.api.Test
   public void getDateTest() throws Fault {
     Date date = Calendar.getInstance().getTime();
     Response response = Response.ok().header("Date", date).build();
@@ -1548,6 +1600,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getDateNotPresentTest() throws Fault {
     Response response = Response.ok().build();
     Date responseDate = response.getDate();
@@ -1564,6 +1617,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: if the entity was previously fully consumed as an
    * InputStream input stream, or if the response has been #close() closed.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityThrowsIllegalStateExceptionTest() throws Fault {
     Response response = Response.ok("entity").build();
     response.close();
@@ -1582,6 +1636,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the entity tag.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTagTest() throws Fault {
     EntityTag tag = new EntityTag("getEntityTag");
     Response response = Response.notModified(tag).build();
@@ -1598,6 +1653,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTagNotPresentTest() throws Fault {
     Response response = Response.ok().build();
     EntityTag responseTag = response.getEntityTag();
@@ -1613,6 +1669,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get view of the response headers and their object values.
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersTest() throws Fault {
     CacheControl ccl = new CacheControl();
     NewCookie cookie = new NewCookie("cookie", "eikooc");
@@ -1660,6 +1717,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get view of the response headers and their object values.
    * Changes in the underlying header data are reflected in this view.
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersIsMutableTest() throws Fault {
     String header = "header";
     Response response = Response.ok().build();
@@ -1681,6 +1739,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get a message header as a single string value.
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringTest() throws Fault {
     CacheControl ccl = new CacheControl();
     ccl.setNoStore(true);
@@ -1723,6 +1782,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * header value is converted to String using a RuntimeDelegate.HeaderDelegate
    * or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringUsingHeaderDelegateTest() throws Fault {
     StringBean bean = new StringBean("s3");
     RuntimeDelegate original = RuntimeDelegate.getInstance();
@@ -1748,6 +1808,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * header value is converted to String using a RuntimeDelegate.HeaderDelegate
    * or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringUsingToStringTest() throws Fault {
     StringBuilder builder = new StringBuilder("s1");
     StringBuffer buffer = new StringBuffer("s2");
@@ -1771,6 +1832,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the language of the message entity.
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageTest() throws Fault {
     Response response = Response.ok().language(Locale.CANADA_FRENCH).build();
     Locale locale = response.getLanguage();
@@ -1786,6 +1848,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageNotPresentTest() throws Fault {
     Response response = Response.ok().build();
     Locale locale = response.getLanguage();
@@ -1801,6 +1864,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the last modified date.
    */
+  @org.junit.jupiter.api.Test
   public void getLastModifiedTest() throws Fault {
     Date date = Calendar.getInstance().getTime();
     Response response = Response.ok().lastModified(date).build();
@@ -1817,6 +1881,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLastModifiedNotPresentTest() throws Fault {
     Response response = Response.ok().build();
     Date responseDate = response.getLastModified();
@@ -1832,6 +1897,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get Content-Length value.
    */
+  @org.junit.jupiter.api.Test
   public void getLengthTest() throws Fault {
     Response response = Response.ok("1234567890")
         .header(HttpHeaders.CONTENT_LENGTH, "10").build();
@@ -1848,6 +1914,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: In other cases returns -1.
    */
+  @org.junit.jupiter.api.Test
   public void getLengthNotPresentTest() throws Fault {
     Response response = Response.ok().build();
     int len = response.getLength();
@@ -1863,6 +1930,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the link for the relation.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkTest() throws Fault {
     Link link = createLink("path", "getLinkTest");
     Response response = Response.ok().links(link).build();
@@ -1879,6 +1947,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: returns null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkNotPresentTest() throws Fault {
     Response response = Response.ok().build();
     Link responseLink = response.getLink("getLinkTest");
@@ -1895,6 +1964,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Convenience method that returns a Link.Builder for the
    * relation.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkBuilderForTheRelationTest() throws Fault {
     String rel = "anyrelation";
     Response response = Response.ok().link("http://abc.com/b/", rel).build();
@@ -1912,6 +1982,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: returns null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkBuilderForTheNotPresentRelationTest() throws Fault {
     Response response = Response.ok().build();
     Builder builder = response.getLinkBuilder("anyrelation");
@@ -1927,6 +1998,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the links attached to the message as header.
    */
+  @org.junit.jupiter.api.Test
   public void getLinksTest() throws Fault {
     Link link1 = createLink("path1", "rel1");
     Link link2 = createLink("path2", "rel2");
@@ -1948,6 +2020,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Does not return null.
    */
+  @org.junit.jupiter.api.Test
   public void getLinksIsNotNullTest() throws Fault {
     Response response = Response.ok().build();
     Set<Link> responseLinks = response.getLinks();
@@ -1964,6 +2037,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the location.
    */
+  @org.junit.jupiter.api.Test
   public void getLocationTest() throws Fault {
     URI location = createUri("path");
     Response response = Response.ok().location(location).build();
@@ -1980,6 +2054,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get null when no present.
    */
+  @org.junit.jupiter.api.Test
   public void getLocationNotPresentTest() throws Fault {
     Response response = Response.ok().build();
     URI responseLocation = response.getLocation();
@@ -1995,6 +2070,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the media type of the message entity.
    */
+  @org.junit.jupiter.api.Test
   public void getMediaTypeTest() throws Fault {
     Response response = Response.ok().type(MediaType.APPLICATION_ATOM_XML)
         .build();
@@ -2012,6 +2088,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: null if there is no response entity.
    */
+  @org.junit.jupiter.api.Test
   public void getMediaTypeNoMediaTypeTest() throws Fault {
     Response response = Response.ok().build();
     MediaType responseMedia = response.getMediaType();
@@ -2028,6 +2105,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the complete status information associated with the
    * response.
    */
+  @org.junit.jupiter.api.Test
   public void getStatusInfoTest() throws Fault {
     for (Status status : Status.values()) {
       Response response = Response.status(status).build();
@@ -2047,6 +2125,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Each single header value is converted to String using a
    * RuntimeDelegate.HeaderDelegate or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getStringHeadersUsingToStringTest() throws Fault {
     RuntimeDelegate original = RuntimeDelegate.getInstance();
     RuntimeDelegate.setInstance(new StringBeanRuntimeDelegate(original));
@@ -2082,6 +2161,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Each single header value is converted to String using a
    * RuntimeDelegate.HeaderDelegate or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getStringHeadersUsingHeaderDelegateTest() throws Fault {
     RuntimeDelegate original = RuntimeDelegate.getInstance();
     RuntimeDelegate.setInstance(new StringBeanRuntimeDelegate(original));
@@ -2111,6 +2191,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check if there is an entity available in the response.
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityWhenEntityTest() throws Fault {
     Response response = Response.ok("entity").build();
     assertFault(response.hasEntity(), "#hasEntity did not found the entity");
@@ -2124,6 +2205,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check if there is an entity available in the response.
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityWhenNoEntityTest() throws Fault {
     Response response = Response.ok().build();
     assertFault(!response.hasEntity(), "#hasEntity did found the entity");
@@ -2138,6 +2220,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws java.lang.IllegalStateException - in case the
    * response has been closed.
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityThrowsIllegalStateExceptionTest() throws Fault {
     Response response = Response.ok().build();
     response.close();
@@ -2157,6 +2240,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check if link for relation exists.
    */
+  @org.junit.jupiter.api.Test
   public void hasLinkWhenLinkTest() throws Fault {
     Link link = createLink("path", "rel");
     Response response = Response.ok().links(link).build();
@@ -2171,6 +2255,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check if link for relation exists.
    */
+  @org.junit.jupiter.api.Test
   public void hasLinkWhenNoLinkTest() throws Fault {
     Response response = Response.ok().build();
     assertFault(!response.hasLink("rel"), "#has Link did found some Link");

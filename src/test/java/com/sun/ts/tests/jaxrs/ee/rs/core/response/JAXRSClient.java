@@ -90,6 +90,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * status code returned
    *
    */
+  @org.junit.jupiter.api.Test
   public void statusTest() throws Fault {
     for (Response.Status status : Response.Status.values()) {
       if (status == Status.RESET_CONTENT)
@@ -113,6 +114,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * an already buffered (and thus closed) message instance is legal and has no
    * further effect.
    */
+  @org.junit.jupiter.api.Test
   public void bufferEntityBuffersDataTest() throws Fault {
     Response response = invokeGet("entity");
     boolean buffer = response.bufferEntity();
@@ -137,6 +139,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Throws: ProcessingException - if there was an error while
    * buffering the entity input stream.
    */
+  @org.junit.jupiter.api.Test
   public void bufferEntityThrowsExceptionTest() throws Fault {
     setCorruptedStream(); // the error is on buffering, which calls close()
     Response response = invokeGet("corrupted");
@@ -152,6 +155,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: throws IllegalStateException - in case the response has
    * been #close() closed.
    */
+  @org.junit.jupiter.api.Test
   public void bufferEntityThrowsIllegalStateExceptionTest() throws Fault {
     Response response = invokeGet("entity");
     response.close();
@@ -173,6 +177,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * with the same effect which also means that calling the method on an already
    * closed message instance is legal and has no further effect
    */
+  @org.junit.jupiter.api.Test
   public void closeTest() throws Fault {
     // make new Client, the one from super class calls bufferEntity()
     Client client = ClientBuilder.newClient();
@@ -204,6 +209,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: throws ProcessingException - if there is an error closing
    * the response.
    */
+  @org.junit.jupiter.api.Test
   public void closeThrowsExceptionWhenErrorTest() throws Fault {
     setCorruptedStream();
     Response response = invokeGet("corrupted");
@@ -227,6 +233,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the allowed HTTP methods from the Allow HTTP header.
    */
+  @org.junit.jupiter.api.Test
   public void getAllowedMethodsTest() throws Fault {
     String allowed = Request.POST.name() + " " + Request.TRACE.name();
     Response response = invokePost("allowedmethods", allowed);
@@ -250,6 +257,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get any new cookies set on the response message.
    */
+  @org.junit.jupiter.api.Test
   public void getCookiesTest() throws Fault {
     Response response = invokeGet("cookies");
     // getCookies test
@@ -275,6 +283,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: returns a read-only map of cookie name (String) to Cookie.
    */
+  @org.junit.jupiter.api.Test
   public void getCookiesIsImmutableTest() throws Fault {
     NewCookie cookie3 = new NewCookie("c3", "v3");
     Response response = invokeGet("cookies");
@@ -299,6 +308,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get message date.
    */
+  @org.junit.jupiter.api.Test
   public void getDateTest() throws Fault {
     long date = getCurrentTimeMillis();
     Response response = invokePost("date", String.valueOf(date));
@@ -320,6 +330,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: if the entity was previously fully consumed as an
    * InputStream input stream, or if the response has been #close() closed.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityThrowsIllegalStateExceptionTestWhenClosed()
       throws Fault {
     Response response = invokeGet("entity");
@@ -340,6 +351,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: if the entity was previously fully consumed as an
    * InputStream input stream, or if the response has been #close() closed.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityThrowsIllegalStateExceptionWhenConsumedTest()
       throws Fault {
     Response response = invokeGet("entity");
@@ -359,6 +371,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the entity tag.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTagTest() throws Fault {
     String tag = "ABCDEF0123456789";
     setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_MODIFIED));
@@ -376,6 +389,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTagNotPresentTest() throws Fault {
     ResponseHeaderValue<EntityTag> value = new ResponseHeaderValue<>();
     addProvider(new HeaderNotPresent<EntityTag>(value) {
@@ -398,6 +412,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get view of the response headers and their object values.
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersTest() throws Fault {
     Response response = invokePost("headers", "notnull");
     logMsg("Found following objects:");
@@ -437,6 +452,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get view of the response headers and their object values.
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersUsingHeaderDelegateTest() throws Fault {
     invokeGet("setstringbeanruntime");
 
@@ -463,6 +479,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Get view of the response headers and their object values.
    * Changes in the underlying header data are reflected in this view.
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersIsMutableTest() throws Fault {
     String header = "header";
     Response response = invokePost("headers", null);
@@ -484,6 +501,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get a message header as a single string value.
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringTest() throws Fault {
     Response response = invokePost("headers", "headerstring");
     logMsg("Found following objects:");
@@ -515,6 +533,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * header value is converted to String using a RuntimeDelegate.HeaderDelegate
    * or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringUsingHeaderDelegateTest() throws Fault {
     invokeGet("setstringbeanruntime");
 
@@ -536,6 +555,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * header value is converted to String using a RuntimeDelegate.HeaderDelegate
    * or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringUsingToStringTest() throws Fault {
     Response response = invokePost("headerstring", "toString");
     String header = response.getHeaderString("s1");
@@ -556,6 +576,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the language of the message entity.
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageTest() throws Fault {
     Response response = invokePost("language",
         Locale.CANADA_FRENCH.getCountry());
@@ -572,6 +593,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageNotPresentTest() throws Fault {
     ResponseHeaderValue<Locale> value = new ResponseHeaderValue<>();
     addProvider(new HeaderNotPresent<Locale>(value) {
@@ -594,6 +616,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the last modified date.
    */
+  @org.junit.jupiter.api.Test
   public void getLastModifiedTest() throws Fault {
     long time = getCurrentTimeMillis();
     Response response = invokePost("lastmodified", String.valueOf(time));
@@ -610,6 +633,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLastModifiedNotPresentTest() throws Fault {
     ResponseHeaderValue<Date> containerValue = new ResponseHeaderValue<>();
     addProvider(new HeaderNotPresent<Date>(containerValue) {
@@ -632,6 +656,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get Content-Length value.
    */
+  @org.junit.jupiter.api.Test
   public void getLengthTest() throws Fault {
     Response response = invokePost("length", "1234567890");
     int len = response.getLength();
@@ -647,6 +672,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: In other cases returns -1.
    */
+  @org.junit.jupiter.api.Test
   public void getLengthNotPresentTest() throws Fault {
     Response response = invokePost("length", null);
     int len = response.getLength();
@@ -668,6 +694,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the link for the relation.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkTest() throws Fault {
     String rel = "getLinkTest";
     Response response = invokePost("link", rel);
@@ -685,6 +712,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: returns null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkNotPresentTest() throws Fault {
     ResponseHeaderValue<Link> containerValue = new ResponseHeaderValue<>();
     addProvider(new HeaderNotPresent<Link>(containerValue) {
@@ -708,6 +736,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Convenience method that returns a Link.Builder for the
    * relation.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkBuilderForTheRelationTest() throws Fault {
     String rel = "anyrelation";
     Response response = invokePost("linkbuilder", rel);
@@ -723,6 +752,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: returns null if not present.
    */
+  @org.junit.jupiter.api.Test
   public void getLinkBuilderForTheNotPresentRelationTest() throws Fault {
     Response response = invokeGet("entity");
     Builder builder = response.getLinkBuilder("anyrelation");
@@ -738,6 +768,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the links attached to the message as header.
    */
+  @org.junit.jupiter.api.Test
   public void getLinksTest() throws Fault {
     Response response = invokeGet("links");
     Set<Link> responseLinks = response.getLinks();
@@ -753,6 +784,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Does not return null.
    */
+  @org.junit.jupiter.api.Test
   public void getLinksIsNotNullTest() throws Fault {
     Response response = invokeGet("entity");
     Set<Link> responseLinks = response.getLinks();
@@ -769,6 +801,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the location.
    */
+  @org.junit.jupiter.api.Test
   public void getLocationTest() throws Fault {
     String path = "path";
     URI serverUri = ResponseTest.createUri(path);
@@ -786,6 +819,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get null when no present.
    */
+  @org.junit.jupiter.api.Test
   public void getLocationNotPresentTest() throws Fault {
     ResponseHeaderValue<URI> containerValue = new ResponseHeaderValue<>();
     addProvider(new HeaderNotPresent<URI>(containerValue) {
@@ -808,6 +842,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the media type of the message entity.
    */
+  @org.junit.jupiter.api.Test
   public void getMediaTypeTest() throws Fault {
     MediaType mediaType = MediaType.APPLICATION_ATOM_XML_TYPE;
     Response response = invokePost("mediatype", mediaType.toString());
@@ -825,6 +860,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Get the complete status information associated with the
    * response.
    */
+  @org.junit.jupiter.api.Test
   public void getStatusInfoTest() throws Fault {
     for (Status status : Status.values()) {
       setProperty(Property.STATUS_CODE, getStatusCode(status));
@@ -845,6 +881,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Each single header value is converted to String using a
    * RuntimeDelegate.HeaderDelegate or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getStringHeadersUsingToStringTest() throws Fault {
     Response response = invokePost("headerstring", "stringheaders");
     MultivaluedMap<String, String> headers = response.getStringHeaders();
@@ -869,6 +906,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Each single header value is converted to String using a
    * RuntimeDelegate.HeaderDelegate or using its toString
    */
+  @org.junit.jupiter.api.Test
   public void getStringHeadersUsingHeaderDelegateTest() throws Fault {
     invokeGet("setstringbeanruntime");
 
@@ -891,6 +929,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Check if there is an entity available in the response.
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityWhenEntityTest() throws Fault {
     Response response = invokeGet("entity");
     assertTrue(response.hasEntity(), "#hasEntity did not found the entity");
@@ -904,6 +943,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Check if there is an entity available in the response.
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityWhenNoEntityTest() throws Fault {
     Response response = invokePost("headerstring", null);
     assertFalse(response.hasEntity(), "#hasEntity did found the entity");
@@ -918,6 +958,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: throws java.lang.IllegalStateException - in case the
    * response has been closed.
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityThrowsIllegalStateExceptionTest() throws Fault {
     Response response = invokeGet("entity");
     response.close();
@@ -937,6 +978,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Check if link for relation exists.
    */
+  @org.junit.jupiter.api.Test
   public void hasLinkWhenLinkTest() throws Fault {
     Response response = invokePost("link", "path");
     assertTrue(response.hasLink("path"), "#hasLink did not found a Link");
@@ -950,6 +992,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Check if link for relation exists.
    */
+  @org.junit.jupiter.api.Test
   public void hasLinkWhenNoLinkTest() throws Fault {
     Response response = invokeGet("entity");
     assertFalse(response.hasLink("rel"), "#has Link did found some Link");
@@ -965,6 +1008,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * specified Java type using a MessageBodyReader that supports mapping the
    * message entity stream onto the requested type
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassTest() throws Fault {
     Response response = invokeGet("entity");
     response.bufferEntity();
@@ -992,6 +1036,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If the message does not contain an entity body null is
    * returned.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassIsNullWhenNoEntityTest() throws Fault {
     Response response = invokeGet("status?status=200");
     String entity = response.readEntity(String.class);
@@ -1009,6 +1054,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassCloseIsCalledTest() throws Fault {
     AtomicInteger ai = setCorruptedStream();
     final Response response = invokeGet("corrupted");
@@ -1032,6 +1078,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassCloseIsNotCalledOnInputStreamTest() throws Fault {
     AtomicInteger ai = setCorruptedStream();
     Response response = invokeGet("corrupted");
@@ -1052,6 +1099,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Method throws an ProcessingException if the content of the
    * message cannot be mapped to an entity of the requested type
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassThrowsProcessingExceptionTest() throws Fault {
     Response response = invokeGet("entity");
     try {
@@ -1072,6 +1120,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * entity input stream has been fully consumed already and has not been
    * buffered prior consuming.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassThrowsIllegalStateExceptionTest() throws Fault {
     Client client = ClientBuilder.newClient(); // create a new client
     WebTarget target = client.target( // with no bufferEntity called
@@ -1100,6 +1149,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * specified Java type using a MessageBodyReader that supports mapping the
    * message entity stream onto the requested type
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeTest() throws Fault {
     Response response = invokeGet("entity");
     response.bufferEntity();
@@ -1131,6 +1181,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If the message does not contain an entity body null is
    * returned.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericIsNullWhenNoEntityTest() throws Fault {
     String request = buildRequest(Request.GET, "status?status=200");
     setProperty(Property.REQUEST, request);
@@ -1151,6 +1202,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericCloseIsCalledTest() throws Fault {
     AtomicInteger ai = setCorruptedStream();
     final Response response = invokeGet("corrupted");
@@ -1174,6 +1226,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeCloseIsNotCalledOnInputStreamTest()
       throws Fault {
     AtomicInteger ai = setCorruptedStream();
@@ -1195,6 +1248,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Method throws an ProcessingException if the content of the
    * message cannot be mapped to an entity of the requested type
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeThrowsProcessingExceptionTest()
       throws Fault {
     Response response = invokeGet("entity");
@@ -1216,6 +1270,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * entity input stream has been fully consumed already and has not been
    * buffered prior consuming.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeThrowsIllegalStateExceptionTest()
       throws Fault {
     Client client = ClientBuilder.newClient(); // create a new client
@@ -1246,6 +1301,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * message entity stream onto the requested type. annotations - annotations
    * that will be passed to the MessageBodyReader.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassAnnotationTest() throws Fault {
     Date date = Calendar.getInstance().getTime();
     String sDate = String.valueOf(date.getTime());
@@ -1286,6 +1342,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If the message does not contain an entity body null is
    * returned.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassAnnotationIsNullWhenNoEntityTest() throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
     Response response = invokeGet("status?status=200");
@@ -1304,6 +1361,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassAnnotationCloseIsCalledTest() throws Fault {
     final Annotation[] annotations = AnnotatedClass.class.getAnnotations();
     AtomicInteger ai = setCorruptedStream();
@@ -1328,6 +1386,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassAnnotationCloseIsNotCalledOnInputStreamTest()
       throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -1350,6 +1409,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Method throws an ProcessingException if the content of the
    * message cannot be mapped to an entity of the requested type
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassAnnotationThrowsProcessingExceptionTest()
       throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -1372,6 +1432,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * entity input stream has been fully consumed already and has not been
    * buffered prior consuming.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityClassAnnotationThrowsIllegalStateExceptionTest()
       throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -1403,6 +1464,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * message entity stream onto the requested type. annotations - annotations
    * that will be passed to the MessageBodyReader.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeAnnotationTest() throws Fault {
     Date date = Calendar.getInstance().getTime();
     String sDate = String.valueOf(date.getTime());
@@ -1444,6 +1506,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If the message does not contain an entity body null is
    * returned.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeAnnotationIsNullWhenNoEntityTest()
       throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -1463,6 +1526,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeAnnotationCloseIsCalledTest() throws Fault {
     final Annotation[] annotations = AnnotatedClass.class.getAnnotations();
     AtomicInteger ai = setCorruptedStream();
@@ -1487,6 +1551,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method automatically closes the consumed response entity stream if it is
    * not buffered.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeAnnotationCloseIsNotCalledOnInputStreamTest()
       throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -1509,6 +1574,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Method throws an ProcessingException if the content of the
    * message cannot be mapped to an entity of the requested type
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeAnnotationThrowsProcessingExceptionTest()
       throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -1531,6 +1597,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * entity input stream has been fully consumed already and has not been
    * buffered prior consuming.
    */
+  @org.junit.jupiter.api.Test
   public void readEntityGenericTypeAnnotationThrowsIllegalStateExceptionTest()
       throws Fault {
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -1561,6 +1628,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * relative URI. The relative URI should be converted into an absolute URI by resolving it
    * relative to the base URI.
    */
+  @org.junit.jupiter.api.Test
   public void responseCreatedRelativeURITest()
       throws Fault {
     String resourceUrl = getAbsoluteUrl();

@@ -74,6 +74,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a new form data instance with a single parameter
    * entry.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringArgsTest() throws Fault {
     Form form = new Form(tck, cts);
     assertFault(form != null, "No Form created");
@@ -95,6 +96,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a new form data instance with a single parameter
    * entry.
    */
+  @org.junit.jupiter.api.Test
   public void constructorMultivaluedMapArgTest() throws Fault {
     MultivaluedHashMap<String, String> init = new MultivaluedHashMap<String, String>();
     init.add(tck, cts);
@@ -125,6 +127,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Adds a new value to the specified form parameter.
    */
+  @org.junit.jupiter.api.Test
   public void paramTest() throws Fault {
     Form form = constructorNoArgTest();
     form.param(tck, tck);

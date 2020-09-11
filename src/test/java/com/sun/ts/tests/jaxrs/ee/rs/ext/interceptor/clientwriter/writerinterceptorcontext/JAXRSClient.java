@@ -61,6 +61,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETENTITY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY);
@@ -76,6 +77,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersOperationOnlyTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETHEADERS);
     setProperty(Property.SEARCH_STRING_IGNORE_CASE,
@@ -92,6 +94,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersTest() throws Fault {
     Property p = Property.UNORDERED_SEARCH_STRING;
     setOperationAndEntity(ContextOperation.GETHEADERS);
@@ -113,6 +116,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersIsMutableTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETHEADERSISMUTABLE);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.PROPERTY);
@@ -128,6 +132,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    * 
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getOutputStreamTest() throws Fault {
     Property p = Property.UNORDERED_SEARCH_STRING;
     setOperationAndEntity(ContextOperation.GETOUTPUTSTREAM);
@@ -152,6 +157,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    * 
    * WriterInterceptor.aroundWriteTo throws IOException
    */
+  @org.junit.jupiter.api.Test
   public void proceedThrowsIOExceptionTest() throws Fault {
     setOperationAndEntity(ContextOperation.PROCEEDTHROWSIOEXCEPTION);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.IOE);
@@ -172,6 +178,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void proceedThrowsWebApplicationExceptionTest() throws Fault {
     addProvider(StringBeanEntityProvider.class);
     addHeader(TemplateInterceptorBody.OPERATION,
@@ -198,6 +205,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setEntityTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETENTITY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.OPERATION);
@@ -213,6 +221,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setOutputStreamTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETOUTPUTSTREAM);
     setProperty(Property.SEARCH_STRING,

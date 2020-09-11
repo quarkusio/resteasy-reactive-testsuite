@@ -81,6 +81,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Returns true if the feature was successfully enabled, false otherwise
    */
+  @org.junit.jupiter.api.Test
   public void isEnabledFeatureReturningFalseTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningFalse1();
     final CheckingFeature feature2 = new FeatureReturningFalse2();
@@ -137,6 +138,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Returns true if the feature was successfully enabled, false otherwise
    */
+  @org.junit.jupiter.api.Test
   public void isEnabledFeatureReturningTrueTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningTrue1();
     final CheckingFeature feature2 = new FeatureReturningTrue2();
@@ -205,6 +207,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Returns true if the feature was successfully enabled, false otherwise
    */
   @SuppressWarnings("unchecked")
+  @org.junit.jupiter.api.Test
   public void isEnabledClassReturningFalseTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningFalse1();
     final CheckingFeature feature2 = new FeatureReturningFalse2();
@@ -270,6 +273,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Returns true if the feature was successfully enabled, false otherwise
    */
   @SuppressWarnings("unchecked")
+  @org.junit.jupiter.api.Test
   public void isEnabledFeatureClassReturningTrueTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningTrue1();
     final CheckingFeature feature2 = new FeatureReturningTrue2();

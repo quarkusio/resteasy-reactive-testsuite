@@ -48,6 +48,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create an MediaType instance using MediaType()
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest1() throws Fault {
     String type = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
     String subtype = javax.ws.rs.core.MediaType.MEDIA_TYPE_WILDCARD;
@@ -65,6 +66,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType(String,
    * String)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest2() throws Fault {
     String type = "application";
     String subtype = "atom+xml";
@@ -83,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType(String,
    * String, Map)
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest3() throws Fault {
     String type = "application";
     String subtype = "x-www-form-urlencoded";
@@ -104,6 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getSubtype, getType, toString
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStringStringTest() throws Fault {
     String type = MediaType.APPLICATION_FORM_URLENCODED_TYPE.getType();
     String subtype = MediaType.APPLICATION_FORM_URLENCODED_TYPE.getSubtype();
@@ -124,6 +128,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType(String,
    * String), verify method isCompatible works.
    */
+  @org.junit.jupiter.api.Test
   public void isCompatibleTest1() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -144,6 +149,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * String), and MediaType(String, String, Map<String, String>) verify method
    * isCompatible works.
    */
+  @org.junit.jupiter.api.Test
   public void isCompatibleTest2() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -169,6 +175,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * String), and MediaType(String, String, Map<String, String>) verify method
    * isCompatible works.
    */
+  @org.junit.jupiter.api.Test
   public void isCompatibleTest3() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -191,6 +198,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType(String,
    * String), verify method hashCode works.
    */
+  @org.junit.jupiter.api.Test
   public void hashCodeTest1() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -213,6 +221,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * String), and MediaType(String, String, Map<String, String>) verify method
    * hashCode works.
    */
+  @org.junit.jupiter.api.Test
   public void hashCodeTest2() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -239,6 +248,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * String), and MediaType(String, String, Map<String, String>) verify method
    * hashCode works.
    */
+  @org.junit.jupiter.api.Test
   public void hashCodeTest3() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -263,6 +273,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType(String,
    * String) Verify method equals works
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest1() throws Fault {
     String type = "text";
     String subtype = "html";
@@ -284,6 +295,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create two MediaType instances using MediaType(String,
    * String) Verify method equals works
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest2() throws Fault {
     String type = "application";
     String subtype = "xml";
@@ -309,6 +321,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * String) MediaType(String, String, Map<String, String>) Verify method equals
    * works
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest3() throws Fault {
     String type = "application";
     String subtype = "svg+xml";
@@ -332,6 +345,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * String, Map<String, String>) MediaType(String, String, Map<String, String>)
    * Verify method equals works
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest4() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -356,6 +370,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a MediaType instances using MediaType(String,
    * String, Map<String, String>) Verify method toString works
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -400,6 +415,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using MediaType() Verify that
    * method isWildCardType() works Verify that method isWildCardSubtype() works
    */
+  @org.junit.jupiter.api.Test
   public void wildcardTest() throws Fault {
     boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -428,6 +444,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * MediaType.valueOf(String) Verify that all type, subtype and parameters are
    * preserved.
    */
+  @org.junit.jupiter.api.Test
   public void valueOfTest() throws Fault {
     String type = "text";
     String subtype = "plain";
@@ -450,6 +467,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an MediaType instance using method
    * MediaType.valueOf(null) Verify that IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void valueOfTest1() throws Fault {
     try {
       MediaType.valueOf(null);
@@ -472,6 +490,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getSubtype, getType, toString
    */
+  @org.junit.jupiter.api.Test
   public void withCharsetTest() throws Fault {
     String type = MediaType.APPLICATION_FORM_URLENCODED_TYPE.getType();
     String subtype = MediaType.APPLICATION_FORM_URLENCODED_TYPE.getSubtype();
@@ -509,6 +528,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * If null or empty the ""charset"" parameter will not be set or updated.
    */
+  @org.junit.jupiter.api.Test
   public void withCharsetNullOrEmptyCharsetTest() throws Fault {
     String charset = "UTF-8";
     String type = MediaType.APPLICATION_FORM_URLENCODED_TYPE.getType();

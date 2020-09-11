@@ -62,6 +62,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * rejected by the JAX-RS implementation and a warning SHOULD be raised to
    * inform the user about the rejected registration.
    */
+  @org.junit.jupiter.api.Test
   public void registerFeatureClassReturningFalseTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
       @Override
@@ -96,6 +97,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * rejected by the JAX-RS implementation and a warning SHOULD be raised to
    * inform the user about the rejected registration.
    */
+  @org.junit.jupiter.api.Test
   public void registerFeatureClassReturningFalseWithPriorityTest()
       throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
@@ -138,6 +140,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * invokes the Feature#configure(FeatureContext) method and lets the feature
    * update it's internal configuration state.
    */
+  @org.junit.jupiter.api.Test
   public void registerFeatureInstanceReturningFalseTest() throws Fault {
     final Feature feature = new FeatureReturningFalse();
     Assertable assertable = new SingleCheckAssertable() {
@@ -172,6 +175,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * rejected by the JAX-RS implementation and a warning SHOULD be raised to
    * inform the user about the rejected registration.
    */
+  @org.junit.jupiter.api.Test
   public void registerClassContractsTest() throws Fault {
     Assertable assertable = new SingleCheckAssertable() {
       @Override

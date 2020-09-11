@@ -49,6 +49,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test sending no content;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamNothingSentTest() throws Fault {
     super.nonDefaultFormParamNothingSentTest();
   }
@@ -61,6 +62,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test sending override of default argument content;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamSentTest() throws Fault {
     super.defaultFormParamSentTest();
   }
@@ -73,6 +75,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test sending no argument content, receiving default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamNoArgSentTest() throws Fault {
     super.defaultFormParamNoArgSentTest();
   }
@@ -85,6 +88,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test sending no argument content, PUT, receiving default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamPutNoArgSentTest() throws Fault {
     super.defaultFormParamPutNoArgSentTest();
   }
@@ -97,6 +101,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test sending argument content, PUT;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamPutArgSentTest() throws Fault {
     super.defaultFormParamPutArgSentTest();
   }
@@ -109,6 +114,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithValueOf from default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamValueOfTest() throws Fault {
     super.defaultFormParamValueOfTest();
   }
@@ -122,6 +128,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithValueOf from sending a
    * String;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamValueOfTest() throws Fault {
     super.nonDefaultFormParamValueOfTest();
   }
@@ -134,6 +141,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamFromStringTest() throws Fault {
     super.defaultFormParamFromStringTest();
   }
@@ -147,6 +155,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithFromString from sending a
    * String;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamFromStringTest() throws Fault {
     super.nonDefaultFormParamFromStringTest();
   }
@@ -159,6 +168,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamFromConstructorTest() throws Fault {
     super.defaultFormParamFromConstructorTest();
   }
@@ -172,6 +182,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
    * String;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamFromConstructorTest() throws Fault {
     super.nonDefaultFormParamFromConstructorTest();
   }
@@ -184,6 +195,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithConstructor from default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamFromListConstructorTest() throws Fault {
     super.defaultFormParamFromListConstructorTest();
   }
@@ -197,6 +209,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
    * String;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamFromListConstructorTest() throws Fault {
     super.nonDefaultFormParamFromListConstructorTest();
   }
@@ -209,6 +222,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamFromSetFromStringTest() throws Fault {
     super.defaultFormParamFromSetFromStringTest();
   }
@@ -222,6 +236,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
     super.nonDefaultFormParamFromSetFromStringTest();
   }
@@ -234,6 +249,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamFromSortedSetFromStringTest() throws Fault {
     super.defaultFormParamFromSortedSetFromStringTest();
   }
@@ -247,6 +263,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
     super.nonDefaultFormParamFromSortedSetFromStringTest();
   }
@@ -260,6 +277,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    * 
    */
+  @org.junit.jupiter.api.Test
   public void defaultFormParamFromListFromStringTest() throws Fault {
     super.defaultFormParamFromListFromStringTest();
   }
@@ -273,6 +291,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
+  @org.junit.jupiter.api.Test
   public void nonDefaultFormParamFromListFromStringTest() throws Fault {
     super.nonDefaultFormParamFromListFromStringTest();
   }
@@ -283,6 +302,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * 
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void formParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -296,6 +316,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void formParamThrowingWebApplicationExceptionTest() throws Fault {
     super.formParamThrowingIllegalArgumentExceptionTest();
   }
@@ -311,6 +332,7 @@ public class JAXRSSubClient extends JAXRSClient {
    * construction of @FormParam annotated parameter values are treated the same
    * as if the parameter were annotated with @HeaderParam.
    */
+  @org.junit.jupiter.api.Test
   public void formParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.formParamThrowingIllegalArgumentExceptionTest();
   }

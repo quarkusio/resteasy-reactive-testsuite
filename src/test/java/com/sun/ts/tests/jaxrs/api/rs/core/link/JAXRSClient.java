@@ -65,6 +65,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: see what happens when new Link() is used.
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest() throws Fault {
     Link link = new Link() {
 
@@ -122,6 +123,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Note that path created from resource is relative to the application's root
    * resource.
    */
+  @org.junit.jupiter.api.Test
   public void fromMethodTest() throws Fault {
     Link link = linkFromResource("consumesAppJson");
     String resource = link.toString();
@@ -136,6 +138,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Generate a link by introspecting a resource method.
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceMethodLinkUsedInInvocationTest() throws Fault {
     final String linkName = "link";
     Client client = ClientBuilder.newClient();
@@ -175,6 +178,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException if any argument is null or no
    * method is found
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceMethodThrowsIllegalArgumentExceptionNoMethodTest()
       throws Fault {
     try {
@@ -193,6 +197,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException if any argument is null or no
    * method is found
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceMethodThrowsIllegalArgumentExceptionNullMethodTest()
       throws Fault {
     try {
@@ -211,6 +216,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException if any argument is null or no
    * method is found
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceMethodThrowsIllegalArgumentExceptionNullClassTest()
       throws Fault {
     try {
@@ -228,6 +234,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a new instance initialized from an existing URI.
    */
+  @org.junit.jupiter.api.Test
   public void fromUriTest() throws Fault {
     URI uri = uri(Request.GET.name());
     Builder builder = Link.fromUri(uri);
@@ -245,6 +252,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: throws IllegalArgumentException is uri is null
    */
+  @org.junit.jupiter.api.Test
   public void fromUriThrowsIllegalArgumentExceptionTest() throws Fault {
     try {
       Link.fromUri((URI) null);
@@ -262,6 +270,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a new instance initialized from an existing URI.
    */
+  @org.junit.jupiter.api.Test
   public void fromUriStringTest() throws Fault {
     URI uri = uri(Request.GET.name());
     Builder builder = Link.fromUri(uri.toASCIIString());
@@ -279,6 +288,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: throws IllegalArgumentException is uri is null
    */
+  @org.junit.jupiter.api.Test
   public void fromUriStringThrowsIllegalArgumentExceptionTest() throws Fault {
     try {
       Link.fromUri((String) null);
@@ -298,6 +308,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * parameters defined on this link. If defined, this map will include entries
    * for "rel", "title" and "type".
    */
+  @org.junit.jupiter.api.Test
   public void getParamsFromResourceTest() throws Fault {
     String title = "Title";
     String value;
@@ -321,6 +332,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * parameters defined on this link. If defined, this map will include entries
    * for "rel", "title" and "type".
    */
+  @org.junit.jupiter.api.Test
   public void getParamsFromBuilderTest() throws Fault {
     Builder builder = Link.fromUri(uri("get"));
     builder.rel("RELREL").title("TITLETITLE").type("TYPETYPE").param("NEWPARAM",
@@ -349,6 +361,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "rel" param, or
    * null if this param is not specified.
    */
+  @org.junit.jupiter.api.Test
   public void getRelTest() throws Fault {
     Builder builder = Link.fromUri(uri("get"));
     builder.rel("RELREL").title("TITLETITLE").type("TYPETYPE").param("NEWPARAM",
@@ -368,6 +381,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "rel" param, or
    * null if this param is not specified.
    */
+  @org.junit.jupiter.api.Test
   public void getRelIsEmptyListTest() throws Fault {
     Builder builder = Link.fromUri(uri("get"));
     Link link = builder.build();
@@ -384,6 +398,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "title" param,
    * or null if this param is not specified.
    */
+  @org.junit.jupiter.api.Test
   public void getTitleTest() throws Fault {
     Builder builder = Link.fromUri(uri("get"));
     builder.rel("RELREL").title("TITLETITLE").type("TYPETYPE");
@@ -402,6 +417,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "title" param,
    * or null if this param is not specified.
    */
+  @org.junit.jupiter.api.Test
   public void getTitleIsNullTest() throws Fault {
     Link link = linkFromResource("get");
     String title = link.getTitle();
@@ -417,6 +433,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "type" param, or
    * null if this param is not specified.
    */
+  @org.junit.jupiter.api.Test
   public void getTypeTest() throws Fault {
     Builder builder = Link.fromUri(uri("get"));
     builder.rel("RELREL").title("TITLETITLE").type("TYPETYPE");
@@ -435,6 +452,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "type" param, or
    * null if this param is not specified.
    */
+  @org.junit.jupiter.api.Test
   public void getTypeIsNullTest() throws Fault {
     Link link = linkFromResource("get");
     String type = link.getType();
@@ -449,6 +467,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Returns the underlying URI associated with this link.
    */
+  @org.junit.jupiter.api.Test
   public void getUriTest() throws Fault {
     URI uri = uri("get");
     Builder builder = Link.fromUri(uri);
@@ -468,6 +487,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Convenience method that returns a
    * javax.ws.rs.core.UriBuilder initialized with this link's underlying URI.
    */
+  @org.junit.jupiter.api.Test
   public void getUriBuilderTest() throws Fault {
     URI uri = uri("get");
     Builder builder = Link.fromUri(uri);
@@ -491,6 +511,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Simple parser to convert link header string representations into a link
    * (valueOf)
    */
+  @org.junit.jupiter.api.Test
   public void serializationFromResourceTest() throws Fault {
     Method[] methods = Resource.class.getDeclaredMethods();
     for (Method method : methods) {
@@ -514,6 +535,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: throws IllegalArgumentException if a syntax error is found
    */
+  @org.junit.jupiter.api.Test
   public void valueOfThrowsIllegalArgumentExceptionTest() throws Fault {
     try {
       Link.valueOf("</>>");
@@ -531,6 +553,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "rel" param as a
    * list of strings or the empty list if "rel" is not defined.
    */
+  @org.junit.jupiter.api.Test
   public void getRelsTest() throws Fault {
     String[] rels = { "RELREL", "REL", "relrelrel", "RELRELREL" };
     Builder builder = Link.fromUri(uri("get"));
@@ -555,6 +578,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Returns the value associated with the link "rel" param as a
    * list of strings or the empty list if "rel" is not defined.
    */
+  @org.junit.jupiter.api.Test
   public void getRelsIsEmptyTest() throws Fault {
     Builder builder = Link.fromUri(uri("get"));
     Link link = builder.build();
@@ -571,6 +595,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Convenience method to build a link from a resource.
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceTest() throws Fault {
     Link link = Link.fromResource(Resource.class).build();
     String resource = link.toString();
@@ -586,6 +611,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Convenience method to build a link from a resource.
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceWithMediaTypeTest() throws Fault {
     Link link = Link.fromResource(ResourceWithProduces.class).build();
     String resource = link.toString();
@@ -602,6 +628,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException - if any argument is null or no
    * method is found.
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceThrowsIAEWhenNullClassTest() throws Fault {
     try {
       Link link = Link.fromResource((Class<?>) null).build();
@@ -619,6 +646,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a new builder instance initialized from a URI
    * builder.
    */
+  @org.junit.jupiter.api.Test
   public void fromUriBuilderTest() throws Fault {
     String segment = "goto/label/ten/";
     Link link = Link.fromUri(uri(segment)).build();
@@ -640,6 +668,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Convenience method to build a link from a path. Equivalent
    * to fromUriBuilder(UriBuilder.fromPath(path)).
    */
+  @org.junit.jupiter.api.Test
   public void fromPathTest() throws Fault {
     String path = "somewhere/somehow";
     UriBuilder builder = UriBuilder.fromPath(path);
@@ -662,6 +691,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Convenience method to build a link from a path. Equivalent
    * to fromUriBuilder(UriBuilder.fromPath(path)).
    */
+  @org.junit.jupiter.api.Test
   public void fromPathWithUriTemplateParamsTest() throws Fault {
     String path = "somewhere/somehow/{p1}/{p2}";
     String param1 = "param1", param2 = "param2";
@@ -687,6 +717,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.IllegalArgumentException - if path is
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void fromPathThrowsIAETest() throws Fault {
     try {
       UriBuilder.fromPath((String) null);
@@ -704,6 +735,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.IllegalArgumentException - if path is
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void fromLinkTest() throws Fault {
     Link link = RuntimeDelegate.getInstance().createLinkBuilder().baseUri(url())
         .rel("relation relation2").title("titleX").param("param1", "value1")

@@ -60,6 +60,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Initialize the backing store in the abstract parent
    * multivalued map implementation.
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     assertContainsDefaultValues(map);
@@ -75,6 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * ignored and not added to the value list. Overriding implementations may
    * modify this behavior by redefining the #addNull method
    */
+  @org.junit.jupiter.api.Test
   public void addTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.add("key2", VALUES[3]);
@@ -92,6 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * ignored and not added to the value list. Overriding implementations may
    * modify this behavior by redefining the #addNull method
    */
+  @org.junit.jupiter.api.Test
   public void addNullKeyTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.add(null, VALUES[3]);
@@ -108,6 +111,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * ignored and not added to the value list. Overriding implementations may
    * modify this behavior by redefining the #addNull method
    */
+  @org.junit.jupiter.api.Test
   public void addNullValuesTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.add("key2", null);
@@ -125,6 +129,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied key. If the supplied array of new values is empty, method returns
    * immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllValuesTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.addAll(KEY, VALUES[3], VALUES[4]);
@@ -141,6 +146,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied key. If the supplied array of new values is empty, method returns
    * immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllNullValuesTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.addAll(KEY, VALUES[3], null);
@@ -158,6 +164,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied key. If the supplied array of new values is empty, method returns
    * immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllEmptyValuesTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.addAll("key2", new Object[] {});
@@ -174,6 +181,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Method throws a NullPointerException if the supplied array
    * of values is null.
    */
+  @org.junit.jupiter.api.Test
   public void addAllThrowsNPETest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     try {
@@ -193,6 +201,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * current list of values for the supplied key. If the supplied value list is
    * empty, method returns immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllListTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     List<Object> list = new ArrayList<Object>();
@@ -213,6 +222,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * empty, method returns immediately.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void addAllListNullValuesTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     List<Object> list = new ArrayList<Object>();
@@ -233,6 +243,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * current list of values for the supplied key. If the supplied value list is
    * empty, method returns immediately.
    */
+  @org.junit.jupiter.api.Test
   public void addAllListEmptyValuesTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.addAll("key2", new ArrayList<Object>());
@@ -250,6 +261,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * is null.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void addAllListThrowsNPETest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     try {
@@ -271,6 +283,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * A shortcut to get the first value of the supplied key.
    */
+  @org.junit.jupiter.api.Test
   public void addFirstTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.addFirst(KEY, VALUES[3]);
@@ -288,6 +301,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * values for the supplied key.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void addFirstNullTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.addFirst(KEY, null);
@@ -302,6 +316,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: clears all items
    */
+  @org.junit.jupiter.api.Test
   public void clearTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.clear();
@@ -315,6 +330,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: informs about containing key
    */
+  @org.junit.jupiter.api.Test
   public void containsKeyTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.add(null, VALUES[3]);
@@ -330,6 +346,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: informs about containing value
    */
+  @org.junit.jupiter.api.Test
   public void containsValueTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     List<Object> list = map.get(KEY);
@@ -347,6 +364,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: gets the entry Set
    */
+  @org.junit.jupiter.api.Test
   public void entrySetTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     Set<Entry<String, List<Object>>> set = map.entrySet();
@@ -372,6 +390,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: This implementation delegates the method call to to the the
    * underlying [key, multi-value] store.
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest() throws Fault {
     ArrayList<Object> list = new ArrayList<Object>();
     list.add(VALUES[0]);
@@ -395,6 +414,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: get the list of items
    */
+  @org.junit.jupiter.api.Test
   public void getTest() throws Fault {
     ArrayList<Object> list = new ArrayList<Object>();
     list.add(VALUES[0]);
@@ -416,6 +436,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: This implementation delegates the method call to to the the
    * underlying [key, multi-value] store.
    */
+  @org.junit.jupiter.api.Test
   public void hashCodeTest() throws Fault {
     ArrayList<Object> list = new ArrayList<Object>();
     list.add(VALUES[0]);
@@ -441,6 +462,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: check whether it is empty
    */
+  @org.junit.jupiter.api.Test
   public void isEmptyTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     assertFault(!map.isEmpty(), "#isEmpty returns true for one key and a list");
@@ -460,6 +482,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: keySet test
    */
+  @org.junit.jupiter.api.Test
   public void keySetTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     assertFault(map.keySet().size() == 1, "#keySet returns set of size",
@@ -486,6 +509,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: put
    */
+  @org.junit.jupiter.api.Test
   public void putTest() throws Fault {
     ArrayList<Object> list = new ArrayList<Object>();
     list.add(VALUES[0]);
@@ -509,6 +533,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: putAll
    */
+  @org.junit.jupiter.api.Test
   public void putAllTest() throws Fault {
     ArrayList<Object> list = new ArrayList<Object>();
     list.add(VALUES[0]);
@@ -539,6 +564,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * to the purged value list. As a result of such operation, empty value list
    * would be registered for the supplied key
    */
+  @org.junit.jupiter.api.Test
   public void putSingleTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.putSingle(KEY, VALUES[4]);
@@ -559,6 +585,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * added to the purged value list. As a result of such operation, empty value
    * list would be registered for the supplied key
    */
+  @org.junit.jupiter.api.Test
   public void putSingleNullValueTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.putSingle(KEY, null);
@@ -573,6 +600,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: remove the correct key
    */
+  @org.junit.jupiter.api.Test
   public void removeTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.add("key2", VALUES[3]);
@@ -591,6 +619,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: check correct size
    */
+  @org.junit.jupiter.api.Test
   public void sizeTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.add("key2", VALUES[3]);
@@ -608,6 +637,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: check toString does something
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     assertFault(map.toString() != null, "#toString isNull");
@@ -621,6 +651,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: check correct values
    */
+  @org.junit.jupiter.api.Test
   public void valuesTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     map.add("key2", VALUES[3]);
@@ -643,6 +674,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the order of values for each key. Specifically, the values associated with
    * each key are compared as if they were ordered lists.
    */
+  @org.junit.jupiter.api.Test
   public void equalsIgnoreValueOrderTest() throws Fault {
     AbstractMultivaluedMap<String, Object> map = createMap();
     MultivaluedHashMap<String, Object> map2 = new MultivaluedHashMap<String, Object>();

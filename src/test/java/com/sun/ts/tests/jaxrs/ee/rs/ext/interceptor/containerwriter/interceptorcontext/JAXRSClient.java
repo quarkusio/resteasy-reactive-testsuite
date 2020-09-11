@@ -63,6 +63,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getAnnotationsTest() throws Fault {
     Annotation[] annotations = ContextOperation.class.getAnnotations();
     for (Annotation a : annotations)
@@ -81,6 +82,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getGenericTypeTest() throws Fault {
     setProperty(Property.SEARCH_STRING, String.class.getName());
     invoke(ContextOperation.GETGENERICTYPE);
@@ -95,6 +97,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getMediaTypeTest() throws Fault {
     setProperty(Property.SEARCH_STRING, MediaType.APPLICATION_JSON);
     invoke(ContextOperation.GETMEDIATYPE);
@@ -109,6 +112,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyIsNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
     invoke(ContextOperation.GETPROPERTY);
@@ -125,6 +129,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    * 
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyNamesIsReadOnlyTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, TemplateInterceptorBody.NULL);
     invoke(ContextOperation.GETPROPERTYNAMESISREADONLY);
@@ -141,6 +146,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyNamesTest() throws Fault {
     for (int i = 0; i != 5; i++)
       setProperty(Property.UNORDERED_SEARCH_STRING,
@@ -158,6 +164,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void getTypeTest() throws Fault {
     setProperty(Property.SEARCH_STRING, String.class.getName());
     invoke(ContextOperation.GETTYPE);
@@ -175,6 +182,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void removePropertyTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
     invoke(ContextOperation.REMOVEPROPERTY);
@@ -190,6 +198,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setAnnotationsTest() throws Fault {
     Annotation[] annotations = ContextOperation.class.getAnnotations();
     for (Annotation a : annotations)
@@ -208,6 +217,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setAnnotationsNullThrowsNPETest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NPE);
     invoke(ContextOperation.SETANNOTATIONSNULL);
@@ -222,6 +232,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setGenericTypeTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "[B");
     invoke(ContextOperation.SETGENERICTYPE);
@@ -236,6 +247,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setMediaTypeTest() throws Fault {
     setProperty(Property.SEARCH_STRING, MediaType.APPLICATION_FORM_URLENCODED);
     invoke(ContextOperation.SETMEDIATYPE);
@@ -253,6 +265,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setPropertyTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY2);
     invoke(ContextOperation.SETPROPERTY);
@@ -268,6 +281,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setPropertyNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
     invoke(ContextOperation.SETPROPERTYNULL);
@@ -282,6 +296,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
+  @org.junit.jupiter.api.Test
   public void setTypeTest() throws Fault {
     addProvider(InputStreamReaderProvider.class);
     invoke(ContextOperation.SETTYPE);

@@ -116,6 +116,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Test whether a class with Link can be unmarshalled fine
    */
+  @org.junit.jupiter.api.Test
   public void unmarshallTest() throws Fault {
     JAXBContext jc = null;
     Unmarshaller unmarshaller = null;

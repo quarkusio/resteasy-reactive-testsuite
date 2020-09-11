@@ -50,6 +50,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException() works.
    */
+  @org.junit.jupiter.api.Test
   public void emptyConstructorTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "EmptyConstructor"));
     setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
@@ -64,6 +65,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(404) works.
    */
+  @org.junit.jupiter.api.Test
   public void statusCode404Test() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "StatusCode404"));
     setProperty(STATUS_CODE, getStatusCode(Status.NOT_FOUND));
@@ -78,6 +80,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(401) works.
    */
+  @org.junit.jupiter.api.Test
   public void statusCode401Test() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "StatusCode401"));
     setProperty(STATUS_CODE, getStatusCode(Status.UNAUTHORIZED));
@@ -92,6 +95,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Status) works.
    */
+  @org.junit.jupiter.api.Test
   public void status503Test() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "Status503"));
     setProperty(STATUS_CODE, getStatusCode(Status.SERVICE_UNAVAILABLE));
@@ -106,6 +110,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Status) works.
    */
+  @org.junit.jupiter.api.Test
   public void status415Test() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "Status415"));
     setProperty(STATUS_CODE, getStatusCode(Status.UNSUPPORTED_MEDIA_TYPE));
@@ -120,6 +125,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Response) works.
    */
+  @org.junit.jupiter.api.Test
   public void responseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "ResponseTest"));
     setProperty(SEARCH_STRING, Resource.TESTID);
@@ -135,6 +141,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Response null) works.
    */
+  @org.junit.jupiter.api.Test
   public void nullResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "NullResponseTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
@@ -149,6 +156,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException.getResponse works.
    */
+  @org.junit.jupiter.api.Test
   public void getResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "getResponseTest"));
     setProperty(SEARCH_STRING, Resource.TESTID);
@@ -164,6 +172,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Throwable) works.
    */
+  @org.junit.jupiter.api.Test
   public void throwableTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "ThrowableTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
@@ -180,6 +189,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Throwable, Response) works.
    */
+  @org.junit.jupiter.api.Test
   public void throwableResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "ThrowableResponseTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -198,6 +208,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Throwable, Response Null) works.
    */
+  @org.junit.jupiter.api.Test
   public void throwableResponseTest1() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "ThrowableResponseTest1"));
     setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
@@ -214,6 +225,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Throwable, Status) works.
    */
+  @org.junit.jupiter.api.Test
   public void throwableStatusTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "ThrowableStatusTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.SEE_OTHER));
@@ -230,6 +242,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Throwable, Status Null) works.
    */
+  @org.junit.jupiter.api.Test
   public void throwableStatusTest1() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "ThrowableNullStatusTest"));
     setProperty(Property.UNEXPECTED_RESPONSE_MATCH,
@@ -246,6 +259,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /resource; Verify
    * that WebApplicationException(Throwable, int) works.
    */
+  @org.junit.jupiter.api.Test
   public void throwableStatusCodeTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "ThrowableStatusCodeTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.NO_CONTENT));

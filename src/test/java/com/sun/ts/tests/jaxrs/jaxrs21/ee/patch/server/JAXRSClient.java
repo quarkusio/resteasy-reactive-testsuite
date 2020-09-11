@@ -52,6 +52,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @assertion_ids: JAXRS:SPEC:124;
    * 
    */
+  @org.junit.jupiter.api.Test
   public void patchTest() throws Fault {
     AdaptiveMethodFactory.getMethodMap().put("PATCH", PatchMethod.class);
     setProperty(Property.REQUEST, buildRequest("PATCH", "patch"));

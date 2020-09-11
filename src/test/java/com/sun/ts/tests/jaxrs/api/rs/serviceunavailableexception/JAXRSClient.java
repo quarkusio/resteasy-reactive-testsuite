@@ -72,6 +72,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest() throws Fault {
     ServiceUnavailableException e = new ServiceUnavailableException();
     assertResponse(e);
@@ -95,6 +96,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorLongTest() throws Fault {
     ServiceUnavailableException e = new ServiceUnavailableException(5L);
     assertResponse(e);
@@ -118,6 +120,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorDateTest() throws Fault {
     Calendar calendar = Calendar.getInstance();
     calendar.add(Calendar.SECOND, 50);
@@ -145,6 +148,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseTest() throws Fault {
     ServiceUnavailableException e = new ServiceUnavailableException(
         buildResponse(STATUS));
@@ -162,6 +166,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 503.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -195,6 +200,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorDateThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -228,6 +234,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorLongThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -257,6 +264,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -279,6 +287,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 503.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -311,6 +320,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringTest() throws Fault {
     ServiceUnavailableException e = new ServiceUnavailableException(MESSAGE);
     assertResponse(e);
@@ -335,6 +345,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringLongTest() throws Fault {
     ServiceUnavailableException e = new ServiceUnavailableException(MESSAGE,
         5L);
@@ -360,6 +371,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringDateTest() throws Fault {
     Calendar calendar = Calendar.getInstance();
     calendar.add(Calendar.SECOND, 50);
@@ -388,6 +400,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     ServiceUnavailableException e = new ServiceUnavailableException(MESSAGE,
         buildResponse(STATUS));
@@ -406,6 +419,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 503.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -439,6 +453,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringDateThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -473,6 +488,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringLongThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -502,6 +518,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -525,6 +542,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 503.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {

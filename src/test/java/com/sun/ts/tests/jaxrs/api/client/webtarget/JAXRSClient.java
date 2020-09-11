@@ -66,6 +66,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the URI identifying the resource.
    */
+  @org.junit.jupiter.api.Test
   public void getUriTest() throws Fault {
     WebTarget target = createWebTarget();
     URI uri = target.getUri();
@@ -83,6 +84,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * any updates in the URI builder MUST NOT have any effects on the URI of the
    * originating target.
    */
+  @org.junit.jupiter.api.Test
   public void getUriBuilderTest() throws Fault {
     WebTarget target = createWebTarget();
     URI uri = target.getUriBuilder().build();
@@ -100,6 +102,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * any updates in the URI builder MUST NOT have any effects on the URI of the
    * originating target.
    */
+  @org.junit.jupiter.api.Test
   public void getUriBuilderIsDetachedTest() throws Fault {
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(URL);
@@ -120,6 +123,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * URI of the current target instance. If multiple values are supplied the
    * parameter will be added once per value.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.matrixParam("matrix", "arg1", "arg2", "arg3");
@@ -146,6 +150,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Create a new instance by appending path to the URI of the current target
    * instance.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamOnTwoSegmentsTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.matrixParam("matrix1", "segment1");
@@ -180,6 +185,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Create a new instance by appending path to the URI of the current target
    * instance.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamWithNullValueRemovesParamsWithTheNameOnMoreSegmentsTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -209,6 +215,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws NullPointerException if the name or any of the
    * values is null.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamThrowsNPEOnNameTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -227,6 +234,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws NullPointerException - if there are multiple values
    * present and any of those values is null.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamThrowsNPEOnFirstArgIsNullTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -245,6 +253,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws NullPointerException - if there are multiple values
    * present and any of those values is null.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamThrowsNPEOnSecondArgIsNullTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -266,6 +275,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * necessary. Existing '/' characters are preserved thus a single value can
    * represent multiple URI path segments.
    */
+  @org.junit.jupiter.api.Test
   public void pathTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.path("a/").path("/b/").path("/c/").path("d").path("e");
@@ -282,6 +292,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: throws NullPointerException if path is null.
    */
+  @org.junit.jupiter.api.Test
   public void pathThrowsNPEOnNullTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -301,6 +312,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * URI of the current target instance. If multiple values are supplied the
    * parameter will be added once per value.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.queryParam("paramName", new StringBuffer().append("value1"),
@@ -321,6 +333,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * that name are removed (if present) from the collection of query parameters
    * inherited from the current target.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamNullValueTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.path("path").queryParam("paramName",
@@ -341,6 +354,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws NullPointerException if the parameter name is null
    * or if there are multiple values present and any of those values is null.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamThrowsNPEOnNullNameTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -359,6 +373,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws NullPointerException if the parameter name is null
    * or if there are multiple values present and any of those values is null.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamThrowsNPEOnNullValueTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -376,6 +391,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Start building a request to the targeted web resource.
    */
+  @org.junit.jupiter.api.Test
   public void requestNoArgTest() throws Fault {
     WebTarget target = createWebTarget();
     Response response = target.request().buildGet().invoke();
@@ -392,6 +408,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Start building a request to the targeted web resource and
    * define the accepted response media types.
    */
+  @org.junit.jupiter.api.Test
   public void requestStringTest() throws Fault {
     WebTarget target = createWebTarget();
     Response response = target.request(MediaType.APPLICATION_ATOM_XML,
@@ -411,6 +428,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Start building a request to the targeted web resource and
    * define the accepted response media types.
    */
+  @org.junit.jupiter.api.Test
   public void requestMediaTypeTest() throws Fault {
     WebTarget target = createWebTarget();
     Response response = target
@@ -436,6 +454,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * target instance is taken and is inherited by the newly constructed (child)
    * target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.path("{path}").resolveTemplate("path", "lane");
@@ -457,6 +476,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * target instance is taken and is inherited by the newly constructed (child)
    * target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateThrowsNPEOnNullNameTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -479,6 +499,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * target instance is taken and is inherited by the newly constructed (child)
    * target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateThrowsNPEOnNullValueTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -505,6 +526,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the template is placed in the URI path component, otherwise the slash
    * characters will not be encoded in path templates.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateWithBooleanFalseTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.path("{path}").resolveTemplate("path", ENCODED, false);
@@ -530,6 +552,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the template is placed in the URI path component, otherwise the slash
    * characters will not be encoded in path templates.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateWithBooleanTrueTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.path("{path}").resolveTemplate("path", SLASHED, true);
@@ -552,6 +575,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * target instance is taken and is inherited by the newly constructed (child)
    * target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateWithBooleanTrueThrowsNPEOnNullNameTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -575,6 +599,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * target instance is taken and is inherited by the newly constructed (child)
    * target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateWithBooleanTrueThrowsNPEOnNullValueTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -598,6 +623,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * target instance is taken and is inherited by the newly constructed (child)
    * target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateWithBooleanFalseThrowsNPEOnNullNameTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -621,6 +647,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * target instance is taken and is inherited by the newly constructed (child)
    * target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateWithBooleanFalseThrowsNPEOnNullValueTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -645,6 +672,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * they pertain. All % characters in the stringified values that are not
    * followed by two hexadecimal numbers will be encoded.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateFromEncodedTest() throws Fault {
     WebTarget target = createWebTarget();
     StringBuilder sb = new StringBuilder();
@@ -664,6 +692,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the resolved template name or
    * value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateFromEncodedThrowsNPEForNullNameTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -683,6 +712,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the resolved template name or
    * value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateFromEncodedThrowsNPEForNullValueTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -706,6 +736,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * present configuration of the current (parent) target instance is taken and
    * is inherited by the newly constructed (child) target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesTest() throws Fault {
     Map<String, Object> map = new TreeMap<String, Object>();
     map.put("path", new StringBuilder().append("lane"));
@@ -730,6 +761,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: A call to the method with an empty parameter map is
    * ignored, i.e. same WebTarget instance is returned.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesReturnsTheSameTargetTest() throws Fault {
     WebTarget target = createWebTarget();
     target = target.path("{path}");
@@ -747,6 +779,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesNullValueTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("path", null);
@@ -767,6 +800,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesNullNameTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put(null, "xyz");
@@ -787,6 +821,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesNullMapTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -809,6 +844,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * present configuration of the current (parent) target instance is taken and
    * is inherited by the newly constructed (child) target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesWithBooleanTrueTest() throws Fault {
     Map<String, Object> map = new TreeMap<String, Object>();
     map.put("path", new StringBuilder().append("lane"));
@@ -838,6 +874,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * present configuration of the current (parent) target instance is taken and
    * is inherited by the newly constructed (child) target instance.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesWithBooleanFalseTest() throws Fault {
     Map<String, Object> map = new TreeMap<String, Object>();
     map.put("path", new StringBuilder().append("lane"));
@@ -862,6 +899,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: A call to the method with an empty parameter map is
    * ignored, i.e. same WebTarget instance is returned.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesWithBooleanTrueReturnsTheSameTargetTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -881,6 +919,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: A call to the method with an empty parameter map is
    * ignored, i.e. same WebTarget instance is returned.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesWithBooleanFalseReturnsTheSameTargetTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -900,6 +939,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesWithBooleanNullValueTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("path", null);
@@ -920,6 +960,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesWithBooleanNullNameTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put(null, "xyz");
@@ -940,6 +981,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesWithBooleanNullMapTest() throws Fault {
     WebTarget target = createWebTarget();
     try {
@@ -963,6 +1005,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * they pertain. All % characters in the stringified values that are not
    * followed by two hexadecimal numbers will be encoded.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedTest() throws Fault {
     WebTarget target = createWebTarget();
     StringBuilder sb = new StringBuilder();
@@ -984,6 +1027,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: A call to the method with an empty parameter map is
    * ignored, i.e. same WebTarget instance is returned.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedReturnsTheSameTargetTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -1003,6 +1047,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or encoded values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedThrowsNPEForNullNameTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -1024,6 +1069,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or encoded values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedThrowsNPEForNullValueTest()
       throws Fault {
     WebTarget target = createWebTarget();
@@ -1045,6 +1091,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: NullPointerException - if the name-value map or any of the
    * names or encoded values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedThrowsNPEForNullMapTest()
       throws Fault {
     WebTarget target = createWebTarget();

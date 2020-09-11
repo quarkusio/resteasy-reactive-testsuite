@@ -76,6 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an Uri instance using
    * UriBuilder.fromPath(String).build(String)
    */
+  @org.junit.jupiter.api.Test
   public void buildTest1() throws Fault {
     String value = "test1#test2";
     String expected_value = "test1%23test2";
@@ -100,6 +101,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).build(null); Verify that
    * IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void buildTest2() throws Fault {
     String value = null;
 
@@ -123,6 +125,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an Uri instance using
    * UriBuilder.fromPath(String).fragment(String).build()
    */
+  @org.junit.jupiter.api.Test
   public void fragmentTest1() throws Fault {
     String expected_value = "test#xyz";
 
@@ -146,6 +149,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Verify % is encoded; and all parameter are replaced by values supplied in
    * Map.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapTest1() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", "x%yz");
@@ -174,6 +178,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Verify % is encoded; and all parameter are replaced by values supplied in
    * Map.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapTest2() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", "x%yz");
@@ -202,6 +207,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an URI instance using UriBuilder.buildFromMap(Map);
    * Verify IllegalArgumentException is thrown when one parameter value is null.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapTest3() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", null);
@@ -227,6 +233,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an URI instance using UriBuilder.buildFromMap(Map);
    * Verify IllegalArgumentException is thrown when one parameter value is null.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapTest4() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", "x%yz");
@@ -254,6 +261,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * instance using the UriBuilder.buildFromMap(Map); Verify that the builder is
    * not affected.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapTest5() throws Fault {
     UriBuilder ub;
 
@@ -306,6 +314,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.buildFromEncodedMap(Map); Verify % is encoded when needed; and
    * all parameter are replaced by values supplied in Map.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromEncodedMapTest1() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", "x%20yz");
@@ -336,6 +345,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.buildFromEncodedMap(Map); Verify % is encoded; and all parameter
    * are replaced by values supplied in Map.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromEncodedMapTest2() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", "x%yz");
@@ -365,6 +375,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.buildFromEncodedMap(Map); Verify IllegalArgumentException is
    * thrown when one parameter value is null.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromEncodedMapTest3() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", null);
@@ -392,6 +403,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.buildFromEncodedMap(Map); Verify IllegalArgumentException is
    * thrown when one parameter value is null.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromEncodedMapTest4() throws Fault {
     Map<String, String> maps = new HashMap<String, String>();
     maps.put("x", "x%yz");
@@ -419,6 +431,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * instance using the UriBuilder.buildFromEncodedMap(Map); Verify that the
    * builder is not affected.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromEncodedMapTest5() throws Fault {
     UriBuilder ub;
 
@@ -470,6 +483,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an UriBuilder instance using
    * UriBuilder.fromPath(String)
    */
+  @org.junit.jupiter.api.Test
   public void fromPathTest1() throws Fault {
     String[] paths = { "/", "", "/path-absolute/test1", "fred@example.com",
         "path-rootless/test2" };
@@ -497,6 +511,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an UriBuilder instance using
    * UriBuilder.fromPath(null) Verify that IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void fromPathTest2() throws Fault {
     String path = null;
 
@@ -517,6 +532,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromResource(null) Verify that IllegalArgumentException is
    * thrown.
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceTest1() throws Fault {
     Class<?> res = null;
 
@@ -537,6 +553,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromResource(Class) Verify that Uri can be built from it with
    * correct path.
    */
+  @org.junit.jupiter.api.Test
   public void fromResourceTest2() throws Fault {
     Class<?> res = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
     String expected_path = "/TestPath";
@@ -561,6 +578,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromUri((URI)null) Verify that IllegalArgumentException is
    * thrown.
    */
+  @org.junit.jupiter.api.Test
   public void fromUriTest1() throws Fault {
     try {
       UriBuilder.fromUri(uri);
@@ -580,6 +598,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromUri((String)null) Verify that IllegalArgumentException is
    * thrown.
    */
+  @org.junit.jupiter.api.Test
   public void fromUriTest2() throws Fault {
     String uri = null;
 
@@ -599,6 +618,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an UriBuilder instance using
    * UriBuilder.fromUri(String)
    */
+  @org.junit.jupiter.api.Test
   public void fromUriTest3() throws Fault {
     String[] uris = { "ftp://ftp.is.co.za/rfc/rfc1808.txt",
         "mailto:java-net@java.sun.com", "news:comp.lang.java",
@@ -629,6 +649,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create an UriBuilder instance using UriBuilder.fromUri(URI)
    */
+  @org.junit.jupiter.api.Test
   public void fromUriTest4() throws Fault {
     String[] uris = { "ftp://ftp.is.co.za/rfc/rfc1808.txt",
         "mailto:java-net@java.sun.com", "news:comp.lang.java",
@@ -661,6 +682,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path("/TestPath"), Verify that "/TestPath" is
    * appended as specified
    */
+  @org.junit.jupiter.api.Test
   public void pathTest() throws Fault {
     String path = "test1#test2";
     String path1 = "/TestPath";
@@ -686,6 +708,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path("TestPath"), Verify that "TestPath" is
    * appended as specified
    */
+  @org.junit.jupiter.api.Test
   public void pathTest0() throws Fault {
     String path = "test1#test2";
     String path1 = "TestPath";
@@ -711,6 +734,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path(String null), Verify that
    * IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void pathTest1() throws Fault {
     String path = "test1#test2";
     String path1 = null;
@@ -734,6 +758,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path(Class TestPath), TestPath is annonated
    * with @Path, Verify that TestPath is appended as specified
    */
+  @org.junit.jupiter.api.Test
   public void pathTest2() throws Fault {
     String path = "test1#test2";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -759,6 +784,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path(Class null), Verify that
    * IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void pathTest3() throws Fault {
     String path = "test1#test2";
     Class<?> path1 = null;
@@ -783,6 +809,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path(Class TestPathBad), TestPathBad is not
    * annonated with @Path, Verify that IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void pathTest4() throws Fault {
     String path = "test1#test2";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPathBad.class;
@@ -806,6 +833,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath").path(Class TestPath, String "headSub"),
    * Verify that "/sub" is appended as specified
    */
+  @org.junit.jupiter.api.Test
   public void pathTest5() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -833,6 +861,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Verify that IllegalArgumentException is thrown since Method getPlain is not
    * annonated with @Path
    */
+  @org.junit.jupiter.api.Test
   public void pathTest6() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -858,6 +887,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath").path(Class TestPath, null), Verify that
    * IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void pathTest7() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -884,6 +914,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * IllegalArgumentException is thrown since Method getPlan is not annonated
    * with @Path
    */
+  @org.junit.jupiter.api.Test
   public void pathTest8() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = null;
@@ -910,6 +941,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * IllegalArgumentException is thrown, since there are two methods annotated
    * with @Path in TestPath
    */
+  @org.junit.jupiter.api.Test
   public void pathTest9() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -934,6 +966,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath").path(Method headSub), Verify that "/sub"
    * is appended as specified
    */
+  @org.junit.jupiter.api.Test
   public void pathTest10() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -960,6 +993,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath").path(Method headSub), Verify that "/sub1"
    * is appended as specified
    */
+  @org.junit.jupiter.api.Test
   public void pathTest11() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -986,6 +1020,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path(Method getPlain), Verify that
    * IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void pathTest12() throws Fault {
     String path = "/TestPath";
     Class<?> path1 = com.sun.ts.tests.jaxrs.api.rs.core.uribuilder.TestPath.class;
@@ -1015,6 +1050,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String).path(Method null), Verify that
    * IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void pathTest13() throws Fault {
     String path = "test1#test2";
     java.lang.reflect.Method path1 = null;
@@ -1038,6 +1074,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath").replacePath(String newPath), Verify that
    * path is updated as specified
    */
+  @org.junit.jupiter.api.Test
   public void replacePathTest1() throws Fault {
     String path = "/TestPath";
     String new_path = "/TestPathAgain";
@@ -1062,6 +1099,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath1/TestPath2").replacePath(String null),
    * Verify that all existing path cleared as specified
    */
+  @org.junit.jupiter.api.Test
   public void replacePathTest2() throws Fault {
     String path = "/TestPath1/TestPath2";
     String new_path = null;
@@ -1088,6 +1126,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("TestPath").replacePath(String newPath), Verify that
    * all existing path cleared as specified
    */
+  @org.junit.jupiter.api.Test
   public void replacePathTest3() throws Fault {
     String path = "TestPath";
     String new_path = null;
@@ -1113,6 +1152,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call UriBuilder.port(int), Veify that port number updated
    * accordingly.
    */
+  @org.junit.jupiter.api.Test
   public void portTest1() throws Fault {
     String uri_string = "foo://example.com:8042/over/there?name=ferret#nose";
     String uri_string_expected = "foo://example.com:2008/over/there?name=ferret#nose";
@@ -1134,6 +1174,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call UriBuilder.port(int) with an invalid port number;
    * Verify that IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void portTest2() throws Fault {
     String uri_string = "foo://example.com:8042/over/there?name=ferret#nose";
     int port = -10;
@@ -1157,6 +1198,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call UriBuilder.host(String), verify that hostame updated
    * accordingly
    */
+  @org.junit.jupiter.api.Test
   public void hostTest1() throws Fault {
     String uri_string = "foo://example.com:8042/over/there?name=ferret#nose";
     String uri_string_1 = "foo://java.net:8042/over/there?name=ferret#nose";
@@ -1178,6 +1220,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call UriBuilder.host(hostname) with incorrect hstname,
    * verify that IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void hostTest2() throws Fault {
     String uri_string = "foo://example.com:8042/over/there?name=ferret#nose";
     String host = "";
@@ -1201,6 +1244,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an UriBuilder instance using
    * UriBuilder.fromUri(String)
    */
+  @org.junit.jupiter.api.Test
   public void schemeTest1() throws Fault {
     String uri_string = "foo://example.com:8042/over/there?name=ferret#nose";
     String uri_string_1 = "http://example.com:8042/over/there?name=ferret#nose";
@@ -1222,6 +1266,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an UriBuilder instance using
    * UriBuilder.fromUri(null); Verify that scheme is cleared.
    */
+  @org.junit.jupiter.api.Test
   public void schemeTest2() throws Fault {
     String uri_string = "http://example.com:8042/over/there?name=ferret#nose";
     String scheme = null;
@@ -1245,6 +1290,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromUri(String); Call method schemeSpecificPart(String) Verify
    * the method works.
    */
+  @org.junit.jupiter.api.Test
   public void schemeSpecificPartTest() throws Fault {
     String uri_1 = "http://example.com:8042/uber/here?name=ferret#nose";
     String uri_2 = "//example1.com:8041/over/there?name=monkey";
@@ -1267,6 +1313,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromUri(String); Call method schemeSpecificPart(null) Verify
    * that IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void schemeSpecificPartTest1() throws Fault {
     String uri_1 = "http://example.com:8042/uber/here?name=ferret#nose";
     String uri_2 = null;
@@ -1294,6 +1341,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an Uri instance using
    * UriBuilder.fromPath(String).fragment(String).build(String)
    */
+  @org.junit.jupiter.api.Test
   public void templateTest1() throws Fault {
     String expected_value = "test#xyz";
 
@@ -1317,6 +1365,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an Uri instance using
    * UriBuilder.fromPath(String).build(String)
    */
+  @org.junit.jupiter.api.Test
   public void templateTest2() throws Fault {
     String expected_value = "test1/test2/test1";
 
@@ -1341,6 +1390,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * using UriBuilder instances using UriBuilder.fromUri(URI) Call uri(URI)
    * method on all instances; verify it works correctly on all of the instances.
    */
+  @org.junit.jupiter.api.Test
   public void uriTest() throws Fault {
     String[] uris_orig = getOrigUris();
     URI uris_replace[] = getReplacementUris();
@@ -1381,6 +1431,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.uri(URI null) verify the
    * IllegalStateException thrown..
    */
+  @org.junit.jupiter.api.Test
   public void uriTest1() throws Fault {
     try {
       UriBuilder.fromPath("/").uri(uri);
@@ -1398,6 +1449,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.buildFromEncoded(Object...). verify
    * Object.toString() is encoded.
    */
+  @org.junit.jupiter.api.Test
   public void fromEncodedTest1() throws Fault {
     String expected_value_1 = "http://localhost:8080/a/%25/=/%25G0/%25/=";
     String expected_value_2 = "http://localhost:8080/xy/%20/%25/xy";
@@ -1426,6 +1478,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.buildFromEncoded(Object...). verify
    * IllegalArgumentException is thrown when one template is missing its value
    */
+  @org.junit.jupiter.api.Test
   public void fromEncodedTest2() throws Fault {
     try {
       uri = UriBuilder.fromPath(LOCALHOST).path("/{v}/{w}/{x}/{y}/{z}/{x}")
@@ -1445,6 +1498,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.buildFromEncoded(Object...). verify
    * IllegalArgumentException is thrown when one value is null.
    */
+  @org.junit.jupiter.api.Test
   public void fromEncodedTest3() throws Fault {
     try {
       UriBuilder.fromPath(LOCALHOST).path("/{v}/{w}/{x}/{y}/{z}/{x}")
@@ -1463,6 +1517,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.queryParam(String name, Object...
    * value). verify IllegalArgumentException is thrown when name is null.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamTest1() throws Fault {
     String name = null;
 
@@ -1482,6 +1537,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.queryParam(String name, Object...
    * value). verify IllegalArgumentException is thrown when values is null.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamTest2() throws Fault {
     String name = "name";
 
@@ -1502,6 +1558,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value). verify IllegalArgumentException is thrown when one of values is
    * null.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamTest3() throws Fault {
     String name = "name";
 
@@ -1522,6 +1579,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value). verify that when two values are supplied, both are present in final
    * URI.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamTest4() throws Fault {
     String name = "name";
     String expected_value = "http://localhost:8080?name=x&name=y";
@@ -1545,6 +1603,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.queryParam(String name, Object...
    * value). verify that values are encoded properly in final URI.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamTest5() throws Fault {
     String name = "name";
     String actual = null;
@@ -1571,6 +1630,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceQuery(String name). verify that
    * query is replaced properly in final URI.
    */
+  @org.junit.jupiter.api.Test
   public void replaceQueryTest1() throws Fault {
     String name = "name";
     String expected_value = "http://localhost:8080?name1=xyz";
@@ -1596,6 +1656,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceQuery(String null). verify that
    * query is cleared properly in final URI.
    */
+  @org.junit.jupiter.api.Test
   public void replaceQueryTest2() throws Fault {
     String name = "name";
 
@@ -1619,6 +1680,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceQuery(String query). verify that
    * query is replaced properly in final URI.
    */
+  @org.junit.jupiter.api.Test
   public void replaceQueryTest3() throws Fault {
     String name = "name";
     String expected_value = "http://localhost:8080?name1=x&name2=%20&name3=x+y&name4=23&name5=x%20y";
@@ -1645,6 +1707,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceQuery(String query). verify that
    * IllegalArgumentException is thrown when query cannot be parsed.
    */
+  @org.junit.jupiter.api.Test
   public void replaceQueryTest4() throws Fault {
     String value = "http://localhost:8080?name1=x&name2=%20&name3=x+y&name4=x%20y";
 
@@ -1672,6 +1735,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceQueryParam(String null, Object...
    * value). verify IllegalArgumentException is thrown
    */
+  @org.junit.jupiter.api.Test
   public void replaceQueryParamTest1() throws Fault {
     String name = null;
 
@@ -1691,6 +1755,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceQueryParam(String name, Object...
    * value). verify all query params are cleared when values is null.
    */
+  @org.junit.jupiter.api.Test
   public void replaceQueryParamTest2() throws Fault {
     String name = "name";
 
@@ -1715,6 +1780,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceQueryParam(String name, Object...
    * value). verify that query parameter is updated accordingly
    */
+  @org.junit.jupiter.api.Test
   public void replaceQueryParamTest3() throws Fault {
     String name = "name";
     String expected_value = "http://localhost:8080?name=x&name=y&name=y+x&name=x%25y&name=%20";
@@ -1740,6 +1806,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath").segment(String[] paths), Verify
    * IllegalArgumentException if any element of paths is null
    */
+  @org.junit.jupiter.api.Test
   public void segmentTest1() throws Fault {
     String path = null;
 
@@ -1763,6 +1830,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath("/TestPath").segment(String[] paths), Verify "/" is
    * added when needed and characters are encoded as needed.
    */
+  @org.junit.jupiter.api.Test
   public void segmentTest2() throws Fault {
     String path1 = "";
     String[] path2 = { "a1", "/", "3b " };
@@ -1789,6 +1857,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * single value is only a single URI path segment. and characters are encoded
    * as needed.
    */
+  @org.junit.jupiter.api.Test
   public void segmentTest3() throws Fault {
     String path1 = "ab";
     String[] path2 = { "a1", "x/y", "3b " };
@@ -1814,6 +1883,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilderException(). Verify that empty message is associated with the
    * exception.
    */
+  @org.junit.jupiter.api.Test
   public void uriBuilderExceptionTest1() throws Fault {
     try {
       throw new UriBuilderException();
@@ -1837,6 +1907,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilderException(String msg). Verify that message msg is associated with
    * the exception.
    */
+  @org.junit.jupiter.api.Test
   public void uriBuilderExceptionTest2() throws Fault {
     String msg = "JAX-RS Test Message: xyz";
 
@@ -1862,6 +1933,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilderException(String msg, throwable ex). Verify that message msg is
    * associated with the exception.
    */
+  @org.junit.jupiter.api.Test
   public void uriBuilderExceptionTest3() throws Fault {
     String msg = "JAX-RS Test Message: xyz";
     String msg1 = "JAX-RS Test Message Again: xyz";
@@ -1888,6 +1960,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilderException(String msg, throwable ex). Verify that message msg is
    * associated with the exception.
    */
+  @org.junit.jupiter.api.Test
   public void uriBuilderExceptionTest4() throws Fault {
     String msg = "JAX-RS Test Message Again: xyz";
 
@@ -1913,6 +1986,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * UriBuilder.fromPath(String); Create another UriBuilder instance using
    * UriBuilder.clone(); Verify that both are created correctly.
    */
+  @org.junit.jupiter.api.Test
   public void cloneTest1() throws Fault {
     UriBuilder ub, ub1;
     URI uri1;
@@ -1952,6 +2026,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.matrixParam(String name, Object...
    * value). verify IllegalArgumentException is thrown when name is null.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamTest1() throws Fault {
     String name = null;
 
@@ -1977,6 +2052,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.matrixParam(String name, Object...
    * value). verify IllegalArgumentException is thrown when values is null.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamTest2() throws Fault {
     String name = "name";
 
@@ -2003,6 +2079,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * value). verify that when two values are supplied, both are present in final
    * URI.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamTest3() throws Fault {
     String name = "name";
     String expected_value = "http://localhost:8080;name=x;name=y";
@@ -2026,6 +2103,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceMatrixParam(String name,
    * Object... value). verify IllegalArgumentException when name is null.
    */
+  @org.junit.jupiter.api.Test
   public void replaceMatrixParamTest1() throws Fault {
     String name = "name";
 
@@ -2052,6 +2130,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceMatrixParam(String name,
    * Object... value). verify all values are cleared when value is null.
    */
+  @org.junit.jupiter.api.Test
   public void replaceMatrixParamTest2() throws Fault {
     String name = "name";
 
@@ -2076,6 +2155,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceMatrixParam(String name,
    * Object... value). verify that matrix parameter is updated accordingly
    */
+  @org.junit.jupiter.api.Test
   public void replaceMatrixParamTest3() throws Fault {
     String name = "name";
     String expected = "http://localhost:8080;name=x;name=y;name=y%20x;name=x%25y;name=%20";
@@ -2101,6 +2181,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceMatrixParam(String name,
    * Object... value). verify that matrix parameter is updated accordingly
    */
+  @org.junit.jupiter.api.Test
   public void replaceMatrixParamTest4() throws Fault {
     String name = "name1";
     String expected = "http://localhost:8080;name=x=;name=y%3F;name=x%20y;name=&;name1=x;name1=y;name1=y%20x;name1=x%25y;name1=%20";
@@ -2126,6 +2207,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceMatrix(String value). verify all
    * values are cleared when value is null.
    */
+  @org.junit.jupiter.api.Test
   public void replaceMatrixTest1() throws Fault {
     String name = "name";
     String expected1 = "http://localhost:8080;";
@@ -2154,6 +2236,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceMatrix(String value). verify that
    * Matrix parameter is updated accordingly
    */
+  @org.junit.jupiter.api.Test
   public void replaceMatrixTest2() throws Fault {
     String expected = "http://localhost:8080;name=x;name=y;name=y%20x;name=x%25y;name=%20";
     String value = "name=x;name=y;name=y x;name=x%y;name= ";
@@ -2179,6 +2262,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Calling UriBuilder.replaceMatrix(String value). verify that
    * matrix parameter is updated accordingly
    */
+  @org.junit.jupiter.api.Test
   public void replaceMatrixTest3() throws Fault {
     String expected = "http://localhost:8080;name1=x;name1=y;name1=y%20x;name1=x%25y;name1=%20";
     String value = "name1=x;name1=y;name1=y x;name1=x%y;name1= ";
@@ -2204,6 +2288,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: call UriBuilder.userInfo in different states of UriBuilder
    * Check the userInfo on built java.net.URI
    */
+  @org.junit.jupiter.api.Test
   public void userInfoTest() throws Fault {
     String unexpected = "Unexpected user info:";
     String userInfo = "foo:foo";
@@ -2239,6 +2324,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * component to which they pertain. The slash ('/') characters in parameter
    * values will be encoded if the template is placed in the URI path component.
    */
+  @org.junit.jupiter.api.Test
   public void buildObjectsBooleanEncodedTest() throws Fault {
     Object s[] = { "path-rootless/test2", new StringBuilder("x%yz"),
         "/path-absolute/%25test1", "fred@example.com" };
@@ -2258,6 +2344,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * toString() method and are then encoded to match the rules of the URI
    * component to which they pertain.
    */
+  @org.junit.jupiter.api.Test
   public void buildObjectsBooleanNotEncodedTest() throws Fault {
     Object s[] = { new StringBuffer("path-rootless/test2"), "x%yz",
         "/path-absolute", "test1", "fred@example.com" };
@@ -2275,6 +2362,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if there are any URI
    * template parameters without a supplied value
    */
+  @org.junit.jupiter.api.Test
   public void buildObjectsBooleanThrowsIAEWhenNoValueSuppliedTest()
       throws Fault {
     try {
@@ -2293,6 +2381,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: java.lang.IllegalArgumentException - if a value is null.
    */
+  @org.junit.jupiter.api.Test
   public void buildObjectsBooleanThrowsIAEWhenValueIsNullTest() throws Fault {
     try {
       uri = UriBuilder.fromPath("").path("{v}/{w}")
@@ -2317,6 +2406,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * characters in parameter values will be encoded if the template is placed in
    * the URI path component.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapWithBooleanSlashEncodedTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("x", new StringBuilder("x%yz"));
@@ -2346,6 +2436,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * values will be encoded. The state of the builder is unaffected; this method
    * may be called multiple times on the same builder instance.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapWithBooleanSlashNotEncodedTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("x", new StringBuilder("x%yz"));
@@ -2370,6 +2461,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if there are any URI
    * template parameters without a supplied value
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapWithBooleanThrowsIAEWhenNoSuppliedValueTest()
       throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
@@ -2393,6 +2485,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if a template
    * parameter value is null.
    */
+  @org.junit.jupiter.api.Test
   public void buildFromMapWithBooleanThrowsIAEWhenNullValueTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("x", new StringBuilder("x%yz"));
@@ -2415,6 +2508,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create a new instance initialized from a Link.
    */
+  @org.junit.jupiter.api.Test
   public void fromLinkTest() throws Fault {
     URI uri = UriBuilder.fromUri(LOCALHOST).build();
     Link link = Link.fromUri(uri).build();
@@ -2430,6 +2524,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: throws IllegalArgumentException - if link is {@code null}
    */
+  @org.junit.jupiter.api.Test
   public void fromLinkThrowsIllegalArgumentExceptionTest() throws Fault {
     try {
       UriBuilder.fromLink((Link) null);
@@ -2449,6 +2544,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * cases where there is a single method with the specified name that is
    * annotated with Path.
    */
+  @org.junit.jupiter.api.Test
   public void fromMethodTest() throws Fault {
     URI uri = UriBuilder.fromMethod(TestPath.class, "headSub").build();
     assertTrue(uri.toASCIIString().equals("/sub"),
@@ -2465,6 +2561,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * null, or there is more than or less than one variant of the method
    * annotated with Path.
    */
+  @org.junit.jupiter.api.Test
   public void fromMethodThrowsIllegalArgumentExceptionWhenMorePathsTest()
       throws Fault {
     try {
@@ -2484,6 +2581,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * null, or there is more than or less than one variant of the method
    * annotated with Path.
    */
+  @org.junit.jupiter.api.Test
   public void fromMethodThrowsIllegalArgumentExceptionWhenNoPathTest()
       throws Fault {
     try {
@@ -2502,6 +2600,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the URI template string represented by this URI
    * builder.
    */
+  @org.junit.jupiter.api.Test
   public void toTemplateTest() throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
     UriBuilder builder = UriBuilder.fromPath("").path(template);
@@ -2519,6 +2618,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied URI to the UriBuilder replacing any existing values for those
    * components.
    */
+  @org.junit.jupiter.api.Test
   public void uriStringTest() throws Fault {
     String origUris[] = getOrigUris();
     URI[] replaceUris = getReplacementUris();
@@ -2560,6 +2660,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws IllegalArgumentException - if URI template or is
    * {@code null}.
    */
+  @org.junit.jupiter.api.Test
   public void uriStringThrowsIAEWhenNullTest() throws Fault {
     try {
       UriBuilder.fromMethod(TestPath.class, "headSub").uri((String) null);
@@ -2578,6 +2679,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws IllegalArgumentException - if {@code uriTemplate} is
    * not a valid URI template
    */
+  @org.junit.jupiter.api.Test
   public void uriStringThrowsIAEWhenNoUriTest() throws Fault {
     String sUri = "://";
     try {
@@ -2600,6 +2702,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Resolve a URI template with a given name in this UriBuilder
    * instance using a supplied value
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateStringObjectTest() throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
     UriBuilder builder = UriBuilder.fromPath("").path(template)
@@ -2618,6 +2721,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: if the resolved template name or value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateStringObjectThrowsIAEOnNullNameTest()
       throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
@@ -2637,6 +2741,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: if the resolved template name or value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateStringObjectThrowsIAEOnNullValueTest()
       throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
@@ -2658,6 +2763,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * instance using a supplied value. The slash ('/') characters in template
    * values will be encoded.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateStringObjectBooleanSlashEncodedTest()
       throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
@@ -2678,6 +2784,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Resolve a URI template with a given name in this UriBuilder
    * instance using a supplied value.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateStringObjectBooleanSlashNotEncodedTest()
       throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
@@ -2697,6 +2804,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: if the resolved template name or value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateStringObjectBooleanThrowsIAEOnNullNameTest()
       throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
@@ -2716,6 +2824,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: if the resolved template name or value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateStringObjectBooleanThrowsIAEOnNullValueTest()
       throws Fault {
     String template = "{v}/{w}/{x}/{y}/{w}";
@@ -2736,6 +2845,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Resolve a URI template with a given name in this UriBuilder
    * instance using a supplied encoded value.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateFromEncodedTest() throws Fault {
     Object s[] = { "path-rootless%2Ftest2", new StringBuilder("x%25yz"),
         "%2Fpath-absolute%2F%2525test1", "fred@example.com" };
@@ -2759,6 +2869,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * stringified values that are not followed by two hexadecimal numbers will be
    * encoded.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateFromEncodedPercentEncodedTest() throws Fault {
     Object s[] = { "path-rootless%2Ftest2", new StringBuilder("x%yz"),
         "%2Fpath-absolute%2F%2525test1", "fred@example.com" };
@@ -2780,6 +2891,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if the resolved
    * template name or encoded value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateFromEncodedThrowsNullOnNullNameTest()
       throws Fault {
     Object s[] = { "path-rootless%2Ftest2", new StringBuilder("x%25yz"),
@@ -2801,6 +2913,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if the resolved
    * template name or encoded value is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplateFromEncodedThrowsNullOnNullValueTest()
       throws Fault {
     UriBuilder builder = UriBuilder.fromPath("").path("{v}/{w}/{x}/{y}/{w}");
@@ -2820,6 +2933,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Resolve one or more URI templates in this UriBuilder
    * instance using supplied name-value pairs.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("x", new StringBuilder("x%yz"));
@@ -2844,6 +2958,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapThrowsIAEOnNullNameTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("a", new StringBuilder("x%yz"));
@@ -2865,6 +2980,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapThrowsIAEOnNullValueTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("a", null);
@@ -2886,6 +3002,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Resolve one or more URI templates in this UriBuilder
    * instance using supplied name-value pairs.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapBooleanSlashEncodedTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("x", new StringBuilder("x%yz"));
@@ -2910,6 +3027,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Resolve one or more URI templates in this UriBuilder
    * instance using supplied name-value pairs.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapBooleanSlashNotEncodedTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("x", new StringBuilder("x%yz"));
@@ -2934,6 +3052,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapBooleanThrowsIAEOnNullNameTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("a", new StringBuilder("x%yz"));
@@ -2955,6 +3074,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapBooleanThrowsIAEOnNullValueTest()
       throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
@@ -2977,6 +3097,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy:java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesMapBooleanThrowsIAEOnNullMapTest() throws Fault {
     UriBuilder builder = UriBuilder.fromPath("").path("{a}/{b}");
     try {
@@ -2995,6 +3116,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Resolve one or more URI templates in this instance using
    * supplied name-value pairs.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("v", new StringBuilder("path-rootless%2Ftest2"));
@@ -3021,6 +3143,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * supplied name-value pairs. All % characters in the stringified values that
    * are not followed by two hexadecimal numbers will be encoded.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedPercentEncodedTest() throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("v", new StringBuilder("path-rootless%2Ftest2"));
@@ -3046,6 +3169,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedThrowsNullOnNullNameTest()
       throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
@@ -3067,6 +3191,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedThrowsNullOnNullValueTest()
       throws Fault {
     Map<String, Object> map = new HashMap<String, Object>();
@@ -3088,6 +3213,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: java.lang.IllegalArgumentException - if the name-value map
    * or any of the names or values in the map is null.
    */
+  @org.junit.jupiter.api.Test
   public void resolveTemplatesFromEncodedThrowsNullOnNullMapTest()
       throws Fault {
     UriBuilder builder = UriBuilder.fromPath("").path("{v}/{w}/{x}/{y}/{w}");

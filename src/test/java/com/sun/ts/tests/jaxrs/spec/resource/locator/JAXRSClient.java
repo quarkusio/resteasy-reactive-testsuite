@@ -52,6 +52,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * expected to be initialized by their creator and field and bean properties
    * are not modified by the implementation runtime.
    */
+  @org.junit.jupiter.api.Test
   public void checkEntityIsNotSetTest() throws Fault {
     String request = buildRequest(Request.POST,
         "sub;resmatrix=resarg;submatrix=subarg;entity=entityarg;");

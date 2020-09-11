@@ -58,6 +58,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * invoked;
    * 
    */
+  @org.junit.jupiter.api.Test
   public void noBindingTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "nobinding"));
     setProperty(Property.CONTENT, "0");
@@ -80,6 +81,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * invoked;
    * 
    */
+  @org.junit.jupiter.api.Test
   public void dynamicBindingTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "dynamic"));
     setProperty(Property.CONTENT, "0");

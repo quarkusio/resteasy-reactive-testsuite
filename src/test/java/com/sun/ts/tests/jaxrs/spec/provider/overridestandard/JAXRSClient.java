@@ -88,6 +88,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteByteArrayProviderTest() throws Fault {
     setPropertyAndInvoke("bytearray", MediaType.APPLICATION_XML_TYPE);
   }
@@ -102,6 +103,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteStringProviderTest() throws Fault {
     setPropertyAndInvoke("string", MediaType.APPLICATION_XML_TYPE);
   }
@@ -116,6 +118,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteInputStreamProviderTest() throws Fault {
     setPropertyAndInvoke("inputstream", MediaType.APPLICATION_XML_TYPE);
   }
@@ -130,6 +133,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteReaderProviderTest() throws Fault {
     setPropertyAndInvoke("reader", MediaType.APPLICATION_XML_TYPE);
   }
@@ -144,6 +148,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteFileProviderTest() throws Fault {
     setPropertyAndInvoke("file", MediaType.APPLICATION_XML_TYPE);
   }
@@ -158,6 +163,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteDataSourceProviderTest() throws Fault {
     setPropertyAndInvoke("datasource", MediaType.APPLICATION_XML_TYPE);
   }
@@ -172,6 +178,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteSourceProviderTest() throws Fault {
     setPropertyAndInvoke("source", MediaType.APPLICATION_XML_TYPE);
   }
@@ -186,6 +193,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteJaxbProviderTest() throws Fault {
     setPropertyAndInvoke("jaxb", MediaType.APPLICATION_XML_TYPE);
   }
@@ -200,6 +208,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteStreamingOutputProviderTest() throws Fault {
     setPropertyAndInvoke("streamingoutput", MediaType.APPLICATION_XML_TYPE);
   }
@@ -214,6 +223,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteMapProviderTest() throws Fault {
     setPropertyAndInvoke("map", MediaType.APPLICATION_FORM_URLENCODED_TYPE);
   }
@@ -228,6 +238,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteBooleanProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "boolean"));
@@ -248,6 +259,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteCharacterProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "character"));
@@ -268,6 +280,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * providers when either could handle the same request.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void readWriteIntegerProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "number"));

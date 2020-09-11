@@ -54,6 +54,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new generic type, supplying the generic type
    * information and deriving the class.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithTypeTest() throws Fault {
     Method method = null;
     try {
@@ -86,6 +87,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new generic type, deriving the generic type
    * and class from type parameter.
    */
+  @org.junit.jupiter.api.Test
   public void constructorProtectedTest() throws Fault {
     GenericType<TreeSet<String>> type = new GenericType<TreeSet<String>>() {
     };
@@ -104,6 +106,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Two GenericType<TreeSet<String>> must be the equal
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest() throws Fault {
     GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
     };
@@ -133,6 +136,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: hashCode of two GenericType<TreeSet<String>> must be the
    * same
    */
+  @org.junit.jupiter.api.Test
   public void hashCodeTest() throws Fault {
     GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
     };
@@ -161,6 +165,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: toString of two GenericType<TreeSet<String>> must be the
    * same
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
     };

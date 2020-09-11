@@ -68,6 +68,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * Get entity media type.
    */
+  @org.junit.jupiter.api.Test
   public void entityMediaTypeTest() throws Fault {
     Entity<String> entity;
     MediaType[] mTypes = getMediaTypes(MediaType.class);
@@ -87,6 +88,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Get entity data.
    */
+  @org.junit.jupiter.api.Test
   public void entityMediaTypeGetEntityTest() throws Fault {
     Entity<?> entity;
     Object[] entities = getEntities();
@@ -105,6 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * Get entity media type. Get the entity annotations.
    */
+  @org.junit.jupiter.api.Test
   public void entityMediaTypeAnnotationsTest() throws Fault {
     Entity<String> entity;
     MediaType[] mTypes = getMediaTypes(MediaType.class);
@@ -126,6 +129,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * Get entity media type. Get the entity annotations.
    */
+  @org.junit.jupiter.api.Test
   public void entityMediaTypeAnnotationsDifferentEntitiesTest() throws Fault {
     Entity<Object> entity;
     Annotation[] annotations = AnnotatedClass.class.getAnnotations();
@@ -147,6 +151,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * Get entity media type.
    */
+  @org.junit.jupiter.api.Test
   public void entityStringTest() throws Fault {
     Entity<String> entity;
     String[] mTypes = getMediaTypes(String.class);
@@ -166,6 +171,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Get entity data.
    */
+  @org.junit.jupiter.api.Test
   public void entityStringGetEntityTest() throws Fault {
     Entity<?> entity;
     Object[] entities = getEntities();
@@ -184,6 +190,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * throws IllegalArgumentException - if the supplied string cannot be parsed
    * or is null.
    */
+  @org.junit.jupiter.api.Test
   public void entityStringThrowsExceptionWhenNullTest() throws Fault {
     try {
       Entity.entity("entity", (String) null);
@@ -202,6 +209,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * throws IllegalArgumentException - if the supplied string cannot be parsed
    * or is null.
    */
+  @org.junit.jupiter.api.Test
   public void entityStringThrowsExceptionWhenUnparsableTest() throws Fault {
     try {
       Entity.entity("entity", "\\//\\");
@@ -219,6 +227,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create an entity using a supplied content media type.
    */
+  @org.junit.jupiter.api.Test
   public void entityVariantTest() throws Fault {
     Entity<?> entity;
     Object[] pairs = getEntities();
@@ -245,6 +254,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create an entity using a supplied content media type.
    */
+  @org.junit.jupiter.api.Test
   public void entityVariantAnnotationsTest() throws Fault {
     Entity<?> entity;
     Object[] pairs = getEntities();
@@ -274,6 +284,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an form entity.
    * rs.MediaType#APPLICATION_FORM_URLENCODED form entity.
    */
+  @org.junit.jupiter.api.Test
   public void formFormTest() throws Fault {
     Entity<?> entity;
     entity = Entity.form(new Form());
@@ -288,6 +299,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an form entity.
    * rs.MediaType#APPLICATION_FORM_URLENCODED form entity.
    */
+  @org.junit.jupiter.api.Test
   public void formMultivaluedMapTest() throws Fault {
     Entity<?> entity;
     entity = Entity.form(new MultivaluedHashMap<String, String>());
@@ -301,6 +313,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create an form entity. .rs.core.MediaType#TEXT_HTML entity
    */
+  @org.junit.jupiter.api.Test
   public void htmlTest() throws Fault {
     Entity<?> entity;
     Object[] entities = getEntities();
@@ -319,6 +332,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an form entity. .rs.core.MediaType#APPLICATION_JSON
    * entity
    */
+  @org.junit.jupiter.api.Test
   public void jsonTest() throws Fault {
     Entity<?> entity;
     Object[] entities = getEntities();
@@ -337,6 +351,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an form entity. .rs.core.MediaType#TEXT_PLAIN
    * entity.
    */
+  @org.junit.jupiter.api.Test
   public void textTest() throws Fault {
     Entity<?> entity;
     Object[] entities = getEntities();
@@ -355,6 +370,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an form entity.
    * .rs.core.MediaType#APPLICATION_XHTML_XML entity
    */
+  @org.junit.jupiter.api.Test
   public void xhtmlTest() throws Fault {
     Entity<?> entity;
     Object[] entities = getEntities();
@@ -373,6 +389,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create an form entity. .rs.core.MediaType#APPLICATION_XML
    * entity
    */
+  @org.junit.jupiter.api.Test
   public void xmlTest() throws Fault {
     Entity<?> entity;
     Object[] entities = getEntities();

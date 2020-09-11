@@ -69,6 +69,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Synchronously invoke the request and receive a response
    * back.
    */
+  @org.junit.jupiter.api.Test
   public void invokePlainTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder();
     Invocation invocation = builder.buildGet();
@@ -84,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws ProcessingException in case the invocation failed.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void invokeThrowsExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(null);
     Invocation invocation = builder.buildGet();
@@ -105,6 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Synchronously invoke the request and receive a response of
    * the specified type back.
    */
+  @org.junit.jupiter.api.Test
   public void invokeClassTest() throws Fault {
     Entity<String> entity = createEntity("invokeClassTest");
     Invocation.Builder builder = createInvocationBuilder();
@@ -122,6 +125,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws ProcessingException in case the invocation failed.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void invokeClassThrowsExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(null);
     Invocation invocation = builder.buildGet();
@@ -143,6 +147,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: in case the response status code of the response returned
    * by the server is not SUCCESSFUL
    */
+  @org.junit.jupiter.api.Test
   public void invokeStringThrowsWebApplicationExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
         createBadResponseFilter());
@@ -165,6 +170,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: in case the response status code of the response returned
    * by the server is not SUCCESSFUL and the response type is not Response
    */
+  @org.junit.jupiter.api.Test
   public void invokeResponseThrowsNoWebApplicationExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
         createBadResponseFilter());
@@ -182,6 +188,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Synchronously invoke the request and receive a response of
    * the specified generic type back.
    */
+  @org.junit.jupiter.api.Test
   public void invokeGenericTypeTest() throws Fault {
     GenericType<String> entity = new GenericType<String>() {
     };
@@ -199,6 +206,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: throws ProcessingException in case the invocation failed.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void invokeGenericTypeThrowsExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(null);
     Invocation invocation = builder.buildGet();
@@ -221,6 +229,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: in case the response status code of the response returned
    * by the server is not SUCCESSFUL
    */
+  @org.junit.jupiter.api.Test
   public void invokeGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
@@ -246,6 +255,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: in case the response status code of the response returned
    * by the server is not SUCCESSFUL and response type is not Response
    */
+  @org.junit.jupiter.api.Test
   public void invokeAnnonymousGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
@@ -266,6 +276,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: in case the response status code of the response returned
    * by the server is not SUCCESSFUL and response type is not Response
    */
+  @org.junit.jupiter.api.Test
   public void invokeExtendedGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
@@ -284,6 +295,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Submit the request for an asynchronous invocation and
    * receive a future response back.
    */
+  @org.junit.jupiter.api.Test
   public void submitPlainTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder();
     Invocation invocation = builder.buildGet();
@@ -306,6 +318,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Future instance may throw an ExecutionException that wraps a
    * ProcessingException thrown in case of an invocation processing failure
    */
+  @org.junit.jupiter.api.Test
   public void submitPlainThrowsProcessingExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(null);
     Invocation invocation = builder.buildGet();
@@ -321,6 +334,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Submit the request for an asynchronous invocation and
    * receive a future response of the specified type back.
    */
+  @org.junit.jupiter.api.Test
   public void submitClassTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder();
     Entity<String> entity = createEntity("submitClassTest");
@@ -345,6 +359,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Future instance may throw an ExecutionException that wraps a
    * ProcessingException thrown in case of an invocation processing failure
    */
+  @org.junit.jupiter.api.Test
   public void submitStringThrowsProcessingExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(null);
     Invocation invocation = builder.buildGet();
@@ -362,6 +377,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclasses thrown in case the received response status code is not
    * successful and the specified response type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void submitStringThrowsWebApplicationExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
         createBadResponseFilter());
@@ -380,6 +396,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclasses thrown in case the received response status code is not
    * successful and the specified response type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void submitResponseThrowsNoWebApplicationExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
         createBadResponseFilter());
@@ -396,6 +413,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Submit the request for an asynchronous invocation and
    * receive a future response of the specified generic type back.
    */
+  @org.junit.jupiter.api.Test
   public void submitGenericTypeTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder();
     Entity<String> entity = createEntity("submitGenericTypeTest");
@@ -421,6 +439,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Future instance may throw an ExecutionException that wraps a
    * ProcessingException thrown in case of an invocation processing failure
    */
+  @org.junit.jupiter.api.Test
   public void submitGenericTypeThrowsProcessingExceptionTest() throws Fault {
     Invocation.Builder builder = createInvocationBuilder(null);
     Entity<String> entity = createEntity("submitGenericTypeTest");
@@ -440,6 +459,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclasses thrown in case the received response status code is not
    * successful and the specified response type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void submitGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
@@ -462,6 +482,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclasses thrown in case the received response status code is not
    * successful and the specified response type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void submitAnnonymousGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
@@ -484,6 +505,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclasses thrown in case the received response status code is not
    * successful and the specified response type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void submitExtendedGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     Invocation.Builder builder = createInvocationBuilder(
@@ -503,6 +525,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * register an InvocationCallback to process the future result of the
    * invocation.
    */
+  @org.junit.jupiter.api.Test
   public void submitInvocationCallbackTest() throws Fault {
     InvocationCallback<String> callback = createCallback(String.class);
     Invocation.Builder builder = createInvocationBuilder();
@@ -526,6 +549,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Future instance may throw an ExecutionException that wraps a
    * ProcessingException thrown in case of an invocation processing failure
    */
+  @org.junit.jupiter.api.Test
   public void submitInvocationCallbackThrowsProcessingExceptionTest()
       throws Fault {
     InvocationCallback<String> callback = createCallback(String.class);
@@ -545,6 +569,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclasses thrown in case the received response status code is not
    * successful and the specified response type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void submitInvocationCallbackStringThrowsWebAppExceptionTest()
       throws Fault {
     InvocationCallback<String> callback = createCallback(String.class);
@@ -565,6 +590,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * subclasses thrown in case the received response status code is not
    * successful and the specified response type is not Response.
    */
+  @org.junit.jupiter.api.Test
   public void submitInvocationCallbackResponseThrowsNoWebAppExceptionTest()
       throws Fault {
     InvocationCallback<Response> callback = createCallback(Response.class);

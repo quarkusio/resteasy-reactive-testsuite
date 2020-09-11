@@ -61,6 +61,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest() throws Fault {
     NotAcceptableException e = new NotAcceptableException();
     assertResponse(e);
@@ -77,6 +78,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseTest() throws Fault {
     Response response = buildResponse();
     NotAcceptableException e = new NotAcceptableException(response);
@@ -92,6 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 406.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS)
@@ -115,6 +118,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -136,6 +140,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableTest() throws Fault {
     Response response = buildResponse();
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
@@ -156,6 +161,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 406.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -180,6 +186,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Construct a new "request not acceptable" exception.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringTest() throws Fault {
     NotAcceptableException e = new NotAcceptableException(MESSAGE);
     assertResponse(e);
@@ -195,6 +202,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     Response response = buildResponse();
     NotAcceptableException e = new NotAcceptableException(MESSAGE, response);
@@ -211,6 +219,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 406.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS)
@@ -235,6 +244,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -255,6 +265,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableTest() throws Fault {
     Response response = buildResponse();
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
@@ -277,6 +288,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 406.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {

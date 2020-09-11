@@ -52,6 +52,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes HEAD on root resource at /HeadTest; Verify
    * that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headTest1() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/plain");
     setProperty(REQUEST, buildRequest("HEAD", ""));
@@ -68,6 +69,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes HEAD on root resource at /HeadTest; Verify
    * that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headTest2() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/html");
     setProperty(REQUEST, buildRequest("HEAD", ""));
@@ -84,6 +86,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes HEAD on a sub resource at /HeadTest/sub;
    * Verify that right Method is invoked.
    */
+  @org.junit.jupiter.api.Test
   public void headSubTest() throws Fault {
     setProperty(REQUEST, buildRequest("HEAD", "sub"));
     setProperty(Property.EXPECTED_HEADERS, "CTS-HEAD:  sub-text-html");
@@ -98,6 +101,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call a method annotated with a request method designator
    * for GET and discard any returned entity
    */
+  @org.junit.jupiter.api.Test
   public void headGetTest() throws Fault, IOException {
     setProperty(REQUEST, buildRequest("HEAD", "get"));
     setProperty(Property.EXPECTED_HEADERS, "CTS-HEAD: get");

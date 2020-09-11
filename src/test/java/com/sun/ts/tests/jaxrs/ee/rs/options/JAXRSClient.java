@@ -50,6 +50,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call a method annotated with a request method designator
    * for OPTIONS
    */
+  @org.junit.jupiter.api.Test
   public void optionsTest() throws Fault {
     setProperty(REQUEST, buildRequest("OPTIONS", "options"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -64,6 +65,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Generate an automatic response using the metadata provided
    * by the JAX-RS annotations on the matching class and its methods.
    */
+  @org.junit.jupiter.api.Test
   public void autoResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest("OPTIONS", "get"));
     setProperty(STATUS_CODE, "!" + getStatusCode(Status.NOT_FOUND));

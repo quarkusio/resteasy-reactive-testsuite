@@ -55,6 +55,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a GenericEntity instance using GenericEntity(T
    * entity, null) Verify the expected IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest1() throws Fault {
     List<String> list = new ArrayList<String>();
     try {
@@ -73,6 +74,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a GenericEntity instance using GenericEntity(null,
    * Type) Verify the expected IllegalArgumentException is thrown.
    */
+  @org.junit.jupiter.api.Test
   public void constructorTest2() throws Fault {
     try {
       new GenericEntity<List<String>>(null,
@@ -92,6 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * entity) Verify the expected IllegalArgumentException is thrown for null and
    * not for legal argument
    */
+  @org.junit.jupiter.api.Test
   public void singleArgumentConstructorTest() throws Fault {
     try {
       new GenericEntity<Map<String, List<Long>>>(null) {
@@ -117,6 +120,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a GenericEntity instance using GenericEntity(T
    * entity, not null)
    */
+  @org.junit.jupiter.api.Test
   public void constructorWith2ArgsTest() throws Fault {
     List<String> list = new ArrayList<String>();
     GenericEntity<List<String>> generic;
@@ -145,6 +149,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a GenericEntity instance using GenericEntity(T
    * entity)
    */
+  @org.junit.jupiter.api.Test
   public void constructorWith1ArgTest() throws Fault {
     List<String> list = new ArrayList<String>();
     GenericEntity<List<String>> generic;
@@ -170,6 +175,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Create GenericEntity with a map, retrieve and validate
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTest() throws Fault {
     String testName = "EntityTest";
     Map<String, List<Long>> map = new java.util.HashMap<String, List<Long>>();
@@ -193,6 +199,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a GenericEntity instance; Verify that
    * GenericEntity.getType() works.
    */
+  @org.junit.jupiter.api.Test
   public void getTypeTest() throws Fault {
     Boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -242,6 +249,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a GenericEntity instance; Verify that
    * GenericEntity.getRawType() works.
    */
+  @org.junit.jupiter.api.Test
   public void getRawTypeTest() throws Fault {
     Boolean pass = true;
     StringBuffer sb = new StringBuffer();
@@ -288,6 +296,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Two GenericEntity<TreeSet<String>> must be the equal
    */
+  @org.junit.jupiter.api.Test
   public void equalsTest() throws Fault {
     TreeSet<String> set = new TreeSet<String>();
 
@@ -328,6 +337,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: HashCode of two GenericEntity<TreeSet<String>> must be the
    * same
    */
+  @org.junit.jupiter.api.Test
   public void hashCodeTest() throws Fault {
     TreeSet<String> set = new TreeSet<String>();
     GenericEntity<TreeSet<String>> type1 = new GenericEntity<TreeSet<String>>(
@@ -366,6 +376,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: toString() of two GenericEntity<TreeSet<String>> must be
    * the same
    */
+  @org.junit.jupiter.api.Test
   public void toStringTest() throws Fault {
     TreeSet<String> set = new TreeSet<String>();
     GenericEntity<TreeSet<String>> type1 = new GenericEntity<TreeSet<String>>(

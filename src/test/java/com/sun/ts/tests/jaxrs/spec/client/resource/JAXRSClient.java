@@ -46,6 +46,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * (iii) create a request from the WebTarget and (iv) submit a request or get
    * a prepared Invocation for later submission
    */
+  @org.junit.jupiter.api.Test
   public void checkClientConceptTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "concept"));
     setProperty(Property.SEARCH_STRING, "concept");

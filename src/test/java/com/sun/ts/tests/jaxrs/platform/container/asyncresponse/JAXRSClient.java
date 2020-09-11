@@ -68,6 +68,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * indicate to the client that the request processing has been cancelled by
    * sending back a HTTP 503 (Service unavailable) error response.
    */
+  @org.junit.jupiter.api.Test
   public void cancelVoidTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -86,6 +87,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * been resumed has no effect and the method call is ignored while returning
    * false when resumed.
    */
+  @org.junit.jupiter.api.Test
   public void cancelVoidOnResumedTest() throws Fault {
     suspendResumeTest();
     Future<Response> cancel = invokeRequest("cancelvoid?stage=1");
@@ -102,6 +104,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * been resumed has no effect and the method call is ignored while returning
    * true when canceled.
    */
+  @org.junit.jupiter.api.Test
   public void cancelVoidOnCanceledTest() throws Fault {
     cancelVoidTest();
     Future<Response> cancel = invokeRequest("cancelvoid?stage=1");
@@ -116,6 +119,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: returns false in case the request processing is not
    * suspended and could not be resumed.
    */
+  @org.junit.jupiter.api.Test
   public void resumeCanceledTest() throws Fault {
     cancelVoidTest();
     Future<Response> resumeCanceled = invokeRequest("resume?stage=1", "");
@@ -133,6 +137,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * sending back a HTTP 503 (Service unavailable) error response with a
    * Retry-After header set to the value provided by the method parameter.
    */
+  @org.junit.jupiter.api.Test
   public void cancelIntTest() throws Fault {
     String seconds = "20";
     invokeClear();
@@ -158,6 +163,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * been resumed has no effect and the method call is ignored while returning
    * false when resumed
    */
+  @org.junit.jupiter.api.Test
   public void cancelIntOnResumedTest() throws Fault {
     suspendResumeTest();
     Future<Response> cancel = invokeRequest("cancelretry?stage=1", "20");
@@ -174,6 +180,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * been resumed has no effect and the method call is ignored while returning
    * true when canceled
    */
+  @org.junit.jupiter.api.Test
   public void cancelIntOnCanceledTest() throws Fault {
     cancelVoidTest();
     Future<Response> cancel = invokeRequest("cancelretry?stage=1", "20");
@@ -188,6 +195,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: returns false in case the request processing is not
    * suspended and could not be resumed.
    */
+  @org.junit.jupiter.api.Test
   public void resumeCanceledIntTest() throws Fault {
     cancelIntTest();
     Future<Response> resume = invokeRequest("resume?stage=1", "");
@@ -205,6 +213,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * sending back a HTTP 503 (Service unavailable) error response with a
    * Retry-After header set to the value provided by the method parameter.
    */
+  @org.junit.jupiter.api.Test
   public void cancelDateTest() throws Fault {
     long milis = (System.currentTimeMillis() / 1000) * 1000 + 20000;
     invokeClear();
@@ -237,6 +246,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * been resumed has no effect and the method call is ignored while returning
    * false when resumed
    */
+  @org.junit.jupiter.api.Test
   public void cancelDateOnResumedTest() throws Fault {
     suspendResumeTest();
     Future<Response> cancel = invokeRequest("canceldate?stage=1",
@@ -254,6 +264,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * been resumed has no effect and the method call is ignored while returning
    * true when canceled
    */
+  @org.junit.jupiter.api.Test
   public void cancelDateOnCanceledTest() throws Fault {
     cancelVoidTest();
     Future<Response> cancel = invokeRequest("canceldate?stage=1",
@@ -269,6 +280,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: returns false in case the request processing is not
    * suspended and could not be resumed.
    */
+  @org.junit.jupiter.api.Test
   public void resumeCanceledDateTest() throws Fault {
     cancelDateTest();
     Future<Response> resumeResumed = invokeRequest("resume?stage=1", "");
@@ -284,6 +296,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * cancelled. Method returns true if this asynchronous response has been
    * canceled before completion.
    */
+  @org.junit.jupiter.api.Test
   public void isCanceledWhenCanceledTest() throws Fault {
     cancelVoidTest();
     Future<Response> is = invokeRequest("iscanceled?stage=1");
@@ -299,6 +312,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * cancelled. Method returns true if this asynchronous response has been
    * canceled before completion.
    */
+  @org.junit.jupiter.api.Test
   public void isCanceledWhenSuspendedTest() throws Fault {
     invokeClear();
     invokeRequest("suspend");
@@ -315,6 +329,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * cancelled. Method returns true if this asynchronous response has been
    * canceled before completion.
    */
+  @org.junit.jupiter.api.Test
   public void isCanceledWhenResumedTest() throws Fault {
     suspendResumeTest();
     Future<Response> is = invokeRequest("iscanceled?stage=1");
@@ -333,6 +348,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * suspend timeout, or cancellation -- in all of these cases, this method will
    * return true.
    */
+  @org.junit.jupiter.api.Test
   public void isDoneWhenResumedTest() throws Fault {
     suspendResumeTest();
     Future<Response> is = invokeRequest("isdone?stage=1");
@@ -351,6 +367,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * suspend timeout, or cancellation -- in all of these cases, this method will
    * return true.
    */
+  @org.junit.jupiter.api.Test
   public void isDoneWhenSuspendedTest() throws Fault {
     invokeClear();
     invokeRequest("suspend");
@@ -370,6 +387,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * suspend timeout, or cancellation -- in all of these cases, this method will
    * return true.
    */
+  @org.junit.jupiter.api.Test
   public void isDoneWhenCanceledTest() throws Fault {
     cancelVoidTest();
     Future<Response> is = invokeRequest("isdone?stage=1");
@@ -388,6 +406,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * suspend timeout, or cancellation -- in all of these cases, this method will
    * return true.
    */
+  @org.junit.jupiter.api.Test
   public void isDoneWhenTimedOutTest() throws Fault {
     setTimeoutTest();
     Future<Response> is = invokeRequest("isdone?stage=1");
@@ -404,6 +423,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * suspended and has not finished processing yet (either by resuming or
    * canceling the response).
    */
+  @org.junit.jupiter.api.Test
   public void isSuspendedWhenSuspendedTest() throws Fault {
     invokeClear();
     invokeRequest("suspend");
@@ -421,6 +441,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * suspended and has not finished processing yet (either by resuming or
    * canceling the response).
    */
+  @org.junit.jupiter.api.Test
   public void isSuspendedWhenCanceledTest() throws Fault {
     cancelVoidTest();
     Future<Response> is = invokeRequest("issuspended?stage=1");
@@ -437,6 +458,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * suspended and has not finished processing yet (either by resuming or
    * canceling the response).
    */
+  @org.junit.jupiter.api.Test
   public void isSuspendedWhenResumedTest() throws Fault {
     suspendResumeTest();
     Future<Response> is = invokeRequest("issuspended?stage=1");
@@ -451,6 +473,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Resume the suspended request processing using the provided
    * response data.
    */
+  @org.junit.jupiter.api.Test
   public void suspendResumeTest() throws Fault {
     invokeClear();
     String expectedResponse = "Expected response";
@@ -469,6 +492,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response data. The provided response data can be of any Java type that can
    * be returned from a JAX-RS resource method.
    */
+  @org.junit.jupiter.api.Test
   public void resumeAnyJavaObjectInputStreamTest() throws Fault {
     invokeClear();
     String expectedResponse = "Expected response";
@@ -487,6 +511,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: returns false in case the request processing is not
    * suspended and could not be resumed.
    */
+  @org.junit.jupiter.api.Test
   public void resumeResumedTest() throws Fault {
     suspendResumeTest(); // resume & store
     Future<Response> resumeResumed = invokeRequest("resume?stage=1", "");
@@ -502,6 +527,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * throwable. For the provided throwable same rules apply as for an exception
    * thrown by a JAX-RS resource method.
    */
+  @org.junit.jupiter.api.Test
   public void resumeWithCheckedExceptionTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -519,6 +545,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * throwable. For the provided throwable same rules apply as for an exception
    * thrown by a JAX-RS resource method.
    */
+  @org.junit.jupiter.api.Test
   public void resumeWithRuntimeExceptionTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -535,6 +562,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: returns false in case the request processing is not
    * suspended and could not be resumed.
    */
+  @org.junit.jupiter.api.Test
   public void resumeWithExceptionReturnsFalseWhenResumedTest() throws Fault {
     suspendResumeTest();
     Future<Response> resume = invokeRequest("resumechecked?stage=1");
@@ -556,6 +584,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * The exception MUST be processed as described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void setTimeoutTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -584,6 +613,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * The exception MUST be processed as described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void updateTimeoutTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -615,6 +645,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * connection and returns a response, JAX-RS implementations MUST NOT generate
    * an exception.
    */
+  @org.junit.jupiter.api.Test
   public void handleTimeOutWaitsForeverTest() throws Fault {
     String responseMsg = "handleTimeOutWaitsForeverTest";
     invokeClear();
@@ -636,6 +667,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Set/replace a time-out handler for the suspended asynchronous response.
    */
+  @org.junit.jupiter.api.Test
   public void handleTimeoutCancelsTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -661,6 +693,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * connection and returns a response, JAX-RS implementations MUST NOT generate
    * an exception.
    */
+  @org.junit.jupiter.api.Test
   public void handleTimeoutResumesTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");

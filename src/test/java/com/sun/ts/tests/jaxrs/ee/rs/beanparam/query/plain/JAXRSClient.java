@@ -54,6 +54,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -66,6 +67,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryParamEntityWithValueOfTest() throws Fault {
     super.paramEntityWithValueOfTest();
   }
@@ -78,6 +80,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryParamEntityWithFromStringTest() throws Fault {
     super.paramEntityWithFromStringTest();
   }
@@ -90,6 +93,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryParamSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -102,6 +106,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryParamSortedSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -114,6 +119,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryParamListEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -125,6 +131,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldParamEntityWithConstructorTest() throws Fault {
     super.fieldEntityWithConstructorTest();
   }
@@ -136,6 +143,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldParamEntityWithValueOfTest() throws Fault {
     super.fieldEntityWithValueOfTest();
   }
@@ -147,6 +155,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldParamEntityWithFromStringTest() throws Fault {
     super.fieldEntityWithFromStringTest();
   }
@@ -158,6 +167,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldParamSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -169,6 +179,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -180,6 +191,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldParamListEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -192,6 +204,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void queryParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -203,6 +216,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named QueryParam @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldParamEntityWithEncodedTest() throws Fault {
     super.fieldEntityWithEncodedTest();
   }
@@ -216,6 +230,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
     super.paramThrowingWebApplicationExceptionTest();
@@ -230,6 +245,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.fieldThrowingWebApplicationExceptionTest();
     super.fieldThrowingWebApplicationExceptionTest();
@@ -244,6 +260,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void queryParamThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
     super.paramThrowingIllegalArgumentExceptionTest();
@@ -265,6 +282,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * WebApplicationException that wraps the thrown exception with a not found
    * response (404 status) and no entity;
    */
+  @org.junit.jupiter.api.Test
   public void queryFieldThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
     super.fieldThrowingIllegalArgumentExceptionTest();

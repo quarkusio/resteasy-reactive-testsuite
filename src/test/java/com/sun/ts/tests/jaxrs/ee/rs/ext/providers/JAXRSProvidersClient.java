@@ -59,6 +59,7 @@ public class JAXRSProvidersClient
    * @test_Strategy: Check that the implementation returns set of
    * TSAppConfig.CLASSLIST
    */
+  @org.junit.jupiter.api.Test
   public void getSingletonsTest() throws Fault {
     super.getSingletonsTest();
   }
@@ -70,6 +71,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check the implementation injects TSAppConfig
    */
+  @org.junit.jupiter.api.Test
   public void getClassesTest() throws Fault {
     super.getClassesTest();
   }
@@ -92,6 +94,7 @@ public class JAXRSProvidersClient
    * Context provider implementations MAY restrict the media types they support
    * using the @Produces annotation.
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredTextPlainContextResolverTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredTextPlainContextResolver"));
@@ -118,6 +121,7 @@ public class JAXRSProvidersClient
    * using the @Produces annotation. Absence implies that any media type is
    * supported.
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredAppJsonContextResolverTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredAppJsonContextResolver"));
@@ -132,6 +136,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Try to get proper ExceptionMapper
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredExceptionMapperRuntimeExceptionTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredExceptionMapperRuntimeEx"));
@@ -147,6 +152,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Try to get proper ExceptionMapper
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredExceptionMapperNullExceptionTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredExceptionMapperNullEx"));
@@ -162,6 +168,7 @@ public class JAXRSProvidersClient
    * @test_Strategy: Try to get RuntimeExceptionExceptionMapper but there is
    * none
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredRuntimeExceptionExceptionMapperTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredRuntimeExceptionMapper"));
@@ -176,6 +183,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Try to get IOExceptionExceptionMapper
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredIOExceptionExceptionMapperTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredIOExceptionMapper"));
@@ -191,6 +199,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check what is returned for wildcard is for text/plain
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredMessageBodyWriterWildcardTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredWriterWildcard"));
@@ -206,6 +215,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check BodyWriter is returned for text/xml
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredMessageBodyWriterXmlTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredMessageWriterXml"));
@@ -221,6 +231,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check what is returned for wildcard is for text/plain
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredMessageBodyReaderWildcardTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredMessageReaderWildCard"));
@@ -236,6 +247,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check BodyReader is returned for text/xml
    */
+  @org.junit.jupiter.api.Test
   public void isRegisteredMessageBodReaderXmlTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(GET, "isRegisteredMessageReaderXml"));
@@ -251,6 +263,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check BodyWriter is used for text/xml to write entity
    */
+  @org.junit.jupiter.api.Test
   public void writeBodyEntityUsingWriterTest() throws Fault {
     String ename = EnumProvider.JAXRS.name();
     String search = new ReadableWritableEntity(ename).toXmlString();
@@ -270,6 +283,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check HeaderWriter is used for text/xml to write entity
    */
+  @org.junit.jupiter.api.Test
   public void writeHeaderEntityUsingWriterTest() throws Fault {
     String ename = EnumProvider.JAXRS.name();
     String search = new ReadableWritableEntity(ename).toXmlString();
@@ -291,6 +305,7 @@ public class JAXRSProvidersClient
    * @test_Strategy: Check EntityWriter is used and IOException is written using
    * mapper
    */
+  @org.junit.jupiter.api.Test
   public void writeIOExceptionUsingWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Accept: " + MediaType.TEXT_XML);
     setProperty(Property.REQUEST,
@@ -309,6 +324,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Check IOExceptionExceptionMapper is chosen
    */
+  @org.junit.jupiter.api.Test
   public void writeIOExceptionWithoutWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Accept: " + MediaType.TEXT_XML);
     setProperty(Property.REQUEST,
@@ -325,6 +341,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Put entity to header and read it using reader
    */
+  @org.junit.jupiter.api.Test
   public void readEntityFromHeaderTest() throws Fault {
     ReadableWritableEntity entity;
     entity = new ReadableWritableEntity(EnumProvider.JAXRS.name());
@@ -345,6 +362,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Put entity to body and read it using reader
    */
+  @org.junit.jupiter.api.Test
   public void readEntityFromBodyTest() throws Fault {
     ReadableWritableEntity entity;
     entity = new ReadableWritableEntity(EnumProvider.JAXRS.name());
@@ -364,6 +382,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Put entity to body and read it using reader
    */
+  @org.junit.jupiter.api.Test
   public void readEntityIOExceptionTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         "Content-Type: " + MediaType.TEXT_XML);
@@ -381,6 +400,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Put entity to body and read it using reader
    */
+  @org.junit.jupiter.api.Test
   public void readEntityWebException400Test() throws Fault {
     String code = ReadableWritableEntity.NAME + ":" + Status.BAD_REQUEST.name();
     setProperty(Property.REQUEST_HEADERS,
@@ -400,6 +420,7 @@ public class JAXRSProvidersClient
    * 
    * @test_Strategy: Put entity to body and read it using reader
    */
+  @org.junit.jupiter.api.Test
   public void readEntityWebException410Test() throws Fault {
     String code = ReadableWritableEntity.NAME + ":" + Status.GONE.name();
     setProperty(Property.REQUEST_HEADERS,

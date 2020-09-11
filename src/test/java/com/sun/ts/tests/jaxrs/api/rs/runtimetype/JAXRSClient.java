@@ -48,6 +48,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Test valueOf method
    */
+  @org.junit.jupiter.api.Test
   public void valueOfTest() throws Fault {
     assertEqualsInt(RuntimeType.values().length, 2,
         "Unexpected number of values of RuntimeType enum");
@@ -67,6 +68,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Test values method
    */
+  @org.junit.jupiter.api.Test
   public void valuesTest() throws Fault {
     RuntimeType[] types = RuntimeType.values();
     assertEqualsInt(types.length, 2,

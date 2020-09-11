@@ -55,6 +55,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * A public constructor MAY include parameters annotated with one of the
    * following: @Context
    */
+  @org.junit.jupiter.api.Test
   public void visibleTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "mostAttributes"));
     invoke();
@@ -67,6 +68,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Only public methods may be exposed as resource methods.
    */
+  @org.junit.jupiter.api.Test
   public void packageVisibilityTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "packageVisibility"));
@@ -81,6 +83,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Only public methods may be exposed as resource methods.
    */
+  @org.junit.jupiter.api.Test
   public void protectedVisibilityTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "protectedVisibility"));
@@ -95,6 +98,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Only public methods may be exposed as resource methods.
    */
+  @org.junit.jupiter.api.Test
   public void privateVisibilityTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "privateVisibility"));
@@ -110,6 +114,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: A public constructor MAY include parameters annotated with
    * one of the following: @HeaderParam
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithHeaderParamUsedTest() throws Fault {
     String param = "ABCDEFGH";
     setProperty(Property.REQUEST_HEADERS, "param:" + param);
@@ -126,6 +131,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: A public constructor MAY include parameters annotated with
    * one of the following: @HeaderParam
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCookieParamUsedTest() throws Fault {
     String param = "ABCDEFGH";
     setProperty(Property.REQUEST_HEADERS, "Cookie: param=" + param);
@@ -142,6 +148,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: A public constructor MAY include parameters annotated with
    * one of the following: @MatrixParam
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithMatrixParamUsedTest() throws Fault {
     String param = "ABCDEFGH";
     setProperty(Property.REQUEST,
@@ -158,6 +165,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: A public constructor MAY include parameters annotated with
    * one of the following: @QueryParam
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithQueryParamUsedTest() throws Fault {
     String param = "ABCDEFGH";
     setProperty(Property.REQUEST,
@@ -174,6 +182,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: A public constructor MAY include parameters annotated with
    * one of the following: @PathParam
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithPathParamUsedTest() throws Fault {
     String param = "ABCDEFGH";
     setProperty(Property.REQUEST, buildRequest(Request.GET, "path/" + param));

@@ -63,6 +63,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application MUST be included and the JAX-RS implementation is REQUIRED to
    * discover them automatically.
    */
+  @org.junit.jupiter.api.Test
   public void isParamCoverterFoundByAutodiscoveryUsedTest() throws Fault {
     String query = "ABCDEFGH";
     setPropertyRequest(Request.GET, "sbquery?query=", query);

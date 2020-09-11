@@ -54,6 +54,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on root resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamStringTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest("stringtest=cts"));
     setProperty(Property.SEARCH_STRING, "stringtest=cts");
@@ -73,6 +74,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamIntTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest("inttest1=2147483647"));
     setProperty(Property.SEARCH_STRING, "inttest1=2147483647");
@@ -94,6 +96,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamDoubleTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest("doubletest1=123"));
     setProperty(Property.SEARCH_STRING, "doubletest1=123.0");
@@ -115,6 +118,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamFloatTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest("floattest1=123"));
     setProperty(Property.SEARCH_STRING, "floattest1=123.0");
@@ -135,6 +139,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest("longtest=-9223372036854775808"));
@@ -156,6 +161,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamShortTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest("shorttest=-32768"));
     setProperty(Property.SEARCH_STRING, "shorttest=-32768");
@@ -175,6 +181,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamByteTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest("bytetest=127"));
     setProperty(Property.SEARCH_STRING, "bytetest=127");
@@ -193,6 +200,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamBooleanTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest("booleantest=true"));
     setProperty(Property.SEARCH_STRING, "booleantest=true");
@@ -212,6 +220,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamEntityWithConstructorTest() throws Fault {
     paramEntityWithConstructorTest();
   }
@@ -224,6 +233,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamEntityWithValueOfTest() throws Fault {
     paramEntityWithValueOfTest();
   }
@@ -236,6 +246,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamEntityWithFromStringTest() throws Fault {
     paramEntityWithFromStringTest();
   }
@@ -247,6 +258,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamSetEntityWithFromStringTest() throws Fault {
     paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -259,6 +271,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamSortedSetEntityWithFromStringTest() throws Fault {
     paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -271,6 +284,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamListEntityWithFromStringTest() throws Fault {
     paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -282,6 +296,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldParamEntityWithConstructorTest() throws Fault {
     fieldEntityWithConstructorTest();
   }
@@ -293,6 +308,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldParamEntityWithValueOfTest() throws Fault {
     fieldEntityWithValueOfTest();
   }
@@ -304,6 +320,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldParamEntityWithFromStringTest() throws Fault {
     fieldEntityWithFromStringTest();
   }
@@ -315,6 +332,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldParamSetEntityWithFromStringTest() throws Fault {
     fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -326,6 +344,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -337,6 +356,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldParamListEntityWithFromStringTest() throws Fault {
     fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -348,6 +368,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -359,6 +380,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldParamEntityWithEncodedTest() throws Fault {
     super.fieldEntityWithEncodedTest();
   }
@@ -372,6 +394,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
   }
@@ -385,6 +408,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.fieldThrowingWebApplicationExceptionTest();
   }
@@ -398,6 +422,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
+  @org.junit.jupiter.api.Test
   public void matrixParamThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
     super.paramThrowingIllegalArgumentExceptionTest();
@@ -417,6 +442,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * WebApplicationException that wraps the thrown exception with a not found
    * response (404 status) and no entity;
    */
+  @org.junit.jupiter.api.Test
   public void matrixFieldThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
     super.fieldThrowingIllegalArgumentExceptionTest();

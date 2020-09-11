@@ -42,6 +42,7 @@ public class JAXRSSubClient
    * received using CookieParam in the resource; Verify on the client side from
    * response.
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSubTest() throws Fault {
     super.cookieParamTest();
   }
@@ -54,6 +55,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -66,6 +68,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithValueOfTest() throws Fault {
     super.paramEntityWithValueOfTest();
   }
@@ -78,6 +81,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamEntityWithFromStringTest() throws Fault {
     super.paramEntityWithFromStringTest();
   }
@@ -90,6 +94,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -102,6 +107,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamListEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -114,6 +120,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamSortedSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -130,6 +137,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamEntityWithConstructorTest() throws Fault {
     super.fieldEntityWithConstructorTest();
   }
@@ -146,6 +154,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamEntityWithValueOfTest() throws Fault {
     super.fieldEntityWithValueOfTest();
   }
@@ -162,6 +171,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamEntityWithFromStringTest() throws Fault {
     super.fieldEntityWithFromStringTest();
   }
@@ -178,6 +188,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -194,6 +205,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamListEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -210,6 +222,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldSortedSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -225,6 +238,7 @@ public class JAXRSSubClient
    * bean property values, see section 3.2.
    * 
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
   }
@@ -243,6 +257,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.fieldThrowingWebApplicationExceptionTest();
   }
@@ -262,6 +277,7 @@ public class JAXRSSubClient
    * entity.
    *
    */
+  @org.junit.jupiter.api.Test
   public void cookieParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.paramThrowingIllegalArgumentExceptionTest();
   }
@@ -280,6 +296,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @org.junit.jupiter.api.Test
   public void cookieFieldParamThrowingIllegalArgumentExceptionTest()
       throws Fault {
     super.fieldThrowingIllegalArgumentExceptionTest();

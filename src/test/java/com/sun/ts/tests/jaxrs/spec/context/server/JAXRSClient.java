@@ -54,6 +54,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
+  @org.junit.jupiter.api.Test
   public void serverWriterInjectionTest() throws Fault {
     setRequestContentEntity("");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "writer"));
@@ -73,6 +74,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
+  @org.junit.jupiter.api.Test
   public void serverReaderInjectionTest() throws Fault {
     setRequestContentEntity("");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "reader"));
@@ -92,6 +94,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
+  @org.junit.jupiter.api.Test
   public void resourceInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "instance"));
     invoke();
@@ -110,6 +113,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
+  @org.junit.jupiter.api.Test
   public void applicationInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "application"));
     invoke();
@@ -128,6 +132,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
+  @org.junit.jupiter.api.Test
   public void methodArgumentsInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "method"));
     invoke();

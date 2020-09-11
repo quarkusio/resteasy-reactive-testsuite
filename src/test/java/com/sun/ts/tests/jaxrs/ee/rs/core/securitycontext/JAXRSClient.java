@@ -61,6 +61,7 @@ public abstract class JAXRSClient extends JAXRSCommonClient {
         "authpassword was not in build.proerties");
     super.setup(args, p);
   }
+  @org.junit.jupiter.api.Test
 
   public void noAuthorizationTest() throws Fault {
     setProperty(STATUS_CODE, getStatusCode(Response.Status.UNAUTHORIZED));

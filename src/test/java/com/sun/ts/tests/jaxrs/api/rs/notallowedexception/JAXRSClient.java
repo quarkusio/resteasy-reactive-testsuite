@@ -61,6 +61,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringTest() throws Fault {
     NotAllowedException e = new NotAllowedException(Request.OPTIONS.name(),
         new String[] { Request.HEAD.name() });
@@ -75,6 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.NullPointerException - in case the
    * allowed method is null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowsNPETest() throws Fault {
     try {
       NotAllowedException e = new NotAllowedException((String) null,
@@ -99,6 +101,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseTest() throws Fault {
     NotAllowedException e = new NotAllowedException(buildResponse(STATUS));
     assertResponse(e, HOST);
@@ -113,6 +116,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 405.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -141,6 +145,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseDoesNotThrowWhenNoAllowHeaderTest()
       throws Fault {
     Response response = Response.status(STATUS).header(HttpHeaders.HOST, HOST)
@@ -158,6 +163,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorThrowableStringTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -177,6 +183,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the allowed methods varargs
    * are null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorThrowableStringThrowsIAETest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -202,6 +209,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 405. getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -221,6 +229,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 405.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -246,6 +255,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response does not contain
    * an HTTP Allow header.
    */
+  @org.junit.jupiter.api.Test
   public void constructorResponseThrowableThrowsIAEWhenNoAllowHeaderTest()
       throws Fault {
     try {
@@ -270,6 +280,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStringStringsTest() throws Fault {
     NotAllowedException e = new NotAllowedException(MESSAGE,
         Request.OPTIONS.name(), new String[] { Request.HEAD.name() });
@@ -285,6 +296,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Throws: java.lang.NullPointerException - in case the
    * allowed method is null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringStringStringsThrowsNPETest() throws Fault {
     try {
       NotAllowedException e = new NotAllowedException(MESSAGE, (String) null,
@@ -307,6 +319,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseTest() throws Fault {
     NotAllowedException e = new NotAllowedException(MESSAGE,
         buildResponse(STATUS));
@@ -323,6 +336,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 405.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowsIAETest() throws Fault {
     for (Status status : Status.values())
       if (status != STATUS) {
@@ -351,6 +365,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseDoesNotThrowWhenNoAllowHeaderTest()
       throws Fault {
     Response response = Response.status(STATUS).header(HttpHeaders.HOST, HOST)
@@ -369,6 +384,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableStringsTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -390,6 +406,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the allowed methods varargs
    * are null.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringThrowableStringsThrowsIAETest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -416,6 +433,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 405. getResponse
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableTest() throws Fault {
     Throwable[] throwables = new Throwable[] { new RuntimeException(),
         new IOException(), new Error(), new Throwable() };
@@ -437,6 +455,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the status code set in the
    * response is not HTTP 405.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableThrowsExceptionTest()
       throws Fault {
     for (Status status : Status.values())
@@ -463,6 +482,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * java.lang.IllegalArgumentException - in case the response does not contain
    * an HTTP Allow header.
    */
+  @org.junit.jupiter.api.Test
   public void constructorStringResponseThrowableThrowsIAEWhenNoAllowHeaderTest()
       throws Fault {
     try {

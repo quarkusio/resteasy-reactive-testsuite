@@ -54,6 +54,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs an empty multivalued hash map with the default
    * initial capacity (16) and the default load factor (0.75)
    */
+  @org.junit.jupiter.api.Test
   public void defaultConstructorTest() throws Fault {
     MultivaluedHashMap<String, String> map = new MultivaluedHashMap<String, String>();
     map.addAll("key", VALUES[0], VALUES[1], VALUES[2]);
@@ -69,6 +70,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs an empty multivalued hash map with the specified
    * initial capacity and the default load factor (0.75)
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithInitialCapacityTest() throws Fault {
     MultivaluedHashMap<String, String> map = new MultivaluedHashMap<String, String>(
         0);
@@ -85,6 +87,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException - if the initial capacity is
    * negative.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithInitialCapacityThrowsIllegalArgumentExceptionTest()
       throws Fault {
     try {
@@ -103,6 +106,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs an empty multivalued hash map with the specified
    * initial capacity and load factor
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCapacityAndLoadTest() throws Fault {
     MultivaluedHashMap<String, String> map = new MultivaluedHashMap<String, String>(
         0, 0.99f);
@@ -119,6 +123,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException - if the initial capacity is
    * negative or the load factor is nonpositive
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCapacityAndLoadThrowsExceptionForCapacityTest()
       throws Fault {
     try {
@@ -137,6 +142,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: IllegalArgumentException - if the initial capacity is
    * negative or the load factor is nonpositive
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithCapacityAndLoadThrowsExceptionForLoadTest()
       throws Fault {
     try {
@@ -156,6 +162,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * mappings as the specified MultivaluedMap. The List instances holding the
    * values of each key are created anew instead of being reused.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithMapTest() throws Fault {
     MultivaluedHashMap<String, String> mapWithMap;
     MultivaluedHashMap<String, String> map;
@@ -181,6 +188,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: NullPointerException - if the specified map is null
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithMapThrowsNPETest() throws Fault {
     try {
       new MultivaluedHashMap<String, String>(
@@ -199,6 +207,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Constructs a new multivalued hash map with the same
    * mappings as the specified single-valued Map.
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithSingleValuedMapTest() throws Fault {
     MultivaluedHashMap<String, String> mapWithMap;
     Map<String, String> map;
@@ -225,6 +234,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: NullPointerException - if the specified map is null
    */
+  @org.junit.jupiter.api.Test
   public void constructorWithSingleValuedMapThrowsNPETest() throws Fault {
     try {
       new MultivaluedHashMap<String, String>((Map<String, String>) null);

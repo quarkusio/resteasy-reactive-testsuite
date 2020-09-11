@@ -84,6 +84,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.filter ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void abortWithTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -110,6 +111,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.filter ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getAcceptableLanguagesTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -142,6 +144,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.filter ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getAcceptableLanguagesByWeightsTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -181,6 +184,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getAcceptableLanguagesIsImmutableTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -220,6 +224,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getAcceptableMediaTypesTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -254,6 +259,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getAcceptableMediaTypesIsSortedTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -294,6 +300,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getAcceptableMediaTypesIsImmutableTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -329,6 +336,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getClientTest() throws Fault {
     final Client client = ClientBuilder.newClient();
 
@@ -360,6 +368,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getConfigurationTest() throws Fault {
     final Client client = ClientBuilder.newClient();
     ContextProvider provider = new ContextProvider() {
@@ -394,6 +403,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getCookiesTest() throws Fault {
     Cookie cts = new Cookie("cts", "cts");
     Cookie tck = new Cookie("tck", "tck");
@@ -430,6 +440,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getCookiesIsImmutableTest() throws Fault {
     final Cookie cts = new Cookie("cts", "cts");
 
@@ -466,6 +477,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getDateNullTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -495,6 +507,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getDateTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -526,6 +539,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityNullTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -555,6 +569,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -587,6 +602,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityAnnotationsTest() throws Fault {
     Annotation[] annotations = ContextProvider.class.getAnnotations();
     ContextProvider provider = new ContextProvider() {
@@ -626,6 +642,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityAnnotationsIsNotTakenFromEntityClassTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -658,6 +675,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityAnnotationsNullTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -688,6 +706,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityClassTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -717,6 +736,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityClassListStringTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -746,6 +766,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTypeListStringTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -779,6 +800,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -811,6 +833,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersIsMutableTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -842,6 +865,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringTest() throws Fault {
     final String TCK = "cts";
     final String DATE = "Tue, 15 Nov 1994 08:12:31 GMT";
@@ -883,6 +907,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringUsingHeaderDelegateTest() throws Fault {
     final String name = "BEAN";
     final StringBean bean = new StringBean(name);
@@ -920,6 +945,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageIsNullTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -950,6 +976,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -983,6 +1010,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getMediaTypeIsNullTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -1012,6 +1040,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getMediaTypeTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -1042,6 +1071,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getMethodTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -1083,6 +1113,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyIsNullTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -1116,6 +1147,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getSetPropertyTest() throws Fault {
     final AtomicInteger counter = new AtomicInteger(0);
     ContextProvider provider = new GetSetPropertyProvider(counter);
@@ -1144,6 +1176,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyNamesTest() throws Fault {
     final AtomicInteger counter = new AtomicInteger(0);
     ContextProvider provider = new GetPropertyNamesProvider(counter);
@@ -1173,6 +1206,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getPropertyNamesIsImmutableTest() throws Fault {
     final AtomicInteger counter = new AtomicInteger(0);
     ContextProvider provider = new GetPropertyNamesIsImmutableProvider(counter);
@@ -1197,6 +1231,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getStringHeadersTest() throws Fault {
     final String TCK = "cts";
     final String DATE = "Tue, 15 Nov 1994 08:12:31 GMT";
@@ -1235,6 +1270,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getStringHeadersReflectsTheUnderlayingMapTest() throws Fault {
     final String TCK = "cts";
     ContextProvider provider = new ContextProvider() {
@@ -1267,6 +1303,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getStringHeadersUsingHeaderDelegateTest() throws Fault {
     final String TCK = "cts";
     final StringBean bean = new StringBean(TCK);
@@ -1306,6 +1343,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void getUriTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -1336,6 +1374,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -1374,6 +1413,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void removePropertyTest() throws Fault {
     final AtomicInteger counter = new AtomicInteger(0);
     ContextProvider provider = new RemovePropertyProvider(counter);
@@ -1402,6 +1442,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientRequestFilter.abortWith
    */
+  @org.junit.jupiter.api.Test
   public void setEntityTest() throws Fault {
     final AtomicInteger counter = new AtomicInteger(0);
 

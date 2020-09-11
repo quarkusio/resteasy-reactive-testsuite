@@ -85,6 +85,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getAllowedMethodsTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -112,6 +113,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getCookiesTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -136,6 +138,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getDateTest() throws Fault {
     final Date date = getNewDate();
     ContextProvider in = new ContextProvider() {
@@ -161,6 +164,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getEntityStreamTest() throws Fault {
     final String entity = "ENTITY";
     ContextProvider in = new ContextProvider() {
@@ -203,6 +207,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getEntityTagTest() throws Fault {
     final String value = "EntityTagValue";
     final EntityTag tag = new EntityTag(value);
@@ -231,6 +236,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersTest() throws Fault {
     final String header1 = "header1";
     final String value1 = "value1";
@@ -264,6 +270,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getHeadersIsMutableTest() throws Fault {
     final String header1 = "header1";
     final String value1 = "value1";
@@ -297,6 +304,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringIsNullTest() throws Fault {
     final String header1 = "header1";
     ContextProvider in = new ContextProvider() {
@@ -356,6 +364,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringTest() throws Fault {
     final String header1 = "header1";
     final String value1 = "value1";
@@ -385,6 +394,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getHeaderStringIsCommaSeparatedTest() throws Fault {
     final String header1 = "header1";
     final String value1 = "value1";
@@ -419,6 +429,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getLanguageTest() throws Fault {
     final Locale language = Locale.CANADA_FRENCH;
     ContextProvider in = new ContextProvider() {
@@ -446,6 +457,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getLastModifiedTest() throws Fault {
     final Date lastModified = getNewDate();
     ContextProvider in = new ContextProvider() {
@@ -473,6 +485,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getLengthTest() throws Fault {
     final String entity = "ENTITY";
     ContextProvider in = new ContextProvider() {
@@ -499,6 +512,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getLinkTest() throws Fault {
     final String rel = "RELATION";
     ContextProvider in = new ContextProvider() {
@@ -526,6 +540,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Convenience method that returns a
    * javax.ws.rs.core.Link.Builder for the relation. ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getLinkBuilderTest() throws Fault {
     final String rel = "RELATION";
     ContextProvider in = new ContextProvider() {
@@ -554,6 +569,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getLinksTest() throws Fault {
     final Link link = Link.fromUri(getUrl()).build();
     ContextProvider in = new ContextProvider() {
@@ -580,6 +596,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Get the location. ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getLocationTest() throws Fault {
     URI uri = null;
     try {
@@ -613,6 +630,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getMediaTypeTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -637,6 +655,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Get the status code associated with the response.
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getStatusTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -663,6 +682,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void getStatusInfoTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -689,6 +709,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Check if there is a non-empty entity input stream is
    * available in the response message. ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityWhenEntityTest() throws Fault {
     final String entity = "eNtitY";
     ContextProvider in = new ContextProvider() {
@@ -714,6 +735,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void hasEntityWhenNoEntityTest() throws Fault {
     ContextProvider in = new ContextProvider() {
       @Override
@@ -736,6 +758,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Check if link for relation exists.
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void hasLinkWhenLinkTest() throws Fault {
     final String rel = "RelatiOn";
     ContextProvider in = new ContextProvider() {
@@ -760,6 +783,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void hasLinkWhenNoLinkTest() throws Fault {
     ContextProvider in = new ContextProvider() {
       @Override
@@ -781,6 +805,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Set a new entity input stream. ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void setEntityStreamTest() throws Fault {
     final String entity = "ENTITY";
     ContextProvider in = new ContextProvider() {
@@ -820,6 +845,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Set a new response status code. ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void setStatusTest() throws Fault {
     ContextProvider in = new ContextProvider() {
       @Override
@@ -842,6 +868,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * ClientResponseFilter.filter
    */
+  @org.junit.jupiter.api.Test
   public void setStatusInfoTest() throws Fault {
     ContextProvider in = new ContextProvider() {
       @Override

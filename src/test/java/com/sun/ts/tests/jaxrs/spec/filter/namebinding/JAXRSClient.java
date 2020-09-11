@@ -60,6 +60,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
+  @org.junit.jupiter.api.Test
   public void noInterceptorBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "one"));
     setProperty(Property.SEARCH_STRING, "1");
@@ -82,6 +83,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
+  @org.junit.jupiter.api.Test
   public void singleInterceptorBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "ten"));
     setProperty(Property.SEARCH_STRING, "11");
@@ -104,6 +106,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
+  @org.junit.jupiter.api.Test
   public void onlyPartOfUnionOfInterceptorsBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "complement"));
     setProperty(Property.SEARCH_STRING, "10000");
@@ -126,6 +129,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
+  @org.junit.jupiter.api.Test
   public void readerWriterInterceptorBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
     setRequestContentEntity("1111");
@@ -153,6 +157,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
+  @org.junit.jupiter.api.Test
   public void resourceAnnotatedFirstMethodInterceptedTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "all/hundred"));
     setProperty(Property.SEARCH_STRING, "101");
@@ -179,6 +184,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
+  @org.junit.jupiter.api.Test
   public void resourceAnnotatedSecondMethodInterceptedTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "all/thousand"));
     setProperty(Property.SEARCH_STRING, "1011");

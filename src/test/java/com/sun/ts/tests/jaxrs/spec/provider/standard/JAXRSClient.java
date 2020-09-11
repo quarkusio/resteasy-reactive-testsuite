@@ -160,6 +160,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @org.junit.jupiter.api.Test
   public void byteArrayProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[0], media); // All media
@@ -176,6 +177,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @org.junit.jupiter.api.Test
   public void stringProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[1], media); // All media
@@ -192,6 +194,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @org.junit.jupiter.api.Test
   public void inputStreamProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[2], media); // All media
@@ -211,6 +214,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * JIRA:1078
    */
+  @org.junit.jupiter.api.Test
   public void readerProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke("reader", media);
@@ -227,6 +231,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @org.junit.jupiter.api.Test
   public void fileProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[3], media); // All media
@@ -243,6 +248,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @org.junit.jupiter.api.Test
   public void dataSourceProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[4], media); // All media
@@ -262,6 +268,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * application/*+xml)
    * 
    */
+  @org.junit.jupiter.api.Test
   public void sourceProviderTest() throws Fault {
     setPropertyAndInvokeXml("source");
   }
@@ -278,6 +285,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * javax.xml.bind.JAXBElement and application-supplied JAXB classes XML media
    * types (text/xml, application/xml and application/*+xml)
    */
+  @org.junit.jupiter.api.Test
   public void jaxbElementProviderTest() throws Fault {
     setPropertyAndInvokeXml("jaxb");
   }
@@ -292,6 +300,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @org.junit.jupiter.api.Test
   public void streamingOutputProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[5], media); // All media

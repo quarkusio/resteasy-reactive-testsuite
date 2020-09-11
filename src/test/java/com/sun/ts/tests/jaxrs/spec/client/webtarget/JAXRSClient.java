@@ -57,6 +57,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * (or URI template): methods for specifying additional path segments and
    * parameters return a new instance of WebTarget.
    */
+  @org.junit.jupiter.api.Test
   public void imutableWithRespectToUriMatrixPathTest() throws Fault {
     IteratedList<WebTarget> targets = new IteratedList<WebTarget>(
         WebTarget.class);
@@ -90,6 +91,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * (or URI template): methods for specifying additional path segments and
    * parameters return a new instance of WebTarget.
    */
+  @org.junit.jupiter.api.Test
   public void imutableWithRespectToUriQueryResolveTemplateTest() throws Fault {
     IteratedList<WebTarget> targets = new IteratedList<WebTarget>(
         WebTarget.class);
@@ -141,6 +143,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * their configuration. Thus, configuring a WebTarget does not create new
    * instances
    */
+  @org.junit.jupiter.api.Test
   public void mutableWithRespectToConfigTest() throws Fault {
     // check no WebTarget is returned from configuration
     // cannot check subclass of Configuration if any because
@@ -171,6 +174,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Get access to the underlying Configuration configuration.
    */
+  @org.junit.jupiter.api.Test
   public void deepCopyConfigWebTargetLevelTest() throws Fault {
     Client client = ClientBuilder.newClient();
     Configuration config = client.getConfiguration();
@@ -196,6 +200,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * The following Client API types are configurable: Client, Invocation,
    * Invocation.Builder and WebTarget.
    */
+  @org.junit.jupiter.api.Test
   public void deepCopyConfigClientLevelTest() throws Fault {
     Client client = ClientBuilder.newClient();
     // Client level inheritance
@@ -213,6 +218,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: However, any additional changes to the instance of
    * WebTarget will not impact the Client's configuration and vice versa.
    */
+  @org.junit.jupiter.api.Test
   public void webTargetConfigNotImpactClientTest() throws Fault {
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target("resource");

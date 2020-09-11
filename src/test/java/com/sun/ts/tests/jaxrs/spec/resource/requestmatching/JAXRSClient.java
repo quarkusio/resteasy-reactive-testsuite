@@ -58,6 +58,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Make sure the server does not return 404 every time
    */
   @SuppressWarnings("incomplete-switch")
+  @org.junit.jupiter.api.Test
   public void emptyUriTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "").replace("/ ", " "));
@@ -96,6 +97,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Make sure the server does not return 404 every time
    */
+  @org.junit.jupiter.api.Test
   public void slashUriTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, ""));
     setProperty(Property.STATUS_CODE, getStatusCode(Status.OK));
@@ -113,6 +115,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * WebApplicationException with a not found response (HTTP 404 status) and no
    * entity. The exception MUST be processed as described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void slashWrongUriTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "wrong"));
     setProperty(Property.SEARCH_STRING, getStatusCode(Status.NOT_FOUND));
@@ -129,6 +132,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * WebApplicationException with a not found response (HTTP 404 status) and no
    * entity. The exception MUST be processed as described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void wrongAppNameTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "").replace("web", "wrong"));
@@ -146,6 +150,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * WebApplicationException with a not found response (HTTP 404 status) and no
    * entity. The exception MUST be processed as described in section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void slashAppNameTest() throws Fault {
     setProperty(Property.REQUEST,
         Request.GET.name() + " /" + MainResource.ID + HTTP11);
@@ -164,6 +169,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * groups with non-default regular expressions as the tertiary key (descending
    * order).
    */
+  @org.junit.jupiter.api.Test
   public void descendantResourcePathValueTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/subresource"));
@@ -182,6 +188,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * groups with non-default regular expressions as the tertiary key (descending
    * order).
    */
+  @org.junit.jupiter.api.Test
   public void descendantSubResourcePathValueTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/subresource/sub"));
@@ -204,6 +211,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @Path on method has precedence over on resource locator
    */
+  @org.junit.jupiter.api.Test
   public void resourceLocatorTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/locator/locator"));
@@ -225,6 +233,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * Check Resource locator finds subresource
    */
+  @org.junit.jupiter.api.Test
   public void foundAnotherResourceLocatorByPathTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/locator/sub"));
@@ -245,6 +254,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * From Alg.2
    */
+  @org.junit.jupiter.api.Test
   public void locatorNameTooLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/locator/sub/locator"));
@@ -264,6 +274,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * From Alg.2
    */
+  @org.junit.jupiter.api.Test
   public void locatorNameTooLongAgainTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/locator/locator/locator"));
@@ -283,6 +294,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * From Alg.2
    */
+  @org.junit.jupiter.api.Test
   public void methodNotFoundTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/locator/test"));
@@ -301,6 +313,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception MUST be processed as described in section 3.3.4. Note the
    * additional support for HEAD and OPTIONS described in section 3.3.5.
    */
+  @org.junit.jupiter.api.Test
   public void requestNotSupportedOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.PUT, "resource/something"));
@@ -320,6 +333,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception MUST be processed as described in section 3.3.4. Note the
    * additional support for HEAD and OPTIONS described in section 3.3.5.
    */
+  @org.junit.jupiter.api.Test
   public void requestNotSupportedOnSubResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.PUT, "resource/subresource/something"));
@@ -339,6 +353,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception MUST be processed as described in section 3.3.4. Note the
    * additional support for HEAD and OPTIONS described in section 3.3.5.
    */
+  @org.junit.jupiter.api.Test
   public void requestNotSupportedOnResourceLocatorTest() throws Fault {
     String request = buildRequest(Request.PUT,
         "resource/subresource/consumeslocator");
@@ -359,6 +374,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception MUST be processed as described in section 3.3.4. Note the
    * additional support for HEAD and OPTIONS described in section 3.3.5.
    */
+  @org.junit.jupiter.api.Test
   public void requestNotSupportedOnSubResourceLocatorTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.PUT, "resource/consumeslocator"));
@@ -378,6 +394,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception MUST be processed as described in section 3.3.4. Note the
    * additional support for HEAD and OPTIONS described in section 3.3.5.
    */
+  @org.junit.jupiter.api.Test
   public void optionsOnSubResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.OPTIONS, "resource/subresource/something"));
@@ -403,6 +420,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * exception MUST be processed as described in section 3.3.4. Note the
    * additional support for HEAD and OPTIONS described in section 3.3.5.
    */
+  @org.junit.jupiter.api.Test
   public void headOnSubResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.HEAD, "resource/subresource/something"));
@@ -423,6 +441,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void consumesOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/consumes"));
@@ -445,6 +464,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void consumesCorrectContentTypeOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/consumes"));
@@ -466,6 +486,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void consumesOnResourceLocatorTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/consumeslocator"));
@@ -488,6 +509,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void consumesCorrectContentTypeOnResourceLocatorTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/consumeslocator"));
@@ -510,6 +532,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void consumesOnSubResourceLocatorTest() throws Fault {
     String request = buildRequest(Request.POST,
         "resource/subresource/consumeslocator");
@@ -533,6 +556,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @org.junit.jupiter.api.Test
   public void consumesCorrectContentTypeOnSubResourceLocatorTest()
       throws Fault {
     String request = buildRequest(Request.POST,
@@ -559,6 +583,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * acceptable response (HTTP 406 status) and no entity. The exception MUST be
    * processed as described in Section 3.3.4
    */
+  @org.junit.jupiter.api.Test
   public void producesOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/produces"));
@@ -580,6 +605,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * acceptable response (HTTP 406 status) and no entity. The exception MUST be
    * processed as described in Section 3.3.4
    */
+  @org.junit.jupiter.api.Test
   public void producesCorrectContentTypeOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/produces"));
@@ -601,6 +627,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * acceptable response (HTTP 406 status) and no entity. The exception MUST be
    * processed as described in Section 3.3.4
    */
+  @org.junit.jupiter.api.Test
   public void producesOnResourceLocatorTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/produceslocator"));
@@ -622,6 +649,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * acceptable response (HTTP 406 status) and no entity. The exception MUST be
    * processed as described in Section 3.3.4
    */
+  @org.junit.jupiter.api.Test
   public void producesCorrectContentTypeOnResourceLocatorTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "resource/produceslocator"));
@@ -644,6 +672,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * acceptable response (HTTP 406 status) and no entity. The exception MUST be
    * processed as described in Section 3.3.4
    */
+  @org.junit.jupiter.api.Test
   public void producesOnSubResourceLocatorTest() throws Fault {
     String request = buildRequest(Request.POST,
         "resource/subresource/produceslocator");
@@ -666,6 +695,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * acceptable response (HTTP 406 status) and no entity. The exception MUST be
    * processed as described in Section 3.3.4
    */
+  @org.junit.jupiter.api.Test
   public void producesCorrectContentTypeOnSubResourceLocatorTest()
       throws Fault {
     String request = buildRequest(Request.POST,
@@ -685,6 +715,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check sub-resource locator from sub-resource locator
    */
+  @org.junit.jupiter.api.Test
   public void l2SubResourceLocatorTest() throws Fault {
     String request = buildRequest(Request.DELETE,
         "resource/l2locator/l2locator");
@@ -707,6 +738,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Like in descendantSubResourcePathValueTest, AnotherSubResource method is
    * used, because MainSubResource is another object
    */
+  @org.junit.jupiter.api.Test
   public void consumesOverridesDescendantSubResourcePathValueTest()
       throws Fault {
     setProperty(Property.REQUEST,
@@ -732,6 +764,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Like in descendantSubResourcePathValueTest, AnotherSubResource method is
    * used, because MainSubResource is another object
    */
+  @org.junit.jupiter.api.Test
   public void producesOverridesDescendantSubResourcePathValueTest()
       throws Fault {
     setProperty(Property.REQUEST,
@@ -759,6 +792,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    *//*
       * and a better match for AnotherSubResource#sub
       */
+  @org.junit.jupiter.api.Test
   public void producesOverridesDescendantSubResourcePathValuePostTest()
       throws Fault {
     setProperty(Property.REQUEST,
@@ -783,6 +817,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * n/* >
    *//*
      */
+  @org.junit.jupiter.api.Test
   public void concreteOverStarWhenAcceptStarTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "yas"));
     setProperty(Property.REQUEST_HEADERS, "Accept: testi/*");
@@ -803,6 +838,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * using a relative quality factor known as the q parameter. The value of the
    * q parameter, or q-value, is used to sort the set of accepted
    */
+  @org.junit.jupiter.api.Test
   public void qualityDeterminesTextATest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "yas"));
     setProperty(Property.REQUEST_HEADERS,
@@ -822,6 +858,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * using a relative quality factor known as the q parameter. The value of the
    * q parameter, or q-value, is used to sort the set of accepted
    */
+  @org.junit.jupiter.api.Test
   public void qualityDeterminesTextBTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "yas"));
     setProperty(Property.REQUEST_HEADERS,
@@ -843,6 +880,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * server preference is only examined when multiple media types are accepted
    * by a client with the same q-value.
    */
+  @org.junit.jupiter.api.Test
   public void producesOverridesDescendantSubResourcePathValueWeightTest()
       throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "yas"));
@@ -862,6 +900,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * server preference is only examined when multiple media types are accepted
    * by a client with the same q-value.
    */
+  @org.junit.jupiter.api.Test
   public void qualityOfSourceOnDifferentMediaTypesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "yas"));
     setProperty(Property.REQUEST_HEADERS,
@@ -879,6 +918,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: n2/m2 /> n1/m1 and v1 = v2 and v1' = v2' and v1'' <= v2''
    */
+  @org.junit.jupiter.api.Test
   public void concreteOverStarTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "yas"));
     setProperty(Property.REQUEST_HEADERS, "Accept: testi/text");

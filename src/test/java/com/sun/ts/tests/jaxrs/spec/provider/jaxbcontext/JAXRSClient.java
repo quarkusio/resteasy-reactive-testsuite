@@ -64,6 +64,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * JAXBContext instances provided by application-supplied context resolvers,
    * see Section 4.3.
    */
+  @org.junit.jupiter.api.Test
   public void readWriteProviderTest() throws Fault {
     setPropertyAndInvoke("jaxb");
   }
