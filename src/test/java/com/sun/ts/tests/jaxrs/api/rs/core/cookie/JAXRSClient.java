@@ -18,8 +18,6 @@ package com.sun.ts.tests.jaxrs.api.rs.core.cookie;
 
 import javax.ws.rs.core.Cookie;
 
-import org.junit.jupiter.api.Test;
-
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -51,7 +49,6 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Create a Cookie instance using Constructor Cookie(String,
    * String)
    */
-  @Test
   public void constructorTest1() throws Fault {
     String name = "name_1";
     String value = "value_1";

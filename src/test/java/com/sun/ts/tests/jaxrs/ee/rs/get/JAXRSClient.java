@@ -16,18 +16,10 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.get;
 
-import java.util.function.Supplier;
 
 import javax.ws.rs.core.MediaType;
 
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
-
-import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -36,16 +28,6 @@ import io.quarkus.test.QuarkusUnitTest;
  */
 public class JAXRSClient extends JAXRSCommonClient {
   private static final long serialVersionUID = 1L;
-
-  @RegisterExtension
-  static QuarkusUnitTest test = new QuarkusUnitTest()
-          .setArchiveProducer(new Supplier<JavaArchive>() {
-              @Override
-              public JavaArchive get() {
-                  return ShrinkWrap.create(JavaArchive.class)
-                          .addClasses(HttpMethodGetTest.class, RecursiveLocator.class, SubResource.class);
-              }
-          });
 
   public JAXRSClient() {
     setContextRoot("/jaxrs_ee_rs_get_web/GetTest");
@@ -70,7 +52,6 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /GetTest; Verify
    * that right Method is invoked.
    */
-  @Test
   public void getTest1() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -88,7 +69,6 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /GetTest; Verify
    * that right Method is invoked.
    */
-  @Test
   public void getTest2() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -106,7 +86,6 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on a sub resource at /GetTest/sub;
    * Verify that right Method is invoked.
    */
-  @Test
   public void getSubTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
