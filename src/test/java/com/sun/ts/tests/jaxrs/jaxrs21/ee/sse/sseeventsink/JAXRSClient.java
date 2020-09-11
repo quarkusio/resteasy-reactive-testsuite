@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsink;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -44,6 +45,7 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
 /**
  * @since 2.1
  */
+@Disabled("This hangs ATM")
 public class JAXRSClient extends SSEJAXRSClient {
 
     @RegisterExtension

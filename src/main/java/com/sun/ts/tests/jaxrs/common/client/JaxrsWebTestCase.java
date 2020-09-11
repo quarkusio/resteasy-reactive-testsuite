@@ -153,6 +153,9 @@ public class JaxrsWebTestCase extends WebTestCase {
    */
   protected Client client;
 
+  // Quarkus: work around a weird illegal access exception
+  public Client client() { return client; }
+  
   public JaxrsWebTestCase() {
     strategy = ValidationFactory.getInstance(TOKENIZED_STRATEGY);
     headerMap = new HashMap<String, String>();

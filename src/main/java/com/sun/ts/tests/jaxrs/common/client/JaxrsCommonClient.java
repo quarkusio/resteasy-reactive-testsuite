@@ -226,7 +226,7 @@ public class JaxrsCommonClient extends JAXRSCommonClient {
       _saveState = false;
       _redirect = false;
       clearTestProperties();
-      clients.add(testCase.client);
+      clients.add(testCase.client());
     }
   }
 
