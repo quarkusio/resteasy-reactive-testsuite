@@ -35,8 +35,6 @@ import org.apache.commons.httpclient.HttpState;
 import org.junit.jupiter.api.Assertions;
 import org.opentest4j.AssertionFailedError;
 
-//import com.sun.javatest.Status;
-//import com.sun.ts.lib.harness.ServiceEETest;
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.common.webclient.TestFailureException;
 import com.sun.ts.tests.common.webclient.WebTestCase;

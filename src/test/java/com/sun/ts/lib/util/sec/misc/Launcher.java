@@ -28,6 +28,11 @@ import java.util.HashSet;
 import java.util.StringTokenizer;
 import java.util.Set;
 import java.util.Vector;
+
+import com.sun.ts.lib.util.sec.net.www.ParseUtil;
+import com.sun.ts.lib.util.sec.security.action.GetPropertyAction;
+import com.sun.ts.lib.util.sec.security.util.SecurityConstants;
+
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
@@ -37,9 +42,6 @@ import java.security.Permissions;
 import java.security.Permission;
 import java.security.ProtectionDomain;
 import java.security.CodeSource;
-import com.sun.ts.lib.util.sec.security.action.GetPropertyAction;
-import com.sun.ts.lib.util.sec.security.util.SecurityConstants;
-import com.sun.ts.lib.util.sec.net.www.ParseUtil;
 
 /**
  * This class is used by the system to launch the main application. Launcher

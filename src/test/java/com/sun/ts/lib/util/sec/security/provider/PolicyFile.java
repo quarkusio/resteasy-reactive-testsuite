@@ -33,41 +33,33 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.WeakHashMap;
 import java.text.MessageFormat;
-//import com.sun.security.auth.PrincipalComparator;
-import com.sun.ts.lib.util.sec.security.auth.PrincipalComparator;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import javax.security.auth.PrivateCredentialPermission;
 import javax.security.auth.Subject;
 import javax.security.auth.x500.X500Principal;
+
+import com.sun.ts.lib.util.sec.misc.JavaSecurityProtectionDomainAccess;
+import com.sun.ts.lib.util.sec.misc.SharedSecrets;
+import com.sun.ts.lib.util.sec.net.www.ParseUtil;
+import com.sun.ts.lib.util.sec.security.auth.PrincipalComparator;
+import com.sun.ts.lib.util.sec.security.util.Debug;
+import com.sun.ts.lib.util.sec.security.util.Password;
+import com.sun.ts.lib.util.sec.security.util.PolicyUtil;
+import com.sun.ts.lib.util.sec.security.util.PropertyExpander;
+import com.sun.ts.lib.util.sec.security.util.ResourcesMgr;
+import com.sun.ts.lib.util.sec.security.util.SecurityConstants;
+
 import java.io.FilePermission;
 import java.net.SocketPermission;
 import java.net.NetPermission;
 import java.util.PropertyPermission;
 import java.util.concurrent.atomic.AtomicReference;
-import java.awt.AWTPermission;
-/*
-import javax.security.auth.AuthPermission;
-import javax.security.auth.kerberos.ServicePermission;
-import javax.security.auth.kerberos.DelegationPermission;
-import java.io.SerializablePermission;
-import java.util.logging.LoggingPermission;
-import java.sql.SQLPermission;
-import java.lang.reflect.ReflectPermission;
-import javax.sound.sampled.AudioPermission;
-import javax.net.ssl.SSLPermission;
-*/
-import com.sun.ts.lib.util.sec.misc.JavaSecurityProtectionDomainAccess;
+
 import static com.sun.ts.lib.util.sec.misc.JavaSecurityProtectionDomainAccess.ProtectionDomainCache;
-import com.sun.ts.lib.util.sec.misc.SharedSecrets;
-import com.sun.ts.lib.util.sec.security.util.Password;
-import com.sun.ts.lib.util.sec.security.util.PolicyUtil;
-import com.sun.ts.lib.util.sec.security.util.PropertyExpander;
-import com.sun.ts.lib.util.sec.security.util.Debug;
-import com.sun.ts.lib.util.sec.security.util.ResourcesMgr;
-import com.sun.ts.lib.util.sec.security.util.SecurityConstants;
-import com.sun.ts.lib.util.sec.net.www.ParseUtil;
+
+import java.awt.AWTPermission;
 
 /**
  * This class represents a default implementation for

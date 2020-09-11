@@ -20,15 +20,15 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 import com.sun.javatest.*;
+import com.sun.ts.lib.deliverable.*;
+import com.sun.ts.lib.porting.*;
+import com.sun.ts.lib.util.*;
 import com.sun.enterprise.deployment.*;
 import com.sun.enterprise.tools.deployment.main.*;
 import com.sun.enterprise.tools.packager.*;
 import com.sun.enterprise.tools.deployment.main.*;
 import com.sun.enterprise.tools.deployment.backend.*;
 import com.sun.enterprise.resource.*;
-import com.sun.ts.lib.util.*;
-import com.sun.ts.lib.porting.*;
-import com.sun.ts.lib.deliverable.*;
 import com.sun.ejb.sqlgen.DBInfo;
 import com.sun.ejb.sqlgen.SQLGenerator;
 

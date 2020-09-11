@@ -16,9 +16,9 @@
 
 package com.sun.ts.lib.implementation.sun.javaee;
 
+import com.sun.enterprise.security.auth.login.*;
 import com.sun.ts.lib.porting.TSLoginContextInterface;
 import com.sun.ts.lib.util.TestUtil;
-import com.sun.enterprise.security.auth.login.*;
 
 /**
  * TSLoginContext provides the implementation specific code for allowing a

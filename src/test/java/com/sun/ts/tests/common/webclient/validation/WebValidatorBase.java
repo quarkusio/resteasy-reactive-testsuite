@@ -20,14 +20,14 @@
 
 package com.sun.ts.tests.common.webclient.validation;
 
+import org.apache.commons.httpclient.Header;
+
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.common.webclient.WebTestCase;
 import com.sun.ts.tests.common.webclient.handler.Handler;
 import com.sun.ts.tests.common.webclient.handler.HandlerFactory;
 import com.sun.ts.tests.common.webclient.http.HttpRequest;
 import com.sun.ts.tests.common.webclient.http.HttpResponse;
-
-import org.apache.commons.httpclient.Header;
 
 import java.io.IOException;
 import java.util.Iterator;

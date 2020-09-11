@@ -16,9 +16,9 @@
 
 package com.sun.ts.lib.deliverable.servlet;
 
+import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.deliverable.AbstractDeliverable;
 import com.sun.ts.lib.deliverable.PropertyManagerInterface;
-import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.deliverable.tck.TCKDeliverable;
 
 import java.util.Map;

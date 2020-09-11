@@ -16,10 +16,11 @@
 
 package com.sun.ts.lib.deliverable.jpa;
 
+import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.deliverable.AbstractDeliverable;
 import com.sun.ts.lib.deliverable.PropertyManagerInterface;
-import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.util.TestUtil;
+
 import java.io.File;
 import java.util.Map;
 import java.util.Properties;

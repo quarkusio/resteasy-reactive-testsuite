@@ -16,9 +16,9 @@
 
 package com.sun.ts.lib.deliverable.connector;
 
+import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.deliverable.*;
 import com.sun.ts.lib.deliverable.tck.*;
-import com.sun.javatest.TestEnvironment;
 
 import java.util.Map;
 import java.util.Properties;

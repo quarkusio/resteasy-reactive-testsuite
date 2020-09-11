@@ -16,8 +16,8 @@
 
 package com.sun.ts.lib.util;
 
-import com.sun.ts.lib.util.FloatConsts;
 import com.sun.ts.lib.util.DoubleConsts;
+import com.sun.ts.lib.util.FloatConsts;
 
 /**
  * The class {@code FpUtils} contains static utility methods for manipulating

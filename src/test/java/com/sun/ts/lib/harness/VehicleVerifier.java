@@ -20,8 +20,10 @@
 
 package com.sun.ts.lib.harness;
 
-import com.sun.ts.lib.util.*;
 import java.util.*;
+
+import com.sun.ts.lib.util.*;
+
 import java.io.*;
 
 /**

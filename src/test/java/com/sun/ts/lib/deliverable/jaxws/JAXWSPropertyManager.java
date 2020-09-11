@@ -16,9 +16,10 @@
 
 package com.sun.ts.lib.deliverable.jaxws;
 
+import com.sun.javatest.*;
 import com.sun.ts.lib.deliverable.*;
 import com.sun.ts.lib.util.*;
-import com.sun.javatest.*;
+
 import java.util.*;
 import java.io.*;
 

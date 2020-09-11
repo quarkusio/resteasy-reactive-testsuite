@@ -20,10 +20,11 @@
 
 package com.sun.ts.lib.porting;
 
-import com.sun.ts.lib.deliverable.PropertyManagerInterface;
-import com.sun.ts.lib.deliverable.DeliverableFactory;
 import java.io.*;
 import java.util.*;
+
+import com.sun.ts.lib.deliverable.DeliverableFactory;
+import com.sun.ts.lib.deliverable.PropertyManagerInterface;
 
 /**
  * Provides all information required to deploy an application on a server. Much

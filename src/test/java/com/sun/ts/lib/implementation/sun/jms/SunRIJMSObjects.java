@@ -19,9 +19,11 @@ package com.sun.ts.lib.implementation.sun.jms;
 import java.util.*;
 import java.io.*;
 import javax.naming.*;
-import jakarta.jms.*;
-import com.sun.ts.lib.util.*;
+
 import com.sun.ts.lib.porting.*;
+import com.sun.ts.lib.util.*;
+
+import jakarta.jms.*;
 
 /**
  * This is an implementation of the TSJMSObjectsInterface. An implementation of

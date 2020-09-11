@@ -21,9 +21,9 @@ package com.sun.ts.tests.common.webclient.handler;
 
 import org.apache.commons.httpclient.Header;
 
-import java.util.StringTokenizer;
-
 import com.sun.ts.lib.util.TestUtil;
+
+import java.util.StringTokenizer;
 
 public class ALLOWHandler implements Handler {
 

@@ -16,9 +16,10 @@
 
 package com.sun.ts.tests.jaxrs.spec.template;
 
+import com.sun.javatest.Status;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
-import com.sun.javatest.Status;
+
 import java.io.PrintWriter;
 
 public class JAXRSClient extends JAXRSCommonClient {

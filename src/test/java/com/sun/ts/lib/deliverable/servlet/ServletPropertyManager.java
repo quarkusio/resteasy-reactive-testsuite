@@ -16,12 +16,13 @@
 
 package com.sun.ts.lib.deliverable.servlet;
 
-import com.sun.ts.lib.deliverable.*;
-import com.sun.ts.lib.util.*;
 import com.sun.javatest.*;
+import com.sun.ts.lib.deliverable.*;
+import com.sun.ts.lib.deliverable.tck.TCKPropertyManager;
+import com.sun.ts.lib.util.*;
+
 import java.util.*;
 import java.io.*;
-import com.sun.ts.lib.deliverable.tck.TCKPropertyManager;
 
 /**
  * This class serves as a well known place for harness, util, and porting

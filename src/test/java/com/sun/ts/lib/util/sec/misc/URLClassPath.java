@@ -28,10 +28,13 @@ import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.jar.JarFile;
-import com.sun.ts.lib.util.sec.misc.JarIndex;
-import com.sun.ts.lib.util.sec.misc.InvalidJarIndexException;
-import com.sun.ts.lib.util.sec.net.www.ParseUtil;
 import java.util.zip.ZipEntry;
+
+import com.sun.ts.lib.util.sec.misc.FileURLMapper;
+import com.sun.ts.lib.util.sec.misc.InvalidJarIndexException;
+import com.sun.ts.lib.util.sec.misc.JarIndex;
+import com.sun.ts.lib.util.sec.net.www.ParseUtil;
+
 import java.util.jar.JarEntry;
 import java.util.jar.Manifest;
 import java.util.jar.Attributes;
@@ -56,7 +59,6 @@ import java.security.Permission;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
 import java.security.cert.Certificate;
-import com.sun.ts.lib.util.sec.misc.FileURLMapper;
 
 /**
  * This class is used to maintain a search path of URLs for loading classes and

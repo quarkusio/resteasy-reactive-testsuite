@@ -23,9 +23,11 @@ import java.io.InterruptedIOException;
 import java.io.InputStream;
 import java.security.CodeSigner;
 import java.util.jar.Manifest;
+
+import com.sun.ts.lib.util.sec.nio.ByteBuffered;
+
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-import com.sun.ts.lib.util.sec.nio.ByteBuffered;
 
 /**
  * This class is used to represent a Resource that has been loaded from the

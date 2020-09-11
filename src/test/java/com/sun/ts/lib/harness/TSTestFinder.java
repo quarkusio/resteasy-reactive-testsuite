@@ -20,10 +20,10 @@ import com.sun.javatest.TestDescription;
 import com.sun.javatest.TestFinderQueue;
 import com.sun.javatest.finder.CommentStream;
 import com.sun.javatest.finder.TagTestFinder;
+import com.sun.ts.lib.deliverable.DeliverableFactory;
+import com.sun.ts.lib.deliverable.PropertyManagerInterface;
 import com.sun.ts.lib.util.AssertionMapper;
 import com.sun.ts.lib.util.TestUtil;
-import com.sun.ts.lib.deliverable.PropertyManagerInterface;
-import com.sun.ts.lib.deliverable.DeliverableFactory;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -16,11 +16,12 @@
 
 package com.sun.ts.lib.deliverable.cts;
 
-import com.sun.ts.lib.deliverable.*;
-import com.sun.ts.lib.util.*;
-import com.sun.ts.lib.porting.DeploymentInfo;
-import com.sun.ts.lib.implementation.sun.javaee.runtime.SunRIDeploymentInfo;
 import com.sun.javatest.*;
+import com.sun.ts.lib.deliverable.*;
+import com.sun.ts.lib.implementation.sun.javaee.runtime.SunRIDeploymentInfo;
+import com.sun.ts.lib.porting.DeploymentInfo;
+import com.sun.ts.lib.util.*;
+
 import java.util.*;
 import java.io.*;
 

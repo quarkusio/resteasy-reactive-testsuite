@@ -16,9 +16,11 @@
 
 package com.sun.ts.lib.deliverable;
 
-import com.sun.ts.lib.util.TestUtil;
-import com.sun.ts.lib.porting.DeploymentInfo;
 import java.util.Map;
+
+import com.sun.ts.lib.porting.DeploymentInfo;
+import com.sun.ts.lib.util.TestUtil;
+
 import java.util.Hashtable;
 
 /**

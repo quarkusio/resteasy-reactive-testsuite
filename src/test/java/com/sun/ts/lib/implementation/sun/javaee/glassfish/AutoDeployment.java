@@ -20,16 +20,17 @@ import org.apache.tools.ant.*;
 
 import java.io.*;
 import java.util.*;
-import com.sun.ts.lib.porting.*;
-import com.sun.ts.lib.util.*;
-import com.sun.ts.lib.deliverable.*;
-
 import java.util.jar.JarFile;
 import java.util.jar.JarEntry;
 import org.jdom.input.SAXBuilder;
+
+import com.sun.ts.lib.deliverable.*;
+import com.sun.ts.lib.implementation.sun.javaee.RuntimeInfo;
+import com.sun.ts.lib.porting.*;
+import com.sun.ts.lib.util.*;
+
 import org.jdom.Document;
 import org.jdom.Element;
-import com.sun.ts.lib.implementation.sun.javaee.RuntimeInfo;
 
 /**
  *

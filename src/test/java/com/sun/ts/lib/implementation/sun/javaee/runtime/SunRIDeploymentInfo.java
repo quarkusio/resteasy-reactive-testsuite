@@ -17,19 +17,22 @@
 package com.sun.ts.lib.implementation.sun.javaee.runtime;
 
 import jakarta.xml.bind.*;
-import com.sun.ts.lib.porting.DeploymentInfo;
+
+import org.xml.sax.*;
+
+import com.sun.ts.lib.deliverable.DeliverableFactory;
+import com.sun.ts.lib.deliverable.PropertyManagerInterface;
 import com.sun.ts.lib.implementation.sun.javaee.runtime.app.*;
 import com.sun.ts.lib.implementation.sun.javaee.runtime.appclient.*;
 import com.sun.ts.lib.implementation.sun.javaee.runtime.ejb.*;
 import com.sun.ts.lib.implementation.sun.javaee.runtime.web.*;
-import com.sun.ts.lib.deliverable.PropertyManagerInterface;
-import com.sun.ts.lib.deliverable.DeliverableFactory;
-import org.xml.sax.*;
+import com.sun.ts.lib.porting.DeploymentInfo;
+import com.sun.ts.lib.util.*;
+
 import javax.xml.parsers.*;
 import javax.xml.transform.sax.*;
 import java.io.*;
 import java.util.*;
-import com.sun.ts.lib.util.*;
 
 /**
  * Provides all information required to deploy an application on a server. Much

@@ -21,10 +21,10 @@
 
 package com.sun.ts.lib.deliverable.jaspic;
 
+import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.deliverable.AbstractPropertyManager;
 import com.sun.ts.lib.deliverable.PropertyManagerInterface;
 import com.sun.ts.lib.deliverable.PropertyNotSetException;
-import com.sun.javatest.TestEnvironment;
 
 import java.util.Map;
 import java.util.Properties;

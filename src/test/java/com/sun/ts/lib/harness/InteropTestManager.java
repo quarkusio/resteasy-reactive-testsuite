@@ -16,11 +16,13 @@
 
 package com.sun.ts.lib.harness;
 
-import com.sun.ts.lib.util.TestUtil;
-import com.sun.ts.lib.deliverable.DeliverableFactory;
-import com.sun.ts.lib.deliverable.PropertyNotSetException;
-import com.sun.ts.lib.deliverable.PropertyManagerInterface;
 import java.util.Map;
+
+import com.sun.ts.lib.deliverable.DeliverableFactory;
+import com.sun.ts.lib.deliverable.PropertyManagerInterface;
+import com.sun.ts.lib.deliverable.PropertyNotSetException;
+import com.sun.ts.lib.util.TestUtil;
+
 import java.io.File;
 
 /**

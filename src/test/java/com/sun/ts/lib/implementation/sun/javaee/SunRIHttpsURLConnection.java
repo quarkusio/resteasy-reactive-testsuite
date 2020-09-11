@@ -16,18 +16,13 @@
 
 package com.sun.ts.lib.implementation.sun.javaee;
 
-import com.sun.ts.lib.porting.*;
-
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
-// Implementation Specific Classes
-//import com.sun.net.ssl.HttpsURLConnection;
-//import com.sun.net.ssl.HostnameVerifier;
-//import com.sun.enterprise.security.KeyTool;
-
+import com.sun.ts.lib.porting.*;
 import com.sun.ts.lib.util.*;
+
 import java.io.*;
 import java.net.*;
 

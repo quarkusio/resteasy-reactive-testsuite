@@ -21,10 +21,11 @@
 package com.sun.ts.tests.common.webclient.validation;
 
 import java.util.StringTokenizer;
-import java.io.OutputStreamWriter;
 
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.common.webclient.Goldenfile;
+
+import java.io.OutputStreamWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 

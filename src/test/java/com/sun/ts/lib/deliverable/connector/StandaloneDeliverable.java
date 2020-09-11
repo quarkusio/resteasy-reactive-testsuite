@@ -16,12 +16,12 @@
 
 package com.sun.ts.lib.deliverable.connector;
 
+import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.deliverable.AbstractDeliverable;
 import com.sun.ts.lib.deliverable.PropertyManagerInterface;
-import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.lib.implementation.sun.javaee.runtime.SunRIDeploymentInfo;
 import com.sun.ts.lib.porting.DeploymentInfo;
-import com.sun.javatest.TestEnvironment;
+import com.sun.ts.lib.util.TestUtil;
 
 import java.util.Map;
 import java.util.Properties;

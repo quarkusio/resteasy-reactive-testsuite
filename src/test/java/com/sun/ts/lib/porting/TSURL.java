@@ -21,8 +21,10 @@
 package com.sun.ts.lib.porting;
 
 import java.net.*;
-import java.io.Serializable;
+
 import com.sun.ts.lib.util.*;
+
+import java.io.Serializable;
 
 /**
  * This is a Java EE Reference specific implementation of the TSURLInterface

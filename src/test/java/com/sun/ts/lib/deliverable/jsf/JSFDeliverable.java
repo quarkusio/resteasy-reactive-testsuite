@@ -16,10 +16,10 @@
 
 package com.sun.ts.lib.deliverable.jsf;
 
+import com.sun.javatest.TestEnvironment;
 import com.sun.ts.lib.deliverable.AbstractDeliverable;
 import com.sun.ts.lib.deliverable.PropertyManagerInterface;
 import com.sun.ts.lib.deliverable.tck.TCKPropertyManager;
-import com.sun.javatest.TestEnvironment;
 
 import java.util.Map;
 import java.util.Properties;

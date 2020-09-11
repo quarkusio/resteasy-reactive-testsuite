@@ -16,12 +16,12 @@
 
 package com.sun.ts.lib.harness;
 
-import com.sun.ts.lib.util.*;
 import java.util.*;
 import java.io.*;
 import java.net.*;
 import java.lang.reflect.*;
 import com.sun.javatest.Status;
+import com.sun.ts.lib.util.*;
 import com.sun.javatest.*;
 import java.lang.annotation.Annotation;
 

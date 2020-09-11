@@ -23,9 +23,6 @@ package com.sun.ts.tests.common.webclient.http;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import com.sun.ts.lib.util.TestUtil;
-import com.sun.ts.tests.common.webclient.Util;
-
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpConnection;
@@ -41,9 +38,12 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory;
 import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.httpclient.protocol.SSLProtocolSocketFactory;
-import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
-// this import is used to force this class to get compiled
+
+import com.sun.ts.lib.util.TestUtil;
+import com.sun.ts.tests.common.webclient.Util;
 import com.sun.ts.tests.common.webclient.log.WebLog;
+
+import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
 
 /**
  * Represents an HTTP client Request

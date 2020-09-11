@@ -16,9 +16,11 @@
 
 package com.sun.ts.lib.harness;
 
+import java.util.*;
+
 import com.sun.ts.lib.deliverable.PropertyManagerInterface;
 import com.sun.ts.lib.util.TestUtil;
-import java.util.*;
+
 import java.io.*;
 
 public class ExecutionMode {

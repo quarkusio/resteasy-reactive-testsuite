@@ -18,8 +18,9 @@ package com.sun.ts.lib.deliverable;
 
 import java.util.Map;
 import java.util.Properties;
-import com.sun.ts.lib.porting.DeploymentInfo;
+
 import com.sun.javatest.TestEnvironment;
+import com.sun.ts.lib.porting.DeploymentInfo;
 
 /**
  * This interface serves as a place to retrieve deliverable specific

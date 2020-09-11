@@ -16,9 +16,9 @@
 
 package com.sun.ts.lib.util.sec.misc;
 
+import com.sun.ts.lib.util.sec.nio.ch.Interruptible;
 import com.sun.ts.lib.util.sec.reflect.ConstantPool;
 import com.sun.ts.lib.util.sec.reflect.annotation.AnnotationType;
-import com.sun.ts.lib.util.sec.nio.ch.Interruptible;
 
 public interface JavaLangAccess {
   /** Return the constant pool for a class. */

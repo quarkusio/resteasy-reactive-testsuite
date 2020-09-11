@@ -21,11 +21,11 @@ import java.io.*;
 import com.sun.javatest.finder.*;
 import com.sun.javatest.*;
 import com.sun.javatest.util.BackupPolicy;
-import com.sun.ts.lib.util.*;
-import com.sun.ts.lib.porting.*;
 import com.sun.ts.lib.deliverable.*;
-import com.sun.interview.Interview;
 import com.sun.ts.lib.javatest.*;
+import com.sun.ts.lib.porting.*;
+import com.sun.ts.lib.util.*;
+import com.sun.interview.Interview;
 
 public class TS extends TestSuite {
   private TestEnvironment env;

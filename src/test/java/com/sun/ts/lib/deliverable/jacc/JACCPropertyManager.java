@@ -16,8 +16,9 @@
 
 package com.sun.ts.lib.deliverable.jacc;
 
-import com.sun.ts.lib.deliverable.*;
 import com.sun.javatest.TestEnvironment;
+import com.sun.ts.lib.deliverable.*;
+
 import java.util.Properties;
 
 public class JACCPropertyManager extends AbstractPropertyManager {

@@ -27,13 +27,15 @@ import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import java.util.jar.Attributes;
 import java.util.jar.Attributes.Name;
+
+import com.sun.ts.lib.util.sec.net.www.ParseUtil;
+
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
 import java.security.PrivilegedActionException;
 import java.net.URL;
 import java.net.MalformedURLException;
-import com.sun.ts.lib.util.sec.net.www.ParseUtil;
 
 /**
  * <p>

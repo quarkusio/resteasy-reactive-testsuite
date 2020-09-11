@@ -17,8 +17,10 @@
 package com.sun.ts.lib.util.sec.misc;
 
 import java.net.URL;
-import java.io.File;
+
 import com.sun.ts.lib.util.sec.net.www.ParseUtil;
+
+import java.io.File;
 
 /**
  * (Windows) Platform specific handling for file: URLs . In particular deals

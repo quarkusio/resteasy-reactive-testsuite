@@ -18,9 +18,10 @@ package com.sun.ts.lib.harness;
 
 import com.sun.javatest.*;
 import com.sun.javatest.util.StringArray;
-import com.sun.ts.lib.util.*;
-import com.sun.ts.lib.porting.*;
 import com.sun.ts.lib.deliverable.*;
+import com.sun.ts.lib.porting.*;
+import com.sun.ts.lib.util.*;
+
 import java.io.*;
 import java.util.*;
 import java.util.jar.*;

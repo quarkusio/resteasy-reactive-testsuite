@@ -29,10 +29,11 @@ import java.util.StringTokenizer;
 import java.text.MessageFormat;
 import javax.security.auth.x500.X500Principal;
 
-import java.security.GeneralSecurityException;
 import com.sun.ts.lib.util.sec.security.util.Debug;
 import com.sun.ts.lib.util.sec.security.util.PropertyExpander;
 import com.sun.ts.lib.util.sec.security.util.ResourcesMgr;
+
+import java.security.GeneralSecurityException;
 
 /**
  * The policy for a Java runtime (specifying which permissions are available for

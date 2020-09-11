@@ -24,9 +24,10 @@
 
 package com.sun.ts.lib.porting;
 
-import com.sun.ts.lib.util.*;
 import java.io.*;
 import java.net.*;
+
+import com.sun.ts.lib.util.*;
 
 /**
  * TSHttpsURLConnection provides the HTTPS specific featurs

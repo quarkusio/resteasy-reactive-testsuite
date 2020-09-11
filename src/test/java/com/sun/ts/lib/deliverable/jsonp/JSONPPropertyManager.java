@@ -16,9 +16,10 @@
 
 package  com.sun.ts.lib.deliverable.jsonp;
 
-import  com.sun.ts.lib.deliverable.*;
-import  com.sun.ts.lib.util.*;
 import  com.sun.javatest.*;
+import com.sun.ts.lib.deliverable.*;
+import com.sun.ts.lib.util.*;
+
 import  java.util.*;
 import  java.io.*;
 

@@ -18,6 +18,7 @@ package com.sun.ts.lib.implementation.sun.javaee.glassfish;
 
 import java.util.Map;
 import java.util.Properties;
+
 import com.sun.ts.lib.porting.DeploymentInfo;
 
 public interface AutoDeploymentServerInterface extends java.rmi.Remote {

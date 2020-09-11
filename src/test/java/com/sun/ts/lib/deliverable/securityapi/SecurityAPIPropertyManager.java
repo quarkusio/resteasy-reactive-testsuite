@@ -16,10 +16,11 @@
 
 package com.sun.ts.lib.deliverable.securityapi;
 
-import com.sun.ts.lib.deliverable.*;
 import com.sun.javatest.*;
-import java.util.*;
+import com.sun.ts.lib.deliverable.*;
 import com.sun.ts.lib.deliverable.tck.TCKPropertyManager;
+
+import java.util.*;
 
 /**
  * This class serves as a well known place for harness, util, and porting

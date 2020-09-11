@@ -20,12 +20,14 @@ import java.io.*;
 import java.util.*;
 import javax.xml.parsers.*;
 import org.xml.sax.helpers.*;
+
+import com.sun.ts.lib.harness.*;
+import com.sun.ts.lib.util.*;
+
 import org.xml.sax.*;
 import org.apache.tools.ant.taskdefs.*;
 import org.apache.tools.ant.types.*;
 import org.apache.tools.ant.*;
-import com.sun.ts.lib.util.*;
-import com.sun.ts.lib.harness.*;
 
 public final class AssertionMapper {
   private static final String NO_DESC = "See assertion html documents.";

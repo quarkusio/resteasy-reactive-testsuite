@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 import com.sun.ts.lib.util.TestUtil;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 /**
  * A RandomAccess collection of objects upon each a certain method is called

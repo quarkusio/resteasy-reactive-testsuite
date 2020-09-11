@@ -17,6 +17,9 @@
 package com.sun.ts.lib.util.sec.net.www;
 
 import java.util.BitSet;
+
+import com.sun.ts.lib.util.sec.nio.cs.ThreadLocalCoders;
+
 import java.io.UnsupportedEncodingException;
 import java.io.File;
 import java.net.URL;
@@ -26,7 +29,6 @@ import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.CharacterCodingException;
-import com.sun.ts.lib.util.sec.nio.cs.ThreadLocalCoders;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CoderResult;
 import java.nio.charset.CodingErrorAction;
