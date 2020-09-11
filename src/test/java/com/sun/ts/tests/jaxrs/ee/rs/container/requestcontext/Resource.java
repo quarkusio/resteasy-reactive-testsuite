@@ -16,7 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext;
 
-import javax.servlet.http.HttpServletRequest;
+// QUARKUS: disabled
+//import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.Path;
@@ -51,17 +52,18 @@ public class Resource {
     return getReturnValue(RequestFilter.URI);
   }
 
-  @GET
-  @Path("setpropertycontext")
-  public String setPropertyContext(@Context HttpServletRequest servletRequest) {
-    if (servletRequest == null) {
-      return "NULL";
-    }
-    String entity = (String) servletRequest
-        .getAttribute(RequestFilter.PROPERTYNAME);
-    return getReturnValue(entity);
-  }
-
+  // QUARKUS: disabled
+//  @GET
+//  @Path("setpropertycontext")
+//  public String setPropertyContext(@Context HttpServletRequest servletRequest) {
+//    if (servletRequest == null) {
+//      return "NULL";
+//    }
+//    String entity = (String) servletRequest
+//        .getAttribute(RequestFilter.PROPERTYNAME);
+//    return getReturnValue(entity);
+//  }
+//
   @GET
   @Path("setrequesturi1")
   public String setRequestUriDidNotChangeUri() {

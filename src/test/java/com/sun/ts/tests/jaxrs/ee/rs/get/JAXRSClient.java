@@ -37,7 +37,6 @@ import io.quarkus.test.QuarkusUnitTest;
 public class JAXRSClient extends JAXRSCommonClient {
   private static final long serialVersionUID = 1L;
 
-  
   @RegisterExtension
   static QuarkusUnitTest test = new QuarkusUnitTest()
           .setArchiveProducer(new Supplier<JavaArchive>() {
@@ -89,6 +88,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on root resource at /GetTest; Verify
    * that right Method is invoked.
    */
+  @Test
   public void getTest2() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
@@ -106,6 +106,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes GET on a sub resource at /GetTest/sub;
    * Verify that right Method is invoked.
    */
+  @Test
   public void getSubTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));

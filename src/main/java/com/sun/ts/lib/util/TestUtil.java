@@ -340,11 +340,14 @@ public final class TestUtil {
   private static Properties getPropsFromFile() {
     FileInputStream in = null;
     Properties p = new Properties();
+    // QUARKUS
     p.setProperty("porting.ts.url.class.1", "com.sun.ts.lib.implementation.sun.common.SunRIURL");
     try {
       in = new FileInputStream(PROPS_FILE);
       p.load(in);
       System.err.println("STEF");
+    } catch (FileNotFoundException e) {
+        // QUARKUS: ignore since we're not using property files
     } catch (Exception e) {
       logErr("Error reading the Properties object", e);
     } finally {

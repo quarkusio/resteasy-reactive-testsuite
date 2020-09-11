@@ -48,7 +48,7 @@ import com.sun.ts.tests.servlet.common.util.Data;
  * @author dianne jiao
  * @author jan supol
  */
-public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
+public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
 
 //  private static final long serialVersionUID = 1L;
 //
@@ -163,7 +163,7 @@ public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
   /**
    * Target webserver port
    */
-  protected int _port = 8080;
+  protected int _port = 8081;
 
   /**
    * HttpState that may be used for multiple invocations requiring state.
@@ -227,6 +227,13 @@ public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
 //  }
 //
   public void setContextRoot(String root) {
+      // QUARKUS: this context root is set somehere, but not sure where, let's just ignore it here
+      if(root.startsWith("/")) {
+          int nextSlash = root.indexOf("/", 1);
+          if(nextSlash != -1) {
+              root = root.substring(nextSlash);
+          }
+      }
     TestUtil.logTrace("[JAXRSCommonClient] Contextroot set at " + root);
     _contextRoot = root;
   }
@@ -522,73 +529,73 @@ public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
     sb.append(type.getSubtype());
     return sb.toString();
   }
-//
-//  /**
-//   * @return http response body as string
-//   * @throws Fault
-//   *           when an error occur
-//   */
-//  protected String getResponseBody() throws Fault {
-//    try {
-//      com.sun.ts.tests.common.webclient.http.HttpResponse response;
-//      response = _testCase.getResponse();
-//      boolean isNull = response.getResponseBodyAsRawStream() == null;
-//      return isNull ? null : response.getResponseBodyAsString();
-//    } catch (IOException e) {
-//      throw new Fault(e);
-//    }
-//  }
-//
-//  /**
-//   * @return http response body as string
-//   * @throws Fault
-//   *           when an error occur
-//   */
-//  protected String[] getResponseHeaders() throws Fault {
-//    Header[] headerEntities = _testCase.getResponse().getResponseHeaders();
-//    String[] headers = new String[headerEntities.length];
-//    for (int i = 0; i != headerEntities.length; i++)
-//      headers[i] = headerEntities[i].toString();
-//    return headers;
-//  }
-//
-//  /**
-//   * @param s
-//   *          the header to search
-//   * @throws Fault
-//   *           when header not found
-//   */
-//  protected void assertResponseHeadersContain(String s) throws Fault {
-//    boolean found = false;
-//    for (String header : getResponseHeaders())
-//      if (header.contains(s)) {
-//        found = true;
-//        break;
-//      }
-//    assertFault(found, "Response headers do not contain", s);
-//  }
-//
-//  /**
-//   * @param s
-//   *          the entity to search
-//   * @throws Fault
-//   *           when entity not found
-//   */
-//  protected void assertResponseBodyContain(String s) throws Fault {
-//    boolean found = getResponseBody().contains(s);
-//    assertFault(found, "Response body does not contain", s);
-//  }
-//
-//  /**
-//   * get HttpResponse#statusCode
-//   * 
-//   * @return JAXRS Response.Status equivalent of HttpResponse#statusCode
-//   */
-//  protected Response.Status getResponseStatusCode() {
-//    String status = _testCase.getResponse().getStatusCode();
-//    return Response.Status.fromStatusCode(Integer.parseInt(status));
-//  }
-//
+
+  /**
+   * @return http response body as string
+   * @throws Fault
+   *           when an error occur
+   */
+  protected String getResponseBody() throws Fault {
+    try {
+      com.sun.ts.tests.common.webclient.http.HttpResponse response;
+      response = _testCase.getResponse();
+      boolean isNull = response.getResponseBodyAsRawStream() == null;
+      return isNull ? null : response.getResponseBodyAsString();
+    } catch (IOException e) {
+      throw new Fault(e);
+    }
+  }
+
+  /**
+   * @return http response body as string
+   * @throws Fault
+   *           when an error occur
+   */
+  protected String[] getResponseHeaders() throws Fault {
+    Header[] headerEntities = _testCase.getResponse().getResponseHeaders();
+    String[] headers = new String[headerEntities.length];
+    for (int i = 0; i != headerEntities.length; i++)
+      headers[i] = headerEntities[i].toString();
+    return headers;
+  }
+
+  /**
+   * @param s
+   *          the header to search
+   * @throws Fault
+   *           when header not found
+   */
+  protected void assertResponseHeadersContain(String s) throws Fault {
+    boolean found = false;
+    for (String header : getResponseHeaders())
+      if (header.contains(s)) {
+        found = true;
+        break;
+      }
+    assertFault(found, "Response headers do not contain", s);
+  }
+
+  /**
+   * @param s
+   *          the entity to search
+   * @throws Fault
+   *           when entity not found
+   */
+  protected void assertResponseBodyContain(String s) throws Fault {
+    boolean found = getResponseBody().contains(s);
+    assertFault(found, "Response body does not contain", s);
+  }
+
+  /**
+   * get HttpResponse#statusCode
+   * 
+   * @return JAXRS Response.Status equivalent of HttpResponse#statusCode
+   */
+  protected Response.Status getResponseStatusCode() {
+    String status = _testCase.getResponse().getStatusCode();
+    return Response.Status.fromStatusCode(Integer.parseInt(status));
+  }
+
   /**
    * Set TEST_PROPS property value. If it already exists, the value is appended
    */
@@ -879,17 +886,17 @@ public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
   protected static String objectsToString(Object... objects) {
     return objectsToString(" ", objects);
   }
-//
-//  /**
-//   * @since 2.0.1
-//   */
-//  protected static String objectsToString(String delimiter, Object... objects) {
-//    StringBuilder sb = new StringBuilder();
-//    for (Object o : objects)
-//      sb.append(o).append(delimiter);
-//    return sb.toString().trim();
-//  }
-//
+
+  /**
+   * @since 2.0.1
+   */
+  protected static String objectsToString(String delimiter, Object... objects) {
+    StringBuilder sb = new StringBuilder();
+    for (Object o : objects)
+      sb.append(o).append(delimiter);
+    return sb.toString().trim();
+  }
+
   /*
    * private methods
    * ========================================================================
@@ -912,9 +919,9 @@ public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
   protected boolean isNullOrEmpty(String val) {
     return val == null || val.trim().equals("");
   }
-//
-//  private InetAddress[] _addrs = null;
-//
+
+  private InetAddress[] _addrs = null;
+
 //  protected String _servlet = null;
 //
   /**
@@ -1024,70 +1031,71 @@ public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
 //    return _servlet;
 //  }
 //
-//  protected String getLocalInterfaceInfo(boolean returnAddresses) {
-//    String result = null;
-//    initInetAddress();
-//    if (_addrs.length != 0) {
-//      StringBuffer sb = new StringBuffer(32);
-//      if (!returnAddresses) {
-//        // localhost might not show up if aliased
-//        sb.append("localhost,");
-//      } else {
-//        // add 127.0.0.1
-//        sb.append("127.0.0.1,");
-//      }
-//
-//      for (int i = 0; i < _addrs.length; i++) {
-//        if (returnAddresses) {
-//          String ip = _addrs[i].getHostAddress();
-//          if (!ip.equals("127.0.0.1")) {
-//            if (ip.contains("%")) {
-//              int scope_id = ip.indexOf("%");
-//              ip = ip.substring(0, scope_id);
-//            }
-//            sb.append(ip);
-//          }
-//        } else {
-//          String host = _addrs[i].getCanonicalHostName();
-//          if (!host.equals("localhost")) {
-//            sb.append(host);
-//          }
-//        }
-//        if (i + 1 != _addrs.length) {
-//          sb.append(",");
-//        }
-//      }
-//      result = sb.toString();
-//      TestUtil.logTrace("[AbstractUrlClient] Interface info: " + result);
-//    }
-//    return result;
-//  }
-//
-//  private void initInetAddress() {
-//    if (_addrs == null) {
-//      try {
-//        _addrs = InetAddress
-//            .getAllByName(InetAddress.getLocalHost().getCanonicalHostName());
-//      } catch (UnknownHostException uhe) {
-//        TestUtil.logMsg(
-//            "[AbstractUrlClient][WARNING] Unable to obtain local host information.");
-//      }
-//    }
-//  }
-//
-//  protected String getAbsoluteUrl() {
-//    return getAbsoluteUrl(null);
-//  }
-//
-//  protected String getAbsoluteUrl(String method) {
-//    StringBuilder sb = new StringBuilder();
-//    sb.append("http://").append(_hostname).append(":").append(_port)
-//        .append(getContextRoot());
-//    if (method != null)
-//      sb.append("/").append(method);
-//    return sb.toString();
-//  }
+  protected String getLocalInterfaceInfo(boolean returnAddresses) {
+    String result = null;
+    initInetAddress();
+    if (_addrs.length != 0) {
+      StringBuffer sb = new StringBuffer(32);
+      if (!returnAddresses) {
+        // localhost might not show up if aliased
+        sb.append("localhost,");
+      } else {
+        // add 127.0.0.1
+        sb.append("127.0.0.1,");
+      }
 
+      for (int i = 0; i < _addrs.length; i++) {
+        if (returnAddresses) {
+          String ip = _addrs[i].getHostAddress();
+          if (!ip.equals("127.0.0.1")) {
+            if (ip.contains("%")) {
+              int scope_id = ip.indexOf("%");
+              ip = ip.substring(0, scope_id);
+            }
+            sb.append(ip);
+          }
+        } else {
+          String host = _addrs[i].getCanonicalHostName();
+          if (!host.equals("localhost")) {
+            sb.append(host);
+          }
+        }
+        if (i + 1 != _addrs.length) {
+          sb.append(",");
+        }
+      }
+      result = sb.toString();
+      TestUtil.logTrace("[AbstractUrlClient] Interface info: " + result);
+    }
+    return result;
+  }
+
+  private void initInetAddress() {
+    if (_addrs == null) {
+      try {
+        _addrs = InetAddress
+            .getAllByName(InetAddress.getLocalHost().getCanonicalHostName());
+      } catch (UnknownHostException uhe) {
+        TestUtil.logMsg(
+            "[AbstractUrlClient][WARNING] Unable to obtain local host information.");
+      }
+    }
+  }
+
+  protected String getAbsoluteUrl() {
+    return getAbsoluteUrl(null);
+  }
+
+  protected String getAbsoluteUrl(String method) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("http://").append(_hostname).append(":").append(_port)
+        .append(getContextRoot());
+    if (method != null)
+      sb.append("/").append(method);
+    return sb.toString();
+  }
+
+  // QUARKUS:
   static public class Fault extends AssertionFailedError {
       public Fault(String message) {
           super(message);
@@ -1102,5 +1110,9 @@ public abstract class JAXRSCommonClient /* extends ServiceEETest */ {
     }
   }
   
+  // QUARKUS:
   public void run(String[] args) {}
+
+  // QUARKUS:
+  public void setup(String[] args, Properties p) {}
 }
