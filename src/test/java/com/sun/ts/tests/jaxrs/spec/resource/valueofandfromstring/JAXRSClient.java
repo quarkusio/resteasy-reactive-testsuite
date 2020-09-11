@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -24,6 +32,22 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                              com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring.EnumWithFromStringAndValueOf.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring.ParamEntityWithFromStringAndValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class  
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 6626213314312507899L;
 
@@ -51,7 +75,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void enumHeaderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "param:" + DATA);
     setProperty(Property.REQUEST,
@@ -69,7 +93,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void enumCookieTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Cookie: param=" + DATA);
     setProperty(Property.REQUEST,
@@ -87,7 +111,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void enumMaxtrixTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/enummatrix;param=" + DATA));
@@ -104,7 +128,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void enumQueryTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/enumquery?param=" + DATA));
@@ -121,7 +145,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an enum in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void enumPathTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/enumpath/" + DATA));
@@ -138,7 +162,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityHeaderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "param:" + DATA);
     setProperty(Property.REQUEST,
@@ -156,7 +180,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityCookieTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Cookie: param=" + DATA);
     setProperty(Property.REQUEST,
@@ -174,7 +198,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityMaxtrixTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/entitymatrix;param=" + DATA));
@@ -191,7 +215,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityQueryTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/entityquery?param=" + DATA));
@@ -208,7 +232,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: If both methods are present then valueOf MUST be used
    * unless the type is an entity in which case fromString MUST be used.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityPathTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "resource/entitypath/" + DATA));

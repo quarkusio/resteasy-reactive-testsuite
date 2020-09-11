@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
@@ -27,6 +35,21 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                              com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.SuperClass.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.ResourceInterface.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -54,7 +77,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void correctTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
     invoke();
@@ -69,7 +92,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (@Path)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectPathOnClassTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put")
         .replace("/resource", "/interfaceresource"));
@@ -86,7 +109,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (@Path)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectPathOnClassAndRequestTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "post").replace("/resource", "/super"));
@@ -103,7 +126,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (@Path)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectPathOnMethodTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "post"));
     setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
@@ -119,7 +142,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (@POST)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void correctRequestTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "put"));
     setProperty(Property.STATUS_CODE, "!" + getStatusCode(Status.OK));
@@ -135,7 +158,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored.(Content-Type)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectConsumesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
     setProperty(Property.REQUEST_HEADERS,
@@ -154,7 +177,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (Accept)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectProdecesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
     setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
@@ -171,7 +194,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (Accept, Content-type)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void correctProducesConsumesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
     setProperty(Property.REQUEST_HEADERS,
@@ -191,7 +214,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (formparam=pqr)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
     setProperty(Property.CONTENT, "pqr=hello");
@@ -209,7 +232,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (queryParam=xyz)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void queryParamXyzTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put?xyz=hello"));
     setProperty(Property.SEARCH_STRING, "subclass");
@@ -226,7 +249,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (queryParam=pqr)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void queryParamPqrTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put?pqr=hello"));
     setProperty(Property.SEARCH_STRING, "subclass");
@@ -243,7 +266,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * annotations then all of the annotations on the super class or interface
    * method are ignored. (queryParam=pqr)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamPqrTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "put;ijk=hello"));
     setProperty(Property.SEARCH_STRING, "hello");

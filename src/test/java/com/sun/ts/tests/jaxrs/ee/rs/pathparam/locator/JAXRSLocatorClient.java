@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 /*
  * @class.setup_props: webServerHost;
  *                     webServerPort;
@@ -23,6 +31,31 @@ package com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator;
  */
 public class JAXRSLocatorClient
     extends com.sun.ts.tests.jaxrs.ee.rs.pathparam.JAXRSClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.MiddleResource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.PathSegmentImpl.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.LocatorResource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -132,7 +165,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -145,7 +178,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamEntityWithValueOfTest() throws Fault {
     super.pathParamEntityWithValueOfTest();
   }
@@ -158,7 +191,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named Param is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamEntityWithFromStringTest() throws Fault {
     _contextRoot += "encoded";
     super.pathParamEntityWithFromStringTest();
@@ -172,7 +205,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamSetEntityWithFromStringTest() throws Fault {
     super.pathParamSetEntityWithFromStringTest();
   }
@@ -185,7 +218,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named PathParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamListEntityWithFromStringTest() throws Fault {
     super.pathParamListEntityWithFromStringTest();
   }
@@ -200,7 +233,7 @@ public class JAXRSLocatorClient
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamThrowingWebApplicationExceptionTest() throws Fault {
     super.pathParamThrowingWebApplicationExceptionTest();
   }
@@ -220,7 +253,7 @@ public class JAXRSLocatorClient
    * WebApplicationException that wraps the thrown exception with a not found
    * response (404 status) and no entity;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.pathParamThrowingIllegalArgumentExceptionTest();
   }

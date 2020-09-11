@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.resource.java2entity;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -26,6 +34,22 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class
+                            ,   com.sun.ts.tests.jaxrs.ee.resource.java2entity.Resource.class
+                            , com.sun.ts.tests.jaxrs.ee.resource.java2entity.IncorrectCollectionWriter.class
+                            , com.sun.ts.tests.jaxrs.ee.resource.java2entity.CollectionWriter.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -52,7 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Other | Return type or subclass | Class of instance |
    * Generic type of return type
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void directClassTypeTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "linkedlist"));
     setProperty(SEARCH_STRING, Response.Status.OK.name());
@@ -70,7 +94,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Response | Object or subclass | Class of instance | Class
    * of instance
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void responseDirectClassTypeTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "response/linkedlist"));
     setProperty(SEARCH_STRING, Response.Status.OK.name());
@@ -88,7 +112,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Response | GenericEntity or subclass | RawType property |
    * Type property
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void responseGenericEntityTest() throws Fault {
     setProperty(REQUEST,
         buildRequest(GET, "response/genericentity/linkedlist"));
@@ -107,7 +131,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: GenericEntity | GenericEntity or subclass | RawType
    * property | Type property
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void genericEntityTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "genericentity/linkedlist"));
     setProperty(SEARCH_STRING, Response.Status.OK.name());

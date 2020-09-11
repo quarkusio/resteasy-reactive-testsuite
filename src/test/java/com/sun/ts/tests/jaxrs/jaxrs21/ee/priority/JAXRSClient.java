@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.priority;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -24,6 +32,30 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TckPriorityException.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperThree.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderOne.1.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderAnother.1.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionResource.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderOne.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderAnother.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderTwo.1.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterResource.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperOne.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperTwo.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderTwo.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 
@@ -44,7 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void exceptionMapperPriorityTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "exception"));
     setProperty(Property.SEARCH_STRING, ExceptionMapperOne.class.getName());
@@ -58,7 +90,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void paramConverterPriorityTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "converter?id=something"));

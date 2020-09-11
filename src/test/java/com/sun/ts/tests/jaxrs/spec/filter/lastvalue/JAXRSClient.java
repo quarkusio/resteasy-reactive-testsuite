@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.lastvalue;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +41,27 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * Test the interceptor is called when any entity provider is called
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.filter.lastvalue.FirstWriterInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.SecondWriterInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.Resource.1.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.LinkedListEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.FirstReaderInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.ArrayListEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.SecondReaderInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.lastvalue.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1405911734696409993L;
 
@@ -62,7 +91,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readerContextOnContainerTest() throws Fault {
     addInterceptors(FirstReaderInterceptor.class);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "postlist"));
@@ -86,7 +115,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readerContextOnClientTest() throws Fault {
     addProvider(FirstReaderInterceptor.class);
     addProvider(SecondReaderInterceptor.class);
@@ -123,7 +152,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void writerContextOnContainerTest() throws Fault {
     addInterceptors(FirstWriterInterceptor.class);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getlist"));
@@ -146,7 +175,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * set in the context object when calling the wrapped methods
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void writerContextOnClientTest() throws Fault {
     addProvider(FirstReaderInterceptor.class);
     addProvider(SecondReaderInterceptor.class);

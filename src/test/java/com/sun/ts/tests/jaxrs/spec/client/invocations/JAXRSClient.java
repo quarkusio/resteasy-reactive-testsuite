@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.client.invocations;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.net.URI;
 
 import javax.ws.rs.client.Client;
@@ -35,6 +43,19 @@ import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.client.invocations.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -3347907896017729013L;
 
@@ -56,7 +77,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * invocation synchronously; asynchronous execution is also supported by
    * calling Invocation.submit().
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void synchronousTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "call"));
     setProperty(Property.SEARCH_STRING, Resource.class.getName());
@@ -72,7 +93,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * invocation synchronously; asynchronous execution is also supported by
    * calling Invocation.submit().
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void asynchronousTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "call"));
     setProperty(Property.SEARCH_STRING, Resource.class.getName());
@@ -99,7 +120,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Create a new link instance initialized from an existing URI.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void invocationFromLinkTextXmlMediaTypeTest() throws Fault {
     Response r = invocationFromLinkWithMediaType(MediaType.TEXT_XML);
     checkResposeForMessage(MediaType.TEXT_XML, r);
@@ -117,7 +138,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Create a new link instance initialized from an existing URI.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void invocationFromLinkApplicationJsonMediaTypeTest() throws Fault {
     Response r = invocationFromLinkWithMediaType(MediaType.APPLICATION_JSON);
     checkResposeForMessage(MediaType.APPLICATION_JSON, r);
@@ -135,7 +156,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Create a new link instance initialized from an existing URI.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void invocationFromLinkTwoMediaTypesTest() throws Fault {
     String type1 = MediaType.APPLICATION_ATOM_XML;
     String type2 = MediaType.TEXT_HTML;

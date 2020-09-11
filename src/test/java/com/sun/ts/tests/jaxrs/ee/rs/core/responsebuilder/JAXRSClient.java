@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -34,6 +42,21 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.AnnotatedClass.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.DateContainerReaderWriter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -59,7 +82,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Set the message entity content encoding.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityObjectTest() throws Fault {
     Date date = Calendar.getInstance().getTime();
     String entity = DateContainerReaderWriter.dateToString(date);

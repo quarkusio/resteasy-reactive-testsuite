@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.spec.completionstage;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.concurrent.Future;
 
 import javax.ws.rs.client.ClientBuilder;
@@ -30,6 +38,19 @@ import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.spec.completionstage.CompletionStageResource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 
@@ -50,7 +71,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void completionStageReturnedTest() throws Fault {
     Future<Response> f = ClientBuilder.newClient()
         .register(new JdkLoggingFilter(false)).target(getAbsoluteUrl("async"))

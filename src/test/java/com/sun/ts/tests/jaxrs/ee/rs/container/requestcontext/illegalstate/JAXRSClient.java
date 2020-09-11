@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -24,6 +32,26 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.TemplateFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.RequestTemplateFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.ResponseFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.ResponseTemplateFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.RequestFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -8112756483664393579L;
 
@@ -45,7 +73,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Throws IllegalStateException - in case the method is not
    * invoked from a pre-matching request filter.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setMethodTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.ISEXCEPTION);
     invokeRequestAndCheckResponse(ContextOperation.SETMETHOD);
@@ -61,7 +89,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * ContainerRequestContext.abortWith
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setRequestUriOneUriTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.ISEXCEPTION);
     invokeRequestAndCheckResponse(ContextOperation.SETREQUESTURI1);
@@ -77,7 +105,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * ContainerRequestContext.abortWith
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setRequestUriTwoUrisTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.ISEXCEPTION);
     invokeRequestAndCheckResponse(ContextOperation.SETREQUESTURI2);
@@ -91,7 +119,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: throws IllegalStateException in case the method is invoked
    * from a response filter.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void abortWithTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.ISEXCEPTION);
     invokeRequestAndCheckResponse(ContextOperation.ABORTWITH);
@@ -105,7 +133,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: throws IllegalStateException in case the method is invoked
    * from a response filter.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setEntityStreamTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.ISEXCEPTION);
     invokeRequestAndCheckResponse(ContextOperation.SETENTITYSTREAM);
@@ -119,7 +147,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: throws IllegalStateException in case the method is invoked
    * from a response filter.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setSecurityContextTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.ISEXCEPTION);
     invokeRequestAndCheckResponse(ContextOperation.SETSECURITYCONTEXT);

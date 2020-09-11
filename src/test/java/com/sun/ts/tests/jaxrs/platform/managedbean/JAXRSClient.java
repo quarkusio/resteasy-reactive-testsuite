@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.platform.managedbean;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -24,6 +32,23 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class               
+                            , com.sun.ts.tests.jaxrs.platform.managedbean.ManagedBeanRootResource.class
+                            , com.sun.ts.tests.jaxrs.platform.managedbean.ApplicationHolderSingleton.class
+                            , com.sun.ts.tests.jaxrs.platform.managedbean.InterceptorSingleton.class
+                            , com.sun.ts.tests.jaxrs.platform.managedbean.StringBuilderProvider.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -4731342614849053652L;
 
@@ -51,7 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * check postconstruct has been called (managed been property)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postConstructOnResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "resourcevalue"));
     setProperty(SEARCH_STRING, "1000");
@@ -68,7 +93,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * check postconstruct has been called (managed been property)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postConstructOnProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "providervalue"));
     setProperty(SEARCH_STRING, "1000");
@@ -85,7 +110,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * check postconstruct has been called (managed been property)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "applicationvalue"));
@@ -104,7 +129,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * increase value on stringbuilderprovider by writing then checked it was
    * intercepted (managed bean property)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void interceptorOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "interceptedresourcevalue"));
@@ -122,7 +147,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * try JNDI lookup
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void rootResourceManagedBeanJndiLookupTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "lookup"));
     setProperty(SEARCH_STRING, "1000");
@@ -142,7 +167,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @PostConstruct annotated method
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void injectPriorPostConstructOnRootResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorroot"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -162,7 +187,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @PostConstruct annotated method
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void injectPriorPostConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorapp"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -182,7 +207,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @PostConstruct annotated method
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void injectPriorPostConstructOnProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorprovider"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -203,7 +228,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Implementations MAY support such usage but SHOULD warn users about
    * non-portability.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void noInjectOrResourceKeywordTest() throws Fault {
     String req = buildRequest(Request.GET, "nokeyword;matrix=",
         String.valueOf(serialVersionUID));

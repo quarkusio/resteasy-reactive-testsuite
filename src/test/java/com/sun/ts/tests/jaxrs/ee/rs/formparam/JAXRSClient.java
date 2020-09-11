@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.formparam;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
@@ -27,6 +35,27 @@ import com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsParamClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            );
+                }
+            });
+
   private static final String ENCODED = "_%60%27%24X+Y%40%22a+a%22";
 
   private static final String DECODED = "_`'$X Y@\"a a\"";
@@ -54,7 +83,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test sending no content;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamNothingSentTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "PostNonDefParam", null);
   }
@@ -66,7 +95,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test sending override of default argument content;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamSentTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "PostDefParam", ENCODED);
@@ -79,7 +108,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test sending no argument content, receiving default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamNoArgSentTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "PostDefParam", "default");
   }
@@ -91,7 +120,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test sending no argument content, PUT, receiving default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamPutNoArgSentTest() throws Fault {
     defaultFormParamAndInvoke(Request.PUT, "DefParam", "DefParam");
   }
@@ -103,7 +132,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test sending argument content, PUT;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamPutArgSentTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.PUT, "DefParam", DECODED);
@@ -116,7 +145,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithValueOf from default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamValueOfTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "ParamEntityWithValueOf",
         "ValueOf");
@@ -130,7 +159,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Test creating a ParamEntityWithValueOf from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamValueOfTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "ParamEntityWithValueOf", DECODED);
@@ -143,7 +172,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamFromStringTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "ParamEntityWithFromString",
         "FromString");
@@ -157,7 +186,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Test creating a ParamEntityWithFromString from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "ParamEntityWithFromString",
@@ -171,7 +200,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamFromConstructorTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "Constructor", "Constructor");
   }
@@ -184,7 +213,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromConstructorTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "Constructor", DECODED);
@@ -197,7 +226,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithConstructor from default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamFromListConstructorTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "ListConstructor",
         "ListConstructor");
@@ -211,7 +240,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromListConstructorTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "ListConstructor", DECODED);
@@ -224,7 +253,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamFromSetFromStringTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "SetFromString", "SetFromString");
   }
@@ -237,7 +266,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "SetFromString", ENCODED);
@@ -250,7 +279,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamFromSortedSetFromStringTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "SortedSetFromString",
         "SortedSetFromString");
@@ -264,7 +293,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "SortedSetFromString", ENCODED);
@@ -277,7 +306,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Test creating a ParamEntityWithFromString from default;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultFormParamFromListFromStringTest() throws Fault {
     defaultFormParamAndInvoke(Request.POST, "ListFromString", "ListFromString");
   }
@@ -290,7 +319,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromListFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "ListFromString", ENCODED);
@@ -303,7 +332,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * 
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamEntityWithEncodedTest() throws Fault {
     searchEqualsEncoded = true;
     super.paramEntityWithEncodedTest();
@@ -318,7 +347,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
   }
@@ -334,7 +363,7 @@ public class JAXRSClient extends JaxrsParamClient {
    * construction of @FormParam annotated parameter values are treated the same
    * as if the parameter were annotated with @HeaderParam.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.BAD_REQUEST.name());
     super.paramThrowingIllegalArgumentExceptionTest();

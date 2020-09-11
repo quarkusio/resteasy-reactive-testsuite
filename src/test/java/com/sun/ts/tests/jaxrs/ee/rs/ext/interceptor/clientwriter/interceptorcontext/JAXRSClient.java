@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.interceptorcontext;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,6 +47,19 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.interceptorcontext.Wr
  *                     ts_home;
  */
 public class JAXRSClient extends WriterClient<ContextOperation> {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.interceptorcontext.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -5479399808367387477L;
 
@@ -69,7 +90,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getAnnotationsTest() throws Fault {
     Annotation[] annotations = ContextOperation.class.getAnnotations();
     Entity<String> entity = Entity.entity(TemplateInterceptorBody.ENTITY,
@@ -92,7 +113,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getGenericTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETGENERICTYPE);
     setProperty(Property.SEARCH_STRING, String.class.getName());
@@ -108,7 +129,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getMediaTypeTest() throws Fault {
     Entity<String> entity = Entity.entity(TemplateInterceptorBody.ENTITY,
         MediaType.APPLICATION_JSON_TYPE);
@@ -127,7 +148,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getPropertyIsNullTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETPROPERTY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -145,7 +166,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getPropertyNamesTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETPROPERTYNAMES);
     for (int i = 0; i != 5; i++)
@@ -165,7 +186,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    * 
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getPropertyNamesIsReadOnlyTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETPROPERTYNAMESISREADONLY);
     setProperty(Property.UNORDERED_SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -182,7 +203,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETTYPE);
     setProperty(Property.SEARCH_STRING, String.class.getName());
@@ -201,7 +222,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void removePropertyTest() throws Fault {
     setOperationAndEntity(ContextOperation.REMOVEPROPERTY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -218,7 +239,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setAnnotationsTest() throws Fault {
     Annotation[] annotations = WriterInterceptorOne.class.getAnnotations();
     setOperationAndEntity(ContextOperation.SETANNOTATIONS);
@@ -238,7 +259,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setAnnotationsNullThrowsNPETest() throws Fault {
     setOperationAndEntity(ContextOperation.SETANNOTATIONSNULL);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NPE);
@@ -254,7 +275,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setGenericTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETGENERICTYPE);
     setProperty(Property.SEARCH_STRING, "[B");
@@ -270,7 +291,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setMediaTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETMEDIATYPE);
     setProperty(Property.SEARCH_STRING, MediaType.APPLICATION_FORM_URLENCODED);
@@ -289,7 +310,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setPropertyTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETPROPERTY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY2);
@@ -306,7 +327,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setPropertyNullTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETPROPERTYNULL);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -322,7 +343,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setTypeTest() throws Fault {
     ByteArrayInputStream bais = new ByteArrayInputStream(
         TemplateInterceptorBody.ENTITY.getBytes());

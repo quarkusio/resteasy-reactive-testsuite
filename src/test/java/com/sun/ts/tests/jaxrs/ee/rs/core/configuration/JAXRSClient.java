@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.configuration;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -54,6 +62,23 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  */
 public class JAXRSClient extends JaxrsCommonClient {
 
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.api.rs.core.configurable.CallableProvider.class
+                            , com.sun.ts.tests.jaxrs.api.rs.core.configurable.SingleCheckAssertable.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.core.configurable.Resource.class      com.sun.ts.tests.jaxrs.api.rs.core.configurable.Assertable.class
+                            , com.sun.ts.tests.jaxrs.api.rs.core.configurable.ConfigurableObject.class
+                            , com.sun.ts.tests.jaxrs.api.rs.core.configurable.Registrar.class
+                            );
+                }
+            });
+
+
   private static final long serialVersionUID = 7215781408688132392L;
 
   public JAXRSClient() {
@@ -81,7 +106,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Returns true if the feature was successfully enabled, false otherwise
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void isEnabledFeatureReturningFalseTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningFalse1();
     final CheckingFeature feature2 = new FeatureReturningFalse2();
@@ -138,7 +163,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Returns true if the feature was successfully enabled, false otherwise
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void isEnabledFeatureReturningTrueTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningTrue1();
     final CheckingFeature feature2 = new FeatureReturningTrue2();
@@ -207,7 +232,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Returns true if the feature was successfully enabled, false otherwise
    */
   @SuppressWarnings("unchecked")
-  @org.junit.jupiter.api.Test
+  @Test
   public void isEnabledClassReturningFalseTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningFalse1();
     final CheckingFeature feature2 = new FeatureReturningFalse2();
@@ -273,7 +298,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Returns true if the feature was successfully enabled, false otherwise
    */
   @SuppressWarnings("unchecked")
-  @org.junit.jupiter.api.Test
+  @Test
   public void isEnabledFeatureClassReturningTrueTest() throws Fault {
     final CheckingFeature feature1 = new FeatureReturningTrue1();
     final CheckingFeature feature2 = new FeatureReturningTrue2();

@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.List;
 import java.util.Properties;
 
@@ -38,6 +46,21 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
  * @since 2.1
  */
 public class JAXRSClient extends SSEJAXRSClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.common.util.Holder.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster.BroadcastResource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 
@@ -90,7 +113,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void sseBroadcastTest() throws Fault {
     int MSG_MAX = 7;
     int wait = 25;

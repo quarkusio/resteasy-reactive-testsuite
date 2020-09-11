@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.rx;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.Future;
@@ -39,6 +47,20 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.ExecutorServiceChecker;
 public class JAXRSClient
     extends com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.JAXRSClient
     implements ExecutorServiceChecker {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.impl.TRACE.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 

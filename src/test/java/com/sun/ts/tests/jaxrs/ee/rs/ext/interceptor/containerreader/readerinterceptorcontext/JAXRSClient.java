@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerreader.readerinterceptorcontext;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ContextOperation;
 import com.sun.ts.tests.jaxrs.common.client.TextCaser;
@@ -27,6 +35,41 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerreader.ReaderClient
  *                     ts_home;
  */
 public class JAXRSClient extends ReaderClient<ContextOperation> {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.InterceptorTwoBody.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.ReaderInterceptorOne.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBean.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ReaderInterceptorTwo.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.JAXRSClient.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.JAXRSClient.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyOne.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyTwo.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient.1.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorCallbackMethods.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBeanEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InputStreamReaderProvider.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerreader.readerinterceptorcontext.Resource.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.TemplateReaderInterceptor.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.ReaderInterceptorTwo.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ReaderInterceptorOne.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.InterceptorOneBody.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 3006391868445878375L;
 
@@ -56,7 +99,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * 
    * ReaderInterceptor.aroundReadFrom
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersOperationOnlyTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETHEADERS);
     setProperty(Property.SEARCH_STRING_IGNORE_CASE,
@@ -74,7 +117,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * 
    * ReaderInterceptor.aroundReadFrom
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersHeadersSetTest() throws Fault {
     Property p = Property.UNORDERED_SEARCH_STRING;
     setOperationAndEntity(ContextOperation.GETHEADERS);
@@ -97,7 +140,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * 
    * ReaderInterceptor.aroundReadFrom
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersIsMutableTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETHEADERSISMUTABLE);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.PROPERTY);
@@ -113,7 +156,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * 
    * ReaderInterceptor.aroundReadFrom
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getInputStreamTest() throws Fault {
     String entity = "getInputStreamEntity";
     setOperationAndEntity(ContextOperation.GETINPUTSTREAM);
@@ -134,7 +177,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * 
    * ReaderInterceptor.aroundReadFrom
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void proceedThrowsIOExceptionTest() throws Fault {
     setOperationAndEntity(ContextOperation.PROCEEDTHROWSIOEXCEPTION);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.IOE);
@@ -153,7 +196,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * 
    * ReaderInterceptor.aroundReadFrom
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void proceedThrowsWebApplicationExceptionTest() throws Fault {
     setOperationAndEntity(ContextOperation.PROCEEDTHROWSWEBAPPEXCEPTION);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.WAE);
@@ -169,7 +212,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
    * 
    * ReaderInterceptor.aroundReadFrom
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setInputStreamTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETINPUTSTREAM);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY2);

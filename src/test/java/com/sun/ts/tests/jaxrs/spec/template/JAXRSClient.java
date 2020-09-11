@@ -16,12 +16,33 @@
 
 package com.sun.ts.tests.jaxrs.spec.template;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 import java.io.PrintWriter;
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.template.TemplateTest.class
+                            );
+                }
+            });
+
 
   public void JAXRSClient() {
     setContextRoot("/jaxrs_spec_templateTest_web");

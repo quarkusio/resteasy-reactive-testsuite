@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -27,6 +35,25 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * Test the interceptor is called when any entity provider is called
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AbstractAddFilter.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddDynamicFeature.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AbstractAddInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddOneInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddTenFilter.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1177743379402950754L;
 
@@ -58,7 +85,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * invoked;
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void noBindingTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "nobinding"));
     setProperty(Property.CONTENT, "0");
@@ -81,7 +108,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * invoked;
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void dynamicBindingTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "dynamic"));
     setProperty(Property.CONTENT, "0");

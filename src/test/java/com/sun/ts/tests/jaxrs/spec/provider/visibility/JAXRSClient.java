@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.visibility;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -27,6 +35,26 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderClass.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderResolver.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.VisibilityException.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.DummyWriter.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.VisibilityExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.DummyClass.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.StringReader.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -56,7 +84,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void contextResolverTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "contextresolver"));
     setProperty(Property.SEARCH_STRING, HolderClass.OK);
@@ -75,7 +103,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void exceptionMapperTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "exceptionmapper"));
     setProperty(Property.SEARCH_STRING, HolderClass.OK);
@@ -94,7 +122,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void bodyWriterTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "bodywriter"));
     setProperty(Property.SEARCH_STRING, HolderClass.OK);
@@ -113,7 +141,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * If more than one public constructor can be used then an implementation MUST
    * use the one with the most parameters
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void bodyReaderTest() throws Fault {
     MediaType type = new MediaType("text", "tck");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "bodyreader"));

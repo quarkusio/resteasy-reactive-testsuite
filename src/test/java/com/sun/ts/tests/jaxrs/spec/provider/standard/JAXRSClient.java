@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.standard;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -35,6 +43,20 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput.class        
+                            , com.sun.ts.tests.jaxrs.spec.provider.standard.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -160,7 +182,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void byteArrayProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[0], media); // All media
@@ -177,7 +199,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void stringProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[1], media); // All media
@@ -194,7 +216,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void inputStreamProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[2], media); // All media
@@ -214,7 +236,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * JIRA:1078
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readerProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke("reader", media);
@@ -231,7 +253,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void fileProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[3], media); // All media
@@ -248,7 +270,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void dataSourceProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[4], media); // All media
@@ -268,7 +290,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * application/*+xml)
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void sourceProviderTest() throws Fault {
     setPropertyAndInvokeXml("source");
   }
@@ -285,7 +307,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * javax.xml.bind.JAXBElement and application-supplied JAXB classes XML media
    * types (text/xml, application/xml and application/*+xml)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void jaxbElementProviderTest() throws Fault {
     setPropertyAndInvokeXml("jaxb");
   }
@@ -300,7 +322,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void streamingOutputProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
       setEntityAndPropertyAndInvoke(methodsAll[5], media); // All media

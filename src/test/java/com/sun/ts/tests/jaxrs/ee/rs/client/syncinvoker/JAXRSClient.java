@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.client.syncinvoker;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
@@ -38,6 +46,20 @@ import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.common.impl.TRACE.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.client.syncinvoker.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 4942772066511819511L;
 
@@ -82,7 +104,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -132,7 +154,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithStringClassThrowsProcessingExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -155,7 +177,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithStringClassThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -178,7 +200,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithResponseClassThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("deletenotok");
@@ -226,7 +248,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithGenericTypeStringThrowsProcessingExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -250,7 +272,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -274,7 +296,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("deletenotok");
@@ -309,7 +331,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.get throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -359,7 +381,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( Class ) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithStringClassThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -381,7 +403,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithStringClassThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -404,7 +426,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithResponseClassThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("getnotok");
@@ -452,7 +474,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( GenericType ) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithGenericTypeStringThrowsProcessingExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -476,7 +498,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -500,7 +522,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("getnotok");
@@ -538,7 +560,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.head throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -562,7 +584,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * synchronously.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodTest() throws Fault {
     Response response = null;
     for (String method : METHODS) {
@@ -580,7 +602,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodThrowsProcessingExceptionTest() throws Fault {
     for (final String method : METHODS) {
       Runnable run = new Runnable() {
@@ -602,7 +624,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * synchronously.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithStringClassTest() throws Fault {
     String response = null;
     for (String method : METHODS) {
@@ -620,7 +642,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * synchronously.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithResponseClassTest() throws Fault {
     Response response = null;
     for (String method : METHODS) {
@@ -640,7 +662,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithStringClassThrowsProcessingExceptionTest()
       throws Fault {
     for (final String method : METHODS) {
@@ -665,7 +687,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithStringClassThrowsWebApplicationExceptionTest()
       throws Fault {
     for (final String method : METHODS) {
@@ -689,7 +711,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithResponseClassThrowsNoWebApplicationExceptionTest()
       throws Fault {
     for (final String method : METHODS) {
@@ -708,7 +730,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * synchronously.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeStringTest() throws Fault {
     GenericType<String> generic = createGeneric(String.class);
     String response = null;
@@ -727,7 +749,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * synchronously.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeResponseTest() throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
     Response response = null;
@@ -746,7 +768,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeStringThrowsProcessingExceptionTest()
       throws Fault {
     final GenericType<String> generic = createGeneric(String.class);
@@ -772,7 +794,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     final GenericType<String> generic = createGeneric(String.class);
@@ -800,7 +822,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     GenericType<Response> generic = createGeneric(Response.class);
@@ -840,7 +862,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity)
    * throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithEntityThrowsProcessingExceptionTest() throws Fault {
     final Entity<String> entity = createEntity("entity");
     for (final String method : ENTITY_METHODS) {
@@ -901,7 +923,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
    * Class) throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithStringClassWithEntityThrowsProcessingExceptionTest()
       throws Fault {
     for (final String method : ENTITY_METHODS) {
@@ -927,7 +949,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithStringClassWithEntityThrowsWebApplicationExceptionTest()
       throws Fault {
     for (final String method : ENTITY_METHODS) {
@@ -955,7 +977,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithResponseClassWithEntityThrowsNoWebApplicationExceptionTest()
       throws Fault {
     for (final String method : ENTITY_METHODS) {
@@ -975,7 +997,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * synchronously.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeStringWithEntityTest() throws Fault {
     String response = null;
     for (String method : ENTITY_METHODS) {
@@ -995,7 +1017,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Invoke an arbitrary method for the current request
    * synchronously.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeResponseWithEntityTest() throws Fault {
     Response response = null;
     for (String method : ENTITY_METHODS) {
@@ -1016,7 +1038,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
    * GenericType) throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeStringWithEntityThrowsProcessingExceptionTest()
       throws Fault {
     for (final String method : ENTITY_METHODS) {
@@ -1044,7 +1066,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * code of the response returned by the server is not successful and the
    * specified response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeStringWithEntityThrowsWebApplicationExceptionTest()
       throws Fault {
     for (final String method : ENTITY_METHODS) {
@@ -1073,7 +1095,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * code of the response returned by the server is not successful and the
    * specified response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeResponseWithEntityThrowsNoWebApplicationExceptionTest()
       throws Fault {
     for (final String method : ENTITY_METHODS) {
@@ -1113,7 +1135,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.options throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1163,7 +1185,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( Class ) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithStringThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1185,7 +1207,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1208,7 +1230,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("optionsnotok");
@@ -1256,7 +1278,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( GenericType )
    * throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithGenericTypeStringThrowsProcessingExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1280,7 +1302,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1305,7 +1327,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("optionsnotok");
@@ -1342,7 +1364,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.post(Entity) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1395,7 +1417,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, Class ) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithStringClassThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1418,7 +1440,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithStringClassThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1442,7 +1464,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithResponseClassThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("postnotok");
@@ -1493,7 +1515,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, GenericType )
    * throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithGenericTypeStringThrowsProcessingExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1518,7 +1540,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1543,7 +1565,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("postnotok");
@@ -1581,7 +1603,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.put(Entity) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1634,7 +1656,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.put( Entity, Class ) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithStringClassThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1657,7 +1679,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithStringClassThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1681,7 +1703,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * returned by the server is not successful and the specified response type is
    * not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithResponseClassThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("putnotok");
@@ -1732,7 +1754,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.put( Entity, GenericType )
    * throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithGenericTypeStringThrowsProcessingExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1757,7 +1779,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1781,7 +1803,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * status code of the response returned by the server is not successful and
    * the specified response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("putnotok");
@@ -1818,7 +1840,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace(Entity) throws
    * ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1868,7 +1890,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, Class )
    * throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithStringClassThrowsProcessingExceptionTest() throws Fault {
     Runnable run = new Runnable() {
       @Override
@@ -1890,7 +1912,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithStringClassThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1913,7 +1935,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithResponseClassThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("tracenotok");
@@ -1961,7 +1983,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, GenericType )
    * throws ProcessingException in case the invocation failed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithGenericTypeStringThrowsProcessingExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -1985,7 +2007,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithGenericTypeStringThrowsWebApplicationExceptionTest()
       throws Fault {
     Runnable run = new Runnable() {
@@ -2009,7 +2031,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithGenericTypeResponseThrowsNoWebApplicationExceptionTest()
       throws Fault {
     SyncInvoker sync = createSyncInvokerForMethod("tracenotok");

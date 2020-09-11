@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.namebinding;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -27,6 +35,26 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * Test the interceptor is called when any entity provider is called
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.filter.namebinding.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.namebinding.AbstractAddInterceptor.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.namebinding.AddOneInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.namebinding.ComplementNameBinding.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.namebinding.SingleNameBinding.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.namebinding.AllMethodBindingResource.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.namebinding.AddTenInterceptor.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -1559382208933998735L;
 
@@ -60,7 +88,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void noInterceptorBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "one"));
     setProperty(Property.SEARCH_STRING, "1");
@@ -83,7 +111,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void singleInterceptorBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "ten"));
     setProperty(Property.SEARCH_STRING, "11");
@@ -106,7 +134,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void onlyPartOfUnionOfInterceptorsBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "complement"));
     setProperty(Property.SEARCH_STRING, "10000");
@@ -129,7 +157,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readerWriterInterceptorBoundTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "echo"));
     setRequestContentEntity("1111");
@@ -157,7 +185,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void resourceAnnotatedFirstMethodInterceptedTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "all/hundred"));
     setProperty(Property.SEARCH_STRING, "101");
@@ -184,7 +212,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * getSingletons in an application subclass will bind them globally only if
    * they are not decorated with a name binding annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void resourceAnnotatedSecondMethodInterceptedTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "all/thousand"));
     setProperty(Property.SEARCH_STRING, "1011");

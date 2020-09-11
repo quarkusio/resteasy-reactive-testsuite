@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.beanparam.form.plain;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.ee.rs.Constants;
@@ -28,6 +36,32 @@ import com.sun.ts.tests.jaxrs.ee.rs.beanparam.BeanParamCommonClient;
  * @since 2.0.1                     
  */
 public class JAXRSClient extends BeanParamCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.beanparam.form.bean.FormBeanParamEntity.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient.CollectionName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.beanparam.form.bean.InnerFormBeanParamEntity.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.beanparam.form.plain.Resource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.Constants.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class
+                            );
+                }
+            });
+
   private static final long serialVersionUID = 201L;
 
   public JAXRSClient() {
@@ -53,7 +87,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -66,7 +100,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamEntityWithValueOfTest() throws Fault {
     super.paramEntityWithValueOfTest();
   }
@@ -79,7 +113,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamEntityWithFromStringTest() throws Fault {
     super.paramEntityWithFromStringTest();
   }
@@ -92,7 +126,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -105,7 +139,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamSortedSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -118,7 +152,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamListEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -130,7 +164,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldParamEntityWithConstructorTest() throws Fault {
     super.fieldEntityWithConstructorTest();
   }
@@ -142,7 +176,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldParamEntityWithValueOfTest() throws Fault {
     super.fieldEntityWithValueOfTest();
   }
@@ -154,7 +188,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldParamEntityWithFromStringTest() throws Fault {
     super.fieldEntityWithFromStringTest();
   }
@@ -166,7 +200,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldParamSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -178,7 +212,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -190,7 +224,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldParamListEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -202,7 +236,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -214,7 +248,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldParamEntityWithEncodedTest() throws Fault {
     super.fieldEntityWithEncodedTest();
   }
@@ -228,7 +262,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
     super.paramThrowingWebApplicationExceptionTest();
@@ -243,7 +277,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.fieldThrowingWebApplicationExceptionTest();
     super.fieldThrowingWebApplicationExceptionTest();
@@ -258,7 +292,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.BAD_REQUEST.name());
     super.paramThrowingIllegalArgumentExceptionTest();
@@ -278,7 +312,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * an implementation MUST generate a WebApplicationException that wraps the
    * thrown exception with a client error response (400 status) and no entity.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formFieldThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.BAD_REQUEST.name());
     super.fieldThrowingIllegalArgumentExceptionTest();

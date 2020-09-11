@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.sort;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -27,6 +35,21 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.provider.sort.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -8228843141906281907L;
 
@@ -56,7 +79,7 @@ public class JAXRSClient extends JAXRSCommonClient {
       *
       * Unexpected providers add "text/" to content
       */
-  @org.junit.jupiter.api.Test
+  @Test
   public void contentTypeApplicationGotWildCardTest() throws Fault {
     MediaType type = new MediaType("application", "plain");
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
@@ -82,7 +105,7 @@ public class JAXRSClient extends JAXRSCommonClient {
       *//*
          * .
          */
-  @org.junit.jupiter.api.Test
+  @Test
   public void contentTypeTextHmtlGotTextWildCardTest() throws Fault {
     MediaType type = MediaType.TEXT_HTML_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
@@ -108,7 +131,7 @@ public class JAXRSClient extends JAXRSCommonClient {
       *//*
          * .
          */
-  @org.junit.jupiter.api.Test
+  @Test
   public void contentTypeTextXmlGotTextWildCardTest() throws Fault {
     MediaType type = MediaType.TEXT_XML_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
@@ -134,7 +157,7 @@ public class JAXRSClient extends JAXRSCommonClient {
       *//*
          * .
          */
-  @org.junit.jupiter.api.Test
+  @Test
   public void contentTypeTextPlainGotTextPlainTest() throws Fault {
     MediaType type = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));

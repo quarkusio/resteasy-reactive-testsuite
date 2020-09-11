@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.formparam.locator;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient;
 
 /*
@@ -24,6 +32,30 @@ import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient;
  *                     ts_home;
  */
 public class JAXRSLocatorClient extends JAXRSClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.LocatorResource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.MiddleResource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            );
+                }
+            });
+
 
   public JAXRSLocatorClient() {
     setContextRoot("/jaxrs_ee_formparam_locator_web/resource/locator");
@@ -49,7 +81,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * 
    * @test_Strategy: Test sending no content;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamNothingSentTest() throws Fault {
     super.nonDefaultFormParamNothingSentTest();
   }
@@ -63,7 +95,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithValueOf from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamValueOfTest() throws Fault {
     super.nonDefaultFormParamValueOfTest();
   }
@@ -77,7 +109,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithFromString from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromStringTest() throws Fault {
     _contextRoot += "encoded";
     super.nonDefaultFormParamFromStringTest();
@@ -92,7 +124,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromConstructorTest() throws Fault {
     super.nonDefaultFormParamFromConstructorTest();
   }
@@ -106,7 +138,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
    * String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromListConstructorTest() throws Fault {
     super.nonDefaultFormParamFromListConstructorTest();
   }
@@ -120,7 +152,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
     _contextRoot += "encoded";
     super.nonDefaultFormParamFromSetFromStringTest();
@@ -135,7 +167,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
     _contextRoot += "encoded";
     super.nonDefaultFormParamFromSortedSetFromStringTest();
@@ -150,7 +182,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
    * a String;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nonDefaultFormParamFromListFromStringTest() throws Fault {
     _contextRoot += "encoded";
     super.nonDefaultFormParamFromListFromStringTest();
@@ -162,7 +194,7 @@ public class JAXRSLocatorClient extends JAXRSClient {
    * 
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamEntityWithEncodedTest() throws Fault {
     _contextRoot += "encoded";
     super.paramEntityWithEncodedTest();

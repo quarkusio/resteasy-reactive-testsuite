@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -44,6 +52,20 @@ import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
  * @since 2.1
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.impl.TRACE.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 
@@ -99,7 +121,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteThrowsExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("delete");
@@ -146,7 +168,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("delete");
@@ -163,7 +185,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithClassThrowsWebApplicationExceptionTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("deletenotok");
     Future<String> future = rx.delete(String.class).toCompletableFuture();
@@ -179,7 +201,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("deletenotok");
@@ -226,7 +248,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithGenericTypeThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -245,7 +267,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("deletenotok");
@@ -264,7 +286,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("deletenotok");
@@ -300,7 +322,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
@@ -345,7 +367,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
@@ -362,7 +384,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithClassThrowsWebApplicationExceptionTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("getnotok");
     Future<String> future = rx.get(String.class).toCompletableFuture();
@@ -378,7 +400,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("getnotok");
@@ -425,7 +447,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("get");
@@ -443,7 +465,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("getnotok");
@@ -461,7 +483,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("getnotok");
@@ -497,7 +519,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("head");
@@ -536,7 +558,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Future<Response> future = null;
@@ -593,7 +615,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Future<String> future = null;
@@ -614,7 +636,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithClassThrowsWebApplicationExceptionTest() throws Fault {
     Future<String> future = null;
     for (String method : METHODS) {
@@ -634,7 +656,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -693,7 +715,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -716,7 +738,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -739,7 +761,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -780,7 +802,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithEntityThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Future<Response> future = null;
@@ -840,7 +862,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithClassWithEntityThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -863,7 +885,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithClassWithEntityThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -886,7 +908,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithClassWithEntityThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -950,7 +972,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeWithEntityThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -974,7 +996,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeWithEntityThrowsWebApplicationExceptionTest()
       throws Fault {
     Future<String> future = null;
@@ -998,7 +1020,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodWithGenericTypeWithEntityThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Future<Response> future = null;
@@ -1039,7 +1061,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("options");
@@ -1084,7 +1106,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("options");
@@ -1101,7 +1123,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithClassThrowsWebApplicationExceptionTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("optionsnotok");
     Future<String> future = rx.options(String.class).toCompletableFuture();
@@ -1117,7 +1139,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("optionsnotok");
@@ -1164,7 +1186,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithGenericTypeThrowsProcessingExceptionTest()
       throws Fault {
     _hostname = NONEXISTING_SITE;
@@ -1183,7 +1205,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("optionsnotok");
@@ -1202,7 +1224,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("optionsnotok");
@@ -1239,7 +1261,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("post");
@@ -1288,7 +1310,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1306,7 +1328,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithClassThrowsWebApplicationExceptionTest() throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("postnotok");
@@ -1323,7 +1345,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("postnotok");
@@ -1374,7 +1396,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1393,7 +1415,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -1413,7 +1435,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void postWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("postnotok");
@@ -1451,7 +1473,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("put");
@@ -1500,7 +1522,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -1518,7 +1540,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithClassThrowsWebApplicationExceptionTest() throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
     CompletionStageRxInvoker rx = startRxInvokerForMethod("putnotok");
@@ -1535,7 +1557,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -1586,7 +1608,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     GenericType<String> generic = createGeneric(String.class);
@@ -1605,7 +1627,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     GenericType<String> generic = createGeneric(String.class);
@@ -1624,7 +1646,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -1661,7 +1683,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("trace");
@@ -1706,7 +1728,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithClassThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     CompletionStageRxInvoker rx = startRxInvokerForMethod("trace");
@@ -1723,7 +1745,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithClassThrowsWebApplicationExceptionTest() throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("tracenotok");
     Future<String> future = rx.trace(String.class).toCompletableFuture();
@@ -1739,7 +1761,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithClassThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("tracenotok");
@@ -1786,7 +1808,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * received HTTP response fails (e.g. in a filter or during conversion of the
    * response entity data to an instance of a particular Java type).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
     _hostname = NONEXISTING_SITE;
     GenericType<String> generic = createGeneric(String.class);
@@ -1804,7 +1826,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithGenericTypeThrowsWebApplicationExceptionTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("tracenotok");
@@ -1823,7 +1845,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * of the response returned by the server is not successful and the specified
    * response type is not Response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void traceWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
       throws Fault {
     CompletionStageRxInvoker rx = startRxInvokerForMethod("tracenotok");

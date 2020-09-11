@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.headers;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.TimeZone;
@@ -36,6 +44,19 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.core.headers.HttpHeadersTest.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -5727774504018187299L;
 
@@ -62,7 +83,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * /HeadersTest/cookie with Cookie set; Verify that all Cookies properties are
    * set by the request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         "Cookie: $Version=1; name1=value1; $Domain=" + _hostname
@@ -84,7 +105,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * /HeadersTes/acl with Language Header set; Verify that HttpHeaders got the
    * property set by the request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void acceptLanguageTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -103,7 +124,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * with Language Header set; Verify that HttpHeaders got the property set by
    * the request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void contentLanguageTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -124,7 +145,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * /HeadersTest/mt with Content-Type Header set; Verify that HttpHeaders got
    * the property set by the request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void mediaTypeTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         "Content-Type:application/xml;charset=utf8");
@@ -143,7 +164,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * /HeadersTest/amt with Accept MediaType Header set; Verify that HttpHeaders
    * got the property set by the request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void mediaTypeAcceptableTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         "Accept:text/*, text/html, text/html;level=1, */*");
@@ -163,7 +184,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * /HeadersTest/sub2 with Accept MediaType and Content-Type Headers set;
    * Verify that HttpHeaders got the property set by the request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void requestHeadersTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         "Accept:text/*, text/html, text/html;level=1, */*");
@@ -184,7 +205,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get message date
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getDateTest() throws Fault {
     long currentTime = System.currentTimeMillis();
     DateFormat format = JaxrsUtil.createDateFormat(TimeZone.getTimeZone("GMT"));
@@ -208,7 +229,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get a HTTP header as a single string value.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeaderStringTest() throws Fault {
     String[] headers = { "askdjb", "ksadbva", "klwiaslkfn", "klwvasbk" };
     for (String header : headers) {
@@ -230,7 +251,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * header value is converted to String using its toString method if a header
    * delegate is not available.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeaderStringUsesToStringTest() throws Fault {
     final StringBean bean = new StringBean("bean");
     ClientRequestFilter filter = new ClientRequestFilter() {
@@ -255,7 +276,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get Content-Length value
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getLengthTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "length"));
     invoke();

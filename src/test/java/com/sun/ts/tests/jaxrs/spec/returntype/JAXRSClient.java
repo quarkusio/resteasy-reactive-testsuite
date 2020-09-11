@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.returntype;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.UUID;
 
 import javax.ws.rs.core.MediaType;
@@ -29,6 +37,23 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.returntype.UUIDWriter.class
+                            , com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class
+                            , com.sun.ts.tests.jaxrs.spec.returntype.ReturnTypeTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritableEntity.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.EntityMessageWriter.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = ReturnTypeTest.serialVersionUID;
 
@@ -55,7 +80,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client sends a request on a resource at
    * /ReturnTypeTest/void, Verify that 204 status returned.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void voidTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "void"));
     setProperty(Property.STATUS_CODE, getStatusCode(Status.NO_CONTENT));
@@ -71,7 +96,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Response: 204 status code is used if the entity property is
    * null.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nullEntityResponseTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "nullEntityResponse"));
@@ -87,7 +112,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Response: A null return value results in a 204 status code.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nullResponseTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "nullResponse"));
     setProperty(Property.STATUS_CODE, getStatusCode(Status.NO_CONTENT));
@@ -103,7 +128,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client sends a request on a resource at
    * /ReturnTypeTest/get, Verify that 204 status returned.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nullGenericEntityTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "nullGenericEntityTest"));
@@ -121,7 +146,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * of the GenericEntity. If the return value is not null a 200 status code is
    * used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void genericEntityTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "genericEntityTest"));
@@ -138,7 +163,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: a null return value results in a 204 status code.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nullEntityTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "nullEntityTest"));
     setProperty(Property.STATUS_CODE, getStatusCode(Status.NO_CONTENT));
@@ -153,7 +178,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: a null return value results in a 204 status code.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void defaultStatusTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "default"));
     setProperty(Property.SEARCH_STRING, "I am OK");
@@ -170,7 +195,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * the returned instance. If the return value is not null a 200 status code is
    * used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityBodyTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entitybodytest"));
@@ -187,7 +212,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy:If the status property of the Response is not set: a 200
    * status code is used for a non-null entity property
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void entityResponseTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
     setProperty(Property.REQUEST,
@@ -204,7 +229,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client sends a request on a resource at
    * /ReturnTypeTest/notAcceptable, Verify that 406 status returned.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void notAcceptableTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));

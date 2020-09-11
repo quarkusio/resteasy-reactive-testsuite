@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.constrainedto;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
@@ -38,6 +46,23 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * ignore
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.constrainedto.ClientSideReader.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.constrainedto.ServerSideReader.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.constrainedto.Resource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.constrainedto.ServerSideWriter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.constrainedto.ClientSideWriter.class   
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 3343257931794865470L;
 
@@ -63,7 +88,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverSideReaderIsUsedOnServerTest() throws Fault {
     setProperty(Property.CONTENT, "Anything");
     setProperty(Property.SEARCH_STRING, ServerSideReader.FAKE_MESSAGE);
@@ -80,7 +105,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void clientSideReaderIsNotUsedOnServerTest() throws Fault {
     setProperty(Property.CONTENT, Resource.MESSAGE);
     setProperty(Property.SEARCH_STRING, Resource.MESSAGE);
@@ -97,7 +122,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverSideWriterIsUsedOnServerTest() throws Fault {
     setProperty(Property.CONTENT, Resource.MESSAGE);
     setProperty(Property.SEARCH_STRING, ServerSideWriter.FAKE_MESSAGE);
@@ -114,7 +139,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void clientSideWriterIsNotUsedOnServerTest() throws Fault {
     setPrintEntity(true);
     setProperty(Property.CONTENT, Resource.MESSAGE);
@@ -132,7 +157,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverSideReaderIsNotUsedOnClientTest() throws Fault {
     addProviders();
     setProperty(Property.CONTENT, ServerSideReader.MEDIA_TYPE.toString());
@@ -150,7 +175,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void clientSideReaderIsUsedOnClientTest() throws Fault {
     addProviders();
     setProperty(Property.CONTENT, ClientSideReader.MEDIA_TYPE.toString());
@@ -168,7 +193,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverSideWriterIsNotUsedOnClientTest() throws Fault {
     addProviders();
     setProperty(Property.CONTENT, ServerSideWriter.MEDIA_TYPE.toString());
@@ -189,7 +214,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * worked on client rather then let it (wrongly) work on server and falsely
    * pass
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void clientSideWriterIsUsedOnClientTest() throws Fault {
     addProviders();
     setProperty(Property.CONTENT, Resource.MESSAGE);

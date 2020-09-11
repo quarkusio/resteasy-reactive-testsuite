@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.beanparam.matrix.plain;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.ee.rs.Constants;
@@ -28,6 +36,32 @@ import com.sun.ts.tests.jaxrs.ee.rs.beanparam.BeanParamCommonClient;
  * @since 2.0.1
  */
 public class JAXRSClient extends BeanParamCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.beanparam.matrix.bean.MatrixBeanParamEntity.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient.CollectionName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.Constants.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.beanparam.matrix.bean.InnerMatrixBeanParamEntity.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.beanparam.matrix.plain.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 201L;
 
@@ -54,7 +88,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithConstructorTest() throws Fault {
     paramEntityWithConstructorTest();
   }
@@ -67,7 +101,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithValueOfTest() throws Fault {
     paramEntityWithValueOfTest();
   }
@@ -80,7 +114,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithFromStringTest() throws Fault {
     paramEntityWithFromStringTest();
   }
@@ -92,7 +126,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamSetEntityWithFromStringTest() throws Fault {
     paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -105,7 +139,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamSortedSetEntityWithFromStringTest() throws Fault {
     paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -118,7 +152,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamListEntityWithFromStringTest() throws Fault {
     paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -130,7 +164,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithConstructorTest() throws Fault {
     fieldEntityWithConstructorTest();
   }
@@ -142,7 +176,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithValueOfTest() throws Fault {
     fieldEntityWithValueOfTest();
   }
@@ -154,7 +188,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithFromStringTest() throws Fault {
     fieldEntityWithFromStringTest();
   }
@@ -166,7 +200,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamSetEntityWithFromStringTest() throws Fault {
     fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -178,7 +212,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -190,7 +224,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamListEntityWithFromStringTest() throws Fault {
     fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -202,7 +236,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -214,7 +248,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * 
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithEncodedTest() throws Fault {
     super.fieldEntityWithEncodedTest();
   }
@@ -228,7 +262,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
     super.paramThrowingWebApplicationExceptionTest();
@@ -243,7 +277,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.fieldThrowingWebApplicationExceptionTest();
     super.fieldThrowingWebApplicationExceptionTest();
@@ -258,7 +292,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
     super.paramThrowingIllegalArgumentExceptionTest();
@@ -280,7 +314,7 @@ public class JAXRSClient extends BeanParamCommonClient {
    * WebApplicationException that wraps the thrown exception with a not found
    * response (404 status) and no entity;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldThrowingIllegalArgumentExceptionTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
     super.fieldThrowingIllegalArgumentExceptionTest();

@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.locator;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -24,6 +32,22 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                              com.sun.ts.tests.jaxrs.spec.resource.locator.EntityWriter.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.locator.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.locator.LocatorEntity.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.locator.SubResource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -52,7 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * expected to be initialized by their creator and field and bean properties
    * are not modified by the implementation runtime.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void checkEntityIsNotSetTest() throws Fault {
     String request = buildRequest(Request.POST,
         "sub;resmatrix=resarg;submatrix=subarg;entity=entityarg;");

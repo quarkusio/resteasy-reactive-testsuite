@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.reader;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
@@ -28,6 +36,25 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.provider.reader.WildCardReader.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.reader.EntityForReader.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.reader.AbstractReader.class
+                            , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.reader.AppOctetReader.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.reader.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.reader.AppJavaReader.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -53,7 +80,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: An implementation MUST NOT use an entity provider for a
    * media type that is not supported by that provider.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void noEntityProviderTest() throws Fault {
     enableAppJava(false);
     String ct = buildContentType(AbstractReader.NO_PROVIDER_MEDIATYPE);
@@ -73,7 +100,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Obtain the media type of the request. If the request does
    * not contain a Content-Type header then use application/octet-stream
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void meadiaTypeContentTypeTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "plain"));
     setProperty(Property.REQUEST_HEADERS,
@@ -92,7 +119,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Obtain the media type of the request. If the request does
    * not contain a Content-Type header then use application/octet-stream
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void meadiaTypeDefaultTest() throws Fault {
     enableAppJava(false);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "plain"));
@@ -111,7 +138,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void iterateAllAppJavaReadersTest() throws Fault {
     enableAppJava(false);
     MediaType mt = new MediaType("application", "java");
@@ -135,7 +162,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void iterateFirstAppJavaReaderTest() throws Fault {
     enableAppJava(true);
     MediaType mt = new MediaType("application", "java");

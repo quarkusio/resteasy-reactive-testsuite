@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.context.server;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -24,6 +32,24 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.context.server.StringBeanEntityProviderWithInjectables.class
+                            , com.sun.ts.tests.jaxrs.spec.context.server.SingletonWithInjectables.class
+                            , com.sun.ts.tests.jaxrs.spec.context.server.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -8615109992706004114L;
 
@@ -54,7 +80,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverWriterInjectionTest() throws Fault {
     setRequestContentEntity("");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "writer"));
@@ -74,7 +100,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverReaderInjectionTest() throws Fault {
     setRequestContentEntity("");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "reader"));
@@ -94,7 +120,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void resourceInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "instance"));
     invoke();
@@ -113,7 +139,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void applicationInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "application"));
     invoke();
@@ -132,7 +158,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * An instance can be injected into a class field or method parameter using
    * the @Context annotation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void methodArgumentsInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "method"));
     invoke();

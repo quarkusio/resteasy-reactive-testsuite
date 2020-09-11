@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.pathparam.sub;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 /*
  * @class.setup_props: webServerHost;
  *                     webServerPort;
@@ -23,6 +31,29 @@ package com.sun.ts.tests.jaxrs.ee.rs.pathparam.sub;
  */
 public class JAXRSSubClient
     extends com.sun.ts.tests.jaxrs.ee.rs.pathparam.JAXRSClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.sub.SubResource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -146,7 +177,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -159,7 +190,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamEntityWithValueOfTest() throws Fault {
     super.pathParamEntityWithValueOfTest();
   }
@@ -172,7 +203,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamEntityWithFromStringTest() throws Fault {
     super.pathParamEntityWithFromStringTest();
   }
@@ -185,7 +216,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamSetEntityWithFromStringTest() throws Fault {
     super.pathParamSetEntityWithFromStringTest();
   }
@@ -198,7 +229,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamSortedSetEntityWithFromStringTest() throws Fault {
     super.pathParamSortedSetEntityWithFromStringTest();
   }
@@ -211,7 +242,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamListEntityWithFromStringTest() throws Fault {
     super.pathParamListEntityWithFromStringTest();
   }
@@ -228,7 +259,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathFieldParamEntityWithConstructorTest() throws Fault {
     super.pathFieldParamEntityWithConstructorTest();
   }
@@ -245,7 +276,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathFieldParamEntityWithValueOfTest() throws Fault {
     super.fieldEntityWithValueOfTest();
   }
@@ -262,7 +293,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathFieldParamEntityWithFromStringTest() throws Fault {
     super.fieldEntityWithFromStringTest();
   }
@@ -279,7 +310,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathFieldParamSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -296,7 +327,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -313,7 +344,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathFieldParamListEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -326,7 +357,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named PathParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamEntityWithEncodedTest() throws Fault {
     super.pathParamEntityWithEncodedTest();
   }
@@ -341,7 +372,7 @@ public class JAXRSSubClient
    * field or property values using 2 or 3 above is processed directly as
    * described in section 3.3.4.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamThrowingWebApplicationExceptionTest() throws Fault {
     super.pathParamThrowingWebApplicationExceptionTest();
   }
@@ -361,7 +392,7 @@ public class JAXRSSubClient
    * WebApplicationException that wraps the thrown exception with a not found
    * response (404 status) and no entity;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void pathParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.pathParamThrowingIllegalArgumentExceptionTest();
   }

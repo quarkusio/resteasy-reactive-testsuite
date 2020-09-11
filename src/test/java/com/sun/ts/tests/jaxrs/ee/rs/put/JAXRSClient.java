@@ -16,9 +16,30 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.put;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.put.HttpMethodPutTest.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -71817508809693264L;
 
@@ -48,7 +69,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client invokes PUT on root resource at /PutTest; Verify
    * that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putTest1() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Accept:text/plain");
     setProperty(Property.CONTENT, "dummy");
@@ -66,7 +87,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client invokes PUT on root resource at /PutTest; Verify
    * that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putTest2() throws Fault {
     setProperty(Property.CONTENT, "dummy");
     setProperty(Property.REQUEST_HEADERS, "Accept:text/html");
@@ -84,7 +105,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Client invokes PUT on a sub resource at /PutTest/sub;
    * Verify that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void putSubTest() throws Fault {
     setProperty(Property.CONTENT, "dummy");
     setProperty(Property.REQUEST, buildRequest(Request.PUT, "PutTest/sub"));

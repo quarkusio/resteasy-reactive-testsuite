@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.ByteArrayInputStream;
 import java.io.OutputStream;
 import java.net.URI;
@@ -35,6 +43,20 @@ import com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext.ContextProvider.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -3234850442044177095L;
 
@@ -56,7 +78,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Get the entity output stream. Set a new entity output
    * stream.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getEntityStreamTest() throws Fault {
     final String entityStreamWorks = "ENTITY_STREAM_WORKS";
     ContextProvider provider = new ContextProvider() {
@@ -87,7 +109,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the generic entity type information.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersIsMutableTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -116,7 +138,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Set the request method.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setMethodTest() throws Fault {
     String entity = "ENTITY";
     ContextProvider provider = new ContextProvider() {
@@ -143,7 +165,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Set a new request URI. Get the request URI.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setUriTest() throws Fault {
     String entity = "ENTITY";
     ContextProvider provider = new ContextProvider() {

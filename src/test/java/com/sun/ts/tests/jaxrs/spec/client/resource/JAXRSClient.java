@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.client.resource;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -24,6 +32,19 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.client.resource.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1339633069677106930L;
 
@@ -46,7 +67,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * (iii) create a request from the WebTarget and (iv) submit a request or get
    * a prepared Invocation for later submission
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void checkClientConceptTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "concept"));
     setProperty(Property.SEARCH_STRING, "concept");

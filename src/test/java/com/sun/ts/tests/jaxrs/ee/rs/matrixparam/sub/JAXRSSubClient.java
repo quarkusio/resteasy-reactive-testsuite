@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.matrixparam.sub;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 /*
  * @class.setup_props: webServerHost;
  *                     webServerPort;
@@ -23,6 +31,30 @@ package com.sun.ts.tests.jaxrs.ee.rs.matrixparam.sub;
  */
 public class JAXRSSubClient
     extends com.sun.ts.tests.jaxrs.ee.rs.matrixparam.JAXRSClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient.CollectionName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.matrixparam.sub.SubResource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.matrixparam.MatrixParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -49,7 +81,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on root resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamStringTest() throws Fault {
     super.matrixParamStringTest();
   }
@@ -63,7 +95,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamIntTest() throws Fault {
     super.matrixParamIntTest();
   }
@@ -77,7 +109,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamDoubleTest() throws Fault {
     super.matrixParamDoubleTest();
   }
@@ -91,7 +123,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamFloatTest() throws Fault {
     super.matrixParamFloatTest();
   }
@@ -105,7 +137,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamLongTest() throws Fault {
     super.matrixParamLongTest();
   }
@@ -119,7 +151,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamShortTest() throws Fault {
     super.matrixParamShortTest();
   }
@@ -133,7 +165,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamByteTest() throws Fault {
     super.matrixParamByteTest();
   }
@@ -147,7 +179,7 @@ public class JAXRSSubClient
    * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
    * Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamBooleanTest() throws Fault {
     super.matrixParamBooleanTest();
   }
@@ -160,7 +192,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithConstructorTest() throws Fault {
     super.matrixParamEntityWithConstructorTest();
   }
@@ -173,7 +205,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithValueOfTest() throws Fault {
     super.matrixParamEntityWithValueOfTest();
   }
@@ -186,7 +218,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithFromStringTest() throws Fault {
     super.matrixParamEntityWithFromStringTest();
   }
@@ -199,7 +231,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamSetEntityWithFromStringTest() throws Fault {
     super.matrixParamSetEntityWithFromStringTest();
   }
@@ -212,7 +244,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamSortedSetEntityWithFromStringTest() throws Fault {
     super.matrixParamSortedSetEntityWithFromStringTest();
   }
@@ -225,7 +257,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamListEntityWithFromStringTest() throws Fault {
     super.matrixParamListEntityWithFromStringTest();
   }
@@ -242,7 +274,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithConstructorTest() throws Fault {
     fieldEntityWithConstructorTest();
   }
@@ -259,7 +291,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithValueOfTest() throws Fault {
     super.matrixFieldParamEntityWithValueOfTest();
   }
@@ -276,7 +308,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithFromStringTest() throws Fault {
     super.matrixFieldParamEntityWithFromStringTest();
   }
@@ -293,7 +325,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamSetEntityWithFromStringTest() throws Fault {
     super.matrixFieldParamSetEntityWithFromStringTest();
   }
@@ -310,7 +342,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     super.matrixFieldParamSortedSetEntityWithFromStringTest();
   }
@@ -327,7 +359,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamListEntityWithFromStringTest() throws Fault {
     super.matrixFieldParamListEntityWithFromStringTest();
   }
@@ -340,7 +372,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamEntityWithEncodedTest() throws Fault {
     super.matrixParamEntityWithEncodedTest();
   }
@@ -353,7 +385,7 @@ public class JAXRSSubClient
    * 
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldParamEntityWithEncodedTest() throws Fault {
     super.matrixFieldParamEntityWithEncodedTest();
   }
@@ -367,7 +399,7 @@ public class JAXRSSubClient
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see Section 3.2.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamThrowingWebApplicationExceptionTest() throws Fault {
     super.matrixParamThrowingWebApplicationExceptionTest();
   }
@@ -386,7 +418,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldThrowingWebApplicationExceptionTest() throws Fault {
     super.matrixFieldThrowingWebApplicationExceptionTest();
   }
@@ -400,7 +432,7 @@ public class JAXRSSubClient
    * are treated the same as exceptions thrown during construction of field or
    * bean property values, see section 3.2.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.matrixParamThrowingIllegalArgumentExceptionTest();
   }
@@ -424,7 +456,7 @@ public class JAXRSSubClient
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void matrixFieldThrowingIllegalArgumentExceptionTest() throws Fault {
     super.matrixFieldThrowingIllegalArgumentExceptionTest();
   }

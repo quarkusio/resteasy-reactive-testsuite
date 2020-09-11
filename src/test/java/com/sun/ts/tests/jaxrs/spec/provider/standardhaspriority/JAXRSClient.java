@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
@@ -31,6 +39,20 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  */
 
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.AbstractProvider.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -74,7 +96,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readWriteJaxbProviderTest() throws Fault {
     JAXBElement<String> element = new JAXBElement<String>(new QName("jaxb"),
         String.class, "jaxb");
@@ -94,7 +116,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readWriteMapProviderTest() throws Fault {
     MultivaluedMap<String, String> map = new MultivaluedHashMap<String, String>();
     map.add("map", "map");
@@ -114,7 +136,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readWriteBooleanProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "boolean"));
@@ -137,7 +159,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readWriteCharacterProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "character"));
@@ -160,7 +182,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readWriteIntegerProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "number"));

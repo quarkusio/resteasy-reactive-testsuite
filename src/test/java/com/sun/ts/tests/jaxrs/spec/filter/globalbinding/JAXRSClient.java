@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.globalbinding;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -27,6 +35,25 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * Test the interceptor is called when any entity provider is called
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AbstractAddInterceptor.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AbstractAddFilter.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AddOneInterceptor.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.GlobalNameBinding.class
+                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AddTenFilter.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -3785330089447087404L;
 
@@ -54,7 +81,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * annotation, the application subclass must be annotated as shown above in
    * order for those filters or interceptors to be globally bound
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void nameBoundResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "bind"));
     setProperty(Property.CONTENT, "0");
@@ -72,7 +99,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * annotation, the application subclass must be annotated as shown above in
    * order for those filters or interceptors to be globally bound
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void globalBoundResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "nobind"));
     setProperty(Property.CONTENT, "0");

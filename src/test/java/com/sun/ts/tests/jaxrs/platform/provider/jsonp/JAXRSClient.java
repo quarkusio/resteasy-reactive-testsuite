@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.platform.provider.jsonp;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
@@ -27,6 +35,20 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  */
 
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.platform.provider.jsonp.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 7441792527287072853L;
 
@@ -42,7 +64,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonArray
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonArrayReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "toarray"));
     bufferEntity(true);
@@ -59,7 +81,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonStructure
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonStructureReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tostructure"));
     bufferEntity(true);
@@ -76,7 +98,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonObject
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonObjectReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "toobject"));
     bufferEntity(true);
@@ -92,7 +114,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonArray
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonArrayArgumentTest() throws Fault {
     String entity = Resource.createArray().toString();
     setProperty(Property.REQUEST, buildRequest(Request.POST, "fromarray"));
@@ -110,7 +132,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonStructure
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonStructureArgumentTest() throws Fault {
     String entity = Resource.createArray().toString();
     setProperty(Property.REQUEST, buildRequest(Request.POST, "fromstructure"));
@@ -128,7 +150,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: implementations MUST support entity providers for the
    * following types: JsonObject
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonObjectArgumentTest() throws Fault {
     String entity = Resource.createObject(1).toString();
     setProperty(Property.REQUEST, buildRequest(Request.POST, "fromobject"));

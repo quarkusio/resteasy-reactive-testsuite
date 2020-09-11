@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerwriter.writerinterceptorcontext;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerwriter.WriterClient;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ContextOperation;
@@ -26,6 +34,53 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcont
  *                     ts_home;
  */
 public class JAXRSClient extends WriterClient<ContextOperation> {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.InterceptorTwoBody.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.InterceptorBodyTwo.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBean.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ReaderInterceptorTwo.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.JAXRSClient.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyOne.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorCallbackMethods.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.WriterInterceptorTwo.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBeanEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InputStreamReaderProvider.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ReaderInterceptorOne.class
+                            , com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ProceedException.1.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.InterceptorOneBody.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.ReaderInterceptorOne.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ProceedException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.InterceptorBodyOne.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.JAXRSClient.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyTwo.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerwriter.writerinterceptorcontext.Resource.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient.1.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.TemplateWriterInterceptor.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.TemplateReaderInterceptor.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.OnWriteExceptionThrowingStringBean.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ProceedExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.ReaderInterceptorTwo.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.WriterInterceptorOne.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -8158424518609416304L;
 
@@ -54,7 +109,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getEntityTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY);
     invoke(ContextOperation.GETENTITY);
@@ -69,7 +124,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    * 
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersOperationOnlyTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.OPERATION);
     invoke(ContextOperation.GETHEADERS);
@@ -84,7 +139,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersTest() throws Fault {
     Property p = Property.UNORDERED_SEARCH_STRING;
     setProperty(p, TemplateInterceptorBody.OPERATION);
@@ -102,7 +157,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersIsMutableTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.PROPERTY);
     invoke(ContextOperation.GETHEADERSISMUTABLE);
@@ -117,7 +172,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getOutputStreamTest() throws Fault {
     Property p = Property.UNORDERED_SEARCH_STRING;
     setProperty(p, TemplateInterceptorBody.ENTITY);
@@ -141,7 +196,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    * 
    * WriterInterceptor.aroundWriteTo throws IOException
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void proceedThrowsIOExceptionTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.IOE);
     invoke(ContextOperation.PROCEEDTHROWSIOEXCEPTION);
@@ -161,7 +216,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void proceedThrowsWebApplicationExceptionTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.WAE);
     invoke(ContextOperation.PROCEEDTHROWSWEBAPPEXCEPTION);
@@ -176,7 +231,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setEntityTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.OPERATION);
     invoke(ContextOperation.SETENTITY);
@@ -191,7 +246,7 @@ public class JAXRSClient extends WriterClient<ContextOperation> {
    *
    * WriterInterceptor.aroundWriteTo
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setOutputStreamTest() throws Fault {
     setProperty(Property.SEARCH_STRING,
         TemplateInterceptorBody.ENTITY.replace('t', 'x'));

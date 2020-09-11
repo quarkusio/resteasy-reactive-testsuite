@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -25,6 +33,19 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -2900337741491627385L;
 
@@ -44,7 +65,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the resource class that is the target of a request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getResourceClassTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "clazz"));
     setProperty(Property.SEARCH_STRING, Resource.class.getName());
@@ -59,7 +80,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Get the resource method that is the target of a request
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getResourceMethodTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "method"));
     setProperty(Property.SEARCH_STRING, "getResourceMethod");

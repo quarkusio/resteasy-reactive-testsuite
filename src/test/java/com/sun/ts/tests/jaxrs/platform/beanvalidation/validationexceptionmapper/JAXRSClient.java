@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.validationexceptionmapper;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 
@@ -32,6 +40,36 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * @since 2.1.0
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDefinitionValidator.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDeclarationAnnotation.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotShortNorFiveStringBean.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDefinitionResource.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotFiveNorShortStringBeanValidator.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotNullOrOneStringBean.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDefinitionAnnotation.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ValidateExecutableResource.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotNullOrOneStringBeanValidator.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDeclarationValidator.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotFiveNorShort.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotShortNorFiveEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDeclarationResource.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotNullOrOne.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 210L;
 
@@ -59,7 +97,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void beanIsInvalidForBeingFiveCharsLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "notshortnorfive"));
@@ -78,7 +116,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void returnIsInvalidForBeingFiveCharsLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "returnnotshortnorfive"));
@@ -98,7 +136,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void beanAnnotatedIsInvalidForBeingFiveCharsLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "directannotatedarg"));
@@ -118,7 +156,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void beanAnnotatedReturnIsInvalidForBeingFiveCharsLongTest()
       throws Fault {
     setProperty(Property.REQUEST,
@@ -138,7 +176,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void constraintDeclarationExceptionThrownTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST,
         "declaration/constraintdeclarationexception"));
@@ -157,7 +195,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void constraintDefinitionExceptionThrownTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "definition/constraintdefinitionexception"));
@@ -178,7 +216,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Due to validation of whole bean status 400 is returned
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void validateExecutableIsInvalidForBeingShortTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "executable/nogetter"));

@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -26,6 +34,21 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.RuntimeExceptionMapper.class
+                            ,   com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.Resource.class
+                            , com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.WebAppExceptionMapper.class
+                            );
+                }
+            });
+
   private static final long serialVersionUID = 1L;
 
   public JAXRSClient() {
@@ -55,7 +78,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void noResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "noresponse"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -75,7 +98,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void okResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "responseok"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -97,7 +120,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * The ExceptionMapper is omitted
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void responseEntityTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "responseentity"));
     setProperty(Property.SEARCH_STRING, Resource.class.getSimpleName());
@@ -117,7 +140,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void statusOkResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "responsestatusok"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -137,7 +160,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void statusIntOkResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "responsestatusintok"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -157,7 +180,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void throwableResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "responsethrowable"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -177,7 +200,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void throwableOkResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "responsestatusthrowableok"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -197,7 +220,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void throwableIntOkResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "responsestatusthrowableintok"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -212,7 +235,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Unchecked exceptions and errors MUST be re-thrown and
    * allowed to propagate to the underlying container..
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void throwUncheckedExceptionTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "uncheckedexception"));
     setProperty(STATUS_CODE, getStatusCode(Status.NOT_ACCEPTABLE));
@@ -232,7 +255,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void webApplicationExceptionHasResponseWithEntityDoesNotUseMapperTest()
       throws Fault {
     int[] codes = { 2000, 4000, 400, 401, 403, 404, 405, 406, 415, 3000, 5000,
@@ -262,7 +285,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * provider to create a new Response instance, otherwise the response property
    * is used directly.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void webApplicationExceptionHasResponseWithoutEntityDoesUseMapperTest()
       throws Fault {
     int[] codes = { 4000, 400, 401, 403, 404, 405, 406, 415, 3000, 5000, 500,

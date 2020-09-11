@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.cookieparam.locator;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 /*
  * @class.setup_props: webServerHost;
  *                     webServerPort;
@@ -23,6 +31,31 @@ package com.sun.ts.tests.jaxrs.ee.rs.cookieparam.locator;
  */
 public class JAXRSLocatorClient
     extends com.sun.ts.tests.jaxrs.ee.rs.cookieparam.JAXRSClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.cookieparam.locator.LocatorResource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient.CollectionName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.cookieparam.locator.MiddleResource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -42,7 +75,7 @@ public class JAXRSLocatorClient
    * received using CookieParam in the resource; Verify on the client side from
    * response.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamSubTest() throws Fault {
     super.cookieParamTest();
   }
@@ -55,7 +88,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamEntityWithConstructorTest() throws Fault {
     super.paramEntityWithConstructorTest();
   }
@@ -68,7 +101,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamEntityWithValueOfTest() throws Fault {
     super.paramEntityWithValueOfTest();
   }
@@ -81,7 +114,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamEntityWithFromStringTest() throws Fault {
     super.paramEntityWithFromStringTest();
   }
@@ -94,7 +127,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SET);
   }
@@ -107,7 +140,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamListEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.LIST);
   }
@@ -120,7 +153,7 @@ public class JAXRSLocatorClient
    * 
    * @test_Strategy: Verify that named QueryParam is handled properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamSortedSetEntityWithFromStringTest() throws Fault {
     super.paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
   }
@@ -136,7 +169,7 @@ public class JAXRSLocatorClient
    * bean property values, see section 3.2.
    * 
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamThrowingWebApplicationExceptionTest() throws Fault {
     super.paramThrowingWebApplicationExceptionTest();
   }
@@ -156,7 +189,7 @@ public class JAXRSLocatorClient
    * entity.
    *
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieParamThrowingIllegalArgumentExceptionTest() throws Fault {
     super.paramThrowingIllegalArgumentExceptionTest();
   }

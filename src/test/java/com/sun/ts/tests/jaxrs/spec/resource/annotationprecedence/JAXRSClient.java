@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
@@ -27,6 +35,21 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                              com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.SuperClass.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.ResourceInterface.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -52,7 +75,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void correctTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post"));
     invoke();
@@ -66,7 +89,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (@Path)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectPathOnClassTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post")
         .replace("/resource", "/interfaceresource"));
@@ -82,7 +105,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (@Path)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectPathOnMethodTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "get"));
     setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
@@ -97,7 +120,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (@GET)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void correctRequestTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "post"));
     setProperty(Property.STATUS_CODE, "!" + getStatusCode(Status.OK));
@@ -112,7 +135,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (Content-Type)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectConsumesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post"));
     setProperty(Property.REQUEST_HEADERS,
@@ -130,7 +153,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (Accept)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectProdecesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post"));
     setProperty(Property.REQUEST_HEADERS,
@@ -147,7 +170,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (Accept, Content-type)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void incorrectProducesConsumesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post"));
     setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
@@ -165,7 +188,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (formparam=pqr)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void formParamTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post"));
     setProperty(Property.CONTENT, "pqr=hello");
@@ -182,7 +205,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (queryParam=xyz)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void queryParamXyzTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post?xyz=hello"));
     setProperty(Property.SEARCH_STRING, "default");
@@ -198,7 +221,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Annotations on a super-class take precedence over those on
    * an implemented interface. (queryParam=pqr)
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void queryParamPqrTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "post?pqr=hello"));
     setProperty(Property.SEARCH_STRING, "hello");

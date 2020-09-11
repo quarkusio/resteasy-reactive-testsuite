@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.json.Json;
 import javax.json.JsonNumber;
 import javax.json.JsonString;
@@ -32,6 +40,19 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * @since 2.1
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 
@@ -50,7 +71,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonStringReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tostring"));
     setProperty(Property.SEARCH_STRING, Resource.MESSAGE);
@@ -74,7 +95,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonNumberReturnTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "tonumber"));
     setProperty(Property.SEARCH_STRING, String.valueOf(Long.MIN_VALUE));
@@ -89,7 +110,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonStringArgumentTest() throws Fault {
     String entity = getClass().getName();
     JsonString json = Json.createValue(entity);
@@ -107,7 +128,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void serverJsonNumberArgumentTest() throws Fault {
     JsonNumber number = Json.createValue(Long.MIN_VALUE);
     setRequestContentEntity(number);

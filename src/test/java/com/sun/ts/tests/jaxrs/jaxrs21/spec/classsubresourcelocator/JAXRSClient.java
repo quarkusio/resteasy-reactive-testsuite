@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 
 /*
@@ -27,6 +35,20 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * @since 2.1
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.SubResource.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 
@@ -52,7 +74,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void subResourceLocatorAsClassTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "sub"));
     setProperty(Property.SEARCH_STRING, "OK");

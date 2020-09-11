@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -27,6 +35,24 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeJaxbContext.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.TckJaxbProvider.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeUnmarshaller.class        
+                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.JaxbContextProvider.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeMarshaller.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 1L;
 
@@ -64,7 +90,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * JAXBContext instances provided by application-supplied context resolvers,
    * see Section 4.3.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readWriteProviderTest() throws Fault {
     setPropertyAndInvoke("jaxb");
   }

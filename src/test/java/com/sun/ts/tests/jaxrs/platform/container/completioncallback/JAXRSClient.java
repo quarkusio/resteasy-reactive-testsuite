@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.platform.container.completioncallback;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.IOException;
 import java.util.concurrent.Future;
 
@@ -43,6 +51,26 @@ import com.sun.ts.tests.jaxrs.platform.container.asyncresponse.Resource;
  */
 public class JAXRSClient extends JaxrsCommonClient {
 
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.platform.container.completioncallback.CallbackResource.class
+                            , com.sun.ts.tests.jaxrs.platform.container.asyncresponse.AsyncResponseBlockingQueue.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            , com.sun.ts.tests.jaxrs.common.provider.ExceptionThrowingStringBeanEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.platform.container.completioncallback.SettingCompletionCallback.class
+                            , com.sun.ts.tests.jaxrs.platform.container.completioncallback.ExceptionThrowingStringBean.class
+                            , com.sun.ts.tests.jaxrs.platform.container.completioncallback.SecondSettingCompletionCallback.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            );
+                }
+            });
+
+
   private static final long serialVersionUID = -234268814434213796L;
 
   public JAXRSClient() {
@@ -62,7 +90,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Register an asynchronous processing lifecycle callback instance
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void argumentIsNullTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -86,7 +114,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Register an asynchronous processing lifecycle callback instance
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void argumentContainsExceptionTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -119,7 +147,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Register an asynchronous processing lifecycle callback instance
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void argumentContainsExceptionWhenSendingIoExceptionTest()
       throws Fault {
     invokeClear();
@@ -153,7 +181,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Register an asynchronous processing lifecycle callback class
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void argumentIsNullWhenRegistredClassTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -175,7 +203,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Throws NPE in case the callback class is {@code null}.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void registerClassThrowsNpeTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -194,7 +222,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Register asynchronous processing lifecycle callback classes
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void argumentContainsExceptionInTwoCallbackClassesTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -230,7 +258,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Throws NPE in case any of the callback classes is {@code
    * null}. check first argument is null
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void registerClassesThrowsNpeFirstArgNullTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -248,7 +276,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Throws NPE in case any of the callback classes is {@code
    * null}. check second argument is null
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void registerClassesThrowsNpeSecondArgNullTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -265,7 +293,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Throws NPE in case the callback instance is {@code null}.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void registerObjectThrowsNpeTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -284,7 +312,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Register asynchronous processing lifecycle callback classes
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void argumentContainsExceptionInTwoCallbackInstancesTest()
       throws Fault {
     invokeClear();
@@ -321,7 +349,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Throws NPE in case any of the callback instances is {@code
    * null}. check first argument is null
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void registerInstancesThrowsNpeFirstArgNullTest() throws Fault {
     invokeClear();
     invokeReset();
@@ -339,7 +367,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Throws NPE in case any of the callback instances is {@code
    * null}. check second argument is null
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void registerInstancesThrowsNpeSecondArgNullTest() throws Fault {
     invokeClear();
     invokeReset();

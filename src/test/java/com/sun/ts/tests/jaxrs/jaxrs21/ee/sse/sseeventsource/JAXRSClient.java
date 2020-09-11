@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,6 +60,26 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
  * @since 2.1
  */
 public class JAXRSClient extends SSEJAXRSClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource.ServiceUnavailableResource.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.OutboundSSEEventImpl.1.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource.MediaTypeResource.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.OutboundSSEEventImpl.class
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource.RepeatedCasterResource.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class   
+                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEEventImpl.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 21L;
 
@@ -193,7 +221,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * the event source will wait 500 ms before attempting to reconnect to the SSE
    * endpoint.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void connectionLostForDefault500msTest() throws Fault {
     resetUnavailableServer();
 
@@ -235,7 +263,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * by the endpoint and adjusts the reconnect delay accordingly, using the last
    * received retry field value as the reconnect delay.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void reconnectByEventMethodTest() throws Fault {
     Holder<InboundSseEvent> holder = querySSEEndpoint("su/reconnectdelay");
     assertTrue(holder.get().isReconnectDelaySet(),
@@ -259,7 +287,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * by the endpoint and adjusts the reconnect delay accordingly, using the last
    * received retry field value as the reconnect delay.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void userReconnectByEventMethodTest() throws Fault {
     Holder<InboundSseEvent> holder = querySSEEndpoint("su/userreconnectdelay");
     assertTrue(holder.get().isReconnectDelaySet(),
@@ -280,7 +308,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * @test_Strategy: JAXRS:JAVADOC:1197; JAXRS:JAVADOC:1198; JAXRS:JAVADOC:1199;
    * JAXRS:JAVADOC:1200; JAXRS:JAVADOC:1201; JAXRS:JAVADOC:1202;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void stringTest() throws Fault {
     mediaTest(String.class, SSEMessage.MESSAGE, MediaType.TEXT_PLAIN,
         MediaType.TEXT_PLAIN_TYPE, MediaType.TEXT_HTML_TYPE);
@@ -295,7 +323,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void byteArrayTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> a.equals(new String((byte[]) b));
     mediaTest(byte[].class, SSEMessage.MESSAGE, p, MediaType.TEXT_PLAIN,
@@ -313,7 +341,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void inputStreamTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {
       try {
@@ -337,7 +365,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void readerTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {
       try {
@@ -361,7 +389,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void fileTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {
       try {
@@ -385,7 +413,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void dataSourceTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {
       try {
@@ -410,7 +438,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void transformSourceTest() throws Fault {
     mediaTestLevel = 2;
     BiPredicate<Object, Object> p = (a, b) -> {
@@ -441,7 +469,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void jaxbElementTest() throws Fault {
     mediaTestLevel = 3;
     @SuppressWarnings("unchecked")
@@ -464,7 +492,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void xmlTest() throws Fault {
     mediaTestLevel = 2;
     BiPredicate<Object, Object> p = (a, b) -> ((JaxbKeyValueBean) b).getValue().equals(a);
@@ -483,7 +511,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void multivaluedMapTest() throws Fault {
     mediaTestLevel = 3;
     @SuppressWarnings("unchecked")
@@ -508,7 +536,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * @test_Strategy: reconnectingEvery should send request to the server just
    * twice, once without response, once after reconnect timeout with a response
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void connectionLostFor1500msTest() throws Fault {
     resetUnavailableServer();
 
@@ -554,7 +582,7 @@ public class JAXRSClient extends SSEJAXRSClient {
    * 
    * @test_Strategy:
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void closeTest() throws Fault {
     boolean isOpen = true;
     LinkedHolder<InboundSseEvent> holder = new LinkedHolder<>();

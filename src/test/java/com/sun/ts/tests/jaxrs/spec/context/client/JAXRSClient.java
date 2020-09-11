@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.spec.context.client;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import static com.sun.ts.tests.jaxrs.spec.context.server.StringBeanEntityProviderWithInjectables.*;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
@@ -28,6 +36,21 @@ import com.sun.ts.tests.jaxrs.spec.context.server.StringBeanEntityProviderWithIn
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
+                            , com.sun.ts.tests.jaxrs.spec.context.client.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -2921113736906329195L;
 
@@ -61,7 +84,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method is fully managed by the JAX-RS implementation or any underlying IoC
    * container supported by the implementation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void clientWriterTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity(new StringBean("stringbean"));
@@ -86,7 +109,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * method is fully managed by the JAX-RS implementation or any underlying IoC
    * container supported by the implementation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void clientReaderTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity("stringbean");

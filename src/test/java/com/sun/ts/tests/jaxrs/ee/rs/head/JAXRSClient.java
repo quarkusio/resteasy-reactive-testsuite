@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.head;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.io.IOException;
 
 import com.sun.ts.tests.common.webclient.http.HttpResponse;
@@ -27,6 +35,19 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.head.HttpMethodHeadTest.class
+                            );
+                }
+            });
+
   private static final long serialVersionUID = 1L;
 
   public JAXRSClient() {
@@ -52,7 +73,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes HEAD on root resource at /HeadTest; Verify
    * that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headTest1() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/plain");
     setProperty(REQUEST, buildRequest("HEAD", ""));
@@ -69,7 +90,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes HEAD on root resource at /HeadTest; Verify
    * that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headTest2() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/html");
     setProperty(REQUEST, buildRequest("HEAD", ""));
@@ -86,7 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes HEAD on a sub resource at /HeadTest/sub;
    * Verify that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headSubTest() throws Fault {
     setProperty(REQUEST, buildRequest("HEAD", "sub"));
     setProperty(Property.EXPECTED_HEADERS, "CTS-HEAD:  sub-text-html");
@@ -101,7 +122,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call a method annotated with a request method designator
    * for GET and discard any returned entity
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headGetTest() throws Fault, IOException {
     setProperty(REQUEST, buildRequest("HEAD", "get"));
     setProperty(Property.EXPECTED_HEADERS, "CTS-HEAD: get");

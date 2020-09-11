@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.Properties;
 
 import javax.ws.rs.core.Response.Status;
@@ -30,6 +38,21 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     password;                     
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security.RequestFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security.Resource.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -3020219607348263568L;
 
@@ -63,7 +86,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Get the injectable security context information for the
    * current request, the user is authenticated.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getSecurityContextTest() throws Fault {
     setProperty(Property.BASIC_AUTH_USER, user);
     setProperty(Property.BASIC_AUTH_PASSWD, password);
@@ -80,7 +103,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Make sure the authorization is needed
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void noSecurityTest() throws Fault {
     String request = buildRequest(Request.POST, "");
     setProperty(Property.REQUEST, request);

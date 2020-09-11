@@ -19,11 +19,32 @@
  */
 package com.sun.ts.tests.jaxrs.ee.rs.delete;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.delete.HttpMethodDeleteTest.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 204493956987397506L;
 
@@ -52,7 +73,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
    * Verify that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteTest1() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/plain");
     setProperty(REQUEST, "DELETE " + getContextRoot() + "/DeleteTest HTTP/1.1");
@@ -68,7 +89,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
    * Verify that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteTest2() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/html");
     setProperty(REQUEST,
@@ -86,7 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
    * Verify that right Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteSubTest() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/html");
     setProperty(REQUEST,
@@ -104,7 +125,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
    * Verify that no Method is invoked.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void deleteSubTest1() throws Fault {
     setProperty(REQUEST_HEADERS, "Accept:text/plain");
     setProperty(REQUEST,

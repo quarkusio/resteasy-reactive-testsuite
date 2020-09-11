@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.client.invocationbuilder;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.Locale;
 
 import javax.ws.rs.client.AsyncInvoker;
@@ -40,6 +48,20 @@ import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
  */
 public class JAXRSClient extends JaxrsCommonClient {
 
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.client.invocationbuilder.Resource.class
+                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            );
+                }
+            });
+
+
   private static final long serialVersionUID = -8097693127928445210L;
 
   public JAXRSClient() {
@@ -62,7 +84,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Add acceptable languages.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void acceptLanguageByLocalesTest() throws Fault {
     Invocation.Builder builder = createBuilderForMethod("languages");
     builder = builder.acceptLanguage(Locale.GERMAN, Locale.ITALIAN,
@@ -81,7 +103,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Add acceptable languages.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void acceptLanguageByStringsTest() throws Fault {
     Invocation.Builder builder = createBuilderForMethod("languages");
     builder = builder.acceptLanguage(langToString(Locale.GERMAN),
@@ -101,7 +123,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Access the asynchronous uniform request invocation
    * interface to asynchronously invoke the built request.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void asyncTest() throws Fault {
     Invocation.Builder builder = createBuilderForMethod("forbid");
     AsyncInvoker async = builder.async();
@@ -116,7 +138,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Build a request invocation using an arbitrary request
    * method name.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void buildTest() throws Fault {
     String error = "Unexpected response returned:";
     for (String method : METHODS) {
@@ -135,7 +157,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Build a request invocation using an arbitrary request
    * method name and request entity
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void buildWithEntityTest() throws Fault {
     String error = "Unexpected response returned:";
     for (String method : ENTITY_METHODS) {
@@ -154,7 +176,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Build a DELETE request invocation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void buildDeleteTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("delete");
@@ -169,7 +191,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Build a GET request invocation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void buildGetTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("get");
@@ -184,7 +206,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Build a POST request invocation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void buildPostTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("post");
@@ -200,7 +222,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Build a PUT request invocation.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void buildPutTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("put");
@@ -216,7 +238,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Set the cache control data of the message.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cacheControlTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("headerstostring");
@@ -234,7 +256,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Add a cookie to be set.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieCookieTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("cookie");
@@ -250,7 +272,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Add a cookie to be set.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void cookieStringStringTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("cookie");
@@ -266,7 +288,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * @test_Strategy: Add an arbitrary header.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headerObjectTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("headerstostring");
@@ -284,7 +306,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: Replaces all existing headers with the newly supplied
    * headers.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headersMultivaluedMapTest() throws Fault {
     String error = "Unexpected response returned:";
     Invocation.Builder builder = createBuilderForMethod("headerstostring");
@@ -306,7 +328,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * @test_Strategy: headers - new headers to be set, if null all existing
    * headers will be removed.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void headersMultivaluedMapIsNullReplacesAllTest() throws Fault {
     Invocation.Builder builder = createBuilderForMethod("headerstostring");
     String response = builder.header("unexpected-header", "unexpected-header")

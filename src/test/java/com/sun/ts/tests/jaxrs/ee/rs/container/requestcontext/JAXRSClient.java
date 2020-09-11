@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -32,6 +40,23 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.ContextOperation.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.RequestFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.Resource.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.TemplateFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.SecondRequestFilter.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 111355567568365703L;
 
@@ -55,7 +80,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void abortWithTest() throws Fault {
     invokeRequestAndCheckResponse(ContextOperation.ABORTWITH);
   }
@@ -71,7 +96,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getAcceptableLanguagesTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, "Accpet-Language:en-us");
     invokeRequestAndCheckResponse(ContextOperation.GETACCEPTABLELANGUAGES);
@@ -88,7 +113,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getAcceptableLanguagesIsSortedTest() throws Fault {
     logMsg(
         "Check the #getAcceptableLanguages is sorted according to their q-value");
@@ -111,7 +136,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getAcceptableLanguagesIsReadOnlyTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         "Accept-Language: da, en-gb;q=0.6, en-us;q=0.7");
@@ -131,7 +156,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getAcceptableMediaTypesTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.APPLICATION_JSON_TYPE));
@@ -150,7 +175,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getAcceptableMediaTypesIsSortedTest() throws Fault {
     logMsg(
         "Check the #getAcceptableMediaTypes is sorted according to their q-value");
@@ -175,7 +200,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getAcceptableMediaTypesIsReadOnlyTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
     setProperty(Property.UNEXPECTED_RESPONSE_MATCH, MediaType.APPLICATION_JSON);
@@ -193,7 +218,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getCookiesTest() throws Fault {
     String[] cookies = { "cookie1", "coookkkie99", "cookiiieee999" };
     for (String cookie : cookies) {
@@ -216,7 +241,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getCookiesIsReadonlyTest() throws Fault {
     setPrintEntity(true);
     invokeRequestAndCheckResponse(ContextOperation.GETCOOKIESISREADONLY);
@@ -232,7 +257,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getDateTest() throws Fault {
     Calendar calendar = Calendar.getInstance();
     calendar.set(Calendar.MILLISECOND, 0);
@@ -254,7 +279,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getDateIsNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "NULL");
     invokeRequestAndCheckResponse(ContextOperation.GETDATE);
@@ -270,7 +295,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getEntityStreamTest() throws Fault {
     String entity = "EnTiTyStReAmTeSt";
     setProperty(Property.CONTENT, entity);
@@ -289,7 +314,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersTest() throws Fault {
     for (int i = 1; i != 5; i++) {
       String header = "header" + i + ":" + "header" + i;
@@ -309,7 +334,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeadersIsMutableTest() throws Fault {
     setPrintEntity(true);
     invokeRequestAndCheckResponse(ContextOperation.GETHEADERSISMUTABLE);
@@ -325,7 +350,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getHeaderStringTest() throws Fault {
     setProperty(Property.SEARCH_STRING,
         ContextOperation.GETHEADERSTRING2.name());
@@ -342,7 +367,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getLanguageTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         HttpHeaders.CONTENT_LANGUAGE + ":en-gb");
@@ -360,7 +385,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getLanguageIsNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "NULL");
     invokeRequestAndCheckResponse(ContextOperation.GETLANGUAGE);
@@ -377,7 +402,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getLengthTest() throws Fault {
     setProperty(Property.CONTENT, "12345678901234567890");
     setProperty(Property.SEARCH_STRING, "20");
@@ -395,7 +420,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getLengthWhenNoEntityTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "-1");
     invokeRequestAndCheckResponse(ContextOperation.GETLENGTH);
@@ -412,7 +437,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getMediaTypeTest() throws Fault {
     addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_SVG_XML);
     setProperty(Property.SEARCH_STRING, MediaType.APPLICATION_SVG_XML);
@@ -430,7 +455,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getMediaTypeIsNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "NULL");
     invokeRequestAndCheckResponse(ContextOperation.GETMEDIATYPE);
@@ -446,7 +471,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getMethodTest() throws Fault {
     String method = Request.OPTIONS.name();
     String header = RequestFilter.OPERATION + ":"
@@ -470,7 +495,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getPropertyIsNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "NULL");
     invokeRequestAndCheckResponse(ContextOperation.GETPROPERTY);
@@ -488,7 +513,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getPropertyNamesTest() throws Fault {
     for (int i = 0; i != 5; i++)
       setProperty(Property.UNORDERED_SEARCH_STRING,
@@ -505,7 +530,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * containing the property names available within the context of the current
    * request/response exchange context.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getPropertyNamesIsReadOnlyTest() throws Fault {
     setProperty(Property.UNORDERED_SEARCH_STRING, "0");
     invokeRequestAndCheckResponse(ContextOperation.GETPROPERTYNAMESISREADONLY);
@@ -521,7 +546,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getRequestTest() throws Fault {
     String method = Request.OPTIONS.name();
     String header = RequestFilter.OPERATION + ":"
@@ -545,7 +570,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getSecurityContextPrincipalIsNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "NULL");
     invokeRequestAndCheckResponse(ContextOperation.GETSECURITYCONTEXT);
@@ -561,7 +586,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void getUriInfoTest() throws Fault {
     setProperty(Property.SEARCH_STRING, getAbsoluteUrl());
     invokeRequestAndCheckResponse(ContextOperation.GETURIINFO);
@@ -578,7 +603,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void hasEntityTest() throws Fault {
     setRequestContentEntity("entity");
     setProperty(Property.SEARCH_STRING, "true");
@@ -596,7 +621,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void hasEntityWhenNoEntityTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "false");
     invokeRequestAndCheckResponse(ContextOperation.HASENTITY);
@@ -615,7 +640,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void removePropertyTest() throws Fault {
     // getProperty returns null after the property has been set and removed
     setProperty(Property.SEARCH_STRING, "NULL");
@@ -632,7 +657,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setEntityStreamTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.SETENTITYSTREAMENTITY);
     invokeRequestAndCheckResponse(ContextOperation.SETENTITYSTREAM);
@@ -648,7 +673,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setMethodTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Request.OPTIONS.name());
     invokeRequestAndCheckResponse(ContextOperation.SETMETHOD);
@@ -667,7 +692,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setPropertyTest() throws Fault {
     setProperty(Property.SEARCH_STRING, TemplateFilter.PROPERTYNAME);
     invokeRequestAndCheckResponse(ContextOperation.SETPROPERTY);
@@ -685,7 +710,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException. *
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setPropertyNullTest() throws Fault {
     setProperty(Property.SEARCH_STRING, "NULL");
     invokeRequestAndCheckResponse(ContextOperation.SETPROPERTYNULL);
@@ -704,7 +729,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException. *
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setPropertyIsReflectedInServletRequestTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.PROPERTYNAME);
     invokeRequestAndCheckResponse(ContextOperation.SETPROPERTYCONTEXT);
@@ -721,7 +746,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setRequestUriOneUriTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.URI);
     invokeRequestAndCheckResponse(ContextOperation.SETREQUESTURI1);
@@ -738,7 +763,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setRequestUriTwoUrisTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.URI);
     invokeRequestAndCheckResponse(ContextOperation.SETREQUESTURI2);
@@ -755,7 +780,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Filter method called before a request has been dispatched to a resource.
    * Throws IOException.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void setSecurityContextTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.PRINCIPAL);
     invokeRequestAndCheckResponse(ContextOperation.SETSECURITYCONTEXT);

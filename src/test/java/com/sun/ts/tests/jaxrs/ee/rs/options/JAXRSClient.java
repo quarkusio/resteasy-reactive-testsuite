@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.options;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -26,6 +34,19 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.options.Resource.class
+                            );
+                }
+            });
+
   private static final long serialVersionUID = 1L;
 
   public JAXRSClient() {
@@ -50,7 +71,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Call a method annotated with a request method designator
    * for OPTIONS
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void optionsTest() throws Fault {
     setProperty(REQUEST, buildRequest("OPTIONS", "options"));
     setProperty(STATUS_CODE, getStatusCode(Status.ACCEPTED));
@@ -65,7 +86,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Generate an automatic response using the metadata provided
    * by the JAX-RS annotations on the matching class and its methods.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void autoResponseTest() throws Fault {
     setProperty(REQUEST, buildRequest("OPTIONS", "get"));
     setProperty(STATUS_CODE, "!" + getStatusCode(Status.NOT_FOUND));
