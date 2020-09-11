@@ -23,9 +23,8 @@ package com.sun.ts.tests.common.webclient;
 import java.util.Enumeration;
 import java.util.Properties;
 import org.apache.commons.httpclient.HttpState;
+import org.opentest4j.AssertionFailedError;
 
-import com.sun.ts.lib.harness.EETest;
-import com.sun.ts.lib.harness.EETest.Fault;
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.common.webclient.http.HttpRequest;
 
@@ -38,7 +37,7 @@ import com.sun.ts.tests.common.webclient.http.HttpRequest;
  * that particular technology.
  * </PRE>
  */
-public abstract class BaseUrlClient extends EETest {
+public abstract class BaseUrlClient  {
 
   /**
    * Properties parameters
@@ -593,5 +592,20 @@ public abstract class BaseUrlClient extends EETest {
       return true;
     }
     return false;
+  }
+
+  // QUARKUS:
+  static public class Fault extends AssertionFailedError {
+      public Fault(String message) {
+          super(message);
+      }
+
+    public Fault(Throwable t) {
+        super("Failed", t);
+    }
+
+    public Fault(String message, Throwable t) {
+        super(message, t);
+    }
   }
 }

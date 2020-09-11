@@ -16,7 +16,6 @@
 
 package com.sun.ts.tests.jaxrs.spec.template;
 
-import com.sun.javatest.Status;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
@@ -26,26 +25,6 @@ public class JAXRSClient extends JAXRSCommonClient {
 
   public void JAXRSClient() {
     setContextRoot("/jaxrs_spec_templateTest_web");
-  }
-
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSClient theTests = new JAXRSClient();
-    Status s = theTests.run(args, new PrintWriter(System.out),
-        new PrintWriter(System.err));
-    s.exit();
-  }
-
-  /**
-   * Entry point for same-VM execution. In different-VM execution, the main
-   * method delegates to this method.
-   */
-  public Status run(String[] args, PrintWriter out, PrintWriter err) {
-    return super.run(args, out, err);
   }
 
   /*

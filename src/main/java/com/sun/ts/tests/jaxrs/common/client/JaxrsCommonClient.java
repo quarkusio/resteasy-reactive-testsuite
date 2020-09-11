@@ -27,6 +27,8 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.junit.jupiter.api.AfterEach;
+
 import com.sun.ts.lib.util.BASE64Encoder;
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.common.webclient.TestFailureException;
@@ -228,9 +230,8 @@ public class JaxrsCommonClient extends JAXRSCommonClient {
     }
   }
 
-  @Override
+  @AfterEach
   public void cleanup() throws Fault {
-    super.cleanup();
     // The client.close has to be called on cleanup, because after invoke,
     // some methods are called and resources might not be available then
     // (javadoc: Close client instance and all it's associated resources).

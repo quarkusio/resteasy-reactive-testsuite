@@ -1111,7 +1111,7 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
   }
   
   // QUARKUS:
-  public void run(String[] args) {}
+  protected void run(String[] args) {}
 
   // QUARKUS:
   public void setup(String[] args, Properties p) {}
