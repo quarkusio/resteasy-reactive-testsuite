@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.get;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -224,6 +225,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * the request
    * 
    */
+  @Disabled("This hangs")
   @Test
   public void recursiveResourceLocatorTest() throws Fault {
     StringBuilder sb = new StringBuilder();

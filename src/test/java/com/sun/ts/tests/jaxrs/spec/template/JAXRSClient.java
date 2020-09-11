@@ -63,7 +63,7 @@ public class JAXRSClient extends JAXRSCommonClient {
   @org.junit.jupiter.api.Test
   public void Test1() throws Fault {
     setProperty(REQUEST,
-        "GET " + "/jaxrs_spec_templateTest_web/TemplateTest/xyz HTTP/1.1");
+        "GET " + "/TemplateTest/xyz HTTP/1.1");
     setProperty(SEARCH_STRING, "id1=xyz");
     invoke();
   }
