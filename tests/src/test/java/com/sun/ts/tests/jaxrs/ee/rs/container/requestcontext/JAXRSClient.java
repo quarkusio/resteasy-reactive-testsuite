@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -731,6 +732,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Throws IOException. *
    */
   @Test
+  @Disabled("Servlet is not supported")
   public void setPropertyIsReflectedInServletRequestTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.PROPERTYNAME);
     invokeRequestAndCheckResponse(ContextOperation.SETPROPERTYCONTEXT);
