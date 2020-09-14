@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.responsecontext;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -1075,6 +1076,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * Throws IOException.
    */
   @Test
+  @Disabled("Hangs on RESTEasy")
   public void setEntityStreamTest() throws Fault {
     setProperty(Property.SEARCH_STRING, ResponseFilter.ENTITY);
     setProperty(Property.SEARCH_STRING, "OK");

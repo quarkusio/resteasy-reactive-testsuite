@@ -33,6 +33,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.MessageBodyWriter;
 
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.common.webclient.TestFailureException;
@@ -197,7 +198,6 @@ public class JaxrsWebTestCase extends WebTestCase {
     verifySettings();
     try {
       String url = logClientRequestAndGetUrl();
-
       client = getClientWithRegisteredProviders();
       WebTarget target = client.target(url.toString());
       Invocation i = buildRequest(target);

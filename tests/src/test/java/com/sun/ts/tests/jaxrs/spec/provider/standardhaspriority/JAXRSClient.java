@@ -27,6 +27,7 @@ import io.quarkus.test.QuarkusUnitTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.ext.MessageBodyWriter;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
@@ -49,7 +50,14 @@ public class JAXRSClient extends JaxrsCommonClient {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
                             com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.AbstractProvider.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.Resource.class
+                            , com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.Resource.class,
+                            TckBooleanProvider.class,
+                            TckCharacterProvider.class,
+                            TckJaxbProvider.class,
+                            TckMapProvider.class,
+                            TckNumberProvider.class,
+                            TckUniversalProvider.class,
+                            ProviderWalker.class
                             );
                 }
             });

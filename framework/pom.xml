@@ -3,9 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.acme</groupId>
-  <artifactId>ee-tck</artifactId>
+  <artifactId>ee-tck-framework</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -30,8 +29,23 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-  <modules>
-   <module>framework</module>
-   <module>tests</module>
-  </modules>
+  <dependencies>
+    <dependency>
+     <groupId>jakarta.annotation</groupId>
+     <artifactId>jakarta.annotation-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.spec.javax.ws.rs</groupId>
+      <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>commons-httpclient</groupId>
+        <artifactId>commons-httpclient</artifactId>
+        <version>3.1</version>
+    </dependency>
+  </dependencies>
 </project>
