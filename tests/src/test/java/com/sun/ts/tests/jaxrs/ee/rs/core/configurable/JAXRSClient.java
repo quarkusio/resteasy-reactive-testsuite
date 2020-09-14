@@ -68,6 +68,8 @@ public class JAXRSClient extends JaxrsCommonClient {
                             , com.sun.ts.tests.jaxrs.api.rs.core.configurable.Assertable.class
                             , com.sun.ts.tests.jaxrs.api.rs.core.configurable.ConfigurableObject.class
                             , com.sun.ts.tests.jaxrs.api.rs.core.configurable.Registrar.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.core.configurable.FirstFilter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.core.configurable.SecondFilter.class
                             );
                 }
             });
