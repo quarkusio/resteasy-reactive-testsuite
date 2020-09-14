@@ -63,6 +63,7 @@ public class JAXRSClient extends SSEJAXRSClient {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
+            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_jaxrs21_ee_sse_sseeventsource_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override
                 public JavaArchive get() {

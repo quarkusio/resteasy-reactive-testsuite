@@ -34,6 +34,7 @@ public class JAXRSSubClient
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
+            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_cookieparam_sub_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override
                 public JavaArchive get() {

@@ -38,6 +38,7 @@ public class JAXRSClient extends ReaderClient<ContextOperation> {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
+            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_ext_interceptor_containerreader_readerinterceptorcontext_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override
                 public JavaArchive get() {
