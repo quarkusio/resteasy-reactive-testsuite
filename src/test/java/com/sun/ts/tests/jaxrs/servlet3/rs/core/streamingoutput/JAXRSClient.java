@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -26,6 +34,20 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput.TSAppConfig.class
+                            , com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput.StreamOutputTest.class
+                            );
+                }
+            });
+
   private static final long serialVersionUID = 1L;
 
   public static final String _root = "/jaxrs_ee_core_streamoutput_web/StreamOutputTest";
@@ -54,7 +76,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request. Verify that
    * StreamingOutput.write(OutputStream) works.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void writeTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "Test1"));
     setProperty(SEARCH_STRING, "StreamingOutputTest1");
@@ -70,7 +92,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * StreamingOutput.write(OutputStream) throws IOException (Servlet container
    * shall return 500 - ResponseBuilder responsibility).
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void writeIOExceptionTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "IOExceptionTest"));
     setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
@@ -85,7 +107,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * @test_Strategy: Client send a request. Verify that
    * StreamingOutput.write(OutputStream) throws WebApplicationException works.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void writeWebApplicationExceptionTest() throws Fault {
     setProperty(REQUEST, buildRequest(GET, "Test2"));
     setProperty(STATUS_CODE, getStatusCode(Status.NOT_FOUND));

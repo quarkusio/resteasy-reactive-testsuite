@@ -16,11 +16,36 @@
 
 package com.sun.ts.tests.jaxrs.platform.servletapp2;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.platform.servletapp2.TSAppConfig.class
+                            , com.sun.ts.tests.jaxrs.spec.inheritance.ParentResource1.class
+                            , com.sun.ts.tests.jaxrs.spec.inheritance.ChildResource.class
+                            , com.sun.ts.tests.jaxrs.spec.inheritance.ParentResource.class
+                            , com.sun.ts.tests.jaxrs.spec.inheritance.ChildResource1.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = -7156949059075869559L;
 
@@ -54,7 +79,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * application with Application works; Verify servlet-mapping
    * overrides @ApplicationPath;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void test1() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -77,7 +102,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * application with Application works; Verify servlet-mapping
    * overrides @ApplicationPath;
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void test2() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));

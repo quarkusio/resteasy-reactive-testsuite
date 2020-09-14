@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -26,6 +34,20 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath.TSAppConfig.class
+                            , com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath.Resource.class
+                            );
+                }
+            });
+
   public JAXRSClient() {
     setContextRoot("/jaxrs_ee_applicationpath_web");
   }
@@ -53,7 +75,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * implementation will recognize such values and will not double encode the
    * '%' character.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void applicationPathAnnotationEncodedTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "ApplicationPath!/Resource"));
@@ -67,7 +89,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * 
    * @test_Strategy: Check the ApplicationPath is used properly
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void applicationPathAnnotationNotUsedTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "Resource"));
     setProperty(Property.STATUS_CODE, "-1");

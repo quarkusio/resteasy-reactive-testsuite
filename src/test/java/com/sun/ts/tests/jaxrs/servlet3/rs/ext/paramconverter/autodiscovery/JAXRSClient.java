@@ -16,6 +16,14 @@
 
 package com.sun.ts.tests.jaxrs.servlet3.rs.ext.paramconverter.autodiscovery;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.provider.StringBeanParamConverter;
 
@@ -25,6 +33,24 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBeanParamConverter;
  *                     ts_home;
  */
 public class JAXRSClient extends JaxrsCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.servlet3.rs.ext.paramconverter.autodiscovery.TSAppConfig.class
+                            , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanParamConverterProvider.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanParamConverter.class
+                            , com.sun.ts.tests.jaxrs.servlet3.rs.ext.paramconverter.autodiscovery.Resource.class
+                            );
+                }
+            });
+
 
   /**
    * 
@@ -63,7 +89,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * application MUST be included and the JAX-RS implementation is REQUIRED to
    * discover them automatically.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void isParamCoverterFoundByAutodiscoveryUsedTest() throws Fault {
     String query = "ABCDEFGH";
     setPropertyRequest(Request.GET, "sbquery?query=", query);

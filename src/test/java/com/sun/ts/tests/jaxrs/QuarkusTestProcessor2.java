@@ -29,9 +29,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * Initial converter, did not set context path, or use web.war.classes properties
+ * Processes web.war.classes build.xml
  */
-public class QuarkusTestProcessor {
+public class QuarkusTestProcessor2 {
     public static void main(String[] args) throws IOException, ParserConfigurationException {
         DocumentBuilderFactory factory =
                 DocumentBuilderFactory.newInstance();
@@ -69,7 +69,7 @@ public class QuarkusTestProcessor {
                             if(property.getNodeType() == Node.ELEMENT_NODE) {
                                 Element el = (Element) property;
                                 String name = el.getAttribute("name");
-                                if("resource.classes".equals(name)) {
+                                if("web.war.classes".equals(name)) {
                                     String value = el.getAttribute("value");
                                     if(value != null) {
                                         value = value.replace("${basedir}", state.baseDir);

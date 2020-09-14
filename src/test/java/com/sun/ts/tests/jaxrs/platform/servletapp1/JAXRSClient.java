@@ -16,11 +16,36 @@
 
 package com.sun.ts.tests.jaxrs.platform.servletapp1;
 
+import java.util.function.Supplier;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import io.quarkus.test.QuarkusUnitTest;
+
+
 import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 public class JAXRSClient extends JAXRSCommonClient {
+
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.inheritance.ParentResource1.class
+                            , com.sun.ts.tests.jaxrs.spec.inheritance.ChildResource.class
+                            , com.sun.ts.tests.jaxrs.spec.inheritance.ParentResource.class
+                            , com.sun.ts.tests.jaxrs.platform.servletapp1.TSAppConfig.class
+                            , com.sun.ts.tests.jaxrs.spec.inheritance.ChildResource1.class
+                            );
+                }
+            });
+
 
   private static final long serialVersionUID = 6923197915131448633L;
 
@@ -53,7 +78,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * works; Verify deploy JAX-RS resource as Servlet application with
    * Application with @ApplicationPath works;.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void test1() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_PLAIN_TYPE));
@@ -75,7 +100,7 @@ public class JAXRSClient extends JAXRSCommonClient {
    * works. Verify deploy JAX-RS resource as Servlet application with
    * Application with @ApplicationPath works;.
    */
-  @org.junit.jupiter.api.Test
+  @Test
   public void test2() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildAccept(MediaType.TEXT_HTML_TYPE));
