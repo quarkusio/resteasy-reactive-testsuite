@@ -43,9 +43,11 @@ public class JAXRSClient extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.RuntimeExceptionMapper.class
-                            ,   com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.Resource.class
-                            , com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.WebAppExceptionMapper.class
+                                  com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.RuntimeExceptionMapper.class,
+                                  com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.Resource.class,
+                                  com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.WebAppExceptionMapper.class,
+                                  com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.DirectResponseUsageResource.class,
+                                  com.sun.ts.tests.jaxrs.ee.resource.webappexception.mapper.ResponseWithNoEntityUsesMapperResource.class
                             );
                 }
             });
