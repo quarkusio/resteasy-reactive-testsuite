@@ -32,6 +32,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpState;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.opentest4j.AssertionFailedError;
 
@@ -275,17 +276,21 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
 //    TestUtil.logMsg("[JAXRSCommonClient] Test setup OK");
 //  }
 //
-//  /**
-//   * <code>cleanup</code> is called by the test harness to cleanup after text
-//   * execution
-//   * 
-//   * @exception Fault
-//   *              if an error occurs
-//   */
-//  public void cleanup() throws Fault {
-//    TestUtil.logMsg("[JAXRSCommonClient] Test cleanup OK");
-//  }
-//
+  /**
+   * <code>cleanup</code> is called by the test harness to cleanup after text
+   * execution
+   * 
+   * @exception Fault
+   *              if an error occurs
+   */
+  @AfterEach
+  public void cleanup() throws Fault {
+    TestUtil.logMsg("[JAXRSCommonClient] Test cleanup OK");
+    // QUARKUS
+    _hostname = "localhost";
+    _port = 8081;
+  }
+
   /*
    * protected methods
    * ========================================================================

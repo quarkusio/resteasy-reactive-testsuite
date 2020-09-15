@@ -241,6 +241,7 @@ public class JaxrsCommonClient extends JAXRSCommonClient {
       c.close();
     clients.clear();
     // QUARKUS
+    super.cleanup();
     testCase = null;
     isTestCaseAfterInvocation = false;
   }
