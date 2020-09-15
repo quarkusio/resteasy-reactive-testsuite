@@ -18,6 +18,8 @@ package com.sun.ts.tests.jaxrs.ee.rs.beanparam;
 
 import javax.ws.rs.core.MediaType;
 
+import org.junit.jupiter.api.AfterEach;
+
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 import com.sun.ts.tests.jaxrs.ee.rs.Constants;
 import com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient;
@@ -165,5 +167,12 @@ public abstract class BeanParamCommonClient extends JaxrsParamClient {
   protected static String stripQuotesSpacesAndLowerCase(String cookie) {
     return cookie.toLowerCase().replace("\"", "").replace("'", "").replace(" ",
         "");
+  }
+  
+  @AfterEach
+  public void cleanup() {
+      super.cleanup();
+      fieldBeanParam = null;
+      exceptionInEntity = 0;
   }
 }

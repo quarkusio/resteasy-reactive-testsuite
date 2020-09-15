@@ -18,6 +18,8 @@ package com.sun.ts.tests.jaxrs.ee.rs;
 
 import javax.ws.rs.core.Response.Status;
 
+import org.junit.jupiter.api.AfterEach;
+
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /**
@@ -331,4 +333,9 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
     return param.contains("=") ? param.replaceAll("=.*", "") : param;
   }
 
+  @AfterEach
+  public void cleanup() {
+      useDefaultValue = true;
+      searchEqualsEncoded = false;
+  }
 }
