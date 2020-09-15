@@ -240,6 +240,9 @@ public class JaxrsCommonClient extends JAXRSCommonClient {
     for (Client c : clients)
       c.close();
     clients.clear();
+    // QUARKUS
+    testCase = null;
+    isTestCaseAfterInvocation = false;
   }
 
   public void setup(String[] args, Properties p) throws Fault {
