@@ -150,6 +150,7 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
    * Context root of target tests
    */
   public String _contextRoot = null;
+  private String _quarkusContextRoot = null;
 
   /**
    * General file/request URI for both gfiles and tests
@@ -228,17 +229,10 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
 //  }
 //
   public void setContextRoot(String root) {
-//      // QUARKUS: this context root is set somehere, but not sure where, let's just ignore it here
-//      if(root.startsWith("/")) {
-//          int nextSlash = root.indexOf("/", 1);
-//          if(nextSlash != -1) {
-//              root = root.substring(nextSlash);
-//          } else {
-//              root = "";
-//          }
-//      }
     TestUtil.logTrace("[JAXRSCommonClient] Contextroot set at " + root);
     _contextRoot = root;
+    // QUARKUS: some test methods do stuff like _contextRoot += "foo" and never reset it so we store it for cleanup
+    _quarkusContextRoot = root;
   }
 
   public String getContextRoot() {
@@ -289,6 +283,7 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
     // QUARKUS
     _hostname = "localhost";
     _port = 8081;
+    _contextRoot = _quarkusContextRoot;
   }
 
   /*

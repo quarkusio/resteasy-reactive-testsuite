@@ -29,6 +29,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSLocatorClient
     extends com.sun.ts.tests.jaxrs.ee.rs.pathparam.JAXRSClient {
 

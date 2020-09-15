@@ -23,7 +23,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
 
-
 import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient;
 
 /*
@@ -31,6 +30,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSLocatorClient extends JAXRSClient {
 
     @RegisterExtension

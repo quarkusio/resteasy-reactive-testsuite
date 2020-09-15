@@ -46,6 +46,7 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  * The misuse of GenericType<Response> is on purpose to check the behavior 
  * corresponding to javadoc  
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JAXRSCommonClient {
 
   private static final long serialVersionUID = -7647322937577043460L;

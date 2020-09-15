@@ -59,6 +59,7 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
 /**
  * @since 2.1
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends SSEJAXRSClient {
 
     @RegisterExtension

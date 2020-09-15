@@ -54,6 +54,7 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
  * These test are in the platform package since async is not available in 
  * Servlet 2.5 spec by default
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JaxrsCommonClient {
 
     @RegisterExtension

@@ -22,6 +22,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class ClientErrorExceptionMapper
     implements ExceptionMapper<ClientErrorException> {
 

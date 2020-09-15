@@ -26,6 +26,7 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 @Priority(100)
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class FirstFilter implements ClientRequestFilter {
 
   @Override

@@ -26,6 +26,7 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.runtimedelegate.TckRuntimeDelegate;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JAXRSDelegateClient {
 
   private static final long serialVersionUID = -5586431064207012301L;

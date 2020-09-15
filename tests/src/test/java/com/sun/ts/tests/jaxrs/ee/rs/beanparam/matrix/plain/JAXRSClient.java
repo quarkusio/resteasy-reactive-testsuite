@@ -35,6 +35,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.beanparam.BeanParamCommonClient;
  *                     ts_home;
  * @since 2.0.1
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends BeanParamCommonClient {
 
     @RegisterExtension

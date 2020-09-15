@@ -25,6 +25,7 @@ import javax.ws.rs.ext.Provider;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 @Provider
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class ContextProvider implements ClientRequestFilter {
 
   protected void checkFilterContext(ClientRequestContext context) throws Fault {

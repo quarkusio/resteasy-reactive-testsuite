@@ -30,6 +30,7 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 /**
  * @class.setup_props: webServerHost; webServerPort; ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JAXRSCommonClient {
 
   private static final long serialVersionUID = 396770878268682189L;

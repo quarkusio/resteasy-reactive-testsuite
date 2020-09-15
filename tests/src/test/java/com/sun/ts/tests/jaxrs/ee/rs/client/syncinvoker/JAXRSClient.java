@@ -45,6 +45,7 @@ import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JaxrsCommonClient {
 
     @RegisterExtension

@@ -41,6 +41,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerwriter.WriterClient
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends WriterClient<ContextOperation> {
 
     @RegisterExtension

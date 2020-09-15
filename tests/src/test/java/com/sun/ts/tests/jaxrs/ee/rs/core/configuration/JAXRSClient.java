@@ -60,6 +60,7 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * configuration, i.e. it does not work on Configurable.getConfiguration()
  * </p>
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JaxrsCommonClient {
 
     @RegisterExtension

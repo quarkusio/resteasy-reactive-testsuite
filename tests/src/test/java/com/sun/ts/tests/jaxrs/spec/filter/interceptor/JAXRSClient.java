@@ -50,6 +50,7 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
 /**
  * Test the interceptor is called when any entity provider is called
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JaxrsCommonClient {
 
     @RegisterExtension

@@ -29,6 +29,7 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 /*
  * WebApplicationException tests are also at ee/resource/webappexception/nomapper
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JAXRSCommonClient {
 
   private static final long serialVersionUID = 8214271241869777148L;

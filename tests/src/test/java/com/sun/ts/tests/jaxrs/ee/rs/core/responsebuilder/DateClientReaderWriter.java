@@ -33,6 +33,7 @@ import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
 @Provider
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class DateClientReaderWriter
     implements MessageBodyReader<Date>, MessageBodyWriter<Date> {
   private StringBuilder atom;

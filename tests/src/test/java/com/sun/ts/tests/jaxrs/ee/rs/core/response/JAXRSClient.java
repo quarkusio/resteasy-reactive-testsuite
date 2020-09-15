@@ -66,6 +66,7 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
  * Response is created. This is because implementation of inbound and outbound
  * Response differ.
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JaxrsCommonClient {
 
     @RegisterExtension

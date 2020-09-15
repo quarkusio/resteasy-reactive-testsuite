@@ -31,6 +31,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSSubClient extends JAXRSClient {
 
     @RegisterExtension

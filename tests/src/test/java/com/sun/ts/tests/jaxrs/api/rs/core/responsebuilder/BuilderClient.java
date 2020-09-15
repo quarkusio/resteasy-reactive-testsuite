@@ -47,6 +47,7 @@ import com.sun.ts.tests.jaxrs.api.rs.core.responseclient.VerificationResult;
 import com.sun.ts.tests.jaxrs.common.impl.SinglevaluedMap;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class BuilderClient
     extends com.sun.ts.tests.jaxrs.api.rs.core.responseclient.JAXRSClient {
 

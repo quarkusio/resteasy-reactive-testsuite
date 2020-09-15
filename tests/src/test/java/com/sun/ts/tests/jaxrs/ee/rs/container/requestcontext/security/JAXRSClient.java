@@ -38,6 +38,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.ContextOperation;
  *                     user;
  *                     password;                     
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JaxrsCommonClient {
 
     @RegisterExtension

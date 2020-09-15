@@ -30,6 +30,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.Scheme;
  *                     authuser;
  *                     authpassword;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSBasicClient
     extends com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.JAXRSClient {
 

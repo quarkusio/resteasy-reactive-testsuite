@@ -31,6 +31,7 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient extends JaxrsCommonClient {
 
     @RegisterExtension
