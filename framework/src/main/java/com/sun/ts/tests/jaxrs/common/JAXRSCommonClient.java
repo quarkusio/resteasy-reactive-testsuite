@@ -959,7 +959,6 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
       sb.append(GET).append(_contextRoot).append(SL);
       sb.append(testValue).append(HTTP10);
 //    }
-    System.out.println("REQUEST LINE: " + sb.toString());
 
     HttpRequest req = createHttpRequest(sb.toString(), _hostname, _port);
     testCase.setRequest(req);
@@ -1004,8 +1003,6 @@ public abstract class JAXRSCommonClient /* QUARKUS: extends ServiceEETest */ {
 //    } else {
       req = buildRequest10(Request.GET, testValue);
 //    }
-    System.out.println("REQUEST LINE: " + req);
-    System.out.println("_hostname=" + _hostname);
     HttpRequest httpReq = createHttpRequest(req, _hostname, _port);
     testCase.setRequest(httpReq);
 
