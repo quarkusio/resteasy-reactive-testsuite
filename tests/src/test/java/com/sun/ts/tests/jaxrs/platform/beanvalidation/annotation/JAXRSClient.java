@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -371,6 +372,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
+  @Disabled("Quarkus reports this error at boot time")
   public void constraintDefinitionExceptionThrownTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "definition/constraintdefinitionexception"));
@@ -391,6 +393,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * 
    * Due to validation of whole bean status 400 is returned
    */
+  // QUARKUS: I don't understand this one
   @Test
   public void validateExecutableIsInvalidForBeingShortTest() throws Fault {
     setProperty(Property.REQUEST,
@@ -413,6 +416,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * (the exception was thrown while validating a method return type) or is not
    * forgotten to be validated at all.
    */
+  // QUARKUS: I don't understand this one
   @Test
   public void validateExecutableIsNotValidatedTest() throws Fault {
     setProperty(Property.REQUEST,

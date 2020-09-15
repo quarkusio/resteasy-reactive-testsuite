@@ -28,4 +28,12 @@ import javax.validation.Constraint;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ConstraintDefinitionValidator.class)
 public @interface ConstraintDefinitionAnnotation {
+
+	// QUARKUS: these were only added because Quarkus doesn't even build when the methods are missing
+
+	String message() default "";
+
+	Class[] groups() default {};
+
+	Class[] payload() default {};
 }
