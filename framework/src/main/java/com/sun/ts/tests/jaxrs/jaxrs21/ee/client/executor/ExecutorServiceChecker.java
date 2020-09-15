@@ -29,7 +29,7 @@ import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;
 import javax.ws.rs.core.Response;
 
-import com.sun.ts.tests.jaxrs.ee.rs.core.request.JAXRSClient;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 public interface ExecutorServiceChecker extends Closeable {
   final static String THREADPREFIX = "JAXRS_TCK_THREAD";
@@ -62,7 +62,7 @@ public interface ExecutorServiceChecker extends Closeable {
         if (!t.getName().startsWith(THREADPREFIX))
           requestContext.abortWith(Response.notAcceptable(null)
               .entity("ThreadExecutor check failed").build());
-        JAXRSClient.logMsg(
+        JAXRSCommonClient.logMsg(
             "[Client EXECUTOR SERVICE check]: running from thread",
             t.getName());
       }
