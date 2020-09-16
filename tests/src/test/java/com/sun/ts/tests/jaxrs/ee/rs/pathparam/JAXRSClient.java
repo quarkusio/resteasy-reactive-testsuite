@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.pathparam;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -448,5 +449,11 @@ public class JAXRSClient extends JaxrsParamClient {
     sb.append(param).append("=");
     sb.append(PathParamTest.class.getSimpleName());
     return sb.toString();
+  }
+
+  @AfterEach
+  public void cleanup() {
+      super.cleanup();
+      useDefaultValue = false;
   }
 }

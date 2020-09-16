@@ -218,7 +218,7 @@ public class PathParamTest {
 
   @Produces(MediaType.TEXT_PLAIN)
   @GET
-  @Path("/FieldSortedSetParamEntityWithFromString/{fieldSortedSetParamEntityWithFromString}")
+  @Path("/FieldSortedSetParamEntityWithFromString/{FieldSortedSetParamEntityWithFromString}")
   public String fieldSortedSetParamEntityWithFromStringTest() {
     return fieldSortedSetParamEntityWithFromString.iterator().next().getValue();
   }

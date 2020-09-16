@@ -335,6 +335,7 @@ public abstract class JaxrsParamClient extends JAXRSCommonClient {
 
   @AfterEach
   public void cleanup() {
+      super.cleanup();
       useDefaultValue = true;
       searchEqualsEncoded = false;
   }
