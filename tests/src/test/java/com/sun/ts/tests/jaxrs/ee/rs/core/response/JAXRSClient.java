@@ -81,6 +81,9 @@ public class JAXRSClient extends JaxrsCommonClient {
                             , com.sun.ts.tests.jaxrs.ee.rs.core.response.CorruptedInputStream.class
                             , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
                             , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            // Quarkus: added two types
+                            , AnnotatedClass.class
+                            , DateReaderWriter.class
                             );
                 }
             });

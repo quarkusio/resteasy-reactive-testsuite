@@ -70,6 +70,7 @@ public class JAXRSClient extends JaxrsCommonClient {
                             , com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput.class
                             , com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            , EntityWriterInterceptor.class
                             );
                 }
             });

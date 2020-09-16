@@ -34,7 +34,8 @@ import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
-@Provider
+// Quarkus: disable detection since they're added programmatically
+//@Provider
 public class DateReaderWriter
     implements MessageBodyReader<Date>, MessageBodyWriter<Date> {
 
