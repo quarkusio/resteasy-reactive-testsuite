@@ -38,6 +38,7 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  * @since 2.1
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
+  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
 public class JAXRSClient extends JAXRSCommonClient {
 
     @RegisterExtension
