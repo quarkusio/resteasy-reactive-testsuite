@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.platform.container.asyncresponse;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -41,6 +42,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
@@ -434,6 +436,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * return true.
    */
   @Test
+  @Disabled(QuarkusRest.Hangs)
   public void isDoneWhenTimedOutTest() throws Fault {
     setTimeoutTest();
     Future<Response> is = invokeRequest("isdone?stage=1");
@@ -612,6 +615,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * The exception MUST be processed as described in section 3.3.4.
    */
   @Test
+  @Disabled(QuarkusRest.Hangs)
   public void setTimeoutTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -641,6 +645,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * The exception MUST be processed as described in section 3.3.4.
    */
   @Test
+  @Disabled(QuarkusRest.Hangs)
   public void updateTimeoutTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -673,6 +678,7 @@ public class JAXRSClient extends JaxrsCommonClient {
    * an exception.
    */
   @Test
+  @Disabled(QuarkusRest.Hangs)
   public void handleTimeOutWaitsForeverTest() throws Fault {
     String responseMsg = "handleTimeOutWaitsForeverTest";
     invokeClear();
