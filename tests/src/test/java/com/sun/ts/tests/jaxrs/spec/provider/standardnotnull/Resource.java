@@ -77,11 +77,12 @@ public class Resource {
     return isNull(datasource);
   }
 
-  @Path("jaxb")
-  @POST
-  public String jaxb(JAXBElement<String> jaxb) {
-    return isNull(jaxb);
-  }
+  // QUARKUS: disable this because we don't support JAXBElement and it causes a build time error
+//  @Path("jaxb")
+//  @POST
+//  public String jaxb(JAXBElement<String> jaxb) {
+//    return isNull(jaxb);
+//  }
 
   @Path("source")
   @POST
