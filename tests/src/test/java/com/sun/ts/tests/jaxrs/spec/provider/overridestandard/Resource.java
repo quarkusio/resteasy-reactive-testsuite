@@ -74,11 +74,12 @@ public class Resource {
     return source;
   }
 
-  @Path("jaxb")
-  @POST
-  public JAXBElement<String> jaxb(JAXBElement<String> jaxb) {
-    return jaxb;
-  }
+  // QUARKUS: disable this because we don't support JAXBElement and it causes a build time error
+//  @Path("jaxb")
+//  @POST
+//  public JAXBElement<String> jaxb(JAXBElement<String> jaxb) {
+//    return jaxb;
+//  }
 
   @Path("map")
   @POST
