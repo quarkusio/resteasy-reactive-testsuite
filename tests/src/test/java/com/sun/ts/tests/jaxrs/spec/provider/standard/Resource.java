@@ -145,10 +145,11 @@ public class Resource {
     return Response.ok(source).type(media).build();
   }
 
-  @Path("jaxb")
-  @POST
-  public Response jaxb(JAXBElement<String> jaxb) {
-    MediaType media = headers.getMediaType();
-    return Response.ok(jaxb).type(media).build();
-  }
+  // QUARKUS: disable this because we don't support JAXBElement and it causes a build time error
+//  @Path("jaxb")
+//  @POST
+//  public Response jaxb(JAXBElement<String> jaxb) {
+//    MediaType media = headers.getMediaType();
+//    return Response.ok(jaxb).type(media).build();
+//  }
 }
