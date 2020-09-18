@@ -701,6 +701,7 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * Set/replace a time-out handler for the suspended asynchronous response.
    */
   @Test
+  @Disabled(QuarkusRest.Hangs)
   public void handleTimeoutCancelsTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -727,6 +728,7 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * an exception.
    */
   @Test
+  @Disabled(QuarkusRest.Hangs)
   public void handleTimeoutResumesTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
