@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsink;
 
-import static com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEJAXRSClient.MESSAGE;
+import static com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEJAXRSClient0177.MESSAGE;
 
 import java.util.concurrent.CompletableFuture;
 

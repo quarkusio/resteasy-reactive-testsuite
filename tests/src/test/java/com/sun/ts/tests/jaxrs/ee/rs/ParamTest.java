@@ -80,10 +80,10 @@ public class ParamTest {
     append(ParamEntityWithValueOf.class, paramEntityWithValueOf, prefix);
 
     append(ParamEntityWithFromString.class, setParamEntityWithFromString,
-        prefix, JaxrsParamClient.CollectionName.SET.value());
+        prefix, JaxrsParamClient0151.CollectionName.SET.value());
     append(ParamEntityWithFromString.class, sortedSetParamEntityWithFromString,
-        prefix, JaxrsParamClient.CollectionName.SORTED_SET.value());
+        prefix, JaxrsParamClient0151.CollectionName.SORTED_SET.value());
     append(ParamEntityWithFromString.class, listParamEntityWithFromString,
-        prefix, JaxrsParamClient.CollectionName.LIST.value());
+        prefix, JaxrsParamClient0151.CollectionName.LIST.value());
   }
 }
