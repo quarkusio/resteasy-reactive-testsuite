@@ -121,7 +121,7 @@
         <version>${surefire-plugin.version}</version>
         <configuration>
           <includes>
-            <include>**/*Client.java</include>
+            <include>**/*Client*.java</include>
           </includes>
           <systemPropertyVariables>
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
