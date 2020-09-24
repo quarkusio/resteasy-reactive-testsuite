@@ -141,6 +141,8 @@ public class JAXRSClient0140 extends JaxrsCommonClient {
    * 
    * @test_Strategy: javax.ws.rs.ConstrainedTo.value is used
    */
+  // QUARKUS: This is a weird case as we automatically register the providers for the client as well
+  // while RESTEasy for example does not
   @Test
   public void clientSideWriterIsNotUsedOnServerTest() throws Fault {
     setPrintEntity(true);
