@@ -7,5 +7,6 @@ package com.sun.ts.tests.jaxrs;
 public class QuarkusRest {
 
     public static final String Hangs = "Quarkus-REST hangs";
+    public static final String Encoded = "@Encoded not supported yet";
 
 }

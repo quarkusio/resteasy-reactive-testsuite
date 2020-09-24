@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.beanparam.form.plain;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -26,6 +27,7 @@ import io.quarkus.test.QuarkusUnitTest;
 
 import javax.ws.rs.core.Response.Status;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.ee.rs.Constants;
 import com.sun.ts.tests.jaxrs.ee.rs.beanparam.BeanParamCommonClient0117;
 
@@ -239,6 +241,7 @@ public class JAXRSClient0113 extends BeanParamCommonClient0117 {
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
   @Test
+  @Disabled(QuarkusRest.Encoded)
   public void formParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -251,6 +254,7 @@ public class JAXRSClient0113 extends BeanParamCommonClient0117 {
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
   @Test
+  @Disabled(QuarkusRest.Encoded)
   public void formFieldParamEntityWithEncodedTest() throws Fault {
     super.fieldEntityWithEncodedTest();
   }
