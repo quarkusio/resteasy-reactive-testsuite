@@ -32,7 +32,6 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 @ConstrainedTo(value = RuntimeType.CLIENT)
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class ClientSideWriter implements MessageBodyWriter<String> {
 
   public static final String FAKE_MESSAGE = "The fake writer on client side";

@@ -31,7 +31,6 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 @ConstrainedTo(value = RuntimeType.CLIENT)
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class ClientSideReader implements MessageBodyReader<String> {
 
   public static final String FAKE_MESSAGE = "The fake reader on client side";
