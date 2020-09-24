@@ -43,7 +43,8 @@ public class JAXRSClient0158 extends JAXRSCommonClient {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
                             com.sun.ts.tests.jaxrs.platform.managedbean299.Resource.class
-                            , com.sun.ts.tests.jaxrs.platform.managedbean299.StringBuilderProvider.class               
+                            , com.sun.ts.tests.jaxrs.platform.managedbean299.StringBuilderProvider.class  ,
+                            TSAppConfig.class
                             );
                 }
             });
