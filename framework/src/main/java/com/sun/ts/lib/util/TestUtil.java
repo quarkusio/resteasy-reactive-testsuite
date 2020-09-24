@@ -274,6 +274,9 @@ public final class TestUtil {
   }
 
   public static void writeObject(TestReportInfo info) {
+      // QUARKUS
+      if(objectOutputStream == null)
+          return;
     synchronized (socketMutex) {
       flushStream();
       try {
