@@ -19,11 +19,12 @@ package com.sun.ts.tests.jaxrs.ee.rs.formparam.sub;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
 
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient0146;
 
 /*
@@ -95,6 +96,7 @@ public class JAXRSSubClient0144 extends JAXRSClient0146 {
    * @test_Strategy: Test sending override of default argument content;
    */
   @Test
+  @Disabled(QuarkusRest.Encoded)
   public void defaultFormParamSentTest() throws Fault {
     super.defaultFormParamSentTest();
   }
@@ -188,6 +190,7 @@ public class JAXRSSubClient0144 extends JAXRSClient0146 {
    * String;
    */
   @Test
+  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromStringTest() throws Fault {
     super.nonDefaultFormParamFromStringTest();
   }
@@ -269,6 +272,7 @@ public class JAXRSSubClient0144 extends JAXRSClient0146 {
    * a String;
    */
   @Test
+  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
     super.nonDefaultFormParamFromSetFromStringTest();
   }
@@ -296,6 +300,7 @@ public class JAXRSSubClient0144 extends JAXRSClient0146 {
    * a String;
    */
   @Test
+  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
     super.nonDefaultFormParamFromSortedSetFromStringTest();
   }
@@ -324,6 +329,7 @@ public class JAXRSSubClient0144 extends JAXRSClient0146 {
    * a String;
    */
   @Test
+  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromListFromStringTest() throws Fault {
     super.nonDefaultFormParamFromListFromStringTest();
   }
