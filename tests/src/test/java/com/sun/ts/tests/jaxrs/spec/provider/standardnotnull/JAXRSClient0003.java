@@ -511,7 +511,6 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * entities.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
   public void serverBooleanProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -563,7 +562,6 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * entities.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
   public void serverCharProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -615,7 +613,6 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * entities.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
   public void serverIntegerProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
@@ -667,7 +664,6 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * entities.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
   public void serverBigDecimalProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.TEXT_PLAIN_TYPE));
