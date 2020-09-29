@@ -63,13 +63,13 @@ public class TokenizedValidator extends WebValidatorBase {
    * @throws IOException
    *           if an error occurs will processing the Goldenfile
    */
-  protected boolean checkGoldenfile() throws IOException {
+  protected void checkGoldenfile() throws IOException {
     String gf;
     String path = _case.getGoldenfilePath();
     String enc = _res.getResponseEncoding();
 
     if (path == null) {
-      return true;
+        return;
     }
 
     Goldenfile file = new Goldenfile(_case.getGoldenfilePath(), enc);
@@ -80,7 +80,8 @@ public class TokenizedValidator extends WebValidatorBase {
       TestUtil
           .logErr("[TokenizedValidator] Unexpected exception while accessing "
               + "goldenfile! " + ioe.toString());
-      return false;
+      throw new AssertionError("[TokenizedValidator] Unexpected exception while accessing "
+          + "goldenfile! " + ioe.toString());
     }
 
     String response = _res.getResponseBodyAsString();
@@ -115,7 +116,7 @@ public class TokenizedValidator extends WebValidatorBase {
           sb.append("\n            Response token:   ").append(res);
           TestUtil.logErr(sb.toString());
           dumpResponseInfo(response, gf);
-          return false;
+          throw new AssertionError(sb.toString());
         }
       }
     } else {
@@ -125,11 +126,12 @@ public class TokenizedValidator extends WebValidatorBase {
               + resCount + "\nGoldenfile Token count: " + gfCount);
 
       dumpResponseInfo(response, gf);
-      return false;
+      throw new AssertionError("[TokenizedValidator]: Token count between server response "
+          + "and goldenfile do not match.\n Response Token" + "count: "
+          + resCount + "\nGoldenfile Token count: " + gfCount);
     }
     TestUtil.logTrace("[TokenizedValidator]: Server's response matches the "
         + "configured goldenfile.");
-    return true;
   }
 
   /*

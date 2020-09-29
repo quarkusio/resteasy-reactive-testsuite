@@ -37,14 +37,14 @@ public class CheckOneOfStatusesTokenizedValidator extends TokenizedValidator {
    * class method is called to get the logging messages
    */
   @Override
-  protected boolean checkStatusCode() throws IOException {
+  protected void checkStatusCode() throws IOException {
     String responseCode = _res.getStatusCode();
     String caseCodes = _case.getStatusCode();
 
     if (caseCodes != null && caseCodes.charAt(0) != '!'
         && caseCodes.contains("|") && caseCodes.contains(responseCode))
       _case.setExpectedStatusCode(responseCode);
-    return super.checkStatusCode();
+    super.checkStatusCode();
   }
 
 }

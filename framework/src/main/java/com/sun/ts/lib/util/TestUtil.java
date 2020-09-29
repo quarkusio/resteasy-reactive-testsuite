@@ -352,7 +352,6 @@ public final class TestUtil {
     try {
       in = new FileInputStream(PROPS_FILE);
       p.load(in);
-      System.err.println("STEF");
     } catch (FileNotFoundException e) {
         // QUARKUS: ignore since we're not using property files
     } catch (Exception e) {

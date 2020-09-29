@@ -28,5 +28,5 @@ import com.sun.ts.tests.common.webclient.WebTestCase;
  * implementation.
  */
 public interface ValidationStrategy {
-  public boolean validate(WebTestCase testCase);
+  public void validate(WebTestCase testCase);
 }

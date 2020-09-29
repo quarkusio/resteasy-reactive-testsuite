@@ -218,9 +218,7 @@ public class JaxrsWebTestCase extends WebTestCase {
     }
 
     // Validate this test case instance
-    if (!strategy.validate(this)) {
-      throw new TestFailureException("Test FAILED!");
-    }
+    strategy.validate(this);
   }
 
   public void closeClient() {

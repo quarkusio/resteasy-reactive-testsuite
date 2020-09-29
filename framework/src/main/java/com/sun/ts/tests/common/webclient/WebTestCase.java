@@ -176,10 +176,7 @@ public class WebTestCase implements TestCase {
     }
 
     // Validate this test case instance
-    if (!_strategy.validate(this)) {
-      throw new TestFailureException("Test FAILED!");
-    }
-
+    _strategy.validate(this);
   }
 
   /**
