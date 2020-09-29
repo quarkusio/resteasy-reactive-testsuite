@@ -47,8 +47,9 @@ public class Resource {
     return param.get();
   }
 
-  @Path("dsquery")
-  @GET
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @Path("dsquery")
+//  @GET
   public String dataSourceQuery(@QueryParam("param") DataSource param) {
     return param.getName();
   }

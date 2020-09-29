@@ -62,8 +62,9 @@ public class Resource {
     return file;
   }
 
-  @Path("datasource")
-  @POST
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @Path("datasource")
+//  @POST
   public DataSource datasource(DataSource datasource) {
     return datasource;
   }

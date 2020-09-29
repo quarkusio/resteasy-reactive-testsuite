@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.client.typedentities;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -228,6 +231,7 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void clientDataSourceReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
@@ -398,6 +402,7 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void clientDataSourceWriterTest() throws Fault {
     DataSource ds = new StringDataSource(entity, MediaType.WILDCARD_TYPE);

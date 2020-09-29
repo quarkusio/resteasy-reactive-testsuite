@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -415,6 +418,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void dataSourceTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {

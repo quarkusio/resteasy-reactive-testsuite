@@ -110,16 +110,18 @@ public class Resource {
     return file;
   }
 
-  @Path("datasource")
-  @POST
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @Path("datasource")
+//  @POST
   public DataSource datasource(DataSource datasource) {
     return datasource;
   }
 
-  @Path("datasourcesvg")
-  @Produces(MediaType.APPLICATION_SVG_XML)
-  @Consumes(MediaType.APPLICATION_SVG_XML)
-  @POST
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @Path("datasourcesvg")
+//  @Produces(MediaType.APPLICATION_SVG_XML)
+//  @Consumes(MediaType.APPLICATION_SVG_XML)
+//  @POST
   public DataSource datasourcesvg(DataSource datasource) {
     return datasource;
   }

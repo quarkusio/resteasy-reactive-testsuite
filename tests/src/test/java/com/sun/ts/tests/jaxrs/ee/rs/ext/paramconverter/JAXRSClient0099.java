@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -47,12 +50,12 @@ public class JAXRSClient0099 extends JaxrsCommonClient {
                             .addClasses(
                             com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.StringBeanParamConverter.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.Locator.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverter.class
-                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
+//                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverter.class
+//                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.AtomicIntegerLazyParamConverter.class
                             , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverterProvider.class
+//                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverterProvider.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.Resource.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.StringBeanParamConverterProvider.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.AtomicIntegerLazyParamConverterProvider.class
@@ -87,6 +90,7 @@ public class JAXRSClient0099 extends JaxrsCommonClient {
    * @test_Strategy: Providers implementing ParamConverterProvider contract must
    * be either programmatically registered in a JAX-RS runtime
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void isParamCoverterInApplicationSingletonsUsedTest() throws Fault {
     String query = "ABCDEFGH";

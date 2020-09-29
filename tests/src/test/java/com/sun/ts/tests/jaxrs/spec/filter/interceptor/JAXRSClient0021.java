@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.filter.interceptor;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -63,7 +66,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
                             .addClasses(
                             com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource.class
                             , com.sun.ts.tests.jaxrs.spec.filter.interceptor.EntityReaderInterceptor.class
-                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
+//                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
                             , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
                             , com.sun.ts.tests.jaxrs.common.impl.StringSource.class
@@ -600,6 +603,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void dataSourceReaderContainerInterceptorTest() throws Fault {
     addInterceptors(EntityReaderInterceptor.class);
@@ -621,6 +625,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void dataSourceReaderNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
@@ -637,6 +642,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void dataSourceWriterContainerInterceptorTest() throws Fault {
     addInterceptors(EntityWriterInterceptor.class);
@@ -657,6 +663,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void dataSourceWriterNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getdatasource"));
@@ -672,6 +679,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void dataSourceWriterClientInterceptorTest() throws Fault {
     StringDataSource source = new StringDataSource(content,

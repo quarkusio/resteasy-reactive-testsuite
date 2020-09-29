@@ -71,8 +71,9 @@ public class Resource {
     return isNull(file);
   }
 
-  @Path("datasource")
-  @POST
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @Path("datasource")
+//  @POST
   public String datasource(DataSource datasource) {
     return isNull(datasource);
   }

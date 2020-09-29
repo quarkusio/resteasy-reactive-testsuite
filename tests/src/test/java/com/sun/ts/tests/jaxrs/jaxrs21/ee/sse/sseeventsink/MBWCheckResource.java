@@ -76,9 +76,10 @@ public class MBWCheckResource {
     }
   }
 
-  @GET
-  @Path("datasource")
-  @Produces(MediaType.SERVER_SENT_EVENTS)
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @GET
+//  @Path("datasource")
+//  @Produces(MediaType.SERVER_SENT_EVENTS)
   public void sendDatasource(@Context SseEventSink sink, @Context Sse sse) {
     try (SseEventSink s = sink) {
       s.send(sse.newEventBuilder()

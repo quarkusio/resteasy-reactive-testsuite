@@ -132,16 +132,18 @@ public class Resource {
     return buildResponse(text);
   }
 
-  @GET
-  @Path("getdatasource")
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @GET
+//  @Path("getdatasource")
   public Response getDataSource() {
     StringDataSource source = new StringDataSource(getName(),
         MediaType.WILDCARD_TYPE);
     return buildResponse((DataSource) source);
   }
 
-  @POST
-  @Path("postdatasource")
+  // QUARKUS: disabled as we don't support javax.activation.DataSource
+//  @POST
+//  @Path("postdatasource")
   public Response postDataSource(DataSource source) throws IOException {
     InputStream stream = source.getInputStream();
     String text = JaxrsUtil.readFromStream(stream);

@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.provider.standardnotnull;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -325,6 +328,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void clientDataSourceProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));

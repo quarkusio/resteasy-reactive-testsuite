@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.provider.standard;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -170,7 +173,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
   }
 
   String[] methodsAll = { "bytearray", "string", "inputstream", "file",
-      "datasource", "streamingoutput" };
+      "streamingoutput" };
 
   /* Run test */
 
@@ -272,6 +275,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void dataSourceProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
