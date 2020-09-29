@@ -24,6 +24,8 @@ import java.io.*;
 import java.util.*;
 import java.net.*;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * TestUtil is a final utility class responsible for implementing logging across
@@ -34,6 +36,8 @@ import java.text.SimpleDateFormat;
  *
  */
 public final class TestUtil {
+
+  static Logger log = Logger.getLogger(TestUtil.class.getName());
   public static boolean traceflag = true;
 
   // this can be set in TestUtil's start logging method!!
@@ -756,6 +760,10 @@ public final class TestUtil {
    *          a Throwable whose stacktrace gets printed
    */
   public static void logErr(String s, Throwable e) {
+    log.log(Level.SEVERE, s);
+    if (e != null) {
+      log.log(Level.SEVERE, "Error", e);
+    }
     if (iWhereAreWe == VM_JAVATEST) {
       logHarness(s);
       if (e != null) {
