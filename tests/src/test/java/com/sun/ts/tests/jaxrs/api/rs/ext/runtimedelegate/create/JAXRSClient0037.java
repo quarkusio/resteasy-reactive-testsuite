@@ -31,7 +31,9 @@ import javax.ws.rs.ext.RuntimeDelegate;
 import javax.ws.rs.ext.RuntimeDelegate.HeaderDelegate;
 
 import com.sun.net.httpserver.HttpHandler;
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+import org.junit.jupiter.api.Disabled;
 
 /*
  * @class.setup_props: webServerHost;
@@ -112,6 +114,7 @@ public class JAXRSClient0037 extends JAXRSCommonClient {
    * requested endpoint type is not supported.
    */
   @org.junit.jupiter.api.Test
+  @Disabled(QuarkusRest.Unsupported)
   public void createEndpointThrowsIllegalArgumentExceptionTest() throws Fault {
     try {
       delegate.createEndpoint((Application) null,
