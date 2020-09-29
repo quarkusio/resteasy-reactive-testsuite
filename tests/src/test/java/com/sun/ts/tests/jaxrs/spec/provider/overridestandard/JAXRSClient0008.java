@@ -91,7 +91,7 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
   }
 
   String[] methodsAll = { "bytearray", "string", "inputstream", "reader",
-      "file", "datasource", "source", "jaxb", "streamingoutput" };
+      "file", "datasource", "jaxb", "streamingoutput" };
 
   /**
    * Entry point for different-VM execution. It should delegate to method

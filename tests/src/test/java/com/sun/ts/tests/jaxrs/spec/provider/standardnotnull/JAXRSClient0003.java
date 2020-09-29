@@ -311,6 +311,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void serverDataSourceProviderTest() throws Fault {
     setProperty(Property.SEARCH_STRING, Resource.NOTNULL);
@@ -357,6 +358,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * corresponding Java object that represents zero-length data; they MUST NOT
    * return null.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void serverSourceProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
@@ -375,6 +377,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * for a zero-length response entities returns null or a corresponding Java
    * object that represents zero-length data.
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void clientSourceProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "entity"));

@@ -444,6 +444,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void transformSourceTest() throws Fault {
     mediaTestLevel = 2;

@@ -140,8 +140,9 @@ public class Resource {
     return new StringStreamingOutput(streamingoutput);
   }
 
-  @Path("source")
-  @POST
+  // QUARKUS: disabled as we don't support javax.xml.transform.Source
+//  @Path("source")
+//  @POST
   public Response source(Source source) {
     MediaType media = headers.getMediaType();
     return Response.ok(source).type(media).build();

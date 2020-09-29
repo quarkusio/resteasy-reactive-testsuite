@@ -157,9 +157,10 @@ public class Resource {
     return buildResponse(source, MediaType.TEXT_XML_TYPE);
   }
 
-  @POST
-  @Consumes(MediaType.TEXT_XML)
-  @Path("postsource")
+  // QUARKUS: disabled as we don't support javax.xml.transform.Source
+//  @POST
+//  @Consumes(MediaType.TEXT_XML)
+//  @Path("postsource")
   public Response postSource(Source source) {
     String text = source.getSystemId();
     return buildResponse(text);

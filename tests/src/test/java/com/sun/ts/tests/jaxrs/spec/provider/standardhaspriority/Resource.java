@@ -26,8 +26,9 @@ import javax.xml.transform.Source;
 
 @Path("resource")
 public class Resource {
-  @Path("source")
-  @POST
+  // QUARKUS: disabled as we don't support javax.xml.transform.Source
+//  @Path("source")
+//  @POST
   public Source source(Source source) {
     return source;
   }

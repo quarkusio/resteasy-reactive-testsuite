@@ -85,8 +85,9 @@ public class Resource {
 //    return isNull(jaxb);
 //  }
 
-  @Path("source")
-  @POST
+  // QUARKUS: disabled as we don't support javax.xml.transform.Source
+//  @Path("source")
+//  @POST
   public String source(Source source) {
     return isNull(source);
   }

@@ -33,7 +33,7 @@ public class ProviderWalker {
   public boolean isWritable(Class<?> clazz) {
     if (clazz == Boolean.class || clazz == Character.class
         || clazz == JAXBElement.class || clazz == MultivaluedMap.class
-        || clazz == Number.class || clazz == Source.class)
+        || clazz == Number.class)
       return true;
     return false;
   }

@@ -296,6 +296,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
    * application/*+xml)
    * 
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void sourceProviderTest() throws Fault {
     setPropertyAndInvokeXml("source");
