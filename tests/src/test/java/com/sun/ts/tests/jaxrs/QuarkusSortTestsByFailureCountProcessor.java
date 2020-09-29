@@ -73,7 +73,6 @@ public class QuarkusSortTestsByFailureCountProcessor {
                                 Element el = (Element) testcase;
                                 String name = el.getAttribute("name");
                                 classname = el.getAttribute("classname");
-                                System.err.println("Looking at test for "+classname);
                                 NodeList failures = el.getElementsByTagName("failure");
                                 TestResult testResult = results.computeIfAbsent(classname, v -> new TestResult(v));
                                 for(int j=0;j<failures.getLength();j++) {
