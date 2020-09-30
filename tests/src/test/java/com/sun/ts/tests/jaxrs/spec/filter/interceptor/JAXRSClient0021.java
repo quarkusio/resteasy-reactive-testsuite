@@ -746,6 +746,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * interceptors when mapping representations to Java types and vice versa.
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Xml)
   public void jaxbReaderContainerInterceptorTest() throws Fault {
     addInterceptors(EntityReaderInterceptor.class);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "postjaxb"));
@@ -768,6 +769,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * interceptors when mapping representations to Java types and vice versa.
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Xml)
   public void jaxbReaderNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "postjaxb"));
     setRequestContentEntity(getJaxbToken());
@@ -806,6 +808,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * interceptors when mapping representations to Java types and vice versa.
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Xml)
   public void jaxbWriterNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getjaxb"));
     setProperty(Property.SEARCH_STRING, Resource.getName());
