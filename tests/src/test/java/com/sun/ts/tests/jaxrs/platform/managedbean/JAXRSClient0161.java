@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.platform.managedbean;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -31,6 +32,7 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     webServerPort;
  *                     ts_home;
  */
+@Disabled("Nobody cares about @ManagedBean")
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0161 extends JAXRSCommonClient {
 
