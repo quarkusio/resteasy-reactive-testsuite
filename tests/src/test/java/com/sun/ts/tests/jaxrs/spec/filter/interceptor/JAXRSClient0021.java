@@ -727,6 +727,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * interceptors when mapping representations to Java types and vice versa.
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported)
   public void sourceWriterNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getsource"));
     setProperty(Property.SEARCH_STRING, Resource.getName());
