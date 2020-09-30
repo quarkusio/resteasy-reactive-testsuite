@@ -476,6 +476,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void jaxbElementTest() throws Fault {
     mediaTestLevel = 3;

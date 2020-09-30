@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -106,6 +109,7 @@ public class JAXRSClient0001 extends JaxrsCommonClient {
    * application-provided over pre-packaged entity providers. i.e. When have the
    * same mediaType
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void readWriteJaxbProviderTest() throws Fault {
     JAXBElement<String> element = new JAXBElement<String>(new QName("jaxb"),

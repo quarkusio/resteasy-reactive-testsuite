@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -35,6 +38,7 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
+@Disabled(QuarkusRest.Unsupported_Xml)
 public class JAXRSClient0002 extends JAXRSCommonClient {
 
     @RegisterExtension

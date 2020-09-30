@@ -296,7 +296,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
    * application/*+xml)
    * 
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void sourceProviderTest() throws Fault {
     setPropertyAndInvokeXml("source");
@@ -314,6 +314,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
    * javax.xml.bind.JAXBElement and application-supplied JAXB classes XML media
    * types (text/xml, application/xml and application/*+xml)
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void jaxbElementProviderTest() throws Fault {
     setPropertyAndInvokeXml("jaxb");
