@@ -19,11 +19,13 @@ package com.sun.ts.tests.jaxrs.ee.rs.core.uriinfo;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
+import io.quarkus.test.junit.QuarkusTest;
 
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -114,6 +116,7 @@ public class JAXRSClient0134 extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that
    * UriInfo.getQueryParameters(false) works.
    */
+  @Disabled(QuarkusRest.Encoded)
   @Test
   public void queryTest2() throws Fault {
     setProperty(Property.REQUEST,
@@ -199,6 +202,7 @@ public class JAXRSClient0134 extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPath(false) work.
    */
+  @Disabled(QuarkusRest.Encoded)
   @Test
   public void pathTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "path2%20/%2010"));
@@ -249,6 +253,7 @@ public class JAXRSClient0134 extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathSegments(false) work.
    */
+  @Disabled(QuarkusRest.Encoded)
   @Test
   public void pathSegTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathseg2%20/%2010"));
@@ -297,6 +302,7 @@ public class JAXRSClient0134 extends JAXRSCommonClient {
    * @test_Strategy: Client send a request to a resource, which handles the
    * request using UriInfo. Verify that UriInfo.getPathParameters(false) work.
    */
+  @Disabled(QuarkusRest.Encoded)
   @Test
   public void pathParamTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "pathparam2/%20/%2010"));
@@ -385,6 +391,7 @@ public class JAXRSClient0134 extends JAXRSCommonClient {
    * which handles the request using UriInfo. Verify that getMatchedURIs(false)
    * work.
    */
+  @Disabled(QuarkusRest.Encoded)
   @Test
   public void getMatchedURIsTest2() throws Fault {
     setProperty(Property.REQUEST, buildRequest(GET, "uri2"));
