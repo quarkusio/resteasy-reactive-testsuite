@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.container.ResourceContext;
 import javax.ws.rs.core.Application;
@@ -32,6 +33,7 @@ import javax.ws.rs.ext.Providers;
 
 import com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler;
 
+@ApplicationScoped //added to get the quarkus deployment to work
 public class TSAppConfig extends Application {
 
   @Context
