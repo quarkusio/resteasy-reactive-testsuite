@@ -126,19 +126,21 @@ public class Resource {
     return datasource;
   }
 
-  @Path("streamingoutput")
-  @POST
-  public StreamingOutput streamingoutput(String streamingoutput) {
-    return new StringStreamingOutput(streamingoutput);
-  }
+  // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+//  @Path("streamingoutput")
+//  @POST
+//  public StreamingOutput streamingoutput(String streamingoutput) {
+//    return new StringStreamingOutput(streamingoutput);
+//  }
 
-  @Path("streamingoutputsvg")
-  @Produces(MediaType.APPLICATION_SVG_XML)
-  @Consumes(MediaType.APPLICATION_SVG_XML)
-  @POST
-  public StreamingOutput datasourcesvg(String streamingoutput) {
-    return new StringStreamingOutput(streamingoutput);
-  }
+  // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+//  @Path("streamingoutputsvg")
+//  @Produces(MediaType.APPLICATION_SVG_XML)
+//  @Consumes(MediaType.APPLICATION_SVG_XML)
+//  @POST
+//  public StreamingOutput datasourcesvg(String streamingoutput) {
+//    return new StringStreamingOutput(streamingoutput);
+//  }
 
   // QUARKUS: disabled as we don't support javax.xml.transform.Source
 //  @Path("source")

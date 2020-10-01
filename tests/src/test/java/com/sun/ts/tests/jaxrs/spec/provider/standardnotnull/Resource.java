@@ -98,11 +98,12 @@ public class Resource {
     return isNull(map);
   }
 
-  @Path("streamingoutput")
-  @POST
-  public StreamingOutput streamingoutput(String streamingoutput) {
-    return new StringStreamingOutput(streamingoutput);
-  }
+  // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+//  @Path("streamingoutput")
+//  @POST
+//  public StreamingOutput streamingoutput(String streamingoutput) {
+//    return new StringStreamingOutput(streamingoutput);
+//  }
 
   @Path("character")
   @POST

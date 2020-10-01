@@ -90,11 +90,12 @@ public class Resource {
     return map;
   }
 
-  @Path("streamingoutput")
-  @POST
-  public StreamingOutput streamingoutput(StreamingOutput streamingoutput) {
-    return streamingoutput;
-  }
+  // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+//  @Path("streamingoutput")
+//  @POST
+//  public StreamingOutput streamingoutput(StreamingOutput streamingoutput) {
+//    return streamingoutput;
+//  }
 
   @Path("character")
   @POST

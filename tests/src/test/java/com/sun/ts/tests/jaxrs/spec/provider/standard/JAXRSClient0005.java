@@ -330,6 +330,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
+  @Disabled(QuarkusRest.Unsupported_Streaming_Output)
   @Test
   public void streamingOutputProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))

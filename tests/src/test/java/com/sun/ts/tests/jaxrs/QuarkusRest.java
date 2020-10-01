@@ -12,5 +12,6 @@ public class QuarkusRest {
     public static final String Unsupported = "Won't be supported in Quarkus-REST";
     public static final String Unsupported_Xml = "XML is not supported yet";
     public static final String RESTEasyFailed = "Did not pass for RESTEasy";
+    public static final String Unsupported_Streaming_Output = "StreamingOutput is not supported";
 
 }

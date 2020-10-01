@@ -496,6 +496,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * WebApplicationException with a client error response (HTTP 400) for
    * zero-length request entities.
    */
+  @Disabled(QuarkusRest.Unsupported_Streaming_Output)
   @Test
   public void serverStreamingOutputProviderTest() throws Fault {
     String content = "StreamingOutput";

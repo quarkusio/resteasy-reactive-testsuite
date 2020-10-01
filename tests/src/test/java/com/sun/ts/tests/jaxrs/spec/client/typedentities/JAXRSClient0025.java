@@ -473,6 +473,7 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
+  @Disabled(QuarkusRest.Unsupported_Streaming_Output)
   @Test
   public void clientStreamingOutputWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
