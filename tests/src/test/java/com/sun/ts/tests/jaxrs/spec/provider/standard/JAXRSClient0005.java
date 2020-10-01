@@ -333,8 +333,8 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
   @Test
   public void streamingOutputProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))
-      setEntityAndPropertyAndInvoke(methodsAll[5], media); // All media
-    setPropertyAndInvoke(methodsAll[5] + "svg"); // just the one
+      setEntityAndPropertyAndInvoke(methodsAll[4], media); // All media
+    setPropertyAndInvoke(methodsAll[4] + "svg"); // just the one
   }
   /*
    * JAXRS:SPEC:36
