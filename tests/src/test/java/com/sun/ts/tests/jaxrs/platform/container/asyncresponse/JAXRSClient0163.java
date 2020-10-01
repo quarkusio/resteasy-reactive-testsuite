@@ -436,7 +436,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * return true.
    */
   @Test
-  @Disabled(QuarkusRest.Hangs)
   public void isDoneWhenTimedOutTest() throws Fault {
     setTimeoutTest();
     Future<Response> is = invokeRequest("isdone?stage=1");
@@ -615,7 +614,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * The exception MUST be processed as described in section 3.3.4.
    */
   @Test
-  @Disabled(QuarkusRest.Hangs)
   public void setTimeoutTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -645,7 +643,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * The exception MUST be processed as described in section 3.3.4.
    */
   @Test
-  @Disabled(QuarkusRest.Hangs)
   public void updateTimeoutTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -678,7 +675,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * an exception.
    */
   @Test
-  @Disabled(QuarkusRest.Hangs)
   public void handleTimeOutWaitsForeverTest() throws Fault {
     String responseMsg = "handleTimeOutWaitsForeverTest";
     invokeClear();
@@ -701,7 +697,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * Set/replace a time-out handler for the suspended asynchronous response.
    */
   @Test
-  @Disabled(QuarkusRest.Hangs)
   public void handleTimeoutCancelsTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
@@ -728,7 +723,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
    * an exception.
    */
   @Test
-  @Disabled(QuarkusRest.Hangs)
   public void handleTimeoutResumesTest() throws Fault {
     invokeClear();
     Future<Response> suspend = invokeRequest("suspend");
