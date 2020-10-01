@@ -26,7 +26,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -371,6 +370,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * @test_Strategy:
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported)
   public void readerTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {
       try {
@@ -501,6 +501,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * @test_Strategy:
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Xml)
   public void xmlTest() throws Fault {
     mediaTestLevel = 2;
     BiPredicate<Object, Object> p = (a, b) -> ((JaxbKeyValueBean) b).getValue().equals(a);
