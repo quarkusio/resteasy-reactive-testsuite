@@ -36,7 +36,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritable
  *                     ts_home;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
 public class JAXRSProvidersClient0098
     extends com.sun.ts.tests.jaxrs.ee.rs.core.application.JAXRSClient0128 {
 

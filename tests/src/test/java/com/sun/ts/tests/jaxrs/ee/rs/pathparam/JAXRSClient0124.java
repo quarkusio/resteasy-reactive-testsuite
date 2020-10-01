@@ -220,7 +220,7 @@ public class JAXRSClient0124 extends JaxrsParamClient0151 {
    * using PathParam PathSegment.
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void test7() throws Fault {
     String[] headers = { "matrix=/a;boolean1=false;boolean2=true",
         "matrix=/a;boolean2=true;boolean1=false" };

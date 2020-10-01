@@ -451,7 +451,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * zero-length request entities.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void serverJaxbProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
         buildContentType(MediaType.APPLICATION_XML_TYPE));

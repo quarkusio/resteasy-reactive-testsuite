@@ -102,7 +102,7 @@ public class JAXRSClient0023 extends JaxrsCommonClient {
    * order for those filters or interceptors to be globally bound
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void globalBoundResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "nobind"));
     setProperty(Property.CONTENT, "0");

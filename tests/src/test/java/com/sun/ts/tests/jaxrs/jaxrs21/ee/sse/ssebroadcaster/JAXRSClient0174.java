@@ -116,7 +116,7 @@ public class JAXRSClient0174 extends SSEJAXRSClient0177 {
    * @test_Strategy:
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void sseBroadcastTest() throws Fault {
     int MSG_MAX = 7;
     int wait = 25;

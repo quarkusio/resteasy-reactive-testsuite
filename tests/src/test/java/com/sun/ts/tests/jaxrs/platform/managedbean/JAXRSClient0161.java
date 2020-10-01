@@ -98,7 +98,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * check postconstruct has been called (managed been property)
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void postConstructOnProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "providervalue"));
     setProperty(SEARCH_STRING, "1000");
@@ -116,7 +116,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * check postconstruct has been called (managed been property)
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void postConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "applicationvalue"));
@@ -136,7 +136,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * intercepted (managed bean property)
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void interceptorOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "interceptedresourcevalue"));
@@ -155,7 +155,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * try JNDI lookup
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void rootResourceManagedBeanJndiLookupTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "lookup"));
     setProperty(SEARCH_STRING, "1000");
@@ -176,7 +176,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * @PostConstruct annotated method
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void injectPriorPostConstructOnRootResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorroot"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -197,7 +197,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * @PostConstruct annotated method
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void injectPriorPostConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorapp"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -218,7 +218,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * @PostConstruct annotated method
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void injectPriorPostConstructOnProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorprovider"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));

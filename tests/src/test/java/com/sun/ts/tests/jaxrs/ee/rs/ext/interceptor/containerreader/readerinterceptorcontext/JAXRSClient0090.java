@@ -101,7 +101,7 @@ public class JAXRSClient0090 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getHeadersOperationOnlyTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETHEADERS);
     setProperty(Property.SEARCH_STRING_IGNORE_CASE,
@@ -120,7 +120,7 @@ public class JAXRSClient0090 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getHeadersHeadersSetTest() throws Fault {
     Property p = Property.UNORDERED_SEARCH_STRING;
     setOperationAndEntity(ContextOperation.GETHEADERS);
@@ -144,7 +144,7 @@ public class JAXRSClient0090 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getHeadersIsMutableTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETHEADERSISMUTABLE);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.PROPERTY);
@@ -161,7 +161,7 @@ public class JAXRSClient0090 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getInputStreamTest() throws Fault {
     String entity = "getInputStreamEntity";
     setOperationAndEntity(ContextOperation.GETINPUTSTREAM);
@@ -183,7 +183,7 @@ public class JAXRSClient0090 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void proceedThrowsIOExceptionTest() throws Fault {
     setOperationAndEntity(ContextOperation.PROCEEDTHROWSIOEXCEPTION);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.IOE);
@@ -203,7 +203,7 @@ public class JAXRSClient0090 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void proceedThrowsWebApplicationExceptionTest() throws Fault {
     setOperationAndEntity(ContextOperation.PROCEEDTHROWSWEBAPPEXCEPTION);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.WAE);
@@ -220,7 +220,7 @@ public class JAXRSClient0090 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setInputStreamTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETINPUTSTREAM);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY2);

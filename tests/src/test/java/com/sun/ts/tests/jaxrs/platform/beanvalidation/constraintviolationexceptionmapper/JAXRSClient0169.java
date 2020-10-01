@@ -100,7 +100,7 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void beanIsInvalidForBeingFiveCharsLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "notshortnorfive"));
@@ -120,7 +120,7 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void returnIsInvalidForBeingFiveCharsLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "returnnotshortnorfive"));
@@ -141,7 +141,7 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void beanAnnotatedIsInvalidForBeingFiveCharsLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "directannotatedarg"));
@@ -162,7 +162,7 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void beanAnnotatedReturnIsInvalidForBeingFiveCharsLongTest()
       throws Fault {
     setProperty(Property.REQUEST,
@@ -203,7 +203,7 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void constraintDefinitionExceptionThrownTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "definition/constraintdefinitionexception"));
@@ -226,7 +226,7 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
    * Due to validation of whole bean status 400 is returned
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void validateExecutableIsInvalidForBeingShortTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "executable/nogetter"));

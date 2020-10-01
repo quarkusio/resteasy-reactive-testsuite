@@ -95,7 +95,7 @@ public class JAXRSClient0158 extends JAXRSCommonClient {
    * check application subclass is CDI managed bean
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void applicationCDIManagedBeanTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "app"));
     setProperty(SEARCH_STRING, "1000");
@@ -134,7 +134,7 @@ public class JAXRSClient0158 extends JAXRSCommonClient {
    * @PostConstruct annotated method
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void jaxrsInjectPriorPostConstructOnRootResourceTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorroot"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -155,7 +155,7 @@ public class JAXRSClient0158 extends JAXRSCommonClient {
    * @PostConstruct annotated method
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void jaxrsInjectPriorPostConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorapp"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));
@@ -176,7 +176,7 @@ public class JAXRSClient0158 extends JAXRSCommonClient {
    * @PostConstruct annotated method
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void jaxrsInjectPriorPostConstructOnProviderTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorprovider"));
     setProperty(Property.SEARCH_STRING, String.valueOf(true));

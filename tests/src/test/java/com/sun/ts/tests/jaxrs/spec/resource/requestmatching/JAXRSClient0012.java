@@ -427,7 +427,7 @@ public class JAXRSClient0012 extends JAXRSCommonClient {
    * additional support for HEAD and OPTIONS described in section 3.3.5.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void optionsOnSubResourceTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.OPTIONS, "resource/subresource/something"));

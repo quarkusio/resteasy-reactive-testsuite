@@ -81,7 +81,7 @@ public class JAXRSClient0121 extends JaxrsCommonClient {
    * stream.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getEntityStreamTest() throws Fault {
     final String entityStreamWorks = "ENTITY_STREAM_WORKS";
     ContextProvider provider = new ContextProvider() {
@@ -113,7 +113,7 @@ public class JAXRSClient0121 extends JaxrsCommonClient {
    * @test_Strategy: Get the generic entity type information.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getHeadersIsMutableTest() throws Fault {
     ContextProvider provider = new ContextProvider() {
       @Override
@@ -143,7 +143,7 @@ public class JAXRSClient0121 extends JaxrsCommonClient {
    * @test_Strategy: Set the request method.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setMethodTest() throws Fault {
     String entity = "ENTITY";
     ContextProvider provider = new ContextProvider() {
@@ -171,7 +171,7 @@ public class JAXRSClient0121 extends JaxrsCommonClient {
    * @test_Strategy: Set a new request URI. Get the request URI.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setUriTest() throws Fault {
     String entity = "ENTITY";
     ContextProvider provider = new ContextProvider() {

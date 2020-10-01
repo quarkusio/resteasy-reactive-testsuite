@@ -196,7 +196,7 @@ public class JAXRSLocatorClient0145 extends JAXRSClient0146 {
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void formParamEntityWithEncodedTest() throws Fault {
     _contextRoot += "encoded";
     super.paramEntityWithEncodedTest();

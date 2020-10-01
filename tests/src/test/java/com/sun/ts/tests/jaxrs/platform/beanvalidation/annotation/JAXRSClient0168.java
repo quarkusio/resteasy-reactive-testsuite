@@ -97,7 +97,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void beanIsValidTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "notshortnorfive"));
@@ -152,7 +152,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void returnIsValidTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "notshortnorfive"));
@@ -226,7 +226,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void beanAnnotatedIsValidTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "directannotatedarg"));
@@ -263,7 +263,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void beanAnnotatedIsValidEvenBeingOneCharLongTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "directannotatedarg"));
@@ -399,7 +399,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    */
   // QUARKUS: I don't understand this one
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void validateExecutableIsInvalidForBeingShortTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "executable/nogetter"));
@@ -423,7 +423,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    */
   // QUARKUS: I don't understand this one
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void validateExecutableIsNotValidatedTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "executable/getter"));

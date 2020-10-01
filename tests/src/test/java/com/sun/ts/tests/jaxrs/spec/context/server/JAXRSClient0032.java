@@ -84,7 +84,7 @@ public class JAXRSClient0032 extends JaxrsCommonClient {
    * the @Context annotation.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void serverWriterInjectionTest() throws Fault {
     setRequestContentEntity("");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "writer"));
@@ -105,7 +105,7 @@ public class JAXRSClient0032 extends JaxrsCommonClient {
    * the @Context annotation.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void serverReaderInjectionTest() throws Fault {
     setRequestContentEntity("");
     setProperty(Property.REQUEST, buildRequest(Request.POST, "reader"));
@@ -126,7 +126,7 @@ public class JAXRSClient0032 extends JaxrsCommonClient {
    * the @Context annotation.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void resourceInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "instance"));
     invoke();
@@ -146,7 +146,7 @@ public class JAXRSClient0032 extends JaxrsCommonClient {
    * the @Context annotation.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void applicationInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "application"));
     invoke();
@@ -166,7 +166,7 @@ public class JAXRSClient0032 extends JaxrsCommonClient {
    * the @Context annotation.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void methodArgumentsInjectionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "method"));
     invoke();

@@ -83,7 +83,7 @@ public class JAXRSClient0009 extends JAXRSCommonClient {
    * media type that is not supported by that provider.
    */
   @Test
-  @org.junit.jupiter.api.Disabled("Did not pass for RESTEasy")
+  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void noEntityProviderTest() throws Fault {
     enableAppJava(false);
     String ct = buildContentType(AbstractReader.NO_PROVIDER_MEDIATYPE);
