@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.ee.rs.constrainedto;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -143,6 +146,7 @@ public class JAXRSClient0140 extends JaxrsCommonClient {
    */
   // QUARKUS: This is a weird case as we automatically register the providers for the client as well
   // while RESTEasy for example does not
+  @Disabled(QuarkusRest.Underspecified)
   @Test
   public void clientSideWriterIsNotUsedOnServerTest() throws Fault {
     setPrintEntity(true);
