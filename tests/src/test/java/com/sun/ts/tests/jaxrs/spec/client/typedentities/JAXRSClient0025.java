@@ -124,6 +124,9 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * 
    * @test_Strategy: JAX-RS implementations are REQUIRED to use entity providers
    */
+  // RESTEasy passes this test because org.jboss.resteasy.plugins.providers.DefaultTextPlain uses valueOf / constructor in order to read the object
+  // however the spec doesn't mention this way at all
+  @Disabled(QuarkusRest.Underspecified)
   @Test
   public void clientAnyWriterUsageTest() throws Fault {
     ReadableWritableEntity entity = new ReadableWritableEntity(
