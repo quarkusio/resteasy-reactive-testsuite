@@ -8,6 +8,7 @@ public class QuarkusRest {
 
     // nothing hangs anymore YAY!
 //    public static final String Hangs = "Quarkus-REST hangs";
+    public static final String Nuts = "It makes no sense to be something like this even exists...";
     public static final String Encoded = "@Encoded not supported yet";
     public static final String Underspecified = "Not supported in Quarkus-REST because the spec isn't clear about it";
     public static final String Unsupported = "Won't be supported in Quarkus-REST";

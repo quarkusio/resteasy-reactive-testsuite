@@ -17,9 +17,12 @@
 package com.sun.ts.tests.jaxrs.ee.rs.pathparam;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -190,6 +193,7 @@ public class JAXRSClient0124 extends JaxrsParamClient0151 {
    * /PathParamTest; Verify that right Method is invoked using PathParam
    * primitive type List<String>.
    */
+  @Disabled(QuarkusRest.Nuts)
   @org.junit.jupiter.api.Test
   public void test6() throws Fault {
     String[] headers = { "list=abcdef", "list=fedcba" };
