@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.ee.rs.pathparam.sub;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -159,6 +162,7 @@ public class JAXRSSubClient0122
    * List<String>.
    */
   @org.junit.jupiter.api.Test
+  @Disabled(QuarkusRest.Nuts)
   public void test6() throws Fault {
     super.test6();
   }
