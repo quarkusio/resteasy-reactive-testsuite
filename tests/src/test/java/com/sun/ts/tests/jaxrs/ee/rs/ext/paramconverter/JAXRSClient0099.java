@@ -139,6 +139,7 @@ public class JAXRSClient0099 extends JaxrsCommonClient {
    * @test_Strategy: Providers implementing ParamConverterProvider contract must
    * be either programmatically registered in a JAX-RS runtime
    */
+  @Disabled(QuarkusRest.Underspecified) // nowhere in the spec does it mention that AtomicInteger acts like ParamConverter.Lazy
   @Test
   public void atomicIntegerIsLazyDeployableAndThrowsErrorTest() throws Fault {
     setPropertyRequest(Request.GET, "aiquery");
