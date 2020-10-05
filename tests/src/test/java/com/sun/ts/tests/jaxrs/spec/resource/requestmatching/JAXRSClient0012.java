@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.spec.resource.requestmatching;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -28,6 +29,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -519,6 +521,7 @@ public class JAXRSClient0012 extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void consumesOnResourceLocatorTest() throws Fault {
     setProperty(Property.REQUEST,
@@ -565,6 +568,7 @@ public class JAXRSClient0012 extends JAXRSCommonClient {
    * status) and no entity. The exception MUST be processed as described in
    * Section 3.3.4.
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void consumesOnSubResourceLocatorTest() throws Fault {
     String request = buildRequest(Request.POST,
@@ -913,6 +917,7 @@ public class JAXRSClient0012 extends JAXRSCommonClient {
    * server preference is only examined when multiple media types are accepted
    * by a client with the same q-value.
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void producesOverridesDescendantSubResourcePathValueWeightTest()
       throws Fault {
