@@ -32,6 +32,7 @@ import java.util.TimeZone;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
@@ -299,6 +300,7 @@ public class JAXRSClient0138 extends JaxrsCommonClient {
    * Throws IOException.
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported)
   public void getEntityStreamTest() throws Fault {
     String entity = "EnTiTyStReAmTeSt";
     setProperty(Property.CONTENT, entity);
