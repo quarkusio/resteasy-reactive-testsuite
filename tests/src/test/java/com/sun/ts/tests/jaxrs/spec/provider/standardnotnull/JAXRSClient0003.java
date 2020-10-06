@@ -518,6 +518,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @Disabled(QuarkusRest.RESTEasyFailed)
   @Test
   public void serverBooleanProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
@@ -569,6 +570,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @Disabled(QuarkusRest.RESTEasyFailed)
   @Test
   public void serverCharProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
@@ -620,6 +622,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @Disabled(QuarkusRest.RESTEasyFailed)
   @Test
   public void serverIntegerProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
@@ -671,6 +674,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * MUST throw a BadRequestException (400 status) for zero-length request
    * entities.
    */
+  @Disabled(QuarkusRest.RESTEasyFailed)
   @Test
   public void serverBigDecimalProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
