@@ -225,7 +225,6 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * endpoint.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void connectionLostForDefault500msTest() throws Fault {
     resetUnavailableServer();
 
@@ -546,7 +545,6 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * twice, once without response, once after reconnect timeout with a response
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void connectionLostFor1500msTest() throws Fault {
     resetUnavailableServer();
 

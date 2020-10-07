@@ -63,7 +63,6 @@ public class JAXRSClient0000 extends JAXRSCommonClient {
    * Verify that correct resource method invoked through use of URI Template
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void Test1() throws Fault {
     setProperty(REQUEST,
         "GET " + "/TemplateTest/xyz HTTP/1.1");

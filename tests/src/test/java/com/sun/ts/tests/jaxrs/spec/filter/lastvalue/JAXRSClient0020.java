@@ -93,7 +93,6 @@ public class JAXRSClient0020 extends JaxrsCommonClient {
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readerContextOnContainerTest() throws Fault {
     addInterceptors(FirstReaderInterceptor.class);
     setProperty(Property.REQUEST, buildRequest(Request.POST, "postlist"));
@@ -155,7 +154,6 @@ public class JAXRSClient0020 extends JaxrsCommonClient {
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void writerContextOnContainerTest() throws Fault {
     addInterceptors(FirstWriterInterceptor.class);
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getlist"));
@@ -179,7 +177,6 @@ public class JAXRSClient0020 extends JaxrsCommonClient {
    * MessageBodyReader.readFrom and MessageBodyWrite.writeTo.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void writerContextOnClientTest() throws Fault {
     addProvider(FirstReaderInterceptor.class);
     addProvider(SecondReaderInterceptor.class);

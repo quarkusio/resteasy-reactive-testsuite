@@ -113,7 +113,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getAnnotationsTest() throws Fault {
     Method m;
     try {
@@ -144,7 +143,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getGenericTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETGENERICTYPE);
     setProperty(Property.SEARCH_STRING, String.class.getName());
@@ -161,7 +159,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getMediaTypeTest() throws Fault {
     Entity<String> entity = Entity.entity(TemplateInterceptorBody.ENTITY,
         MediaType.APPLICATION_JSON_TYPE);
@@ -181,7 +178,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getPropertyIsNullTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETPROPERTY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -200,7 +196,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getPropertyNamesTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETPROPERTYNAMES);
     for (int i = 0; i != 5; i++)
@@ -221,7 +216,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getPropertyNamesIsReadOnlyTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETPROPERTYNAMESISREADONLY);
     setProperty(Property.UNORDERED_SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -239,7 +233,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void getTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.GETTYPE);
     setProperty(Property.SEARCH_STRING, String.class.getName());
@@ -259,7 +252,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void removePropertyTest() throws Fault {
     setOperationAndEntity(ContextOperation.REMOVEPROPERTY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -277,7 +269,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setAnnotationsTest() throws Fault {
     Annotation[] annotations = WriterInterceptorOne.class.getAnnotations();
     setOperationAndEntity(ContextOperation.SETANNOTATIONS);
@@ -299,7 +290,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setAnnotationsNullThrowsNPETest() throws Fault {
     setOperationAndEntity(ContextOperation.SETANNOTATIONSNULL);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NPE);
@@ -316,7 +306,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setGenericTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETGENERICTYPE);
     setProperty(Property.SEARCH_STRING, "[B");
@@ -333,7 +322,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setMediaTypeTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETMEDIATYPE);
     setProperty(Property.SEARCH_STRING, MediaType.APPLICATION_FORM_URLENCODED);
@@ -353,7 +341,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setPropertyTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETPROPERTY);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY2);
@@ -371,7 +358,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setPropertyNullTest() throws Fault {
     setOperationAndEntity(ContextOperation.SETPROPERTYNULL);
     setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.NULL);
@@ -388,7 +374,6 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
    * ReaderInterceptor.aroundReadFrom
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void setTypeTest() throws Fault {
     ByteArrayInputStream bais = new ByteArrayInputStream(
         TemplateInterceptorBody.ENTITY.getBytes());

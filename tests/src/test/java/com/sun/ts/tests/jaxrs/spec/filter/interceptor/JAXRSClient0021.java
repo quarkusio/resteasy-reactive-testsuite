@@ -331,7 +331,6 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * interceptors when mapping representations to Java types and vice versa.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void inputStreamReaderNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "postinputstream"));

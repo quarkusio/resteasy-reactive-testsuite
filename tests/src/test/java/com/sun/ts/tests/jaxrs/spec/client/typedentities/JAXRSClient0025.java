@@ -101,7 +101,6 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to use entity providers
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void clientAnyReaderUsageTest() throws Fault {
     addProvider(new EntityMessageReader());
     setProperty(Property.REQUEST, buildRequest(Request.GET, "readerprovider"));

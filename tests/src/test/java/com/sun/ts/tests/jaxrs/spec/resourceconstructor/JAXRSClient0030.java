@@ -35,7 +35,6 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  */
 
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
 public class JAXRSClient0030 extends JaxrsCommonClient {
 
     @RegisterExtension

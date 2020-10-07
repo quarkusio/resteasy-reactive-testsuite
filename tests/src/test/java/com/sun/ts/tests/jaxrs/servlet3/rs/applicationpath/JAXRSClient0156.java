@@ -78,7 +78,6 @@ public class JAXRSClient0156 extends JAXRSCommonClient {
    * '%' character.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void applicationPathAnnotationEncodedTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.GET, "ApplicationPath!/Resource"));

@@ -85,7 +85,6 @@ public class JAXRSClient0130 extends JaxrsCommonClient {
    * @test_Strategy: Set the message entity content encoding.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void entityObjectTest() throws Fault {
     Date date = Calendar.getInstance().getTime();
     String entity = DateContainerReaderWriter.dateToString(date);

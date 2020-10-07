@@ -60,7 +60,6 @@ public class JAXRSBasicClient0126
    * @test_Strategy: Send no authorization, make sure of 401 response
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void noAuthorizationTest() throws Fault {
     super.noAuthorizationTest();
   }
@@ -74,7 +73,6 @@ public class JAXRSBasicClient0126
    * @test_Strategy: Send basic authorization, check security context
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void basicAuthorizationAdminTest() throws Fault {
     setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
     setProperty(Property.BASIC_AUTH_USER, user);
@@ -95,7 +93,6 @@ public class JAXRSBasicClient0126
    * @test_Strategy: Send basic authorization, check security context
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void basicAuthorizationIncorrectUserTest() throws Fault {
     setProperty(Property.STATUS_CODE,
         getStatusCode(Response.Status.UNAUTHORIZED));
@@ -112,7 +109,6 @@ public class JAXRSBasicClient0126
    * @test_Strategy: Send basic authorization, check security context
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void basicAuthorizationIncorrectPasswordTest() throws Fault {
     setProperty(Property.STATUS_CODE,
         getStatusCode(Response.Status.UNAUTHORIZED));
@@ -131,7 +127,6 @@ public class JAXRSBasicClient0126
    * context
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void basicAuthorizationStandardUserTest() throws Fault {
     setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
     setProperty(Property.BASIC_AUTH_USER, authuser);

@@ -112,7 +112,6 @@ public class JAXRSClient0013 extends JAXRSCommonClient {
    * method are ignored. (@Path)
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void incorrectPathOnClassAndRequestTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "post").replace("/resource", "/super"));

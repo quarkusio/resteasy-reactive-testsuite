@@ -108,7 +108,6 @@ public class JAXRSClient0007 extends JAXRSCommonClient {
          * .
          */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void contentTypeTextHmtlGotTextWildCardTest() throws Fault {
     MediaType type = MediaType.TEXT_HTML_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
@@ -135,7 +134,6 @@ public class JAXRSClient0007 extends JAXRSCommonClient {
          * .
          */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void contentTypeTextXmlGotTextWildCardTest() throws Fault {
     MediaType type = MediaType.TEXT_XML_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
@@ -162,7 +160,6 @@ public class JAXRSClient0007 extends JAXRSCommonClient {
          * .
          */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void contentTypeTextPlainGotTextPlainTest() throws Fault {
     MediaType type = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));

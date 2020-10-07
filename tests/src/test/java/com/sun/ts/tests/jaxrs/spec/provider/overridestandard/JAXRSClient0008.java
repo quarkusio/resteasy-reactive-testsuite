@@ -114,7 +114,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteByteArrayProviderTest() throws Fault {
     setPropertyAndInvoke("bytearray", MediaType.APPLICATION_XML_TYPE);
   }
@@ -130,7 +129,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteStringProviderTest() throws Fault {
     setPropertyAndInvoke("string", MediaType.APPLICATION_XML_TYPE);
   }
@@ -146,7 +144,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteInputStreamProviderTest() throws Fault {
     setPropertyAndInvoke("inputstream", MediaType.APPLICATION_XML_TYPE);
   }
@@ -162,7 +159,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteReaderProviderTest() throws Fault {
     setPropertyAndInvoke("reader", MediaType.APPLICATION_XML_TYPE);
   }
@@ -178,7 +174,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteFileProviderTest() throws Fault {
     setPropertyAndInvoke("file", MediaType.APPLICATION_XML_TYPE);
   }
@@ -194,7 +189,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteDataSourceProviderTest() throws Fault {
     setPropertyAndInvoke("datasource", MediaType.APPLICATION_XML_TYPE);
   }
@@ -210,7 +204,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteSourceProviderTest() throws Fault {
     setPropertyAndInvoke("source", MediaType.APPLICATION_XML_TYPE);
   }
@@ -226,7 +219,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteJaxbProviderTest() throws Fault {
     setPropertyAndInvoke("jaxb", MediaType.APPLICATION_XML_TYPE);
   }
@@ -242,7 +234,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteStreamingOutputProviderTest() throws Fault {
     setPropertyAndInvoke("streamingoutput", MediaType.APPLICATION_XML_TYPE);
   }
@@ -258,7 +249,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteMapProviderTest() throws Fault {
     setPropertyAndInvoke("map", MediaType.APPLICATION_FORM_URLENCODED_TYPE);
   }
@@ -274,7 +264,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteBooleanProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "boolean"));
@@ -296,7 +285,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteCharacterProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "character"));
@@ -318,7 +306,6 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void readWriteIntegerProviderTest() throws Fault {
     MediaType mt = MediaType.TEXT_PLAIN_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, "number"));

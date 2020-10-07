@@ -87,7 +87,6 @@ public class JAXRSClient0033 extends JaxrsCommonClient {
    * container supported by the implementation.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void clientWriterTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity(new StringBean("stringbean"));
@@ -113,7 +112,6 @@ public class JAXRSClient0033 extends JaxrsCommonClient {
    * container supported by the implementation.
    */
   @Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void clientReaderTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity("stringbean");

@@ -1709,7 +1709,6 @@ public class JAXRSClient0064 extends JAXRSCommonClient {
    * IllegalArgumentException is thrown when query cannot be parsed.
    */
   @org.junit.jupiter.api.Test
-  @org.junit.jupiter.api.Disabled(com.sun.ts.tests.jaxrs.QuarkusRest.RESTEasyFailed)
   public void replaceQueryTest4() throws Fault {
     String value = "http://localhost:8080?name1=x&name2=%20&name3=x+y&name4=x%20y";
 
