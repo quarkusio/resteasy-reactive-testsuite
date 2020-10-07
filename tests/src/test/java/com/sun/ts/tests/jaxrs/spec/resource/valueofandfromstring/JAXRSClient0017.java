@@ -42,6 +42,7 @@ public class JAXRSClient0017 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring.TSAppConfig.class,
                               com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring.Resource.class
                             , com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring.EnumWithFromStringAndValueOf.class
                             , com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring.ParamEntityWithFromStringAndValueOf.class

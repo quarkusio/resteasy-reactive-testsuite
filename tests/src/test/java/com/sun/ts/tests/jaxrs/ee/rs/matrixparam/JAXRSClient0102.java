@@ -47,6 +47,7 @@ public class JAXRSClient0102 extends JaxrsParamClient0151 {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.matrixparam.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class
                             , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
                             , com.sun.ts.tests.jaxrs.ee.rs.matrixparam.MatrixParamTest.class

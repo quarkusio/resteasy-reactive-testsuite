@@ -41,6 +41,7 @@ public class JAXRSLocatorClient0142
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.cookieparam.locator.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.cookieparam.locator.LocatorResource.class
                             , com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class
                             , com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest.class

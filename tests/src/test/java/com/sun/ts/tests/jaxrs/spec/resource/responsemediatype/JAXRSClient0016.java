@@ -47,6 +47,7 @@ public class JAXRSClient0016 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.resource.responsemediatype.TSAppConfig.class,
                               com.sun.ts.tests.jaxrs.spec.resource.responsemediatype.MediaResource.class
                             , com.sun.ts.tests.jaxrs.spec.resource.responsemediatype.ErrorResource.class
                             , com.sun.ts.tests.jaxrs.spec.resource.responsemediatype.NoMediaResource.class

@@ -42,6 +42,7 @@ public class JAXRSClient0148 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.delete.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.delete.HttpMethodDeleteTest.class
                             );
                 }

@@ -45,6 +45,7 @@ public class JAXRSClient0004 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper.WebAppExceptionMapper.class
                             , com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper.ExceptionFromMappedException.class
                             , com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper.ClientErrorExceptionMapper.class

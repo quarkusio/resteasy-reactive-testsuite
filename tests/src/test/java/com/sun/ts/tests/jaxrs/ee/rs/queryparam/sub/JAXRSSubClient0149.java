@@ -44,6 +44,7 @@ public class JAXRSSubClient0149
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.queryparam.sub.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class
                             , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class

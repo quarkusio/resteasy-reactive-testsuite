@@ -57,6 +57,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsink.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsink.StageCheckerResource.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsink.CloseResource.class

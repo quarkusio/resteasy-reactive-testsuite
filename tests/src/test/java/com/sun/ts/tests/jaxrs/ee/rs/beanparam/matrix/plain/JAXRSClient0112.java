@@ -48,6 +48,7 @@ public class JAXRSClient0112 extends BeanParamCommonClient0117 {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.beanparam.matrix.plain.AppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.beanparam.matrix.bean.MatrixBeanParamEntity.class
                             , com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class

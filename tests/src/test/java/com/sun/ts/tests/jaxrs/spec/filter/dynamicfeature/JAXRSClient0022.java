@@ -45,6 +45,7 @@ public class JAXRSClient0022 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AbstractAddFilter.class
                             , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
                             , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddDynamicFeature.class

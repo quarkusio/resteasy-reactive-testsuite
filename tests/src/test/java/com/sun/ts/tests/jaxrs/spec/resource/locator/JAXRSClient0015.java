@@ -42,6 +42,7 @@ public class JAXRSClient0015 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.resource.locator.TSAppConfig.class,
                               com.sun.ts.tests.jaxrs.spec.resource.locator.EntityWriter.class
                             , com.sun.ts.tests.jaxrs.spec.resource.locator.Resource.class
                             , com.sun.ts.tests.jaxrs.spec.resource.locator.LocatorEntity.class

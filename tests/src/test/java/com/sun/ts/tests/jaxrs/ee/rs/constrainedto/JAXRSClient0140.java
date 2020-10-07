@@ -59,6 +59,7 @@ public class JAXRSClient0140 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.constrainedto.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.constrainedto.ClientSideReader.class
                             , com.sun.ts.tests.jaxrs.ee.rs.constrainedto.ServerSideReader.class
                             , com.sun.ts.tests.jaxrs.ee.rs.constrainedto.Resource.class

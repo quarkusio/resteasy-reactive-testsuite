@@ -41,6 +41,7 @@ public class JAXRSLocatorClient0101
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.matrixparam.locator.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class

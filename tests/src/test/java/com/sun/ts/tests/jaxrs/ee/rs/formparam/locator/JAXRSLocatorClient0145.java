@@ -41,6 +41,7 @@ public class JAXRSLocatorClient0145 extends JAXRSClient0146 {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.LocatorResource.class
                             , com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.MiddleResource.class
                             , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class

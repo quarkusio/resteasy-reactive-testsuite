@@ -42,6 +42,7 @@ public class JAXRSClient0137 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.TemplateFilter.class
                             , com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate.RequestTemplateFilter.class

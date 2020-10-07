@@ -64,6 +64,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.filter.interceptor.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource.class
                             , com.sun.ts.tests.jaxrs.spec.filter.interceptor.EntityReaderInterceptor.class
 //                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class

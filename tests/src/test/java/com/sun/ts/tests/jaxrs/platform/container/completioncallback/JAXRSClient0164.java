@@ -63,6 +63,7 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.platform.container.completioncallback.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.platform.container.completioncallback.CallbackResource.class
                             , com.sun.ts.tests.jaxrs.platform.container.asyncresponse.AsyncResponseBlockingQueue.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class

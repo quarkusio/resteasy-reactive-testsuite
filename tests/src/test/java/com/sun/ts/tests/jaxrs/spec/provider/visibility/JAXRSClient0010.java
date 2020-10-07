@@ -45,6 +45,7 @@ public class JAXRSClient0010 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.spec.provider.visibility.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderClass.class
                             , com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderResolver.class
                             , com.sun.ts.tests.jaxrs.spec.provider.visibility.VisibilityException.class

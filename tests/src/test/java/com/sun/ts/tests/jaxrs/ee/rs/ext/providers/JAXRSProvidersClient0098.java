@@ -47,6 +47,7 @@ public class JAXRSProvidersClient0098
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.ext.providers.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.ext.providers.ProvidersServlet.class
                             ,       com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.exceptionmapper.AnyExceptionExceptionMapper.class

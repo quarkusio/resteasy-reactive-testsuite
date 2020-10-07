@@ -53,6 +53,7 @@ public class JAXRSClient0181
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.async.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.Resource.class
                             , com.sun.ts.tests.jaxrs.common.impl.TRACE.class
                             );

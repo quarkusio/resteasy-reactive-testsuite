@@ -44,6 +44,7 @@ public class JAXRSClient0096 extends WriterClient0097<ContextOperation> {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerwriter.writerinterceptorcontext.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.InterceptorTwoBody.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.InterceptorBodyTwo.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.ReaderClient0036.class

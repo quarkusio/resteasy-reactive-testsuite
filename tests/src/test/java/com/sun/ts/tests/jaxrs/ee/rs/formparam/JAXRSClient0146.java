@@ -46,6 +46,7 @@ public class JAXRSClient0146 extends JaxrsParamClient0151 {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.ee.rs.formparam.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class

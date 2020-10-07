@@ -42,6 +42,7 @@ public class JAXRSClient0178 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
+                            com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TckPriorityException.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperThree.class
                             , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionResource.class
