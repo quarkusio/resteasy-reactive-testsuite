@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.template;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -64,6 +67,7 @@ public class JAXRSClient0000 extends JAXRSCommonClient {
    * Verify that correct resource method invoked through use of URI Template
    */
   @org.junit.jupiter.api.Test
+  @Disabled(QuarkusRest.Underspecified)
   public void Test1() throws Fault {
     setProperty(REQUEST,
         "GET " + "/TemplateTest/xyz HTTP/1.1");
