@@ -51,7 +51,8 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
                             com.sun.ts.tests.jaxrs.platform.beanvalidation.constraintviolationexceptionmapper.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDefinitionValidator.class
+                            com.sun.ts.tests.jaxrs.platform.beanvalidation.constraintviolationexceptionmapper.ConstraintViolationExceptionMapper.class
+                            , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDefinitionValidator.class
                             , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDeclarationAnnotation.class
                             , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.Resource.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
