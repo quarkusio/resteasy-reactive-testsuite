@@ -51,12 +51,12 @@ public class JAXRSClient0099 extends JaxrsCommonClient {
                             com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.StringBeanParamConverter.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.Locator.class
-//                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverter.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverter.class
 //                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.AtomicIntegerLazyParamConverter.class
                             , com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
-//                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverterProvider.class
+                            , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.DataSourceParamConverterProvider.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.Resource.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.StringBeanParamConverterProvider.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter.AtomicIntegerLazyParamConverterProvider.class
