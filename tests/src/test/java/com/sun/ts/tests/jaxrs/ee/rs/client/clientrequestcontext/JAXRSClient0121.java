@@ -33,7 +33,6 @@ import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.core.MultivaluedMap;
 
 import com.sun.ts.lib.util.TestUtil;
-import com.sun.ts.tests.jaxrs.api.client.clientrequestcontext.ContextProvider;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream;
 
@@ -54,8 +53,7 @@ public class JAXRSClient0121 extends JaxrsCommonClient {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
                             com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext.ContextProvider.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext.Resource.class
+                            com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext.Resource.class
                             );
                 }
             });
