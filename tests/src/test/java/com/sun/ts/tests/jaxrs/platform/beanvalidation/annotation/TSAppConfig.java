@@ -22,6 +22,7 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
+import io.quarkus.hibernate.validator.runtime.jaxrs.QuarkusRestViolationExceptionMapper;
 
 public class TSAppConfig extends Application {
 
@@ -33,6 +34,7 @@ public class TSAppConfig extends Application {
     resources.add(ValidateExecutableResource.class);
     resources.add(NotShortNorFiveEntityProvider.class);
     resources.add(StringBeanEntityProvider.class);
+    resources.add(QuarkusRestViolationExceptionMapper.class);
     return resources;
   }
 }
