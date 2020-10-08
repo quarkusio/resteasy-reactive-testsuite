@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.ee.rs.client.clientrequestcontext;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -79,6 +82,7 @@ public class JAXRSClient0121 extends JaxrsCommonClient {
    * @test_Strategy: Get the entity output stream. Set a new entity output
    * stream.
    */
+  @Disabled(QuarkusRest.Not_Implemented_Yet)
   @Test
   public void getEntityStreamTest() throws Fault {
     final String entityStreamWorks = "ENTITY_STREAM_WORKS";
