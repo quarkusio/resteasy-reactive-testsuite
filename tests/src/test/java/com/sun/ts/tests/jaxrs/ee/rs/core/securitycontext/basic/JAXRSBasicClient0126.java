@@ -16,13 +16,18 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.basic;
 
+import java.util.function.Supplier;
+
 import javax.ws.rs.core.Response;
 
-import org.junit.jupiter.api.Disabled;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet;
 import com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.Scheme;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -34,14 +39,38 @@ import com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.Scheme;
  *                     authpassword;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-@Disabled(QuarkusRest.Unsupported_Servlet)
 public class JAXRSBasicClient0126
     extends com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.JAXRSClient0127 {
 
   private static final long serialVersionUID = 340277879725875946L;
 
+  @RegisterExtension
+  static QuarkusUnitTest test = new QuarkusUnitTest()
+          .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_core_securitycontext_basic_web")
+          .overrideConfigKey("quarkus.http.auth.basic", "true")
+          .overrideConfigKey("quarkus.security.users.embedded.plain-text", "true")
+          .overrideConfigKey("quarkus.security.users.embedded.enabled", "true")
+          .overrideConfigKey("quarkus.security.users.embedded.users.j2ee", "jb0ss1")
+          .overrideConfigKey("quarkus.security.users.embedded.roles.j2ee", "DIRECTOR")
+          .overrideConfigKey("quarkus.security.users.embedded.users.javajoe", "jb0ss2")
+          .overrideConfigKey("quarkus.security.users.embedded.roles.javajoe", "OTHERROLE")
+          .setArchiveProducer(new Supplier<JavaArchive>() {
+              @Override
+              public JavaArchive get() {
+                  return ShrinkWrap.create(JavaArchive.class)
+                          .addClasses(
+                          com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TSAppConfig.class,
+                          com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.class
+                          );
+              }
+          });
+
   public JAXRSBasicClient0126() {
     setContextRoot("/jaxrs_ee_core_securitycontext_basic_web/Servlet");
+    user = "j2ee";
+    password = "jb0ss1";
+    authuser = "javajoe";
+    authpassword = "jb0ss2";
   }
 
   /**

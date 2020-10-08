@@ -44,6 +44,11 @@ public class JAXRSClient0136 extends JaxrsCommonClient {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_container_requestcontext_security_web")
+            .overrideConfigKey("quarkus.http.auth.basic", "true")
+            .overrideConfigKey("quarkus.security.users.embedded.plain-text", "true")
+            .overrideConfigKey("quarkus.security.users.embedded.enabled", "true")
+            .overrideConfigKey("quarkus.security.users.embedded.users.j2ee", "jb0ss")
+            .overrideConfigKey("quarkus.security.users.embedded.roles.j2ee", "DIRECTOR")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override
                 public JavaArchive get() {
@@ -60,9 +65,9 @@ public class JAXRSClient0136 extends JaxrsCommonClient {
 
   private static final long serialVersionUID = -3020219607348263568L;
 
-  protected String user;
+  protected String user = "j2ee";
 
-  protected String password;
+  protected String password = "jb0ss";
 
   public JAXRSClient0136() {
     setContextRoot(
