@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.spec.provider.overridestandard;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -28,6 +29,7 @@ import java.util.zip.Deflater;
 
 import javax.ws.rs.core.MediaType;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -51,6 +53,19 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
                             com.sun.ts.tests.jaxrs.spec.provider.overridestandard.AbstractProvider.class
                             , com.sun.ts.tests.jaxrs.spec.provider.overridestandard.Resource.class
                             , com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput.class
+                            , TckByteArrayProvider.class
+                            , TckDataSourceProvider.class
+                            , TckFileProvider.class
+                            , TckInputStreamProvider.class
+                            , TckJaxbProvider.class
+                            , TckMapProvider.class
+                            , TckReaderProvider.class
+                            , TckSourceProvider.class
+                            , TckStreamingOutputProvider.class
+                            , TckStringProvider.class
+                            , TckBooleanProvider.class
+                            , TckCharacterProvider.class
+                            , TckNumberProvider.class
                             );
                 }
             });
@@ -190,6 +205,7 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported)
   public void readWriteDataSourceProviderTest() throws Fault {
     setPropertyAndInvoke("datasource", MediaType.APPLICATION_XML_TYPE);
   }
@@ -205,6 +221,7 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Xml)
   public void readWriteSourceProviderTest() throws Fault {
     setPropertyAndInvoke("source", MediaType.APPLICATION_XML_TYPE);
   }
@@ -220,6 +237,7 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Xml)
   public void readWriteJaxbProviderTest() throws Fault {
     setPropertyAndInvoke("jaxb", MediaType.APPLICATION_XML_TYPE);
   }
@@ -235,6 +253,7 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Streaming_Output)
   public void readWriteStreamingOutputProviderTest() throws Fault {
     setPropertyAndInvoke("streamingoutput", MediaType.APPLICATION_XML_TYPE);
   }

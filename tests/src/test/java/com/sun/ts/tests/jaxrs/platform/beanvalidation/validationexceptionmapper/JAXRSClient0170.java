@@ -69,6 +69,7 @@ public class JAXRSClient0170 extends JaxrsCommonClient {
                             , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.ConstraintDeclarationResource.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
                             , com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation.NotNullOrOne.class
+                            , ValidationExceptionMapper.class
                             );
                 }
             });

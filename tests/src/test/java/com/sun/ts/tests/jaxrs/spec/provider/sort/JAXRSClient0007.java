@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.spec.provider.sort;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -26,6 +27,7 @@ import io.quarkus.test.QuarkusUnitTest;
 
 import javax.ws.rs.core.MediaType;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -49,6 +51,8 @@ public class JAXRSClient0007 extends JAXRSCommonClient {
                             com.sun.ts.tests.jaxrs.spec.provider.sort.Resource.class
                             , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            , TextPlainStringBeanEntityProvider.class
+                            , TextWildCardStringBeanEntityProvider.class
                             );
                 }
             });
@@ -135,6 +139,7 @@ public class JAXRSClient0007 extends JAXRSCommonClient {
          * .
          */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Xml)
   public void contentTypeTextXmlGotTextWildCardTest() throws Fault {
     MediaType type = MediaType.TEXT_XML_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));

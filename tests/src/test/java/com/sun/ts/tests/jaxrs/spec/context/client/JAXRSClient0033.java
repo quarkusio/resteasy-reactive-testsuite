@@ -50,6 +50,7 @@ public class JAXRSClient0033 extends JaxrsCommonClient {
                             com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler.class
                             , com.sun.ts.tests.jaxrs.spec.context.client.Resource.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
+                            , StringBeanEntityProviderWithInjectables.class
                             );
                 }
             });

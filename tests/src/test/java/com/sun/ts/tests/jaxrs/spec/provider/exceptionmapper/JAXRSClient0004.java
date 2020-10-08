@@ -56,6 +56,7 @@ public class JAXRSClient0004 extends JAXRSCommonClient {
                             , com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper.ThrowableMapper.class
                             , com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper.Resource.class
                             , com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper.FilterChainTestException.class
+                            , ResponseFilter.class
                             );
                 }
             });

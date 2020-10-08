@@ -18,6 +18,9 @@ package com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.basic;
 
 import javax.ws.rs.core.Response;
 
+import org.junit.jupiter.api.Disabled;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet;
 import com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.Scheme;
 
@@ -31,6 +34,7 @@ import com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.Scheme;
  *                     authpassword;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
+@Disabled(QuarkusRest.Unsupported_Servlet)
 public class JAXRSBasicClient0126
     extends com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.JAXRSClient0127 {
 

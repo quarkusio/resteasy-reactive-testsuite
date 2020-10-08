@@ -56,6 +56,7 @@ public class JAXRSClient0130 extends JaxrsCommonClient {
                             com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.AnnotatedClass.class
                             , com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.DateContainerReaderWriter.class
                             , com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.Resource.class
+                            , DateClientReaderWriter.class
                             );
                 }
             });

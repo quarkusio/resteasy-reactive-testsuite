@@ -40,6 +40,7 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 import com.sun.ts.tests.jaxrs.common.client.TextCaser;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerreader.ReaderClient0091;
+import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.TemplateWriterInterceptor;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.interceptorcontext.WriterInterceptorOne;
 
 /*
@@ -80,6 +81,8 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.interceptorcontext.ReaderInterceptorTwo.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ReaderInterceptorOne.class
                             , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.InterceptorOneBody.class
+                            , WriterInterceptorOne.class
+                            , TemplateWriterInterceptor.class
                             );
                 }
             });

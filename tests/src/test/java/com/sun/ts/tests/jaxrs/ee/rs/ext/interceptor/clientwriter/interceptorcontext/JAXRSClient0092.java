@@ -19,6 +19,8 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.interceptorcon
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -35,9 +37,13 @@ import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.ContextOperation;
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InputStreamReaderProvider;
+import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyOne;
+import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorBodyTwo;
+import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorCallbackMethods;
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.WriterClient0094;
+import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.TemplateWriterInterceptor;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.interceptorcontext.WriterInterceptorOne;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.interceptorcontext.WriterInterceptorTwo;
 
@@ -59,6 +65,15 @@ public class JAXRSClient0092 extends WriterClient0094<ContextOperation> {
                             .addClasses(
                             com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.interceptorcontext.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.interceptorcontext.Resource.class
+                            , WriterInterceptorOne.class
+                            , WriterInterceptorTwo.class
+                            , ContextOperation.class
+                            , TemplateWriterInterceptor.class
+                            , InterceptorCallbackMethods.class
+                            , TemplateInterceptorBody.class
+                            , InterceptorBodyTwo.class
+                            , InterceptorBodyOne.class
+                            , InputStreamReaderProvider.class
                             );
                 }
             });
@@ -69,9 +84,13 @@ public class JAXRSClient0092 extends WriterClient0094<ContextOperation> {
   public JAXRSClient0092() {
     setContextRoot(
         "/jaxrs_ee_rs_ext_interceptor_clientwriter_interceptorcontext_web/resource");
-    addProviders();
   }
 
+  @BeforeEach
+  public void before() {
+      addProviders();
+  }
+  
   /**
    * Entry point for different-VM execution. It should delegate to method
    * run(String[], PrintWriter, PrintWriter), and this method should not contain

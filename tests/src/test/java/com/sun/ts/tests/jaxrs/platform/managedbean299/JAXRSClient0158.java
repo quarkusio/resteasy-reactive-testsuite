@@ -19,11 +19,12 @@ package com.sun.ts.tests.jaxrs.platform.managedbean299;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
 
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -32,6 +33,7 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
+@Disabled(QuarkusRest.Unsupported_Application_Singletons)
 public class JAXRSClient0158 extends JAXRSCommonClient {
 
     @RegisterExtension
