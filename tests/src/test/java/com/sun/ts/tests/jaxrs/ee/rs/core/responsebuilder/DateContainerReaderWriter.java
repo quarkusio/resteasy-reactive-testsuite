@@ -32,7 +32,8 @@ import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
-@Provider
+// Quarkus: manually registered on the server
+//@Provider
 public class DateContainerReaderWriter
     implements MessageBodyReader<Date>, MessageBodyWriter<Date> {
 
