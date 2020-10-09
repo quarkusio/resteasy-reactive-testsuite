@@ -33,4 +33,6 @@ public class QuarkusRest {
     public static final String Not_Implemented_Yet = "Not Implemented Yet";
     // 1
     public static final String No_Container = "Not applicable to Quarkus-REST as there is no underlying container";
+    // 2
+    public static final String BV_Integration_Issue = "Bean Validation Issue (affect quarkus resteasy as well)";
 }
