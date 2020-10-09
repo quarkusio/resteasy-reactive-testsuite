@@ -42,7 +42,6 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
  *                     ts_home;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-@Disabled(QuarkusRest.Unsupported_Application_Singletons)
 public class JAXRSClient0128 extends JAXRSCommonClient {
 
     @RegisterExtension
@@ -54,8 +53,8 @@ public class JAXRSClient0128 extends JAXRSCommonClient {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
                             com.sun.ts.tests.jaxrs.ee.rs.core.application.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.core.application.ApplicationServlet.class
-                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
+                            com.sun.ts.tests.jaxrs.ee.rs.core.application.ApplicationServlet.class,
+                            ApplicationHolderSingleton.class , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
                             );
                 }
             });
