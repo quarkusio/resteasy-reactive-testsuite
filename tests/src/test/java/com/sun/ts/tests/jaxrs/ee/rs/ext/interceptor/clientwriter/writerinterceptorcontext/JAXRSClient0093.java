@@ -229,7 +229,7 @@ public class JAXRSClient0093 extends WriterClient0094<ContextOperation> {
         new OnWriteExceptionThrowingStringBean(TemplateInterceptorBody.ENTITY));
     try {
       invoke();
-    } catch (Exception e) {
+    } catch (Throwable e) {
       ProceedException p = assertCause(e, ProceedException.class,
           "Proceed did not throw exception");
       assertContains(p.getMessage(), TemplateInterceptorBody.WAE,
