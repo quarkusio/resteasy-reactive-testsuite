@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.constraintviolationexceptionmapper;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -200,6 +203,7 @@ public class JAXRSClient0169 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
+  @Disabled(QuarkusRest.BV_Integration_Issue)
   @Test
   public void constraintDefinitionExceptionThrownTest() throws Fault {
     setProperty(Property.REQUEST,
