@@ -203,6 +203,7 @@ public class JAXRSClient0170 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations MUST follow the constraint
    * annotation rules defined in Bean Validation 1.1. JSR
    */
+  @Disabled(QuarkusRest.Caught_At_Build_Time)
   @Test
   public void constraintDefinitionExceptionThrownTest() throws Fault {
     setProperty(Property.REQUEST,
