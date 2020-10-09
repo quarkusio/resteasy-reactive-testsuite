@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.resource.responsemediatype;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -189,6 +192,7 @@ public class JAXRSClient0016 extends JAXRSCommonClient {
    * 
    * @test_Strategy: If P = {}, set P = {*\*}. untestable
    */
+  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
   @Test
   public void noProducesTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "nomedia/nothing"));
@@ -203,6 +207,7 @@ public class JAXRSClient0016 extends JAXRSCommonClient {
    * 
    * @test_Strategy: If P = {}, set P = {*\*}. untestable
    */
+  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
   @Test
   public void noProducesResponseReturnTest() throws Fault {
     setProperty(Property.REQUEST,
