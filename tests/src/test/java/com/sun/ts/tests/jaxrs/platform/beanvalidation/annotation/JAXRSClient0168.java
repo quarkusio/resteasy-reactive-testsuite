@@ -17,6 +17,8 @@
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
@@ -394,7 +396,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    * 
    * Due to validation of whole bean status 400 is returned
    */
-  // QUARKUS: I don't understand this one
+  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
   @Test
   public void validateExecutableIsInvalidForBeingShortTest() throws Fault {
     setProperty(Property.REQUEST,
@@ -417,7 +419,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    * (the exception was thrown while validating a method return type) or is not
    * forgotten to be validated at all.
    */
-  // QUARKUS: I don't understand this one
+  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
   @Test
   public void validateExecutableIsNotValidatedTest() throws Fault {
     setProperty(Property.REQUEST,
