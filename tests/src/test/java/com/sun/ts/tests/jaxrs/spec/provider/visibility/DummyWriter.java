@@ -21,6 +21,7 @@ import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
+import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
@@ -56,6 +57,7 @@ public class DummyWriter implements MessageBodyWriter<DummyClass> {
     this.provider = provider;
   }
 
+  @Inject
   public DummyWriter(@Context HttpHeaders headers, @Context UriInfo info,
       @Context Application application, @Context Request request) {
     super();

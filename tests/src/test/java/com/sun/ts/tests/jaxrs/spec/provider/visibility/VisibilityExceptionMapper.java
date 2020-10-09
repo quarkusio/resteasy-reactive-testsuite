@@ -16,6 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.visibility;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -50,6 +51,7 @@ public class VisibilityExceptionMapper
     this.provider = provider;
   }
 
+  @Inject
   public VisibilityExceptionMapper(@Context HttpHeaders headers,
       @Context UriInfo info, @Context Application application,
       @Context Request request) {

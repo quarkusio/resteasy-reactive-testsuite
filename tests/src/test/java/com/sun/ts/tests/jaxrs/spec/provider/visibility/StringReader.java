@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Application;
@@ -58,6 +59,7 @@ public class StringReader implements MessageBodyReader<String> {
     this.provider = provider;
   }
 
+  @Inject
   public StringReader(@Context HttpHeaders headers, @Context UriInfo info,
       @Context Application application, @Context Request request) {
     super();
