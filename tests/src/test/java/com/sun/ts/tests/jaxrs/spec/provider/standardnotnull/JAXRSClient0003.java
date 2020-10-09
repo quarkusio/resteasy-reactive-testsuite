@@ -451,6 +451,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
    * WebApplicationException with a client error response (HTTP 400) for
    * zero-length request entities.
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void serverJaxbProviderTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,
