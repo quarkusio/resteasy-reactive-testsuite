@@ -31,4 +31,6 @@ public class QuarkusRest {
     public static final String Unsupported_Servlet = "Won't be supported in Quarkus-REST";
     // 1
     public static final String Not_Implemented_Yet = "Not Implemented Yet";
+    // 1
+    public static final String No_Container = "Not applicable to Quarkus-REST as there is no underlying container";
 }

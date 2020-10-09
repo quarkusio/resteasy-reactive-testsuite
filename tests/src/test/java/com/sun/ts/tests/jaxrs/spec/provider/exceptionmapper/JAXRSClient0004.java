@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -192,6 +195,7 @@ public class JAXRSClient0004 extends JAXRSCommonClient {
    */
   // TODO : Use a servlet filter to verify the exception has been passed
   // to underlying container, JIRA 1613
+  @Disabled(QuarkusRest.No_Container)
   @Test
   public void mappedExceptionTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "mapped"));
