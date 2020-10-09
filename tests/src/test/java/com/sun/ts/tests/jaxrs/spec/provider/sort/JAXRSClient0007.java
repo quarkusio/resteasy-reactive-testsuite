@@ -139,7 +139,6 @@ public class JAXRSClient0007 extends JAXRSCommonClient {
          * .
          */
   @Test
-  @Disabled(QuarkusRest.Unsupported_Xml)
   public void contentTypeTextXmlGotTextWildCardTest() throws Fault {
     MediaType type = MediaType.TEXT_XML_TYPE;
     setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
