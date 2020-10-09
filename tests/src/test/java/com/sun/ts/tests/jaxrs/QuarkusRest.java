@@ -29,6 +29,10 @@ public class QuarkusRest {
     public static final String Unsupported_Application_Singletons = "Won't be supported in Quarkus-REST";
     // 1
     public static final String Unsupported_Servlet = "Won't be supported in Quarkus-REST";
+    // 6
+    public static final String Unsupported_Injection_Of_Path_Param_Before_Resource_Locator_Is_Known = "Requires field injection of a path param in a sub-resource locator before the method that defines the path param is known";
+    // 1
+    public static final String Unsupported_Path_Segment_Parameter_With_Matrix_Params = "Requires PathParam to keep track of which path segment they belong to";
     // 1
     public static final String Not_Implemented_Yet = "Not Implemented Yet";
     // 1

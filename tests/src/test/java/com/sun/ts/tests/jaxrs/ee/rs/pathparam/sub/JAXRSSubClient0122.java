@@ -179,6 +179,7 @@ public class JAXRSSubClient0122
    * PathSegment.
    */
   @org.junit.jupiter.api.Test
+  @Disabled(QuarkusRest.Unsupported_Path_Segment_Parameter_With_Matrix_Params)
   public void test7() throws Fault {
     super.test7();
   }
@@ -273,6 +274,7 @@ public class JAXRSSubClient0122
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @Disabled(QuarkusRest.Unsupported_Injection_Of_Path_Param_Before_Resource_Locator_Is_Known)
   @Test
   public void pathFieldParamEntityWithConstructorTest() throws Fault {
     super.pathFieldParamEntityWithConstructorTest();
@@ -290,6 +292,7 @@ public class JAXRSSubClient0122
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @Disabled(QuarkusRest.Unsupported_Injection_Of_Path_Param_Before_Resource_Locator_Is_Known)
   @Test
   public void pathFieldParamEntityWithValueOfTest() throws Fault {
     super.fieldEntityWithValueOfTest();
@@ -307,6 +310,7 @@ public class JAXRSSubClient0122
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @Disabled(QuarkusRest.Unsupported_Injection_Of_Path_Param_Before_Resource_Locator_Is_Known)
   @Test
   public void pathFieldParamEntityWithFromStringTest() throws Fault {
     super.fieldEntityWithFromStringTest();
@@ -324,6 +328,7 @@ public class JAXRSSubClient0122
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @Disabled(QuarkusRest.Unsupported_Injection_Of_Path_Param_Before_Resource_Locator_Is_Known)
   @Test
   public void pathFieldParamSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SET);
@@ -341,6 +346,7 @@ public class JAXRSSubClient0122
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @Disabled(QuarkusRest.Unsupported_Injection_Of_Path_Param_Before_Resource_Locator_Is_Known)
   @Test
   public void pathFieldParamSortedSetEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
@@ -358,6 +364,7 @@ public class JAXRSSubClient0122
    * property values of instances created by the implementation runtime. (Check
    * the resource with resource locator is injected field properties)
    */
+  @Disabled(QuarkusRest.Unsupported_Injection_Of_Path_Param_Before_Resource_Locator_Is_Known)
   @Test
   public void pathFieldParamListEntityWithFromStringTest() throws Fault {
     super.fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
