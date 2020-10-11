@@ -16,6 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.resourceconstructor;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Application;
@@ -58,6 +59,7 @@ public class Resource {
     this.info = info;
   }
 
+  @Inject
   public Resource(@Context HttpHeaders headers, @Context UriInfo info,
       @Context Application application, @Context Request request) {
     this.application = application;
