@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -73,9 +74,12 @@ public class JAXRSClient0174 extends SSEJAXRSClient0177 {
     setContextRoot("/jaxrs_jaxrs21_ee_sse_ssebroadcaster_web");
   }
 
-  @Override
-  public void setup(String[] args, Properties p) throws Fault {
-    super.setup(args, p);
+  // QUARKUS: make this a JUnit method
+  @BeforeEach
+//  @Override
+//  public void setup(String[] args, Properties p) throws Fault {
+  public void setup() throws Fault {
+    super.setup(new String[0], new Properties());
     target = ClientBuilder.newClient()
         .target(getAbsoluteUrl("broadcast/register"));
     clients = new BroadCasterClient[CLIENTS];
