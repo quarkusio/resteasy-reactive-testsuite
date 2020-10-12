@@ -192,7 +192,6 @@ public class JAXRSClient0146 extends JaxrsParamClient0151 {
    * String;
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "ParamEntityWithFromString",
@@ -273,7 +272,6 @@ public class JAXRSClient0146 extends JaxrsParamClient0151 {
    * a String;
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "SetFromString", ENCODED);
@@ -301,7 +299,6 @@ public class JAXRSClient0146 extends JaxrsParamClient0151 {
    * a String;
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "SortedSetFromString", ENCODED);
@@ -328,7 +325,6 @@ public class JAXRSClient0146 extends JaxrsParamClient0151 {
    * a String;
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void nonDefaultFormParamFromListFromStringTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "ListFromString", ENCODED);
@@ -342,7 +338,6 @@ public class JAXRSClient0146 extends JaxrsParamClient0151 {
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void formParamEntityWithEncodedTest() throws Fault {
     searchEqualsEncoded = true;
     super.paramEntityWithEncodedTest();
