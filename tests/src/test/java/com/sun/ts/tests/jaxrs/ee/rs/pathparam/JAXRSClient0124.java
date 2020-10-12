@@ -225,6 +225,7 @@ public class JAXRSClient0124 extends JaxrsParamClient0151 {
    * using PathParam PathSegment.
    */
   @org.junit.jupiter.api.Test
+  @Disabled(QuarkusRest.Unsupported_Path_Segment_Parameter_With_Matrix_Params)
   public void test7() throws Fault {
     String[] headers = { "matrix=/a;boolean1=false;boolean2=true",
         "matrix=/a;boolean2=true;boolean1=false" };
