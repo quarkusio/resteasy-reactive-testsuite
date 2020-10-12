@@ -17,6 +17,8 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsink;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
@@ -45,7 +47,6 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
 /**
  * @since 2.1
  */
-@Disabled("This hangs ATM")
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0176 extends SSEJAXRSClient0177 {
 
@@ -231,6 +232,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
+  @Disabled(QuarkusRest.Unsupported)
   @Test
   public void datasourceTest() throws Fault {
     querySSEEndpointAndAssert("mbw/datasource");
@@ -246,6 +248,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void transformSourceTest() throws Fault {
     Holder<InboundSseEvent> holder = querySSEEndpoint("mbw/transformsource");
@@ -264,6 +267,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
+  @Disabled(QuarkusRest.Unsupported_Xml)
   @Test
   public void jaxbElementTest() throws Fault {
     Holder<InboundSseEvent> holder = querySSEEndpoint("mbw/jaxbelement");
@@ -300,6 +304,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
+  @Disabled(QuarkusRest.To_Be_Determined)
   @Test
   public void streamingOutputTest() throws Fault {
     querySSEEndpointAndAssert("mbw/streamingoutput");
@@ -348,6 +353,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy: check the stage is ever done
    */
+  @Disabled(QuarkusRest.To_Be_Determined)
   @Test
   public void sseStageCheckTest() throws Fault {
     LinkedHolder<InboundSseEvent> holder = new LinkedHolder<>();
