@@ -24,6 +24,8 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+
+import io.quarkus.rest.Blocking;
 import io.quarkus.test.QuarkusUnitTest;
 
 
@@ -232,7 +234,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void datasourceTest() throws Fault {
     querySSEEndpointAndAssert("mbw/datasource");
@@ -304,7 +306,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
-  @Disabled(QuarkusRest.To_Be_Determined)
+  @Disabled(QuarkusRest.Unsupported_Streaming_Output)
   @Test
   public void streamingOutputTest() throws Fault {
     querySSEEndpointAndAssert("mbw/streamingoutput");
@@ -353,7 +355,6 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy: check the stage is ever done
    */
-  @Disabled(QuarkusRest.To_Be_Determined)
   @Test
   public void sseStageCheckTest() throws Fault {
     LinkedHolder<InboundSseEvent> holder = new LinkedHolder<>();

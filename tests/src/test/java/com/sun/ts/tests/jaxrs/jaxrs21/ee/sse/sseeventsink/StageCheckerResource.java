@@ -28,12 +28,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.sse.Sse;
 import javax.ws.rs.sse.SseEventSink;
 
+import io.quarkus.rest.Blocking;
+
 @Path("stage")
 public class StageCheckerResource {
   public static final String DONE = "CompletionStage has been done";
 
   @GET
   @Produces(MediaType.SERVER_SENT_EVENTS)
+  // QUARKUS: is blocking the event loop
+  @Blocking
   public void send(@Context SseEventSink sink, @Context Sse sse) {
     try (SseEventSink s = sink) {
       CompletableFuture<?> stage = s.send(sse.newEvent(MESSAGE))

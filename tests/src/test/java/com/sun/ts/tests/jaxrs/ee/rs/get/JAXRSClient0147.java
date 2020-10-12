@@ -229,7 +229,6 @@ public class JAXRSClient0147 extends JAXRSCommonClient {
    * the request
    * 
    */
-  @Disabled(QuarkusRest.To_Be_Determined)
   @Test
   public void recursiveResourceLocatorTest() throws Fault {
     StringBuilder sb = new StringBuilder();
