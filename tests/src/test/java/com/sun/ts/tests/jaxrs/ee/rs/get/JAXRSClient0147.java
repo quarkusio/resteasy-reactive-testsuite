@@ -28,6 +28,7 @@ import io.quarkus.test.QuarkusUnitTest;
 
 import javax.ws.rs.core.MediaType;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 /*
@@ -228,7 +229,7 @@ public class JAXRSClient0147 extends JAXRSCommonClient {
    * the request
    * 
    */
-  @Disabled("This hangs")
+  @Disabled(QuarkusRest.To_Be_Determined)
   @Test
   public void recursiveResourceLocatorTest() throws Fault {
     StringBuilder sb = new StringBuilder();
