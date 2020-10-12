@@ -22,6 +22,8 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+
+import io.quarkus.rest.runtime.jaxrs.QuarkusRestSseEventSink;
 import io.quarkus.test.QuarkusUnitTest;
 
 
@@ -35,6 +37,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.client.TextCaser;
 
@@ -1078,7 +1081,7 @@ public class JAXRSClient0139 extends JaxrsCommonClient {
    * Throws IOException.
    */
   @Test
-  @Disabled("Hangs on RESTEasy")
+  @Disabled(QuarkusRest.Not_Implemented_Yet_Get_Set_Entity_Stream)
   public void setEntityStreamTest() throws Fault {
     setProperty(Property.SEARCH_STRING, ResponseFilter.ENTITY);
     setProperty(Property.SEARCH_STRING, "OK");

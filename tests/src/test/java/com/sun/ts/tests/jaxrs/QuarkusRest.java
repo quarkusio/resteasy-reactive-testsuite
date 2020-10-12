@@ -31,7 +31,7 @@ public class QuarkusRest {
     // 1
     public static final String Unsupported_Path_Segment_Parameter_With_Matrix_Params = "Requires PathParam to keep track of which path segment they belong to";
     // 1
-    public static final String Not_Implemented_Yet = "Not Implemented Yet";
+    public static final String Not_Implemented_Yet_Get_Set_Entity_Stream = "Not Implemented Yet: get/setEntityStream";
     // 1
     public static final String No_Container = "Not applicable to Quarkus-REST as there is no underlying container";
     // 2
@@ -42,4 +42,5 @@ public class QuarkusRest {
     public static final String Uri_Builder = "Issue with URI Builder that also occurs in RESTEasy";
     // 2
     public static final String To_Be_Determined = "We need to determine if this is needs to be supported or not";
+    public static final String RequiresServlet = "Requires Servlet";
 }

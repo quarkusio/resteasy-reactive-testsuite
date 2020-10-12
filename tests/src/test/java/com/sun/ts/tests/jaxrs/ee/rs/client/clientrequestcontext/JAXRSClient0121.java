@@ -82,7 +82,7 @@ public class JAXRSClient0121 extends JaxrsCommonClient {
    * @test_Strategy: Get the entity output stream. Set a new entity output
    * stream.
    */
-  @Disabled(QuarkusRest.Not_Implemented_Yet)
+  @Disabled(QuarkusRest.Not_Implemented_Yet_Get_Set_Entity_Stream)
   @Test
   public void getEntityStreamTest() throws Fault {
     final String entityStreamWorks = "ENTITY_STREAM_WORKS";
