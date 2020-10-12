@@ -30,7 +30,6 @@ import javax.ws.rs.core.MediaType;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-@Disabled("Servlet is not supported")
 public class JAXRSClient0165 extends JAXRSCommonClient {
 
     @RegisterExtension
