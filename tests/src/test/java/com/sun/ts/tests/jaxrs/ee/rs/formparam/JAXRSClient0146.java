@@ -100,7 +100,6 @@ public class JAXRSClient0146 extends JaxrsParamClient0151 {
    * @test_Strategy: Test sending override of default argument content;
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void defaultFormParamSentTest() throws Fault {
     setProperty(Property.CONTENT, "default_argument=" + ENCODED);
     defaultFormParamAndInvoke(Request.POST, "PostDefParam", ENCODED);
