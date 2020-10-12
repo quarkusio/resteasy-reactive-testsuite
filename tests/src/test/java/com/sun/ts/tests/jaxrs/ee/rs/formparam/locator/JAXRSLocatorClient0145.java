@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.ee.rs.formparam.locator;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -196,6 +199,7 @@ public class JAXRSLocatorClient0145 extends JAXRSClient0146 {
    * 
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
+  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
   @Test
   public void formParamEntityWithEncodedTest() throws Fault {
     _contextRoot += "encoded";

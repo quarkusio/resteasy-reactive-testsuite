@@ -10,7 +10,7 @@ public class QuarkusRest {
 //    public static final String Hangs = "Quarkus-REST hangs";
     // 3
     public static final String Nuts = "It makes no sense to be something like this even exists...";
-    // 2
+    // 4
     public static final String Test_Doesnt_Make_Sense = "The test doesn't seem to be in accordance with the spec says";
     // 24
     public static final String Encoded = "@Encoded not supported yet";

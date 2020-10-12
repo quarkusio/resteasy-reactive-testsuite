@@ -341,6 +341,7 @@ public class JAXRSSubClient0144 extends JAXRSClient0146 {
    * 
    * @test_Strategy: Verify that named FormParam @Encoded is handled
    */
+  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
   @Test
   public void formParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
