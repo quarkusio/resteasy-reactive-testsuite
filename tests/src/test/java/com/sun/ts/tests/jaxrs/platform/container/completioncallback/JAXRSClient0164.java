@@ -19,7 +19,6 @@ package com.sun.ts.tests.jaxrs.platform.container.completioncallback;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -51,7 +50,6 @@ import com.sun.ts.tests.jaxrs.platform.container.asyncresponse.Resource;
  * These test are in the platform package since async is not available in 
  * Servlet 2.5 spec by default
  */
-@Disabled
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0164 extends JaxrsCommonClient {
 
@@ -72,6 +70,9 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
                             , com.sun.ts.tests.jaxrs.platform.container.completioncallback.ExceptionThrowingStringBean.class
                             , com.sun.ts.tests.jaxrs.platform.container.completioncallback.SecondSettingCompletionCallback.class
                             , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
+                            , com.sun.ts.tests.jaxrs.platform.container.asyncresponse.Resource.class
+                            , com.sun.ts.tests.jaxrs.platform.container.completioncallback.ExceptionThrowingStringBean.class
+                            , com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBean.class
                             );
                 }
             });
