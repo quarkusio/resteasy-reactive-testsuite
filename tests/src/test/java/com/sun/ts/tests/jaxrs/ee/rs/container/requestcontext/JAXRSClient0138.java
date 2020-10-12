@@ -736,7 +736,7 @@ public class JAXRSClient0138 extends JaxrsCommonClient {
    * Throws IOException. *
    */
   @Test
-  @Disabled(QuarkusRest.RequiresServlet)
+  @Disabled(QuarkusRest.Unsupported_Servlet)
   public void setPropertyIsReflectedInServletRequestTest() throws Fault {
     setProperty(Property.SEARCH_STRING, RequestFilter.PROPERTYNAME);
     invokeRequestAndCheckResponse(ContextOperation.SETPROPERTYCONTEXT);

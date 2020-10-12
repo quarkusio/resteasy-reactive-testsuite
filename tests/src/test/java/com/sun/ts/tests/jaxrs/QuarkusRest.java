@@ -26,7 +26,7 @@ public class QuarkusRest {
     public static final String Unsupported_Streaming_Output = "StreamingOutput is not supported";
     // 2
     public static final String Unsupported_Application_Singletons = "Won't be supported in Quarkus-REST";
-    // 8
+    // 9
     public static final String Unsupported_Servlet = "Servlet related features won't be supported in Quarkus-REST";
     // 8
     public static final String Unsupported_Managed_Bean = "@ManagedBean won't be supported in Quarkus-REST";
@@ -46,5 +46,4 @@ public class QuarkusRest {
     public static final String Uri_Builder = "Issue with URI Builder that also occurs in RESTEasy";
     // 2
     public static final String To_Be_Determined = "We need to determine if this is needs to be supported or not";
-    public static final String RequiresServlet = "Requires Servlet";
 }
