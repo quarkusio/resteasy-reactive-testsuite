@@ -1081,7 +1081,6 @@ public class JAXRSClient0139 extends JaxrsCommonClient {
    * Throws IOException.
    */
   @Test
-  @Disabled(QuarkusRest.Not_Implemented_Yet_Get_Set_Entity_Stream)
   public void setEntityStreamTest() throws Fault {
     setProperty(Property.SEARCH_STRING, ResponseFilter.ENTITY);
     setProperty(Property.SEARCH_STRING, "OK");
