@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.core.configurable;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -90,6 +90,12 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
     setContextRoot("/jaxrs_ee_core_configurable_web/resource");
   }
 
+  // QUARKUS
+  @BeforeEach
+  public void before() {
+      setContextRoot("/jaxrs_ee_core_configurable_web/resource");
+  }
+  
   /**
    * Entry point for different-VM execution. It should delegate to method
    * run(String[], PrintWriter, PrintWriter), and this method should not contain
@@ -110,7 +116,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * register(Class) except the JAX-RS component class is only registered as a
    * provider of the listed extension provider or meta-provider contracts.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerClassWriterContractsTest() throws Fault {
     final String content = "registerClassWriterContractsTest";
@@ -171,7 +176,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * register(Class) except the JAX-RS component class is only registered as a
    * provider of the listed extension provider or meta-provider contracts.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerClassReaderContractsTest() throws Fault {
     final String content = "registerClassReaderContractsTest";
@@ -392,7 +396,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * 
    * @Priority annotation is overridden with the supplied bindingPriority value.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerClassBindingPriorityFirstIsFirstTest() throws Fault {
     final String content = "registerClassBindingPriorityFirstIsFirstTest";
@@ -441,7 +444,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * 
    * @Priority annotation is overridden with the supplied bindingPriority value.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerObjectBindingPriorityTest() throws Fault {
     final String content = "registerObjectBindingPriorityTest";
@@ -489,7 +491,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * register(Object) except the JAX-RS component class is only registered as a
    * provider of the listed extension provider or meta-provider contracts.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerObjectWriterContractsTest() throws Fault {
     final String content = "registerObjectWriterContractsTest";
@@ -550,7 +551,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * register(Object) except the JAX-RS component class is only registered as a
    * provider of the listed extension provider or meta-provider contracts.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerObjectReaderContractsTest() throws Fault {
     final String content = "registerClassReaderContractsTest";
@@ -722,7 +722,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * for each extension provider contract type separately with an integer
    * binding priority value specified as a value in the supplied map.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerClassWriterContractsInMapTest() throws Fault {
     final String content = "registerClassWriterContractsInMapTest";
@@ -788,7 +787,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * for each extension provider contract type separately with an integer
    * binding priority value specified as a value in the supplied map.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerClassReaderContractsInMapTest() throws Fault {
     final String content = "registerClassReaderContractsInMapTest";
@@ -843,7 +841,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * for each extension provider contract type separately with an integer
    * binding priority value specified as a value in the supplied map.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerClassBindingPriorityInMapTest() throws Fault {
     final String content = "registerClassBindingPriorityInMapTest";
@@ -940,7 +937,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * for each extension provider contract type separately with an integer
    * binding priority value specified as a value in the supplied map.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerObjectWriterContractsInMapTest() throws Fault {
     final String content = "registerObjectWriterContractsInMapTest";
@@ -1006,7 +1002,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * for each extension provider contract type separately with an integer
    * binding priority value specified as a value in the supplied map.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerObjectReaderContractsInMapTest() throws Fault {
     final String content = "registerObjectReaderContractsInMapTest";
@@ -1061,7 +1056,6 @@ public class JAXRSClient0133 extends JaxrsCommonClient {
    * for each extension provider contract type separately with an integer
    * binding priority value specified as a value in the supplied map.
    */
-  @Disabled("Requires Quarkus scanning disabling")
   @Test
   public void registerObjectBindingPriorityInMapTest() throws Fault {
     final String content = "registerObjectBindingPriorityInMapTest";
