@@ -17,6 +17,8 @@
 package com.sun.ts.tests.jaxrs.platform.managedbean;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
@@ -32,7 +34,6 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     webServerPort;
  *                     ts_home;
  */
-@Disabled("Nobody cares about @ManagedBean")
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0161 extends JAXRSCommonClient {
 
@@ -115,6 +116,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * 
    * check postconstruct has been called (managed been property)
    */
+  @Disabled(QuarkusRest.Unsupported_Managed_Bean)
   @Test
   public void postConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST,
@@ -134,6 +136,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * increase value on stringbuilderprovider by writing then checked it was
    * intercepted (managed bean property)
    */
+  @Disabled(QuarkusRest.Unsupported_Managed_Bean)
   @Test
   public void interceptorOnResourceTest() throws Fault {
     setProperty(Property.REQUEST,
@@ -152,6 +155,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * 
    * try JNDI lookup
    */
+  @Disabled(QuarkusRest.Unsupported_Managed_Bean)
   @Test
   public void rootResourceManagedBeanJndiLookupTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "lookup"));
@@ -192,6 +196,7 @@ public class JAXRSClient0161 extends JAXRSCommonClient {
    * 
    * @PostConstruct annotated method
    */
+  @Disabled(QuarkusRest.Unsupported_Managed_Bean)
   @Test
   public void injectPriorPostConstructOnApplicationTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "priorapp"));
