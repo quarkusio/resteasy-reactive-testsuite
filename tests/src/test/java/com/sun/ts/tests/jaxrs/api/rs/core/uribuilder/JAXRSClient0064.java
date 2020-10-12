@@ -27,7 +27,9 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriBuilderException;
 
 import com.sun.ts.lib.util.TestUtil;
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+import org.junit.jupiter.api.Disabled;
 
 /*
  * @class.setup_props: webServerHost;
@@ -1709,6 +1711,7 @@ public class JAXRSClient0064 extends JAXRSCommonClient {
    * IllegalArgumentException is thrown when query cannot be parsed.
    */
   @org.junit.jupiter.api.Test
+  @Disabled(QuarkusRest.Uri_Builder) // happens in RESTEasy as well
   public void replaceQueryTest4() throws Fault {
     String value = "http://localhost:8080?name1=x&name2=%20&name3=x+y&name4=x%20y";
 
