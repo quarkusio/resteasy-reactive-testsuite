@@ -17,8 +17,11 @@
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -113,6 +116,7 @@ public class JAXRSClient0136 extends JaxrsCommonClient {
    * @test_Strategy: Make sure the authorization is needed
    */
   @Test
+  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense) //it assumes that security is applied before the filter
   public void noSecurityTest() throws Fault {
     String request = buildRequest(Request.POST, "");
     setProperty(Property.REQUEST, request);
