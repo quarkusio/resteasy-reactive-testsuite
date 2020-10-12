@@ -370,7 +370,6 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * @test_Strategy:
    */
   @Test
-  @Disabled(QuarkusRest.Unsupported)
   public void readerTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {
       try {
@@ -418,7 +417,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void dataSourceTest() throws Fault {
     BiPredicate<Object, Object> p = (a, b) -> {
@@ -444,7 +443,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
    * 
    * @test_Strategy:
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_Source)
   @Test
   public void transformSourceTest() throws Fault {
     mediaTestLevel = 2;

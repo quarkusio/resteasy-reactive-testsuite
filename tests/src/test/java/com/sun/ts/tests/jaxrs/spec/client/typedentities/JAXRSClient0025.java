@@ -234,7 +234,7 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void clientDataSourceReaderTest() throws Fault {
     standardReaderInvocation(MediaType.WILDCARD_TYPE);
@@ -257,7 +257,7 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_Source)
   @Test
   public void clientSourceReaderTest() throws Fault {
     standardReaderInvocation(MediaType.TEXT_XML_TYPE);
@@ -407,7 +407,7 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void clientDataSourceWriterTest() throws Fault {
     DataSource ds = new StringDataSource(entity, MediaType.WILDCARD_TYPE);
@@ -422,7 +422,7 @@ public class JAXRSClient0025 extends JaxrsCommonClient {
    * @test_Strategy: See Section 4.2.4 for a list of entity providers that MUST
    * be supported by all JAX-RS implementations
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_Source)
   @Test
   public void clientSourceWriterTest() throws Fault {
     setProperty(Property.REQUEST_HEADERS,

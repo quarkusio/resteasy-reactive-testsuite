@@ -603,7 +603,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void dataSourceReaderContainerInterceptorTest() throws Fault {
     addInterceptors(EntityReaderInterceptor.class);
@@ -625,7 +625,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void dataSourceReaderNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
@@ -642,7 +642,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void dataSourceWriterContainerInterceptorTest() throws Fault {
     addInterceptors(EntityWriterInterceptor.class);
@@ -663,7 +663,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void dataSourceWriterNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getdatasource"));
@@ -679,7 +679,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
    * interceptors when mapping representations to Java types and vice versa.
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void dataSourceWriterClientInterceptorTest() throws Fault {
     StringDataSource source = new StringDataSource(content,
@@ -727,7 +727,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
    * interceptors when mapping representations to Java types and vice versa.
    */
   @Test
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_Source)
   public void sourceWriterNoInterceptorTest() throws Fault {
     setProperty(Property.REQUEST, buildRequest(Request.GET, "getsource"));
     setProperty(Property.SEARCH_STRING, Resource.getName());

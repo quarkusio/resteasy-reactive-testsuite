@@ -276,7 +276,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
    * Java and media type combinations
    * 
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void dataSourceProviderTest() throws Fault {
     for (MediaType media : getMediaTypes(MediaType.class))

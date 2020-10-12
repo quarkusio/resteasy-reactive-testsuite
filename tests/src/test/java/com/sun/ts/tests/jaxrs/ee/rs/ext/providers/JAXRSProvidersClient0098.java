@@ -17,20 +17,19 @@
 package com.sun.ts.tests.jaxrs.ee.rs.ext.providers;
 
 import java.util.function.Supplier;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
 import com.sun.ts.tests.jaxrs.ee.rs.ext.contextresolver.EnumProvider;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritableEntity;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -38,7 +37,6 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritable
  *                     ts_home;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-@Disabled(QuarkusRest.Unsupported_Application_Singletons)
 public class JAXRSProvidersClient0098
     extends com.sun.ts.tests.jaxrs.ee.rs.core.application.JAXRSClient0128 {
 
@@ -50,7 +48,7 @@ public class JAXRSProvidersClient0098
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-//                            com.sun.ts.tests.jaxrs.ee.rs.ext.providers.TSAppConfig.class,
+                            com.sun.ts.tests.jaxrs.ee.rs.ext.providers.TSAppConfig.class,
                             com.sun.ts.tests.jaxrs.ee.rs.ext.providers.ProvidersServlet.class
                             ,       com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class
                             , com.sun.ts.tests.jaxrs.ee.rs.ext.exceptionmapper.AnyExceptionExceptionMapper.class

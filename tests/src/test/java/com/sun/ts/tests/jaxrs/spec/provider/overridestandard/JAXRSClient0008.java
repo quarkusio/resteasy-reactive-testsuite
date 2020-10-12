@@ -205,7 +205,7 @@ public class JAXRSClient0008 extends JAXRSCommonClient {
    * 
    */
   @Test
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   public void readWriteDataSourceProviderTest() throws Fault {
     setPropertyAndInvoke("datasource", MediaType.APPLICATION_XML_TYPE);
   }

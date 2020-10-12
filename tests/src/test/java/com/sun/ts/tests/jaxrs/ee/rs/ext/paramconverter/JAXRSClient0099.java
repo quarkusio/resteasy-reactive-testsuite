@@ -91,7 +91,7 @@ public class JAXRSClient0099 extends JaxrsCommonClient {
    * @test_Strategy: Providers implementing ParamConverterProvider contract must
    * be either programmatically registered in a JAX-RS runtime
    */
-  @Disabled(QuarkusRest.Unsupported)
+  @Disabled(QuarkusRest.Unsupported_DataSource)
   @Test
   public void isParamCoverterInApplicationSingletonsUsedTest() throws Fault {
     String query = "ABCDEFGH";
