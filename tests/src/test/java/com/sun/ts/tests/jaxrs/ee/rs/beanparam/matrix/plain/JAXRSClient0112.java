@@ -242,7 +242,6 @@ public class JAXRSClient0112 extends BeanParamCommonClient0117 {
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void matrixParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -255,7 +254,6 @@ public class JAXRSClient0112 extends BeanParamCommonClient0117 {
    * @test_Strategy: Verify that named MatrixParam @Encoded is handled
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void matrixFieldParamEntityWithEncodedTest() throws Fault {
     super.fieldEntityWithEncodedTest();
   }

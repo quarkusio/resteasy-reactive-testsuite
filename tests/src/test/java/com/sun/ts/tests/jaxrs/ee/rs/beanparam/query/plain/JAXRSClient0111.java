@@ -244,7 +244,6 @@ public class JAXRSClient0111 extends BeanParamCommonClient0117 {
    * @test_Strategy: Verify that named QueryParam @Encoded is handled
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void queryParamEntityWithEncodedTest() throws Fault {
     super.paramEntityWithEncodedTest();
   }
@@ -257,7 +256,6 @@ public class JAXRSClient0111 extends BeanParamCommonClient0117 {
    * @test_Strategy: Verify that named QueryParam @Encoded is handled
    */
   @Test
-  @Disabled(QuarkusRest.Encoded)
   public void queryFieldParamEntityWithEncodedTest() throws Fault {
     super.fieldEntityWithEncodedTest();
   }
