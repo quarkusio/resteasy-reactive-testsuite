@@ -17,6 +17,8 @@
 package com.sun.ts.tests.jaxrs.platform.servletconfig;
 
 import java.util.function.Supplier;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
@@ -30,7 +32,7 @@ import javax.ws.rs.core.MediaType;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-@Disabled("Servlet is not supported")
+@Disabled(QuarkusRest.Unsupported_Servlet)
 public class JAXRSClient0160 extends JAXRSCommonClient {
 
     @RegisterExtension
