@@ -36,10 +36,10 @@ public class QuarkusRest {
     public static final String No_Container = "Not applicable to Quarkus-REST as there is no underlying container";
     // 2
     public static final String BV_Integration_Issue = "Bean Validation Issue (affect quarkus resteasy as well)";
-    // 1
+    // 2
     public static final String Caught_At_Build_Time = "In Quarkus, this sort of error is caught at build time";
     // 1
     public static final String Uri_Builder = "Issue with URI Builder that also occurs in RESTEasy";
-
+    // 2
     public static final String To_Be_Determined = "We need to determine if this is needs to be supported or not";
 }

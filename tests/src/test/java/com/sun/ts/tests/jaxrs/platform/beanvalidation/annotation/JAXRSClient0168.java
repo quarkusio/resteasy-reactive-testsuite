@@ -375,7 +375,7 @@ public class JAXRSClient0168 extends JaxrsCommonClient {
    * annotation rules defined in Bean Validation 1.1. JSR
    */
   @Test
-  @Disabled("Quarkus reports this error at boot time")
+  @Disabled(QuarkusRest.Caught_At_Build_Time)
   public void constraintDefinitionExceptionThrownTest() throws Fault {
     setProperty(Property.REQUEST,
         buildRequest(Request.POST, "definition/constraintdefinitionexception"));
