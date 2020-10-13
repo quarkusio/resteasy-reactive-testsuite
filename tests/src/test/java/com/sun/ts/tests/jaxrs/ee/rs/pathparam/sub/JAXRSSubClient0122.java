@@ -38,6 +38,7 @@ public class JAXRSSubClient0122
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
+            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_pathparam_sub_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override
