@@ -33,8 +33,6 @@ import org.apache.commons.httpclient.methods.OptionsMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.PutMethod;
 
-import com.sun.ts.lib.porting.TSURL;
-
 /**
  * Simple factory class which returns HttpMethod implementations based on a
  * request line.
@@ -77,11 +75,6 @@ public class MethodFactory {
   private static final String OPTIONS_METHOD = "OPTIONS";
 
   /**
-   * TSURL implementation
-   */
-  private static final TSURL TS_URL = new TSURL();
-
-  /**
    * Private constructor as all interaction with this class is through the
    * getInstance() method.
    */
@@ -108,7 +101,7 @@ public class MethodFactory {
     String version;
     try {
       method = st.nextToken();
-      uri = TS_URL.getRequest(st.nextToken());
+      uri = st.nextToken();
       version = st.nextToken();
     } catch (NoSuchElementException nsee) {
       throw new IllegalArgumentException(
