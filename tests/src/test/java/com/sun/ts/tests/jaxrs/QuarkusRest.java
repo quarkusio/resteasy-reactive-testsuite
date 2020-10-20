@@ -44,4 +44,6 @@ public class QuarkusRest {
     public static final String Caught_At_Build_Time = "In Quarkus, this sort of error is caught at build time";
     // 1
     public static final String Uri_Builder = "Issue with URI Builder that also occurs in RESTEasy";
+    // 2
+    public static final String Unsupported_Client_Server_Injection_Separation = "Quarkus-REST bug wrt injection we need to solve";
 }

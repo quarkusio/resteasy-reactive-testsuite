@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.spec.context.client;
 import java.util.function.Supplier;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import io.quarkus.test.QuarkusUnitTest;
@@ -26,6 +27,7 @@ import io.quarkus.test.QuarkusUnitTest;
 
 import static com.sun.ts.tests.jaxrs.spec.context.server.StringBeanEntityProviderWithInjectables.*;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 import com.sun.ts.tests.jaxrs.spec.context.server.StringBeanEntityProviderWithInjectables;
@@ -90,6 +92,7 @@ public class JAXRSClient0033 extends JaxrsCommonClient {
    * container supported by the implementation.
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Client_Server_Injection_Separation)
   public void clientWriterTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity(new StringBean("stringbean"));
@@ -115,6 +118,7 @@ public class JAXRSClient0033 extends JaxrsCommonClient {
    * container supported by the implementation.
    */
   @Test
+  @Disabled(QuarkusRest.Unsupported_Client_Server_Injection_Separation)
   public void clientReaderTest() throws Fault {
     addProvider(StringBeanEntityProviderWithInjectables.class);
     setRequestContentEntity("stringbean");
