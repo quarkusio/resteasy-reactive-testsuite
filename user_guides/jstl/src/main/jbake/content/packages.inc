@@ -1,7 +1,0 @@
-** `jakarta.servlet.jsp.jstl.core`
-
-** `jakarta.servlet.jsp.jstl.fmt`
-
-** `jakarta.servlet.jsp.jstl.sql`
-
-** `jakarta.servlet.jsp.jstl.tvl`
