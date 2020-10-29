@@ -23,35 +23,35 @@ import javax.ws.rs.core.MediaType;
 @Path("locator")
 public class Locator {
 
-  @Path("sbquery")
-  public Resource stringBeanQuery() {
-    return new Resource();
-  }
+    @Path("sbquery")
+    public Resource stringBeanQuery() {
+        return new Resource();
+    }
 
-  @Path("sbpath")
-  public Resource stringBeanPath() {
-    return new Resource();
-  }
+    @Path("sbpath")
+    public Resource stringBeanPath() {
+        return new Resource();
+    }
 
-  @Path("sbmatrix")
-  public Resource stringBeanMatrix() {
-    return new Resource();
-  }
+    @Path("sbmatrix")
+    public Resource stringBeanMatrix() {
+        return new Resource();
+    }
 
-  @Path("sbform")
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public Resource stringBeanForm() {
-    return new Resource();
-  }
+    @Path("sbform")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Resource stringBeanForm() {
+        return new Resource();
+    }
 
-  @Path("sbcookie")
-  public Resource stringBeanCookie() {
-    return new Resource();
-  }
+    @Path("sbcookie")
+    public Resource stringBeanCookie() {
+        return new Resource();
+    }
 
-  @Path("sbheader")
-  public Resource stringBeanHeader() {
-    return new Resource();
-  }
+    @Path("sbheader")
+    public Resource stringBeanHeader() {
+        return new Resource();
+    }
 
 }

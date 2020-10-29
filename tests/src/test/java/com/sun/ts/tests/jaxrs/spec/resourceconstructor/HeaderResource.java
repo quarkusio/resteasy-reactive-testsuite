@@ -22,14 +22,14 @@ import javax.ws.rs.Path;
 
 @Path("resource/header")
 public class HeaderResource {
-  String header;
+    String header;
 
-  public HeaderResource(@HeaderParam("param") String header) {
-    this.header = header;
-  }
+    public HeaderResource(@HeaderParam("param") String header) {
+        this.header = header;
+    }
 
-  @GET
-  public String get() {
-    return header;
-  }
+    @GET
+    public String get() {
+        return header;
+    }
 }

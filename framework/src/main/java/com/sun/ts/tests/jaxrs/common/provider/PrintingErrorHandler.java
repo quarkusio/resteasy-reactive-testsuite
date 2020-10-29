@@ -28,15 +28,15 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class PrintingErrorHandler implements ExceptionMapper<Throwable> {
 
-  @Override
-  public Response toResponse(Throwable throwable) {
-    throwable.printStackTrace();
+    @Override
+    public Response toResponse(Throwable throwable) {
+        throwable.printStackTrace();
 
-    Writer result = new StringWriter();
-    PrintWriter printWriter = new PrintWriter(result);
-    throwable.printStackTrace(printWriter);
-    return Response.status(Status.NOT_ACCEPTABLE).entity(result.toString())
-        .build();
-  }
+        Writer result = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(result);
+        throwable.printStackTrace(printWriter);
+        return Response.status(Status.NOT_ACCEPTABLE).entity(result.toString())
+                .build();
+    }
 
 }

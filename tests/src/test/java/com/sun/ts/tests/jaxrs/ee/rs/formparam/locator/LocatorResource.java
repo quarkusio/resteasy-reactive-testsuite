@@ -26,17 +26,17 @@ import javax.ws.rs.core.MediaType;
 @Path("resource")
 public class LocatorResource extends MiddleResource {
 
-  @Path("locator/{id1}")
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
-      @FormParam("default_argument") String arg) throws Exception {
-    return new MiddleResource(id1, arg);
-  }
+    @Path("locator/{id1}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
+            @FormParam("default_argument") String arg) throws Exception {
+        return new MiddleResource(id1, arg);
+    }
 
-  @Path("locatorencoded/{id1}")
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public MiddleResource locatorHasEncodedArguments(@PathParam("id1") String id1,
-      @Encoded @FormParam("default_argument") String arg) throws Exception {
-    return new MiddleResource(id1, arg);
-  }
+    @Path("locatorencoded/{id1}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public MiddleResource locatorHasEncodedArguments(@PathParam("id1") String id1,
+            @Encoded @FormParam("default_argument") String arg) throws Exception {
+        return new MiddleResource(id1, arg);
+    }
 }

@@ -21,9 +21,9 @@ import javax.ws.rs.Path;
 
 @Path("resource")
 public class Resource {
-  @POST
-  @Path("echo")
-  public String echo(String value) {
-    return value;
-  }
+    @POST
+    @Path("echo")
+    public String echo(String value) {
+        return value;
+    }
 }

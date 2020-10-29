@@ -30,33 +30,33 @@ import javax.ws.rs.core.MediaType;
 @Path("resource")
 public class Resource {
 
-  public static final String MESSAGE = "This.is.some.message.to.be.sent.as.json";
+    public static final String MESSAGE = "This.is.some.message.to.be.sent.as.json";
 
-  @Path("tostring")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public JsonString toStructure() {
-    return Json.createValue(MESSAGE);
-  }
+    @Path("tostring")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonString toStructure() {
+        return Json.createValue(MESSAGE);
+    }
 
-  @Path("tonumber")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public JsonNumber toNumber() {
-    return Json.createValue(BigDecimal.valueOf(Long.MIN_VALUE));
-  }
+    @Path("tonumber")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonNumber toNumber() {
+        return Json.createValue(BigDecimal.valueOf(Long.MIN_VALUE));
+    }
 
-  @Path("fromstring")
-  @POST
-  @Produces(MediaType.APPLICATION_JSON)
-  public String fromObject(JsonString string) {
-    return string.getString();
-  }
+    @Path("fromstring")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public String fromObject(JsonString string) {
+        return string.getString();
+    }
 
-  @Path("fromnumber")
-  @POST
-  @Produces(MediaType.APPLICATION_JSON)
-  public String fromNumber(JsonNumber number) {
-    return number.bigDecimalValue().toString();
-  }
+    @Path("fromnumber")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public String fromNumber(JsonNumber number) {
+        return number.bigDecimalValue().toString();
+    }
 }

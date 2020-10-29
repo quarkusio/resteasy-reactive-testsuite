@@ -24,11 +24,11 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class ClientErrorExceptionMapper
-    implements ExceptionMapper<ClientErrorException> {
+        implements ExceptionMapper<ClientErrorException> {
 
-  @Override
-  public Response toResponse(ClientErrorException exception) {
-    return Response.ok(getClass().getName()).build();
-  }
+    @Override
+    public Response toResponse(ClientErrorException exception) {
+        return Response.ok(getClass().getName()).build();
+    }
 
 }

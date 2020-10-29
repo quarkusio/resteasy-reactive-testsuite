@@ -24,16 +24,16 @@ import com.sun.ts.tests.jaxrs.common.impl.StringDataSource;
 
 public class DataSourceParamConverter implements ParamConverter<DataSource> {
 
-  @Override
-  public DataSource fromString(String value) throws IllegalArgumentException {
-    StringDataSource sds = new StringDataSource(value,
-        MediaType.TEXT_PLAIN_TYPE);
-    return sds;
-  }
+    @Override
+    public DataSource fromString(String value) throws IllegalArgumentException {
+        StringDataSource sds = new StringDataSource(value,
+                MediaType.TEXT_PLAIN_TYPE);
+        return sds;
+    }
 
-  @Override
-  public String toString(DataSource value) throws IllegalArgumentException {
-    return value.getName();
-  }
+    @Override
+    public String toString(DataSource value) throws IllegalArgumentException {
+        return value.getName();
+    }
 
 }

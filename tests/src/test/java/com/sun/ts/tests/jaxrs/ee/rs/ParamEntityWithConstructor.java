@@ -17,7 +17,7 @@
 package com.sun.ts.tests.jaxrs.ee.rs;
 
 public class ParamEntityWithConstructor extends ParamEntityPrototype {
-  public ParamEntityWithConstructor(String arg) {
-    value = arg;
-  }
+    public ParamEntityWithConstructor(String arg) {
+        value = arg;
+    }
 }

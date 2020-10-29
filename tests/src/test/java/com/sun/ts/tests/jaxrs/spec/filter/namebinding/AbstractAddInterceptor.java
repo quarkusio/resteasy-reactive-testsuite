@@ -29,33 +29,33 @@ import javax.ws.rs.ext.WriterInterceptorContext;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 public abstract class AbstractAddInterceptor
-    implements ReaderInterceptor, WriterInterceptor {
+        implements ReaderInterceptor, WriterInterceptor {
 
-  private int amount;
+    private int amount;
 
-  public AbstractAddInterceptor(int amount) {
-    this.amount = amount;
-  }
+    public AbstractAddInterceptor(int amount) {
+        this.amount = amount;
+    }
 
-  @Override
-  public void aroundWriteTo(WriterInterceptorContext context)
-      throws IOException, WebApplicationException {
-    String entity = (String) context.getEntity();
-    Integer i = Integer.parseInt(entity);
-    entity = String.valueOf(i + amount);
-    context.setEntity(entity);
-    context.proceed();
-  }
+    @Override
+    public void aroundWriteTo(WriterInterceptorContext context)
+            throws IOException, WebApplicationException {
+        String entity = (String) context.getEntity();
+        Integer i = Integer.parseInt(entity);
+        entity = String.valueOf(i + amount);
+        context.setEntity(entity);
+        context.proceed();
+    }
 
-  @Override
-  public Object aroundReadFrom(ReaderInterceptorContext context)
-      throws IOException, WebApplicationException {
-    InputStream inputStream = context.getInputStream();
-    String entity = JaxrsUtil.readFromStream(inputStream);
-    Integer i = Integer.parseInt(entity);
-    entity = String.valueOf(i + amount);
-    context.setInputStream(new ByteArrayInputStream(entity.getBytes()));
-    return context.proceed();
-  }
+    @Override
+    public Object aroundReadFrom(ReaderInterceptorContext context)
+            throws IOException, WebApplicationException {
+        InputStream inputStream = context.getInputStream();
+        String entity = JaxrsUtil.readFromStream(inputStream);
+        Integer i = Integer.parseInt(entity);
+        entity = String.valueOf(i + amount);
+        context.setInputStream(new ByteArrayInputStream(entity.getBytes()));
+        return context.proceed();
+    }
 
 }

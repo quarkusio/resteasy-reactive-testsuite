@@ -27,27 +27,28 @@ import org.xml.sax.SAXException;
  * Shows failing test classes by number of failure/errors
  */
 public class QuarkusSortTestsByFailureCountProcessor {
-    
+
     static class TestResult implements Comparable<TestResult> {
         int failures, errors;
         String classname;
+
         TestResult(String classname) {
             this.classname = classname;
         }
+
         @Override
         public int compareTo(TestResult o) {
-            int total = failures+errors;
+            int total = failures + errors;
             int otherTotal = o.errors + o.failures;
             int order = Integer.compare(total, otherTotal);
-            if(order != 0)
+            if (order != 0)
                 return order;
             return classname.compareTo(o.classname);
         }
     }
-    
+
     public static void main(String[] args) throws IOException, ParserConfigurationException {
-        DocumentBuilderFactory factory =
-                DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Path srcPath = Paths.get("target/surefire-reports");
         Map<String, TestResult> results = new HashMap<>();
@@ -61,31 +62,31 @@ public class QuarkusSortTestsByFailureCountProcessor {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String filename = file.getFileName().toString();
-                if(filename.startsWith("TEST-") && filename.endsWith(".xml")) {
+                if (filename.startsWith("TEST-") && filename.endsWith(".xml")) {
                     try {
                         Document document = builder.parse(file.toFile());
                         NodeList testcases = document.getElementsByTagName("testcase");
                         Set<String> methods = new HashSet<>();
                         String classname = null;
-                        for(int i=0;i<testcases.getLength();i++) {
+                        for (int i = 0; i < testcases.getLength(); i++) {
                             Node testcase = testcases.item(i);
-                            if(testcase.getNodeType() == Node.ELEMENT_NODE) {
+                            if (testcase.getNodeType() == Node.ELEMENT_NODE) {
                                 Element el = (Element) testcase;
                                 String name = el.getAttribute("name");
                                 classname = el.getAttribute("classname");
                                 NodeList failures = el.getElementsByTagName("failure");
                                 TestResult testResult = results.computeIfAbsent(classname, v -> new TestResult(v));
-                                for(int j=0;j<failures.getLength();j++) {
+                                for (int j = 0; j < failures.getLength(); j++) {
                                     Node failure = failures.item(j);
-                                    if(failure.getNodeType() == Node.ELEMENT_NODE) {
+                                    if (failure.getNodeType() == Node.ELEMENT_NODE) {
                                         methods.add(name);
                                         testResult.failures++;
                                     }
                                 }
                                 NodeList errors = el.getElementsByTagName("error");
-                                for(int j=0;j<errors.getLength();j++) {
+                                for (int j = 0; j < errors.getLength(); j++) {
                                     Node failure = errors.item(j);
-                                    if(failure.getNodeType() == Node.ELEMENT_NODE) {
+                                    if (failure.getNodeType() == Node.ELEMENT_NODE) {
                                         methods.add(name);
                                         testResult.errors++;
                                     }
@@ -114,8 +115,8 @@ public class QuarkusSortTestsByFailureCountProcessor {
         // purge all successful tests
         TreeSet<TestResult> values = new TreeSet<>(results.values());
         values.removeIf(res -> res.errors == 0 && res.failures == 0);
-        for(TestResult result : values) {
-            System.err.println(result.classname+": "+result.errors+" ERRORS, "+result.failures+" FAILURES");
+        for (TestResult result : values) {
+            System.err.println(result.classname + ": " + result.errors + " ERRORS, " + result.failures + " FAILURES");
         }
     }
 

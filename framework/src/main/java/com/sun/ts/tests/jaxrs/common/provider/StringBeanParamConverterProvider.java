@@ -23,19 +23,17 @@ import javax.ws.rs.ext.ParamConverter;
 import javax.ws.rs.ext.ParamConverterProvider;
 import javax.ws.rs.ext.Provider;
 
-import com.sun.ts.tests.jaxrs.common.provider.StringBean;
-
 @Provider
 public class StringBeanParamConverterProvider
-    implements ParamConverterProvider {
+        implements ParamConverterProvider {
 
-  @SuppressWarnings("unchecked")
-  @Override
-  public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType,
-      Annotation[] annotations) {
-    if (rawType == StringBean.class)
-      return (ParamConverter<T>) new StringBeanParamConverter();
-    return null;
-  }
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType,
+            Annotation[] annotations) {
+        if (rawType == StringBean.class)
+            return (ParamConverter<T>) new StringBeanParamConverter();
+        return null;
+    }
 
 }

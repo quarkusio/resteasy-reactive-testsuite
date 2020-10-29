@@ -35,40 +35,40 @@ import javax.ws.rs.ext.Provider;
 @Consumes(MediaType.TEXT_PLAIN)
 @Produces(MediaType.TEXT_PLAIN)
 public class TckCharacterProvider
-    implements MessageBodyReader<Character>, MessageBodyWriter<Character> {
+        implements MessageBodyReader<Character>, MessageBodyWriter<Character> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == Character.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == Character.class;
+    }
 
-  @Override
-  public long getSize(Character t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return 1;
-  }
+    @Override
+    public long getSize(Character t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return 1;
+    }
 
-  @Override
-  public void writeTo(Character t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write("c".getBytes());
-  }
+    @Override
+    public void writeTo(Character t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write("c".getBytes());
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public Character readFrom(Class<Character> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return 'b';
-  }
+    @Override
+    public Character readFrom(Class<Character> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return 'b';
+    }
 
 }

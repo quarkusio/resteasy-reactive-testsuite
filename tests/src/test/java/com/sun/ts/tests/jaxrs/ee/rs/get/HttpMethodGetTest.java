@@ -25,44 +25,44 @@ import javax.ws.rs.core.Response;
 @Path(value = "/GetTest")
 public class HttpMethodGetTest {
 
-  static String html_content = "<html>"
-      + "<head><title>CTS-get text/html</title></head>"
-      + "<body>CTS-get text/html</body></html>";
+    static String html_content = "<html>"
+            + "<head><title>CTS-get text/html</title></head>"
+            + "<body>CTS-get text/html</body></html>";
 
-  @GET
-  public Response getPlain() {
-    return Response.ok("CTS-get text/plain").header("CTS-HEAD", "text-plain")
-        .build();
-  }
+    @GET
+    public Response getPlain() {
+        return Response.ok("CTS-get text/plain").header("CTS-HEAD", "text-plain")
+                .build();
+    }
 
-  @GET
-  @Produces(value = "text/html")
-  public Response getHtml() {
-    return Response.ok(html_content).header("CTS-HEAD", "text-html").build();
-  }
+    @GET
+    @Produces(value = "text/html")
+    public Response getHtml() {
+        return Response.ok(html_content).header("CTS-HEAD", "text-html").build();
+    }
 
-  @GET
-  @Path(value = "/sub")
-  public Response getSub() {
-    return Response.ok("CTS-get text/plain")
-        .header("CTS-HEAD", "sub-text-plain").build();
-  }
+    @GET
+    @Path(value = "/sub")
+    public Response getSub() {
+        return Response.ok("CTS-get text/plain")
+                .header("CTS-HEAD", "sub-text-plain").build();
+    }
 
-  @GET
-  @Path(value = "/sub")
-  @Produces(value = "text/html")
-  public Response headSub() {
-    return Response.ok(html_content).header("CTS-HEAD", "sub-text-html")
-        .build();
-  }
+    @GET
+    @Path(value = "/sub")
+    @Produces(value = "text/html")
+    public Response headSub() {
+        return Response.ok(html_content).header("CTS-HEAD", "sub-text-html")
+                .build();
+    }
 
-  @Path("{id}")
-  public SubResource getAbstractResource(@PathParam("id") int id) {
-    return new SubResource();
-  }
+    @Path("{id}")
+    public SubResource getAbstractResource(@PathParam("id") int id) {
+        return new SubResource();
+    }
 
-  @Path("recursive")
-  public RecursiveLocator recursion() {
-    return new RecursiveLocator();
-  }
+    @Path("recursive")
+    public RecursiveLocator recursion() {
+        return new RecursiveLocator();
+    }
 }

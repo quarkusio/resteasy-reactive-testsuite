@@ -16,43 +16,40 @@
 
 -->
 
-<project name="jaxrs_ee_core_securitycontext" basedir="." default="package" >    
-    <property name="resource.classes" 
-              value="com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TestServlet.class,
+<project name="jaxrs_ee_core_securitycontext" basedir="." default="package">
+	<property name="resource.classes"
+		value="com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TestServlet.class,
     				 com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TestServlet$Security.class,
     				 com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TestServlet$Scheme.class,
 					 com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TestServlet$Role.class,
-    				 com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TestServlet$Principal.class"/>
-    <property name="appconfig.class"
-              value="com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TSAppConfig.class" />
-              
-	<include file="../../../../common/common.xml"/>              
-                     
+    				 com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TestServlet$Principal.class" />
+	<property name="appconfig.class" value="com/sun/ts/tests/jaxrs/ee/rs/core/securitycontext/TSAppConfig.class" />
+
+	<include file="../../../../common/common.xml" />
+
 	<target name="package" depends="build.TSAppConfig">
-		<ant antfile="${ts.home}/src/com/sun/ts/tests/jaxrs/common/common.xml" target="package"/>
-        <antcall target="copy.sun-web.xml"/>        
-        <antcall target="copy.sun-application.xml"/>        		   
-	</target>    
-	    
-    <target name="copy.sun-web.xml"> 
-        <copy failonerror="true" 
-        file="${app.name}_web.war.sun-web.xml" 
-        tofile="${ts.home}/dist/${pkg.dir}/${app.name}_web.war.sun-web.xml"/>
-    </target>
-    
-    <target name="copy.sun-application.xml">
-        <copy failonerror="true"
-              file="${app.name}_web.ear.sun-application.xml"
-              tofile="${ts.home}/dist/${pkg.dir}/${app.name}_web.ear.sun-application.xml" />    
-    </target>
-	
-	<target name="check.TSAppConfig.built">
-		<available file="${ts.home}/classes/${appconfig.class}" property="ts.app.config.present"/>
+		<ant antfile="${ts.home}/src/com/sun/ts/tests/jaxrs/common/common.xml" target="package" />
+		<antcall target="copy.sun-web.xml" />
+		<antcall target="copy.sun-application.xml" />
 	</target>
-	
+
+	<target name="copy.sun-web.xml">
+		<copy failonerror="true" file="${app.name}_web.war.sun-web.xml"
+			tofile="${ts.home}/dist/${pkg.dir}/${app.name}_web.war.sun-web.xml" />
+	</target>
+
+	<target name="copy.sun-application.xml">
+		<copy failonerror="true" file="${app.name}_web.ear.sun-application.xml"
+			tofile="${ts.home}/dist/${pkg.dir}/${app.name}_web.ear.sun-application.xml" />
+	</target>
+
+	<target name="check.TSAppConfig.built">
+		<available file="${ts.home}/classes/${appconfig.class}" property="ts.app.config.present" />
+	</target>
+
 	<target name="build.TSAppConfig" depends="check.TSAppConfig.built" unless="ts.app.config.present">
 		<echo>BUILDING</echo>
-		<ant antfile="../build.xml" useNativeBasedir="true" target="compile"/>
-	</target>	
-    
+		<ant antfile="../build.xml" useNativeBasedir="true" target="compile" />
+	</target>
+
 </project>

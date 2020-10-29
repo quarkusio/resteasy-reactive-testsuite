@@ -23,22 +23,22 @@ import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(TckByteArrayProvider.class);
-    resources.add(TckDataSourceProvider.class);
-    resources.add(TckFileProvider.class);
-    resources.add(TckInputStreamProvider.class);
-    resources.add(TckJaxbProvider.class);
-    resources.add(TckMapProvider.class);
-    resources.add(TckReaderProvider.class);
-    resources.add(TckSourceProvider.class);
-    resources.add(TckStreamingOutputProvider.class);
-    resources.add(TckStringProvider.class);
-    resources.add(TckBooleanProvider.class);
-    resources.add(TckCharacterProvider.class);
-    resources.add(TckNumberProvider.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(TckByteArrayProvider.class);
+        resources.add(TckDataSourceProvider.class);
+        resources.add(TckFileProvider.class);
+        resources.add(TckInputStreamProvider.class);
+        resources.add(TckJaxbProvider.class);
+        resources.add(TckMapProvider.class);
+        resources.add(TckReaderProvider.class);
+        resources.add(TckSourceProvider.class);
+        resources.add(TckStreamingOutputProvider.class);
+        resources.add(TckStringProvider.class);
+        resources.add(TckBooleanProvider.class);
+        resources.add(TckCharacterProvider.class);
+        resources.add(TckNumberProvider.class);
+        return resources;
+    }
 }

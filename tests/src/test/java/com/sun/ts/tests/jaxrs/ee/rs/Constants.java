@@ -23,23 +23,23 @@ package com.sun.ts.tests.jaxrs.ee.rs;
  * @since 2.0.1
  */
 public interface Constants {
-  public static final String INNER = "Inner";
+    public static final String INNER = "Inner";
 
-  public static final String DEFAULT_VALUE = "DefaultParamValue";
+    public static final String DEFAULT_VALUE = "DefaultParamValue";
 
-  public static final String PARAM_ENTITY_WITH_CONSTRUCTOR = "ParamEntityWithConstructor";
+    public static final String PARAM_ENTITY_WITH_CONSTRUCTOR = "ParamEntityWithConstructor";
 
-  public static final String PARAM_ENTITY_WITH_FROMSTRING = "ParamEntityWithFromString";
+    public static final String PARAM_ENTITY_WITH_FROMSTRING = "ParamEntityWithFromString";
 
-  public static final String PARAM_ENTITY_WITH_VALUEOF = "ParamEntityWithValueOf";
+    public static final String PARAM_ENTITY_WITH_VALUEOF = "ParamEntityWithValueOf";
 
-  public static final String SET_PARAM_ENTITY_WITH_FROMSTRING = "SetParamEntityWithFromString";
+    public static final String SET_PARAM_ENTITY_WITH_FROMSTRING = "SetParamEntityWithFromString";
 
-  public static final String SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING = "SortedSetParamEntityWithFromString";
+    public static final String SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING = "SortedSetParamEntityWithFromString";
 
-  public static final String LIST_PARAM_ENTITY_WITH_FROMSTRING = "ListParamEntityWithFromString";
+    public static final String LIST_PARAM_ENTITY_WITH_FROMSTRING = "ListParamEntityWithFromString";
 
-  public static final String ENTITY_THROWING_WEBAPPLICATIONEXCEPTION = "ParamEntityThrowingWebApplicationException";
+    public static final String ENTITY_THROWING_WEBAPPLICATIONEXCEPTION = "ParamEntityThrowingWebApplicationException";
 
-  public static final String ENTITY_THROWING_EXCEPTION_BY_NAME = "ParamEntityThrowingExceptionGivenByName";
+    public static final String ENTITY_THROWING_EXCEPTION_BY_NAME = "ParamEntityThrowingExceptionGivenByName";
 }

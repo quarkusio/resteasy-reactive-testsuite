@@ -24,34 +24,34 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Providers;
 
 public class HolderClass {
-  public static final String OK = "11111";
+    public static final String OK = "11111";
 
-  private HttpHeaders headers;
+    private HttpHeaders headers;
 
-  private UriInfo info;
+    private UriInfo info;
 
-  private Application application;
+    private Application application;
 
-  private Request request;
+    private Request request;
 
-  private Providers provider;
+    private Providers provider;
 
-  public HolderClass(HttpHeaders headers, UriInfo info, Application application,
-      Request request, Providers provider) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-    this.provider = provider;
-  }
+    public HolderClass(HttpHeaders headers, UriInfo info, Application application,
+            Request request, Providers provider) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+        this.provider = provider;
+    }
 
-  public Response toResponse() {
-    int ok = application != null ? 1 : 0;
-    ok += headers != null ? 10 : 0;
-    ok += info != null ? 100 : 0;
-    ok += request != null ? 1000 : 0;
-    ok += provider == null ? 10000 : 0;
-    return Response.ok(String.valueOf(ok)).build();
-  }
+    public Response toResponse() {
+        int ok = application != null ? 1 : 0;
+        ok += headers != null ? 10 : 0;
+        ok += info != null ? 100 : 0;
+        ok += request != null ? 1000 : 0;
+        ok += provider == null ? 10000 : 0;
+        return Response.ok(String.valueOf(ok)).build();
+    }
 }

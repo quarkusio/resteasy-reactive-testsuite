@@ -24,30 +24,30 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class WebAppExceptionMapper
-    implements ExceptionMapper<WebApplicationException> {
+        implements ExceptionMapper<WebApplicationException> {
 
-  @Override
-  public Response toResponse(WebApplicationException exception) {
-    // When not found, i.e. url is wrong, one get also
-    // WebApplicationException
-    if (exception.getClass() != WebApplicationException.class) {
-      // When response has entity, the ExceptionMapper is not used
-      // Let's mark these WebApplicationException with message
-      // DirectResponseUsageResource.ENTITY
-      if (exception.getMessage().equals(DirectResponseUsageResource.ENTITY))
-        return Response.status(400).entity(
-            "WebAppExceptionMapper should not be used when WebApplicationException has an entity")
-            .build();
-      // Lets mark the WebApplicationException without entity by a message
-      // in this case, the WebApplicationException should have been used
-      else if (exception.getMessage()
-          .equals(ResponseWithNoEntityUsesMapperResource.MESSAGE))
-        return Response.status(Status.FOUND).build();
-      // default, not a source by TCK, but vi, possible config issue?
-      else
-        return exception.getResponse();
+    @Override
+    public Response toResponse(WebApplicationException exception) {
+        // When not found, i.e. url is wrong, one get also
+        // WebApplicationException
+        if (exception.getClass() != WebApplicationException.class) {
+            // When response has entity, the ExceptionMapper is not used
+            // Let's mark these WebApplicationException with message
+            // DirectResponseUsageResource.ENTITY
+            if (exception.getMessage().equals(DirectResponseUsageResource.ENTITY))
+                return Response.status(400).entity(
+                        "WebAppExceptionMapper should not be used when WebApplicationException has an entity")
+                        .build();
+            // Lets mark the WebApplicationException without entity by a message
+            // in this case, the WebApplicationException should have been used
+            else if (exception.getMessage()
+                    .equals(ResponseWithNoEntityUsesMapperResource.MESSAGE))
+                return Response.status(Status.FOUND).build();
+            // default, not a source by TCK, but vi, possible config issue?
+            else
+                return exception.getResponse();
+        }
+        return Response.status(Status.ACCEPTED).build();
     }
-    return Response.status(Status.ACCEPTED).build();
-  }
 
 }

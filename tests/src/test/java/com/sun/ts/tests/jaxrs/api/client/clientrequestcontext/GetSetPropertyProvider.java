@@ -24,22 +24,22 @@ import javax.ws.rs.core.Response;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 public class GetSetPropertyProvider extends ContextProvider {
-  private AtomicInteger counter;
+    private AtomicInteger counter;
 
-  public GetSetPropertyProvider(AtomicInteger counter) {
-    super();
-    this.counter = counter;
-  }
+    public GetSetPropertyProvider(AtomicInteger counter) {
+        super();
+        this.counter = counter;
+    }
 
-  @Override
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    Object property = context.getProperty("PROPERTY");
-    String entity = property == null ? "NULL" : property.toString();
-    if (counter.incrementAndGet() == 2) {
-      Response r = Response.ok(entity).build();
-      context.abortWith(r);
-    } else
-      context.setProperty("PROPERTY", "value");
-  }
+    @Override
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        Object property = context.getProperty("PROPERTY");
+        String entity = property == null ? "NULL" : property.toString();
+        if (counter.incrementAndGet() == 2) {
+            Response r = Response.ok(entity).build();
+            context.abortWith(r);
+        } else
+            context.setProperty("PROPERTY", "value");
+    }
 
 }

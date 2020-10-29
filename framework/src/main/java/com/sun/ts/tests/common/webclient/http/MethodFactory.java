@@ -23,15 +23,14 @@ package com.sun.ts.tests.common.webclient.http;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.HttpMethodBase;
-import org.apache.commons.httpclient.HttpVersion;
-import org.apache.commons.httpclient.methods.DeleteMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.HeadMethod;
-import org.apache.commons.httpclient.methods.OptionsMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.PutMethod;
+import org.apache.http.ProtocolVersion;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpHead;
+import org.apache.http.client.methods.HttpOptions;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpRequestBase;
 
 /**
  * Simple factory class which returns HttpMethod implementations based on a
@@ -44,121 +43,109 @@ import org.apache.commons.httpclient.methods.PutMethod;
 
 public class MethodFactory {
 
-  /**
-   * HTTP GET
-   */
-  private static final String GET_METHOD = "GET";
+    /**
+     * HTTP GET
+     */
+    private static final String GET_METHOD = "GET";
 
-  /**
-   * HTTP POST
-   */
-  private static final String POST_METHOD = "POST";
+    /**
+     * HTTP POST
+     */
+    private static final String POST_METHOD = "POST";
 
-  /**
-   * HTTP HEAD
-   */
-  private static final String HEAD_METHOD = "HEAD";
+    /**
+     * HTTP HEAD
+     */
+    private static final String HEAD_METHOD = "HEAD";
 
-  /**
-   * HTTP PUT
-   */
-  private static final String PUT_METHOD = "PUT";
+    /**
+     * HTTP PUT
+     */
+    private static final String PUT_METHOD = "PUT";
 
-  /**
-   * HTTP DELETE
-   */
-  private static final String DELETE_METHOD = "DELETE";
+    /**
+     * HTTP DELETE
+     */
+    private static final String DELETE_METHOD = "DELETE";
 
-  /**
-   * HTTP OPTIONS
-   */
-  private static final String OPTIONS_METHOD = "OPTIONS";
+    /**
+     * HTTP OPTIONS
+     */
+    private static final String OPTIONS_METHOD = "OPTIONS";
 
-  /**
-   * Private constructor as all interaction with this class is through the
-   * getInstance() method.
-   */
-  private MethodFactory() {
-  }
-
-  /*
-   * public methods
-   * ========================================================================
-   */
-
-  /**
-   * Returns the approriate request method based on the provided request string.
-   * The request must be in the format of METHOD URI_PATH HTTP_VERSION, i.e. GET
-   * /index.jsp HTTP/1.1.
-   *
-   * @return HttpMethod based in request.
-   */
-  public static HttpMethod getInstance(String request) {
-    StringTokenizer st = new StringTokenizer(request);
-    String method;
-    String query = null;
-    String uri;
-    String version;
-    try {
-      method = st.nextToken();
-      uri = st.nextToken();
-      version = st.nextToken();
-    } catch (NoSuchElementException nsee) {
-      throw new IllegalArgumentException(
-          "Request provided: " + request + " is malformed.");
+    /**
+     * Private constructor as all interaction with this class is through the
+     * getInstance() method.
+     */
+    private MethodFactory() {
     }
 
-    // check to see if there is a query string appended
-    // to the URI
-    int queryStart = uri.indexOf('?');
-    if (queryStart != -1) {
-      query = uri.substring(queryStart + 1);
-      uri = uri.substring(0, queryStart);
+    /*
+     * public methods
+     * ========================================================================
+     */
+
+    /**
+     * Returns the approriate request method based on the provided request string.
+     * The request must be in the format of METHOD URI_PATH HTTP_VERSION, i.e. GET
+     * /index.jsp HTTP/1.1.
+     *
+     * @return HttpMethod based in request.
+     */
+    public static HttpRequestBase getInstance(String request) {
+        StringTokenizer st = new StringTokenizer(request);
+        String method;
+        String query = null;
+        String uri;
+        String version;
+        try {
+            method = st.nextToken();
+            uri = st.nextToken();
+            version = st.nextToken();
+        } catch (NoSuchElementException nsee) {
+            throw new IllegalArgumentException(
+                    "Request provided: " + request + " is malformed.");
+        }
+
+        HttpRequestBase req;
+
+        if (method.equals(GET_METHOD)) {
+            req = new HttpGet(uri);
+        } else if (method.equals(POST_METHOD)) {
+            req = new HttpPost(uri);
+        } else if (method.equals(PUT_METHOD)) {
+            req = new HttpPut(uri);
+        } else if (method.equals(DELETE_METHOD)) {
+            req = new HttpDelete(uri);
+        } else if (method.equals(HEAD_METHOD)) {
+            req = new HttpHead(uri);
+        } else if (method.equals(OPTIONS_METHOD)) {
+            req = new HttpOptions(uri);
+        } else {
+            throw new IllegalArgumentException("Invalid method: " + method);
+        }
+
+        setHttpVersion(version, req);
+
+        return req;
     }
 
-    HttpMethodBase req;
+    /*
+     * private methods
+     * ========================================================================
+     */
 
-    if (method.equals(GET_METHOD)) {
-      req = new GetMethod(uri);
-    } else if (method.equals(POST_METHOD)) {
-      req = new PostMethod(uri);
-    } else if (method.equals(PUT_METHOD)) {
-      req = new PutMethod(uri);
-    } else if (method.equals(DELETE_METHOD)) {
-      req = new DeleteMethod(uri);
-    } else if (method.equals(HEAD_METHOD)) {
-      req = new HeadMethod(uri);
-    } else if (method.equals(OPTIONS_METHOD)) {
-      req = new OptionsMethod(uri);
-    } else {
-      throw new IllegalArgumentException("Invalid method: " + method);
+    /**
+     * Sets the HTTP version for the method in question.
+     *
+     * @param version
+     *        HTTP version to use for this request
+     * @param method
+     *        method to adjust HTTP version
+     */
+    private static void setHttpVersion(String version, HttpRequestBase method) {
+        final String oneOne = "HTTP/1.1";
+        method.setProtocolVersion(
+                version.equals(oneOne) ? new ProtocolVersion("HTTP", 1, 1) : new ProtocolVersion("HTTP", 1, 0));
     }
-
-    setHttpVersion(version, req);
-
-    if (query != null) {
-      req.setQueryString(query);
-    }
-
-    return req;
-  }
-
-  /*
-   * private methods
-   * ========================================================================
-   */
-
-  /**
-   * Sets the HTTP version for the method in question.
-   *
-   * @param version
-   *          HTTP version to use for this request
-   * @param method
-   *          method to adjust HTTP version
-   */
-  private static void setHttpVersion(String version, HttpMethodBase method) {
-    final String oneOne = "HTTP/1.1";
-    method.getParams().setVersion(
-        (version.equals(oneOne) ? HttpVersion.HTTP_1_1 : HttpVersion.HTTP_1_0));
-  }
 }

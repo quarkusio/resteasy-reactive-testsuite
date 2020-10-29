@@ -34,23 +34,23 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf;
 @Path("resource")
 public class LocatorResource extends MiddleResource {
 
-  @Path("locator")
-  public MiddleResource locatorHasArguments(@QueryParam("todo") String todo,
-      @CookieParam("name1") @DefaultValue("abc") String value,
-      @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithConstructor") ParamEntityWithConstructor paramEntityWithConstructor,
-      @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithFromString") ParamEntityWithFromString paramEntityWithFromString,
-      @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithValueOf") ParamEntityWithValueOf paramEntityWithValueOf,
-      @DefaultValue("CookieParamTest") @CookieParam("SetParamEntityWithFromString") Set<ParamEntityWithFromString> setParamEntityWithFromString,
-      @DefaultValue("CookieParamTest") @CookieParam("SortedSetParamEntityWithFromString") SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
-      @DefaultValue("CookieParamTest") @CookieParam("ListParamEntityWithFromString") List<ParamEntityWithFromString> listParamEntityWithFromString,
-      @CookieParam("ParamEntityThrowingWebApplicationException") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
-      @CookieParam("ParamEntityThrowingExceptionGivenByName") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
-    return new MiddleResource(todo, value, paramEntityWithConstructor,
-        paramEntityWithFromString, paramEntityWithValueOf,
-        setParamEntityWithFromString, sortedSetParamEntityWithFromString,
-        listParamEntityWithFromString,
-        paramEntityThrowingWebApplicationException,
-        paramEntityThrowingExceptionGivenByName);
-  }
+    @Path("locator")
+    public MiddleResource locatorHasArguments(@QueryParam("todo") String todo,
+            @CookieParam("name1") @DefaultValue("abc") String value,
+            @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithConstructor") ParamEntityWithConstructor paramEntityWithConstructor,
+            @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithFromString") ParamEntityWithFromString paramEntityWithFromString,
+            @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithValueOf") ParamEntityWithValueOf paramEntityWithValueOf,
+            @DefaultValue("CookieParamTest") @CookieParam("SetParamEntityWithFromString") Set<ParamEntityWithFromString> setParamEntityWithFromString,
+            @DefaultValue("CookieParamTest") @CookieParam("SortedSetParamEntityWithFromString") SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
+            @DefaultValue("CookieParamTest") @CookieParam("ListParamEntityWithFromString") List<ParamEntityWithFromString> listParamEntityWithFromString,
+            @CookieParam("ParamEntityThrowingWebApplicationException") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
+            @CookieParam("ParamEntityThrowingExceptionGivenByName") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
+        return new MiddleResource(todo, value, paramEntityWithConstructor,
+                paramEntityWithFromString, paramEntityWithValueOf,
+                setParamEntityWithFromString, sortedSetParamEntityWithFromString,
+                listParamEntityWithFromString,
+                paramEntityThrowingWebApplicationException,
+                paramEntityThrowingExceptionGivenByName);
+    }
 
 }

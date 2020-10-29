@@ -35,65 +35,65 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0040 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 1501029701397272718L;
+    private static final long serialVersionUID = 1501029701397272718L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0040().run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0040().run(args);
+    }
 
-  /* Run test */
+    /* Run test */
 
-  /*
-   * @testName: checkBindingPriorityHigherRegisteredFirstTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:92;
-   * 
-   * @test_Strategy: Priority defined for a filter or interceptor.
-   */
-  @org.junit.jupiter.api.Test
-  public void checkBindingPriorityHigherRegisteredFirstTest() throws Fault {
-    AtomicInteger ai = new AtomicInteger(0);
-    ContextProvider lowerProiority = new LowerPriorityProvider(ai);
-    ContextProvider higherPriority = new HigherPriorityProvider(ai);
-    Response response = invokeWithClientRequestFilters(higherPriority,
-        lowerProiority);
-    assertFault(response.getStatus() == Status.OK.getStatusCode(),
-        "returned status", response.getStatus());
-  }
+    /*
+     * @testName: checkBindingPriorityHigherRegisteredFirstTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:92;
+     * 
+     * @test_Strategy: Priority defined for a filter or interceptor.
+     */
+    @org.junit.jupiter.api.Test
+    public void checkBindingPriorityHigherRegisteredFirstTest() throws Fault {
+        AtomicInteger ai = new AtomicInteger(0);
+        ContextProvider lowerProiority = new LowerPriorityProvider(ai);
+        ContextProvider higherPriority = new HigherPriorityProvider(ai);
+        Response response = invokeWithClientRequestFilters(higherPriority,
+                lowerProiority);
+        assertFault(response.getStatus() == Status.OK.getStatusCode(),
+                "returned status", response.getStatus());
+    }
 
-  /*
-   * @testName: checkBindingPriorityLowerRegisteredFirstTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:92;
-   * 
-   * @test_Strategy: Priority defined for a filter or interceptor.
-   */
-  @org.junit.jupiter.api.Test
-  public void checkBindingPriorityLowerRegisteredFirstTest() throws Fault {
-    AtomicInteger ai = new AtomicInteger(0);
-    ContextProvider lowerProiority = new LowerPriorityProvider(ai);
-    ContextProvider higherPriority = new HigherPriorityProvider(ai);
-    Response response = invokeWithClientRequestFilters(lowerProiority,
-        higherPriority);
-    assertFault(response.getStatus() == Status.OK.getStatusCode(),
-        "returned status", response.getStatus());
-  }
+    /*
+     * @testName: checkBindingPriorityLowerRegisteredFirstTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:92;
+     * 
+     * @test_Strategy: Priority defined for a filter or interceptor.
+     */
+    @org.junit.jupiter.api.Test
+    public void checkBindingPriorityLowerRegisteredFirstTest() throws Fault {
+        AtomicInteger ai = new AtomicInteger(0);
+        ContextProvider lowerProiority = new LowerPriorityProvider(ai);
+        ContextProvider higherPriority = new HigherPriorityProvider(ai);
+        Response response = invokeWithClientRequestFilters(lowerProiority,
+                higherPriority);
+        assertFault(response.getStatus() == Status.OK.getStatusCode(),
+                "returned status", response.getStatus());
+    }
 
-  //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
 
-  protected Response invokeWithClientRequestFilters(
-      ClientRequestFilter... filters) {
-    Client client = ClientBuilder.newClient();
-    for (ClientRequestFilter filter : filters)
-      client.register(filter);
-    WebTarget target = client.target("http://nourl/");
-    Response response = target.request().buildGet().invoke();
-    return response;
-  }
+    protected Response invokeWithClientRequestFilters(
+            ClientRequestFilter... filters) {
+        Client client = ClientBuilder.newClient();
+        for (ClientRequestFilter filter : filters)
+            client.register(filter);
+        WebTarget target = client.target("http://nourl/");
+        Response response = target.request().buildGet().invoke();
+        return response;
+    }
 
 }

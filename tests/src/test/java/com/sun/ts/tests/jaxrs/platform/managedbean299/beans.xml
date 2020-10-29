@@ -16,7 +16,6 @@
 
 -->
 
-<beans xmlns="https://javax.ee/xml/ns/javaxee"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="https://javax.ee/xml/ns/javaxee https://javax.ee/xml/ns/javaxee/beans_3_0.xsd">
+<beans xmlns="https://javax.ee/xml/ns/javaxee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://javax.ee/xml/ns/javaxee https://javax.ee/xml/ns/javaxee/beans_3_0.xsd">
 </beans>

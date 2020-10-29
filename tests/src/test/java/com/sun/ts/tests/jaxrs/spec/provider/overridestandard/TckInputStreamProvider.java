@@ -34,45 +34,45 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class TckInputStreamProvider extends AbstractProvider
-    implements MessageBodyReader<InputStream>, MessageBodyWriter<InputStream> {
+        implements MessageBodyReader<InputStream>, MessageBodyWriter<InputStream> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return InputStream.class.isAssignableFrom(type);
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return InputStream.class.isAssignableFrom(type);
+    }
 
-  @Override
-  public long getSize(InputStream t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return getLength();
-  }
+    @Override
+    public long getSize(InputStream t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return getLength();
+    }
 
-  @Override
-  public void writeTo(InputStream t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    InputStreamReader ir = new InputStreamReader(t);
-    BufferedReader br = new BufferedReader(ir);
-    String text = br.readLine();
-    entityStream.write(text == null ? "".getBytes() : text.getBytes());
-    entityStream.write(getWriterName().getBytes());
-  }
+    @Override
+    public void writeTo(InputStream t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        InputStreamReader ir = new InputStreamReader(t);
+        BufferedReader br = new BufferedReader(ir);
+        String text = br.readLine();
+        entityStream.write(text == null ? "".getBytes() : text.getBytes());
+        entityStream.write(getWriterName().getBytes());
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public InputStream readFrom(Class<InputStream> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    InputStream is = new ByteArrayInputStream(getReaderName().getBytes());
-    return is;
-  }
+    @Override
+    public InputStream readFrom(Class<InputStream> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        InputStream is = new ByteArrayInputStream(getReaderName().getBytes());
+        return is;
+    }
 
 }

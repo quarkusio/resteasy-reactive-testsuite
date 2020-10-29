@@ -23,15 +23,15 @@ import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(EmptyResource.class);
-    resources.add(MainResource.class);
-    resources.add(MainSubResource.class);
-    resources.add(AnotherSubResource.class);
-    resources.add(LocatorResource.class);
-    resources.add(ExceptionMatcher.class);
-    resources.add(YetAnotherSubresource.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(EmptyResource.class);
+        resources.add(MainResource.class);
+        resources.add(MainSubResource.class);
+        resources.add(AnotherSubResource.class);
+        resources.add(LocatorResource.class);
+        resources.add(ExceptionMatcher.class);
+        resources.add(YetAnotherSubresource.class);
+        return resources;
+    }
 }

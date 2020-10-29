@@ -26,11 +26,11 @@ import javax.ws.rs.core.MediaType;
 
 @Path("super")
 public class SuperClass {
-  @POST
-  @Path("post")
-  @Consumes(MediaType.TEXT_XML)
-  @Produces(MediaType.TEXT_XML)
-  public String get(@DefaultValue("default") @QueryParam("pqr") String param) {
-    return param;
-  }
+    @POST
+    @Path("post")
+    @Consumes(MediaType.TEXT_XML)
+    @Produces(MediaType.TEXT_XML)
+    public String get(@DefaultValue("default") @QueryParam("pqr") String param) {
+        return param;
+    }
 }

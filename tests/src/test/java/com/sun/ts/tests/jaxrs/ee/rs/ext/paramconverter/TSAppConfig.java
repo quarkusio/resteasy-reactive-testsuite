@@ -25,21 +25,21 @@ import com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler;
 
 public class TSAppConfig extends Application {
 
-  @Override
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(Locator.class);
-    resources.add(StringBeanParamConverterProvider.class);
-    resources.add(AtomicIntegerLazyParamConverterProvider.class);
-    resources.add(PrintingErrorHandler.class);
-    return resources;
-  }
+    @Override
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(Locator.class);
+        resources.add(StringBeanParamConverterProvider.class);
+        resources.add(AtomicIntegerLazyParamConverterProvider.class);
+        resources.add(PrintingErrorHandler.class);
+        return resources;
+    }
 
-  @Override
-  public Set<Object> getSingletons() {
-    Set<Object> set = new HashSet<Object>();
-    set.add(new DataSourceParamConverterProvider());
-    return set;
-  }
+    @Override
+    public Set<Object> getSingletons() {
+        Set<Object> set = new HashSet<Object>();
+        set.add(new DataSourceParamConverterProvider());
+        return set;
+    }
 }

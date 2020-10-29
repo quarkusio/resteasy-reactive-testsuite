@@ -27,35 +27,35 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
 public class ResponseTemplateFilter extends TemplateFilter
-    implements ContainerResponseFilter {
+        implements ContainerResponseFilter {
 
-  protected ContainerResponseContext responseContext;
+    protected ContainerResponseContext responseContext;
 
-  @Override
-  public void filter(ContainerRequestContext requestContext,
-      ContainerResponseContext responseContext) throws IOException {
-    this.responseContext = responseContext;
-    this.requestContext = requestContext;
-    String operation = requestContext.getHeaderString(OPERATION);
-    Method[] methods = getClass().getMethods();
-    for (Method method : methods)
-      if (operation.equalsIgnoreCase(method.getName())) {
-        try {
-          method.invoke(this);
-          return;
-        } catch (Exception e) {
-          e.printStackTrace();
-          setEntity(e.getMessage());
-          responseContext.setStatus(Status.SERVICE_UNAVAILABLE.getStatusCode());
-        }
-      }
-    // When method not found, it is request context operation
-  }
+    @Override
+    public void filter(ContainerRequestContext requestContext,
+            ContainerResponseContext responseContext) throws IOException {
+        this.responseContext = responseContext;
+        this.requestContext = requestContext;
+        String operation = requestContext.getHeaderString(OPERATION);
+        Method[] methods = getClass().getMethods();
+        for (Method method : methods)
+            if (operation.equalsIgnoreCase(method.getName())) {
+                try {
+                    method.invoke(this);
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    setEntity(e.getMessage());
+                    responseContext.setStatus(Status.SERVICE_UNAVAILABLE.getStatusCode());
+                }
+            }
+        // When method not found, it is request context operation
+    }
 
-  @Override
-  protected void setEntity(String entity) {
-    responseContext.setEntity(entity, (Annotation[]) null,
-        MediaType.WILDCARD_TYPE);
-  }
+    @Override
+    protected void setEntity(String entity) {
+        responseContext.setEntity(entity, (Annotation[]) null,
+                MediaType.WILDCARD_TYPE);
+    }
 
 }

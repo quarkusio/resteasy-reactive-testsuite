@@ -18,19 +18,17 @@ package com.sun.ts.tests.jaxrs.spec.template;
 
 import java.util.function.Supplier;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
 
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
-import java.io.PrintWriter;
+import io.quarkus.test.QuarkusUnitTest;
 
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0000 extends JAXRSCommonClient {
@@ -44,120 +42,118 @@ public class JAXRSClient0000 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.template.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.template.TemplateTest.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.template.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.template.TemplateTest.class);
                 }
             });
 
+    public void JAXRSClient0000() {
+        setContextRoot("/jaxrs_spec_templateTest_web");
+    }
 
-  public void JAXRSClient0000() {
-    setContextRoot("/jaxrs_spec_templateTest_web");
-  }
+    /*
+     * @class.setup_props: webServerHost; webServerPort; ts_home;
+     */
+    /* Run test */
+    /*
+     * @testName: Test1
+     *
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:60;
+     *
+     * @test_Strategy: Client sends a request on a resource at /TemplateTest/{id},
+     * Verify that correct resource method invoked through use of URI Template
+     */
+    @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Underspecified)
+    public void Test1() throws Fault {
+        setProperty(REQUEST,
+                "GET " + "/TemplateTest/xyz HTTP/1.1");
+        setProperty(SEARCH_STRING, "id1=xyz");
+        invoke();
+    }
 
-  /*
-   * @class.setup_props: webServerHost; webServerPort; ts_home;
-   */
-  /* Run test */
-  /*
-   * @testName: Test1
-   *
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:60;
-   *
-   * @test_Strategy: Client sends a request on a resource at /TemplateTest/{id},
-   * Verify that correct resource method invoked through use of URI Template
-   */
-  @org.junit.jupiter.api.Test
-  @Disabled(QuarkusRest.Underspecified)
-  public void Test1() throws Fault {
-    setProperty(REQUEST,
-        "GET " + "/TemplateTest/xyz HTTP/1.1");
-    setProperty(SEARCH_STRING, "id1=xyz");
-    invoke();
-  }
+    /*
+     * @testName: Test2
+     *
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
+     * JAXRS:SPEC:60;
+     *
+     * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
+     * Verify that correct resource method invoked through use of URI Template
+     */
+    @org.junit.jupiter.api.Test
+    public void Test2() throws Fault {
+        setProperty(REQUEST,
+                "GET " + "/jaxrs_spec_templateTest_web/TemplateTest/xyz/abc HTTP/1.1");
+        setProperty(SEARCH_STRING, "id3=abc");
+        invoke();
+    }
 
-  /*
-   * @testName: Test2
-   *
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
-   * JAXRS:SPEC:60;
-   *
-   * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
-   * Verify that correct resource method invoked through use of URI Template
-   */
-  @org.junit.jupiter.api.Test
-  public void Test2() throws Fault {
-    setProperty(REQUEST,
-        "GET " + "/jaxrs_spec_templateTest_web/TemplateTest/xyz/abc HTTP/1.1");
-    setProperty(SEARCH_STRING, "id3=abc");
-    invoke();
-  }
+    /*
+     * @testName: Test3
+     *
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
+     * JAXRS:SPEC:60;
+     *
+     * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
+     * Verify that correct resource method invoked through use of URI Template
+     */
+    @org.junit.jupiter.api.Test
+    public void Test3() throws Fault {
+        setProperty(REQUEST, "GET "
+                + "/jaxrs_spec_templateTest_web/TemplateTest/xyz/abc/def HTTP/1.1");
+        setProperty(SEARCH_STRING, "id3=abc/def");
+        invoke();
+    }
 
-  /*
-   * @testName: Test3
-   *
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
-   * JAXRS:SPEC:60;
-   *
-   * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
-   * Verify that correct resource method invoked through use of URI Template
-   */
-  @org.junit.jupiter.api.Test
-  public void Test3() throws Fault {
-    setProperty(REQUEST, "GET "
-        + "/jaxrs_spec_templateTest_web/TemplateTest/xyz/abc/def HTTP/1.1");
-    setProperty(SEARCH_STRING, "id3=abc/def");
-    invoke();
-  }
+    /*
+     * @testName: Test4
+     *
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
+     * JAXRS:SPEC:60;
+     *
+     * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
+     * Verify that correct resource method invoked through use of URI Template
+     */
+    @org.junit.jupiter.api.Test
+    public void Test4() throws Fault {
+        setProperty(REQUEST, "GET "
+                + "/jaxrs_spec_templateTest_web/TemplateTest/xy/abc/def HTTP/1.1");
+        setProperty(SEARCH_STRING, "id1=xy/abc/def");
+        invoke();
+    }
 
-  /*
-   * @testName: Test4
-   *
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
-   * JAXRS:SPEC:60;
-   *
-   * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
-   * Verify that correct resource method invoked through use of URI Template
-   */
-  @org.junit.jupiter.api.Test
-  public void Test4() throws Fault {
-    setProperty(REQUEST, "GET "
-        + "/jaxrs_spec_templateTest_web/TemplateTest/xy/abc/def HTTP/1.1");
-    setProperty(SEARCH_STRING, "id1=xy/abc/def");
-    invoke();
-  }
+    /*
+     * @testName: Test5
+     *
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
+     * JAXRS:SPEC:60;
+     *
+     * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
+     * Verify that correct resource method invoked through use of URI Template
+     */
+    @org.junit.jupiter.api.Test
+    public void Test5() throws Fault {
+        setProperty(REQUEST, "GET "
+                + "/jaxrs_spec_templateTest_web/TemplateTest/abc/test.html HTTP/1.1");
+        setProperty(SEARCH_STRING, "id4=abc|name=test");
+        invoke();
+    }
 
-  /*
-   * @testName: Test5
-   *
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
-   * JAXRS:SPEC:60;
-   *
-   * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
-   * Verify that correct resource method invoked through use of URI Template
-   */
-  @org.junit.jupiter.api.Test
-  public void Test5() throws Fault {
-    setProperty(REQUEST, "GET "
-        + "/jaxrs_spec_templateTest_web/TemplateTest/abc/test.html HTTP/1.1");
-    setProperty(SEARCH_STRING, "id4=abc|name=test");
-    invoke();
-  }
-
-  /*
-   * @testName: Test6
-   *
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
-   * JAXRS:SPEC:60;
-   *
-   * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
-   * Verify that correct resource method invoked through use of URI Template
-   */
-  @org.junit.jupiter.api.Test
-  public void Test6() throws Fault {
-    setProperty(REQUEST, "GET "
-        + "/jaxrs_spec_templateTest_web/TemplateTest/abc/def/test.xml HTTP/1.1");
-    setProperty(SEARCH_STRING, "id5=abc/def|name=test");
-    invoke();
-  }
+    /*
+     * @testName: Test6
+     *
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:20.1; JAXRS:SPEC:57;
+     * JAXRS:SPEC:60;
+     *
+     * @test_Strategy:Client sends a request on a resource at /TemplateTest/{id],
+     * Verify that correct resource method invoked through use of URI Template
+     */
+    @org.junit.jupiter.api.Test
+    public void Test6() throws Fault {
+        setProperty(REQUEST, "GET "
+                + "/jaxrs_spec_templateTest_web/TemplateTest/abc/def/test.xml HTTP/1.1");
+        setProperty(SEARCH_STRING, "id5=abc/def|name=test");
+        invoke();
+    }
 }

@@ -35,49 +35,49 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class TckFileProvider extends AbstractProvider
-    implements MessageBodyReader<File>, MessageBodyWriter<File> {
+        implements MessageBodyReader<File>, MessageBodyWriter<File> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == File.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == File.class;
+    }
 
-  @Override
-  public long getSize(File t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return getLength();
-  }
+    @Override
+    public long getSize(File t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return getLength();
+    }
 
-  @Override
-  public void writeTo(File t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    FileReader fr = new FileReader(t);
-    BufferedReader br = new BufferedReader(fr);
-    String text = br.readLine();
-    br.close();
-    entityStream.write(text == null ? "".getBytes() : text.getBytes());
-    entityStream.write(getWriterName().getBytes());
-  }
+    @Override
+    public void writeTo(File t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        FileReader fr = new FileReader(t);
+        BufferedReader br = new BufferedReader(fr);
+        String text = br.readLine();
+        br.close();
+        entityStream.write(text == null ? "".getBytes() : text.getBytes());
+        entityStream.write(getWriterName().getBytes());
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public File readFrom(Class<File> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    File f = File.createTempFile("tckjaxrs", "tmp");
-    FileWriter fw = new FileWriter(f);
-    fw.write(getReaderName());
-    fw.close();
-    return f;
-  }
+    @Override
+    public File readFrom(Class<File> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        File f = File.createTempFile("tckjaxrs", "tmp");
+        FileWriter fw = new FileWriter(f);
+        fw.write(getReaderName());
+        fw.close();
+        return f;
+    }
 
 }

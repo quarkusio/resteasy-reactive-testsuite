@@ -17,12 +17,12 @@
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.writerinterceptorcontext;
 
 import java.util.function.Supplier;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
 
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorCallbackMethods;
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
@@ -38,6 +38,8 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcont
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.WriterInterceptorOne;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.WriterInterceptorTwo;
 
+import io.quarkus.test.QuarkusUnitTest;
+
 /*
  * @class.setup_props: webServerHost;
  *                     webServerPort;
@@ -49,233 +51,226 @@ public class JAXRSClient0093 extends WriterClient0094<ContextOperation> {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_ext_interceptor_clientwriter_writerinterceptorcontext_web")
+            .overrideConfigKey("quarkus.http.root-path",
+                    "/jaxrs_ee_rs_ext_interceptor_clientwriter_writerinterceptorcontext_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.writerinterceptorcontext.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.writerinterceptorcontext.Resource.class
-                            , ContextOperation.class
-                            , WriterInterceptorOne.class
-                            , WriterInterceptorTwo.class
-                            , TemplateWriterInterceptor.class
-                            , InterceptorCallbackMethods.class
-                            , TemplateInterceptorBody.class
-                            , InterceptorBodyOne.class
-                            , InterceptorBodyTwo.class
-                            , ProceedException.class
-                            , OnWriteExceptionThrowingStringBean.class
-                            );
+                                    com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.writerinterceptorcontext.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.writerinterceptorcontext.Resource.class,
+                                    ContextOperation.class, WriterInterceptorOne.class, WriterInterceptorTwo.class,
+                                    TemplateWriterInterceptor.class, InterceptorCallbackMethods.class,
+                                    TemplateInterceptorBody.class, InterceptorBodyOne.class, InterceptorBodyTwo.class,
+                                    ProceedException.class, OnWriteExceptionThrowingStringBean.class);
                 }
             });
 
+    private static final long serialVersionUID = 2500912584762173255L;
 
-  private static final long serialVersionUID = 2500912584762173255L;
-
-  public JAXRSClient0093() {
-    setContextRoot(
-        "/jaxrs_ee_rs_ext_interceptor_clientwriter_writerinterceptorcontext_web/resource");
-  }
-
-  @BeforeEach
-  public void before() {
-      addProviders();
-  }
-  
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSClient0093 theTests = new JAXRSClient0093();
-    theTests.run(args);
-  }
-
-  /* Run test */
-  /*
-   * @testName: getEntityTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:933; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Get object to be written as HTTP entity.
-   *
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void getEntityTest() throws Fault {
-    setOperationAndEntity(ContextOperation.GETENTITY);
-    setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY);
-    invoke();
-  }
-
-  /*
-   * @testName: getHeadersOperationOnlyTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:934; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Get mutable map of HTTP headers.
-   *
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void getHeadersOperationOnlyTest() throws Fault {
-    setOperationAndEntity(ContextOperation.GETHEADERS);
-    setProperty(Property.SEARCH_STRING_IGNORE_CASE,
-        TemplateInterceptorBody.OPERATION);
-    invoke();
-  }
-
-  /*
-   * @testName: getHeadersTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:934; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Get mutable map of HTTP headers.
-   *
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void getHeadersTest() throws Fault {
-    Property p = Property.UNORDERED_SEARCH_STRING;
-    setOperationAndEntity(ContextOperation.GETHEADERS);
-    setProperty(p, TemplateInterceptorBody.OPERATION);
-    setTextCaser(TextCaser.LOWER);
-    for (int i = 0; i != 5; i++) {
-      addHeader(TemplateInterceptorBody.PROPERTY + i, "any");
-      setProperty(p, TemplateInterceptorBody.PROPERTY + i);
+    public JAXRSClient0093() {
+        setContextRoot(
+                "/jaxrs_ee_rs_ext_interceptor_clientwriter_writerinterceptorcontext_web/resource");
     }
-    invoke();
-  }
 
-  /*
-   * @testName: getHeadersIsMutableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:934; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Get mutable map of HTTP headers.
-   *
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void getHeadersIsMutableTest() throws Fault {
-    setOperationAndEntity(ContextOperation.GETHEADERSISMUTABLE);
-    setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.PROPERTY);
-    invoke();
-  }
-
-  /*
-   * @testName: getOutputStreamTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:935; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Get the output stream for the object to be written.
-   * 
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void getOutputStreamTest() throws Fault {
-    Property p = Property.UNORDERED_SEARCH_STRING;
-    setOperationAndEntity(ContextOperation.GETOUTPUTSTREAM);
-    setProperty(p, TemplateInterceptorBody.ENTITY);
-    setProperty(p, TemplateInterceptorBody.NULL);
-    invoke();
-  }
-
-  /*
-   * @testName: proceedThrowsIOExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:936; JAXRS:JAVADOC:937; JAXRS:JAVADOC:930;
-   * JAXRS:JAVADOC:931;
-   * 
-   * @test_Strategy: Proceed to the next interceptor in the chain.
-   * Throws:IOException - if an IO exception arises.
-   * 
-   * proceed is actually called in every clientwriter.writerinterceptorcontext
-   * test
-   *
-   * WriterInterceptor.aroundWriteTo
-   * 
-   * WriterInterceptor.aroundWriteTo throws IOException
-   */
-  @Test
-  public void proceedThrowsIOExceptionTest() throws Fault {
-    setOperationAndEntity(ContextOperation.PROCEEDTHROWSIOEXCEPTION);
-    setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.IOE);
-    invoke();
-  }
-
-  /*
-   * @testName: proceedThrowsWebApplicationExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:936; JAXRS:JAVADOC:1009; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Proceed to the next interceptor in the chain.
-   * Throws:WebApplicationException - thrown by the wrapped {@code
-   * MessageBodyWriter.writeTo} method.
-   * 
-   * proceed is actually called in every clientwriter.writerinterceptorcontext
-   * test
-   *
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void proceedThrowsWebApplicationExceptionTest() throws Fault {
-    addProvider(StringBeanEntityProvider.class);
-    addHeader(TemplateInterceptorBody.OPERATION,
-        ContextOperation.PROCEEDTHROWSWEBAPPEXCEPTION.name());
-    setRequestContentEntity(
-        new OnWriteExceptionThrowingStringBean(TemplateInterceptorBody.ENTITY));
-    try {
-      invoke();
-    } catch (Throwable e) {
-      ProceedException p = assertCause(e, ProceedException.class,
-          "Proceed did not throw exception");
-      assertContains(p.getMessage(), TemplateInterceptorBody.WAE,
-          "Unexpected message received", p.getMessage());
-      logMsg(p.getMessage());
+    @BeforeEach
+    public void before() {
+        addProviders();
     }
-  }
 
-  /*
-   * @testName: setEntityTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:938; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Update object to be written as HTTP entity.
-   *
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void setEntityTest() throws Fault {
-    setOperationAndEntity(ContextOperation.SETENTITY);
-    setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.OPERATION);
-    invoke();
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSClient0093 theTests = new JAXRSClient0093();
+        theTests.run(args);
+    }
 
-  /*
-   * @testName: setOutputStreamTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:939; JAXRS:JAVADOC:930;
-   * 
-   * @test_Strategy: Update the output stream for the object to be written.
-   *
-   * WriterInterceptor.aroundWriteTo
-   */
-  @Test
-  public void setOutputStreamTest() throws Fault {
-    setOperationAndEntity(ContextOperation.SETOUTPUTSTREAM);
-    setProperty(Property.SEARCH_STRING,
-        TemplateInterceptorBody.ENTITY.replace('t', 'x'));
-    invoke();
-  }
+    /* Run test */
+    /*
+     * @testName: getEntityTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:933; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Get object to be written as HTTP entity.
+     *
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void getEntityTest() throws Fault {
+        setOperationAndEntity(ContextOperation.GETENTITY);
+        setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.ENTITY);
+        invoke();
+    }
 
-  // /////////////////////////////////////////////////////////////////////
-  @Override
-  protected void addProviders() {
-    addProvider(new WriterInterceptorTwo());
-    addProvider(WriterInterceptorOne.class);
-  }
+    /*
+     * @testName: getHeadersOperationOnlyTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:934; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Get mutable map of HTTP headers.
+     *
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void getHeadersOperationOnlyTest() throws Fault {
+        setOperationAndEntity(ContextOperation.GETHEADERS);
+        setProperty(Property.SEARCH_STRING_IGNORE_CASE,
+                TemplateInterceptorBody.OPERATION);
+        invoke();
+    }
+
+    /*
+     * @testName: getHeadersTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:934; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Get mutable map of HTTP headers.
+     *
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void getHeadersTest() throws Fault {
+        Property p = Property.UNORDERED_SEARCH_STRING;
+        setOperationAndEntity(ContextOperation.GETHEADERS);
+        setProperty(p, TemplateInterceptorBody.OPERATION);
+        setTextCaser(TextCaser.LOWER);
+        for (int i = 0; i != 5; i++) {
+            addHeader(TemplateInterceptorBody.PROPERTY + i, "any");
+            setProperty(p, TemplateInterceptorBody.PROPERTY + i);
+        }
+        invoke();
+    }
+
+    /*
+     * @testName: getHeadersIsMutableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:934; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Get mutable map of HTTP headers.
+     *
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void getHeadersIsMutableTest() throws Fault {
+        setOperationAndEntity(ContextOperation.GETHEADERSISMUTABLE);
+        setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.PROPERTY);
+        invoke();
+    }
+
+    /*
+     * @testName: getOutputStreamTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:935; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Get the output stream for the object to be written.
+     * 
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void getOutputStreamTest() throws Fault {
+        Property p = Property.UNORDERED_SEARCH_STRING;
+        setOperationAndEntity(ContextOperation.GETOUTPUTSTREAM);
+        setProperty(p, TemplateInterceptorBody.ENTITY);
+        setProperty(p, TemplateInterceptorBody.NULL);
+        invoke();
+    }
+
+    /*
+     * @testName: proceedThrowsIOExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:936; JAXRS:JAVADOC:937; JAXRS:JAVADOC:930;
+     * JAXRS:JAVADOC:931;
+     * 
+     * @test_Strategy: Proceed to the next interceptor in the chain.
+     * Throws:IOException - if an IO exception arises.
+     * 
+     * proceed is actually called in every clientwriter.writerinterceptorcontext
+     * test
+     *
+     * WriterInterceptor.aroundWriteTo
+     * 
+     * WriterInterceptor.aroundWriteTo throws IOException
+     */
+    @Test
+    public void proceedThrowsIOExceptionTest() throws Fault {
+        setOperationAndEntity(ContextOperation.PROCEEDTHROWSIOEXCEPTION);
+        setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.IOE);
+        invoke();
+    }
+
+    /*
+     * @testName: proceedThrowsWebApplicationExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:936; JAXRS:JAVADOC:1009; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Proceed to the next interceptor in the chain.
+     * Throws:WebApplicationException - thrown by the wrapped {@code
+     * MessageBodyWriter.writeTo} method.
+     * 
+     * proceed is actually called in every clientwriter.writerinterceptorcontext
+     * test
+     *
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void proceedThrowsWebApplicationExceptionTest() throws Fault {
+        addProvider(StringBeanEntityProvider.class);
+        addHeader(TemplateInterceptorBody.OPERATION,
+                ContextOperation.PROCEEDTHROWSWEBAPPEXCEPTION.name());
+        setRequestContentEntity(
+                new OnWriteExceptionThrowingStringBean(TemplateInterceptorBody.ENTITY));
+        try {
+            invoke();
+        } catch (Throwable e) {
+            ProceedException p = assertCause(e, ProceedException.class,
+                    "Proceed did not throw exception");
+            assertContains(p.getMessage(), TemplateInterceptorBody.WAE,
+                    "Unexpected message received", p.getMessage());
+            logMsg(p.getMessage());
+        }
+    }
+
+    /*
+     * @testName: setEntityTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:938; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Update object to be written as HTTP entity.
+     *
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void setEntityTest() throws Fault {
+        setOperationAndEntity(ContextOperation.SETENTITY);
+        setProperty(Property.SEARCH_STRING, TemplateInterceptorBody.OPERATION);
+        invoke();
+    }
+
+    /*
+     * @testName: setOutputStreamTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:939; JAXRS:JAVADOC:930;
+     * 
+     * @test_Strategy: Update the output stream for the object to be written.
+     *
+     * WriterInterceptor.aroundWriteTo
+     */
+    @Test
+    public void setOutputStreamTest() throws Fault {
+        setOperationAndEntity(ContextOperation.SETOUTPUTSTREAM);
+        setProperty(Property.SEARCH_STRING,
+                TemplateInterceptorBody.ENTITY.replace('t', 'x'));
+        invoke();
+    }
+
+    // /////////////////////////////////////////////////////////////////////
+    @Override
+    protected void addProviders() {
+        addProvider(new WriterInterceptorTwo());
+        addProvider(WriterInterceptorOne.class);
+    }
 }

@@ -29,14 +29,14 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcont
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(WriterInterceptorOne.class);
-    resources.add(WriterInterceptorTwo.class);
-    resources.add(InputStreamReaderProvider.class);
-    resources.add(StringBeanEntityProvider.class);
-    resources.add(ProceedExceptionMapper.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(WriterInterceptorOne.class);
+        resources.add(WriterInterceptorTwo.class);
+        resources.add(InputStreamReaderProvider.class);
+        resources.add(StringBeanEntityProvider.class);
+        resources.add(ProceedExceptionMapper.class);
+        return resources;
+    }
 }

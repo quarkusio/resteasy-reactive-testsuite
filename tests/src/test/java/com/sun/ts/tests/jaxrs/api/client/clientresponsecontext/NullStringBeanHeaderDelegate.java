@@ -24,19 +24,19 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
  * Header Delegate for getHeaderStringIsEmptyTest
  */
 public class NullStringBeanHeaderDelegate
-    implements HeaderDelegate<StringBean> {
+        implements HeaderDelegate<StringBean> {
 
-  @Override
-  public StringBean fromString(String arg0) throws IllegalArgumentException {
-    return new StringBean(arg0);
-  }
+    @Override
+    public StringBean fromString(String arg0) throws IllegalArgumentException {
+        return new StringBean(arg0);
+    }
 
-  @Override
-  public String toString(StringBean arg0) throws IllegalArgumentException {
-    // By design. We need to set header as a no value
-    // so that then the ClientResponseContext.getHeaderString should return
-    // an empty string
-    return null;
-  }
+    @Override
+    public String toString(StringBean arg0) throws IllegalArgumentException {
+        // By design. We need to set header as a no value
+        // so that then the ClientResponseContext.getHeaderString should return
+        // an empty string
+        return null;
+    }
 
 }

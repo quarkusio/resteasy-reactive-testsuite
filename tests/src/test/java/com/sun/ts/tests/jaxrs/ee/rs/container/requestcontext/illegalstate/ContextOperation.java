@@ -17,5 +17,10 @@
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate;
 
 public enum ContextOperation {
-  ABORTWITH, SETMETHOD, SETREQUESTURI1, SETREQUESTURI2, SETENTITYSTREAM, SETSECURITYCONTEXT
+    ABORTWITH,
+    SETMETHOD,
+    SETREQUESTURI1,
+    SETREQUESTURI2,
+    SETENTITYSTREAM,
+    SETSECURITYCONTEXT
 }

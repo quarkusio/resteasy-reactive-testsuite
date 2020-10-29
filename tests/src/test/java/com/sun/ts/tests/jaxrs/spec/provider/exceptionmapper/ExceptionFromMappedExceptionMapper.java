@@ -22,12 +22,12 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 
 public class ExceptionFromMappedExceptionMapper
-    implements ExceptionMapper<ExceptionFromMappedException> {
+        implements ExceptionMapper<ExceptionFromMappedException> {
 
-  @Override
-  public Response toResponse(ExceptionFromMappedException exception) {
-    // This exception is said not to be handled
-    throw new WebApplicationException(Status.ACCEPTED);
-  }
+    @Override
+    public Response toResponse(ExceptionFromMappedException exception) {
+        // This exception is said not to be handled
+        throw new WebApplicationException(Status.ACCEPTED);
+    }
 
 }

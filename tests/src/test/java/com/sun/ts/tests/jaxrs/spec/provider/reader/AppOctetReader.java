@@ -31,22 +31,22 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Consumes(MediaType.APPLICATION_OCTET_STREAM)
 public class AppOctetReader extends AbstractReader
-    implements MessageBodyReader<EntityForReader> {
+        implements MessageBodyReader<EntityForReader> {
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    AbstractReader.readerSet.append(getClass().getSimpleName());
-    return MediaType.APPLICATION_OCTET_STREAM_TYPE.equals(mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        AbstractReader.readerSet.append(getClass().getSimpleName());
+        return MediaType.APPLICATION_OCTET_STREAM_TYPE.equals(mediaType);
+    }
 
-  @Override
-  public EntityForReader readFrom(Class<EntityForReader> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return super.readFrom(type, genericType, annotations, mediaType,
-        httpHeaders, entityStream);
-  }
+    @Override
+    public EntityForReader readFrom(Class<EntityForReader> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return super.readFrom(type, genericType, annotations, mediaType,
+                httpHeaders, entityStream);
+    }
 
 }

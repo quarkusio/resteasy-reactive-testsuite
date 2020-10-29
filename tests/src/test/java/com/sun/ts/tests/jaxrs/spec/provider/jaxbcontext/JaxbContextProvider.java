@@ -23,10 +23,10 @@ import javax.xml.bind.JAXBContext;
 @Provider
 public class JaxbContextProvider implements ContextResolver<JAXBContext> {
 
-  @Override
-  public JAXBContext getContext(Class<?> type) {
-    JAXBContext ctx = new SomeJaxbContext();
-    return ctx;
-  }
+    @Override
+    public JAXBContext getContext(Class<?> type) {
+        JAXBContext ctx = new SomeJaxbContext();
+        return ctx;
+    }
 
 }

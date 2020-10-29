@@ -25,13 +25,13 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 public class ExceptionThrowingStringBean extends StringBean {
 
-  public ExceptionThrowingStringBean(String header) {
-    super(header);
-    if (!header.equals(TemplateInterceptorBody.WAE))
-      throw new WebApplicationException(new IOException(header));
-  }
+    public ExceptionThrowingStringBean(String header) {
+        super(header);
+        if (!header.equals(TemplateInterceptorBody.WAE))
+            throw new WebApplicationException(new IOException(header));
+    }
 
-  public ExceptionThrowingStringBean(String header, boolean b) {
-    super(header);
-  }
+    public ExceptionThrowingStringBean(String header, boolean b) {
+        super(header);
+    }
 }

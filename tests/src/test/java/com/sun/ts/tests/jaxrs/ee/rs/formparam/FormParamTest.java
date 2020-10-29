@@ -38,107 +38,107 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf;
 @Path(value = "/FormParamTest/")
 public class FormParamTest {
 
-  public static final String response(String argument) {
-    return new StringBuilder().append("CTS_FORMPARAM:").append(argument)
-        .toString();
-  }
+    public static final String response(String argument) {
+        return new StringBuilder().append("CTS_FORMPARAM:").append(argument)
+                .toString();
+    }
 
-  @Path(value = "/PostNonDefParam")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response nonDefault(
-      @FormParam("non_default_argument") String nonDefaultArgument) {
-    return Response.ok(response(nonDefaultArgument)).build();
-  }
+    @Path(value = "/PostNonDefParam")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response nonDefault(
+            @FormParam("non_default_argument") String nonDefaultArgument) {
+        return Response.ok(response(nonDefaultArgument)).build();
+    }
 
-  @Path(value = "/PostDefParam")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response defaultValue(
-      @Encoded @DefaultValue("default") @FormParam("default_argument") String defaultArgument) {
-    return Response.ok(response(defaultArgument)).build();
-  }
+    @Path(value = "/PostDefParam")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response defaultValue(
+            @Encoded @DefaultValue("default") @FormParam("default_argument") String defaultArgument) {
+        return Response.ok(response(defaultArgument)).build();
+    }
 
-  @Path(value = "/DefParam")
-  @PUT
-  @Consumes("application/x-www-form-urlencoded")
-  public Response defaultValuePut(
-      @DefaultValue("DefParam") @FormParam("default_argument") String defaultArgument) {
-    return Response.ok(response(defaultArgument)).build();
-  }
+    @Path(value = "/DefParam")
+    @PUT
+    @Consumes("application/x-www-form-urlencoded")
+    public Response defaultValuePut(
+            @DefaultValue("DefParam") @FormParam("default_argument") String defaultArgument) {
+        return Response.ok(response(defaultArgument)).build();
+    }
 
-  @Path(value = "/ParamEntityWithValueOf")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response defaultValueOf(
-      @DefaultValue("ValueOf") @FormParam("default_argument") ParamEntityWithValueOf defaultArgument) {
-    return Response.ok(response(defaultArgument.getValue())).build();
-  }
+    @Path(value = "/ParamEntityWithValueOf")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response defaultValueOf(
+            @DefaultValue("ValueOf") @FormParam("default_argument") ParamEntityWithValueOf defaultArgument) {
+        return Response.ok(response(defaultArgument.getValue())).build();
+    }
 
-  @Path(value = "/Constructor")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response defaultConstructor(
-      @DefaultValue("Constructor") @FormParam("default_argument") ParamEntityWithConstructor defaultArgument) {
-    return Response.ok(response(defaultArgument.getValue())).build();
-  }
+    @Path(value = "/Constructor")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response defaultConstructor(
+            @DefaultValue("Constructor") @FormParam("default_argument") ParamEntityWithConstructor defaultArgument) {
+        return Response.ok(response(defaultArgument.getValue())).build();
+    }
 
-  @Path(value = "/ParamEntityWithFromString")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response fromString(
-      @Encoded @DefaultValue("FromString") @FormParam("default_argument") ParamEntityWithFromString defaultArgument) {
-    return Response.ok(response(defaultArgument.getValue())).build();
-  }
+    @Path(value = "/ParamEntityWithFromString")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response fromString(
+            @Encoded @DefaultValue("FromString") @FormParam("default_argument") ParamEntityWithFromString defaultArgument) {
+        return Response.ok(response(defaultArgument.getValue())).build();
+    }
 
-  @Path(value = "/ListConstructor")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response defaultListConstructor(
-      @DefaultValue("ListConstructor") @FormParam("default_argument") List<ParamEntityWithConstructor> defaultArgument) {
-    return Response
-        .ok(response(defaultArgument.listIterator().next().getValue())).build();
-  }
+    @Path(value = "/ListConstructor")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response defaultListConstructor(
+            @DefaultValue("ListConstructor") @FormParam("default_argument") List<ParamEntityWithConstructor> defaultArgument) {
+        return Response
+                .ok(response(defaultArgument.listIterator().next().getValue())).build();
+    }
 
-  @Path(value = "/SetFromString")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response setFromString(
-      @Encoded @DefaultValue("SetFromString") @FormParam("default_argument") Set<ParamEntityWithFromString> defaultArgument) {
-    return Response.ok(response(defaultArgument.iterator().next().getValue()))
-        .build();
-  }
+    @Path(value = "/SetFromString")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response setFromString(
+            @Encoded @DefaultValue("SetFromString") @FormParam("default_argument") Set<ParamEntityWithFromString> defaultArgument) {
+        return Response.ok(response(defaultArgument.iterator().next().getValue()))
+                .build();
+    }
 
-  @Path(value = "/SortedSetFromString")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response sortedSetFromString(
-      @Encoded @DefaultValue("SortedSetFromString") @FormParam("default_argument") SortedSet<ParamEntityWithFromString> defaultArgument) {
-    return Response.ok(response(defaultArgument.first().getValue())).build();
-  }
+    @Path(value = "/SortedSetFromString")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response sortedSetFromString(
+            @Encoded @DefaultValue("SortedSetFromString") @FormParam("default_argument") SortedSet<ParamEntityWithFromString> defaultArgument) {
+        return Response.ok(response(defaultArgument.first().getValue())).build();
+    }
 
-  @Path(value = "/ListFromString")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response listFromString(
-      @Encoded @DefaultValue("ListFromString") @FormParam("default_argument") List<ParamEntityWithFromString> defaultArgument) {
-    return Response.ok(response(defaultArgument.iterator().next().getValue()))
-        .build();
-  }
+    @Path(value = "/ListFromString")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response listFromString(
+            @Encoded @DefaultValue("ListFromString") @FormParam("default_argument") List<ParamEntityWithFromString> defaultArgument) {
+        return Response.ok(response(defaultArgument.iterator().next().getValue()))
+                .build();
+    }
 
-  @Path(value = "/ParamEntityThrowingWebApplicationException")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response throwWebApplicationException(
-      @FormParam("default_argument") ParamEntityThrowingWebApplicationException defaultArgument) {
-    return Response.ok().build();
-  }
+    @Path(value = "/ParamEntityThrowingWebApplicationException")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response throwWebApplicationException(
+            @FormParam("default_argument") ParamEntityThrowingWebApplicationException defaultArgument) {
+        return Response.ok().build();
+    }
 
-  @Path(value = "/ParamEntityThrowingExceptionGivenByName")
-  @POST
-  @Consumes("application/x-www-form-urlencoded")
-  public Response throwWebApplicationException(
-      @FormParam("default_argument") ParamEntityThrowingExceptionGivenByName defaultArgument) {
-    return Response.ok().build();
-  }
+    @Path(value = "/ParamEntityThrowingExceptionGivenByName")
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public Response throwWebApplicationException(
+            @FormParam("default_argument") ParamEntityThrowingExceptionGivenByName defaultArgument) {
+        return Response.ok().build();
+    }
 }

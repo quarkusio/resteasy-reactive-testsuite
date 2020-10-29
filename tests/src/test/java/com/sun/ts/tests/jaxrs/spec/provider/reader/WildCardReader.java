@@ -31,22 +31,22 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Consumes(MediaType.WILDCARD)
 public class WildCardReader extends AbstractReader
-    implements MessageBodyReader<EntityForReader> {
+        implements MessageBodyReader<EntityForReader> {
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    AbstractReader.readerSet.append(getClass().getSimpleName());
-    return !NO_PROVIDER_MEDIATYPE.equals(mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        AbstractReader.readerSet.append(getClass().getSimpleName());
+        return !NO_PROVIDER_MEDIATYPE.equals(mediaType);
+    }
 
-  @Override
-  public EntityForReader readFrom(Class<EntityForReader> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return super.readFrom(type, genericType, annotations, mediaType,
-        httpHeaders, entityStream);
-  }
+    @Override
+    public EntityForReader readFrom(Class<EntityForReader> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return super.readFrom(type, genericType, annotations, mediaType,
+                httpHeaders, entityStream);
+    }
 
 }

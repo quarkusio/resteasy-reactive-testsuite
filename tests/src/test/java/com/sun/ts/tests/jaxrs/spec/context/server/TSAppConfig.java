@@ -36,47 +36,47 @@ import com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler;
 @ApplicationScoped //added to get the quarkus deployment to work
 public class TSAppConfig extends Application {
 
-  @Context
-  UriInfo info;
+    @Context
+    UriInfo info;
 
-  @Context
-  Request request;
+    @Context
+    Request request;
 
-  @Context
-  HttpHeaders headers;
+    @Context
+    HttpHeaders headers;
 
-  @Context
-  SecurityContext security;
+    @Context
+    SecurityContext security;
 
-  @Context
-  Providers providers;
+    @Context
+    Providers providers;
 
-  @Context
-  ResourceContext resources;
+    @Context
+    ResourceContext resources;
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(StringBeanEntityProviderWithInjectables.class);
-    resources.add(PrintingErrorHandler.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(StringBeanEntityProviderWithInjectables.class);
+        resources.add(PrintingErrorHandler.class);
+        return resources;
+    }
 
-  @Override
-  public Set<Object> getSingletons() {
-    Object single = new SingletonWithInjectables(this);
-    return Collections.singleton(single);
-  }
+    @Override
+    public Set<Object> getSingletons() {
+        Object single = new SingletonWithInjectables(this);
+        return Collections.singleton(single);
+    }
 
-  public String getInjectedContextValues() {
-    return StringBeanEntityProviderWithInjectables.computeMask(//
-        /*
-         * Spec: 9.2.1 Application Note that this cannot be injected into the
-         * Application subclass itself since this would create a circular
-         * dependency.
-         */
-        this, info, request, headers, security, providers, resources,
-        // Configuration injection N/A on Application
-        ClientBuilder.newClient().getConfiguration());
-  }
+    public String getInjectedContextValues() {
+        return StringBeanEntityProviderWithInjectables.computeMask(//
+                /*
+                 * Spec: 9.2.1 Application Note that this cannot be injected into the
+                 * Application subclass itself since this would create a circular
+                 * dependency.
+                 */
+                this, info, request, headers, security, providers, resources,
+                // Configuration injection N/A on Application
+                ClientBuilder.newClient().getConfiguration());
+    }
 }

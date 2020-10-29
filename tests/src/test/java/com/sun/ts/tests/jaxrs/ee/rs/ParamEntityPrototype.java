@@ -25,9 +25,9 @@ import javax.ws.rs.FormParam;
  *      {@link MatrixParam#value()}...
  */
 public abstract class ParamEntityPrototype {
-  protected String value;
+    protected String value;
 
-  public String getValue() {
-    return value;
-  }
+    public String getValue() {
+        return value;
+    }
 }

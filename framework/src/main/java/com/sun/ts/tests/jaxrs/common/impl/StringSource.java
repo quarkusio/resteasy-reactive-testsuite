@@ -25,38 +25,38 @@ import javax.xml.transform.stream.StreamSource;
 
 public class StringSource extends StreamSource {
 
-  private String source;
+    private String source;
 
-  @Override
-  public String getSystemId() {
-    return source;
-  }
+    @Override
+    public String getSystemId() {
+        return source;
+    }
 
-  public StringSource(String source) {
-    super();
-    this.source = "<stringsource>" + source + "</stringsource>";
-  }
+    public StringSource(String source) {
+        super();
+        this.source = "<stringsource>" + source + "</stringsource>";
+    }
 
-  @Override
-  public void setSystemId(String arg0) {
-    this.source = arg0;
-  }
+    @Override
+    public void setSystemId(String arg0) {
+        this.source = arg0;
+    }
 
-  @Override
-  public InputStream getInputStream() {
-    ByteArrayInputStream bais = new ByteArrayInputStream(source.getBytes());
-    return bais;
-  }
+    @Override
+    public InputStream getInputStream() {
+        ByteArrayInputStream bais = new ByteArrayInputStream(source.getBytes());
+        return bais;
+    }
 
-  @Override
-  public Reader getReader() {
-    InputStreamReader reader = new InputStreamReader(getInputStream());
-    return reader;
-  }
+    @Override
+    public Reader getReader() {
+        InputStreamReader reader = new InputStreamReader(getInputStream());
+        return reader;
+    }
 
-  @Override
-  public String getPublicId() {
-    return getSystemId();
-  }
+    @Override
+    public String getPublicId() {
+        return getSystemId();
+    }
 
 }

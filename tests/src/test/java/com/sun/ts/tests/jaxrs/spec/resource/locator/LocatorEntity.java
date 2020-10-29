@@ -19,16 +19,16 @@ package com.sun.ts.tests.jaxrs.spec.resource.locator;
 import javax.ws.rs.MatrixParam;
 
 public class LocatorEntity {
-  @MatrixParam("entity")
-  public String entity;
+    @MatrixParam("entity")
+    public String entity;
 
-  public String resMatrix;
+    public String resMatrix;
 
-  public String subMatrix;
+    public String subMatrix;
 
-  public LocatorEntity(String resMatrix, String subMatrix) {
-    super();
-    this.resMatrix = resMatrix;
-    this.subMatrix = subMatrix;
-  }
+    public LocatorEntity(String resMatrix, String subMatrix) {
+        super();
+        this.resMatrix = resMatrix;
+        this.subMatrix = subMatrix;
+    }
 }

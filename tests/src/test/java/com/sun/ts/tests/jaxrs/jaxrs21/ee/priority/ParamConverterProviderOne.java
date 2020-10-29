@@ -28,25 +28,25 @@ import javax.ws.rs.ext.Provider;
 @Priority(88)
 public class ParamConverterProviderOne implements ParamConverterProvider {
 
-  @Override
-  public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType,
-      Annotation[] annotations) {
-    return new ParamConverter<T>() {
+    @Override
+    public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType,
+            Annotation[] annotations) {
+        return new ParamConverter<T>() {
 
-      @SuppressWarnings("unchecked")
-      @Override
-      public T fromString(String value) {
-        if (String.class == rawType)
-          return (T) getClass().getName();
-        return null;
-      }
+            @SuppressWarnings("unchecked")
+            @Override
+            public T fromString(String value) {
+                if (String.class == rawType)
+                    return (T) getClass().getName();
+                return null;
+            }
 
-      @Override
-      public String toString(T value) {
-        return getClass().getName();
-      }
+            @Override
+            public String toString(T value) {
+                return getClass().getName();
+            }
 
-    };
-  }
+        };
+    }
 
 }

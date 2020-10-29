@@ -24,18 +24,18 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class ValidationExceptionMapper
-    implements ExceptionMapper<ValidationException> {
+        implements ExceptionMapper<ValidationException> {
 
-  @Override
-  public Response toResponse(ValidationException exception) {
-    Response response;
-    if (ConstraintViolationException.class.isInstance(exception)) {
-      response = Response.ok(ConstraintViolationException.class.getName())
-          .build();
-    } else {
-      response = Response.ok(ValidationException.class.getName()).build();
+    @Override
+    public Response toResponse(ValidationException exception) {
+        Response response;
+        if (ConstraintViolationException.class.isInstance(exception)) {
+            response = Response.ok(ConstraintViolationException.class.getName())
+                    .build();
+        } else {
+            response = Response.ok(ValidationException.class.getName()).build();
+        }
+        return response;
     }
-    return response;
-  }
 
 }

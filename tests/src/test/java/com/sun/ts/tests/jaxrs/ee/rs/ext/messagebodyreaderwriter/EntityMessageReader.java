@@ -38,49 +38,49 @@ import com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW;
  */
 @Provider
 public class EntityMessageReader extends AbstractMessageBodyRW
-    implements MessageBodyReader<ReadableWritableEntity> {
+        implements MessageBodyReader<ReadableWritableEntity> {
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    String path = getSpecifiedAnnotationValue(annotations,
-        EntityAnnotation.class);
-    if (path == null)
-      return false;
-    path = path.toLowerCase();
-    boolean readable = path.contains("body");
-    readable |= path.contains("head");
-    readable |= path.contains("ioexception");
-    readable |= path.contains("webexception");
-    readable &= MediaType.TEXT_XML_TYPE.isCompatible(mediaType);
-    readable &= ReadableWritableEntity.class.isAssignableFrom(type);
-    return readable;
-  }
-
-  @Override
-  public ReadableWritableEntity readFrom(Class<ReadableWritableEntity> type,
-      Type genericType, Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    String ea = getSpecifiedAnnotationValue(annotations, EntityAnnotation.class)
-        .toLowerCase();
-    String entity = "null";
-    if (ea.contains("body"))
-      entity = readInputStream(entityStream);
-    else if (ea.contains("head"))
-      entity = httpHeaders.getFirst(ReadableWritableEntity.NAME);
-    else if (ea.contains("ioexception"))
-      throw new IOException("CTS test IOException");
-    else if (ea.contains("webexception")) {
-      entity = httpHeaders.getFirst(ReadableWritableEntity.NAME);
-      throw new WebApplicationException(Status.valueOf(entity));
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        String path = getSpecifiedAnnotationValue(annotations,
+                EntityAnnotation.class);
+        if (path == null)
+            return false;
+        path = path.toLowerCase();
+        boolean readable = path.contains("body");
+        readable |= path.contains("head");
+        readable |= path.contains("ioexception");
+        readable |= path.contains("webexception");
+        readable &= MediaType.TEXT_XML_TYPE.isCompatible(mediaType);
+        readable &= ReadableWritableEntity.class.isAssignableFrom(type);
+        return readable;
     }
-    return ReadableWritableEntity.fromString(entity);
-  }
 
-  String readInputStream(InputStream is) throws IOException {
-    InputStreamReader isr = new InputStreamReader(is);
-    BufferedReader br = new BufferedReader(isr);
-    return br.readLine();
-  }
+    @Override
+    public ReadableWritableEntity readFrom(Class<ReadableWritableEntity> type,
+            Type genericType, Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        String ea = getSpecifiedAnnotationValue(annotations, EntityAnnotation.class)
+                .toLowerCase();
+        String entity = "null";
+        if (ea.contains("body"))
+            entity = readInputStream(entityStream);
+        else if (ea.contains("head"))
+            entity = httpHeaders.getFirst(ReadableWritableEntity.NAME);
+        else if (ea.contains("ioexception"))
+            throw new IOException("CTS test IOException");
+        else if (ea.contains("webexception")) {
+            entity = httpHeaders.getFirst(ReadableWritableEntity.NAME);
+            throw new WebApplicationException(Status.valueOf(entity));
+        }
+        return ReadableWritableEntity.fromString(entity);
+    }
+
+    String readInputStream(InputStream is) throws IOException {
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        return br.readLine();
+    }
 }

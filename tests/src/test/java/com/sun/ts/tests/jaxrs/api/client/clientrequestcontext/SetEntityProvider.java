@@ -30,95 +30,95 @@ import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 public class SetEntityProvider extends ContextProvider {
-  private AtomicInteger counter;
+    private AtomicInteger counter;
 
-  protected Annotation anno1 = new GET() {
+    protected Annotation anno1 = new GET() {
+        @Override
+        public Class<? extends Annotation> annotationType() {
+            return null;
+        }
+    };
+
+    protected Annotation anno2 = new POST() {
+        @Override
+        public Class<? extends Annotation> annotationType() {
+            return null;
+        }
+    };
+
+    protected Annotation[] annos = new Annotation[] { anno1, anno2 };
+
+    protected MediaType type = MediaType.MULTIPART_FORM_DATA_TYPE;
+
+    protected String entityName = "ENTITY";
+
+    public SetEntityProvider(AtomicInteger counter) {
+        super();
+        this.counter = counter;
+    }
+
+    /**
+     * This method expects the request with entity != String.class has been sent
+     * Also, the mediaType is MediaType.WILDCARD_TYPE
+     */
     @Override
-    public Class<? extends Annotation> annotationType() {
-      return null;
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        Object entity;
+        MediaType mtype;
+        Annotation[] annotations;
+        Type clz;
+        switch (counter.incrementAndGet()) {
+            case 1:
+                TestUtil.logMsg("Counter is 1");
+                // get
+                entity = context.getEntity();
+                mtype = context.getMediaType();
+                annotations = context.getEntityAnnotations();
+                clz = context.getEntityType();
+                // check
+                assertFault(entity != null, "there is no entity, yet");
+                assertFault(!entity.toString().equals(entityName),
+                        "the fake entity was already set");
+                assertFault(annotations == null || annotations.length == 0,
+                        "there are already annotations!");
+                assertFault(!mtype.equals(type), "fake MediaType is already set");
+                assertFault(clz != String.class, "String entity is already set");
+                // set
+                context.setEntity(entityName, annos, type);
+                break;
+            case 2:
+                TestUtil.logMsg("Counter is 2");
+                // get
+                entity = context.getEntity();
+                mtype = context.getMediaType();
+                annotations = context.getEntityAnnotations();
+                clz = context.getEntityType();
+                // check
+                assertFault(entity != null, "there is no entity set");
+                assertFault(entity.toString().equals(entityName),
+                        "there is no fake entity set, yet");
+                assertFault(annotations.length == 2,
+                        "the fake annotations were not set, yet");
+                assertFault(mtype.equals(type), "fake MediaType was not set, yet");
+                assertFault(clz == String.class, "String entity not set, yet");
+                // set
+                context.setEntity(entityName, annos, type);
+                Response response = Response.ok().build();
+                context.abortWith(response);
+                break;
+        }
     }
-  };
 
-  protected Annotation anno2 = new POST() {
-    @Override
-    public Class<? extends Annotation> annotationType() {
-      return null;
+    /**
+     * @param conditionTrue
+     * @param message
+     * @throws Fault
+     *         when conditionTrue is not met with message provided
+     */
+    protected static void //
+            assertFault(boolean conditionTrue, Object message) throws Fault {
+        if (!conditionTrue) {
+            throw new Fault(message.toString());
+        }
     }
-  };
-
-  protected Annotation[] annos = new Annotation[] { anno1, anno2 };
-
-  protected MediaType type = MediaType.MULTIPART_FORM_DATA_TYPE;
-
-  protected String entityName = "ENTITY";
-
-  public SetEntityProvider(AtomicInteger counter) {
-    super();
-    this.counter = counter;
-  }
-
-  /**
-   * This method expects the request with entity != String.class has been sent
-   * Also, the mediaType is MediaType.WILDCARD_TYPE
-   */
-  @Override
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    Object entity;
-    MediaType mtype;
-    Annotation[] annotations;
-    Type clz;
-    switch (counter.incrementAndGet()) {
-    case 1:
-      TestUtil.logMsg("Counter is 1");
-      // get
-      entity = context.getEntity();
-      mtype = context.getMediaType();
-      annotations = context.getEntityAnnotations();
-      clz = context.getEntityType();
-      // check
-      assertFault(entity != null, "there is no entity, yet");
-      assertFault(!entity.toString().equals(entityName),
-          "the fake entity was already set");
-      assertFault(annotations == null || annotations.length == 0,
-          "there are already annotations!");
-      assertFault(!mtype.equals(type), "fake MediaType is already set");
-      assertFault(clz != String.class, "String entity is already set");
-      // set
-      context.setEntity(entityName, annos, type);
-      break;
-    case 2:
-      TestUtil.logMsg("Counter is 2");
-      // get
-      entity = context.getEntity();
-      mtype = context.getMediaType();
-      annotations = context.getEntityAnnotations();
-      clz = context.getEntityType();
-      // check
-      assertFault(entity != null, "there is no entity set");
-      assertFault(entity.toString().equals(entityName),
-          "there is no fake entity set, yet");
-      assertFault(annotations.length == 2,
-          "the fake annotations were not set, yet");
-      assertFault(mtype.equals(type), "fake MediaType was not set, yet");
-      assertFault(clz == String.class, "String entity not set, yet");
-      // set
-      context.setEntity(entityName, annos, type);
-      Response response = Response.ok().build();
-      context.abortWith(response);
-      break;
-    }
-  }
-
-  /**
-   * @param conditionTrue
-   * @param message
-   * @throws Fault
-   *           when conditionTrue is not met with message provided
-   */
-  protected static void //
-      assertFault(boolean conditionTrue, Object message) throws Fault {
-    if (!conditionTrue) {
-      throw new Fault(message.toString());
-    }
-  }
 }

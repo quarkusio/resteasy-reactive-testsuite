@@ -21,13 +21,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
 public class ConstraintViolationExceptionMapper
-    implements ExceptionMapper<ConstraintViolationException> {
+        implements ExceptionMapper<ConstraintViolationException> {
 
-  @Override
-  public Response toResponse(ConstraintViolationException exception) {
-    Response response = Response
-        .ok(ConstraintViolationException.class.getName()).build();
-    return response;
-  }
+    @Override
+    public Response toResponse(ConstraintViolationException exception) {
+        Response response = Response
+                .ok(ConstraintViolationException.class.getName()).build();
+        return response;
+    }
 
 }

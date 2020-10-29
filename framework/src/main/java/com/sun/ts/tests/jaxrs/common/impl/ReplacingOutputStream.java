@@ -20,71 +20,71 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class ReplacingOutputStream extends OutputStream {
-  protected OutputStream wrappedStream;
+    protected OutputStream wrappedStream;
 
-  protected char what;
+    protected char what;
 
-  protected char replace;
+    protected char replace;
 
-  protected String newMessage;
+    protected String newMessage;
 
-  public ReplacingOutputStream(OutputStream wrappedStream, char what,
-      char replace) {
-    super();
-    this.wrappedStream = wrappedStream;
-    this.what = what;
-    this.replace = replace;
-    this.newMessage = null;
-  }
-
-  public ReplacingOutputStream(OutputStream wrappedStream, String newMessage) {
-    super();
-    this.wrappedStream = wrappedStream;
-    this.what = 0;
-    this.replace = 0;
-    this.newMessage = newMessage;
-  }
-
-  @Override
-  public void write(int b) throws IOException {
-    write(intToByteArray(b));
-  }
-
-  @Override
-  public void write(byte[] b) throws IOException {
-    String old = new String(b);
-    String nw = null;
-    if (what != 0 && replace != 0)
-      nw = old.replace(what, replace);
-    if (newMessage != null)
-      nw = newMessage;
-    wrappedStream.write(nw.getBytes());
-  }
-
-  @Override
-  public void write(byte[] b, int off, int len) throws IOException {
-    write(b);
-  }
-
-  /**
-   * This is a hack for ascii characters only. The correct function should
-   * convert other bytes as well when appropriate.
-   */
-  public static final byte[] intToByteArray(int value) {
-    return new byte[] { (byte) (value & 0xff) };
-  }
-
-  @Override
-  public void close() throws IOException {
-    if (wrappedStream != null) {
-      wrappedStream.close();
+    public ReplacingOutputStream(OutputStream wrappedStream, char what,
+            char replace) {
+        super();
+        this.wrappedStream = wrappedStream;
+        this.what = what;
+        this.replace = replace;
+        this.newMessage = null;
     }
-  }
 
-  @Override
-  public void flush() throws IOException {
-    if (wrappedStream != null) {
-      wrappedStream.flush();
+    public ReplacingOutputStream(OutputStream wrappedStream, String newMessage) {
+        super();
+        this.wrappedStream = wrappedStream;
+        this.what = 0;
+        this.replace = 0;
+        this.newMessage = newMessage;
     }
-  }
+
+    @Override
+    public void write(int b) throws IOException {
+        write(intToByteArray(b));
+    }
+
+    @Override
+    public void write(byte[] b) throws IOException {
+        String old = new String(b);
+        String nw = null;
+        if (what != 0 && replace != 0)
+            nw = old.replace(what, replace);
+        if (newMessage != null)
+            nw = newMessage;
+        wrappedStream.write(nw.getBytes());
+    }
+
+    @Override
+    public void write(byte[] b, int off, int len) throws IOException {
+        write(b);
+    }
+
+    /**
+     * This is a hack for ascii characters only. The correct function should
+     * convert other bytes as well when appropriate.
+     */
+    public static final byte[] intToByteArray(int value) {
+        return new byte[] { (byte) (value & 0xff) };
+    }
+
+    @Override
+    public void close() throws IOException {
+        if (wrappedStream != null) {
+            wrappedStream.close();
+        }
+    }
+
+    @Override
+    public void flush() throws IOException {
+        if (wrappedStream != null) {
+            wrappedStream.flush();
+        }
+    }
 }

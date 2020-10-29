@@ -24,12 +24,12 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class AddDynamicFeature implements DynamicFeature {
 
-  @Override
-  public void configure(ResourceInfo resourceInfo, FeatureContext context) {
-    if (resourceInfo.getResourceMethod().getName().equals("echo")) {
-      context.register(AddTenFilter.class);
-      context.register(AddOneInterceptor.class);
+    @Override
+    public void configure(ResourceInfo resourceInfo, FeatureContext context) {
+        if (resourceInfo.getResourceMethod().getName().equals("echo")) {
+            context.register(AddTenFilter.class);
+            context.register(AddOneInterceptor.class);
+        }
     }
-  }
 
 }

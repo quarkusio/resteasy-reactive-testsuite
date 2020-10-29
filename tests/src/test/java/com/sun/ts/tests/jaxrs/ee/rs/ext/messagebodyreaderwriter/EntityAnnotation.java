@@ -25,5 +25,5 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EntityAnnotation {
-  String value();
+    String value();
 }

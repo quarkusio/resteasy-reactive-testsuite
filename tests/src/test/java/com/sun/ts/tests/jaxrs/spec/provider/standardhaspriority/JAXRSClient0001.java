@@ -18,23 +18,22 @@ package com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority;
 
 import java.util.function.Supplier;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.xml.bind.JAXBElement;
+import javax.xml.namespace.QName;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
 
-
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.MessageBodyWriter;
-import javax.xml.bind.JAXBElement;
-import javax.xml.namespace.QName;
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -54,159 +53,157 @@ public class JAXRSClient0001 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.AbstractProvider.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.Resource.class,
-                            TckBooleanProvider.class,
-                            TckCharacterProvider.class,
-                            TckJaxbProvider.class,
-                            TckMapProvider.class,
-                            TckNumberProvider.class,
-                            TckUniversalProvider.class,
-                            ProviderWalker.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.AbstractProvider.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.standardhaspriority.Resource.class,
+                                    TckBooleanProvider.class,
+                                    TckCharacterProvider.class,
+                                    TckJaxbProvider.class,
+                                    TckMapProvider.class,
+                                    TckNumberProvider.class,
+                                    TckUniversalProvider.class,
+                                    ProviderWalker.class);
                 }
             });
 
+    private static final long serialVersionUID = 1L;
 
-  private static final long serialVersionUID = 1L;
+    public JAXRSClient0001() {
+        setContextRoot("/jaxrs_spec_provider_standardhaspriority_web/resource");
+    }
 
-  public JAXRSClient0001() {
-    setContextRoot("/jaxrs_spec_provider_standardhaspriority_web/resource");
-  }
+    private void setPropertyAndInvoke(String resourceMethod, MediaType md)
+            throws Fault {
+        String ct = buildContentType(md);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, resourceMethod));
+        setProperty(Property.REQUEST_HEADERS, ct);
+        setProperty(Property.REQUEST_HEADERS, buildAccept(md));
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH,
+                "Tck" + resourceMethod + "Reader");
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH,
+                "Tck" + resourceMethod + "Writer");
+        setProperty(Property.SEARCH_STRING, resourceMethod);
+        invoke();
+    }
 
-  private void setPropertyAndInvoke(String resourceMethod, MediaType md)
-      throws Fault {
-    String ct = buildContentType(md);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, resourceMethod));
-    setProperty(Property.REQUEST_HEADERS, ct);
-    setProperty(Property.REQUEST_HEADERS, buildAccept(md));
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH,
-        "Tck" + resourceMethod + "Reader");
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH,
-        "Tck" + resourceMethod + "Writer");
-    setProperty(Property.SEARCH_STRING, resourceMethod);
-    invoke();
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0001().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0001().run(args);
-  }
+    /* Run test */
+    /*
+     * @testName: readWriteJaxbProviderTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:35
+     * 
+     * @test_Strategy: An implementation MUST support application-provided entity
+     * providers and MUST use those in preference to its own pre-packaged
+     * providers when either could handle the same request. More precisely, step 4
+     * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
+     * application-provided over pre-packaged entity providers. i.e. When have the
+     * same mediaType
+     */
+    @Disabled(QuarkusRest.Unsupported_Xml)
+    @Test
+    public void readWriteJaxbProviderTest() throws Fault {
+        JAXBElement<String> element = new JAXBElement<String>(new QName("jaxb"),
+                String.class, "jaxb");
+        setRequestContentEntity(element);
+        setPropertyAndInvoke("jaxb", MediaType.APPLICATION_XML_TYPE);
+    }
 
-  /* Run test */
-  /*
-   * @testName: readWriteJaxbProviderTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:35
-   * 
-   * @test_Strategy: An implementation MUST support application-provided entity
-   * providers and MUST use those in preference to its own pre-packaged
-   * providers when either could handle the same request. More precisely, step 4
-   * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
-   * application-provided over pre-packaged entity providers. i.e. When have the
-   * same mediaType
-   */
-  @Disabled(QuarkusRest.Unsupported_Xml)
-  @Test
-  public void readWriteJaxbProviderTest() throws Fault {
-    JAXBElement<String> element = new JAXBElement<String>(new QName("jaxb"),
-        String.class, "jaxb");
-    setRequestContentEntity(element);
-    setPropertyAndInvoke("jaxb", MediaType.APPLICATION_XML_TYPE);
-  }
+    /*
+     * @testName: readWriteMapProviderTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:35
+     * 
+     * @test_Strategy: An implementation MUST support application-provided entity
+     * providers and MUST use those in preference to its own pre-packaged
+     * providers when either could handle the same request. More precisely, step 4
+     * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
+     * application-provided over pre-packaged entity providers. i.e. When have the
+     * same mediaType
+     */
+    @Test
+    public void readWriteMapProviderTest() throws Fault {
+        MultivaluedMap<String, String> map = new MultivaluedHashMap<String, String>();
+        map.add("map", "map");
+        setRequestContentEntity(map);
+        setPropertyAndInvoke("map", MediaType.APPLICATION_FORM_URLENCODED_TYPE);
+    }
 
-  /*
-   * @testName: readWriteMapProviderTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:35
-   * 
-   * @test_Strategy: An implementation MUST support application-provided entity
-   * providers and MUST use those in preference to its own pre-packaged
-   * providers when either could handle the same request. More precisely, step 4
-   * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
-   * application-provided over pre-packaged entity providers. i.e. When have the
-   * same mediaType
-   */
-  @Test
-  public void readWriteMapProviderTest() throws Fault {
-    MultivaluedMap<String, String> map = new MultivaluedHashMap<String, String>();
-    map.add("map", "map");
-    setRequestContentEntity(map);
-    setPropertyAndInvoke("map", MediaType.APPLICATION_FORM_URLENCODED_TYPE);
-  }
+    /*
+     * @testName: readWriteBooleanProviderTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:35
+     * 
+     * @test_Strategy: An implementation MUST support application-provided entity
+     * providers and MUST use those in preference to its own pre-packaged
+     * providers when either could handle the same request. More precisely, step 4
+     * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
+     * application-provided over pre-packaged entity providers. i.e. When have the
+     * same mediaType
+     */
+    @Test
+    public void readWriteBooleanProviderTest() throws Fault {
+        MediaType mt = MediaType.TEXT_PLAIN_TYPE;
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "boolean"));
+        setProperty(Property.REQUEST_HEADERS, buildContentType(mt));
+        setProperty(Property.REQUEST_HEADERS, buildAccept(mt));
+        setProperty(Property.CONTENT, "false");
+        setProperty(Property.SEARCH_STRING, "false");
+        invoke();
+    }
 
-  /*
-   * @testName: readWriteBooleanProviderTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:35
-   * 
-   * @test_Strategy: An implementation MUST support application-provided entity
-   * providers and MUST use those in preference to its own pre-packaged
-   * providers when either could handle the same request. More precisely, step 4
-   * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
-   * application-provided over pre-packaged entity providers. i.e. When have the
-   * same mediaType
-   */
-  @Test
-  public void readWriteBooleanProviderTest() throws Fault {
-    MediaType mt = MediaType.TEXT_PLAIN_TYPE;
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "boolean"));
-    setProperty(Property.REQUEST_HEADERS, buildContentType(mt));
-    setProperty(Property.REQUEST_HEADERS, buildAccept(mt));
-    setProperty(Property.CONTENT, "false");
-    setProperty(Property.SEARCH_STRING, "false");
-    invoke();
-  }
+    /*
+     * @testName: readWriteCharacterProviderTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:35
+     * 
+     * @test_Strategy: An implementation MUST support application-provided entity
+     * providers and MUST use those in preference to its own pre-packaged
+     * providers when either could handle the same request. More precisely, step 4
+     * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
+     * application-provided over pre-packaged entity providers. i.e. When have the
+     * same mediaType
+     */
+    @Test
+    public void readWriteCharacterProviderTest() throws Fault {
+        MediaType mt = MediaType.TEXT_PLAIN_TYPE;
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "character"));
+        setProperty(Property.REQUEST_HEADERS, buildContentType(mt));
+        setProperty(Property.REQUEST_HEADERS, buildAccept(mt));
+        setProperty(Property.CONTENT, "a");
+        setProperty(Property.SEARCH_STRING, "a");
+        invoke();
+    }
 
-  /*
-   * @testName: readWriteCharacterProviderTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:35
-   * 
-   * @test_Strategy: An implementation MUST support application-provided entity
-   * providers and MUST use those in preference to its own pre-packaged
-   * providers when either could handle the same request. More precisely, step 4
-   * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
-   * application-provided over pre-packaged entity providers. i.e. When have the
-   * same mediaType
-   */
-  @Test
-  public void readWriteCharacterProviderTest() throws Fault {
-    MediaType mt = MediaType.TEXT_PLAIN_TYPE;
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "character"));
-    setProperty(Property.REQUEST_HEADERS, buildContentType(mt));
-    setProperty(Property.REQUEST_HEADERS, buildAccept(mt));
-    setProperty(Property.CONTENT, "a");
-    setProperty(Property.SEARCH_STRING, "a");
-    invoke();
-  }
-
-  /*
-   * @testName: readWriteIntegerProviderTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:35
-   * 
-   * @test_Strategy: An implementation MUST support application-provided entity
-   * providers and MUST use those in preference to its own pre-packaged
-   * providers when either could handle the same request. More precisely, step 4
-   * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
-   * application-provided over pre-packaged entity providers. i.e. When have the
-   * same mediaType
-   */
-  @Test
-  public void readWriteIntegerProviderTest() throws Fault {
-    MediaType mt = MediaType.TEXT_PLAIN_TYPE;
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "number"));
-    setProperty(Property.REQUEST_HEADERS, buildContentType(mt));
-    setProperty(Property.REQUEST_HEADERS, buildAccept(mt));
-    setProperty(Property.CONTENT, "0");
-    setProperty(Property.SEARCH_STRING, "0");
-    invoke();
-  }
+    /*
+     * @testName: readWriteIntegerProviderTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:35
+     * 
+     * @test_Strategy: An implementation MUST support application-provided entity
+     * providers and MUST use those in preference to its own pre-packaged
+     * providers when either could handle the same request. More precisely, step 4
+     * in Section 4.2.1 and step 5 in Section 4.2.2 MUST prefer
+     * application-provided over pre-packaged entity providers. i.e. When have the
+     * same mediaType
+     */
+    @Test
+    public void readWriteIntegerProviderTest() throws Fault {
+        MediaType mt = MediaType.TEXT_PLAIN_TYPE;
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "number"));
+        setProperty(Property.REQUEST_HEADERS, buildContentType(mt));
+        setProperty(Property.REQUEST_HEADERS, buildAccept(mt));
+        setProperty(Property.CONTENT, "0");
+        setProperty(Property.SEARCH_STRING, "0");
+        invoke();
+    }
 
 }

@@ -22,13 +22,13 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 public class ExceptionThrowingStringBean extends StringBean {
 
-  public ExceptionThrowingStringBean(String header) {
-    super(header);
-  }
+    public ExceptionThrowingStringBean(String header) {
+        super(header);
+    }
 
-  @Override
-  public String get() {
-    throw new RuntimeException(new IOException(super.get()));
-  }
+    @Override
+    public String get() {
+        throw new RuntimeException(new IOException(super.get()));
+    }
 
 }

@@ -28,38 +28,38 @@ import javax.ws.rs.core.MediaType;
 
 public class StringDataSource implements DataSource {
 
-  private String value;
+    private String value;
 
-  private MediaType mediaType;
+    private MediaType mediaType;
 
-  public StringDataSource(String value, MediaType mediaType) {
-    super();
-    this.value = value;
-    this.mediaType = mediaType;
-  }
+    public StringDataSource(String value, MediaType mediaType) {
+        super();
+        this.value = value;
+        this.mediaType = mediaType;
+    }
 
-  @Override
-  public String getContentType() {
-    return mediaType.getType() + "/" + mediaType.getSubtype();
-  }
+    @Override
+    public String getContentType() {
+        return mediaType.getType() + "/" + mediaType.getSubtype();
+    }
 
-  @Override
-  public InputStream getInputStream() throws IOException {
-    ByteArrayInputStream bais = new ByteArrayInputStream(value.getBytes());
-    return bais;
-  }
+    @Override
+    public InputStream getInputStream() throws IOException {
+        ByteArrayInputStream bais = new ByteArrayInputStream(value.getBytes());
+        return bais;
+    }
 
-  @Override
-  public String getName() {
-    return value;
-  }
+    @Override
+    public String getName() {
+        return value;
+    }
 
-  @Override
-  public OutputStream getOutputStream() throws IOException {
-    ByteArrayOutputStream baos = new ByteArrayOutputStream(value.length());
-    OutputStreamWriter osw = new OutputStreamWriter(baos);
-    osw.write(value);
-    return baos;
-  }
+    @Override
+    public OutputStream getOutputStream() throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream(value.length());
+        OutputStreamWriter osw = new OutputStreamWriter(baos);
+        osw.write(value);
+        return baos;
+    }
 
 }

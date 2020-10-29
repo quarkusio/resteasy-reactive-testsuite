@@ -30,45 +30,45 @@ import com.sun.ts.tests.jaxrs.ee.rs.beanparam.form.bean.FormBeanParamEntity;
 @Path(value = "resource")
 public class Resource extends ParamTest {
 
-  @BeanParam
-  FormBeanParamEntity field;
+    @BeanParam
+    FormBeanParamEntity field;
 
-  @POST
-  @Path("Field")
-  @Produces(MediaType.TEXT_PLAIN)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public String field() {
-    sb = new StringBuilder();
-    setReturnValues(field.paramEntityWithConstructor,
-        field.paramEntityWithFromString, field.paramEntityWithValueOf,
-        field.setParamEntityWithFromString,
-        field.sortedSetParamEntityWithFromString,
-        field.listParamEntityWithFromString, FIELD);
-    setReturnValues(field.inner.paramEntityWithConstructor,
-        field.inner.paramEntityWithFromString,
-        field.inner.paramEntityWithValueOf,
-        field.inner.setParamEntityWithFromString,
-        field.inner.sortedSetParamEntityWithFromString,
-        field.inner.listParamEntityWithFromString, Constants.INNER + FIELD);
-    return sb.toString();
-  }
+    @POST
+    @Path("Field")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String field() {
+        sb = new StringBuilder();
+        setReturnValues(field.paramEntityWithConstructor,
+                field.paramEntityWithFromString, field.paramEntityWithValueOf,
+                field.setParamEntityWithFromString,
+                field.sortedSetParamEntityWithFromString,
+                field.listParamEntityWithFromString, FIELD);
+        setReturnValues(field.inner.paramEntityWithConstructor,
+                field.inner.paramEntityWithFromString,
+                field.inner.paramEntityWithValueOf,
+                field.inner.setParamEntityWithFromString,
+                field.inner.sortedSetParamEntityWithFromString,
+                field.inner.listParamEntityWithFromString, Constants.INNER + FIELD);
+        return sb.toString();
+    }
 
-  @POST
-  @Path("Param")
-  @Produces(MediaType.TEXT_PLAIN)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public String stringParamHandling(@BeanParam FormBeanParamEntity bean) {
-    sb = new StringBuilder();
-    setReturnValues(bean.paramEntityWithConstructor,
-        bean.paramEntityWithFromString, bean.paramEntityWithValueOf,
-        bean.setParamEntityWithFromString,
-        bean.sortedSetParamEntityWithFromString,
-        bean.listParamEntityWithFromString, PARAM);
-    setReturnValues(bean.inner.paramEntityWithConstructor,
-        bean.inner.paramEntityWithFromString, bean.inner.paramEntityWithValueOf,
-        bean.inner.setParamEntityWithFromString,
-        bean.inner.sortedSetParamEntityWithFromString,
-        bean.inner.listParamEntityWithFromString, Constants.INNER + PARAM);
-    return sb.toString();
-  }
+    @POST
+    @Path("Param")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String stringParamHandling(@BeanParam FormBeanParamEntity bean) {
+        sb = new StringBuilder();
+        setReturnValues(bean.paramEntityWithConstructor,
+                bean.paramEntityWithFromString, bean.paramEntityWithValueOf,
+                bean.setParamEntityWithFromString,
+                bean.sortedSetParamEntityWithFromString,
+                bean.listParamEntityWithFromString, PARAM);
+        setReturnValues(bean.inner.paramEntityWithConstructor,
+                bean.inner.paramEntityWithFromString, bean.inner.paramEntityWithValueOf,
+                bean.inner.setParamEntityWithFromString,
+                bean.inner.sortedSetParamEntityWithFromString,
+                bean.inner.listParamEntityWithFromString, Constants.INNER + PARAM);
+        return sb.toString();
+    }
 }

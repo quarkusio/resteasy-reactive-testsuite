@@ -25,12 +25,12 @@ import javax.ws.rs.core.Response;
 
 @Path("resource")
 public class Resource {
-  @POST
-  @Path("entity")
-  public Response entity(Date date) {
-    Annotation[] annotations = AnnotatedClass.class.getAnnotations();
-    Response response = Response.ok().entity(date, annotations).build();
-    return response;
-  }
+    @POST
+    @Path("entity")
+    public Response entity(Date date) {
+        Annotation[] annotations = AnnotatedClass.class.getAnnotations();
+        Response response = Response.ok().entity(date, annotations).build();
+        return response;
+    }
 
 }

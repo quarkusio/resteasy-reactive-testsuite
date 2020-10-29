@@ -16,19 +16,20 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.visibility;
 
-import javax.ws.rs.core.Application;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+
+import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(HolderResolver.class);
-    resources.add(VisibilityExceptionMapper.class);
-    resources.add(DummyWriter.class);
-    resources.add(StringReader.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(HolderResolver.class);
+        resources.add(VisibilityExceptionMapper.class);
+        resources.add(DummyWriter.class);
+        resources.add(StringReader.class);
+        return resources;
+    }
 }

@@ -28,30 +28,30 @@ import javax.ws.rs.core.HttpHeaders;
 @Path("resource")
 public class Resource {
 
-  @POST
-  @Path("post")
-  public String post(String value) {
-    return value;
-  }
+    @POST
+    @Path("post")
+    public String post(String value) {
+        return value;
+    }
 
-  @PUT
-  @Path("put")
-  public String put(String value) {
-    return value;
-  }
+    @PUT
+    @Path("put")
+    public String put(String value) {
+        return value;
+    }
 
-  @GET
-  @Path("headers")
-  public String headers(@Context HttpHeaders headers) {
-    String hdrs = collectionToString(headers.getRequestHeaders().keySet());
-    return hdrs;
-  }
+    @GET
+    @Path("headers")
+    public String headers(@Context HttpHeaders headers) {
+        String hdrs = collectionToString(headers.getRequestHeaders().keySet());
+        return hdrs;
+    }
 
-  protected static <T> String collectionToString(Collection<T> collection) {
-    StringBuilder sb = new StringBuilder();
-    for (T t : collection)
-      sb.append(t).append(";");
-    return sb.toString();
-  }
+    protected static <T> String collectionToString(Collection<T> collection) {
+        StringBuilder sb = new StringBuilder();
+        for (T t : collection)
+            sb.append(t).append(";");
+        return sb.toString();
+    }
 
 }

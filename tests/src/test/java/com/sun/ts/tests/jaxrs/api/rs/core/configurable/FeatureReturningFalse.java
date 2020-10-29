@@ -20,9 +20,9 @@ import javax.ws.rs.core.Feature;
 import javax.ws.rs.core.FeatureContext;
 
 public class FeatureReturningFalse implements Feature {
-  @Override
-  public boolean configure(FeatureContext context) {
-    // false returning feature is not to be registered
-    return false;
-  }
+    @Override
+    public boolean configure(FeatureContext context) {
+        // false returning feature is not to be registered
+        return false;
+    }
 }

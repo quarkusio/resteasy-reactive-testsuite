@@ -20,6 +20,6 @@ import javax.ws.rs.WebApplicationException;
 
 public class VisibilityException extends WebApplicationException {
 
-  private static final long serialVersionUID = -1159407312691372429L;
+    private static final long serialVersionUID = -1159407312691372429L;
 
 }

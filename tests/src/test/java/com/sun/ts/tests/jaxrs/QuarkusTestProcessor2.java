@@ -33,8 +33,7 @@ import org.xml.sax.SAXException;
  */
 public class QuarkusTestProcessor2 {
     public static void main(String[] args) throws IOException, ParserConfigurationException {
-        DocumentBuilderFactory factory =
-                DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Set<String> classFiles = collectClassFiles();
         Path srcPath = Paths.get("src/test/java");
@@ -45,8 +44,8 @@ public class QuarkusTestProcessor2 {
                 private Path client;
                 private Set<String> resources = new HashSet<String>();
             }
+
             private Stack<State> states = new Stack<>();
-            
 
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
@@ -59,19 +58,19 @@ public class QuarkusTestProcessor2 {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 State state = states.peek();
-                if(file.endsWith("build.xml")) {
+                if (file.endsWith("build.xml")) {
                     try {
                         Document document = builder.parse(file.toFile());
                         NodeList properties = document.getElementsByTagName("property");
                         String[] resources = null;
-                        for(int i=0;i<properties.getLength();i++) {
+                        for (int i = 0; i < properties.getLength(); i++) {
                             Node property = properties.item(i);
-                            if(property.getNodeType() == Node.ELEMENT_NODE) {
+                            if (property.getNodeType() == Node.ELEMENT_NODE) {
                                 Element el = (Element) property;
                                 String name = el.getAttribute("name");
-                                if("web.war.classes".equals(name)) {
+                                if ("web.war.classes".equals(name)) {
                                     String value = el.getAttribute("value");
-                                    if(value != null) {
+                                    if (value != null) {
                                         value = value.replace("${basedir}", state.baseDir);
                                         resources = value.split("\\s*,\\s*");
                                         break;
@@ -79,9 +78,9 @@ public class QuarkusTestProcessor2 {
                                 }
                             }
                         }
-                        if(resources != null) {
+                        if (resources != null) {
                             for (String resource : resources) {
-                                if(resource.indexOf('*') != -1) {
+                                if (resource.indexOf('*') != -1) {
                                     String regex = wildcardToRegex(resource);
                                     state.resources.addAll(findClassMatches(classFiles, regex));
                                 } else {
@@ -94,7 +93,7 @@ public class QuarkusTestProcessor2 {
                         e.printStackTrace();
                     }
 
-                } else if(file.getFileName().toString().endsWith("Client.java")) {
+                } else if (file.getFileName().toString().endsWith("Client.java")) {
                     state.client = file;
                 }
                 return FileVisitResult.CONTINUE;
@@ -108,8 +107,8 @@ public class QuarkusTestProcessor2 {
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
                 State state = states.pop();
-                if(state.client != null && !state.resources.isEmpty()) {
-                    System.err.println("Adding resources to test class "+state.client);
+                if (state.client != null && !state.resources.isEmpty()) {
+                    System.err.println("Adding resources to test class " + state.client);
                     addResourcesToTest(state.client, state.resources);
                 }
                 return FileVisitResult.CONTINUE;
@@ -118,27 +117,28 @@ public class QuarkusTestProcessor2 {
     }
 
     protected static void addResourcesToTest(Path client, Set<String> resources) {
-/*
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest()
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(Foo.class, Bar.class);
-                }
-            });
-             */
+        /*
+         * @RegisterExtension
+         * static QuarkusUnitTest test = new QuarkusUnitTest()
+         * .setArchiveProducer(new Supplier<JavaArchive>() {
+         * 
+         * @Override
+         * public JavaArchive get() {
+         * return ShrinkWrap.create(JavaArchive.class)
+         * .addClasses(Foo.class, Bar.class);
+         * }
+         * });
+         */
         String original = client.toString();
-        String target = client.toString()+".tmp";
-        try(BufferedReader reader = new BufferedReader(new FileReader(original));
-                BufferedWriter writer = new BufferedWriter(new FileWriter(target))){
+        String target = client.toString() + ".tmp";
+        try (BufferedReader reader = new BufferedReader(new FileReader(original));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
             String line;
             boolean addedImports = false;
             boolean sawClass = false;
             boolean delayedClass = false;
-            while((line = reader.readLine()) != null) {
-                if(!addedImports && line.startsWith("package ")) {
+            while ((line = reader.readLine()) != null) {
+                if (!addedImports && line.startsWith("package ")) {
                     addedImports = true;
                     writer.write(line);
                     writer.newLine();
@@ -152,8 +152,8 @@ public class QuarkusTestProcessor2 {
                     // let's not write the original line twice
                     continue;
                 }
-                if(!sawClass && line.startsWith("public class ")) {
-                    if(line.contains("{")) {
+                if (!sawClass && line.startsWith("public class ")) {
+                    if (line.contains("{")) {
                         sawClass = true;
                         writer.write(line);
                         writer.newLine();
@@ -164,7 +164,7 @@ public class QuarkusTestProcessor2 {
                     } else {
                         delayedClass = true;
                     }
-                } else if(delayedClass && line.contains("{")) {
+                } else if (delayedClass && line.contains("{")) {
                     delayedClass = false;
                     writer.write(line);
                     writer.newLine();
@@ -172,7 +172,7 @@ public class QuarkusTestProcessor2 {
                     writeExtension(writer, resources);
                     // let's not write the original line twice
                     continue;
-                } else if(line.equals("  @org.junit.jupiter.api.Test")) {
+                } else if (line.equals("  @org.junit.jupiter.api.Test")) {
                     line = "  @Test";
                 }
                 writer.write(line);
@@ -197,9 +197,9 @@ public class QuarkusTestProcessor2 {
         writer.write("                    return ShrinkWrap.create(JavaArchive.class)\n");
         writer.write("                            .addClasses(\n");
         boolean first = true;
-        for(String resource : resources) {
+        for (String resource : resources) {
             writer.write("                            ");
-            if(first)
+            if (first)
                 first = false;
             else
                 writer.write(", ");
@@ -214,7 +214,7 @@ public class QuarkusTestProcessor2 {
     protected static Set<String> findClassMatches(Set<String> classFiles, String regex) {
         Set<String> ret = new HashSet<>();
         for (String classFile : classFiles) {
-            if(classFile.matches(regex)) {
+            if (classFile.matches(regex)) {
                 ret.add(classFile);
             }
         }
@@ -224,10 +224,12 @@ public class QuarkusTestProcessor2 {
     protected static String wildcardToRegex(String wildcard) {
         Pattern regex = Pattern.compile("[^*]+|(\\*)");
         Matcher m = regex.matcher(wildcard);
-        StringBuffer b= new StringBuffer();
+        StringBuffer b = new StringBuffer();
         while (m.find()) {
-            if(m.group(1) != null) m.appendReplacement(b, ".*");
-            else m.appendReplacement(b, "\\\\Q" + m.group(0) + "\\\\E");
+            if (m.group(1) != null)
+                m.appendReplacement(b, ".*");
+            else
+                m.appendReplacement(b, "\\\\Q" + m.group(0) + "\\\\E");
         }
         m.appendTail(b);
         return b.toString();
@@ -245,7 +247,7 @@ public class QuarkusTestProcessor2 {
 
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                if(file.toString().endsWith(".class")) {
+                if (file.toString().endsWith(".class")) {
                     String f = srcPath.relativize(file).toString();
                     ret.add(f);
                 }

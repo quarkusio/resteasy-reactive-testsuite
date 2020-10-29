@@ -28,208 +28,208 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0058 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = -5886257224223478590L;
+    private static final long serialVersionUID = -5886257224223478590L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0058().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: constructorTest1
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:62; JAXRS:JAVADOC:65; JAXRS:JAVADOC:67;
-   * 
-   * @test_Strategy: Create an EntityTag instance using entityTag(String)
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorTest1() throws Fault {
-    String value = "cts test entity tag test";
-    boolean strong = true;
-
-    EntityTag et1 = new EntityTag(value);
-    verifyEntityTag(et1, value, strong);
-  }
-
-  /*
-   * @testName: constructorTest2
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:63; JAXRS:JAVADOC:65; JAXRS:JAVADOC:67;
-   * 
-   * @test_Strategy: Create an EntityTag instance using entityTag(String,
-   * boolean)
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorTest2() throws Fault {
-    String value = "cts test entity tag test weak";
-    boolean strong = false;
-
-    EntityTag et2 = new EntityTag(value, true);
-
-    verifyEntityTag(et2, value, strong);
-
-    strong = true;
-
-    EntityTag et3 = new EntityTag(value, false);
-
-    verifyEntityTag(et3, value, strong);
-  }
-
-  /*
-   * @testName: equalsTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:62; JAXRS:JAVADOC:63; JAXRS:JAVADOC:64;
-   * JAXRS:JAVADOC:66;
-   * 
-   * @test_Strategy: Create two EntityTag instances using either
-   * entityTag(String, boolean) and entityTag(String). Verify
-   * EntityTag.equals(Object) and hashCode() work
-   */
-  @org.junit.jupiter.api.Test
-  public void equalsTest() throws Fault {
-    boolean pass = true;
-    StringBuffer sb = new StringBuffer();
-
-    String value = "cts test entity tag test";
-
-    EntityTag et4 = new EntityTag(value);
-    EntityTag et5 = new EntityTag(value, false);
-
-    if (!et4.equals(et5)) {
-      pass = false;
-      sb.append("Strong entity Tag equals test failed. " + et4.toString() + ";"
-          + et5.toString() + ";");
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0058().run(args);
     }
 
-    if (et4.hashCode() != et5.hashCode()) {
-      pass = false;
-      sb.append("Strong entity Tag hashCode test failed. " + et4.toString()
-          + ";" + et5.toString() + ";");
+    /* Run test */
+
+    /*
+     * @testName: constructorTest1
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:62; JAXRS:JAVADOC:65; JAXRS:JAVADOC:67;
+     * 
+     * @test_Strategy: Create an EntityTag instance using entityTag(String)
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorTest1() throws Fault {
+        String value = "cts test entity tag test";
+        boolean strong = true;
+
+        EntityTag et1 = new EntityTag(value);
+        verifyEntityTag(et1, value, strong);
     }
 
-    value = "cts test entity tag test weak";
-    EntityTag et6 = new EntityTag(value, true);
-    EntityTag et7 = new EntityTag(value, false);
+    /*
+     * @testName: constructorTest2
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:63; JAXRS:JAVADOC:65; JAXRS:JAVADOC:67;
+     * 
+     * @test_Strategy: Create an EntityTag instance using entityTag(String,
+     * boolean)
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorTest2() throws Fault {
+        String value = "cts test entity tag test weak";
+        boolean strong = false;
 
-    if (et6.equals(et7)) {
-      pass = false;
-      sb.append("Weak entity Tag equals test failed. " + et6.toString() + ";"
-          + et7.toString() + ";");
+        EntityTag et2 = new EntityTag(value, true);
+
+        verifyEntityTag(et2, value, strong);
+
+        strong = true;
+
+        EntityTag et3 = new EntityTag(value, false);
+
+        verifyEntityTag(et3, value, strong);
     }
 
-    if (et6.hashCode() == et7.hashCode()) {
-      pass = false;
-      sb.append("Weak entity Tag hashCode test failed. " + et6.toString() + ";"
-          + et7.toString() + ";");
+    /*
+     * @testName: equalsTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:62; JAXRS:JAVADOC:63; JAXRS:JAVADOC:64;
+     * JAXRS:JAVADOC:66;
+     * 
+     * @test_Strategy: Create two EntityTag instances using either
+     * entityTag(String, boolean) and entityTag(String). Verify
+     * EntityTag.equals(Object) and hashCode() work
+     */
+    @org.junit.jupiter.api.Test
+    public void equalsTest() throws Fault {
+        boolean pass = true;
+        StringBuffer sb = new StringBuffer();
+
+        String value = "cts test entity tag test";
+
+        EntityTag et4 = new EntityTag(value);
+        EntityTag et5 = new EntityTag(value, false);
+
+        if (!et4.equals(et5)) {
+            pass = false;
+            sb.append("Strong entity Tag equals test failed. " + et4.toString() + ";"
+                    + et5.toString() + ";");
+        }
+
+        if (et4.hashCode() != et5.hashCode()) {
+            pass = false;
+            sb.append("Strong entity Tag hashCode test failed. " + et4.toString()
+                    + ";" + et5.toString() + ";");
+        }
+
+        value = "cts test entity tag test weak";
+        EntityTag et6 = new EntityTag(value, true);
+        EntityTag et7 = new EntityTag(value, false);
+
+        if (et6.equals(et7)) {
+            pass = false;
+            sb.append("Weak entity Tag equals test failed. " + et6.toString() + ";"
+                    + et7.toString() + ";");
+        }
+
+        if (et6.hashCode() == et7.hashCode()) {
+            pass = false;
+            sb.append("Weak entity Tag hashCode test failed. " + et6.toString() + ";"
+                    + et7.toString() + ";");
+        }
+
+        assertFault(pass, "At least one assertion failed:", sb.toString());
     }
 
-    assertFault(pass, "At least one assertion failed:", sb.toString());
-  }
+    /*
+     * @testName: toStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:62; JAXRS:JAVADOC:63; JAXRS:JAVADOC:68;
+     * 
+     * @test_Strategy: Create two EntityTag instances using either
+     * entityTag(String, boolean) and entityTag(String). Verify
+     * EntityTag.toString() works
+     */
+    @org.junit.jupiter.api.Test
+    public void toStringTest() throws Fault {
+        boolean pass = true;
+        StringBuffer sb = new StringBuffer();
 
-  /*
-   * @testName: toStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:62; JAXRS:JAVADOC:63; JAXRS:JAVADOC:68;
-   * 
-   * @test_Strategy: Create two EntityTag instances using either
-   * entityTag(String, boolean) and entityTag(String). Verify
-   * EntityTag.toString() works
-   */
-  @org.junit.jupiter.api.Test
-  public void toStringTest() throws Fault {
-    boolean pass = true;
-    StringBuffer sb = new StringBuffer();
+        String value = "cts test Strong EntityTag test";
 
-    String value = "cts test Strong EntityTag test";
+        EntityTag et8 = new EntityTag(value);
+        String header = et8.toString();
+        sb.append(header + "." + newline);
 
-    EntityTag et8 = new EntityTag(value);
-    String header = et8.toString();
-    sb.append(header + "." + newline);
+        if (!header.contains(value)) {
+            pass = false;
+            sb.append("Strong EnttyTag ToString Test failed: " + header
+                    + " does not contain " + value);
+        }
 
-    if (!header.contains(value)) {
-      pass = false;
-      sb.append("Strong EnttyTag ToString Test failed: " + header
-          + " does not contain " + value);
+        value = "cts test Weak EntityTag test";
+
+        EntityTag et9 = new EntityTag(value, true);
+
+        header = et9.toString();
+        sb.append(header + "." + newline);
+
+        if (!header.contains(value)) {
+            pass = false;
+            sb.append("Weak EnttyTag ToString Test failed: " + header
+                    + " does not contain " + value);
+        }
+
+        assertFault(pass, "At least one assertion failed:", sb.toString());
+        System.out.println(sb.toString());
     }
 
-    value = "cts test Weak EntityTag test";
-
-    EntityTag et9 = new EntityTag(value, true);
-
-    header = et9.toString();
-    sb.append(header + "." + newline);
-
-    if (!header.contains(value)) {
-      pass = false;
-      sb.append("Weak EnttyTag ToString Test failed: " + header
-          + " does not contain " + value);
+    /*
+     * @testName: valueOfTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:69;
+     * 
+     * @test_Strategy: Create an EntityTag instances using EntityTag.valueOf(null)
+     * Verify IllegalArgumentException thrown
+     */
+    @org.junit.jupiter.api.Test
+    public void valueOfTest() throws Fault {
+        try {
+            EntityTag.valueOf(null);
+            throw new Fault(
+                    "Expected IllegalArgumentException not thrown.  Test failed.");
+        } catch (java.lang.IllegalArgumentException ilex) {
+            logMsg("IllegalArgumentException has been thrown as expected");
+        }
     }
 
-    assertFault(pass, "At least one assertion failed:", sb.toString());
-    System.out.println(sb.toString());
-  }
-
-  /*
-   * @testName: valueOfTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:69;
-   * 
-   * @test_Strategy: Create an EntityTag instances using EntityTag.valueOf(null)
-   * Verify IllegalArgumentException thrown
-   */
-  @org.junit.jupiter.api.Test
-  public void valueOfTest() throws Fault {
-    try {
-      EntityTag.valueOf(null);
-      throw new Fault(
-          "Expected IllegalArgumentException not thrown.  Test failed.");
-    } catch (java.lang.IllegalArgumentException ilex) {
-      logMsg("IllegalArgumentException has been thrown as expected");
-    }
-  }
-
-  /*
-   * @testName: valueOfTest1
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:69;
-   * 
-   * @test_Strategy: EntityTag.valueOf(value) does not throw Exception
-   */
-  @org.junit.jupiter.api.Test
-  public void valueOfTest1() throws Fault {
-    String value = "\"cts test Strong EntityTag test\"";
-    try {
-      EntityTag et10 = EntityTag.valueOf(value);
-      verifyEntityTag(et10, value, true);
-    } catch (Exception ilex) {
-      throw new Fault("Unexpected exception throw: " + ilex.getMessage());
-    }
-  }
-
-  private static void verifyEntityTag(EntityTag et, String value,
-      boolean strong) throws Fault {
-    StringBuffer sb = new StringBuffer();
-    boolean pass = true;
-
-    if (!et.getValue().toLowerCase().replace("\"", "")
-        .equals(value.replace("\"", "").toLowerCase())) {
-      pass = false;
-      sb.append("Failed value test.  Expect " + value + " got " + et.getValue()
-          + ".");
+    /*
+     * @testName: valueOfTest1
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:69;
+     * 
+     * @test_Strategy: EntityTag.valueOf(value) does not throw Exception
+     */
+    @org.junit.jupiter.api.Test
+    public void valueOfTest1() throws Fault {
+        String value = "\"cts test Strong EntityTag test\"";
+        try {
+            EntityTag et10 = EntityTag.valueOf(value);
+            verifyEntityTag(et10, value, true);
+        } catch (Exception ilex) {
+            throw new Fault("Unexpected exception throw: " + ilex.getMessage());
+        }
     }
 
-    if (et.isWeak() == strong) {
-      pass = false;
-      sb.append(
-          "Failed isWeak test.  Expect " + !strong + " got " + et.isWeak());
-    }
+    private static void verifyEntityTag(EntityTag et, String value,
+            boolean strong) throws Fault {
+        StringBuffer sb = new StringBuffer();
+        boolean pass = true;
 
-    assertFault(pass, "at least one assertion failed: " + sb.toString());
-  }
+        if (!et.getValue().toLowerCase().replace("\"", "")
+                .equals(value.replace("\"", "").toLowerCase())) {
+            pass = false;
+            sb.append("Failed value test.  Expect " + value + " got " + et.getValue()
+                    + ".");
+        }
+
+        if (et.isWeak() == strong) {
+            pass = false;
+            sb.append(
+                    "Failed isWeak test.  Expect " + !strong + " got " + et.isWeak());
+        }
+
+        assertFault(pass, "at least one assertion failed: " + sb.toString());
+    }
 }

@@ -17,15 +17,22 @@
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext;
 
 public enum ContextOperation {
-  GETENTITY, GETHEADERS, GETHEADERSISMUTABLE, GETOUTPUTSTREAM, FROMPROCEEDTHROWSWEBAPPEXCEPTION, // On
-                                                                                                 // return
-                                                                                                 // with
-                                                                                                 // WebAppException
-                                                                                                 // The
-                                                                                                 // Exception
-                                                                                                 // is
-                                                                                                 // not
-                                                                                                 // thrown
-                                                                                                 // again
-  PROCEEDTHROWSIOEXCEPTION, PROCEEDTHROWSWEBAPPEXCEPTION, SETENTITY, SETOUTPUTSTREAM
+    GETENTITY,
+    GETHEADERS,
+    GETHEADERSISMUTABLE,
+    GETOUTPUTSTREAM,
+    FROMPROCEEDTHROWSWEBAPPEXCEPTION, // On
+    // return
+    // with
+    // WebAppException
+    // The
+    // Exception
+    // is
+    // not
+    // thrown
+    // again
+    PROCEEDTHROWSIOEXCEPTION,
+    PROCEEDTHROWSWEBAPPEXCEPTION,
+    SETENTITY,
+    SETOUTPUTSTREAM
 }

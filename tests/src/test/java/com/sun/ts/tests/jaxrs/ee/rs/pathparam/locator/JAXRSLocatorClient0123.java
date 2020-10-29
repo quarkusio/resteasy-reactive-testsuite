@@ -18,14 +18,15 @@ package com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator;
 
 import java.util.function.Supplier;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -34,7 +35,7 @@ import io.quarkus.test.QuarkusUnitTest;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSLocatorClient0123
-    extends com.sun.ts.tests.jaxrs.ee.rs.pathparam.JAXRSClient0124 {
+        extends com.sun.ts.tests.jaxrs.ee.rs.pathparam.JAXRSClient0124 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
@@ -45,242 +46,240 @@ public class JAXRSLocatorClient0123
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.MiddleResource.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.PathSegmentImpl.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.LocatorResource.class
-                            );
+                                    com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.MiddleResource.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.PathSegmentImpl.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator.LocatorResource.class);
                 }
             });
 
+    private static final long serialVersionUID = 1L;
 
-  private static final long serialVersionUID = 1L;
+    public JAXRSLocatorClient0123() {
+        setContextRoot("/jaxrs_ee_rs_pathparam_locator_web/resource/locator");
+    }
 
-  public JAXRSLocatorClient0123() {
-    setContextRoot("/jaxrs_ee_rs_pathparam_locator_web/resource/locator");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSLocatorClient0123().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSLocatorClient0123().run(args);
-  }
+    /* Run test */
+    /*
+     * @testName: test1
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
+     * Verify that right Method is invoked while using PathParam with primitive
+     * type String.
+     */
+    @org.junit.jupiter.api.Test
+    public void test1() throws Fault {
+        super.test1();
+    }
 
-  /* Run test */
-  /*
-   * @testName: test1
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
-   * Verify that right Method is invoked while using PathParam with primitive
-   * type String.
-   */
-  @org.junit.jupiter.api.Test
-  public void test1() throws Fault {
-    super.test1();
-  }
+    /*
+     * @testName: test2
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
+     * Verify that right Method is invoked while using PathParam primitive type
+     * String and PathSegment.
+     */
+    @org.junit.jupiter.api.Test
+    public void test2() throws Fault {
+        super.test2();
+    }
 
-  /*
-   * @testName: test2
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
-   * Verify that right Method is invoked while using PathParam primitive type
-   * String and PathSegment.
-   */
-  @org.junit.jupiter.api.Test
-  public void test2() throws Fault {
-    super.test2();
-  }
+    /*
+     * @testName: test3
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
+     * Verify that right Method is invoked while using PathParam primitive type
+     * int, float and PathSegment.
+     */
+    @org.junit.jupiter.api.Test
+    public void test3() throws Fault {
+        super.test3();
+    }
 
-  /*
-   * @testName: test3
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
-   * Verify that right Method is invoked while using PathParam primitive type
-   * int, float and PathSegment.
-   */
-  @org.junit.jupiter.api.Test
-  public void test3() throws Fault {
-    super.test3();
-  }
+    /*
+     * @testName: test4
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
+     * Verify that right Method is invoked using PathParam primitive type double,
+     * boolean, byte, and PathSegment.
+     */
+    @org.junit.jupiter.api.Test
+    public void test4() throws Fault {
+        super.test4();
+    }
 
-  /*
-   * @testName: test4
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
-   * Verify that right Method is invoked using PathParam primitive type double,
-   * boolean, byte, and PathSegment.
-   */
-  @org.junit.jupiter.api.Test
-  public void test4() throws Fault {
-    super.test4();
-  }
+    /*
+     * @testName: test5
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
+     * Verify that right Method is invoked using PathParam primitive type long,
+     * String, short, boolean and PathSegment.
+     */
+    @org.junit.jupiter.api.Test
+    public void test5() throws Fault {
+        super.test5();
+    }
 
-  /*
-   * @testName: test5
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:JAVADOC:114;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
-   * Verify that right Method is invoked using PathParam primitive type long,
-   * String, short, boolean and PathSegment.
-   */
-  @org.junit.jupiter.api.Test
-  public void test5() throws Fault {
-    super.test5();
-  }
+    /*
+     * @testName: test6
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
+     * Verify that right Method is invoked using PathParam primitive type
+     * List<String>.
+     */
+    @Disabled(QuarkusRest.Nuts)
+    @org.junit.jupiter.api.Test
+    public void test6() throws Fault {
+        super.test6();
+    }
 
-  /*
-   * @testName: test6
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:JAVADOC:9; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Client invokes GET on root resource at /PathParamTest;
-   * Verify that right Method is invoked using PathParam primitive type
-   * List<String>.
-   */
-  @Disabled(QuarkusRest.Nuts)
-  @org.junit.jupiter.api.Test
-  public void test6() throws Fault {
-    super.test6();
-  }
+    /*
+     * @testName: pathParamEntityWithConstructorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.2; JAXRS:SPEC:12;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Verify that named Param is handled properly
+     */
+    @Test
+    public void pathParamEntityWithConstructorTest() throws Fault {
+        super.paramEntityWithConstructorTest();
+    }
 
-  /*
-   * @testName: pathParamEntityWithConstructorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.2; JAXRS:SPEC:12;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Verify that named Param is handled properly
-   */
-  @Test
-  public void pathParamEntityWithConstructorTest() throws Fault {
-    super.paramEntityWithConstructorTest();
-  }
+    /*
+     * @testName: pathParamEntityWithValueOfTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.3; JAXRS:SPEC:12;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Verify that named Param is handled properly
+     */
+    @Test
+    public void pathParamEntityWithValueOfTest() throws Fault {
+        super.pathParamEntityWithValueOfTest();
+    }
 
-  /*
-   * @testName: pathParamEntityWithValueOfTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.3; JAXRS:SPEC:12;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Verify that named Param is handled properly
-   */
-  @Test
-  public void pathParamEntityWithValueOfTest() throws Fault {
-    super.pathParamEntityWithValueOfTest();
-  }
+    /*
+     * @testName: pathParamEntityWithFromStringTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.3; JAXRS:SPEC:12;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Verify that named Param is handled properly
+     */
+    @Test
+    public void pathParamEntityWithFromStringTest() throws Fault {
+        _contextRoot += "encoded";
+        super.pathParamEntityWithFromStringTest();
+    }
 
-  /*
-   * @testName: pathParamEntityWithFromStringTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.3; JAXRS:SPEC:12;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Verify that named Param is handled properly
-   */
-  @Test
-  public void pathParamEntityWithFromStringTest() throws Fault {
-    _contextRoot += "encoded";
-    super.pathParamEntityWithFromStringTest();
-  }
+    /*
+     * @testName: pathParamSetEntityWithFromStringTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.4; JAXRS:SPEC:12;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Verify that named PathParam is handled properly
+     */
+    @Test
+    public void pathParamSetEntityWithFromStringTest() throws Fault {
+        super.pathParamSetEntityWithFromStringTest();
+    }
 
-  /*
-   * @testName: pathParamSetEntityWithFromStringTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.4; JAXRS:SPEC:12;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Verify that named PathParam is handled properly
-   */
-  @Test
-  public void pathParamSetEntityWithFromStringTest() throws Fault {
-    super.pathParamSetEntityWithFromStringTest();
-  }
+    /*
+     * @testName: pathParamListEntityWithFromStringTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.4; JAXRS:SPEC:12;
+     * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Verify that named PathParam is handled properly
+     */
+    @Test
+    public void pathParamListEntityWithFromStringTest() throws Fault {
+        super.pathParamListEntityWithFromStringTest();
+    }
 
-  /*
-   * @testName: pathParamListEntityWithFromStringTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.3; JAXRS:SPEC:5.4; JAXRS:SPEC:12;
-   * JAXRS:SPEC:20; JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Verify that named PathParam is handled properly
-   */
-  @Test
-  public void pathParamListEntityWithFromStringTest() throws Fault {
-    super.pathParamListEntityWithFromStringTest();
-  }
+    /*
+     * @testName: pathParamThrowingWebApplicationExceptionTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:8; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: A WebApplicationException thrown during construction of
+     * field or property values using 2 or 3 above is processed directly as
+     * described in section 3.3.4.
+     */
+    @Test
+    public void pathParamThrowingWebApplicationExceptionTest() throws Fault {
+        super.pathParamThrowingWebApplicationExceptionTest();
+    }
 
-  /*
-   * @testName: pathParamThrowingWebApplicationExceptionTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:8; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: A WebApplicationException thrown during construction of
-   * field or property values using 2 or 3 above is processed directly as
-   * described in section 3.3.4.
-   */
-  @Test
-  public void pathParamThrowingWebApplicationExceptionTest() throws Fault {
-    super.pathParamThrowingWebApplicationExceptionTest();
-  }
+    /*
+     * @testName: pathParamThrowingIllegalArgumentExceptionTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:9; JAXRS:SPEC:9.1; JAXRS:SPEC:10; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Other exceptions thrown during construction of field or
+     * property values using 2 or 3 above are treated as client errors:
+     * 
+     * if the field or property is annotated with @MatrixParam,
+     * 
+     * @QueryParam or @PathParam then an implementation MUST generate a
+     * WebApplicationException that wraps the thrown exception with a not found
+     * response (404 status) and no entity;
+     */
+    @Test
+    public void pathParamThrowingIllegalArgumentExceptionTest() throws Fault {
+        super.pathParamThrowingIllegalArgumentExceptionTest();
+    }
 
-  /*
-   * @testName: pathParamThrowingIllegalArgumentExceptionTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:9; JAXRS:SPEC:9.1; JAXRS:SPEC:10; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Other exceptions thrown during construction of field or
-   * property values using 2 or 3 above are treated as client errors:
-   * 
-   * if the field or property is annotated with @MatrixParam,
-   * 
-   * @QueryParam or @PathParam then an implementation MUST generate a
-   * WebApplicationException that wraps the thrown exception with a not found
-   * response (404 status) and no entity;
-   */
-  @Test
-  public void pathParamThrowingIllegalArgumentExceptionTest() throws Fault {
-    super.pathParamThrowingIllegalArgumentExceptionTest();
-  }
+    @Override
+    protected String buildRequest(Request type, String... path) {
+        return super.buildRequest(Request.POST, path);
+    }
 
-  @Override
-  protected String buildRequest(Request type, String... path) {
-    return super.buildRequest(Request.POST, path);
-  }
-
-  @Override
-  protected String buildRequest(String param) {
-    return super.buildRequest(param).replace(Request.GET.name(),
-        Request.POST.name());
-  }
+    @Override
+    protected String buildRequest(String param) {
+        return super.buildRequest(param).replace(Request.GET.name(),
+                Request.POST.name());
+    }
 
 }

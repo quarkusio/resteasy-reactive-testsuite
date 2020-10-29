@@ -40,98 +40,98 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamTest;
 @Path(value = "/CookieParamTest")
 public class CookieParamTest extends ParamTest {
 
-  @DefaultValue("CookieParamTest")
-  @CookieParam("FieldParamEntityWithConstructor")
-  ParamEntityWithConstructor fieldParamEntityWithConstructor;
+    @DefaultValue("CookieParamTest")
+    @CookieParam("FieldParamEntityWithConstructor")
+    ParamEntityWithConstructor fieldParamEntityWithConstructor;
 
-  @DefaultValue("CookieParamTest")
-  @CookieParam("FieldParamEntityWithFromString")
-  ParamEntityWithFromString fieldParamEntityWithFromString;
+    @DefaultValue("CookieParamTest")
+    @CookieParam("FieldParamEntityWithFromString")
+    ParamEntityWithFromString fieldParamEntityWithFromString;
 
-  @DefaultValue("CookieParamTest")
-  @CookieParam("FieldParamEntityWithValueOf")
-  ParamEntityWithValueOf fieldParamEntityWithValueOf;
+    @DefaultValue("CookieParamTest")
+    @CookieParam("FieldParamEntityWithValueOf")
+    ParamEntityWithValueOf fieldParamEntityWithValueOf;
 
-  @DefaultValue("CookieParamTest")
-  @CookieParam("FieldSetParamEntityWithFromString")
-  Set<ParamEntityWithFromString> fieldSetParamEntityWithFromString;
+    @DefaultValue("CookieParamTest")
+    @CookieParam("FieldSetParamEntityWithFromString")
+    Set<ParamEntityWithFromString> fieldSetParamEntityWithFromString;
 
-  @DefaultValue("CookieParamTest")
-  @CookieParam("FieldSortedSetParamEntityWithFromString")
-  SortedSet<ParamEntityWithFromString> fieldSortedSetParamEntityWithFromString;
+    @DefaultValue("CookieParamTest")
+    @CookieParam("FieldSortedSetParamEntityWithFromString")
+    SortedSet<ParamEntityWithFromString> fieldSortedSetParamEntityWithFromString;
 
-  @DefaultValue("CookieParamTest")
-  @CookieParam("FieldListParamEntityWithFromString")
-  List<ParamEntityWithFromString> fieldListParamEntityWithFromString;
+    @DefaultValue("CookieParamTest")
+    @CookieParam("FieldListParamEntityWithFromString")
+    List<ParamEntityWithFromString> fieldListParamEntityWithFromString;
 
-  @CookieParam("FieldParamEntityThrowingWebApplicationException")
-  public ParamEntityThrowingWebApplicationException fieldParamEntityThrowingWebApplicationException;
+    @CookieParam("FieldParamEntityThrowingWebApplicationException")
+    public ParamEntityThrowingWebApplicationException fieldParamEntityThrowingWebApplicationException;
 
-  @CookieParam("FieldParamEntityThrowingExceptionGivenByName")
-  public ParamEntityThrowingExceptionGivenByName fieldParamEntityThrowingExceptionGivenByName;
+    @CookieParam("FieldParamEntityThrowingExceptionGivenByName")
+    public ParamEntityThrowingExceptionGivenByName fieldParamEntityThrowingExceptionGivenByName;
 
-  @GET
-  public Response cookieParamHandling(@QueryParam("todo") String todo,
-      @CookieParam("name1") @DefaultValue("abc") String value,
-      @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithConstructor") ParamEntityWithConstructor paramEntityWithConstructor,
-      @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithFromString") ParamEntityWithFromString paramEntityWithFromString,
-      @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithValueOf") ParamEntityWithValueOf paramEntityWithValueOf,
-      @DefaultValue("CookieParamTest") @CookieParam("SetParamEntityWithFromString") Set<ParamEntityWithFromString> setParamEntityWithFromString,
-      @DefaultValue("CookieParamTest") @CookieParam("SortedSetParamEntityWithFromString") SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
-      @DefaultValue("CookieParamTest") @CookieParam("ListParamEntityWithFromString") List<ParamEntityWithFromString> listParamEntityWithFromString,
-      @CookieParam("ParamEntityThrowingWebApplicationException") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
-      @CookieParam("ParamEntityThrowingExceptionGivenByName") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
+    @GET
+    public Response cookieParamHandling(@QueryParam("todo") String todo,
+            @CookieParam("name1") @DefaultValue("abc") String value,
+            @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithConstructor") ParamEntityWithConstructor paramEntityWithConstructor,
+            @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithFromString") ParamEntityWithFromString paramEntityWithFromString,
+            @DefaultValue("CookieParamTest") @CookieParam("ParamEntityWithValueOf") ParamEntityWithValueOf paramEntityWithValueOf,
+            @DefaultValue("CookieParamTest") @CookieParam("SetParamEntityWithFromString") Set<ParamEntityWithFromString> setParamEntityWithFromString,
+            @DefaultValue("CookieParamTest") @CookieParam("SortedSetParamEntityWithFromString") SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
+            @DefaultValue("CookieParamTest") @CookieParam("ListParamEntityWithFromString") List<ParamEntityWithFromString> listParamEntityWithFromString,
+            @CookieParam("ParamEntityThrowingWebApplicationException") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
+            @CookieParam("ParamEntityThrowingExceptionGivenByName") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
 
-    sb = new StringBuilder();
-    Response.ResponseBuilder respb = Response.status(200);
+        sb = new StringBuilder();
+        Response.ResponseBuilder respb = Response.status(200);
 
-    if (todo == null) {
-      sb.append("todo=null");
-    } else if (todo.equalsIgnoreCase("setCookie")) {
-      String cookie_name = "name1";
-      String cookie_value = "value1";
-      Cookie ck = new Cookie(cookie_name, cookie_value);
-      NewCookie nck = new NewCookie(ck);
-      respb = respb.cookie(nck);
-      sb.append("setCookie=done");
-    } else if (todo.equalsIgnoreCase("verifycookie")) {
-      sb.append("name1" + "=" + value);
-      sb.append("verifyCookie=done");
-    } else if (todo.equals("")) {
-      setReturnValues(paramEntityWithConstructor, paramEntityWithFromString,
-          paramEntityWithValueOf, setParamEntityWithFromString,
-          sortedSetParamEntityWithFromString, listParamEntityWithFromString,
-          "");
-      setReturnValues(fieldParamEntityWithConstructor,
-          fieldParamEntityWithFromString, fieldParamEntityWithValueOf,
-          fieldSetParamEntityWithFromString,
-          fieldSortedSetParamEntityWithFromString,
-          fieldListParamEntityWithFromString, FIELD);
-    } else if (todo.contains("ParamEntity")) {
-      setNewCookie(respb, todo);
-      setReturnValues(paramEntityWithConstructor, paramEntityWithFromString,
-          paramEntityWithValueOf, setParamEntityWithFromString,
-          sortedSetParamEntityWithFromString, listParamEntityWithFromString,
-          "");
-      setReturnValues(fieldParamEntityWithConstructor,
-          fieldParamEntityWithFromString, fieldParamEntityWithValueOf,
-          fieldSetParamEntityWithFromString,
-          fieldSortedSetParamEntityWithFromString,
-          fieldListParamEntityWithFromString, FIELD);
-    } else {
-      sb.append("other stuff");
+        if (todo == null) {
+            sb.append("todo=null");
+        } else if (todo.equalsIgnoreCase("setCookie")) {
+            String cookie_name = "name1";
+            String cookie_value = "value1";
+            Cookie ck = new Cookie(cookie_name, cookie_value);
+            NewCookie nck = new NewCookie(ck);
+            respb = respb.cookie(nck);
+            sb.append("setCookie=done");
+        } else if (todo.equalsIgnoreCase("verifycookie")) {
+            sb.append("name1" + "=" + value);
+            sb.append("verifyCookie=done");
+        } else if (todo.equals("")) {
+            setReturnValues(paramEntityWithConstructor, paramEntityWithFromString,
+                    paramEntityWithValueOf, setParamEntityWithFromString,
+                    sortedSetParamEntityWithFromString, listParamEntityWithFromString,
+                    "");
+            setReturnValues(fieldParamEntityWithConstructor,
+                    fieldParamEntityWithFromString, fieldParamEntityWithValueOf,
+                    fieldSetParamEntityWithFromString,
+                    fieldSortedSetParamEntityWithFromString,
+                    fieldListParamEntityWithFromString, FIELD);
+        } else if (todo.contains("ParamEntity")) {
+            setNewCookie(respb, todo);
+            setReturnValues(paramEntityWithConstructor, paramEntityWithFromString,
+                    paramEntityWithValueOf, setParamEntityWithFromString,
+                    sortedSetParamEntityWithFromString, listParamEntityWithFromString,
+                    "");
+            setReturnValues(fieldParamEntityWithConstructor,
+                    fieldParamEntityWithFromString, fieldParamEntityWithValueOf,
+                    fieldSetParamEntityWithFromString,
+                    fieldSortedSetParamEntityWithFromString,
+                    fieldListParamEntityWithFromString, FIELD);
+        } else {
+            sb.append("other stuff");
+        }
+
+        return respb.entity(sb.toString()).build();
     }
 
-    return respb.entity(sb.toString()).build();
-  }
-
-  private static void setNewCookie(ResponseBuilder rb, String queryParam) {
-    if (!queryParam.contains("="))
-      return;
-    String[] split = queryParam.split("=");
-    Cookie cookie = new Cookie(split[0], split[1]);
-    NewCookie newCookie = new NewCookie(cookie);
-    rb.cookie(newCookie);
-  }
+    private static void setNewCookie(ResponseBuilder rb, String queryParam) {
+        if (!queryParam.contains("="))
+            return;
+        String[] split = queryParam.split("=");
+        Cookie cookie = new Cookie(split[0], split[1]);
+        NewCookie newCookie = new NewCookie(cookie);
+        rb.cookie(newCookie);
+    }
 
 }

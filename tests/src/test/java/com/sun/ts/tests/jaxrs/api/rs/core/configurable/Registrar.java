@@ -23,13 +23,13 @@ import javax.ws.rs.core.Configurable;
  * The default behavior is for single argument register method
  */
 public class Registrar {
-  public void register(Configurable<?> config, Object registerable) {
-    if (registerable instanceof Class) // register(Class)
-      config.register((Class<?>) registerable);
-    else if (registerable instanceof String) // setProperty()
-      config.property((String) registerable, registerable);
-    else
-      // register(Object)
-      config.register(registerable);
-  }
+    public void register(Configurable<?> config, Object registerable) {
+        if (registerable instanceof Class) // register(Class)
+            config.register((Class<?>) registerable);
+        else if (registerable instanceof String) // setProperty()
+            config.property((String) registerable, registerable);
+        else
+            // register(Object)
+            config.register(registerable);
+    }
 }

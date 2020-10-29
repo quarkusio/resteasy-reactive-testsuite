@@ -30,68 +30,68 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
  * after the method is called on each item in the collection
  */
 public class IteratedList<T> extends ArrayList<T> {
-  private static final long serialVersionUID = 6628004256042593971L;
+    private static final long serialVersionUID = 6628004256042593971L;
 
-  protected Class<T> clazz;
+    protected Class<T> clazz;
 
-  private List<T> newTs = new LinkedList<T>();
+    private List<T> newTs = new LinkedList<T>();
 
-  public IteratedList(Class<T> clazz) {
-    super();
-    this.clazz = clazz;
-  }
-
-  /**
-   * For each member of the collection call given method with arguments Add
-   * newly created items into a collection afterwards
-   */
-  public void doWithAll(String methodName, Object... args) throws Fault {
-    doLog(methodName, args);
-    for (T t : this)
-      callMethodWithArgs(t, methodName, args);
-    addAll(newTs);
-    newTs.clear();
-  }
-
-  protected void doLog(String methodName, Object... args) {
-    StringBuilder sb = new StringBuilder();
-    for (Object arg : args)
-      sb.append(arg);
-    TestUtil.logMsg("Testing method " + methodName + "(" + sb.toString() + ")");
-  }
-
-  protected void callMethodWithArgs(T t, String methodName, Object... args)
-      throws Fault {
-    Method m = findTargetMethodByNameAndArgs(methodName, args);
-    try {
-      Object o = m.invoke(t, args);
-      if (o != null) {
-        T newt = clazz.cast(o);
-        newTs.add(newt);
-      }
-    } catch (Exception e) {
-      throw new Fault(e);
+    public IteratedList(Class<T> clazz) {
+        super();
+        this.clazz = clazz;
     }
-  }
 
-  protected Method findTargetMethodByNameAndArgs(String name, Object... args)
-      throws Fault {
-    Method[] ms = clazz.getMethods();
-    for (Method m : ms)
-      if (m.getName().equals(name))
-        if (args.length == m.getParameterTypes().length)
-          if (isMethodOfArguments(m, args))
-            return m;
-    throw new Fault("Method " + name + " not found");
-  }
+    /**
+     * For each member of the collection call given method with arguments Add
+     * newly created items into a collection afterwards
+     */
+    public void doWithAll(String methodName, Object... args) throws Fault {
+        doLog(methodName, args);
+        for (T t : this)
+            callMethodWithArgs(t, methodName, args);
+        addAll(newTs);
+        newTs.clear();
+    }
 
-  protected boolean isMethodOfArguments(Method m, Object... args) {
-    boolean is = true;
-    Class<?>[] types = m.getParameterTypes();
-    for (int i = 0; i != args.length; i++)
-      if (!types[i].isAssignableFrom(args[i].getClass()))
-        is = false;
-    return is;
-  }
+    protected void doLog(String methodName, Object... args) {
+        StringBuilder sb = new StringBuilder();
+        for (Object arg : args)
+            sb.append(arg);
+        TestUtil.logMsg("Testing method " + methodName + "(" + sb.toString() + ")");
+    }
+
+    protected void callMethodWithArgs(T t, String methodName, Object... args)
+            throws Fault {
+        Method m = findTargetMethodByNameAndArgs(methodName, args);
+        try {
+            Object o = m.invoke(t, args);
+            if (o != null) {
+                T newt = clazz.cast(o);
+                newTs.add(newt);
+            }
+        } catch (Exception e) {
+            throw new Fault(e);
+        }
+    }
+
+    protected Method findTargetMethodByNameAndArgs(String name, Object... args)
+            throws Fault {
+        Method[] ms = clazz.getMethods();
+        for (Method m : ms)
+            if (m.getName().equals(name))
+                if (args.length == m.getParameterTypes().length)
+                    if (isMethodOfArguments(m, args))
+                        return m;
+        throw new Fault("Method " + name + " not found");
+    }
+
+    protected boolean isMethodOfArguments(Method m, Object... args) {
+        boolean is = true;
+        Class<?>[] types = m.getParameterTypes();
+        for (int i = 0; i != args.length; i++)
+            if (!types[i].isAssignableFrom(args[i].getClass()))
+                is = false;
+        return is;
+    }
 
 }

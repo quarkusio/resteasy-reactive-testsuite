@@ -30,99 +30,99 @@ import javax.xml.transform.Source;
 @Path("resource")
 public class Resource {
 
-  // QUARKUS: disabled as we don't support javax.xml.transform.Source
-//  @Path("source")
-//  @POST
-  public Response source(Source source) {
-    return Response.ok(source).build();
-  }
+    // QUARKUS: disabled as we don't support javax.xml.transform.Source
+    //  @Path("source")
+    //  @POST
+    public Response source(Source source) {
+        return Response.ok(source).build();
+    }
 
-  @Path("map")
-  @POST
-  @Produces(MediaType.APPLICATION_FORM_URLENCODED)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public Response map(MultivaluedMap<String, String> map) {
-    return Response.ok(map).build();
-  }
+    @Path("map")
+    @POST
+    @Produces(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response map(MultivaluedMap<String, String> map) {
+        return Response.ok(map).build();
+    }
 
-  @Path("char")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public char chars(char symbol) {
-    return symbol;
-  }
+    @Path("char")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public char chars(char symbol) {
+        return symbol;
+    }
 
-  @Path("character")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public Character character(Character character) {
-    return character;
-  }
+    @Path("character")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Character character(Character character) {
+        return character;
+    }
 
-  @Path("bool")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public boolean bool(boolean bool) {
-    return bool;
-  }
+    @Path("bool")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public boolean bool(boolean bool) {
+        return bool;
+    }
 
-  @Path("boolean")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public Boolean bigbool(Boolean bool) {
-    return bool;
-  }
+    @Path("boolean")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Boolean bigbool(Boolean bool) {
+        return bool;
+    }
 
-  @Path("bigdecimal")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public BigDecimal number(BigDecimal number) {
-    return number;
-  }
+    @Path("bigdecimal")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public BigDecimal number(BigDecimal number) {
+        return number;
+    }
 
-  @Path("integer")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public Integer number(Integer number) {
-    return number;
-  }
+    @Path("integer")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Integer number(Integer number) {
+        return number;
+    }
 
-  @Path("biglong")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public Long number(Long number) {
-    return number;
-  }
+    @Path("biglong")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Long number(Long number) {
+        return number;
+    }
 
-  @Path("bigdouble")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public Double number(Double number) {
-    return number;
-  }
+    @Path("bigdouble")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Double number(Double number) {
+        return number;
+    }
 
-  @Path("int")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public int integer(int i) {
-    return i;
-  }
+    @Path("int")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public int integer(int i) {
+        return i;
+    }
 
-  @Path("long")
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public long l(long l) {
-    return l;
-  }
+    @Path("long")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public long l(long l) {
+        return l;
+    }
 
 }

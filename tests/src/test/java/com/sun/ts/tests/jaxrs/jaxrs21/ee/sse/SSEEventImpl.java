@@ -20,67 +20,67 @@ import javax.ws.rs.sse.SseEvent;
 
 public abstract class SSEEventImpl implements SseEvent {
 
-  public SSEEventImpl(String comment, String id, String name, int delay) {
-    super();
-    this.comment = comment;
-    this.id = id;
-    this.name = name;
-    this.delay = delay;
-  }
+    public SSEEventImpl(String comment, String id, String name, int delay) {
+        super();
+        this.comment = comment;
+        this.id = id;
+        this.name = name;
+        this.delay = delay;
+    }
 
-  public SSEEventImpl() {
-    super();
-  }
+    public SSEEventImpl() {
+        super();
+    }
 
-  public int getDelay() {
-    return delay;
-  }
+    public int getDelay() {
+        return delay;
+    }
 
-  public SSEEventImpl setDelay(int delay) {
-    this.delay = delay;
-    return this;
-  }
+    public SSEEventImpl setDelay(int delay) {
+        this.delay = delay;
+        return this;
+    }
 
-  public SSEEventImpl setId(String id) {
-    this.id = id;
-    return this;
-  }
+    public SSEEventImpl setId(String id) {
+        this.id = id;
+        return this;
+    }
 
-  public SSEEventImpl setName(String name) {
-    this.name = name;
-    return this;
-  }
+    public SSEEventImpl setName(String name) {
+        this.name = name;
+        return this;
+    }
 
-  public SSEEventImpl setComment(String comment) {
-    this.comment = comment;
-    return this;
-  }
+    public SSEEventImpl setComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
 
-  public String id;
+    public String id;
 
-  public String name;
+    public String name;
 
-  public int delay = 0;
+    public int delay = 0;
 
-  public String comment;
+    public String comment;
 
-  @Override
-  public String getComment() {
-    return comment;
-  }
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-  @Override
-  public String getId() {
-    return id;
-  }
+    @Override
+    public String getId() {
+        return id;
+    }
 
-  @Override
-  public String getName() {
-    return name;
-  }
+    @Override
+    public String getName() {
+        return name;
+    }
 
-  @Override
-  public long getReconnectDelay() {
-    return delay;
-  }
+    @Override
+    public long getReconnectDelay() {
+        return delay;
+    }
 }

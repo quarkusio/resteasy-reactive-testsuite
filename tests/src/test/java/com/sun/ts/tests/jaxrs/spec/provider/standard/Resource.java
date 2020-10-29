@@ -29,132 +29,128 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.StreamingOutput;
-import javax.xml.bind.JAXBElement;
 import javax.xml.transform.Source;
-
-import com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput;
 
 @Path("resource")
 public class Resource {
-  @Context
-  HttpHeaders headers;
+    @Context
+    HttpHeaders headers;
 
-  @Path("bytearray")
-  @POST
-  public byte[] bytearray(byte[] bytes) {
-    return bytes;
-  }
+    @Path("bytearray")
+    @POST
+    public byte[] bytearray(byte[] bytes) {
+        return bytes;
+    }
 
-  @Path("bytearraysvg")
-  @Produces(MediaType.APPLICATION_SVG_XML)
-  @Consumes(MediaType.APPLICATION_SVG_XML)
-  @POST
-  public byte[] bytearraySvg(byte[] bytes) {
-    return bytes;
-  }
+    @Path("bytearraysvg")
+    @Produces(MediaType.APPLICATION_SVG_XML)
+    @Consumes(MediaType.APPLICATION_SVG_XML)
+    @POST
+    public byte[] bytearraySvg(byte[] bytes) {
+        return bytes;
+    }
 
-  @Path("string")
-  @POST
-  public String string(String string) {
-    return string;
-  }
+    @Path("string")
+    @POST
+    public String string(String string) {
+        return string;
+    }
 
-  @Path("stringsvg")
-  @Produces(MediaType.APPLICATION_SVG_XML)
-  @Consumes(MediaType.APPLICATION_SVG_XML)
-  @POST
-  public String stringsvg(String string) {
-    return string;
-  }
+    @Path("stringsvg")
+    @Produces(MediaType.APPLICATION_SVG_XML)
+    @Consumes(MediaType.APPLICATION_SVG_XML)
+    @POST
+    public String stringsvg(String string) {
+        return string;
+    }
 
-  @Path("inputstream")
-  @POST
-  public InputStream inputstream(InputStream inputstream) {
-    return inputstream;
-  }
+    @Path("inputstream")
+    @POST
+    public InputStream inputstream(InputStream inputstream) {
+        return inputstream;
+    }
 
-  @Path("inputstreamsvg")
-  @Produces(MediaType.APPLICATION_SVG_XML)
-  @Consumes(MediaType.APPLICATION_SVG_XML)
-  @POST
-  public InputStream inputstreamsvg(InputStream inputstream) {
-    return inputstream;
-  }
+    @Path("inputstreamsvg")
+    @Produces(MediaType.APPLICATION_SVG_XML)
+    @Consumes(MediaType.APPLICATION_SVG_XML)
+    @POST
+    public InputStream inputstreamsvg(InputStream inputstream) {
+        return inputstream;
+    }
 
-  @Path("reader")
-  @POST
-  public Reader reader(Reader reader) {
-    return reader;
-  }
+    @Path("reader")
+    @POST
+    public Reader reader(Reader reader) {
+        return reader;
+    }
 
-  @Path("readersvg")
-  @Produces(MediaType.APPLICATION_SVG_XML)
-  @Consumes(MediaType.APPLICATION_SVG_XML)
-  @POST
-  public Reader readersvg(Reader reader) {
-    return reader;
-  }
+    @Path("readersvg")
+    @Produces(MediaType.APPLICATION_SVG_XML)
+    @Consumes(MediaType.APPLICATION_SVG_XML)
+    @POST
+    public Reader readersvg(Reader reader) {
+        return reader;
+    }
 
-  @Path("file")
-  @POST
-  public File file(File file) {
-    return file;
-  }
+    @Path("file")
+    @POST
+    public File file(File file) {
+        return file;
+    }
 
-  @Path("filesvg")
-  @Produces(MediaType.APPLICATION_SVG_XML)
-  @Consumes(MediaType.APPLICATION_SVG_XML)
-  @POST
-  public File filesvg(File file) {
-    return file;
-  }
+    @Path("filesvg")
+    @Produces(MediaType.APPLICATION_SVG_XML)
+    @Consumes(MediaType.APPLICATION_SVG_XML)
+    @POST
+    public File filesvg(File file) {
+        return file;
+    }
 
-  // QUARKUS: disabled as we don't support javax.activation.DataSource
-//  @Path("datasource")
-//  @POST
-  public DataSource datasource(DataSource datasource) {
-    return datasource;
-  }
+    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    //  @Path("datasource")
+    //  @POST
+    public DataSource datasource(DataSource datasource) {
+        return datasource;
+    }
 
-  // QUARKUS: disabled as we don't support javax.activation.DataSource
-//  @Path("datasourcesvg")
-//  @Produces(MediaType.APPLICATION_SVG_XML)
-//  @Consumes(MediaType.APPLICATION_SVG_XML)
-//  @POST
-  public DataSource datasourcesvg(DataSource datasource) {
-    return datasource;
-  }
+    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    //  @Path("datasourcesvg")
+    //  @Produces(MediaType.APPLICATION_SVG_XML)
+    //  @Consumes(MediaType.APPLICATION_SVG_XML)
+    //  @POST
+    public DataSource datasourcesvg(DataSource datasource) {
+        return datasource;
+    }
 
-  // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
-//  @Path("streamingoutput")
-//  @POST
-//  public StreamingOutput streamingoutput(String streamingoutput) {
-//    return new StringStreamingOutput(streamingoutput);
-//  }
+    // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+    //  @Path("streamingoutput")
+    //  @POST
+    //  public StreamingOutput streamingoutput(String streamingoutput) {
+    //    return new StringStreamingOutput(streamingoutput);
+    //  }
 
-  // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
-//  @Path("streamingoutputsvg")
-//  @Produces(MediaType.APPLICATION_SVG_XML)
-//  @Consumes(MediaType.APPLICATION_SVG_XML)
-//  @POST
-//  public StreamingOutput datasourcesvg(String streamingoutput) {
-//    return new StringStreamingOutput(streamingoutput);
-//  }
+    // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+    //  @Path("streamingoutputsvg")
+    //  @Produces(MediaType.APPLICATION_SVG_XML)
+    //  @Consumes(MediaType.APPLICATION_SVG_XML)
+    //  @POST
+    //  public StreamingOutput datasourcesvg(String streamingoutput) {
+    //    return new StringStreamingOutput(streamingoutput);
+    //  }
 
-  // QUARKUS: disabled as we don't support javax.xml.transform.Source
-//  @Path("source")
-//  @POST
-  public Response source(Source source) {
-    MediaType media = headers.getMediaType();
-    return Response.ok(source).type(media).build();
-  }
+    // QUARKUS: disabled as we don't support javax.xml.transform.Source
+    //  @Path("source")
+    //  @POST
+    public Response source(Source source) {
+        MediaType media = headers.getMediaType();
+        return Response.ok(source).type(media).build();
+    }
 
-  // QUARKUS: disable this because we don't support JAXBElement and it causes a build time error
-//  @Path("jaxb")
-//  @POST
-//  public Response jaxb(JAXBElement<String> jaxb) {
-//    MediaType media = headers.getMediaType();
-//    return Response.ok(jaxb).type(media).build();
-//  }
+    // QUARKUS: disable this because we don't support JAXBElement and it causes a build time error
+    //  @Path("jaxb")
+    //  @POST
+    //  public Response jaxb(JAXBElement<String> jaxb) {
+    //    MediaType media = headers.getMediaType();
+    //    return Response.ok(jaxb).type(media).build();
+    //  }
 }

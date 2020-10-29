@@ -30,51 +30,51 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0085 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 7395392827433641768L;
+    private static final long serialVersionUID = 7395392827433641768L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0085().run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0085().run(args);
+    }
 
-  /* Run test */
+    /* Run test */
 
-  /*
-   * @testName: newClientNoParamTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1019;
-   * 
-   * @test_Strategy: Create new client instance using the default client builder
-   * factory provided by the JAX-RS implementation provider.
-   */
-  @org.junit.jupiter.api.Test
-  public void newClientNoParamTest() throws Fault {
-    Client client = ClientBuilder.newClient();
-    assertFault(client != null, "could not create Client instance");
-  }
+    /*
+     * @testName: newClientNoParamTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1019;
+     * 
+     * @test_Strategy: Create new client instance using the default client builder
+     * factory provided by the JAX-RS implementation provider.
+     */
+    @org.junit.jupiter.api.Test
+    public void newClientNoParamTest() throws Fault {
+        Client client = ClientBuilder.newClient();
+        assertFault(client != null, "could not create Client instance");
+    }
 
-  /*
-   * @testName: newClientWithConfigurationTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1020;
-   * 
-   * @test_Strategy: Create new configured client instance using the default
-   * client builder factory provided by the JAX-RS implementation provider.
-   */
-  @org.junit.jupiter.api.Test
-  public void newClientWithConfigurationTest() throws Fault {
-    String property = "JAXRSTCK";
-    Client client = ClientBuilder.newClient();
-    client.property(property, property);
-    Configuration config = client.getConfiguration();
-    client = ClientBuilder.newClient(config);
-    assertNotNull(client, "could not create Client instance");
-    assertEquals(property, client.getConfiguration().getProperty(property),
-        "client does not contain given config");
-  }
+    /*
+     * @testName: newClientWithConfigurationTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1020;
+     * 
+     * @test_Strategy: Create new configured client instance using the default
+     * client builder factory provided by the JAX-RS implementation provider.
+     */
+    @org.junit.jupiter.api.Test
+    public void newClientWithConfigurationTest() throws Fault {
+        String property = "JAXRSTCK";
+        Client client = ClientBuilder.newClient();
+        client.property(property, property);
+        Configuration config = client.getConfiguration();
+        client = ClientBuilder.newClient(config);
+        assertNotNull(client, "could not create Client instance");
+        assertEquals(property, client.getConfiguration().getProperty(property),
+                "client does not contain given config");
+    }
 
 }

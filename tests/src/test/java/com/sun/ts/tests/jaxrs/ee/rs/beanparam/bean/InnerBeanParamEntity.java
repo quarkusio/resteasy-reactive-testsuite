@@ -18,27 +18,27 @@ package com.sun.ts.tests.jaxrs.ee.rs.beanparam.bean;
 
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.MatrixParam;
 import javax.ws.rs.HeaderParam;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.MatrixParam;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 public class InnerBeanParamEntity {
-  @CookieParam("innerCookie")
-  public String innerCookie;
+    @CookieParam("innerCookie")
+    public String innerCookie;
 
-  @FormParam("innerForm")
-  public String innerForm;
+    @FormParam("innerForm")
+    public String innerForm;
 
-  @HeaderParam("innerHeader")
-  public String innerHeader;
+    @HeaderParam("innerHeader")
+    public String innerHeader;
 
-  @MatrixParam("innerMatrix")
-  public String innerMatrix;
+    @MatrixParam("innerMatrix")
+    public String innerMatrix;
 
-  @PathParam("innerPath")
-  public String innerPath;
+    @PathParam("innerPath")
+    public String innerPath;
 
-  @QueryParam("innerQuery")
-  public String innerQuery;
+    @QueryParam("innerQuery")
+    public String innerQuery;
 }

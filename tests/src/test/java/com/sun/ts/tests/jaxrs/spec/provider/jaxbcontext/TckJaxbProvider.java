@@ -32,41 +32,41 @@ import javax.xml.bind.JAXBElement;
 
 @Provider
 public class TckJaxbProvider implements MessageBodyReader<JAXBElement<String>>,
-    MessageBodyWriter<JAXBElement<String>> {
+        MessageBodyWriter<JAXBElement<String>> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return JAXBElement.class.isAssignableFrom(type);
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return JAXBElement.class.isAssignableFrom(type);
+    }
 
-  @Override
-  public long getSize(JAXBElement<String> t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return t.getValue().length() + 2;
-  }
+    @Override
+    public long getSize(JAXBElement<String> t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return t.getValue().length() + 2;
+    }
 
-  @Override
-  public void writeTo(JAXBElement<String> t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(t.getValue().getBytes());
-    entityStream.write("OK".getBytes());
-  }
+    @Override
+    public void writeTo(JAXBElement<String> t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(t.getValue().getBytes());
+        entityStream.write("OK".getBytes());
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public JAXBElement<String> readFrom(Class<JAXBElement<String>> type,
-      Type genericType, Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return null;
-  }
+    @Override
+    public JAXBElement<String> readFrom(Class<JAXBElement<String>> type,
+            Type genericType, Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return null;
+    }
 
 }

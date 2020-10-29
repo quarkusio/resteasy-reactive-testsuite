@@ -25,20 +25,20 @@ import javax.ws.rs.core.Context;
 
 @Path("resource")
 public class Resource {
-  @Context
-  ResourceInfo info;
+    @Context
+    ResourceInfo info;
 
-  @GET
-  @Path("clazz")
-  public String getResourceClass() {
-    Class<?> clazz = info.getResourceClass();
-    return clazz.getName();
-  }
+    @GET
+    @Path("clazz")
+    public String getResourceClass() {
+        Class<?> clazz = info.getResourceClass();
+        return clazz.getName();
+    }
 
-  @GET
-  @Path("method")
-  public String getResourceMethod() {
-    Method method = info.getResourceMethod();
-    return method.getName();
-  }
+    @GET
+    @Path("method")
+    public String getResourceMethod() {
+        Method method = info.getResourceMethod();
+        return method.getName();
+    }
 }

@@ -19,11 +19,11 @@ package com.sun.ts.tests.jaxrs.ee.rs.get;
 import javax.ws.rs.GET;
 
 public class SubResource {
-  public static final String ID = "JAXRS:DIRECT";
+    public static final String ID = "JAXRS:DIRECT";
 
-  @GET
-  public String reveal() {
-    return ID;
-  }
+    @GET
+    public String reveal() {
+        return ID;
+    }
 
 }

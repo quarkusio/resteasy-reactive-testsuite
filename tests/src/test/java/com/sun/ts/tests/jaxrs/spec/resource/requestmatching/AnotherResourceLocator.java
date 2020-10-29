@@ -25,20 +25,20 @@ import javax.ws.rs.core.MediaType;
 
 public class AnotherResourceLocator {
 
-  @GET
-  public String get() {
-    return getClass().getSimpleName();
-  }
+    @GET
+    public String get() {
+        return getClass().getSimpleName();
+    }
 
-  @POST
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public String post() {
-    return get();
-  }
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String post() {
+        return get();
+    }
 
-  @DELETE
-  public String delete() {
-    return get();
-  }
+    @DELETE
+    public String delete() {
+        return get();
+    }
 }

@@ -17,14 +17,15 @@
 package com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo;
 
 import java.util.function.Supplier;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -44,51 +45,49 @@ public class JAXRSClient0135 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo.Resource.class
-                            );
+                                    com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo.Resource.class);
                 }
             });
 
+    private static final long serialVersionUID = -2900337741491627385L;
 
-  private static final long serialVersionUID = -2900337741491627385L;
+    public JAXRSClient0135() {
+        setContextRoot("/jaxrs_ee_rs_container_resourceinfo_web/resource");
+        setPrintEntity(true);
+    }
 
-  public JAXRSClient0135() {
-    setContextRoot("/jaxrs_ee_rs_container_resourceinfo_web/resource");
-    setPrintEntity(true);
-  }
+    public static void main(String[] args) {
+        new JAXRSClient0135().run(args);
+    }
 
-  public static void main(String[] args) {
-    new JAXRSClient0135().run(args);
-  }
+    /*
+     * @testName: getResourceClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:721;
+     * 
+     * @test_Strategy: Get the resource class that is the target of a request
+     */
+    @Test
+    public void getResourceClassTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "clazz"));
+        setProperty(Property.SEARCH_STRING, Resource.class.getName());
+        invoke();
+        logMsg("Found expected resource class name");
+    }
 
-  /*
-   * @testName: getResourceClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:721;
-   * 
-   * @test_Strategy: Get the resource class that is the target of a request
-   */
-  @Test
-  public void getResourceClassTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "clazz"));
-    setProperty(Property.SEARCH_STRING, Resource.class.getName());
-    invoke();
-    logMsg("Found expected resource class name");
-  }
-
-  /*
-   * @testName: getResourceMethodTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:722;
-   * 
-   * @test_Strategy: Get the resource method that is the target of a request
-   */
-  @Test
-  public void getResourceMethodTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "method"));
-    setProperty(Property.SEARCH_STRING, "getResourceMethod");
-    invoke();
-    logMsg("Found expected resource method name");
-  }
+    /*
+     * @testName: getResourceMethodTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:722;
+     * 
+     * @test_Strategy: Get the resource method that is the target of a request
+     */
+    @Test
+    public void getResourceMethodTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "method"));
+        setProperty(Property.SEARCH_STRING, "getResourceMethod");
+        invoke();
+        logMsg("Found expected resource method name");
+    }
 }

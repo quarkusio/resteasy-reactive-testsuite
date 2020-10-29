@@ -13,11 +13,11 @@ public class TckExtention implements InvocationInterceptor {
 
     @Override
     public void interceptTestMethod(Invocation<Void> invocation, ReflectiveInvocationContext<Method> invocationContext,
-                                    ExtensionContext extensionContext)
+            ExtensionContext extensionContext)
             throws Throwable {
         Method method = invocationContext.getExecutable();
         Class<?> klass = invocationContext.getTargetClass();
-        if(method.getDeclaringClass() != klass) {
+        if (method.getDeclaringClass() != klass) {
             invocation.skip();
         } else {
             invocation.proceed();

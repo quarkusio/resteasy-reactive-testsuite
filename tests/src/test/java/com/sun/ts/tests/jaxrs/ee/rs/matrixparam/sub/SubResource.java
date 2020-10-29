@@ -22,8 +22,8 @@ import com.sun.ts.tests.jaxrs.ee.rs.matrixparam.MatrixParamTest;
 
 @Path("resource")
 public class SubResource extends MatrixParamTest {
-  @Path("subresource")
-  public SubResource subresource() {
-    return this;
-  }
+    @Path("subresource")
+    public SubResource subresource() {
+        return this;
+    }
 }

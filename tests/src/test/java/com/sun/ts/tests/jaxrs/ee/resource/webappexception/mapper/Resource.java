@@ -27,73 +27,73 @@ import javax.ws.rs.core.Response.Status;
 @Path(value = "resource")
 public class Resource {
 
-  @GET
-  @Path("noresponse")
-  public String noresponse() {
-    throw new WebApplicationException();
-  }
+    @GET
+    @Path("noresponse")
+    public String noresponse() {
+        throw new WebApplicationException();
+    }
 
-  @GET
-  @Path("responseok")
-  public String responseOk() {
-    Response r = Response.ok().build();
-    throw new WebApplicationException(r);
-  }
+    @GET
+    @Path("responseok")
+    public String responseOk() {
+        Response r = Response.ok().build();
+        throw new WebApplicationException(r);
+    }
 
-  @GET
-  @Path("responsestatusok")
-  public String responseStatusOk() {
-    throw new WebApplicationException(Status.OK);
-  }
+    @GET
+    @Path("responsestatusok")
+    public String responseStatusOk() {
+        throw new WebApplicationException(Status.OK);
+    }
 
-  @GET
-  @Path("responseentity")
-  public String responseEntity() {
-    Response r = Response.ok(getClass().getSimpleName()).build();
-    throw new WebApplicationException(r);
-  }
+    @GET
+    @Path("responseentity")
+    public String responseEntity() {
+        Response r = Response.ok(getClass().getSimpleName()).build();
+        throw new WebApplicationException(r);
+    }
 
-  @GET
-  @Path("responsestatusintok")
-  public String responseStatusIntOk() {
-    throw new WebApplicationException(Status.OK.getStatusCode());
-  }
+    @GET
+    @Path("responsestatusintok")
+    public String responseStatusIntOk() {
+        throw new WebApplicationException(Status.OK.getStatusCode());
+    }
 
-  @GET
-  @Path("responsethrowable")
-  public String responseThrowable() {
-    throw new WebApplicationException(getIOException());
-  }
+    @GET
+    @Path("responsethrowable")
+    public String responseThrowable() {
+        throw new WebApplicationException(getIOException());
+    }
 
-  @GET
-  @Path("responsethrowableok")
-  public String responseThrowableOk() {
-    Response r = Response.ok().build();
-    throw new WebApplicationException(getIOException(), r);
-  }
+    @GET
+    @Path("responsethrowableok")
+    public String responseThrowableOk() {
+        Response r = Response.ok().build();
+        throw new WebApplicationException(getIOException(), r);
+    }
 
-  @GET
-  @Path("responsestatusthrowableok")
-  public String responseThrowableStatusOk() {
-    throw new WebApplicationException(getIOException(), Status.OK);
-  }
+    @GET
+    @Path("responsestatusthrowableok")
+    public String responseThrowableStatusOk() {
+        throw new WebApplicationException(getIOException(), Status.OK);
+    }
 
-  @GET
-  @Path("responsestatusthrowableintok")
-  public String responseThrowableStatusIntOk() {
-    throw new WebApplicationException(getIOException(),
-        Status.OK.getStatusCode());
-  }
+    @GET
+    @Path("responsestatusthrowableintok")
+    public String responseThrowableStatusIntOk() {
+        throw new WebApplicationException(getIOException(),
+                Status.OK.getStatusCode());
+    }
 
-  @GET
-  @Path("uncheckedexception")
-  public String throwIOExecption() {
-    throw new ClassCastException("ERROR");
-  }
+    @GET
+    @Path("uncheckedexception")
+    public String throwIOExecption() {
+        throw new ClassCastException("ERROR");
+    }
 
-  IOException getIOException() {
-    IOException ioe = new IOException("You should NOT see this message");
-    return ioe;
-  }
+    IOException getIOException() {
+        IOException ioe = new IOException("You should NOT see this message");
+        return ioe;
+    }
 
 }

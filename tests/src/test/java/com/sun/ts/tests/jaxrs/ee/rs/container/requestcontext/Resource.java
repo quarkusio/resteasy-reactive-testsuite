@@ -17,7 +17,7 @@
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext;
 
 // QUARKUS: disabled
-//import javax.servlet.http.HttpServletRequest;
+// import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.Path;
@@ -27,55 +27,55 @@ import javax.ws.rs.core.HttpHeaders;
 @Path("resource")
 public class Resource {
 
-  /**
-   * The method has been changed from POST to OPTIONS on a request filter Check
-   * that correct method has been called then
-   */
-  @GET
-  @Path("setmethod")
-  public String setMethod1() {
-    return getReturnValue("GET");
-  }
+    /**
+     * The method has been changed from POST to OPTIONS on a request filter Check
+     * that correct method has been called then
+     */
+    @GET
+    @Path("setmethod")
+    public String setMethod1() {
+        return getReturnValue("GET");
+    }
 
-  @OPTIONS
-  @Path("setmethod")
-  public String setMethod2() {
-    return getReturnValue("OPTIONS");
-  }
+    @OPTIONS
+    @Path("setmethod")
+    public String setMethod2() {
+        return getReturnValue("OPTIONS");
+    }
 
-  /**
-   * SetUri change
-   */
-  @GET
-  @Path("setrequesturi1uri")
-  public String setRequestUri() {
-    return getReturnValue(RequestFilter.URI);
-  }
+    /**
+     * SetUri change
+     */
+    @GET
+    @Path("setrequesturi1uri")
+    public String setRequestUri() {
+        return getReturnValue(RequestFilter.URI);
+    }
 
-  // QUARKUS: disabled
-//  @GET
-//  @Path("setpropertycontext")
-//  public String setPropertyContext(@Context HttpServletRequest servletRequest) {
-//    if (servletRequest == null) {
-//      return "NULL";
-//    }
-//    String entity = (String) servletRequest
-//        .getAttribute(RequestFilter.PROPERTYNAME);
-//    return getReturnValue(entity);
-//  }
-//
-  @GET
-  @Path("setrequesturi1")
-  public String setRequestUriDidNotChangeUri() {
-    return "Filter did not change the uri to go to";
-  }
+    // QUARKUS: disabled
+    //  @GET
+    //  @Path("setpropertycontext")
+    //  public String setPropertyContext(@Context HttpServletRequest servletRequest) {
+    //    if (servletRequest == null) {
+    //      return "NULL";
+    //    }
+    //    String entity = (String) servletRequest
+    //        .getAttribute(RequestFilter.PROPERTYNAME);
+    //    return getReturnValue(entity);
+    //  }
+    //
+    @GET
+    @Path("setrequesturi1")
+    public String setRequestUriDidNotChangeUri() {
+        return "Filter did not change the uri to go to";
+    }
 
-  @Context
-  HttpHeaders headers;
+    @Context
+    HttpHeaders headers;
 
-  private String getReturnValue(String subValue) {
-    String header = headers.getHeaderString(RequestFilter.OPERATION);
-    return subValue + " " + header;
-  }
+    private String getReturnValue(String subValue) {
+        String header = headers.getHeaderString(RequestFilter.OPERATION);
+        return subValue + " " + header;
+    }
 
 }

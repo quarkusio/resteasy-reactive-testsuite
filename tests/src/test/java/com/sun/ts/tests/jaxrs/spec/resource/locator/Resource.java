@@ -22,11 +22,11 @@ import javax.ws.rs.Path;
 @Path("resource")
 public class Resource {
 
-  @MatrixParam(value = "resmatrix")
-  String resmatrix;
+    @MatrixParam(value = "resmatrix")
+    String resmatrix;
 
-  @Path("sub")
-  public SubResource sub() {
-    return new SubResource(resmatrix);
-  }
+    @Path("sub")
+    public SubResource sub() {
+        return new SubResource(resmatrix);
+    }
 }

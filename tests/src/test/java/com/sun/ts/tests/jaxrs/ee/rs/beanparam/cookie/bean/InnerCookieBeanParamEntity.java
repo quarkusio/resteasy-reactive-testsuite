@@ -31,36 +31,36 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString;
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf;
 
 public class InnerCookieBeanParamEntity {
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @CookieParam(Constants.INNER + Constants.PARAM_ENTITY_WITH_CONSTRUCTOR)
-  public ParamEntityWithConstructor paramEntityWithConstructor;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @CookieParam(Constants.INNER + Constants.PARAM_ENTITY_WITH_CONSTRUCTOR)
+    public ParamEntityWithConstructor paramEntityWithConstructor;
 
-  // @Encoded
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @CookieParam(Constants.INNER + Constants.PARAM_ENTITY_WITH_FROMSTRING)
-  public ParamEntityWithFromString paramEntityWithFromString;
+    // @Encoded
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @CookieParam(Constants.INNER + Constants.PARAM_ENTITY_WITH_FROMSTRING)
+    public ParamEntityWithFromString paramEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @CookieParam(Constants.INNER + Constants.PARAM_ENTITY_WITH_VALUEOF)
-  public ParamEntityWithValueOf paramEntityWithValueOf;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @CookieParam(Constants.INNER + Constants.PARAM_ENTITY_WITH_VALUEOF)
+    public ParamEntityWithValueOf paramEntityWithValueOf;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @CookieParam(Constants.INNER + Constants.SET_PARAM_ENTITY_WITH_FROMSTRING)
-  public Set<ParamEntityWithFromString> setParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @CookieParam(Constants.INNER + Constants.SET_PARAM_ENTITY_WITH_FROMSTRING)
+    public Set<ParamEntityWithFromString> setParamEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @CookieParam(Constants.INNER
-      + Constants.SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING)
-  public SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @CookieParam(Constants.INNER
+            + Constants.SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING)
+    public SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @CookieParam(Constants.INNER + Constants.LIST_PARAM_ENTITY_WITH_FROMSTRING)
-  public List<ParamEntityWithFromString> listParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @CookieParam(Constants.INNER + Constants.LIST_PARAM_ENTITY_WITH_FROMSTRING)
+    public List<ParamEntityWithFromString> listParamEntityWithFromString;
 
-  @CookieParam(Constants.INNER
-      + Constants.ENTITY_THROWING_WEBAPPLICATIONEXCEPTION)
-  public ParamEntityThrowingWebApplicationException entityThrowingWebApplicationException;
+    @CookieParam(Constants.INNER
+            + Constants.ENTITY_THROWING_WEBAPPLICATIONEXCEPTION)
+    public ParamEntityThrowingWebApplicationException entityThrowingWebApplicationException;
 
-  @CookieParam(Constants.INNER + Constants.ENTITY_THROWING_EXCEPTION_BY_NAME)
-  public ParamEntityThrowingExceptionGivenByName entityThrowingExceptionGivenByName;
+    @CookieParam(Constants.INNER + Constants.ENTITY_THROWING_EXCEPTION_BY_NAME)
+    public ParamEntityThrowingExceptionGivenByName entityThrowingExceptionGivenByName;
 }

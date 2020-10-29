@@ -24,45 +24,45 @@ import javax.ws.rs.WebApplicationException;
 @Path("resource")
 public class Resource {
 
-  @Path("throwable")
-  @GET
-  public String throwable() throws Throwable {
-    throw new Throwable(new RuntimeException(new ClientErrorException(499)));
-  }
+    @Path("throwable")
+    @GET
+    public String throwable() throws Throwable {
+        throw new Throwable(new RuntimeException(new ClientErrorException(499)));
+    }
 
-  @Path("exception")
-  @GET
-  public String exception() throws Exception {
-    throw new Exception(new RuntimeException(new ClientErrorException(499)));
-  }
+    @Path("exception")
+    @GET
+    public String exception() throws Exception {
+        throw new Exception(new RuntimeException(new ClientErrorException(499)));
+    }
 
-  @Path("runtime")
-  @GET
-  public String runtime() {
-    throw new RuntimeException(new ClientErrorException(499));
-  }
+    @Path("runtime")
+    @GET
+    public String runtime() {
+        throw new RuntimeException(new ClientErrorException(499));
+    }
 
-  @Path("webapp")
-  @GET
-  public String webApp() {
-    throw new WebApplicationException(new RuntimeException());
-  }
+    @Path("webapp")
+    @GET
+    public String webApp() {
+        throw new WebApplicationException(new RuntimeException());
+    }
 
-  @Path("clienterror")
-  @GET
-  public String clienterror() {
-    throw new ClientErrorException(499, new RuntimeException());
-  }
+    @Path("clienterror")
+    @GET
+    public String clienterror() {
+        throw new ClientErrorException(499, new RuntimeException());
+    }
 
-  @Path("mapped")
-  @GET
-  public String mappedException() {
-    throw new ExceptionFromMappedException();
-  }
+    @Path("mapped")
+    @GET
+    public String mappedException() {
+        throw new ExceptionFromMappedException();
+    }
 
-  @Path("chain")
-  @GET
-  public String chain() {
-    throw new FilterChainTestException();
-  }
+    @Path("chain")
+    @GET
+    public String chain() {
+        throw new FilterChainTestException();
+    }
 }

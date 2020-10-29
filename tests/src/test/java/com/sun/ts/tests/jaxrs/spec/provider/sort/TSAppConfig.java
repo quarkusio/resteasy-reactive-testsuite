@@ -25,12 +25,12 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(StringBeanEntityProvider.class);
-    resources.add(TextPlainStringBeanEntityProvider.class);
-    resources.add(TextWildCardStringBeanEntityProvider.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(StringBeanEntityProvider.class);
+        resources.add(TextPlainStringBeanEntityProvider.class);
+        resources.add(TextWildCardStringBeanEntityProvider.class);
+        return resources;
+    }
 }

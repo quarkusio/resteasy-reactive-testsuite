@@ -34,325 +34,325 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0052 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = -588383752025277814L;
+    private static final long serialVersionUID = -588383752025277814L;
 
-  private static final Status STATUS = Status.INTERNAL_SERVER_ERROR;
+    private static final Status STATUS = Status.INTERNAL_SERVER_ERROR;
 
-  protected static final String MESSAGE = "TCK InternalServerErrorException description";
+    protected static final String MESSAGE = "TCK InternalServerErrorException description";
 
-  protected static final String HOST = "www.jcp.org";
+    protected static final String HOST = "www.jcp.org";
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0052().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: constructorTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:319; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorTest() throws Fault {
-    InternalServerErrorException e = new InternalServerErrorException();
-    assertResponse(e);
-  }
-
-  /*
-   * @testName: constructorResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:320; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 500.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseTest() throws Fault {
-    Response response = buildResponse();
-    InternalServerErrorException e = new InternalServerErrorException(response);
-    assertResponse(e, HOST);
-  }
-
-  /*
-   * @testName: constructorResponseThrowsExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:320;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 500.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowsExceptionTest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS)
-        try {
-          Response response = Response.status(status).build();
-          InternalServerErrorException e = new InternalServerErrorException(
-              response);
-          fault("No exception has been thrown for status", status,
-              "; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
-        }
-  }
-
-  /*
-   * @testName: constructorThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:321; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new internal server error exception. cause -
-   * the underlying cause of the exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      InternalServerErrorException e = new InternalServerErrorException(t);
-      assertResponse(e);
-      assertCause(e, t);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0052().run(args);
     }
-  }
 
-  /*
-   * @testName: constructorResponseThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:322; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 500.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowableTest() throws Fault {
-    Response response = buildResponse();
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      InternalServerErrorException e = new InternalServerErrorException(
-          response, t);
-      assertResponse(e, HOST);
-      assertCause(e, t);
+    /* Run test */
+
+    /*
+     * @testName: constructorTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:319; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorTest() throws Fault {
+        InternalServerErrorException e = new InternalServerErrorException();
+        assertResponse(e);
     }
-  }
 
-  /*
-   * @testName: constructorResponseThrowableThrowsExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:322;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 500.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS)
-        try {
-          Response response = Response.status(status).build();
-          InternalServerErrorException e = new InternalServerErrorException(
-              response, new Throwable());
-          fault("No exception has been thrown for status", status, "exception",
-              e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
-        }
-  }
-
-  /*
-   * @testName: constructorStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1070;
-   * 
-   * @test_Strategy: message - the detail message (which is saved for later
-   * retrieval by the Throwable.getMessage() method).
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringTest() throws Fault {
-    InternalServerErrorException e = new InternalServerErrorException(MESSAGE);
-    assertMessage(e);
-    assertResponse(e);
-  }
-
-  /*
-   * @testName: constructorStringResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1071; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseTest() throws Fault {
-    Response response = buildResponse();
-    InternalServerErrorException e = new InternalServerErrorException(MESSAGE,
-        response);
-    assertResponse(e, HOST);
-    assertMessage(e);
-  }
-
-  /*
-   * @testName: constructorStringResponseThrowsIAETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1071;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 500.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowsIAETest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS)
-        try {
-          Response response = Response.status(status).build();
-          InternalServerErrorException e = new InternalServerErrorException(
-              MESSAGE, response);
-          fault("No exception has been thrown for status", status,
-              "; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
-        }
-  }
-
-  /*
-   * @testName: constructorStringThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1072; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      InternalServerErrorException e = new InternalServerErrorException(MESSAGE,
-          t);
-      assertResponse(e);
-      assertCause(e, t);
-      assertMessage(e);
+    /*
+     * @testName: constructorResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:320; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 500.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseTest() throws Fault {
+        Response response = buildResponse();
+        InternalServerErrorException e = new InternalServerErrorException(response);
+        assertResponse(e, HOST);
     }
-  }
 
-  /*
-   * @testName: constructorStringResponseThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1073; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowableTest() throws Fault {
-    Response response = buildResponse();
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      InternalServerErrorException e = new InternalServerErrorException(MESSAGE,
-          response, t);
-      assertResponse(e, HOST);
-      assertCause(e, t);
-      assertMessage(e);
+    /*
+     * @testName: constructorResponseThrowsExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:320;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 500.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowsExceptionTest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS)
+                try {
+                    Response response = Response.status(status).build();
+                    InternalServerErrorException e = new InternalServerErrorException(
+                            response);
+                    fault("No exception has been thrown for status", status,
+                            "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
     }
-  }
 
-  /*
-   * @testName: constructorStringResponseThrowableThrowsIEATest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1073;
-   * 
-   * @test_Strategy: Construct a new internal server error exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 500.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowableThrowsIEATest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS)
-        try {
-          Response response = Response.status(status).build();
-          InternalServerErrorException e = new InternalServerErrorException(
-              MESSAGE, response, new Throwable());
-          fault("No exception has been thrown for status", status, "exception",
-              e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
+    /*
+     * @testName: constructorThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:321; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new internal server error exception. cause -
+     * the underlying cause of the exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            InternalServerErrorException e = new InternalServerErrorException(t);
+            assertResponse(e);
+            assertCause(e, t);
         }
-  }
+    }
 
-  // /////////////////////////////////////////////////////////////
-  protected Response buildResponse() {
-    Response r = Response.status(STATUS).header(HttpHeaders.HOST, HOST).build();
-    return r;
-  }
+    /*
+     * @testName: constructorResponseThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:322; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 500.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowableTest() throws Fault {
+        Response response = buildResponse();
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            InternalServerErrorException e = new InternalServerErrorException(
+                    response, t);
+            assertResponse(e, HOST);
+            assertCause(e, t);
+        }
+    }
 
-  protected void assertResponse(InternalServerErrorException e) throws Fault {
-    assertNotNull(e.getResponse(), "#getResponse is null");
-    Response response = e.getResponse();
-    assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
-        "response cobtains unexpected status", response.getStatus());
-    logMsg("response contains expected", STATUS, "status");
-  }
+    /*
+     * @testName: constructorResponseThrowableThrowsExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:322;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 500.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS)
+                try {
+                    Response response = Response.status(status).build();
+                    InternalServerErrorException e = new InternalServerErrorException(
+                            response, new Throwable());
+                    fault("No exception has been thrown for status", status, "exception",
+                            e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
+    }
 
-  /**
-   * Check the given exception contains a prebuilt response containing the http
-   * header HOST
-   */
-  protected void assertResponse(InternalServerErrorException e, String host)
-      throws Fault {
-    assertResponse(e);
-    String header = e.getResponse().getHeaderString(HttpHeaders.HOST);
-    assertNotNull(header, "http header", HttpHeaders.HOST,
-        " of response is null");
-    assertEquals(host, header, "Found unexpected http", HttpHeaders.HOST,
-        "header", header);
-    logMsg("Found expected http", HttpHeaders.HOST, "header");
-  }
+    /*
+     * @testName: constructorStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1070;
+     * 
+     * @test_Strategy: message - the detail message (which is saved for later
+     * retrieval by the Throwable.getMessage() method).
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringTest() throws Fault {
+        InternalServerErrorException e = new InternalServerErrorException(MESSAGE);
+        assertMessage(e);
+        assertResponse(e);
+    }
 
-  protected void assertCause(WebApplicationException e, Throwable expected)
-      throws Fault {
-    assertEquals(e.getCause(), expected, "#getCause does not contain expected",
-        expected, "but", e.getCause());
-    logMsg("getCause contains expected", expected);
-  }
+    /*
+     * @testName: constructorStringResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1071; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseTest() throws Fault {
+        Response response = buildResponse();
+        InternalServerErrorException e = new InternalServerErrorException(MESSAGE,
+                response);
+        assertResponse(e, HOST);
+        assertMessage(e);
+    }
 
-  protected void assertMessage(InternalServerErrorException e) throws Fault {
-    assertNotNull(e.getMessage(), "getMessage() is null");
-    assertContains(e.getMessage(), MESSAGE, "Unexpected getMessage()",
-        e.getMessage());
-    logMsg("found expected getMessage()=", e.getMessage());
-  }
+    /*
+     * @testName: constructorStringResponseThrowsIAETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1071;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 500.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowsIAETest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS)
+                try {
+                    Response response = Response.status(status).build();
+                    InternalServerErrorException e = new InternalServerErrorException(
+                            MESSAGE, response);
+                    fault("No exception has been thrown for status", status,
+                            "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
+    }
+
+    /*
+     * @testName: constructorStringThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1072; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            InternalServerErrorException e = new InternalServerErrorException(MESSAGE,
+                    t);
+            assertResponse(e);
+            assertCause(e, t);
+            assertMessage(e);
+        }
+    }
+
+    /*
+     * @testName: constructorStringResponseThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1073; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowableTest() throws Fault {
+        Response response = buildResponse();
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            InternalServerErrorException e = new InternalServerErrorException(MESSAGE,
+                    response, t);
+            assertResponse(e, HOST);
+            assertCause(e, t);
+            assertMessage(e);
+        }
+    }
+
+    /*
+     * @testName: constructorStringResponseThrowableThrowsIEATest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1073;
+     * 
+     * @test_Strategy: Construct a new internal server error exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 500.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowableThrowsIEATest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS)
+                try {
+                    Response response = Response.status(status).build();
+                    InternalServerErrorException e = new InternalServerErrorException(
+                            MESSAGE, response, new Throwable());
+                    fault("No exception has been thrown for status", status, "exception",
+                            e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
+    }
+
+    // /////////////////////////////////////////////////////////////
+    protected Response buildResponse() {
+        Response r = Response.status(STATUS).header(HttpHeaders.HOST, HOST).build();
+        return r;
+    }
+
+    protected void assertResponse(InternalServerErrorException e) throws Fault {
+        assertNotNull(e.getResponse(), "#getResponse is null");
+        Response response = e.getResponse();
+        assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
+                "response cobtains unexpected status", response.getStatus());
+        logMsg("response contains expected", STATUS, "status");
+    }
+
+    /**
+     * Check the given exception contains a prebuilt response containing the http
+     * header HOST
+     */
+    protected void assertResponse(InternalServerErrorException e, String host)
+            throws Fault {
+        assertResponse(e);
+        String header = e.getResponse().getHeaderString(HttpHeaders.HOST);
+        assertNotNull(header, "http header", HttpHeaders.HOST,
+                " of response is null");
+        assertEquals(host, header, "Found unexpected http", HttpHeaders.HOST,
+                "header", header);
+        logMsg("Found expected http", HttpHeaders.HOST, "header");
+    }
+
+    protected void assertCause(WebApplicationException e, Throwable expected)
+            throws Fault {
+        assertEquals(e.getCause(), expected, "#getCause does not contain expected",
+                expected, "but", e.getCause());
+        logMsg("getCause contains expected", expected);
+    }
+
+    protected void assertMessage(InternalServerErrorException e) throws Fault {
+        assertNotNull(e.getMessage(), "getMessage() is null");
+        assertContains(e.getMessage(), MESSAGE, "Unexpected getMessage()",
+                e.getMessage());
+        logMsg("found expected getMessage()=", e.getMessage());
+    }
 }

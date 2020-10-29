@@ -23,8 +23,8 @@ import com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest;
 @Path("resource")
 public class SubResource extends PathParamTest {
 
-  @Path("subresource")
-  public SubResource subresorce() {
-    return this;
-  }
+    @Path("subresource")
+    public SubResource subresorce() {
+        return this;
+    }
 }

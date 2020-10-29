@@ -27,17 +27,17 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 @Provider
 public class ContextProvider implements ClientRequestFilter {
 
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    throw new Fault("this TCK method is not implemented yet");
-  }
-
-  @Override
-  public void filter(ClientRequestContext context) throws IOException {
-    try {
-      checkFilterContext(context);
-    } catch (Fault e) {
-      throw new IOException(e);
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        throw new Fault("this TCK method is not implemented yet");
     }
-  }
+
+    @Override
+    public void filter(ClientRequestContext context) throws IOException {
+        try {
+            checkFilterContext(context);
+        } catch (Fault e) {
+            throw new IOException(e);
+        }
+    }
 
 }

@@ -22,14 +22,14 @@ import javax.ws.rs.PathParam;
 
 @Path("resource/path/{param}")
 public class PathResource {
-  String param;
+    String param;
 
-  public PathResource(@PathParam("param") String param) {
-    this.param = param;
-  }
+    public PathResource(@PathParam("param") String param) {
+        this.param = param;
+    }
 
-  @GET
-  public String get() {
-    return param;
-  }
+    @GET
+    public String get() {
+        return param;
+    }
 }

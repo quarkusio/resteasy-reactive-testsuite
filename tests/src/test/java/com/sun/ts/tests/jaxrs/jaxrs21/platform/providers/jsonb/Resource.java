@@ -43,151 +43,151 @@ import javax.ws.rs.core.MediaType;
 @Path("resource")
 public class Resource {
 
-  public static final String MESSAGE = "This.is.some.message";
+    public static final String MESSAGE = "This.is.some.message";
 
-  public static final String URL = "http://tck.cts.oracle.com:12345";
+    public static final String URL = "http://tck.cts.oracle.com:12345";
 
-  @Path("tostring")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public String toString() {
-    return MESSAGE;
-  }
+    @Path("tostring")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String toString() {
+        return MESSAGE;
+    }
 
-  @Path("tochar")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Character toCharacter() {
-    return MESSAGE.charAt(0);
-  }
+    @Path("tochar")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Character toCharacter() {
+        return MESSAGE.charAt(0);
+    }
 
-  @Path("tobyte")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Byte toByte() {
-    return Byte.MAX_VALUE;
-  }
+    @Path("tobyte")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Byte toByte() {
+        return Byte.MAX_VALUE;
+    }
 
-  @Path("toshort")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Short toShort() {
-    return Short.MAX_VALUE;
-  }
+    @Path("toshort")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Short toShort() {
+        return Short.MAX_VALUE;
+    }
 
-  @Path("toint")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Integer toInteger() {
-    return Integer.MAX_VALUE;
-  }
+    @Path("toint")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer toInteger() {
+        return Integer.MAX_VALUE;
+    }
 
-  @Path("tolong")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Long toLong() {
-    return Long.MAX_VALUE;
-  }
+    @Path("tolong")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Long toLong() {
+        return Long.MAX_VALUE;
+    }
 
-  @Path("todouble")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Double toDouble() {
-    return Double.MAX_VALUE;
-  }
+    @Path("todouble")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Double toDouble() {
+        return Double.MAX_VALUE;
+    }
 
-  @Path("toboolean")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Boolean toBoolean() {
-    return Boolean.TRUE;
-  }
+    @Path("toboolean")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Boolean toBoolean() {
+        return Boolean.TRUE;
+    }
 
-  @Path("tonumber")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Number toNumber() {
-    return BigDecimal.valueOf(Long.MAX_VALUE);
-  }
+    @Path("tonumber")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Number toNumber() {
+        return BigDecimal.valueOf(Long.MAX_VALUE);
+    }
 
-  @Path("tobiginteger")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public BigInteger toBigInteger() {
-    return BigInteger.valueOf(Long.MAX_VALUE);
-  }
+    @Path("tobiginteger")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public BigInteger toBigInteger() {
+        return BigInteger.valueOf(Long.MAX_VALUE);
+    }
 
-  @Path("touri")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public URI toURI() throws URISyntaxException {
-    return new URI(URL);
-  }
+    @Path("touri")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public URI toURI() throws URISyntaxException {
+        return new URI(URL);
+    }
 
-  @Path("tourl")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public URL toURL() throws MalformedURLException {
-    return new URL(URL);
-  }
+    @Path("tourl")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public URL toURL() throws MalformedURLException {
+        return new URL(URL);
+    }
 
-  @Path("tooptional")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Optional<String> toOptional() {
-    return Optional.of(MESSAGE);
-  }
+    @Path("tooptional")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Optional<String> toOptional() {
+        return Optional.of(MESSAGE);
+    }
 
-  @Path("tooptionalint")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public OptionalInt toOptionalInt() {
-    return OptionalInt.of(Integer.MIN_VALUE);
-  }
+    @Path("tooptionalint")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public OptionalInt toOptionalInt() {
+        return OptionalInt.of(Integer.MIN_VALUE);
+    }
 
-  @Path("tooptionallong")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public OptionalLong toOptionalLong() {
-    return OptionalLong.of(Long.MIN_VALUE);
-  }
+    @Path("tooptionallong")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public OptionalLong toOptionalLong() {
+        return OptionalLong.of(Long.MIN_VALUE);
+    }
 
-  @Path("tooptionaldouble")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public OptionalDouble toOptionalDouble() {
-    return OptionalDouble.of(Double.MIN_VALUE);
-  }
+    @Path("tooptionaldouble")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public OptionalDouble toOptionalDouble() {
+        return OptionalDouble.of(Double.MIN_VALUE);
+    }
 
-  @Path("tocalendar")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public Calendar toCalendar() {
-    Calendar c = GregorianCalendar
-        .getInstance(TimeZone.getTimeZone(ZoneId.of("Z")), Locale.US);
-    c.set(1999, 11, 31);
-    return c;
-  }
+    @Path("tocalendar")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Calendar toCalendar() {
+        Calendar c = GregorianCalendar
+                .getInstance(TimeZone.getTimeZone(ZoneId.of("Z")), Locale.US);
+        c.set(1999, 11, 31);
+        return c;
+    }
 
-  @Path("totimezone")
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public TimeZone toTimeZone() {
-    TimeZone tz = TimeZone.getTimeZone(ZoneId.of("Z"));
-    return tz;
-  }
+    @Path("totimezone")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public TimeZone toTimeZone() {
+        TimeZone tz = TimeZone.getTimeZone(ZoneId.of("Z"));
+        return tz;
+    }
 
-  @Path("fromstring")
-  @POST
-  @Produces(MediaType.APPLICATION_JSON)
-  public String fromObject(JsonString string) {
-    return string.getString();
-  }
+    @Path("fromstring")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public String fromObject(JsonString string) {
+        return string.getString();
+    }
 
-  @Path("fromnumber")
-  @POST
-  @Produces(MediaType.APPLICATION_JSON)
-  public String fromNumber(JsonNumber number) {
-    return number.bigDecimalValue().toString();
-  }
+    @Path("fromnumber")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public String fromNumber(JsonNumber number) {
+        return number.bigDecimalValue().toString();
+    }
 }

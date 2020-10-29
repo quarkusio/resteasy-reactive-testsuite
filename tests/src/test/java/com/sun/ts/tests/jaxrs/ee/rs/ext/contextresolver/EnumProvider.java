@@ -21,5 +21,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.contextresolver;
  * com.sun.ts.tests.jaxrs.ee.rs.ext.providers.ProvidersServlet
  */
 public enum EnumProvider {
-  TCK, CTS, JAXRS;
+    TCK,
+    CTS,
+    JAXRS;
 }

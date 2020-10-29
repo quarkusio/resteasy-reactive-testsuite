@@ -23,8 +23,8 @@ import javax.ws.rs.Path;
 @RolesAllowed("DIRECTOR")
 @Path("resource")
 public class Resource {
-  @POST
-  public String echo(String echo) {
-    return echo;
-  }
+    @POST
+    public String echo(String echo) {
+        return echo;
+    }
 }

@@ -20,8 +20,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.core.Response;
 
 public class TestPathBad {
-  @GET
-  public Response getPlain() {
-    return Response.ok().build();
-  }
+    @GET
+    public Response getPlain() {
+        return Response.ok().build();
+    }
 }

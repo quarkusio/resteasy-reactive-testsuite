@@ -31,88 +31,88 @@ import com.sun.ts.tests.jaxrs.common.impl.TRACE;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("get")
-  public String get() {
-    return "get";
-  }
+    @GET
+    @Path("get")
+    public String get() {
+        return "get";
+    }
 
-  @GET
-  @Path("getnotok")
-  public Response getNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @GET
+    @Path("getnotok")
+    public Response getNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @HEAD
-  @Path("head")
-  public String head() {
-    return "head";
-  }
+    @HEAD
+    @Path("head")
+    public String head() {
+        return "head";
+    }
 
-  @HEAD
-  @Path("headnotok")
-  public Response headNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @HEAD
+    @Path("headnotok")
+    public Response headNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @PUT
-  @Path("put")
-  public String put(String value) {
-    return value;
-  }
+    @PUT
+    @Path("put")
+    public String put(String value) {
+        return value;
+    }
 
-  @PUT
-  @Path("putnotok")
-  public Response putNotOk(String value) {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @PUT
+    @Path("putnotok")
+    public Response putNotOk(String value) {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @POST
-  @Path("post")
-  public String post(String value) {
-    return value;
-  }
+    @POST
+    @Path("post")
+    public String post(String value) {
+        return value;
+    }
 
-  @POST
-  @Path("postnotok")
-  public Response postNotOk(String value) {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @POST
+    @Path("postnotok")
+    public Response postNotOk(String value) {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @DELETE
-  @Path("delete")
-  public String delete() {
-    return "delete";
-  }
+    @DELETE
+    @Path("delete")
+    public String delete() {
+        return "delete";
+    }
 
-  @DELETE
-  @Path("deletenotok")
-  public Response deleteNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @DELETE
+    @Path("deletenotok")
+    public Response deleteNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @OPTIONS
-  @Path("options")
-  public String options() {
-    return "options";
-  }
+    @OPTIONS
+    @Path("options")
+    public String options() {
+        return "options";
+    }
 
-  @OPTIONS
-  @Path("optionsnotok")
-  public Response optionsNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @OPTIONS
+    @Path("optionsnotok")
+    public Response optionsNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @TRACE
-  @Path("trace")
-  public String trace() {
-    return "trace";
-  }
+    @TRACE
+    @Path("trace")
+    public String trace() {
+        return "trace";
+    }
 
-  @TRACE
-  @Path("tracenotok")
-  public Response traceNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @TRACE
+    @Path("tracenotok")
+    public Response traceNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
 }

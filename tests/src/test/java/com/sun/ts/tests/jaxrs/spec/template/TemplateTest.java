@@ -23,49 +23,49 @@ import javax.ws.rs.PathParam;
 @Path(value = "/TemplateTest")
 public class TemplateTest {
 
-  @GET
-  @Path("{id}")
-  public String limited(@PathParam("id") String id) {
-    StringBuffer sb = new StringBuffer().append("id=" + id);
-    return sb.toString();
-  }
+    @GET
+    @Path("{id}")
+    public String limited(@PathParam("id") String id) {
+        StringBuffer sb = new StringBuffer().append("id=" + id);
+        return sb.toString();
+    }
 
-  @GET
-  @Path("xyz/{id}")
-  public String onelimited(@PathParam("id") String id) {
-    StringBuffer sb = new StringBuffer().append("id2=" + id);
-    return sb.toString();
-  }
+    @GET
+    @Path("xyz/{id}")
+    public String onelimited(@PathParam("id") String id) {
+        StringBuffer sb = new StringBuffer().append("id2=" + id);
+        return sb.toString();
+    }
 
-  @GET
-  @Path("{id}/{name}.html")
-  public String filetype(@PathParam("id") String id,
-      @PathParam("name") String name) {
-    StringBuffer sb = new StringBuffer().append("id4=" + id);
-    sb.append("name=" + name);
-    return sb.toString();
-  }
+    @GET
+    @Path("{id}/{name}.html")
+    public String filetype(@PathParam("id") String id,
+            @PathParam("name") String name) {
+        StringBuffer sb = new StringBuffer().append("id4=" + id);
+        sb.append("name=" + name);
+        return sb.toString();
+    }
 
-  @GET
-  @Path("{id: .+}")
-  public String nolimites(@PathParam("id") String id) {
-    StringBuffer sb = new StringBuffer().append("id1=" + id);
-    return sb.toString();
-  }
+    @GET
+    @Path("{id: .+}")
+    public String nolimites(@PathParam("id") String id) {
+        StringBuffer sb = new StringBuffer().append("id1=" + id);
+        return sb.toString();
+    }
 
-  @GET
-  @Path(value = "xyz/{id: .+}")
-  public String onenolimite(@PathParam("id") String id) {
-    StringBuffer sb = new StringBuffer().append("id3=" + id);
-    return sb.toString();
-  }
+    @GET
+    @Path(value = "xyz/{id: .+}")
+    public String onenolimite(@PathParam("id") String id) {
+        StringBuffer sb = new StringBuffer().append("id3=" + id);
+        return sb.toString();
+    }
 
-  @GET
-  @Path(value = "{id: .+}/{name}.xml")
-  public String filetype1(@PathParam("id") String id,
-      @PathParam("name") String name) {
-    StringBuffer sb = new StringBuffer().append("id5=" + id);
-    sb.append("name=" + name);
-    return sb.toString();
-  }
+    @GET
+    @Path(value = "{id: .+}/{name}.xml")
+    public String filetype1(@PathParam("id") String id,
+            @PathParam("name") String name) {
+        StringBuffer sb = new StringBuffer().append("id5=" + id);
+        sb.append("name=" + name);
+        return sb.toString();
+    }
 }

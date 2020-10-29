@@ -27,63 +27,63 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0044 extends JAXRSCommonClient {
-  private static final long serialVersionUID = -2994744934835260890L;
+    private static final long serialVersionUID = -2994744934835260890L;
 
-  final static String[] names = { "CLIENT", "SERVER" };
+    final static String[] names = { "CLIENT", "SERVER" };
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0044().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: valueOfTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:974;
-   * 
-   * @test_Strategy: Test valueOf method
-   */
-  @org.junit.jupiter.api.Test
-  public void valueOfTest() throws Fault {
-    assertEqualsInt(RuntimeType.values().length, 2,
-        "Unexpected number of values of RuntimeType enum");
-    RuntimeType type = RuntimeType.valueOf(names[0]);
-    assertEquals(RuntimeType.CLIENT, type, "Unexpected RuntimeType", type);
-    logMsg("#valueOf(", names[0], ") equals", type, "as expected");
-
-    type = RuntimeType.valueOf(names[1]);
-    assertEquals(RuntimeType.SERVER, type, "Unexpected RuntimeType", type);
-    logMsg("#valueOf(", names[1], ") equals", type, "as expected");
-  }
-
-  /*
-   * @testName: valuesTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:975;
-   * 
-   * @test_Strategy: Test values method
-   */
-  @org.junit.jupiter.api.Test
-  public void valuesTest() throws Fault {
-    RuntimeType[] types = RuntimeType.values();
-    assertEqualsInt(types.length, 2,
-        "Unexpected number of values of RuntimeType enum");
-
-    String[] dynamicNames = { types[0].name(), types[1].name() };
-    String singleDynamicName = dynamicNames[0] + ", " + dynamicNames[1];
-
-    for (String name : names) {
-      assertContains(singleDynamicName, name, name,
-          "has unexpectedly not found in list", singleDynamicName);
-      logMsg("Found", name, "in valus()", singleDynamicName);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0044().run(args);
     }
 
-  }
+    /* Run test */
+
+    /*
+     * @testName: valueOfTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:974;
+     * 
+     * @test_Strategy: Test valueOf method
+     */
+    @org.junit.jupiter.api.Test
+    public void valueOfTest() throws Fault {
+        assertEqualsInt(RuntimeType.values().length, 2,
+                "Unexpected number of values of RuntimeType enum");
+        RuntimeType type = RuntimeType.valueOf(names[0]);
+        assertEquals(RuntimeType.CLIENT, type, "Unexpected RuntimeType", type);
+        logMsg("#valueOf(", names[0], ") equals", type, "as expected");
+
+        type = RuntimeType.valueOf(names[1]);
+        assertEquals(RuntimeType.SERVER, type, "Unexpected RuntimeType", type);
+        logMsg("#valueOf(", names[1], ") equals", type, "as expected");
+    }
+
+    /*
+     * @testName: valuesTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:975;
+     * 
+     * @test_Strategy: Test values method
+     */
+    @org.junit.jupiter.api.Test
+    public void valuesTest() throws Fault {
+        RuntimeType[] types = RuntimeType.values();
+        assertEqualsInt(types.length, 2,
+                "Unexpected number of values of RuntimeType enum");
+
+        String[] dynamicNames = { types[0].name(), types[1].name() };
+        String singleDynamicName = dynamicNames[0] + ", " + dynamicNames[1];
+
+        for (String name : names) {
+            assertContains(singleDynamicName, name, name,
+                    "has unexpectedly not found in list", singleDynamicName);
+            logMsg("Found", name, "in valus()", singleDynamicName);
+        }
+
+    }
 
 }

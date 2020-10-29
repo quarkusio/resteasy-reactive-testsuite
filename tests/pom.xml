@@ -49,10 +49,6 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-rest-jackson</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-rest-spi</artifactId>
     </dependency>
     <dependency>
@@ -79,18 +75,6 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5-internal</artifactId>
     </dependency>
-    <dependency>
-        <groupId>commons-httpclient</groupId>
-        <artifactId>commons-httpclient</artifactId>
-        <version>3.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-surefire-plugin</artifactId>
-      <version>${surefire-plugin.version}</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -101,10 +85,6 @@
         <executions>
           <execution>
             <goals>
-            <!-- 
-              <goal>generate-code</goal>
-              <goal>generate-code-tests</goal>
-             -->
               <goal>build</goal>
             </goals>
           </execution>
@@ -125,6 +105,13 @@
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
+          <!--
+             We set MaxMetaspaceSize to a size large enough to allow for all tests to run but that also doesn't take up too much memory
+             quarkus.vertx.classpath-resolving=false is done in order to prevent a ClassLoader leak that occurs with io.vertx.core.file.impl#shutdownHook
+             (the leak occurs because the Thread uses the QCL as the TCCL - the use of the property ensures that the shutdown hook is never created)
+             Configuration of the vertx threads is done in order to limit the thread use to only what is necessary for these tests
+          -->
+          <argLine>-Xmx5000m -XX:MaxMetaspaceSize=768m -Dquarkus.vertx.event-loops-pool-size=2 -Dquarkus.vertx.worker-pool-size=2 -Dquarkus.vertx.classpath-resolving=false</argLine>
         </configuration>
       </plugin>
     </plugins>

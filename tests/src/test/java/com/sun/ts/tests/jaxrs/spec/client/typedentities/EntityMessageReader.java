@@ -31,27 +31,27 @@ import javax.ws.rs.ext.MessageBodyReader;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritableEntity;
 
 public class EntityMessageReader
-    implements MessageBodyReader<ReadableWritableEntity> {
+        implements MessageBodyReader<ReadableWritableEntity> {
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return ReadableWritableEntity.class.isAssignableFrom(type);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return ReadableWritableEntity.class.isAssignableFrom(type);
+    }
 
-  @Override
-  public ReadableWritableEntity readFrom(Class<ReadableWritableEntity> arg0,
-      Type arg1, Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> arg4, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    String entity = readInputStream(entityStream);
-    return ReadableWritableEntity.fromString(entity);
-  }
+    @Override
+    public ReadableWritableEntity readFrom(Class<ReadableWritableEntity> arg0,
+            Type arg1, Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> arg4, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        String entity = readInputStream(entityStream);
+        return ReadableWritableEntity.fromString(entity);
+    }
 
-  String readInputStream(InputStream is) throws IOException {
-    InputStreamReader isr = new InputStreamReader(is);
-    BufferedReader br = new BufferedReader(isr);
-    return br.readLine();
-  }
+    String readInputStream(InputStream is) throws IOException {
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        return br.readLine();
+    }
 
 }

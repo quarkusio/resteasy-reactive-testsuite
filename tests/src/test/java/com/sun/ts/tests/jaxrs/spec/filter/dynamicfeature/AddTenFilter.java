@@ -23,14 +23,14 @@ import javax.ws.rs.container.ContainerResponseContext;
 
 public class AddTenFilter extends AbstractAddFilter {
 
-  public AddTenFilter() {
-    super(10);
-  }
+    public AddTenFilter() {
+        super(10);
+    }
 
-  @Override
-  public void filter(ContainerRequestContext requestContext,
-      ContainerResponseContext responseContext) throws IOException {
-    super.filter(requestContext, responseContext);
-  }
+    @Override
+    public void filter(ContainerRequestContext requestContext,
+            ContainerResponseContext responseContext) throws IOException {
+        super.filter(requestContext, responseContext);
+    }
 
 }

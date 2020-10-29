@@ -25,144 +25,144 @@ import javax.ws.rs.core.GenericType;
 
 public class TCKRxInvoker implements RxInvoker<CompletionStage<String>> {
 
-  private static final String RESULT = "Some string that to initialize the completable future";
+    private static final String RESULT = "Some string that to initialize the completable future";
 
-  private CompletableFuture<String> future = new CompletableFuture<>();
+    private CompletableFuture<String> future = new CompletableFuture<>();
 
-  {
-    future.complete(RESULT);
-  }
+    {
+        future.complete(RESULT);
+    }
 
-  @Override
-  public CompletionStage<String> get() {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> get() {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> get(Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> get(Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> get(GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> get(GenericType<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> put(Entity<?> entity) {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> put(Entity<?> entity) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> put(Entity<?> entity,
-      Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> put(Entity<?> entity,
+            Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> put(Entity<?> entity,
-      GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> put(Entity<?> entity,
+            GenericType<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> post(Entity<?> entity) {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> post(Entity<?> entity) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> post(Entity<?> entity,
-      Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> post(Entity<?> entity,
+            Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> post(Entity<?> entity,
-      GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> post(Entity<?> entity,
+            GenericType<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> delete() {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> delete() {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> delete(Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> delete(Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> delete(GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> delete(GenericType<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> head() {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> head() {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> options() {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> options() {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> options(Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> options(Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> options(GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> options(GenericType<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> trace() {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> trace() {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> trace(Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> trace(Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> trace(GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> trace(GenericType<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> method(String name) {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> method(String name) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> method(String name,
-      Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> method(String name,
+            Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> method(String name,
-      GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> method(String name,
+            GenericType<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public CompletionStage<String> method(String name, Entity<?> entity) {
-    return future;
-  }
+    @Override
+    public CompletionStage<String> method(String name, Entity<?> entity) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> method(String name, Entity<?> entity,
-      Class<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> method(String name, Entity<?> entity,
+            Class<R> responseType) {
+        return future;
+    }
 
-  @Override
-  public <R> CompletionStage<String> method(String name, Entity<?> entity,
-      GenericType<R> responseType) {
-    return future;
-  }
+    @Override
+    public <R> CompletionStage<String> method(String name, Entity<?> entity,
+            GenericType<R> responseType) {
+        return future;
+    }
 }

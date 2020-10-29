@@ -22,30 +22,30 @@ import javax.ws.rs.container.ContainerRequestContext;
 
 public class TemplateFilter {
 
-  public static final String NOEXCEPTION = "No exception has been thrown";
+    public static final String NOEXCEPTION = "No exception has been thrown";
 
-  public static final String ISEXCEPTION = "IllegalSteateException has been thrown";
+    public static final String ISEXCEPTION = "IllegalSteateException has been thrown";
 
-  public static final String URI = "http://xx.yy:888/base/resource/sub";
+    public static final String URI = "http://xx.yy:888/base/resource/sub";
 
-  public static final String OPERATION = "OPERATION";
+    public static final String OPERATION = "OPERATION";
 
-  protected String entity = null;
+    protected String entity = null;
 
-  protected ContainerRequestContext requestContext;
+    protected ContainerRequestContext requestContext;
 
-  protected static <T> String collectionToString(Collection<T> collection) {
-    StringBuilder sb = new StringBuilder();
-    for (T item : collection) {
-      String replace = item.toString().toLowerCase().replace("_", "-")
-          .replace(" ", "");
-      sb.append(replace).append(" ");
+    protected static <T> String collectionToString(Collection<T> collection) {
+        StringBuilder sb = new StringBuilder();
+        for (T item : collection) {
+            String replace = item.toString().toLowerCase().replace("_", "-")
+                    .replace(" ", "");
+            sb.append(replace).append(" ");
+        }
+        return sb.toString();
     }
-    return sb.toString();
-  }
 
-  protected void setEntity(String entity) {
-    this.entity = entity;
-  }
+    protected void setEntity(String entity) {
+        this.entity = entity;
+    }
 
 }

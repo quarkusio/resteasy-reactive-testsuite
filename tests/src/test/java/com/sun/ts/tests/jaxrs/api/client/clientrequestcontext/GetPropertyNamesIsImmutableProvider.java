@@ -31,27 +31,27 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
  * getPropertyNames collection is not immutable
  */
 public class GetPropertyNamesIsImmutableProvider extends ContextProvider {
-  private AtomicInteger counter;
+    private AtomicInteger counter;
 
-  public static final String NEWNAME = "AnyNewNameAddedToPropertyNames";
+    public static final String NEWNAME = "AnyNewNameAddedToPropertyNames";
 
-  public GetPropertyNamesIsImmutableProvider(AtomicInteger counter) {
-    super();
-    this.counter = counter;
-  }
-
-  @Override
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    Collection<String> properties = context.getPropertyNames();
-    try {
-      properties.add(NEWNAME);
-    } catch (Exception e) {
-      // any possible exception here is ok as collection should be
-      // immutable
+    public GetPropertyNamesIsImmutableProvider(AtomicInteger counter) {
+        super();
+        this.counter = counter;
     }
-    properties = context.getPropertyNames();
-    if (properties.contains(NEWNAME))
-      counter.set(counter.get() + 100);
-    context.abortWith(Response.ok(counter.get()).build());
-  }
+
+    @Override
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        Collection<String> properties = context.getPropertyNames();
+        try {
+            properties.add(NEWNAME);
+        } catch (Exception e) {
+            // any possible exception here is ok as collection should be
+            // immutable
+        }
+        properties = context.getPropertyNames();
+        if (properties.contains(NEWNAME))
+            counter.set(counter.get() + 100);
+        context.abortWith(Response.ok(counter.get()).build());
+    }
 }

@@ -29,50 +29,50 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 public class InterceptorOneBody
-    extends TemplateInterceptorBody<ReaderInterceptorContext> {
+        extends TemplateInterceptorBody<ReaderInterceptorContext> {
 
-  public void getHeaders() {
-    MultivaluedMap<String, String> headers = context.getHeaders();
-    setEntity(JaxrsUtil.iterableToString(";", headers.keySet()));
-  }
-
-  public void getHeadersIsMutable() {
-    MultivaluedMap<String, String> headers = context.getHeaders();
-    headers.add(PROPERTY, PROPERTY);
-  }
-
-  public void getInputStream() throws IOException {
-    InputStream stream = context.getInputStream();
-    String entity = JaxrsUtil.readFromStream(stream);
-    stream.close();
-    setEntity(entity);
-  }
-
-  public void proceedThrowsIOException() {
-    try {
-      context.proceed();
-      setEntity(NULL);
-    } catch (IOException ioe) {
-      setEntity(IOE);
+    public void getHeaders() {
+        MultivaluedMap<String, String> headers = context.getHeaders();
+        setEntity(JaxrsUtil.iterableToString(";", headers.keySet()));
     }
-  }
 
-  public Object proceedThrowsWebAppException()
-      throws WebApplicationException, IOException {
-    Object proceedObject = new ExceptionThrowingStringBean(NULL, false);
-    try {
-      proceedObject = context.proceed();
-    } catch (WebApplicationException e) {
-      // Exception has been thrown, message body reader has read nothing
-      // hence we need to set expected value;
-      ((StringBean) proceedObject).set(WAE);
+    public void getHeadersIsMutable() {
+        MultivaluedMap<String, String> headers = context.getHeaders();
+        headers.add(PROPERTY, PROPERTY);
     }
-    return proceedObject;
-  }
 
-  public void setInputStream() {
-    ByteArrayInputStream stream = new ByteArrayInputStream(NULL.getBytes());
-    context.setInputStream(stream);
-  }
+    public void getInputStream() throws IOException {
+        InputStream stream = context.getInputStream();
+        String entity = JaxrsUtil.readFromStream(stream);
+        stream.close();
+        setEntity(entity);
+    }
+
+    public void proceedThrowsIOException() {
+        try {
+            context.proceed();
+            setEntity(NULL);
+        } catch (IOException ioe) {
+            setEntity(IOE);
+        }
+    }
+
+    public Object proceedThrowsWebAppException()
+            throws WebApplicationException, IOException {
+        Object proceedObject = new ExceptionThrowingStringBean(NULL, false);
+        try {
+            proceedObject = context.proceed();
+        } catch (WebApplicationException e) {
+            // Exception has been thrown, message body reader has read nothing
+            // hence we need to set expected value;
+            ((StringBean) proceedObject).set(WAE);
+        }
+        return proceedObject;
+    }
+
+    public void setInputStream() {
+        ByteArrayInputStream stream = new ByteArrayInputStream(NULL.getBytes());
+        context.setInputStream(stream);
+    }
 
 }

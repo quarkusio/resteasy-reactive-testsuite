@@ -29,49 +29,49 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.runtimedelegate.TckRuntimeDelegate;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0038 extends JAXRSDelegateClient0039 {
 
-  private static final long serialVersionUID = -5586431064207012301L;
+    private static final long serialVersionUID = -5586431064207012301L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSClient0038 theTests = new JAXRSClient0038();
-    theTests.run(args);
-  }
-
-  /* Run test */
-  /*
-   * @testName: askForTckRuntimeDelegateGivenBySetInstanceTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:291;JAXRS:JAVADOC:292;
-   * 
-   * @test_Strategy: Set new RuntimeDelegate and check it is TckRuntimeDelegate
-   * 
-   */
-  @org.junit.jupiter.api.Test
-  public void askForTckRuntimeDelegateGivenBySetInstanceTest() throws Fault {
-    RuntimeDelegate original = RuntimeDelegate.getInstance();
-    RuntimeDelegate.setInstance(new TckRuntimeDelegate());
-    try {
-      assertRuntimeDelegate();
-    } finally {
-      RuntimeDelegate.setInstance(original);
-      assertRuntimeDelegate(false);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSClient0038 theTests = new JAXRSClient0038();
+        theTests.run(args);
     }
-  }
 
-  /*
-   * @testName: checkTckRuntimeDelegateIsNotDefaultTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:292;
-   * 
-   * @test_Strategy: Check by default, it is not our RuntimeDelegate
-   */
-  @org.junit.jupiter.api.Test
-  public void checkTckRuntimeDelegateIsNotDefaultTest() throws Fault {
-    assertRuntimeDelegate(false);
-  }
+    /* Run test */
+    /*
+     * @testName: askForTckRuntimeDelegateGivenBySetInstanceTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:291;JAXRS:JAVADOC:292;
+     * 
+     * @test_Strategy: Set new RuntimeDelegate and check it is TckRuntimeDelegate
+     * 
+     */
+    @org.junit.jupiter.api.Test
+    public void askForTckRuntimeDelegateGivenBySetInstanceTest() throws Fault {
+        RuntimeDelegate original = RuntimeDelegate.getInstance();
+        RuntimeDelegate.setInstance(new TckRuntimeDelegate());
+        try {
+            assertRuntimeDelegate();
+        } finally {
+            RuntimeDelegate.setInstance(original);
+            assertRuntimeDelegate(false);
+        }
+    }
+
+    /*
+     * @testName: checkTckRuntimeDelegateIsNotDefaultTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:292;
+     * 
+     * @test_Strategy: Check by default, it is not our RuntimeDelegate
+     */
+    @org.junit.jupiter.api.Test
+    public void checkTckRuntimeDelegateIsNotDefaultTest() throws Fault {
+        assertRuntimeDelegate(false);
+    }
 
 }

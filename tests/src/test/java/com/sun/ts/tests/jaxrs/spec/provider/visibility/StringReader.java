@@ -38,68 +38,68 @@ import javax.ws.rs.ext.Providers;
 @Provider
 @Consumes("text/tck")
 public class StringReader implements MessageBodyReader<String> {
-  private HttpHeaders headers;
+    private HttpHeaders headers;
 
-  private UriInfo info;
+    private UriInfo info;
 
-  private Application application;
+    private Application application;
 
-  private Request request;
+    private Request request;
 
-  private Providers provider;
+    private Providers provider;
 
-  protected StringReader(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request,
-      @Context Providers provider) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-    this.provider = provider;
-  }
+    protected StringReader(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request,
+            @Context Providers provider) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+        this.provider = provider;
+    }
 
-  @Inject
-  public StringReader(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-  }
+    @Inject
+    public StringReader(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+    }
 
-  public StringReader(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-  }
+    public StringReader(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+    }
 
-  public StringReader(@Context HttpHeaders headers, @Context UriInfo info) {
-    super();
-    this.headers = headers;
-    this.info = info;
-  }
+    public StringReader(@Context HttpHeaders headers, @Context UriInfo info) {
+        super();
+        this.headers = headers;
+        this.info = info;
+    }
 
-  public StringReader(@Context HttpHeaders headers) {
-    super();
-    this.headers = headers;
-  }
+    public StringReader(@Context HttpHeaders headers) {
+        super();
+        this.headers = headers;
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == String.class;
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == String.class;
+    }
 
-  @Override
-  public String readFrom(Class<String> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return new HolderClass(headers, info, application, request, provider)
-        .toResponse().getEntity().toString();
-  }
+    @Override
+    public String readFrom(Class<String> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return new HolderClass(headers, info, application, request, provider)
+                .toResponse().getEntity().toString();
+    }
 }

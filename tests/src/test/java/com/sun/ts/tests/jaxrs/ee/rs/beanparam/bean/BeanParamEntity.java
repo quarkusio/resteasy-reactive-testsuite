@@ -25,25 +25,25 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
 public class BeanParamEntity {
-  @CookieParam("bpeCookie")
-  public String bpeCookie;
+    @CookieParam("bpeCookie")
+    public String bpeCookie;
 
-  @FormParam("bpeForm")
-  public String bpeForm;
+    @FormParam("bpeForm")
+    public String bpeForm;
 
-  @HeaderParam("bpeHeader")
-  public String bpeHeader;
+    @HeaderParam("bpeHeader")
+    public String bpeHeader;
 
-  @MatrixParam("bpeMatrix")
-  public String bpeMatrix;
+    @MatrixParam("bpeMatrix")
+    public String bpeMatrix;
 
-  @PathParam("bpePath")
-  public String bpePath;
+    @PathParam("bpePath")
+    public String bpePath;
 
-  @QueryParam("bpeQuery")
-  public String bpeQuery;
+    @QueryParam("bpeQuery")
+    public String bpeQuery;
 
-  // --------------------
-  @BeanParam
-  public InnerBeanParamEntity bpeInner;
+    // --------------------
+    @BeanParam
+    public InnerBeanParamEntity bpeInner;
 }

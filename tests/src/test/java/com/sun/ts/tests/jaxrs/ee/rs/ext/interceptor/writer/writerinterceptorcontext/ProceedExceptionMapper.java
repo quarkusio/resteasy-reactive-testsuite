@@ -20,11 +20,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
 public class ProceedExceptionMapper
-    implements ExceptionMapper<ProceedException> {
+        implements ExceptionMapper<ProceedException> {
 
-  @Override
-  public Response toResponse(ProceedException exception) {
-    return exception.getResponse();
-  }
+    @Override
+    public Response toResponse(ProceedException exception) {
+        return exception.getResponse();
+    }
 
 }

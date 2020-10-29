@@ -30,24 +30,24 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class StringWriter implements MessageBodyWriter<String> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == String.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == String.class;
+    }
 
-  @Override
-  public long getSize(String t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return t.length();
-  }
+    @Override
+    public long getSize(String t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return t.length();
+    }
 
-  @Override
-  public void writeTo(String t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(t.getBytes());
-  }
+    @Override
+    public void writeTo(String t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(t.getBytes());
+    }
 
 }

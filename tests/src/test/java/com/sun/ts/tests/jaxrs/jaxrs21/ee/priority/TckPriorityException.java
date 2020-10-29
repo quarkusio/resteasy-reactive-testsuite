@@ -17,5 +17,5 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.priority;
 
 public class TckPriorityException extends RuntimeException {
-  private static final long serialVersionUID = 21L;
+    private static final long serialVersionUID = 21L;
 }

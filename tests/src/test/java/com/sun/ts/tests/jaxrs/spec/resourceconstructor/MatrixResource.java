@@ -22,14 +22,14 @@ import javax.ws.rs.Path;
 
 @Path("resource/matrix")
 public class MatrixResource {
-  String param;
+    String param;
 
-  public MatrixResource(@MatrixParam("param") String param) {
-    this.param = param;
-  }
+    public MatrixResource(@MatrixParam("param") String param) {
+        this.param = param;
+    }
 
-  @GET
-  public String get() {
-    return param;
-  }
+    @GET
+    public String get() {
+        return param;
+    }
 }

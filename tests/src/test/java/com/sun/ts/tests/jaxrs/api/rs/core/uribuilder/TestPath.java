@@ -16,32 +16,32 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.uribuilder;
 
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 @Path(value = "/TestPath")
 public class TestPath {
 
-  @GET
-  public Response getPlain() {
-    return Response.ok().build();
-  }
+    @GET
+    public Response getPlain() {
+        return Response.ok().build();
+    }
 
-  @Path(value = "/sub")
-  public Response headSub() {
-    return Response.ok().build();
-  }
+    @Path(value = "/sub")
+    public Response headSub() {
+        return Response.ok().build();
+    }
 
-  @Path(value = "sub1")
-  public Response test1() {
-    return Response.ok().build();
-  }
+    @Path(value = "sub1")
+    public Response test1() {
+        return Response.ok().build();
+    }
 
-  @Path(value = "/sub2")
-  public Response test1(@QueryParam("testName") String test) {
-    return Response.ok(test).build();
-  }
+    @Path(value = "/sub2")
+    public Response test1(@QueryParam("testName") String test) {
+        return Response.ok(test).build();
+    }
 
 }

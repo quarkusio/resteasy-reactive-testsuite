@@ -20,9 +20,9 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
 public class InterceptorSingleton {
-  @AroundInvoke
-  public Object around(InvocationContext ctx) throws Exception {
-    String value = (String) ctx.proceed();
-    return value + 5;
-  }
+    @AroundInvoke
+    public Object around(InvocationContext ctx) throws Exception {
+        String value = (String) ctx.proceed();
+        return value + 5;
+    }
 }

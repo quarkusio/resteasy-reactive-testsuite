@@ -17,16 +17,17 @@
 package com.sun.ts.tests.jaxrs.spec.provider.visibility;
 
 import java.util.function.Supplier;
+
+import javax.ws.rs.core.MediaType;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
-import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -46,113 +47,111 @@ public class JAXRSClient0010 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.provider.visibility.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderClass.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderResolver.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.VisibilityException.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.DummyWriter.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.VisibilityExceptionMapper.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.Resource.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.DummyClass.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.visibility.StringReader.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderClass.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.HolderResolver.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.VisibilityException.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.DummyWriter.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.VisibilityExceptionMapper.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.Resource.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.DummyClass.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.visibility.StringReader.class);
                 }
             });
 
+    private static final long serialVersionUID = 1L;
 
-  private static final long serialVersionUID = 1L;
+    public JAXRSClient0010() {
+        setContextRoot("/jaxrs_spec_provider_visibility_web/resource");
+    }
 
-  public JAXRSClient0010() {
-    setContextRoot("/jaxrs_spec_provider_visibility_web/resource");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0010().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0010().run(args);
-  }
+    /* Run test */
+    /*
+     * @testName: contextResolverTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
+     * 
+     * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
+     * MUST have a public constructor for which the JAX-RS runtime can provide all
+     * parameter values.
+     * 
+     * If more than one public constructor can be used then an implementation MUST
+     * use the one with the most parameters
+     */
+    @Test
+    public void contextResolverTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "contextresolver"));
+        setProperty(Property.SEARCH_STRING, HolderClass.OK);
+        invoke();
+    }
 
-  /* Run test */
-  /*
-   * @testName: contextResolverTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
-   * 
-   * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
-   * MUST have a public constructor for which the JAX-RS runtime can provide all
-   * parameter values.
-   * 
-   * If more than one public constructor can be used then an implementation MUST
-   * use the one with the most parameters
-   */
-  @Test
-  public void contextResolverTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "contextresolver"));
-    setProperty(Property.SEARCH_STRING, HolderClass.OK);
-    invoke();
-  }
+    /*
+     * @testName: exceptionMapperTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
+     * 
+     * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
+     * MUST have a public constructor for which the JAX-RS runtime can provide all
+     * parameter values.
+     * 
+     * If more than one public constructor can be used then an implementation MUST
+     * use the one with the most parameters
+     */
+    @Test
+    public void exceptionMapperTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "exceptionmapper"));
+        setProperty(Property.SEARCH_STRING, HolderClass.OK);
+        invoke();
+    }
 
-  /*
-   * @testName: exceptionMapperTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
-   * 
-   * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
-   * MUST have a public constructor for which the JAX-RS runtime can provide all
-   * parameter values.
-   * 
-   * If more than one public constructor can be used then an implementation MUST
-   * use the one with the most parameters
-   */
-  @Test
-  public void exceptionMapperTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "exceptionmapper"));
-    setProperty(Property.SEARCH_STRING, HolderClass.OK);
-    invoke();
-  }
+    /*
+     * @testName: bodyWriterTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
+     * 
+     * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
+     * MUST have a public constructor for which the JAX-RS runtime can provide all
+     * parameter values.
+     * 
+     * If more than one public constructor can be used then an implementation MUST
+     * use the one with the most parameters
+     */
+    @Test
+    public void bodyWriterTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "bodywriter"));
+        setProperty(Property.SEARCH_STRING, HolderClass.OK);
+        invoke();
+    }
 
-  /*
-   * @testName: bodyWriterTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
-   * 
-   * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
-   * MUST have a public constructor for which the JAX-RS runtime can provide all
-   * parameter values.
-   * 
-   * If more than one public constructor can be used then an implementation MUST
-   * use the one with the most parameters
-   */
-  @Test
-  public void bodyWriterTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "bodywriter"));
-    setProperty(Property.SEARCH_STRING, HolderClass.OK);
-    invoke();
-  }
-
-  /*
-   * @testName: bodyReaderTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
-   * 
-   * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
-   * MUST have a public constructor for which the JAX-RS runtime can provide all
-   * parameter values.
-   * 
-   * If more than one public constructor can be used then an implementation MUST
-   * use the one with the most parameters
-   */
-  @Test
-  public void bodyReaderTest() throws Fault {
-    MediaType type = new MediaType("text", "tck");
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "bodyreader"));
-    setProperty(Property.CONTENT, "text");
-    setProperty(Property.REQUEST_HEADERS, buildContentType(type));
-    setProperty(Property.SEARCH_STRING, HolderClass.OK);
-    invoke();
-  }
+    /*
+     * @testName: bodyReaderTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:27; JAXRS:SPEC:28;
+     * 
+     * @test_Strategy: Provider classes are instantiated by the JAX-RS runtime and
+     * MUST have a public constructor for which the JAX-RS runtime can provide all
+     * parameter values.
+     * 
+     * If more than one public constructor can be used then an implementation MUST
+     * use the one with the most parameters
+     */
+    @Test
+    public void bodyReaderTest() throws Fault {
+        MediaType type = new MediaType("text", "tck");
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "bodyreader"));
+        setProperty(Property.CONTENT, "text");
+        setProperty(Property.REQUEST_HEADERS, buildContentType(type));
+        setProperty(Property.SEARCH_STRING, HolderClass.OK);
+        invoke();
+    }
 
 }

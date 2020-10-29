@@ -24,24 +24,24 @@ import javax.ws.rs.ext.InterceptorContext;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 public class InterceptorBodyTwo<CONTEXT extends InterceptorContext>
-    extends TemplateInterceptorBody<CONTEXT> {
+        extends TemplateInterceptorBody<CONTEXT> {
 
-  @Override
-  protected Object operationMethodNotFound(String operation)
-      throws IOException {
-    return proceed();
-  }
+    @Override
+    protected Object operationMethodNotFound(String operation)
+            throws IOException {
+        return proceed();
+    }
 
-  public void getPropertyNames() {
-    Collection<String> names = context.getPropertyNames();
-    setEntity(JaxrsUtil.iterableToString(";", names));
-  }
+    public void getPropertyNames() {
+        Collection<String> names = context.getPropertyNames();
+        setEntity(JaxrsUtil.iterableToString(";", names));
+    }
 
-  public void setProperty() {
-    Object property = context.getProperty(PROPERTY);
-    if (property instanceof StringBuilder)
-      setEntity(property.toString());
-    else
-      setEntity(NULL);
-  }
+    public void setProperty() {
+        Object property = context.getProperty(PROPERTY);
+        if (property instanceof StringBuilder)
+            setEntity(property.toString());
+        else
+            setEntity(NULL);
+    }
 }

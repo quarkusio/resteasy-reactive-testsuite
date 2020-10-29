@@ -36,33 +36,33 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
 @Produces(MediaType.TEXT_PLAIN)
 @Provider
 public class TextPlainStringBeanEntityProvider
-    extends StringBeanEntityProvider {
+        extends StringBeanEntityProvider {
 
-  @Override
-  public long getSize(StringBean t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return super.getSize(t, type, genericType, annotations, mediaType)
-        + MediaType.TEXT_PLAIN_TYPE.getSubtype().length();
-  }
+    @Override
+    public long getSize(StringBean t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return super.getSize(t, type, genericType, annotations, mediaType)
+                + MediaType.TEXT_PLAIN_TYPE.getSubtype().length();
+    }
 
-  @Override
-  public StringBean readFrom(Class<StringBean> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    StringBean bean = super.readFrom(type, genericType, annotations, mediaType,
-        httpHeaders, entityStream);
-    bean.set(bean.get() + MediaType.TEXT_PLAIN_TYPE.getType() + "/");
-    return bean;
-  }
+    @Override
+    public StringBean readFrom(Class<StringBean> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        StringBean bean = super.readFrom(type, genericType, annotations, mediaType,
+                httpHeaders, entityStream);
+        bean.set(bean.get() + MediaType.TEXT_PLAIN_TYPE.getType() + "/");
+        return bean;
+    }
 
-  @Override
-  public void writeTo(StringBean t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    super.writeTo(t, type, genericType, annotations, mediaType, httpHeaders,
-        entityStream);
-    entityStream.write(MediaType.TEXT_PLAIN_TYPE.getSubtype().getBytes());
-  }
+    @Override
+    public void writeTo(StringBean t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        super.writeTo(t, type, genericType, annotations, mediaType, httpHeaders,
+                entityStream);
+        entityStream.write(MediaType.TEXT_PLAIN_TYPE.getSubtype().getBytes());
+    }
 }

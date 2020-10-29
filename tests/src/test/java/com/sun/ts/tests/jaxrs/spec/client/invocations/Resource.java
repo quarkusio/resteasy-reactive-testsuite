@@ -27,24 +27,24 @@ import javax.ws.rs.core.MediaType;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("call")
-  public String invoke() {
-    return Resource.class.getName();
-  }
+    @GET
+    @Path("call")
+    public String invoke() {
+        return Resource.class.getName();
+    }
 
-  @GET
-  @Path("mediatype")
-  public String media(@Context HttpHeaders headers) {
-    List<MediaType> accept = headers.getAcceptableMediaTypes();
-    return acceptableMediaTypesToString(accept).toString();
-  }
+    @GET
+    @Path("mediatype")
+    public String media(@Context HttpHeaders headers) {
+        List<MediaType> accept = headers.getAcceptableMediaTypes();
+        return acceptableMediaTypesToString(accept).toString();
+    }
 
-  private static StringBuilder acceptableMediaTypesToString(
-      List<MediaType> list) {
-    StringBuilder sb = new StringBuilder();
-    for (MediaType type : list)
-      sb.append(type.toString());
-    return sb;
-  }
+    private static StringBuilder acceptableMediaTypesToString(
+            List<MediaType> list) {
+        StringBuilder sb = new StringBuilder();
+        for (MediaType type : list)
+            sb.append(type.toString());
+        return sb;
+    }
 }

@@ -30,34 +30,34 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class EntityWriter implements MessageBodyWriter<LocatorEntity> {
 
-  @Override
-  public long getSize(LocatorEntity t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return 50;
-  }
+    @Override
+    public long getSize(LocatorEntity t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return 50;
+    }
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == LocatorEntity.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == LocatorEntity.class;
+    }
 
-  @Override
-  public void writeTo(LocatorEntity t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    String param;
-    entityStream.write("resMatrix=".getBytes());
-    param = t.resMatrix == null ? "null" : t.resMatrix;
-    entityStream.write(param.getBytes());
-    entityStream.write(";subMatrix=".getBytes());
-    param = t.subMatrix == null ? "null" : t.subMatrix;
-    entityStream.write(param.getBytes());
-    entityStream.write(";entity=".getBytes());
-    param = t.entity == null ? "null" : t.entity;
-    entityStream.write(param.getBytes());
+    @Override
+    public void writeTo(LocatorEntity t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        String param;
+        entityStream.write("resMatrix=".getBytes());
+        param = t.resMatrix == null ? "null" : t.resMatrix;
+        entityStream.write(param.getBytes());
+        entityStream.write(";subMatrix=".getBytes());
+        param = t.subMatrix == null ? "null" : t.subMatrix;
+        entityStream.write(param.getBytes());
+        entityStream.write(";entity=".getBytes());
+        param = t.entity == null ? "null" : t.entity;
+        entityStream.write(param.getBytes());
 
-  }
+    }
 
 }

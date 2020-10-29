@@ -25,16 +25,16 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 public class OnWriteExceptionThrowingStringBean extends StringBean {
 
-  public OnWriteExceptionThrowingStringBean(String header) {
-    super(header);
-  }
+    public OnWriteExceptionThrowingStringBean(String header) {
+        super(header);
+    }
 
-  @Override
-  public String get() {
-    String header = super.get();
-    if (header.equals(TemplateInterceptorBody.WAE))
-      return header;
-    else
-      throw new WebApplicationException(new IOException(header));
-  }
+    @Override
+    public String get() {
+        String header = super.get();
+        if (header.equals(TemplateInterceptorBody.WAE))
+            return header;
+        else
+            throw new WebApplicationException(new IOException(header));
+    }
 }

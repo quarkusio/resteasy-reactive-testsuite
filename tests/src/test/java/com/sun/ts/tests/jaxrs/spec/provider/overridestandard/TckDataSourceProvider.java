@@ -32,63 +32,63 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class TckDataSourceProvider extends AbstractProvider
-    implements MessageBodyReader<DataSource>, MessageBodyWriter<DataSource> {
+        implements MessageBodyReader<DataSource>, MessageBodyWriter<DataSource> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return DataSource.class.isAssignableFrom(type);
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return DataSource.class.isAssignableFrom(type);
+    }
 
-  @Override
-  public long getSize(DataSource t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return getLength();
-  }
+    @Override
+    public long getSize(DataSource t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return getLength();
+    }
 
-  @Override
-  public void writeTo(DataSource t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(t.getName().getBytes());
-    entityStream.write(getWriterName().getBytes());
-  }
+    @Override
+    public void writeTo(DataSource t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(t.getName().getBytes());
+        entityStream.write(getWriterName().getBytes());
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public DataSource readFrom(Class<DataSource> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    DataSource ds = new DataSource() {
+    @Override
+    public DataSource readFrom(Class<DataSource> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        DataSource ds = new DataSource() {
 
-      @Override
-      public OutputStream getOutputStream() throws IOException {
-        return null;
-      }
+            @Override
+            public OutputStream getOutputStream() throws IOException {
+                return null;
+            }
 
-      @Override
-      public String getName() {
-        return getReaderName();
-      }
+            @Override
+            public String getName() {
+                return getReaderName();
+            }
 
-      @Override
-      public InputStream getInputStream() throws IOException {
-        return null;
-      }
+            @Override
+            public InputStream getInputStream() throws IOException {
+                return null;
+            }
 
-      @Override
-      public String getContentType() {
-        return MediaType.WILDCARD;
-      }
-    };
-    return ds;
-  }
+            @Override
+            public String getContentType() {
+                return MediaType.WILDCARD;
+            }
+        };
+        return ds;
+    }
 
 }

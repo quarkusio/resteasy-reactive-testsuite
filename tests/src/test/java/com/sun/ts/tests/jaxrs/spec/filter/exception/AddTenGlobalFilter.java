@@ -23,8 +23,8 @@ import javax.ws.rs.ext.Provider;
 @Priority(200)
 public class AddTenGlobalFilter extends AbstractAddFilter {
 
-  public AddTenGlobalFilter() {
-    super(10000);
-  }
+    public AddTenGlobalFilter() {
+        super(10000);
+    }
 
 }

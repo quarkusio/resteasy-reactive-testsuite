@@ -28,59 +28,59 @@ import javax.ws.rs.core.UriInfo;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("setmethod")
-  public Response setMethod() {
-    return createResponseWithHeader();
-  }
+    @GET
+    @Path("setmethod")
+    public Response setMethod() {
+        return createResponseWithHeader();
+    }
 
-  @GET
-  @Path("setrequesturi1")
-  public Response setRequestUri1() {
-    return createResponseWithHeader();
-  }
+    @GET
+    @Path("setrequesturi1")
+    public Response setRequestUri1() {
+        return createResponseWithHeader();
+    }
 
-  @GET
-  @Path("setrequesturi2")
-  public Response setRequestUri2() {
-    return createResponseWithHeader();
-  }
+    @GET
+    @Path("setrequesturi2")
+    public Response setRequestUri2() {
+        return createResponseWithHeader();
+    }
 
-  @GET
-  @Path("abortwith")
-  public Response abortWith() {
-    return createResponseWithHeader();
-  }
+    @GET
+    @Path("abortwith")
+    public Response abortWith() {
+        return createResponseWithHeader();
+    }
 
-  @GET
-  @Path("setentitystream")
-  public Response setEntityStream() {
-    return createResponseWithHeader();
-  }
+    @GET
+    @Path("setentitystream")
+    public Response setEntityStream() {
+        return createResponseWithHeader();
+    }
 
-  @GET
-  @Path("setsecuritycontext")
-  public Response setSecurityContext() {
-    return createResponseWithHeader();
-  }
+    @GET
+    @Path("setsecuritycontext")
+    public Response setSecurityContext() {
+        return createResponseWithHeader();
+    }
 
-  // //////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
-  @Context
-  UriInfo info;
+    @Context
+    UriInfo info;
 
-  private Response createResponseWithHeader() {
-    // get value of @Path(value)
-    List<PathSegment> segments = info.getPathSegments();
-    PathSegment last = segments.get(segments.size() - 1);
-    // convert the value to ContextOperation
-    ContextOperation op = ContextOperation
-        .valueOf(last.getPath().toUpperCase());
-    Response.ResponseBuilder builder = Response.ok();
-    // set a header with ContextOperation so that the filter knows what to
-    // do
-    builder = builder.header(TemplateFilter.OPERATION, op.name());
-    return builder.build();
-  }
+    private Response createResponseWithHeader() {
+        // get value of @Path(value)
+        List<PathSegment> segments = info.getPathSegments();
+        PathSegment last = segments.get(segments.size() - 1);
+        // convert the value to ContextOperation
+        ContextOperation op = ContextOperation
+                .valueOf(last.getPath().toUpperCase());
+        Response.ResponseBuilder builder = Response.ok();
+        // set a header with ContextOperation so that the filter knows what to
+        // do
+        builder = builder.header(TemplateFilter.OPERATION, op.name());
+        return builder.build();
+    }
 
 }

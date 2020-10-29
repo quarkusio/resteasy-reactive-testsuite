@@ -25,13 +25,13 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Target({ ElementType.FIELD, ElementType.TYPE, ElementType.CONSTRUCTOR,
-    ElementType.PARAMETER, ElementType.METHOD })
+        ElementType.PARAMETER, ElementType.METHOD })
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = NotFiveNorShortStringBeanValidator.class)
 public @interface NotFiveNorShort {
-  String message() default "{com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.NotFiveNorShort.message}";
+    String message() default "{com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.NotFiveNorShort.message}";
 
-  Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-  Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 }

@@ -22,8 +22,8 @@ import javax.ws.rs.QueryParam;
 
 @Path("converter")
 public class ParamConverterResource {
-  @GET
-  public String get(@QueryParam("id") String id) {
-    return id;
-  }
+    @GET
+    public String get(@QueryParam("id") String id) {
+        return id;
+    }
 }

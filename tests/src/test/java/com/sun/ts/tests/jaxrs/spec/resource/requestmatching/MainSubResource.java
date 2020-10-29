@@ -25,49 +25,49 @@ import javax.ws.rs.core.MediaType;
 
 @Path("resource/subresource")
 public class MainSubResource {
-  public static final String ID = "subresource";
+    public static final String ID = "subresource";
 
-  @GET
-  public String subresource() {
-    return this.getClass().getSimpleName();
-  }
+    @GET
+    public String subresource() {
+        return this.getClass().getSimpleName();
+    }
 
-  @POST
-  @Path("sub")
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  public String sub() {
-    return this.getClass().getSimpleName();
-  }
+    @POST
+    @Path("sub")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String sub() {
+        return this.getClass().getSimpleName();
+    }
 
-  @GET
-  @Path("{id}")
-  public String neverHere() {
-    return ID;
-  }
+    @GET
+    @Path("{id}")
+    public String neverHere() {
+        return ID;
+    }
 
-  @POST
-  @Path("consumes")
-  @Consumes(MediaType.TEXT_PLAIN)
-  public String consumes() {
-    return getClass().getSimpleName();
-  }
+    @POST
+    @Path("consumes")
+    @Consumes(MediaType.TEXT_PLAIN)
+    public String consumes() {
+        return getClass().getSimpleName();
+    }
 
-  @Path("consumeslocator")
-  public AnotherResourceLocator consumeslocator() {
-    return new AnotherResourceLocator();
-  }
+    @Path("consumeslocator")
+    public AnotherResourceLocator consumeslocator() {
+        return new AnotherResourceLocator();
+    }
 
-  @POST
-  @Path("produces")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String produces() {
-    return getClass().getSimpleName();
-  }
+    @POST
+    @Path("produces")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String produces() {
+        return getClass().getSimpleName();
+    }
 
-  @Path("produceslocator")
-  public AnotherResourceLocator produceslocator() {
-    return new AnotherResourceLocator();
-  }
+    @Path("produceslocator")
+    public AnotherResourceLocator produceslocator() {
+        return new AnotherResourceLocator();
+    }
 
 }

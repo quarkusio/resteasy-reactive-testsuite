@@ -17,14 +17,15 @@
 package com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature;
 
 import java.util.function.Supplier;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -46,78 +47,76 @@ public class JAXRSClient0022 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AbstractAddFilter.class
-                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddDynamicFeature.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AbstractAddInterceptor.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddOneInterceptor.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.Resource.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddTenFilter.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AbstractAddFilter.class,
+                                    com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddDynamicFeature.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AbstractAddInterceptor.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddOneInterceptor.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.Resource.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature.AddTenFilter.class);
                 }
             });
 
+    private static final long serialVersionUID = 1177743379402950754L;
 
-  private static final long serialVersionUID = 1177743379402950754L;
+    public JAXRSClient0022() {
+        setContextRoot("/jaxrs_spec_filter_dynamicfeature_web/resource");
+    }
 
-  public JAXRSClient0022() {
-    setContextRoot("/jaxrs_spec_filter_dynamicfeature_web/resource");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0022().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0022().run(args);
-  }
+    /* Run test */
 
-  /* Run test */
+    /*
+     * @testName: noBindingTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:987;
+     * 
+     * @test_Strategy: When a filter or interceptor method throws an exception,
+     * the JAX-RS runtime will attempt to map the exception
+     * 
+     * If a web resource had been matched before the exception was thrown, then
+     * all the filters in the ContainerResponse chain for that resource MUST be
+     * invoked;
+     * 
+     */
+    @Test
+    public void noBindingTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "nobinding"));
+        setProperty(Property.CONTENT, "0");
+        setProperty(Property.SEARCH_STRING, "0");
+        invoke();
+        logMsg(
+                "Dynamic Bynding did not bind any filter or interceptor as expected");
+    }
 
-  /*
-   * @testName: noBindingTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:987;
-   * 
-   * @test_Strategy: When a filter or interceptor method throws an exception,
-   * the JAX-RS runtime will attempt to map the exception
-   * 
-   * If a web resource had been matched before the exception was thrown, then
-   * all the filters in the ContainerResponse chain for that resource MUST be
-   * invoked;
-   * 
-   */
-  @Test
-  public void noBindingTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "nobinding"));
-    setProperty(Property.CONTENT, "0");
-    setProperty(Property.SEARCH_STRING, "0");
-    invoke();
-    logMsg(
-        "Dynamic Bynding did not bind any filter or interceptor as expected");
-  }
-
-  /*
-   * @testName: dynamicBindingTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:987;
-   * 
-   * @test_Strategy: When a filter or interceptor method throws an exception,
-   * the JAX-RS runtime will attempt to map the exception
-   * 
-   * If a web resource had been matched before the exception was thrown, then
-   * all the filters in the ContainerResponse chain for that resource MUST be
-   * invoked;
-   * 
-   */
-  @Test
-  public void dynamicBindingTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "dynamic"));
-    setProperty(Property.CONTENT, "0");
-    setProperty(Property.SEARCH_STRING, "12");
-    invoke();
-    logMsg("Dynamic feature bound filter and interceptor as expected");
-  }
+    /*
+     * @testName: dynamicBindingTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:987;
+     * 
+     * @test_Strategy: When a filter or interceptor method throws an exception,
+     * the JAX-RS runtime will attempt to map the exception
+     * 
+     * If a web resource had been matched before the exception was thrown, then
+     * all the filters in the ContainerResponse chain for that resource MUST be
+     * invoked;
+     * 
+     */
+    @Test
+    public void dynamicBindingTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "dynamic"));
+        setProperty(Property.CONTENT, "0");
+        setProperty(Property.SEARCH_STRING, "12");
+        invoke();
+        logMsg("Dynamic feature bound filter and interceptor as expected");
+    }
 }

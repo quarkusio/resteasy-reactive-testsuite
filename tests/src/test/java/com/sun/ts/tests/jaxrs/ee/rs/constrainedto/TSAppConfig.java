@@ -23,13 +23,13 @@ import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(ClientSideReader.class); // test this is not used
-    resources.add(ServerSideReader.class); // this one only should be used
-    resources.add(ClientSideWriter.class); // this is not used
-    resources.add(ServerSideWriter.class); // this one would be used
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(ClientSideReader.class); // test this is not used
+        resources.add(ServerSideReader.class); // this one only should be used
+        resources.add(ClientSideWriter.class); // this is not used
+        resources.add(ServerSideWriter.class); // this one would be used
+        return resources;
+    }
 }

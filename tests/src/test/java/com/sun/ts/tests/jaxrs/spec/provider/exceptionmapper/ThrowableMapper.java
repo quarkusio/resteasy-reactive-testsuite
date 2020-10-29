@@ -23,9 +23,9 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class ThrowableMapper implements ExceptionMapper<Throwable> {
 
-  @Override
-  public Response toResponse(Throwable exception) {
-    return Response.ok(getClass().getName()).build();
-  }
+    @Override
+    public Response toResponse(Throwable exception) {
+        return Response.ok(getClass().getName()).build();
+    }
 
 }

@@ -33,23 +33,23 @@ import javax.ws.rs.ext.Provider;
 @ConstrainedTo(value = RuntimeType.SERVER)
 public class ServerSideReader implements MessageBodyReader<String> {
 
-  public static final String FAKE_MESSAGE = "The fake reader on server side";
+    public static final String FAKE_MESSAGE = "The fake reader on server side";
 
-  public static final MediaType MEDIA_TYPE = new MediaType("reader",
-      "serverside");
+    public static final MediaType MEDIA_TYPE = new MediaType("reader",
+            "serverside");
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return mediaType.equals(MEDIA_TYPE);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return mediaType.equals(MEDIA_TYPE);
+    }
 
-  @Override
-  public String readFrom(Class<String> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return FAKE_MESSAGE;
-  }
+    @Override
+    public String readFrom(Class<String> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return FAKE_MESSAGE;
+    }
 
 }

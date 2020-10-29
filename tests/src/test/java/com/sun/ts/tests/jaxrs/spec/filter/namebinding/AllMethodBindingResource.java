@@ -23,16 +23,16 @@ import javax.ws.rs.Path;
 @SingleNameBinding
 public class AllMethodBindingResource {
 
-  @GET
-  @Path("hundred")
-  public String getHundred() {
-    return "100";
-  }
+    @GET
+    @Path("hundred")
+    public String getHundred() {
+        return "100";
+    }
 
-  @GET
-  @Path("thousand")
-  @ComplementNameBinding
-  public String getThousand() {
-    return "1000";
-  }
+    @GET
+    @Path("thousand")
+    @ComplementNameBinding
+    public String getThousand() {
+        return "1000";
+    }
 }

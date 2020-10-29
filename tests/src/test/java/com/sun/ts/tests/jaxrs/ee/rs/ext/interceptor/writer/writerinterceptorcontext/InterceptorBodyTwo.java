@@ -24,30 +24,30 @@ import javax.ws.rs.ext.WriterInterceptorContext;
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 
 public class InterceptorBodyTwo
-    extends TemplateInterceptorBody<WriterInterceptorContext> {
-  @Override
-  protected Object operationMethodNotFound(String operation)
-      throws IOException {
-    return proceed();
-  }
+        extends TemplateInterceptorBody<WriterInterceptorContext> {
+    @Override
+    protected Object operationMethodNotFound(String operation)
+            throws IOException {
+        return proceed();
+    }
 
-  public void getHeadersIsMutable() {
-    MultivaluedMap<String, Object> headers = context.getHeaders();
-    Object o = headers.getFirst(PROPERTY);
-    assertTrue(o != null, PROPERTY, "header NOT found");
-    setEntity(o);
-  }
+    public void getHeadersIsMutable() {
+        MultivaluedMap<String, Object> headers = context.getHeaders();
+        Object o = headers.getFirst(PROPERTY);
+        assertTrue(o != null, PROPERTY, "header NOT found");
+        setEntity(o);
+    }
 
-  public void proceedThrowsIOException() throws IOException {
-    throw new IOException("Interceptor test IoException");
-  }
+    public void proceedThrowsIOException() throws IOException {
+        throw new IOException("Interceptor test IoException");
+    }
 
-  public void proceedThrowsWebAppException() throws IOException {
-    context.proceed();
-  }
+    public void proceedThrowsWebAppException() throws IOException {
+        context.proceed();
+    }
 
-  public void setEntity() {
-    Object entity = context.getEntity();
-    setEntity(entity);
-  }
+    public void setEntity() {
+        Object entity = context.getEntity();
+        setEntity(entity);
+    }
 }

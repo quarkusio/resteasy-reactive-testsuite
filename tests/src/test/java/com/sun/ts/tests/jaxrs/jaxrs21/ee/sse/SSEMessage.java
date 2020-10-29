@@ -17,5 +17,5 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse;
 
 public interface SSEMessage {
-  public static final String MESSAGE = "some_ServiceUnavailableEndpoint_message";
+    public static final String MESSAGE = "some_ServiceUnavailableEndpoint_message";
 }

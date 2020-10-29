@@ -27,9 +27,9 @@ import javax.ws.rs.core.MediaType;
 @Path("interfaceresource")
 public interface ResourceInterface {
 
-  @Consumes(MediaType.TEXT_PLAIN)
-  @Produces(MediaType.TEXT_PLAIN)
-  @Path("get")
-  @GET
-  String get(@DefaultValue("interface") @FormParam(value = "xyz") String param);
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("get")
+    @GET
+    String get(@DefaultValue("interface") @FormParam(value = "xyz") String param);
 }

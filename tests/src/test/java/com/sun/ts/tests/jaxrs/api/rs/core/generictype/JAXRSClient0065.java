@@ -34,156 +34,156 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0065 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0065().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: constructorWithTypeTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:774; JAXRS:JAVADOC:775; JAXRS:JAVADOC:776;
-   * 
-   * @test_Strategy: Constructs a new generic type, supplying the generic type
-   * information and deriving the class.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithTypeTest() throws Fault {
-    Method method = null;
-    try {
-      // obtain the correct return type
-      method = getClass().getMethod("dummyMethod");
-    } catch (Exception e) {
-      throw new Fault(e);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0065().run(args);
     }
 
-    GenericType<List<String>> type = new GenericType<List<String>>(
-        method.getReturnType());
-    assertFault(type != null, "Could not create a GenericType instance");
-    assertFault(type.getRawType().isAssignableFrom(ArrayList.class),
-        type.getRawType(), "!=", List.class);
-    assertFault(type.getType().toString().contains(ArrayList.class.getName()),
-        type.getType(), "!=", ArrayList.class);
-    logMsg("Succesfully created GenericType<ArrayList<String>>(Type) instance");
-  }
+    /* Run test */
 
-  // * NEED for reflection in constructorWith2ArgsTest */
-  public ArrayList<String> dummyMethod() {
-    return null;
-  }
+    /*
+     * @testName: constructorWithTypeTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:774; JAXRS:JAVADOC:775; JAXRS:JAVADOC:776;
+     * 
+     * @test_Strategy: Constructs a new generic type, supplying the generic type
+     * information and deriving the class.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithTypeTest() throws Fault {
+        Method method = null;
+        try {
+            // obtain the correct return type
+            method = getClass().getMethod("dummyMethod");
+        } catch (Exception e) {
+            throw new Fault(e);
+        }
 
-  /*
-   * @testName: constructorProtectedTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:774; JAXRS:JAVADOC:775; JAXRS:JAVADOC:776;
-   * 
-   * @test_Strategy: Constructs a new generic type, deriving the generic type
-   * and class from type parameter.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorProtectedTest() throws Fault {
-    GenericType<TreeSet<String>> type = new GenericType<TreeSet<String>>() {
-    };
-    assertFault(type != null, "Could not create a GenericType instance");
-    assertFault(type.getRawType().isAssignableFrom(TreeSet.class),
-        type.getRawType(), "!=", Set.class);
-    assertFault(type.getType().toString().contains(TreeSet.class.getName()),
-        type.getType(), "!=", TreeSet.class);
-    logMsg("Succesfully created GenericType<TreeSet<String>>(){} instance");
-  }
+        GenericType<List<String>> type = new GenericType<List<String>>(
+                method.getReturnType());
+        assertFault(type != null, "Could not create a GenericType instance");
+        assertFault(type.getRawType().isAssignableFrom(ArrayList.class),
+                type.getRawType(), "!=", List.class);
+        assertFault(type.getType().toString().contains(ArrayList.class.getName()),
+                type.getType(), "!=", ArrayList.class);
+        logMsg("Succesfully created GenericType<ArrayList<String>>(Type) instance");
+    }
 
-  /*
-   * @testName: equalsTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:773;
-   * 
-   * @test_Strategy: Two GenericType<TreeSet<String>> must be the equal
-   */
-  @org.junit.jupiter.api.Test
-  public void equalsTest() throws Fault {
-    GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
-    };
-    GenericType<TreeSet<String>> type2 = new GenericType<TreeSet<String>>() {
-    };
-    GenericType<Set<String>> type3 = new GenericType<Set<String>>() {
-    };
+    // * NEED for reflection in constructorWith2ArgsTest */
+    public ArrayList<String> dummyMethod() {
+        return null;
+    }
 
-    assertFault(type1.equals(type1),
-        "GenericType<TreeSet<String>> is not equal itself");
-    assertFault(type2.equals(type2),
-        "GenericType<TreeSet<String>> is not equal itself");
-    assertFault(type1.equals(type2),
-        "GenericType<TreeSet<String>> is not equal GenericType<TreeSet<String>>");
-    assertFault(type2.equals(type1),
-        "GenericType<TreeSet<String>> is not equal GenericType<TreeSet<String>>");
-    assertFault(!type3.equals(type1),
-        "GenericType<Set<String>> is equal GenericType<TreeSet<String>>");
-    logMsg("The tested GenericType<TreeSet<String>> instances are equal");
-  }
+    /*
+     * @testName: constructorProtectedTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:774; JAXRS:JAVADOC:775; JAXRS:JAVADOC:776;
+     * 
+     * @test_Strategy: Constructs a new generic type, deriving the generic type
+     * and class from type parameter.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorProtectedTest() throws Fault {
+        GenericType<TreeSet<String>> type = new GenericType<TreeSet<String>>() {
+        };
+        assertFault(type != null, "Could not create a GenericType instance");
+        assertFault(type.getRawType().isAssignableFrom(TreeSet.class),
+                type.getRawType(), "!=", Set.class);
+        assertFault(type.getType().toString().contains(TreeSet.class.getName()),
+                type.getType(), "!=", TreeSet.class);
+        logMsg("Succesfully created GenericType<TreeSet<String>>(){} instance");
+    }
 
-  /*
-   * @testName: hashCodeTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:777;
-   * 
-   * @test_Strategy: hashCode of two GenericType<TreeSet<String>> must be the
-   * same
-   */
-  @org.junit.jupiter.api.Test
-  public void hashCodeTest() throws Fault {
-    GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
-    };
-    GenericType<TreeSet<String>> type2 = new GenericType<TreeSet<String>>() {
-    };
-    GenericType<Set<String>> type3 = new GenericType<Set<String>>() {
-    };
+    /*
+     * @testName: equalsTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:773;
+     * 
+     * @test_Strategy: Two GenericType<TreeSet<String>> must be the equal
+     */
+    @org.junit.jupiter.api.Test
+    public void equalsTest() throws Fault {
+        GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
+        };
+        GenericType<TreeSet<String>> type2 = new GenericType<TreeSet<String>>() {
+        };
+        GenericType<Set<String>> type3 = new GenericType<Set<String>>() {
+        };
 
-    assertFault(type1.hashCode() == type1.hashCode(),
-        "HashCode of itself is random");
-    assertFault(type2.hashCode() == type2.hashCode(),
-        "HashCode of itself is random");
-    assertFault(type1.hashCode() == type2.hashCode(),
-        "Both GenericType instances should have the same hashCode");
-    assertFault(type1.hashCode() != type3.hashCode(),
-        "GenericType<Set<String>>.hashCode()==GenericType<TreeSet<String>>.hashCode()");
+        assertFault(type1.equals(type1),
+                "GenericType<TreeSet<String>> is not equal itself");
+        assertFault(type2.equals(type2),
+                "GenericType<TreeSet<String>> is not equal itself");
+        assertFault(type1.equals(type2),
+                "GenericType<TreeSet<String>> is not equal GenericType<TreeSet<String>>");
+        assertFault(type2.equals(type1),
+                "GenericType<TreeSet<String>> is not equal GenericType<TreeSet<String>>");
+        assertFault(!type3.equals(type1),
+                "GenericType<Set<String>> is equal GenericType<TreeSet<String>>");
+        logMsg("The tested GenericType<TreeSet<String>> instances are equal");
+    }
 
-    logMsg("Both GenericType instances have the same hashCode()");
-  }
+    /*
+     * @testName: hashCodeTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:777;
+     * 
+     * @test_Strategy: hashCode of two GenericType<TreeSet<String>> must be the
+     * same
+     */
+    @org.junit.jupiter.api.Test
+    public void hashCodeTest() throws Fault {
+        GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
+        };
+        GenericType<TreeSet<String>> type2 = new GenericType<TreeSet<String>>() {
+        };
+        GenericType<Set<String>> type3 = new GenericType<Set<String>>() {
+        };
 
-  /*
-   * @testName: toStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:778;
-   * 
-   * @test_Strategy: toString of two GenericType<TreeSet<String>> must be the
-   * same
-   */
-  @org.junit.jupiter.api.Test
-  public void toStringTest() throws Fault {
-    GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
-    };
-    GenericType<TreeSet<String>> type2 = new GenericType<TreeSet<String>>() {
-    };
-    GenericType<Set<String>> type3 = new GenericType<Set<String>>() {
-    };
+        assertFault(type1.hashCode() == type1.hashCode(),
+                "HashCode of itself is random");
+        assertFault(type2.hashCode() == type2.hashCode(),
+                "HashCode of itself is random");
+        assertFault(type1.hashCode() == type2.hashCode(),
+                "Both GenericType instances should have the same hashCode");
+        assertFault(type1.hashCode() != type3.hashCode(),
+                "GenericType<Set<String>>.hashCode()==GenericType<TreeSet<String>>.hashCode()");
 
-    assertFault(type1.toString().equals(type1.toString()),
-        "toString() of itself is random");
-    assertFault(type2.toString().equals(type2.toString()),
-        "toString() of itself is random");
-    assertFault(type1.toString().equals(type2.toString()),
-        "Both GenericType instances should have the same toString()");
-    assertFault(!type1.toString().equals(type3.toString()),
-        "GenericType<Set<String>>.toString()==GenericType<TreeSet<String>>.toString()");
+        logMsg("Both GenericType instances have the same hashCode()");
+    }
 
-    logMsg("Both GenericType instances have the same toString()", type1);
-  }
+    /*
+     * @testName: toStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:778;
+     * 
+     * @test_Strategy: toString of two GenericType<TreeSet<String>> must be the
+     * same
+     */
+    @org.junit.jupiter.api.Test
+    public void toStringTest() throws Fault {
+        GenericType<TreeSet<String>> type1 = new GenericType<TreeSet<String>>() {
+        };
+        GenericType<TreeSet<String>> type2 = new GenericType<TreeSet<String>>() {
+        };
+        GenericType<Set<String>> type3 = new GenericType<Set<String>>() {
+        };
+
+        assertFault(type1.toString().equals(type1.toString()),
+                "toString() of itself is random");
+        assertFault(type2.toString().equals(type2.toString()),
+                "toString() of itself is random");
+        assertFault(type1.toString().equals(type2.toString()),
+                "Both GenericType instances should have the same toString()");
+        assertFault(!type1.toString().equals(type3.toString()),
+                "GenericType<Set<String>>.toString()==GenericType<TreeSet<String>>.toString()");
+
+        logMsg("Both GenericType instances have the same toString()", type1);
+    }
 }

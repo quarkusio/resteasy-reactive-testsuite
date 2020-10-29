@@ -29,26 +29,26 @@ import javax.ws.rs.ext.MessageBodyWriter;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritableEntity;
 
 public class EntityMessageWriter
-    implements MessageBodyWriter<ReadableWritableEntity> {
+        implements MessageBodyWriter<ReadableWritableEntity> {
 
-  @Override
-  public long getSize(ReadableWritableEntity t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return t.toXmlString().length();
-  }
+    @Override
+    public long getSize(ReadableWritableEntity t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return t.toXmlString().length();
+    }
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return ReadableWritableEntity.class.isAssignableFrom(type);
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return ReadableWritableEntity.class.isAssignableFrom(type);
+    }
 
-  @Override
-  public void writeTo(ReadableWritableEntity t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(t.toXmlString().getBytes());
-  }
+    @Override
+    public void writeTo(ReadableWritableEntity t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(t.toXmlString().getBytes());
+    }
 
 }

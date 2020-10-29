@@ -16,25 +16,25 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder;
 
-import java.util.function.Supplier;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.annotation.Annotation;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.function.Supplier;
 
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -53,82 +53,80 @@ public class JAXRSClient0130 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.AnnotatedClass.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.DateContainerReaderWriter.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.Resource.class
-                            , DateClientReaderWriter.class
-                            );
+                                    com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.AnnotatedClass.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.DateContainerReaderWriter.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.core.responsebuilder.Resource.class,
+                                    DateClientReaderWriter.class);
                 }
             });
 
+    private static final long serialVersionUID = 1L;
 
-  private static final long serialVersionUID = 1L;
-
-  public JAXRSClient0130() {
-    setContextRoot("/jaxrs_ee_core_responsebuilder_web/resource");
-  }
-
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0130().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: entityObjectTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:879;
-   * 
-   * @test_Strategy: Set the message entity content encoding.
-   */
-  @Test
-  public void entityObjectTest() throws Fault {
-    Date date = Calendar.getInstance().getTime();
-    String entity = DateContainerReaderWriter.dateToString(date);
-    StringBuilder sb = new StringBuilder();
-    DateClientReaderWriter rw = new DateClientReaderWriter(sb);
-    addProvider(rw);
-
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "entity"));
-    setProperty(Property.CONTENT, entity);
-    invoke();
-
-    Response response = getResponse();
-    Date responseDate = response.readEntity(Date.class);
-    assertFault(date.equals(responseDate), "entity date", date,
-        "differs from acquired", responseDate);
-
-    Annotation[] annotations = AnnotatedClass.class.getAnnotations();
-    for (Annotation annotation : annotations) {
-      String name = annotation.annotationType().getName();
-      assertFault(sb.toString().contains(name), sb, "does not contain", name,
-          ", annotations not passed to MessageBodyWriter?");
+    public JAXRSClient0130() {
+        setContextRoot("/jaxrs_ee_core_responsebuilder_web/resource");
     }
-  }
 
-  // ////////////////////////////////////////////////////////////////////
-  protected <T> GenericType<T> generic(Class<T> clazz) {
-    return new GenericType<T>(clazz);
-  }
-
-  protected String readLine(Reader reader) throws Fault {
-    String line = null;
-    BufferedReader buffered = new BufferedReader(reader);
-    try {
-      line = buffered.readLine();
-    } catch (IOException e) {
-      try {
-        buffered.close();
-      } catch (IOException ie) {
-      }
-      throw new Fault(e);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0130().run(args);
     }
-    return line;
-  }
+
+    /* Run test */
+
+    /*
+     * @testName: entityObjectTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:879;
+     * 
+     * @test_Strategy: Set the message entity content encoding.
+     */
+    @Test
+    public void entityObjectTest() throws Fault {
+        Date date = Calendar.getInstance().getTime();
+        String entity = DateContainerReaderWriter.dateToString(date);
+        StringBuilder sb = new StringBuilder();
+        DateClientReaderWriter rw = new DateClientReaderWriter(sb);
+        addProvider(rw);
+
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "entity"));
+        setProperty(Property.CONTENT, entity);
+        invoke();
+
+        Response response = getResponse();
+        Date responseDate = response.readEntity(Date.class);
+        assertFault(date.equals(responseDate), "entity date", date,
+                "differs from acquired", responseDate);
+
+        Annotation[] annotations = AnnotatedClass.class.getAnnotations();
+        for (Annotation annotation : annotations) {
+            String name = annotation.annotationType().getName();
+            assertFault(sb.toString().contains(name), sb, "does not contain", name,
+                    ", annotations not passed to MessageBodyWriter?");
+        }
+    }
+
+    // ////////////////////////////////////////////////////////////////////
+    protected <T> GenericType<T> generic(Class<T> clazz) {
+        return new GenericType<T>(clazz);
+    }
+
+    protected String readLine(Reader reader) throws Fault {
+        String line = null;
+        BufferedReader buffered = new BufferedReader(reader);
+        try {
+            line = buffered.readLine();
+        } catch (IOException e) {
+            try {
+                buffered.close();
+            } catch (IOException ie) {
+            }
+            throw new Fault(e);
+        }
+        return line;
+    }
 }

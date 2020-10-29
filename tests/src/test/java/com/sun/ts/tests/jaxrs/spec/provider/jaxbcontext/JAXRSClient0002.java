@@ -18,18 +18,18 @@ package com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext;
 
 import java.util.function.Supplier;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
+import javax.ws.rs.core.MediaType;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
 
-
-import javax.ws.rs.core.MediaType;
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -50,57 +50,55 @@ public class JAXRSClient0002 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.Resource.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeJaxbContext.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.TckJaxbProvider.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeUnmarshaller.class        
-                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.JaxbContextProvider.class
-                            , com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeMarshaller.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.Resource.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeJaxbContext.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.TckJaxbProvider.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeUnmarshaller.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.JaxbContextProvider.class,
+                                    com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext.SomeMarshaller.class);
                 }
             });
 
+    private static final long serialVersionUID = 1L;
 
-  private static final long serialVersionUID = 1L;
+    public JAXRSClient0002() {
+        setContextRoot("/jaxrs_spec_provider_jaxbcontext_web/resource");
+    }
 
-  public JAXRSClient0002() {
-    setContextRoot("/jaxrs_spec_provider_jaxbcontext_web/resource");
-  }
+    private void setPropertyAndInvoke(String resourceMethod) throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, resourceMethod));
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.APPLICATION_XML_TYPE));
+        setProperty(Property.SEARCH_STRING, SomeUnmarshaller.class.getSimpleName());
+        setProperty(Property.SEARCH_STRING, SomeMarshaller.class.getSimpleName());
+        setProperty(Property.CONTENT, "anything");
+        invoke();
+    }
 
-  private void setPropertyAndInvoke(String resourceMethod) throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, resourceMethod));
-    setProperty(Property.REQUEST_HEADERS,
-        buildContentType(MediaType.APPLICATION_XML_TYPE));
-    setProperty(Property.SEARCH_STRING, SomeUnmarshaller.class.getSimpleName());
-    setProperty(Property.SEARCH_STRING, SomeMarshaller.class.getSimpleName());
-    setProperty(Property.CONTENT, "anything");
-    invoke();
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0002().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0002().run(args);
-  }
-
-  /* Run test */
-  /*
-   * @testName: readWriteProviderTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:34
-   * 
-   * @test_Strategy: The implementation-supplied entity provider(s) for
-   * javax.xml.bind.JAXBElement and application supplied JAXB classes MUST use
-   * JAXBContext instances provided by application-supplied context resolvers,
-   * see Section 4.3.
-   */
-  @Test
-  public void readWriteProviderTest() throws Fault {
-    setPropertyAndInvoke("jaxb");
-  }
+    /* Run test */
+    /*
+     * @testName: readWriteProviderTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:34
+     * 
+     * @test_Strategy: The implementation-supplied entity provider(s) for
+     * javax.xml.bind.JAXBElement and application supplied JAXB classes MUST use
+     * JAXBContext instances provided by application-supplied context resolvers,
+     * see Section 4.3.
+     */
+    @Test
+    public void readWriteProviderTest() throws Fault {
+        setPropertyAndInvoke("jaxb");
+    }
 
 }

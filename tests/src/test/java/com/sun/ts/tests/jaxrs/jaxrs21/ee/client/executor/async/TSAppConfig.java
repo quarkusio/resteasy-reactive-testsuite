@@ -24,10 +24,10 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("/")
 public class TSAppConfig extends Application {
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources
-        .add(com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.Resource.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources
+                .add(com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.Resource.class);
+        return resources;
+    }
 }

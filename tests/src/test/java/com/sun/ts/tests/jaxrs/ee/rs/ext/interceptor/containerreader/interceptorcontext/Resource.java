@@ -29,18 +29,18 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 @Path("resource")
 public class Resource {
 
-  @POST
-  @Path("string")
-  public String post(@NotNull @Size(min = 2) String entity) {
-    return entity;
-  }
+    @POST
+    @Path("string")
+    public String post(@NotNull @Size(min = 2) String entity) {
+        return entity;
+    }
 
-  @POST
-  @Path("inputstreamreader")
-  public String post(InputStreamReader reader) throws IOException {
-    String entity = JaxrsUtil.readFromReader(reader);
-    reader.close();
-    return entity;
-  }
+    @POST
+    @Path("inputstreamreader")
+    public String post(InputStreamReader reader) throws IOException {
+        String entity = JaxrsUtil.readFromReader(reader);
+        reader.close();
+        return entity;
+    }
 
 }

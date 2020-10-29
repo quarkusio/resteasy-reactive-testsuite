@@ -21,8 +21,8 @@ import javax.ws.rs.Path;
 
 @Path("")
 public class EmptyResource {
-  @GET
-  public String empty() {
-    return this.getClass().getSimpleName();
-  }
+    @GET
+    public String empty() {
+        return this.getClass().getSimpleName();
+    }
 }

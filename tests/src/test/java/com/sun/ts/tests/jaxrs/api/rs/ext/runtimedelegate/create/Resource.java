@@ -21,8 +21,8 @@ import javax.ws.rs.Path;
 
 @Path("resource")
 public class Resource {
-  @GET
-  public String neverCalledMethod() {
-    return null;
-  }
+    @GET
+    public String neverCalledMethod() {
+        return null;
+    }
 }

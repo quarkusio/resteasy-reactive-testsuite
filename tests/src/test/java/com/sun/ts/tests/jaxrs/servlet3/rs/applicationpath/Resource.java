@@ -22,8 +22,8 @@ import javax.ws.rs.core.Response;
 
 @Path("/Resource")
 public class Resource {
-  @GET
-  public Response returnOk() {
-    return Response.ok().build();
-  }
+    @GET
+    public Response returnOk() {
+        return Response.ok().build();
+    }
 }

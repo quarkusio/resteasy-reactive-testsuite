@@ -29,74 +29,74 @@ import javax.ws.rs.core.Response.Status;
 
 public abstract class TemplateFilter implements ContainerResponseFilter {
 
-  public static final String OPERATION = "OPERATION";
+    public static final String OPERATION = "OPERATION";
 
-  public static final String PROPERTYNAME = "getSetProperty";
+    public static final String PROPERTYNAME = "getSetProperty";
 
-  public static final String HEADER = "HEADER";
+    public static final String HEADER = "HEADER";
 
-  protected ContainerRequestContext requestContext;
+    protected ContainerRequestContext requestContext;
 
-  protected ContainerResponseContext responseContext;
+    protected ContainerResponseContext responseContext;
 
-  @Override
-  public void filter(ContainerRequestContext requestContext,
-      ContainerResponseContext responseContext) throws IOException {
-    this.requestContext = requestContext;
-    this.responseContext = responseContext;
-    String operation = getHeaderString();
-    Method[] methods = getClass().getMethods();
-    for (Method method : methods)
-      if (operation.equalsIgnoreCase(method.getName())) {
-        try {
-          method.invoke(this);
-          return;
-        } catch (Exception e) {
-          e.printStackTrace();
-          responseContext.setStatus(Status.SERVICE_UNAVAILABLE.getStatusCode());
-          setEntity(e.getMessage());
-          return;
-        }
-      }
-    operationMethodNotFound(operation);
-  }
-
-  protected void operationMethodNotFound(String operation) {
-    responseContext.setStatus(Status.SERVICE_UNAVAILABLE.getStatusCode());
-    setEntity("Operation " + operation + " not implemented");
-  }
-
-  // ////////////////////////////////////////////////////////////////////
-  protected static <T> String collectionToString(Collection<T> collection) {
-    StringBuilder sb = new StringBuilder();
-    for (T item : collection) {
-      String replace = item.toString().toLowerCase().replace("_", "-")
-          .replace(" ", "");
-      sb.append(replace).append(" ");
+    @Override
+    public void filter(ContainerRequestContext requestContext,
+            ContainerResponseContext responseContext) throws IOException {
+        this.requestContext = requestContext;
+        this.responseContext = responseContext;
+        String operation = getHeaderString();
+        Method[] methods = getClass().getMethods();
+        for (Method method : methods)
+            if (operation.equalsIgnoreCase(method.getName())) {
+                try {
+                    method.invoke(this);
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    responseContext.setStatus(Status.SERVICE_UNAVAILABLE.getStatusCode());
+                    setEntity(e.getMessage());
+                    return;
+                }
+            }
+        operationMethodNotFound(operation);
     }
-    return sb.toString();
-  }
 
-  protected boolean assertTrue(boolean conditionTrue, Object... msg) {
-    if (conditionTrue)
-      return false;
-    StringBuilder sb = new StringBuilder();
-    if (msg != null)
-      for (Object str : msg)
-        sb.append(str).append(" ");
-    setEntity(sb.toString());
-    responseContext.setStatus(Status.NOT_ACCEPTABLE.getStatusCode());
-    return true;
-  }
+    protected void operationMethodNotFound(String operation) {
+        responseContext.setStatus(Status.SERVICE_UNAVAILABLE.getStatusCode());
+        setEntity("Operation " + operation + " not implemented");
+    }
 
-  // might be replaced with ctx.getStringHeader()
-  protected String getHeaderString() {
-    MultivaluedMap<String, Object> headers = responseContext.getHeaders();
-    return (String) headers.getFirst(OPERATION);
-  }
+    // ////////////////////////////////////////////////////////////////////
+    protected static <T> String collectionToString(Collection<T> collection) {
+        StringBuilder sb = new StringBuilder();
+        for (T item : collection) {
+            String replace = item.toString().toLowerCase().replace("_", "-")
+                    .replace(" ", "");
+            sb.append(replace).append(" ");
+        }
+        return sb.toString();
+    }
 
-  protected void setEntity(String entity) {
-    responseContext.setEntity(entity, null, MediaType.TEXT_PLAIN_TYPE);
-  }
+    protected boolean assertTrue(boolean conditionTrue, Object... msg) {
+        if (conditionTrue)
+            return false;
+        StringBuilder sb = new StringBuilder();
+        if (msg != null)
+            for (Object str : msg)
+                sb.append(str).append(" ");
+        setEntity(sb.toString());
+        responseContext.setStatus(Status.NOT_ACCEPTABLE.getStatusCode());
+        return true;
+    }
+
+    // might be replaced with ctx.getStringHeader()
+    protected String getHeaderString() {
+        MultivaluedMap<String, Object> headers = responseContext.getHeaders();
+        return (String) headers.getFirst(OPERATION);
+    }
+
+    protected void setEntity(String entity) {
+        responseContext.setEntity(entity, null, MediaType.TEXT_PLAIN_TYPE);
+    }
 
 }

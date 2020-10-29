@@ -34,27 +34,27 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritable
 
 public class TSAppConfig extends Application {
 
-  @Override
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(ProvidersServlet.class);
-    resources.add(EnumContextResolver.class);
-    resources.add(ApplicationServlet.class);
-    resources.add(TextPlainEnumContextResolver.class);
-    resources.add(AnyExceptionExceptionMapper.class);
-    resources.add(IOExceptionExceptionMapper.class);
-    resources.add(EntityMessageWriter.class);
-    resources.add(EntityMessageReader.class);
-    return resources;
-  }
+    @Override
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(ProvidersServlet.class);
+        resources.add(EnumContextResolver.class);
+        resources.add(ApplicationServlet.class);
+        resources.add(TextPlainEnumContextResolver.class);
+        resources.add(AnyExceptionExceptionMapper.class);
+        resources.add(IOExceptionExceptionMapper.class);
+        resources.add(EntityMessageWriter.class);
+        resources.add(EntityMessageReader.class);
+        return resources;
+    }
 
-  @Override
-  public Set<Object> getSingletons() {
-    Set<Object> singletons = new HashSet<Object>();
-    singletons.add(EnumProvider.CTS);
-    singletons.add(new ReadableWritableEntity(""));
-    singletons.add(new ApplicationHolderSingleton(this));
-    return singletons;
-  }
+    @Override
+    public Set<Object> getSingletons() {
+        Set<Object> singletons = new HashSet<Object>();
+        singletons.add(EnumProvider.CTS);
+        singletons.add(new ReadableWritableEntity(""));
+        singletons.add(new ApplicationHolderSingleton(this));
+        return singletons;
+    }
 
 }

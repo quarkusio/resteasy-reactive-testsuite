@@ -34,29 +34,29 @@ import javax.ws.rs.ext.Provider;
 @ConstrainedTo(value = RuntimeType.CLIENT)
 public class ClientSideWriter implements MessageBodyWriter<String> {
 
-  public static final String FAKE_MESSAGE = "The fake writer on client side";
+    public static final String FAKE_MESSAGE = "The fake writer on client side";
 
-  public static final MediaType MEDIA_TYPE = new MediaType("writer",
-      "clientside");
+    public static final MediaType MEDIA_TYPE = new MediaType("writer",
+            "clientside");
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return mediaType.equals(MEDIA_TYPE);
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return mediaType.equals(MEDIA_TYPE);
+    }
 
-  @Override
-  public long getSize(String t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return FAKE_MESSAGE.length();
-  }
+    @Override
+    public long getSize(String t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return FAKE_MESSAGE.length();
+    }
 
-  @Override
-  public void writeTo(String t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(FAKE_MESSAGE.getBytes(Charset.defaultCharset()));
-  }
+    @Override
+    public void writeTo(String t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(FAKE_MESSAGE.getBytes(Charset.defaultCharset()));
+    }
 
 }

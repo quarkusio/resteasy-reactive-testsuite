@@ -28,86 +28,86 @@ import javax.ws.rs.core.MediaType;
 @Path("resource")
 public class Resource {
 
-  public static final String WIDGETS_XML = "application/widgets+xml";
+    public static final String WIDGETS_XML = "application/widgets+xml";
 
-  public static final String UNKNOWN = "unknown/unknown";
+    public static final String UNKNOWN = "unknown/unknown";
 
-  @GET
-  @Path("plain")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String pPlain() {
-    return MediaType.TEXT_PLAIN;
-  }
+    @GET
+    @Path("plain")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String pPlain() {
+        return MediaType.TEXT_PLAIN;
+    }
 
-  @GET
-  @Path("html")
-  @Produces(MediaType.TEXT_HTML)
-  public String pHtml() {
-    return MediaType.TEXT_HTML;
-  }
+    @GET
+    @Path("html")
+    @Produces(MediaType.TEXT_HTML)
+    public String pHtml() {
+        return MediaType.TEXT_HTML;
+    }
 
-  @GET
-  @Path("widgetsxml")
-  @Produces(WIDGETS_XML)
-  public String pWidgetxml() {
-    return WIDGETS_XML;
-  }
+    @GET
+    @Path("widgetsxml")
+    @Produces(WIDGETS_XML)
+    public String pWidgetxml() {
+        return WIDGETS_XML;
+    }
 
-  @GET
-  @Path("unknown")
-  @Produces(UNKNOWN)
-  public String pUnknown() {
-    return UNKNOWN;
-  }
+    @GET
+    @Path("unknown")
+    @Produces(UNKNOWN)
+    public String pUnknown() {
+        return UNKNOWN;
+    }
 
-  @GET
-  @Path("any")
-  @Produces(MediaType.WILDCARD)
-  public String pAny() {
-    return MediaType.WILDCARD;
-  }
+    @GET
+    @Path("any")
+    @Produces(MediaType.WILDCARD)
+    public String pAny() {
+        return MediaType.WILDCARD;
+    }
 
-  @POST
-  @Path("plain")
-  @Consumes(MediaType.TEXT_PLAIN)
-  public String cPlain() {
-    return MediaType.TEXT_PLAIN;
-  }
+    @POST
+    @Path("plain")
+    @Consumes(MediaType.TEXT_PLAIN)
+    public String cPlain() {
+        return MediaType.TEXT_PLAIN;
+    }
 
-  @POST
-  @Path("html")
-  @Consumes(MediaType.TEXT_HTML)
-  public String cHtml() {
-    return MediaType.TEXT_HTML;
-  }
+    @POST
+    @Path("html")
+    @Consumes(MediaType.TEXT_HTML)
+    public String cHtml() {
+        return MediaType.TEXT_HTML;
+    }
 
-  @POST
-  @Path("widgetsxml")
-  @Consumes(WIDGETS_XML)
-  public String cWidgetxml() {
-    return WIDGETS_XML;
-  }
+    @POST
+    @Path("widgetsxml")
+    @Consumes(WIDGETS_XML)
+    public String cWidgetxml() {
+        return WIDGETS_XML;
+    }
 
-  @POST
-  @Path("unknown")
-  @Consumes(UNKNOWN)
-  public String cUnknown() {
-    return UNKNOWN;
-  }
+    @POST
+    @Path("unknown")
+    @Consumes(UNKNOWN)
+    public String cUnknown() {
+        return UNKNOWN;
+    }
 
-  @POST
-  @Path("any")
-  @Consumes(MediaType.WILDCARD)
-  public String cAny() {
-    return MediaType.WILDCARD;
-  }
+    @POST
+    @Path("any")
+    @Consumes(MediaType.WILDCARD)
+    public String cAny() {
+        return MediaType.WILDCARD;
+    }
 
-  @POST
-  @Path("plus")
-  @Produces(MediaType.TEXT_PLAIN + "," + MediaType.TEXT_XML)
-  @Consumes(MediaType.TEXT_PLAIN + "," + MediaType.TEXT_XML)
-  public String plus(@Context HttpHeaders headers) {
-    return headers.getMediaType() == null ? "null"
-        : headers.getMediaType().toString();
-  }
+    @POST
+    @Path("plus")
+    @Produces(MediaType.TEXT_PLAIN + "," + MediaType.TEXT_XML)
+    @Consumes(MediaType.TEXT_PLAIN + "," + MediaType.TEXT_XML)
+    public String plus(@Context HttpHeaders headers) {
+        return headers.getMediaType() == null ? "null"
+                : headers.getMediaType().toString();
+    }
 }

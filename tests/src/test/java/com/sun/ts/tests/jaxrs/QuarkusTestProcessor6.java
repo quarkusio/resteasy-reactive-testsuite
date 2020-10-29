@@ -23,8 +23,7 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class QuarkusTestProcessor6 {
     public static void main(String[] args) throws IOException, ParserConfigurationException {
-        DocumentBuilderFactory factory =
-                DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Path srcPath = Paths.get("src/test/java");
         Files.walkFileTree(srcPath, new FileVisitor<Path>() {
@@ -32,8 +31,8 @@ public class QuarkusTestProcessor6 {
             class State {
                 private Path client;
             }
+
             private Stack<State> states = new Stack<>();
-            
 
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
@@ -45,7 +44,7 @@ public class QuarkusTestProcessor6 {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 State state = states.peek();
-                if(file.getFileName().toString().matches(".*Client\\d\\d\\d\\d\\.java")) {
+                if (file.getFileName().toString().matches(".*Client\\d\\d\\d\\d\\.java")) {
                     state.client = file;
                 }
                 return FileVisitResult.CONTINUE;
@@ -59,8 +58,8 @@ public class QuarkusTestProcessor6 {
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
                 State state = states.pop();
-                if(state.client != null) {
-                    System.err.println("Adding config to test class "+state.client);
+                if (state.client != null) {
+                    System.err.println("Adding config to test class " + state.client);
                     addConfigToTest(state.client);
                 }
                 return FileVisitResult.CONTINUE;
@@ -70,13 +69,13 @@ public class QuarkusTestProcessor6 {
 
     protected static void addConfigToTest(Path client) {
         String original = client.toString();
-        String target = client.toString()+".tmp";
-        try(BufferedReader reader = new BufferedReader(new FileReader(original));
-                BufferedWriter writer = new BufferedWriter(new FileWriter(target))){
+        String target = client.toString() + ".tmp";
+        try (BufferedReader reader = new BufferedReader(new FileReader(original));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
             String line;
             boolean addedContext = false;
-            while((line = reader.readLine()) != null) {
-                if(!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest()")) {
+            while ((line = reader.readLine()) != null) {
+                if (!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest()")) {
                     addedContext = true;
                     writer.write(line);
                     writer.newLine();

@@ -28,44 +28,44 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class RequestFilter extends RequestTemplateFilter {
 
-  public void setMethod() {
-    try {
-      requestContext.setMethod("OPTIONS");
-      setEntity(NOEXCEPTION);
-    } catch (IllegalStateException e) {
-      setEntity(ISEXCEPTION);
+    public void setMethod() {
+        try {
+            requestContext.setMethod("OPTIONS");
+            setEntity(NOEXCEPTION);
+        } catch (IllegalStateException e) {
+            setEntity(ISEXCEPTION);
+        }
     }
-  }
 
-  public void setRequestUri1() throws IOException {
-    URI uri;
-    try {
-      uri = new URI(URI);
-    } catch (URISyntaxException e) {
-      throw new IOException(e);
+    public void setRequestUri1() throws IOException {
+        URI uri;
+        try {
+            uri = new URI(URI);
+        } catch (URISyntaxException e) {
+            throw new IOException(e);
+        }
+        try {
+            requestContext.setRequestUri(uri);
+            setEntity(NOEXCEPTION);
+        } catch (IllegalStateException e) {
+            setEntity(ISEXCEPTION);
+        }
     }
-    try {
-      requestContext.setRequestUri(uri);
-      setEntity(NOEXCEPTION);
-    } catch (IllegalStateException e) {
-      setEntity(ISEXCEPTION);
-    }
-  }
 
-  public void setRequestUri2() throws IOException {
-    URI base;
-    URI suffix;
-    try {
-      base = new URI("http://localhost:888/otherbase");
-      suffix = new URI(URI);
-    } catch (URISyntaxException e) {
-      throw new IOException(e);
+    public void setRequestUri2() throws IOException {
+        URI base;
+        URI suffix;
+        try {
+            base = new URI("http://localhost:888/otherbase");
+            suffix = new URI(URI);
+        } catch (URISyntaxException e) {
+            throw new IOException(e);
+        }
+        try {
+            requestContext.setRequestUri(base, suffix);
+            setEntity(NOEXCEPTION);
+        } catch (IllegalStateException e) {
+            setEntity(ISEXCEPTION);
+        }
     }
-    try {
-      requestContext.setRequestUri(base, suffix);
-      setEntity(NOEXCEPTION);
-    } catch (IllegalStateException e) {
-      setEntity(ISEXCEPTION);
-    }
-  }
 }

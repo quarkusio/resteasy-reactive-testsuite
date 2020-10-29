@@ -36,72 +36,72 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 @Path("resource")
 public class Resource {
 
-  @Context
-  Application application;
+    @Context
+    Application application;
 
-  @Context
-  UriInfo info;
+    @Context
+    UriInfo info;
 
-  @Context
-  Request request;
+    @Context
+    Request request;
 
-  @Context
-  HttpHeaders headers;
+    @Context
+    HttpHeaders headers;
 
-  @Context
-  SecurityContext security;
+    @Context
+    SecurityContext security;
 
-  @Context
-  Providers providers;
+    @Context
+    Providers providers;
 
-  @Context
-  ResourceContext resources;
+    @Context
+    ResourceContext resources;
 
-  @Context
-  Configuration configration;
+    @Context
+    Configuration configration;
 
-  @POST
-  @Path("echo")
-  public String returnGivenString(String string) {
-    return string;
-  }
+    @POST
+    @Path("echo")
+    public String returnGivenString(String string) {
+        return string;
+    }
 
-  @POST
-  @Path("reader")
-  public String reader(StringBean bean) {
-    return bean.get();
-  }
+    @POST
+    @Path("reader")
+    public String reader(StringBean bean) {
+        return bean.get();
+    }
 
-  @POST
-  @Path("writer")
-  public StringBean writer(String entity) {
-    return new StringBean(entity);
-  }
+    @POST
+    @Path("writer")
+    public StringBean writer(String entity) {
+        return new StringBean(entity);
+    }
 
-  @GET
-  @Path("instance")
-  public String instance() {
-    return StringBeanEntityProviderWithInjectables.computeMask(application,
-        info, request, headers, security, providers, resources, configration);
-  }
+    @GET
+    @Path("instance")
+    public String instance() {
+        return StringBeanEntityProviderWithInjectables.computeMask(application,
+                info, request, headers, security, providers, resources, configration);
+    }
 
-  @GET
-  @Path("method")
-  public String method(@Context Application application, @Context UriInfo info,
-      @Context Request request, @Context HttpHeaders headers,
-      @Context SecurityContext security, @Context Providers providers,
-      @Context ResourceContext resources) {
-    return StringBeanEntityProviderWithInjectables.computeMask(application,
-        info, request, headers, security, providers, resources, configration);
-  }
+    @GET
+    @Path("method")
+    public String method(@Context Application application, @Context UriInfo info,
+            @Context Request request, @Context HttpHeaders headers,
+            @Context SecurityContext security, @Context Providers providers,
+            @Context ResourceContext resources) {
+        return StringBeanEntityProviderWithInjectables.computeMask(application,
+                info, request, headers, security, providers, resources, configration);
+    }
 
-  @GET
-  @Path("application")
-  public String application(@Context Application application) {
-    Set<Object> singletons = application.getSingletons();
-    SingletonWithInjectables singleton = (SingletonWithInjectables) singletons
-        .iterator().next();
-    return singleton.getInjectedContextValues();
-  }
+    @GET
+    @Path("application")
+    public String application(@Context Application application) {
+        Set<Object> singletons = application.getSingletons();
+        SingletonWithInjectables singleton = (SingletonWithInjectables) singletons
+                .iterator().next();
+        return singleton.getInjectedContextValues();
+    }
 
 }

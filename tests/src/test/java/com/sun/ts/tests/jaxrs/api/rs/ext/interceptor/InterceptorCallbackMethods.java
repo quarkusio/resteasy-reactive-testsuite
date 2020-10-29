@@ -28,9 +28,9 @@ import java.io.IOException;
  * {@link TemplateInterceptorBody#executeMethod()}
  */
 public interface InterceptorCallbackMethods {
-  void writeEntity(String entity);
+    void writeEntity(String entity);
 
-  Object proceed() throws IOException;
+    Object proceed() throws IOException;
 
-  String getHeaderString();
+    String getHeaderString();
 }

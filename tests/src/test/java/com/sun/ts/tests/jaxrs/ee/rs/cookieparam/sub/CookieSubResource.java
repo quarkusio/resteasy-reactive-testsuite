@@ -23,9 +23,9 @@ import com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest;
 @Path("Resource")
 public class CookieSubResource extends CookieParamTest {
 
-  @Path("subresource")
-  public CookieSubResource subResourceHandling() {
-    return this;
-  }
+    @Path("subresource")
+    public CookieSubResource subResourceHandling() {
+        return this;
+    }
 
 }

@@ -35,31 +35,31 @@ import com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW;
  */
 @Provider
 public class IncorrectCollectionWriter extends AbstractMessageBodyRW
-    implements MessageBodyWriter<Collection<?>> {
+        implements MessageBodyWriter<Collection<?>> {
 
-  public static final String ERROR = "ERROR ";
+    public static final String ERROR = "ERROR ";
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return !new CollectionWriter().isWriteable(type, genericType, annotations,
-        mediaType);
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return !new CollectionWriter().isWriteable(type, genericType, annotations,
+                mediaType);
+    }
 
-  @Override
-  public long getSize(Collection<?> t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    String path = getPathValue(annotations);
-    return ERROR.length() + path.length();
-  }
+    @Override
+    public long getSize(Collection<?> t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        String path = getPathValue(annotations);
+        return ERROR.length() + path.length();
+    }
 
-  @Override
-  public void writeTo(Collection<?> t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    String path = getPathValue(annotations);
-    entityStream.write(ERROR.getBytes());
-    entityStream.write(path.getBytes());
-  }
+    @Override
+    public void writeTo(Collection<?> t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        String path = getPathValue(annotations);
+        entityStream.write(ERROR.getBytes());
+        entityStream.write(path.getBytes());
+    }
 }

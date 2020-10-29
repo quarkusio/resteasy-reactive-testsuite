@@ -58,27 +58,27 @@
  */
 package com.sun.ts.tests.common.webclient.handler;
 
-import org.apache.commons.httpclient.Header;
+import org.apache.http.Header;
 
 /**
  * Handler interface.
  */
 public interface Handler {
 
-  /*
-   * public methods
-   * ========================================================================
-   */
+    /*
+     * public methods
+     * ========================================================================
+     */
 
-  /**
-   * Invokes handler logic.
-   * 
-   * @param configuredHeader
-   *          the user configured header
-   * @param responseHeader
-   *          the response header from the server
-   * @return True if the passed match, otherwise false
-   */
-  public boolean invoke(Header configuredHeader, Header responseHeader);
+    /**
+     * Invokes handler logic.
+     * 
+     * @param configuredHeader
+     *        the user configured header
+     * @param responseHeader
+     *        the response header from the server
+     * @return True if the passed match, otherwise false
+     */
+    public boolean invoke(Header configuredHeader, Header responseHeader);
 
 }

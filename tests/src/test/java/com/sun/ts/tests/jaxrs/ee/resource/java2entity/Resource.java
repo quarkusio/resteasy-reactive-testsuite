@@ -27,50 +27,50 @@ import javax.ws.rs.core.Response;
 @Path("resource")
 public class Resource {
 
-  @Path("linkedlist")
-  @GET
-  public LinkedList<String> checkDirect() {
-    LinkedList<String> list = new LinkedList<String>();
-    list.add("linked");
-    list.add("list");
-    return list;
-  }
-
-  @Path("response/linkedlist")
-  @GET
-  public Response checkResponseDirect() {
-    LinkedList<String> list = new LinkedList<String>();
-    list.add("linked");
-    list.add("list");
-    return Response.ok(list).build();
-  }
-
-  @Path("response/genericentity/linkedlist")
-  @GET
-  public Response checkResponseGeneric() {
-    GenericEntity<LinkedList<String>> gells = checkGeneric();
-    return Response.ok(gells).build();
-  }
-
-  @Path("genericentity/linkedlist")
-  @GET
-  public GenericEntity<LinkedList<String>> checkGeneric() {
-    LinkedList<String> list = new LinkedList<String>();
-    list.add("linked");
-    list.add("list");
-    GenericEntity<LinkedList<String>> gells;
-    gells = new GenericEntity<LinkedList<String>>(list,
-        getMethodByName("checkDirect").getGenericReturnType());
-    return gells;
-  }
-
-  private Method getMethodByName(String name) {
-    try {
-      Method method = getClass().getMethod(name);
-      return method;
-    } catch (NoSuchMethodException e) {
-      e.printStackTrace();
-      return null;
+    @Path("linkedlist")
+    @GET
+    public LinkedList<String> checkDirect() {
+        LinkedList<String> list = new LinkedList<String>();
+        list.add("linked");
+        list.add("list");
+        return list;
     }
-  }
+
+    @Path("response/linkedlist")
+    @GET
+    public Response checkResponseDirect() {
+        LinkedList<String> list = new LinkedList<String>();
+        list.add("linked");
+        list.add("list");
+        return Response.ok(list).build();
+    }
+
+    @Path("response/genericentity/linkedlist")
+    @GET
+    public Response checkResponseGeneric() {
+        GenericEntity<LinkedList<String>> gells = checkGeneric();
+        return Response.ok(gells).build();
+    }
+
+    @Path("genericentity/linkedlist")
+    @GET
+    public GenericEntity<LinkedList<String>> checkGeneric() {
+        LinkedList<String> list = new LinkedList<String>();
+        list.add("linked");
+        list.add("list");
+        GenericEntity<LinkedList<String>> gells;
+        gells = new GenericEntity<LinkedList<String>>(list,
+                getMethodByName("checkDirect").getGenericReturnType());
+        return gells;
+    }
+
+    private Method getMethodByName(String name) {
+        try {
+            Method method = getClass().getMethod(name);
+            return method;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

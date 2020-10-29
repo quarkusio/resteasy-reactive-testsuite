@@ -26,11 +26,11 @@ import com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(LocatorResource.class);
-    resources.add(WebApplicationExceptionMapper.class);
-    resources.add(RuntimeExceptionMapper.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(LocatorResource.class);
+        resources.add(WebApplicationExceptionMapper.class);
+        resources.add(RuntimeExceptionMapper.class);
+        return resources;
+    }
 }

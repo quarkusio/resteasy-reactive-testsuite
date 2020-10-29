@@ -25,14 +25,14 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Target({ ElementType.TYPE, ElementType.FIELD,
-    java.lang.annotation.ElementType.CONSTRUCTOR, ElementType.PARAMETER,
-    ElementType.METHOD })
+        java.lang.annotation.ElementType.CONSTRUCTOR, ElementType.PARAMETER,
+        ElementType.METHOD })
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = NotNullOrOneStringBeanValidator.class)
 public @interface NotNullOrOne {
-  String message() default "{com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.NotNullOrOne.message}";
+    String message() default "{com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.NotNullOrOne.message}";
 
-  Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-  Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 }

@@ -26,52 +26,52 @@ import javax.ws.rs.core.Response;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("subresponse")
-  public OkResponse subresponse() {
-    AppXmlObjectWriter.resetSet();
-    return new OkResponse("subresponse");
-  }
+    @GET
+    @Path("subresponse")
+    public OkResponse subresponse() {
+        AppXmlObjectWriter.resetSet();
+        return new OkResponse("subresponse");
+    }
 
-  @GET
-  @Produces(MediaType.APPLICATION_XML)
-  @Path("supportxml")
-  public EntityForWriter supportxml() {
-    AppXmlObjectWriter.resetSet();
-    return new EntityForWriter("supportxml");
-  }
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    @Path("supportxml")
+    public EntityForWriter supportxml() {
+        AppXmlObjectWriter.resetSet();
+        return new EntityForWriter("supportxml");
+    }
 
-  @GET
-  @Path("supportall")
-  public EntityForWriter supportAll() {
-    AppXmlObjectWriter.resetSet();
-    return new EntityForWriter("supportall");
-  }
+    @GET
+    @Path("supportall")
+    public EntityForWriter supportAll() {
+        AppXmlObjectWriter.resetSet();
+        return new EntityForWriter("supportall");
+    }
 
-  @POST
-  @Path("supportmedia")
-  public Response supportMedia(String mediaType) {
-    AppXmlObjectWriter.resetSet();
-    return Response.ok(new EntityForWriter("supportMedia")).type(mediaType)
-        .build();
-  }
+    @POST
+    @Path("supportmedia")
+    public Response supportMedia(String mediaType) {
+        AppXmlObjectWriter.resetSet();
+        return Response.ok(new EntityForWriter("supportMedia")).type(mediaType)
+                .build();
+    }
 
-  @POST
-  @Path("writer")
-  public Response enable(String which) {
-    DefaultEntityWriter.setWritable(false);
-    AppXmlObjectWriter.setWritable(false);
-    AppJavaEntityWriter.setWritable(false);
-    AppAnyEntityWriter.setWritable(false);
-    if (which.equalsIgnoreCase(AppAnyEntityWriter.class.getName()))
-      AppAnyEntityWriter.setWritable(true);
-    if (which.equalsIgnoreCase(AppJavaEntityWriter.class.getName()))
-      AppJavaEntityWriter.setWritable(true);
-    if (which.equalsIgnoreCase(AppXmlObjectWriter.class.getName()))
-      AppXmlObjectWriter.setWritable(true);
-    if (which.equalsIgnoreCase(DefaultEntityWriter.class.getName()))
-      DefaultEntityWriter.setWritable(true);
-    return Response.ok().build();
-  }
+    @POST
+    @Path("writer")
+    public Response enable(String which) {
+        DefaultEntityWriter.setWritable(false);
+        AppXmlObjectWriter.setWritable(false);
+        AppJavaEntityWriter.setWritable(false);
+        AppAnyEntityWriter.setWritable(false);
+        if (which.equalsIgnoreCase(AppAnyEntityWriter.class.getName()))
+            AppAnyEntityWriter.setWritable(true);
+        if (which.equalsIgnoreCase(AppJavaEntityWriter.class.getName()))
+            AppJavaEntityWriter.setWritable(true);
+        if (which.equalsIgnoreCase(AppXmlObjectWriter.class.getName()))
+            AppXmlObjectWriter.setWritable(true);
+        if (which.equalsIgnoreCase(DefaultEntityWriter.class.getName()))
+            DefaultEntityWriter.setWritable(true);
+        return Response.ok().build();
+    }
 
 }

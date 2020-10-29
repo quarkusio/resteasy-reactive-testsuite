@@ -29,35 +29,35 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
 
 public abstract class AbstractReader
-    implements MessageBodyReader<EntityForReader> {
+        implements MessageBodyReader<EntityForReader> {
 
-  static StringBuilder readerSet = new StringBuilder();
+    static StringBuilder readerSet = new StringBuilder();
 
-  public static final MediaType NO_PROVIDER_MEDIATYPE = new MediaType("abc",
-      "def");
+    public static final MediaType NO_PROVIDER_MEDIATYPE = new MediaType("abc",
+            "def");
 
-  public static void resetSet() {
-    readerSet = new StringBuilder();
-  }
+    public static void resetSet() {
+        readerSet = new StringBuilder();
+    }
 
-  public static void addClass(String string) {
-    readerSet.append(string).append(";");
-  }
+    public static void addClass(String string) {
+        readerSet.append(string).append(";");
+    }
 
-  @Override
-  public EntityForReader readFrom(Class<EntityForReader> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    InputStreamReader isr = new InputStreamReader(entityStream);
-    BufferedReader br = new BufferedReader(isr);
-    StringBuilder sb = new StringBuilder();
-    sb.append(getClass().getSimpleName().toUpperCase()).append(";");
-    if (mediaType != null)
-      sb.append(mediaType.toString()).append(";");
-    sb.append(br.readLine());
-    br.close();
-    sb.append(";").append(readerSet);
-    return new EntityForReader(sb.toString());
-  }
+    @Override
+    public EntityForReader readFrom(Class<EntityForReader> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        InputStreamReader isr = new InputStreamReader(entityStream);
+        BufferedReader br = new BufferedReader(isr);
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName().toUpperCase()).append(";");
+        if (mediaType != null)
+            sb.append(mediaType.toString()).append(";");
+        sb.append(br.readLine());
+        br.close();
+        sb.append(";").append(readerSet);
+        return new EntityForReader(sb.toString());
+    }
 }

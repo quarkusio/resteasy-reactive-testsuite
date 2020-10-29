@@ -14,12 +14,9 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Stack;
-import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.ws.rs.core.Response;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -35,8 +32,7 @@ import org.xml.sax.SAXException;
  */
 public class QuarkusIgnoreFailingTestProcessor {
     public static void main(String[] args) throws IOException, ParserConfigurationException {
-        DocumentBuilderFactory factory =
-                DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Path srcPath = Paths.get("target/surefire-reports");
         Files.walkFileTree(srcPath, new FileVisitor<Path>() {
@@ -49,38 +45,38 @@ public class QuarkusIgnoreFailingTestProcessor {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String filename = file.getFileName().toString();
-                if(filename.startsWith("TEST-") && filename.endsWith(".xml")) {
+                if (filename.startsWith("TEST-") && filename.endsWith(".xml")) {
                     try {
                         Document document = builder.parse(file.toFile());
                         NodeList testcases = document.getElementsByTagName("testcase");
                         Set<String> methods = new HashSet<>();
                         String classname = null;
-                        for(int i=0;i<testcases.getLength();i++) {
+                        for (int i = 0; i < testcases.getLength(); i++) {
                             Node testcase = testcases.item(i);
-                            if(testcase.getNodeType() == Node.ELEMENT_NODE) {
+                            if (testcase.getNodeType() == Node.ELEMENT_NODE) {
                                 Element el = (Element) testcase;
                                 String name = el.getAttribute("name");
                                 classname = el.getAttribute("classname");
                                 NodeList failures = el.getElementsByTagName("failure");
-                                for(int j=0;j<failures.getLength();j++) {
+                                for (int j = 0; j < failures.getLength(); j++) {
                                     Node failure = failures.item(j);
-                                    if(failure.getNodeType() == Node.ELEMENT_NODE) {
+                                    if (failure.getNodeType() == Node.ELEMENT_NODE) {
                                         methods.add(name);
-                                        System.err.println(classname+"."+name+" FAILED");
+                                        System.err.println(classname + "." + name + " FAILED");
                                     }
                                 }
                                 NodeList errors = el.getElementsByTagName("error");
-                                for(int j=0;j<errors.getLength();j++) {
+                                for (int j = 0; j < errors.getLength(); j++) {
                                     Node failure = errors.item(j);
-                                    if(failure.getNodeType() == Node.ELEMENT_NODE) {
+                                    if (failure.getNodeType() == Node.ELEMENT_NODE) {
                                         methods.add(name);
-                                        System.err.println(classname+"."+name+" ERRORED");
+                                        System.err.println(classname + "." + name + " ERRORED");
                                     }
                                 }
                             }
                         }
-                        if(!methods.isEmpty() && classname != null) {
-                            Path path = Paths.get("src/test/java/"+classname.replace('.', '/')+".java");
+                        if (!methods.isEmpty() && classname != null) {
+                            Path path = Paths.get("src/test/java/" + classname.replace('.', '/') + ".java");
                             disableFailingTests(path, methods);
                         }
                     } catch (SAXException | IOException e) {
@@ -106,25 +102,25 @@ public class QuarkusIgnoreFailingTestProcessor {
 
     static Pattern MethodPattern = Pattern.compile("^\\s*public\\s+([A-Za-z0-9<>_]+)\\s+([a-zA-Z0-9_]+)\\(\\).*");
     static Pattern ClassPattern = Pattern.compile("^\\s*public(\\s+abstract)?\\s+class\\s+([a-zA-Z0-9_]+).*");
-    
+
     protected static void disableFailingTests(Path client, Set<String> methods) {
         String original = client.toString();
-        String target = client.toString()+".tmp";
-        try(BufferedReader reader = new BufferedReader(new FileReader(original));
-                BufferedWriter writer = new BufferedWriter(new FileWriter(target))){
+        String target = client.toString() + ".tmp";
+        try (BufferedReader reader = new BufferedReader(new FileReader(original));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
             String line;
-            while((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 Matcher matcher = ClassPattern.matcher(line);
-                if(matcher.matches()) {
+                if (matcher.matches()) {
                     // failed classes have an empty method name marked as failing
-                    if(methods.contains("")) {
+                    if (methods.contains("")) {
                         writer.write("  @org.junit.jupiter.api.Disabled(\"Did not pass for RESTEasy\")\n");
                     }
                 } else {
                     matcher = MethodPattern.matcher(line);
-                    if(matcher.matches()) {
+                    if (matcher.matches()) {
                         String methodName = matcher.group(2);
-                        if(methods.contains(methodName)) {
+                        if (methods.contains(methodName)) {
                             writer.write("  @org.junit.jupiter.api.Disabled(\"Did not pass for RESTEasy\")\n");
                         }
                     }

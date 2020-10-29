@@ -38,209 +38,209 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0026 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = -9146409863180750617L;
+    private static final long serialVersionUID = -9146409863180750617L;
 
-  public JAXRSClient0026() {
-    setContextRoot("/jaxrs_spec_client_webtarget_web/resource");
-  }
-
-  public static void main(String[] args) {
-    new JAXRSClient0026().run(args);
-  }
-
-  /* Run test */
-  /*
-   * @testName: imutableWithRespectToUriMatrixPathTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:66;
-   * 
-   * @test_Strategy: WebTarget instances are immutable with respect to their URI
-   * (or URI template): methods for specifying additional path segments and
-   * parameters return a new instance of WebTarget.
-   */
-  @org.junit.jupiter.api.Test
-  public void imutableWithRespectToUriMatrixPathTest() throws Fault {
-    IteratedList<WebTarget> targets = new IteratedList<WebTarget>(
-        WebTarget.class);
-    Client client = ClientBuilder.newClient();
-    WebTarget target = client.target("");
-    targets.add(target);
-
-    targets.doWithAll("matrixParam", "", new String[] { "" });
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("matrixParam", "matrix", new String[] { "st" });
-    assertFaultEqualWebTargets(targets);
-    TestUtil.logMsg("checked matrixParam() method");
-
-    targets.doWithAll("path", "");
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("path", "/");
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("path", "path");
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("path", "path/path/path");
-    assertFaultEqualWebTargets(targets);
-    TestUtil.logMsg("checked path() method");
-  }
-
-  /*
-   * @testName: imutableWithRespectToUriQueryResolveTemplateTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:66;
-   * 
-   * @test_Strategy: WebTarget instances are immutable with respect to their URI
-   * (or URI template): methods for specifying additional path segments and
-   * parameters return a new instance of WebTarget.
-   */
-  @org.junit.jupiter.api.Test
-  public void imutableWithRespectToUriQueryResolveTemplateTest() throws Fault {
-    IteratedList<WebTarget> targets = new IteratedList<WebTarget>(
-        WebTarget.class);
-    Client client = ClientBuilder.newClient();
-    WebTarget target = client.target("");
-    targets.add(target);
-
-    targets.doWithAll("queryParam", "", new String[] { "" });
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("queryParam", "path", new String[] { "xyz" });
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("queryParam", "xyz", new String[] { "path" });
-    assertFaultEqualWebTargets(targets);
-    TestUtil.logMsg("checked queryParam() method");
-
-    targets.doWithAll("resolveTemplateFromEncoded", "", "");
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("resolveTemplateFromEncoded", "path", "xyz");
-    assertFaultEqualWebTargets(targets);
-    targets.doWithAll("resolveTemplateFromEncoded", "path/path/path", "");
-    assertFaultEqualWebTargets(targets);
-    TestUtil.logMsg("checked resolveTemplateFromEncoded() method");
-
-    Map<String, Object> params = new HashMap<String, Object>();
-    params.put("", "path");
-    targets.doWithAll("resolveTemplates", params);
-    assertFaultEqualWebTargets(targets);
-    params = new HashMap<String, Object>();
-    params.put("path", "xyz");
-    targets.doWithAll("resolveTemplates", params);
-    assertFaultEqualWebTargets(targets);
-    TestUtil.logMsg("checked resolveTemplates() method");
-
-    targets.doWithAll("resolveTemplatesFromEncoded", params);
-    assertFaultEqualWebTargets(targets);
-    params = new HashMap<String, Object>();
-    params.put("path", "xyz");
-    targets.doWithAll("resolveTemplatesFromEncoded", params);
-    assertFaultEqualWebTargets(targets);
-    TestUtil.logMsg("checked resolveTemplatesFromEncoded() method");
-  }
-
-  /*
-   * @testName: mutableWithRespectToConfigTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:67;
-   * 
-   * @test_Strategy: However, WebTarget instances are mutable with respect to
-   * their configuration. Thus, configuring a WebTarget does not create new
-   * instances
-   */
-  @org.junit.jupiter.api.Test
-  public void mutableWithRespectToConfigTest() throws Fault {
-    // check no WebTarget is returned from configuration
-    // cannot check subclass of Configuration if any because
-    // that actually can return WebTarget, which is not a new instance.
-    // That is not possible to check, do not know the values to be put
-    // into a method as arguments
-    // In configuration, it is possible to check that it is not a new
-    // instance since the configuration is available by the time of the test
-    // creation
-    for (Method m : Configuration.class.getMethods()) {
-      Class<?> ret = m.getReturnType();
-      if (WebTarget.class.isAssignableFrom(ret))
-        throw new Fault("Webterget instance created from configuration");
+    public JAXRSClient0026() {
+        setContextRoot("/jaxrs_spec_client_webtarget_web/resource");
     }
-  }
 
-  /*
-   * @testName: deepCopyConfigWebTargetLevelTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:68; JAXRS:SPEC:72; JAXRS:JAVADOC:988;
-   * 
-   * @test_Strategy: Note that changes to hello's configuration do not affect
-   * base, i.e. configuration inheritance requires performing a deep copy of the
-   * configuration.
-   * 
-   * The following Client API types are configurable: Client, Invocation,
-   * Invocation.Builder and WebTarget.
-   * 
-   * Get access to the underlying Configuration configuration.
-   */
-  @org.junit.jupiter.api.Test
-  public void deepCopyConfigWebTargetLevelTest() throws Fault {
-    Client client = ClientBuilder.newClient();
-    Configuration config = client.getConfiguration();
-    int registeredInstances = config.getInstances().size();
-    // WebTarget level inheritance
-    WebTarget target1 = client.target("");
-    WebTarget target2 = client.target("");
-    target1.register(new StringBeanEntityProvider());
-    config = target2.getConfiguration();
-    assertFault(config.getInstances().size() == registeredInstances,
-        "configuration() does not perform deep copy");
-  }
+    public static void main(String[] args) {
+        new JAXRSClient0026().run(args);
+    }
 
-  /*
-   * @testName: deepCopyConfigClientLevelTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:68; JAXRS:SPEC:72;
-   * 
-   * @test_Strategy: Note that changes to hello's configuration do not affect
-   * base, i.e. configuration inheritance requires performing a deep copy of the
-   * configuration.
-   * 
-   * The following Client API types are configurable: Client, Invocation,
-   * Invocation.Builder and WebTarget.
-   */
-  @org.junit.jupiter.api.Test
-  public void deepCopyConfigClientLevelTest() throws Fault {
-    Client client = ClientBuilder.newClient();
-    // Client level inheritance
-    client.property("test", "test");
-    Configuration conf2 = ClientBuilder.newClient().getConfiguration();
-    Object o = conf2.getProperty("test");
-    assertNull(o, "configuration() does not perform deep copy, o=", o);
-  }
+    /* Run test */
+    /*
+     * @testName: imutableWithRespectToUriMatrixPathTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:66;
+     * 
+     * @test_Strategy: WebTarget instances are immutable with respect to their URI
+     * (or URI template): methods for specifying additional path segments and
+     * parameters return a new instance of WebTarget.
+     */
+    @org.junit.jupiter.api.Test
+    public void imutableWithRespectToUriMatrixPathTest() throws Fault {
+        IteratedList<WebTarget> targets = new IteratedList<WebTarget>(
+                WebTarget.class);
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("");
+        targets.add(target);
 
-  /*
-   * @testName: webTargetConfigNotImpactClientTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:74;
-   * 
-   * @test_Strategy: However, any additional changes to the instance of
-   * WebTarget will not impact the Client's configuration and vice versa.
-   */
-  @org.junit.jupiter.api.Test
-  public void webTargetConfigNotImpactClientTest() throws Fault {
-    Client client = ClientBuilder.newClient();
-    WebTarget target = client.target("resource");
-    target.property("any", "some");
-    Object property = client.getConfiguration().getProperty("any");
-    assertFault(property == null, "WebTarget config impacts Client config");
+        targets.doWithAll("matrixParam", "", new String[] { "" });
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("matrixParam", "matrix", new String[] { "st" });
+        assertFaultEqualWebTargets(targets);
+        TestUtil.logMsg("checked matrixParam() method");
 
-    client.property("some", "any");
-    property = target.getConfiguration().getProperty("some");
-    assertFault(property == null, "Client config impacts WebTarget config");
-  }
+        targets.doWithAll("path", "");
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("path", "/");
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("path", "path");
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("path", "path/path/path");
+        assertFaultEqualWebTargets(targets);
+        TestUtil.logMsg("checked path() method");
+    }
 
-  /**
-   * Assert when two web targets are equal
-   */
-  void assertFaultEqualWebTargets(List<WebTarget> t) throws Fault {
-    TestUtil.logMsg("Testing " + t.size() + " WebTargets");
-    for (int i = 0; i != t.size(); i++)
-      for (int j = i + 1; j != t.size(); j++)
-        assertFault(t.get(i) != t.get(j), "WebTargets", t.get(i).toString(),
-            "and", t.get(j).toString(), "are equal!");
-  }
+    /*
+     * @testName: imutableWithRespectToUriQueryResolveTemplateTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:66;
+     * 
+     * @test_Strategy: WebTarget instances are immutable with respect to their URI
+     * (or URI template): methods for specifying additional path segments and
+     * parameters return a new instance of WebTarget.
+     */
+    @org.junit.jupiter.api.Test
+    public void imutableWithRespectToUriQueryResolveTemplateTest() throws Fault {
+        IteratedList<WebTarget> targets = new IteratedList<WebTarget>(
+                WebTarget.class);
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("");
+        targets.add(target);
+
+        targets.doWithAll("queryParam", "", new String[] { "" });
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("queryParam", "path", new String[] { "xyz" });
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("queryParam", "xyz", new String[] { "path" });
+        assertFaultEqualWebTargets(targets);
+        TestUtil.logMsg("checked queryParam() method");
+
+        targets.doWithAll("resolveTemplateFromEncoded", "", "");
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("resolveTemplateFromEncoded", "path", "xyz");
+        assertFaultEqualWebTargets(targets);
+        targets.doWithAll("resolveTemplateFromEncoded", "path/path/path", "");
+        assertFaultEqualWebTargets(targets);
+        TestUtil.logMsg("checked resolveTemplateFromEncoded() method");
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("", "path");
+        targets.doWithAll("resolveTemplates", params);
+        assertFaultEqualWebTargets(targets);
+        params = new HashMap<String, Object>();
+        params.put("path", "xyz");
+        targets.doWithAll("resolveTemplates", params);
+        assertFaultEqualWebTargets(targets);
+        TestUtil.logMsg("checked resolveTemplates() method");
+
+        targets.doWithAll("resolveTemplatesFromEncoded", params);
+        assertFaultEqualWebTargets(targets);
+        params = new HashMap<String, Object>();
+        params.put("path", "xyz");
+        targets.doWithAll("resolveTemplatesFromEncoded", params);
+        assertFaultEqualWebTargets(targets);
+        TestUtil.logMsg("checked resolveTemplatesFromEncoded() method");
+    }
+
+    /*
+     * @testName: mutableWithRespectToConfigTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:67;
+     * 
+     * @test_Strategy: However, WebTarget instances are mutable with respect to
+     * their configuration. Thus, configuring a WebTarget does not create new
+     * instances
+     */
+    @org.junit.jupiter.api.Test
+    public void mutableWithRespectToConfigTest() throws Fault {
+        // check no WebTarget is returned from configuration
+        // cannot check subclass of Configuration if any because
+        // that actually can return WebTarget, which is not a new instance.
+        // That is not possible to check, do not know the values to be put
+        // into a method as arguments
+        // In configuration, it is possible to check that it is not a new
+        // instance since the configuration is available by the time of the test
+        // creation
+        for (Method m : Configuration.class.getMethods()) {
+            Class<?> ret = m.getReturnType();
+            if (WebTarget.class.isAssignableFrom(ret))
+                throw new Fault("Webterget instance created from configuration");
+        }
+    }
+
+    /*
+     * @testName: deepCopyConfigWebTargetLevelTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:68; JAXRS:SPEC:72; JAXRS:JAVADOC:988;
+     * 
+     * @test_Strategy: Note that changes to hello's configuration do not affect
+     * base, i.e. configuration inheritance requires performing a deep copy of the
+     * configuration.
+     * 
+     * The following Client API types are configurable: Client, Invocation,
+     * Invocation.Builder and WebTarget.
+     * 
+     * Get access to the underlying Configuration configuration.
+     */
+    @org.junit.jupiter.api.Test
+    public void deepCopyConfigWebTargetLevelTest() throws Fault {
+        Client client = ClientBuilder.newClient();
+        Configuration config = client.getConfiguration();
+        int registeredInstances = config.getInstances().size();
+        // WebTarget level inheritance
+        WebTarget target1 = client.target("");
+        WebTarget target2 = client.target("");
+        target1.register(new StringBeanEntityProvider());
+        config = target2.getConfiguration();
+        assertFault(config.getInstances().size() == registeredInstances,
+                "configuration() does not perform deep copy");
+    }
+
+    /*
+     * @testName: deepCopyConfigClientLevelTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:68; JAXRS:SPEC:72;
+     * 
+     * @test_Strategy: Note that changes to hello's configuration do not affect
+     * base, i.e. configuration inheritance requires performing a deep copy of the
+     * configuration.
+     * 
+     * The following Client API types are configurable: Client, Invocation,
+     * Invocation.Builder and WebTarget.
+     */
+    @org.junit.jupiter.api.Test
+    public void deepCopyConfigClientLevelTest() throws Fault {
+        Client client = ClientBuilder.newClient();
+        // Client level inheritance
+        client.property("test", "test");
+        Configuration conf2 = ClientBuilder.newClient().getConfiguration();
+        Object o = conf2.getProperty("test");
+        assertNull(o, "configuration() does not perform deep copy, o=", o);
+    }
+
+    /*
+     * @testName: webTargetConfigNotImpactClientTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:74;
+     * 
+     * @test_Strategy: However, any additional changes to the instance of
+     * WebTarget will not impact the Client's configuration and vice versa.
+     */
+    @org.junit.jupiter.api.Test
+    public void webTargetConfigNotImpactClientTest() throws Fault {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("resource");
+        target.property("any", "some");
+        Object property = client.getConfiguration().getProperty("any");
+        assertFault(property == null, "WebTarget config impacts Client config");
+
+        client.property("some", "any");
+        property = target.getConfiguration().getProperty("some");
+        assertFault(property == null, "Client config impacts WebTarget config");
+    }
+
+    /**
+     * Assert when two web targets are equal
+     */
+    void assertFaultEqualWebTargets(List<WebTarget> t) throws Fault {
+        TestUtil.logMsg("Testing " + t.size() + " WebTargets");
+        for (int i = 0; i != t.size(); i++)
+            for (int j = i + 1; j != t.size(); j++)
+                assertFault(t.get(i) != t.get(j), "WebTargets", t.get(i).toString(),
+                        "and", t.get(j).toString(), "are equal!");
+    }
 
 }

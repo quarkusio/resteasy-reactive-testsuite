@@ -25,17 +25,17 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 @Path("resource")
 public class Resource {
-  public static final String HEADER_NAME = "Converter";
+    public static final String HEADER_NAME = "Converter";
 
-  @Path("sbquery")
-  @GET
-  public String stringBeanQuery(@QueryParam("query") StringBean param) {
-    return param.get();
-  }
+    @Path("sbquery")
+    @GET
+    public String stringBeanQuery(@QueryParam("query") StringBean param) {
+        return param.get();
+    }
 
-  @GET
-  public Response get() {
-    return Response.ok().header(HEADER_NAME, new StringBean("OK")).build();
-  }
+    @GET
+    public Response get() {
+        return Response.ok().header(HEADER_NAME, new StringBean("OK")).build();
+    }
 
 }

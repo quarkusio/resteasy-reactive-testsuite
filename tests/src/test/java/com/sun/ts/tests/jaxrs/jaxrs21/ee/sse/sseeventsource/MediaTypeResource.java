@@ -33,56 +33,56 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
 
 @Path("media")
 public class MediaTypeResource {
-  private static MediaType mediaType = MediaType.WILDCARD_TYPE;
+    private static MediaType mediaType = MediaType.WILDCARD_TYPE;
 
-  @POST
-  @Path("set")
-  public String setMediaType(String media) {
-    String[] split = media.split("/", 2);
-    mediaType = new MediaType(split[0], split[1]);
-    return media;
-  }
-
-  @GET
-  @Path("data")
-  @Produces(MediaType.SERVER_SENT_EVENTS)
-  public void sendData(@Context SseEventSink sink, @Context Sse sse) {
-    try (SseEventSink s = sink) {
-      s.send(sse.newEventBuilder().data(SSEMessage.MESSAGE).mediaType(mediaType)
-          .build());
+    @POST
+    @Path("set")
+    public String setMediaType(String media) {
+        String[] split = media.split("/", 2);
+        mediaType = new MediaType(split[0], split[1]);
+        return media;
     }
-  }
 
-  @GET
-  @Path("jaxb")
-  @Produces(MediaType.SERVER_SENT_EVENTS)
-  public void sendJAXB(@Context SseEventSink sink, @Context Sse sse) {
-    try (SseEventSink s = sink) {
-      JAXBElement<String> element = new JAXBElement<String>(new QName("name"),
-          String.class, SSEMessage.MESSAGE);
-      s.send(sse.newEventBuilder().data(element).mediaType(mediaType).build());
+    @GET
+    @Path("data")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public void sendData(@Context SseEventSink sink, @Context Sse sse) {
+        try (SseEventSink s = sink) {
+            s.send(sse.newEventBuilder().data(SSEMessage.MESSAGE).mediaType(mediaType)
+                    .build());
+        }
     }
-  }
 
-  @GET
-  @Path("xml")
-  @Produces(MediaType.SERVER_SENT_EVENTS)
-  public void sendXML(@Context SseEventSink sink, @Context Sse sse) {
-    try (SseEventSink s = sink) {
-      JaxbKeyValueBean bean = new JaxbKeyValueBean();
-      bean.set("key", SSEMessage.MESSAGE);
-      s.send(sse.newEventBuilder().data(bean).mediaType(mediaType).build());
+    @GET
+    @Path("jaxb")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public void sendJAXB(@Context SseEventSink sink, @Context Sse sse) {
+        try (SseEventSink s = sink) {
+            JAXBElement<String> element = new JAXBElement<String>(new QName("name"),
+                    String.class, SSEMessage.MESSAGE);
+            s.send(sse.newEventBuilder().data(element).mediaType(mediaType).build());
+        }
     }
-  }
 
-  @GET
-  @Path("map")
-  @Produces(MediaType.SERVER_SENT_EVENTS)
-  public void sendMap(@Context SseEventSink sink, @Context Sse sse) {
-    try (SseEventSink s = sink) {
-      SinglevaluedMap<String, String> map = new SinglevaluedMap<>();
-      map.add("key", SSEMessage.MESSAGE);
-      s.send(sse.newEventBuilder().data(map).mediaType(mediaType).build());
+    @GET
+    @Path("xml")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public void sendXML(@Context SseEventSink sink, @Context Sse sse) {
+        try (SseEventSink s = sink) {
+            JaxbKeyValueBean bean = new JaxbKeyValueBean();
+            bean.set("key", SSEMessage.MESSAGE);
+            s.send(sse.newEventBuilder().data(bean).mediaType(mediaType).build());
+        }
     }
-  }
+
+    @GET
+    @Path("map")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public void sendMap(@Context SseEventSink sink, @Context Sse sse) {
+        try (SseEventSink s = sink) {
+            SinglevaluedMap<String, String> map = new SinglevaluedMap<>();
+            map.add("key", SSEMessage.MESSAGE);
+            s.send(sse.newEventBuilder().data(map).mediaType(mediaType).build());
+        }
+    }
 }

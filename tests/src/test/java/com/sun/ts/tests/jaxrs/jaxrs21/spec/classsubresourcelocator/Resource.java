@@ -21,9 +21,9 @@ import javax.ws.rs.Path;
 @Path("resource")
 public class Resource {
 
-  @Path("sub")
-  public Class<SubResource> sub() {
-    return SubResource.class;
-  }
+    @Path("sub")
+    public Class<SubResource> sub() {
+        return SubResource.class;
+    }
 
 }

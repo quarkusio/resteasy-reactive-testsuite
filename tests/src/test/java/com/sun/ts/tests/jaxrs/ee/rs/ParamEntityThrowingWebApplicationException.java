@@ -20,16 +20,16 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
 
 public class ParamEntityThrowingWebApplicationException
-    extends ParamEntityWithFromString {
+        extends ParamEntityWithFromString {
 
-  public static ParamEntityThrowingWebApplicationException fromString(
-      String arg) {
-    throw new WebApplicationException(Status.valueOf(parseArg(arg)));
-  }
+    public static ParamEntityThrowingWebApplicationException fromString(
+            String arg) {
+        throw new WebApplicationException(Status.valueOf(parseArg(arg)));
+    }
 
-  protected static String parseArg(String arg) {
-    arg = arg.replace("%3d", "=").replace("%3D", "=");
-    arg = arg.contains("=") ? arg.replaceAll(".*=", "") : arg;
-    return arg;
-  }
+    protected static String parseArg(String arg) {
+        arg = arg.replace("%3d", "=").replace("%3D", "=");
+        arg = arg.contains("=") ? arg.replaceAll(".*=", "") : arg;
+        return arg;
+    }
 }

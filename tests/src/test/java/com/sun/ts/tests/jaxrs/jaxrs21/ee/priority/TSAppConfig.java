@@ -25,22 +25,22 @@ import javax.ws.rs.core.Application;
 @ApplicationPath("/")
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(ExceptionMapperTwo.class);
-    resources.add(ExceptionMapperOne.class);
-    resources.add(ExceptionMapperThree.class);
-    resources.add(ExceptionResource.class);
-    resources.add(ParamConverterResource.class);
-    resources.add(ParamConverterProviderTwo.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(ExceptionMapperTwo.class);
+        resources.add(ExceptionMapperOne.class);
+        resources.add(ExceptionMapperThree.class);
+        resources.add(ExceptionResource.class);
+        resources.add(ParamConverterResource.class);
+        resources.add(ParamConverterProviderTwo.class);
+        return resources;
+    }
 
-  @Override
-  public Set<Object> getSingletons() {
-    Set<Object> resources = new HashSet<Object>();
-    resources.add(new ParamConverterProviderAnother());
-    resources.add(new ParamConverterProviderOne());
-    return resources;
-  }
+    @Override
+    public Set<Object> getSingletons() {
+        Set<Object> resources = new HashSet<Object>();
+        resources.add(new ParamConverterProviderAnother());
+        resources.add(new ParamConverterProviderOne());
+        return resources;
+    }
 }

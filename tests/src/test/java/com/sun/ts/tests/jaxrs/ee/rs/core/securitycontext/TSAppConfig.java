@@ -16,15 +16,16 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext;
 
-import javax.ws.rs.core.Application;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+
+import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(TestServlet.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(TestServlet.class);
+        return resources;
+    }
 }

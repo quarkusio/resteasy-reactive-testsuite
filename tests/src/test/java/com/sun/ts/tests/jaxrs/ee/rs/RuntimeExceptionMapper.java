@@ -26,20 +26,20 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class RuntimeExceptionMapper
-    implements ExceptionMapper<RuntimeException> {
+        implements ExceptionMapper<RuntimeException> {
 
-  @Override
-  public Response toResponse(RuntimeException exception) {
-    Status status = Status.GONE;
-    if (exception instanceof MissingFormatArgumentException)
-      status = Status.MOVED_PERMANENTLY; // 301
-    else if (exception instanceof IllegalFormatException)
-      status = Status.SEE_OTHER; // 303
-    else if (exception instanceof IllegalArgumentException)
-      status = Status.NOT_MODIFIED;// 304
-    if (status == Status.GONE)
-      exception.printStackTrace();
-    return Response.status(status).entity(exception.getMessage()).build();
-  }
+    @Override
+    public Response toResponse(RuntimeException exception) {
+        Status status = Status.GONE;
+        if (exception instanceof MissingFormatArgumentException)
+            status = Status.MOVED_PERMANENTLY; // 301
+        else if (exception instanceof IllegalFormatException)
+            status = Status.SEE_OTHER; // 303
+        else if (exception instanceof IllegalArgumentException)
+            status = Status.NOT_MODIFIED;// 304
+        if (status == Status.GONE)
+            exception.printStackTrace();
+        return Response.status(status).entity(exception.getMessage()).build();
+    }
 
 }

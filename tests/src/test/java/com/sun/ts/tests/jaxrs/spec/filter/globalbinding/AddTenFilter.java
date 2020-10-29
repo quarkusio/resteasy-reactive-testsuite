@@ -22,8 +22,8 @@ import javax.ws.rs.ext.Provider;
 @GlobalNameBinding
 public class AddTenFilter extends AbstractAddFilter {
 
-  public AddTenFilter() {
-    super(10);
-  }
+    public AddTenFilter() {
+        super(10);
+    }
 
 }

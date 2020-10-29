@@ -17,16 +17,16 @@
 package com.sun.ts.tests.jaxrs.spec.provider.writer;
 
 public class EntityForWriter {
-  private String body;
+    private String body;
 
-  public EntityForWriter(String body) {
-    super();
-    this.body = body;
-  }
+    public EntityForWriter(String body) {
+        super();
+        this.body = body;
+    }
 
-  @Override
-  public String toString() {
-    return body;
-  }
+    @Override
+    public String toString() {
+        return body;
+    }
 
 }

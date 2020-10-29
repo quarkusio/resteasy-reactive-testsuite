@@ -27,32 +27,32 @@ import javax.ws.rs.ext.Provider;
 @Priority(100)
 // reverse order, should be second
 public class SecondResponseFilter extends TemplateFilter {
-  @Override
-  protected void operationMethodNotFound(String operation) {
-    // the check is to apply on ResponseFilter only
-    // here, it is usually not found.
-  }
-
-  public void getHeadersIsMutable() {
-    MultivaluedMap<String, Object> headers = responseContext.getHeaders();
-    if (assertTrue(headers.containsKey(HEADER), HEADER,
-        "header is not in header map"))
-      return;
-    setEntity(HEADER + " found as expected");
-  }
-
-  public void setEntity() {
-    MediaType type = responseContext.getMediaType();
-    if (assertTrue(MediaType.APPLICATION_SVG_XML_TYPE.equals(type),
-        "Unexpected mediatype", type))
-      return;
-
-    Annotation[] annotations = responseContext.getEntityAnnotations();
-    for (Annotation annotation : annotations) {
-      Class<?> clazz = annotation.annotationType();
-      if (assertTrue(clazz == Provider.class || clazz == Priority.class,
-          "Annotation", clazz, "was unexpected"))
-        return;
+    @Override
+    protected void operationMethodNotFound(String operation) {
+        // the check is to apply on ResponseFilter only
+        // here, it is usually not found.
     }
-  }
+
+    public void getHeadersIsMutable() {
+        MultivaluedMap<String, Object> headers = responseContext.getHeaders();
+        if (assertTrue(headers.containsKey(HEADER), HEADER,
+                "header is not in header map"))
+            return;
+        setEntity(HEADER + " found as expected");
+    }
+
+    public void setEntity() {
+        MediaType type = responseContext.getMediaType();
+        if (assertTrue(MediaType.APPLICATION_SVG_XML_TYPE.equals(type),
+                "Unexpected mediatype", type))
+            return;
+
+        Annotation[] annotations = responseContext.getEntityAnnotations();
+        for (Annotation annotation : annotations) {
+            Class<?> clazz = annotation.annotationType();
+            if (assertTrue(clazz == Provider.class || clazz == Priority.class,
+                    "Annotation", clazz, "was unexpected"))
+                return;
+        }
+    }
 }

@@ -31,119 +31,119 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0063 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  protected static final String tck = "tck";
+    protected static final String tck = "tck";
 
-  protected static final String cts = "cts";
+    protected static final String cts = "cts";
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0063().run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0063().run(args);
+    }
 
-  /* Run test */
+    /* Run test */
 
-  /*
-   * @testName: constructorNoArgTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:765; JAXRS:JAVADOC:766;
-   * 
-   * @test_Strategy: Returns multivalued map representation of the form.
-   * 
-   * Create a new form data instance.
-   */
-  public Form constructorNoArgTest() throws Fault {
-    Form form = new Form();
-    assertFault(form != null, "No Form created");
+    /*
+     * @testName: constructorNoArgTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:765; JAXRS:JAVADOC:766;
+     * 
+     * @test_Strategy: Returns multivalued map representation of the form.
+     * 
+     * Create a new form data instance.
+     */
+    public Form constructorNoArgTest() throws Fault {
+        Form form = new Form();
+        assertFault(form != null, "No Form created");
 
-    MultivaluedMap<String, String> map = form.asMap();
-    assertFault(map.isEmpty(), "Created From instance is not empty");
-    logMsg("Form instance created");
-    return form;
-  }
+        MultivaluedMap<String, String> map = form.asMap();
+        assertFault(map.isEmpty(), "Created From instance is not empty");
+        logMsg("Form instance created");
+        return form;
+    }
 
-  /*
-   * @testName: constructorStringArgsTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:767; JAXRS:JAVADOC:765;
-   * 
-   * @test_Strategy: Create a new form data instance with a single parameter
-   * entry.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringArgsTest() throws Fault {
-    Form form = new Form(tck, cts);
-    assertFault(form != null, "No Form created");
+    /*
+     * @testName: constructorStringArgsTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:767; JAXRS:JAVADOC:765;
+     * 
+     * @test_Strategy: Create a new form data instance with a single parameter
+     * entry.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringArgsTest() throws Fault {
+        Form form = new Form(tck, cts);
+        assertFault(form != null, "No Form created");
 
-    MultivaluedMap<String, String> map = form.asMap();
-    assertFault(map.containsKey(tck), "No given key", tck,
-        "exists in form instance");
-    assertFault(map.getFirst(tck).equals(cts),
-        "Different value has been given from map for key", tck, ":",
-        map.getFirst(tck));
-    logMsg("Form instance with String arguments sucessfully created");
-  }
+        MultivaluedMap<String, String> map = form.asMap();
+        assertFault(map.containsKey(tck), "No given key", tck,
+                "exists in form instance");
+        assertFault(map.getFirst(tck).equals(cts),
+                "Different value has been given from map for key", tck, ":",
+                map.getFirst(tck));
+        logMsg("Form instance with String arguments sucessfully created");
+    }
 
-  /*
-   * @testName: constructorMultivaluedMapArgTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:768; JAXRS:JAVADOC:765;
-   * 
-   * @test_Strategy: Create a new form data instance with a single parameter
-   * entry.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorMultivaluedMapArgTest() throws Fault {
-    MultivaluedHashMap<String, String> init = new MultivaluedHashMap<String, String>();
-    init.add(tck, cts);
-    init.add(cts, cts);
-    Form form = new Form(init);
-    assertFault(form != null, "No Form created");
+    /*
+     * @testName: constructorMultivaluedMapArgTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:768; JAXRS:JAVADOC:765;
+     * 
+     * @test_Strategy: Create a new form data instance with a single parameter
+     * entry.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorMultivaluedMapArgTest() throws Fault {
+        MultivaluedHashMap<String, String> init = new MultivaluedHashMap<String, String>();
+        init.add(tck, cts);
+        init.add(cts, cts);
+        Form form = new Form(init);
+        assertFault(form != null, "No Form created");
 
-    MultivaluedMap<String, String> map = form.asMap();
-    assertFault(map.containsKey(tck), "No given key ", tck,
-        "exists in form instance");
-    assertFault(map.getFirst(tck).equals(cts),
-        "Different value has been given from map for key", tck, ":",
-        map.getFirst(tck));
-    assertFault(map.containsKey(cts), "No given key", cts,
-        "exists in form instance");
-    assertFault(map.getFirst(cts).equals(cts),
-        "Different value has been given from map for key", cts, ":",
-        map.getFirst(cts));
-    logMsg("Form instance with MultivaluedMap argument sucessfully created");
-  }
+        MultivaluedMap<String, String> map = form.asMap();
+        assertFault(map.containsKey(tck), "No given key ", tck,
+                "exists in form instance");
+        assertFault(map.getFirst(tck).equals(cts),
+                "Different value has been given from map for key", tck, ":",
+                map.getFirst(tck));
+        assertFault(map.containsKey(cts), "No given key", cts,
+                "exists in form instance");
+        assertFault(map.getFirst(cts).equals(cts),
+                "Different value has been given from map for key", cts, ":",
+                map.getFirst(cts));
+        logMsg("Form instance with MultivaluedMap argument sucessfully created");
+    }
 
-  /*
-   * @testName: paramTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:765; JAXRS:JAVADOC:769;
-   * 
-   * @test_Strategy: Returns multivalued map representation of the form.
-   * 
-   * Adds a new value to the specified form parameter.
-   */
-  @org.junit.jupiter.api.Test
-  public void paramTest() throws Fault {
-    Form form = constructorNoArgTest();
-    form.param(tck, tck);
-    form.param(cts, cts);
+    /*
+     * @testName: paramTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:765; JAXRS:JAVADOC:769;
+     * 
+     * @test_Strategy: Returns multivalued map representation of the form.
+     * 
+     * Adds a new value to the specified form parameter.
+     */
+    @org.junit.jupiter.api.Test
+    public void paramTest() throws Fault {
+        Form form = constructorNoArgTest();
+        form.param(tck, tck);
+        form.param(cts, cts);
 
-    MultivaluedMap<String, String> map = form.asMap();
-    assertFault(map.containsKey(tck), "No given key ", tck,
-        "exists in form instance");
-    assertFault(map.getFirst(tck).equals(tck),
-        "Different value has been given from map for key", tck, ":",
-        map.getFirst(tck));
-    assertFault(map.containsKey(cts), "No given key", cts,
-        "exists in form instance");
-    assertFault(map.getFirst(cts).equals(cts),
-        "Different value has been given from map for key", cts, ":",
-        map.getFirst(cts));
-  }
+        MultivaluedMap<String, String> map = form.asMap();
+        assertFault(map.containsKey(tck), "No given key ", tck,
+                "exists in form instance");
+        assertFault(map.getFirst(tck).equals(tck),
+                "Different value has been given from map for key", tck, ":",
+                map.getFirst(tck));
+        assertFault(map.containsKey(cts), "No given key", cts,
+                "exists in form instance");
+        assertFault(map.getFirst(cts).equals(cts),
+                "Different value has been given from map for key", cts, ":",
+                map.getFirst(cts));
+    }
 }

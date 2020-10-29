@@ -35,41 +35,41 @@ import com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW;
  */
 @Provider
 public class EntityMessageWriter extends AbstractMessageBodyRW
-    implements MessageBodyWriter<ReadableWritableEntity> {
+        implements MessageBodyWriter<ReadableWritableEntity> {
 
-  @Override
-  public long getSize(ReadableWritableEntity t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return t.toXmlString().length();
-  }
+    @Override
+    public long getSize(ReadableWritableEntity t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return t.toXmlString().length();
+    }
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    String path = getPathValue(annotations);
-    if (path == null)
-      return false;
-    path = path.toLowerCase();
-    boolean writable = path.contains("body");
-    writable |= path.contains("head");
-    writable |= path.contains("ioexception");
-    writable &= MediaType.TEXT_XML_TYPE.isCompatible(mediaType);
-    writable &= ReadableWritableEntity.class.isAssignableFrom(type);
-    return writable;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        String path = getPathValue(annotations);
+        if (path == null)
+            return false;
+        path = path.toLowerCase();
+        boolean writable = path.contains("body");
+        writable |= path.contains("head");
+        writable |= path.contains("ioexception");
+        writable &= MediaType.TEXT_XML_TYPE.isCompatible(mediaType);
+        writable &= ReadableWritableEntity.class.isAssignableFrom(type);
+        return writable;
+    }
 
-  @Override
-  public void writeTo(ReadableWritableEntity t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    String path = getPathValue(annotations).toLowerCase();
-    if (path.contains("body"))
-      entityStream.write(t.toXmlString().getBytes());
-    else if (path.contains("head"))
-      httpHeaders.add(ReadableWritableEntity.NAME, t.toXmlString());
-    else if (path.contains("ioexception"))
-      throw new IOException("CTS test IOException");
-  }
+    @Override
+    public void writeTo(ReadableWritableEntity t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        String path = getPathValue(annotations).toLowerCase();
+        if (path.contains("body"))
+            entityStream.write(t.toXmlString().getBytes());
+        else if (path.contains("head"))
+            httpHeaders.add(ReadableWritableEntity.NAME, t.toXmlString());
+        else if (path.contains("ioexception"))
+            throw new IOException("CTS test IOException");
+    }
 
 }

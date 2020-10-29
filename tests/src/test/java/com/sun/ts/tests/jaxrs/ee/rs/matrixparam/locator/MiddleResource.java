@@ -31,43 +31,43 @@ import com.sun.ts.tests.jaxrs.ee.rs.matrixparam.MatrixParamTest;
 
 public class MiddleResource extends MatrixParamTest {
 
-  private final String returnValue;
+    private final String returnValue;
 
-  public MiddleResource() {
-    returnValue = null;
-  }
+    public MiddleResource() {
+        returnValue = null;
+    }
 
-  protected MiddleResource(String stringheader, String stringheader1,
-      int intheader, int intheader1, int intheader2, byte byteheader,
-      byte byteheader1, byte byteheader2, double doubleheader,
-      double doubleheader1, double doubleheader2, float floatheader,
-      float floatheader1, float floatheader2, short shortheader,
-      short shortheader1, short shortheader2, long longheader, long longheader1,
-      long longheader2, boolean booleanheader, boolean booleanheader1,
-      boolean booleanheader2,
-      ParamEntityWithConstructor paramEntityWithConstructor,
-      ParamEntityWithFromString paramEntityWithFromString,
-      ParamEntityWithValueOf paramEntityWithValueOf,
-      Set<ParamEntityWithFromString> setParamEntityWithFromString,
-      SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
-      List<ParamEntityWithFromString> listParamEntityWithFromString,
-      ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
-      ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
-    returnValue = stringParamHandling(stringheader, stringheader1, intheader,
-        intheader1, intheader2, byteheader, byteheader1, byteheader2,
-        doubleheader, doubleheader1, doubleheader2, floatheader, floatheader1,
-        floatheader2, shortheader, shortheader1, shortheader2, longheader,
-        longheader1, longheader2, booleanheader, booleanheader1, booleanheader2,
-        paramEntityWithConstructor, paramEntityWithFromString,
-        paramEntityWithValueOf, setParamEntityWithFromString,
-        sortedSetParamEntityWithFromString, listParamEntityWithFromString,
-        paramEntityThrowingWebApplicationException,
-        paramEntityThrowingExceptionGivenByName);
-  }
+    protected MiddleResource(String stringheader, String stringheader1,
+            int intheader, int intheader1, int intheader2, byte byteheader,
+            byte byteheader1, byte byteheader2, double doubleheader,
+            double doubleheader1, double doubleheader2, float floatheader,
+            float floatheader1, float floatheader2, short shortheader,
+            short shortheader1, short shortheader2, long longheader, long longheader1,
+            long longheader2, boolean booleanheader, boolean booleanheader1,
+            boolean booleanheader2,
+            ParamEntityWithConstructor paramEntityWithConstructor,
+            ParamEntityWithFromString paramEntityWithFromString,
+            ParamEntityWithValueOf paramEntityWithValueOf,
+            Set<ParamEntityWithFromString> setParamEntityWithFromString,
+            SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
+            List<ParamEntityWithFromString> listParamEntityWithFromString,
+            ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
+            ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
+        returnValue = stringParamHandling(stringheader, stringheader1, intheader,
+                intheader1, intheader2, byteheader, byteheader1, byteheader2,
+                doubleheader, doubleheader1, doubleheader2, floatheader, floatheader1,
+                floatheader2, shortheader, shortheader1, shortheader2, longheader,
+                longheader1, longheader2, booleanheader, booleanheader1, booleanheader2,
+                paramEntityWithConstructor, paramEntityWithFromString,
+                paramEntityWithValueOf, setParamEntityWithFromString,
+                sortedSetParamEntityWithFromString, listParamEntityWithFromString,
+                paramEntityThrowingWebApplicationException,
+                paramEntityThrowingExceptionGivenByName);
+    }
 
-  @POST
-  public String returnValue() {
-    return returnValue;
-  }
+    @POST
+    public String returnValue() {
+        return returnValue;
+    }
 
 }

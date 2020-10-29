@@ -17,19 +17,20 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp;
 
 import java.util.function.Supplier;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import javax.json.Json;
 import javax.json.JsonNumber;
 import javax.json.JsonString;
 import javax.ws.rs.core.MediaType;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -51,100 +52,98 @@ public class JAXRSClient0183 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp.Resource.class
-                            );
+                                    com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp.Resource.class);
                 }
             });
 
+    private static final long serialVersionUID = 21L;
 
-  private static final long serialVersionUID = 21L;
+    public JAXRSClient0183() {
+        setContextRoot("/jaxrs_jaxrs21_platform_providers_jsonp_web/resource");
+    }
 
-  public JAXRSClient0183() {
-    setContextRoot("/jaxrs_jaxrs21_platform_providers_jsonp_web/resource");
-  }
+    public static void main(String[] args) {
+        new JAXRSClient0183().run(args);
+    }
 
-  public static void main(String[] args) {
-    new JAXRSClient0183().run(args);
-  }
+    /*
+     * @testName: serverJsonStringReturnTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:129;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void serverJsonStringReturnTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "tostring"));
+        setProperty(Property.SEARCH_STRING, Resource.MESSAGE);
+        setProperty(Property.REQUEST_HEADERS, buildAccept(getJsonType()));
+        System.out.println(TEST_PROPS.get(Property.REQUEST_HEADERS));
+        invoke();
+    }
 
-  /*
-   * @testName: serverJsonStringReturnTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:129;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void serverJsonStringReturnTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "tostring"));
-    setProperty(Property.SEARCH_STRING, Resource.MESSAGE);
-    setProperty(Property.REQUEST_HEADERS, buildAccept(getJsonType()));
-    System.out.println(TEST_PROPS.get(Property.REQUEST_HEADERS));
-    invoke();
-  }
+    @Override
+    protected void run(String[] args) {
+        if (args.length == 0)
+            args = new String[] { "-p", "install/jaxrs/bin/ts.jte", "-t",
+                    "serverJsonStringReturnTest", "-vehicle", "standalone" };
+        super.run(args);
+    }
 
-  @Override
-  protected void run(String[] args) {
-    if (args.length == 0)
-      args = new String[] { "-p", "install/jaxrs/bin/ts.jte", "-t",
-          "serverJsonStringReturnTest", "-vehicle", "standalone" };
-    super.run(args);
-  }
+    /*
+     * @testName: serverJsonNumberReturnTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:129;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void serverJsonNumberReturnTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "tonumber"));
+        setProperty(Property.SEARCH_STRING, String.valueOf(Long.MIN_VALUE));
+        setProperty(Property.REQUEST_HEADERS, buildAccept(getJsonType()));
+        invoke();
+    }
 
-  /*
-   * @testName: serverJsonNumberReturnTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:129;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void serverJsonNumberReturnTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "tonumber"));
-    setProperty(Property.SEARCH_STRING, String.valueOf(Long.MIN_VALUE));
-    setProperty(Property.REQUEST_HEADERS, buildAccept(getJsonType()));
-    invoke();
-  }
+    /*
+     * @testName: serverJsonStringArgumentTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:129;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void serverJsonStringArgumentTest() throws Fault {
+        String entity = getClass().getName();
+        JsonString json = Json.createValue(entity);
+        setRequestContentEntity(json);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "fromstring"));
+        setProperty(Property.REQUEST_HEADERS, buildContentType(getJsonType()));
+        setProperty(Property.SEARCH_STRING, entity);
+        invoke();
+    }
 
-  /*
-   * @testName: serverJsonStringArgumentTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:129;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void serverJsonStringArgumentTest() throws Fault {
-    String entity = getClass().getName();
-    JsonString json = Json.createValue(entity);
-    setRequestContentEntity(json);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "fromstring"));
-    setProperty(Property.REQUEST_HEADERS, buildContentType(getJsonType()));
-    setProperty(Property.SEARCH_STRING, entity);
-    invoke();
-  }
+    /*
+     * @testName: serverJsonNumberArgumentTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:129;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void serverJsonNumberArgumentTest() throws Fault {
+        JsonNumber number = Json.createValue(Long.MIN_VALUE);
+        setRequestContentEntity(number);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "fromnumber"));
+        setProperty(Property.REQUEST_HEADERS, buildContentType(getJsonType()));
+        setProperty(Property.SEARCH_STRING, String.valueOf(Long.MIN_VALUE));
+        invoke();
+    }
 
-  /*
-   * @testName: serverJsonNumberArgumentTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:129;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void serverJsonNumberArgumentTest() throws Fault {
-    JsonNumber number = Json.createValue(Long.MIN_VALUE);
-    setRequestContentEntity(number);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "fromnumber"));
-    setProperty(Property.REQUEST_HEADERS, buildContentType(getJsonType()));
-    setProperty(Property.SEARCH_STRING, String.valueOf(Long.MIN_VALUE));
-    invoke();
-  }
-
-  // ////////////////////////////////////////////////////////////////////////
-  private static MediaType getJsonType() {
-    return MediaType.APPLICATION_JSON_TYPE;
-  }
+    // ////////////////////////////////////////////////////////////////////////
+    private static MediaType getJsonType() {
+        return MediaType.APPLICATION_JSON_TYPE;
+    }
 
 }

@@ -30,110 +30,110 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0070 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 3227433857540172402L;
+    private static final long serialVersionUID = 3227433857540172402L;
 
-  private static final String MESSAGE = "Any NoContentException message";
+    private static final String MESSAGE = "Any NoContentException message";
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0070().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: constructorStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1127;
-   * 
-   * @test_Strategy: Construct a new NoContentException instance. message - the
-   * detail message (which is saved for later retrieval by the
-   * Throwable.getMessage() method).
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringTest() throws Fault {
-    NoContentException e = new NoContentException(MESSAGE);
-    assertMessage(MESSAGE, e);
-  }
-
-  /*
-   * @testName: constructorNullStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1127;
-   * 
-   * @test_Strategy: Construct a new NoContentException instance. message - the
-   * detail message (which is saved for later retrieval by the
-   * Throwable.getMessage() method).
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorNullStringTest() throws Fault {
-    NoContentException e = new NoContentException((String) null);
-    assertNullMessage(e);
-  }
-
-  /*
-   * @testName: constructorStringThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1128;
-   * 
-   * @test_Strategy: Construct a new NoContentException instance.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      NoContentException e = new NoContentException(MESSAGE, t);
-      assertMessage(MESSAGE, e);
-      assertCause(e, t);
-
-      e = new NoContentException(null, t);
-      assertNullMessage(e);
-      assertCause(e, t);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0070().run(args);
     }
-  }
 
-  /*
-   * @testName: constructorThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1129;
-   * 
-   * @test_Strategy: Construct a new NoContentException instance.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      NoContentException e = new NoContentException(t);
-      assertCause(e, t);
+    /* Run test */
+
+    /*
+     * @testName: constructorStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1127;
+     * 
+     * @test_Strategy: Construct a new NoContentException instance. message - the
+     * detail message (which is saved for later retrieval by the
+     * Throwable.getMessage() method).
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringTest() throws Fault {
+        NoContentException e = new NoContentException(MESSAGE);
+        assertMessage(MESSAGE, e);
     }
-  }
 
-  // /////////////////////////////////////////////////////////////
-  private static void //
-      assertMessage(String message, Exception exception) throws Fault {
-    assertEquals(message, exception.getMessage(),
-        "Unexpected message in exception", exception.getMessage(),
-        "expected was", message);
-    logMsg("The exception contains expected", "#getMessage()");
-  }
+    /*
+     * @testName: constructorNullStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1127;
+     * 
+     * @test_Strategy: Construct a new NoContentException instance. message - the
+     * detail message (which is saved for later retrieval by the
+     * Throwable.getMessage() method).
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorNullStringTest() throws Fault {
+        NoContentException e = new NoContentException((String) null);
+        assertNullMessage(e);
+    }
 
-  private static void //
-      assertNullMessage(Exception exception) throws Fault {
-    assertNull(exception.getMessage(), "Unexpected message in exception",
-        exception.getMessage(), "expected was null");
-    logMsg("The exception contains expected", "#getMessage()");
-  }
+    /*
+     * @testName: constructorStringThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1128;
+     * 
+     * @test_Strategy: Construct a new NoContentException instance.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            NoContentException e = new NoContentException(MESSAGE, t);
+            assertMessage(MESSAGE, e);
+            assertCause(e, t);
 
-  private static void //
-      assertCause(NoContentException e, Throwable expected) throws Fault {
-    assertEquals(e.getCause(), expected, "#getCause does not contain expected",
-        expected, "but", e.getCause());
-    logMsg("getCause contains expected", expected);
-  }
+            e = new NoContentException(null, t);
+            assertNullMessage(e);
+            assertCause(e, t);
+        }
+    }
+
+    /*
+     * @testName: constructorThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1129;
+     * 
+     * @test_Strategy: Construct a new NoContentException instance.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            NoContentException e = new NoContentException(t);
+            assertCause(e, t);
+        }
+    }
+
+    // /////////////////////////////////////////////////////////////
+    private static void //
+            assertMessage(String message, Exception exception) throws Fault {
+        assertEquals(message, exception.getMessage(),
+                "Unexpected message in exception", exception.getMessage(),
+                "expected was", message);
+        logMsg("The exception contains expected", "#getMessage()");
+    }
+
+    private static void //
+            assertNullMessage(Exception exception) throws Fault {
+        assertNull(exception.getMessage(), "Unexpected message in exception",
+                exception.getMessage(), "expected was null");
+        logMsg("The exception contains expected", "#getMessage()");
+    }
+
+    private static void //
+            assertCause(NoContentException e, Throwable expected) throws Fault {
+        assertEquals(e.getCause(), expected, "#getCause does not contain expected",
+                expected, "but", e.getCause());
+        logMsg("getCause contains expected", expected);
+    }
 }

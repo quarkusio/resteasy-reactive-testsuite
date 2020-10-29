@@ -25,11 +25,11 @@ import com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(PrintingErrorHandler.class);
-    resources.add(ServiceUnavailableExceptionMapper.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(PrintingErrorHandler.class);
+        resources.add(ServiceUnavailableExceptionMapper.class);
+        return resources;
+    }
 }

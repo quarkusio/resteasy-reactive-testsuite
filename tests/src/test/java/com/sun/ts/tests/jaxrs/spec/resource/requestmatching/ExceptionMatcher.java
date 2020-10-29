@@ -24,23 +24,23 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class ExceptionMatcher
-    implements ExceptionMapper<WebApplicationException> {
+        implements ExceptionMapper<WebApplicationException> {
 
-  @Override
-  public Response toResponse(WebApplicationException exception) {
-    Response response = exception.getResponse();
-    int status = response == null ? Status.INTERNAL_SERVER_ERROR.getStatusCode()
-        : response.getStatus();
-    if (response != null && response.getEntity() != null)
-      return response;
-    switch (status) {
-    case 404:
-    case 405:
-    case 406:
-    case 415:
-      return Response.ok(String.valueOf(status)).build();
+    @Override
+    public Response toResponse(WebApplicationException exception) {
+        Response response = exception.getResponse();
+        int status = response == null ? Status.INTERNAL_SERVER_ERROR.getStatusCode()
+                : response.getStatus();
+        if (response != null && response.getEntity() != null)
+            return response;
+        switch (status) {
+            case 404:
+            case 405:
+            case 406:
+            case 415:
+                return Response.ok(String.valueOf(status)).build();
+        }
+        return response;
     }
-    return response;
-  }
 
 }

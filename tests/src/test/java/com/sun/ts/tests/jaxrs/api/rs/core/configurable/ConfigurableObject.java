@@ -24,6 +24,6 @@ import javax.ws.rs.core.Configurable;
  */
 public interface ConfigurableObject {
 
-  void config(Configurable<?> config);
+    void config(Configurable<?> config);
 
 }

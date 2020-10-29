@@ -31,24 +31,24 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class UUIDWriter implements MessageBodyWriter<UUID> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == UUID.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == UUID.class;
+    }
 
-  @Override
-  public long getSize(UUID t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return 36;
-  }
+    @Override
+    public long getSize(UUID t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return 36;
+    }
 
-  @Override
-  public void writeTo(UUID t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(t.toString().getBytes());
-  }
+    @Override
+    public void writeTo(UUID t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(t.toString().getBytes());
+    }
 
 }

@@ -29,40 +29,40 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * @param <CONTEXTOPERATION>
  */
 public abstract class WriterClient0094<CONTEXTOPERATION extends Enum<?>>
-    extends JaxrsCommonClient {
+        extends JaxrsCommonClient {
 
-  private static final long serialVersionUID = 8110273180216593061L;
+    private static final long serialVersionUID = 8110273180216593061L;
 
-  /**
-   * Set the header OPERATION to a proper value Also set the entity, it is good
-   * as it is here for most of the tests. For the rest, the entity needs to be
-   * replaced.
-   */
-  protected void setOperationAndEntity(CONTEXTOPERATION op) {
-    addHeader(TemplateInterceptorBody.OPERATION, op.name());
-    setRequestContentEntity(TemplateInterceptorBody.ENTITY);
-  }
-
-  /**
-   * Invoke and convert IOException to Fault
-   */
-  protected void invoke() throws Fault {
-    try {
-      setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
-      super.invoke();
-    } catch (Exception cause) {
-      if (cause instanceof IOException)
-        throw new Fault(cause.getMessage());
-      else
-        throw new Fault(cause);
+    /**
+     * Set the header OPERATION to a proper value Also set the entity, it is good
+     * as it is here for most of the tests. For the rest, the entity needs to be
+     * replaced.
+     */
+    protected void setOperationAndEntity(CONTEXTOPERATION op) {
+        addHeader(TemplateInterceptorBody.OPERATION, op.name());
+        setRequestContentEntity(TemplateInterceptorBody.ENTITY);
     }
-  }
 
-  /**
-   * Register providers to client configuration
-   * 
-   * @param response
-   *          ClientRequestFilter#abortWith response
-   */
-  protected abstract void addProviders();
+    /**
+     * Invoke and convert IOException to Fault
+     */
+    protected void invoke() throws Fault {
+        try {
+            setProperty(Property.REQUEST, buildRequest(Request.POST, ""));
+            super.invoke();
+        } catch (Exception cause) {
+            if (cause instanceof IOException)
+                throw new Fault(cause.getMessage());
+            else
+                throw new Fault(cause);
+        }
+    }
+
+    /**
+     * Register providers to client configuration
+     * 
+     * @param response
+     *        ClientRequestFilter#abortWith response
+     */
+    protected abstract void addProviders();
 }

@@ -28,25 +28,25 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Model {
 
-  public Model(Link link) {
-    super();
-    this.link = link;
-  }
+    public Model(Link link) {
+        super();
+        this.link = link;
+    }
 
-  public Model() {
-    link = RuntimeDelegate.getInstance().createLinkBuilder()
-        .uri("default://constructor.model/was/used").build();
-  }
+    public Model() {
+        link = RuntimeDelegate.getInstance().createLinkBuilder()
+                .uri("default://constructor.model/was/used").build();
+    }
 
-  @XmlElement
-  @XmlJavaTypeAdapter(JaxbAdapterEx.class)
-  Link link;
+    @XmlElement
+    @XmlJavaTypeAdapter(JaxbAdapterEx.class)
+    Link link;
 
-  public Link getLink() {
-    return link;
-  }
+    public Link getLink() {
+        return link;
+    }
 
-  public void setLink(Link lnk) {
-    link = lnk;
-  }
+    public void setLink(Link lnk) {
+        link = lnk;
+    }
 }

@@ -39,246 +39,246 @@ import javax.ws.rs.core.Variant;
 @Path(value = "/RequestTest")
 public class RequestTest {
 
-  // ------------------ GET METHOD ----------------------------
+    // ------------------ GET METHOD ----------------------------
 
-  private static Response assertResponse(String expectedMethod,
-      String actualMethod) {
-    if (actualMethod.equalsIgnoreCase(expectedMethod)) {
-      return Response.ok("Test PASSED").build();
-    } else {
-      return Response.ok("Test FAILED with " + actualMethod).build();
+    private static Response assertResponse(String expectedMethod,
+            String actualMethod) {
+        if (actualMethod.equalsIgnoreCase(expectedMethod)) {
+            return Response.ok("Test PASSED").build();
+        } else {
+            return Response.ok("Test FAILED with " + actualMethod).build();
+        }
     }
-  }
 
-  @GET
-  @Path("/GetMethodGetTest")
-  public Response getTest(@Context Request req) {
-    String method = req.getMethod();
-    return assertResponse("GET", method);
-  }
-
-  @PUT
-  @Path("/GetMethodPutTest")
-  public Response putTest(@Context Request req) {
-    String method = req.getMethod();
-    return assertResponse("PUT", method);
-  }
-
-  @POST
-  @Path("/GetMethodPostTest")
-  public Response postTest(@Context Request req) {
-    String method = req.getMethod();
-    return assertResponse("POST", method);
-  }
-
-  @DELETE
-  @Path("/GetMethodDeleteTest")
-  public Response deleteTest(@Context Request req) {
-    String method = req.getMethod();
-    return assertResponse("DELETE", method);
-  }
-
-  @HEAD
-  @Path("/GetMethodHeadTest")
-  public Response headTest(@Context Request req) {
-    String method = req.getMethod();
-
-    if (method.equalsIgnoreCase("HEAD")) {
-      return Response.ok().build();
-    } else {
-      return Response.status(400).build();
+    @GET
+    @Path("/GetMethodGetTest")
+    public Response getTest(@Context Request req) {
+        String method = req.getMethod();
+        return assertResponse("GET", method);
     }
-  }
 
-  // ------------------ SELECT VARIANT ----------------------------
-
-  @GET
-  @Path("/SelectVariantTestGet")
-  public Response selectVariantTestGet(@Context Request req) {
-    List<Variant> vs = null;
-
-    try {
-      req.selectVariant(vs);
-      return Response.ok("Test FAILED - no exception thrown").build();
-    } catch (IllegalArgumentException ile) {
-      return Response.ok("Test PASSED - expected exception thrown").build();
-    } catch (Throwable th) {
-      return Response
-          .ok("Test FAILED - wrong type exception thrown" + th.getMessage())
-          .build();
+    @PUT
+    @Path("/GetMethodPutTest")
+    public Response putTest(@Context Request req) {
+        String method = req.getMethod();
+        return assertResponse("PUT", method);
     }
-  }
 
-  @PUT
-  @Path("/SelectVariantTestPut")
-  public Response selectVariantTestPut(@Context Request req) {
-    return selectVariantTestGet(req);
-  }
-
-  @POST
-  @Path("/SelectVariantTestPost")
-  public Response selectVariantTestPost(@Context Request req) {
-    return selectVariantTestGet(req);
-  }
-
-  @DELETE
-  @Path("/SelectVariantTestDelete")
-  public Response selectVariantTestDelete(@Context Request req) {
-    return selectVariantTestGet(req);
-  }
-
-  @GET
-  @Path("/SelectVariantTestResponse")
-  public Response selectVariantTestResponse(@Context Request req) {
-    List<Variant> list = Variant.encodings("CP1250", "UTF-8")
-        .languages(Locale.ENGLISH).mediaTypes(MediaType.APPLICATION_JSON_TYPE)
-        .add().build();
-    Variant selectedVariant = req.selectVariant(list);
-    if (null == selectedVariant)
-      return Response.notAcceptable(list).build();
-    return Response.ok("entity").build();
-  }
-
-  // ------------------ EVALUATE PRECONDITIONS ----------------------------
-  private static boolean evaluatePreconditionsEntityTagNull(Request req) {
-    try {
-      req.evaluatePreconditions((EntityTag) null);
-      return false;
-    } catch (IllegalArgumentException iae) {
-      return true;
+    @POST
+    @Path("/GetMethodPostTest")
+    public Response postTest(@Context Request req) {
+        String method = req.getMethod();
+        return assertResponse("POST", method);
     }
-  }
 
-  private static boolean evaluatePreconditionsNowEntityTagNull(Request req) {
-    try {
-      Date now = Calendar.getInstance().getTime();
-      req.evaluatePreconditions(now, (EntityTag) null);
-      return false;
-    } catch (IllegalArgumentException iae) {
-      return true;
+    @DELETE
+    @Path("/GetMethodDeleteTest")
+    public Response deleteTest(@Context Request req) {
+        String method = req.getMethod();
+        return assertResponse("DELETE", method);
     }
-  }
 
-  private static boolean evaluatePreconditionsDateEntityTag(Request req,
-      Date date, String tag) {
-    ResponseBuilder rb = req.evaluatePreconditions(date, createTag(tag));
-    return rb == null;
-  }
+    @HEAD
+    @Path("/GetMethodHeadTest")
+    public Response headTest(@Context Request req) {
+        String method = req.getMethod();
 
-  private static boolean evaluatePreconditionsDate(Request req, Date date) {
-    ResponseBuilder rb = req.evaluatePreconditions(date);
-    return rb == null;
-  }
+        if (method.equalsIgnoreCase("HEAD")) {
+            return Response.ok().build();
+        } else {
+            return Response.status(400).build();
+        }
+    }
 
-  private static boolean evaluatePreconditions(Request req) {
-    ResponseBuilder rb = req.evaluatePreconditions();
-    return rb == null;
-  }
+    // ------------------ SELECT VARIANT ----------------------------
 
-  private static EntityTag createTag(String tag) {
-    String xtag = new StringBuilder().append("\"").append(tag).append("\"")
-        .toString();
-    return EntityTag.valueOf(xtag);
-  }
+    @GET
+    @Path("/SelectVariantTestGet")
+    public Response selectVariantTestGet(@Context Request req) {
+        List<Variant> vs = null;
 
-  private static boolean evaluatePreconditionsEntityTag(Request req,
-      String tag) {
-    ResponseBuilder rb = req.evaluatePreconditions(createTag(tag));
-    return rb == null;
-  }
+        try {
+            req.selectVariant(vs);
+            return Response.ok("Test FAILED - no exception thrown").build();
+        } catch (IllegalArgumentException ile) {
+            return Response.ok("Test PASSED - expected exception thrown").build();
+        } catch (Throwable th) {
+            return Response
+                    .ok("Test FAILED - wrong type exception thrown" + th.getMessage())
+                    .build();
+        }
+    }
 
-  private static Response createResponse(boolean ok) {
-    Status status = ok ? Status.OK : Status.PRECONDITION_FAILED;
-    return Response.status(status).build();
-  }
+    @PUT
+    @Path("/SelectVariantTestPut")
+    public Response selectVariantTestPut(@Context Request req) {
+        return selectVariantTestGet(req);
+    }
 
-  private static Date getYear1900() {
-    Calendar calendar = Calendar.getInstance();
-    calendar.set(Calendar.YEAR, 1900);
-    return calendar.getTime();
-  }
+    @POST
+    @Path("/SelectVariantTestPost")
+    public Response selectVariantTestPost(@Context Request req) {
+        return selectVariantTestGet(req);
+    }
 
-  @GET
-  @Path("/preconditionsSimpleGet")
-  public Response evaluatePreconditionsEntityTagGetSimpleTest(
-      @Context Request req) {
-    boolean ok = evaluatePreconditionsEntityTag(req, "AAA");
-    if (!ok)
-      return Response.status(Status.GONE).build();
-    ok &= evaluatePreconditionsNowEntityTagNull(req);
-    if (!ok)
-      return Response.status(Status.NOT_ACCEPTABLE).build();
-    ok &= evaluatePreconditionsEntityTagNull(req);
-    return createResponse(ok);
-  }
+    @DELETE
+    @Path("/SelectVariantTestDelete")
+    public Response selectVariantTestDelete(@Context Request req) {
+        return selectVariantTestGet(req);
+    }
 
-  @GET
-  @Path("/preconditionsAAAGet")
-  public Response evaluatePreconditionsEntityTagAAAGetTest(
-      @Context Request req) {
-    boolean ok = evaluatePreconditionsEntityTag(req, "AAA");
-    return createResponse(ok);
-  }
+    @GET
+    @Path("/SelectVariantTestResponse")
+    public Response selectVariantTestResponse(@Context Request req) {
+        List<Variant> list = Variant.encodings("CP1250", "UTF-8")
+                .languages(Locale.ENGLISH).mediaTypes(MediaType.APPLICATION_JSON_TYPE)
+                .add().build();
+        Variant selectedVariant = req.selectVariant(list);
+        if (null == selectedVariant)
+            return Response.notAcceptable(list).build();
+        return Response.ok("entity").build();
+    }
 
-  @PUT
-  @Path("/preconditionsAAAPut")
-  public Response evaluatePreconditionsEntityTagAAAPutTest(
-      @Context Request req) {
-    return evaluatePreconditionsEntityTagAAAGetTest(req);
-  }
+    // ------------------ EVALUATE PRECONDITIONS ----------------------------
+    private static boolean evaluatePreconditionsEntityTagNull(Request req) {
+        try {
+            req.evaluatePreconditions((EntityTag) null);
+            return false;
+        } catch (IllegalArgumentException iae) {
+            return true;
+        }
+    }
 
-  @HEAD
-  @Path("/preconditionsAAAHead")
-  public Response evaluatePreconditionsEntityTagAAAHeadTest(
-      @Context Request req) {
-    return evaluatePreconditionsEntityTagAAAGetTest(req);
-  }
+    private static boolean evaluatePreconditionsNowEntityTagNull(Request req) {
+        try {
+            Date now = Calendar.getInstance().getTime();
+            req.evaluatePreconditions(now, (EntityTag) null);
+            return false;
+        } catch (IllegalArgumentException iae) {
+            return true;
+        }
+    }
 
-  @GET
-  @Path("/preconditionsAAAAgesAgoGet")
-  public Response evaluatePreconditionsAgesAgoEntityTagAAAGetTest(
-      @Context Request req) {
-    Date date = getYear1900();
-    boolean ok = evaluatePreconditionsDateEntityTag(req, date, "AAA");
-    return createResponse(ok);
-  }
+    private static boolean evaluatePreconditionsDateEntityTag(Request req,
+            Date date, String tag) {
+        ResponseBuilder rb = req.evaluatePreconditions(date, createTag(tag));
+        return rb == null;
+    }
 
-  @GET
-  @Path("/preconditionsNowAAAGet")
-  public Response evaluatePreconditionsDateEntityTagAAAGetTest(
-      @Context Request req) {
-    Date date = Calendar.getInstance().getTime();
-    boolean ok = evaluatePreconditionsDateEntityTag(req, date, "AAA");
-    return createResponse(ok);
-  }
+    private static boolean evaluatePreconditionsDate(Request req, Date date) {
+        ResponseBuilder rb = req.evaluatePreconditions(date);
+        return rb == null;
+    }
 
-  @GET
-  @Path("/preconditionsNowGet")
-  public Response evaluatePreconditionsDateGetTest(@Context Request req) {
-    Date date = Calendar.getInstance().getTime();
-    boolean ok = evaluatePreconditionsDate(req, date);
-    return createResponse(ok);
-  }
+    private static boolean evaluatePreconditions(Request req) {
+        ResponseBuilder rb = req.evaluatePreconditions();
+        return rb == null;
+    }
 
-  @GET
-  @Path("/preconditionsAgesAgoGet")
-  public Response evaluatePreconditionsAgesAgoGetTest(@Context Request req) {
-    Date date = getYear1900();
-    boolean ok = evaluatePreconditionsDate(req, date);
-    return createResponse(ok);
-  }
+    private static EntityTag createTag(String tag) {
+        String xtag = new StringBuilder().append("\"").append(tag).append("\"")
+                .toString();
+        return EntityTag.valueOf(xtag);
+    }
 
-  @GET
-  @Path("/preconditionsGet")
-  public Response evaluatePreconditionsGetTest(@Context Request req) {
-    boolean ok = evaluatePreconditions(req);
-    return createResponse(ok);
-  }
+    private static boolean evaluatePreconditionsEntityTag(Request req,
+            String tag) {
+        ResponseBuilder rb = req.evaluatePreconditions(createTag(tag));
+        return rb == null;
+    }
 
-  @GET
-  @Path("/preconditionsHead")
-  public Response evaluatePreconditionsHeadTest(@Context Request req) {
-    boolean ok = evaluatePreconditions(req);
-    return createResponse(ok);
-  }
+    private static Response createResponse(boolean ok) {
+        Status status = ok ? Status.OK : Status.PRECONDITION_FAILED;
+        return Response.status(status).build();
+    }
+
+    private static Date getYear1900() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 1900);
+        return calendar.getTime();
+    }
+
+    @GET
+    @Path("/preconditionsSimpleGet")
+    public Response evaluatePreconditionsEntityTagGetSimpleTest(
+            @Context Request req) {
+        boolean ok = evaluatePreconditionsEntityTag(req, "AAA");
+        if (!ok)
+            return Response.status(Status.GONE).build();
+        ok &= evaluatePreconditionsNowEntityTagNull(req);
+        if (!ok)
+            return Response.status(Status.NOT_ACCEPTABLE).build();
+        ok &= evaluatePreconditionsEntityTagNull(req);
+        return createResponse(ok);
+    }
+
+    @GET
+    @Path("/preconditionsAAAGet")
+    public Response evaluatePreconditionsEntityTagAAAGetTest(
+            @Context Request req) {
+        boolean ok = evaluatePreconditionsEntityTag(req, "AAA");
+        return createResponse(ok);
+    }
+
+    @PUT
+    @Path("/preconditionsAAAPut")
+    public Response evaluatePreconditionsEntityTagAAAPutTest(
+            @Context Request req) {
+        return evaluatePreconditionsEntityTagAAAGetTest(req);
+    }
+
+    @HEAD
+    @Path("/preconditionsAAAHead")
+    public Response evaluatePreconditionsEntityTagAAAHeadTest(
+            @Context Request req) {
+        return evaluatePreconditionsEntityTagAAAGetTest(req);
+    }
+
+    @GET
+    @Path("/preconditionsAAAAgesAgoGet")
+    public Response evaluatePreconditionsAgesAgoEntityTagAAAGetTest(
+            @Context Request req) {
+        Date date = getYear1900();
+        boolean ok = evaluatePreconditionsDateEntityTag(req, date, "AAA");
+        return createResponse(ok);
+    }
+
+    @GET
+    @Path("/preconditionsNowAAAGet")
+    public Response evaluatePreconditionsDateEntityTagAAAGetTest(
+            @Context Request req) {
+        Date date = Calendar.getInstance().getTime();
+        boolean ok = evaluatePreconditionsDateEntityTag(req, date, "AAA");
+        return createResponse(ok);
+    }
+
+    @GET
+    @Path("/preconditionsNowGet")
+    public Response evaluatePreconditionsDateGetTest(@Context Request req) {
+        Date date = Calendar.getInstance().getTime();
+        boolean ok = evaluatePreconditionsDate(req, date);
+        return createResponse(ok);
+    }
+
+    @GET
+    @Path("/preconditionsAgesAgoGet")
+    public Response evaluatePreconditionsAgesAgoGetTest(@Context Request req) {
+        Date date = getYear1900();
+        boolean ok = evaluatePreconditionsDate(req, date);
+        return createResponse(ok);
+    }
+
+    @GET
+    @Path("/preconditionsGet")
+    public Response evaluatePreconditionsGetTest(@Context Request req) {
+        boolean ok = evaluatePreconditions(req);
+        return createResponse(ok);
+    }
+
+    @GET
+    @Path("/preconditionsHead")
+    public Response evaluatePreconditionsHeadTest(@Context Request req) {
+        boolean ok = evaluatePreconditions(req);
+        return createResponse(ok);
+    }
 }

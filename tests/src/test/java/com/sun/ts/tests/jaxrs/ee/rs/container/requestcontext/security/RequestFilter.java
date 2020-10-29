@@ -30,15 +30,15 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class RequestFilter implements ContainerRequestFilter {
 
-  @Override
-  public void filter(ContainerRequestContext requestContext)
-      throws IOException {
-    SecurityContext security = requestContext.getSecurityContext();
-    String msg = "security.getUserPrincipal() is null";
-    if (security.getUserPrincipal() != null)
-      msg = security.getUserPrincipal().getName();
-    Response response = Response.ok(msg).build();
-    requestContext.abortWith(response);
-  }
+    @Override
+    public void filter(ContainerRequestContext requestContext)
+            throws IOException {
+        SecurityContext security = requestContext.getSecurityContext();
+        String msg = "security.getUserPrincipal() is null";
+        if (security.getUserPrincipal() != null)
+            msg = security.getUserPrincipal().getName();
+        Response response = Response.ok(msg).build();
+        requestContext.abortWith(response);
+    }
 
 }

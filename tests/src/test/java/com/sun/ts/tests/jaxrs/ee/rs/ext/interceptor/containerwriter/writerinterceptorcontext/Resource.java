@@ -29,36 +29,36 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcont
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("{id}")
-  public Response genericResponse(@PathParam("id") String path) {
-    ContextOperation op = ContextOperation.valueOf(path.toUpperCase());
-    ResponseBuilder builder = createResponseBuilderWithHeader(op);
-    switch (op) {
-    case GETHEADERS:
-      for (int i = 0; i != 5; i++)
-        builder = builder.header(TemplateInterceptorBody.PROPERTY + i, "any");
-      break;
-    case PROCEEDTHROWSWEBAPPEXCEPTION:
-      builder.entity(new OnWriteExceptionThrowingStringBean(
-          TemplateInterceptorBody.ENTITY));
-      break;
-    default:
-      break;
+    @GET
+    @Path("{id}")
+    public Response genericResponse(@PathParam("id") String path) {
+        ContextOperation op = ContextOperation.valueOf(path.toUpperCase());
+        ResponseBuilder builder = createResponseBuilderWithHeader(op);
+        switch (op) {
+            case GETHEADERS:
+                for (int i = 0; i != 5; i++)
+                    builder = builder.header(TemplateInterceptorBody.PROPERTY + i, "any");
+                break;
+            case PROCEEDTHROWSWEBAPPEXCEPTION:
+                builder.entity(new OnWriteExceptionThrowingStringBean(
+                        TemplateInterceptorBody.ENTITY));
+                break;
+            default:
+                break;
+        }
+        Response response = builder.build();
+        return response;
     }
-    Response response = builder.build();
-    return response;
-  }
 
-  // ///////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////
 
-  static ResponseBuilder createResponseBuilderWithHeader(ContextOperation op) {
-    Response.ResponseBuilder builder = Response.ok();
-    // set a header with ContextOperation so that the filter knows what to
-    // do
-    builder = builder.header(TemplateInterceptorBody.OPERATION, op.name());
-    builder = builder.entity(TemplateInterceptorBody.ENTITY);
-    return builder;
-  }
+    static ResponseBuilder createResponseBuilderWithHeader(ContextOperation op) {
+        Response.ResponseBuilder builder = Response.ok();
+        // set a header with ContextOperation so that the filter knows what to
+        // do
+        builder = builder.header(TemplateInterceptorBody.OPERATION, op.name());
+        builder = builder.entity(TemplateInterceptorBody.ENTITY);
+        return builder;
+    }
 
 }

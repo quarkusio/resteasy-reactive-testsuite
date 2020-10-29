@@ -21,54 +21,53 @@ import javax.ws.rs.Path;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response.Status;
-import javax.xml.bind.JAXBElement;
 import javax.xml.transform.Source;
 
 @Path("resource")
 public class Resource {
-  // QUARKUS: disabled as we don't support javax.xml.transform.Source
-//  @Path("source")
-//  @POST
-  public Source source(Source source) {
-    return source;
-  }
+    // QUARKUS: disabled as we don't support javax.xml.transform.Source
+    //  @Path("source")
+    //  @POST
+    public Source source(Source source) {
+        return source;
+    }
 
-  // QUARKUS: disable this because we don't support JAXBElement and it causes a build time error
-//  @Path("jaxb")
-//  @POST
-//  public JAXBElement<String> jaxb(JAXBElement<String> jaxb) {
-//    return jaxb;
-//  }
+    // QUARKUS: disable this because we don't support JAXBElement and it causes a build time error
+    //  @Path("jaxb")
+    //  @POST
+    //  public JAXBElement<String> jaxb(JAXBElement<String> jaxb) {
+    //    return jaxb;
+    //  }
 
-  @Path("map")
-  @POST
-  public MultivaluedMap<String, String> map(
-      MultivaluedMap<String, String> map) {
-    return map;
-  }
+    @Path("map")
+    @POST
+    public MultivaluedMap<String, String> map(
+            MultivaluedMap<String, String> map) {
+        return map;
+    }
 
-  @Path("character")
-  @POST
-  public Character character(Character character) {
-    if (character != 'a')
-      throw new WebApplicationException(Status.NOT_ACCEPTABLE);
-    return character;
-  }
+    @Path("character")
+    @POST
+    public Character character(Character character) {
+        if (character != 'a')
+            throw new WebApplicationException(Status.NOT_ACCEPTABLE);
+        return character;
+    }
 
-  @Path("boolean")
-  @POST
-  public Boolean bool(Boolean bool) {
-    if (bool)
-      throw new WebApplicationException(Status.NOT_ACCEPTABLE);
-    return false;
-  }
+    @Path("boolean")
+    @POST
+    public Boolean bool(Boolean bool) {
+        if (bool)
+            throw new WebApplicationException(Status.NOT_ACCEPTABLE);
+        return false;
+    }
 
-  @Path("number")
-  @POST
-  public Integer number(Integer i) {
-    if (i != 0)
-      throw new WebApplicationException(Status.NOT_ACCEPTABLE);
-    return i;
-  }
+    @Path("number")
+    @POST
+    public Integer number(Integer i) {
+        if (i != 0)
+            throw new WebApplicationException(Status.NOT_ACCEPTABLE);
+        return i;
+    }
 
 }

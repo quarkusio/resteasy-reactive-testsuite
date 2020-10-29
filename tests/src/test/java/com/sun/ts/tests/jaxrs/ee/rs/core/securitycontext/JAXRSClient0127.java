@@ -20,7 +20,7 @@ import java.util.Properties;
 
 import javax.ws.rs.core.Response;
 
-import org.apache.commons.httpclient.Header;
+import org.apache.http.Header;
 
 import com.sun.ts.tests.common.webclient.http.HttpResponse;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -31,49 +31,49 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  *                     ts_home;
  */
 public abstract class JAXRSClient0127 extends JAXRSCommonClient {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  protected static final String URL = "Context";
+    protected static final String URL = "Context";
 
-  protected HttpResponse response;
+    protected HttpResponse response;
 
-  protected String wwwAuthenticate;
+    protected String wwwAuthenticate;
 
-  protected String user;
+    protected String user;
 
-  protected String password;
+    protected String password;
 
-  protected String authuser;
+    protected String authuser;
 
-  protected String authpassword;
+    protected String authpassword;
 
-  public void setup(String[] args, Properties p) throws Fault {
-    user = p.getProperty("user");
-    password = p.getProperty("password");
-    authuser = p.getProperty("authuser");
-    authpassword = p.getProperty("authpassword");
-    assertFault(!isNullOrEmpty(user), "user was not in build.proerties");
-    assertFault(!isNullOrEmpty(password),
-        "password was not in build.proerties");
-    assertFault(!isNullOrEmpty(authuser),
-        "authuser was not in build.proerties");
-    assertFault(!isNullOrEmpty(authpassword),
-        "authpassword was not in build.proerties");
-    super.setup(args, p);
-  }
+    public void setup(String[] args, Properties p) throws Fault {
+        user = p.getProperty("user");
+        password = p.getProperty("password");
+        authuser = p.getProperty("authuser");
+        authpassword = p.getProperty("authpassword");
+        assertFault(!isNullOrEmpty(user), "user was not in build.proerties");
+        assertFault(!isNullOrEmpty(password),
+                "password was not in build.proerties");
+        assertFault(!isNullOrEmpty(authuser),
+                "authuser was not in build.proerties");
+        assertFault(!isNullOrEmpty(authpassword),
+                "authpassword was not in build.proerties");
+        super.setup(args, p);
+    }
 
-  public void noAuthorizationTest() throws Fault {
-    setProperty(STATUS_CODE, getStatusCode(Response.Status.UNAUTHORIZED));
-    invokeRequest();
-    assertFault(wwwAuthenticate != null,
-        "Expected authentication request missing!");
-  }
+    public void noAuthorizationTest() throws Fault {
+        setProperty(STATUS_CODE, getStatusCode(Response.Status.UNAUTHORIZED));
+        invokeRequest();
+        assertFault(wwwAuthenticate != null,
+                "Expected authentication request missing!");
+    }
 
-  protected void invokeRequest() throws Fault {
-    setProperty(REQUEST, buildRequest("GET", URL));
-    invoke();
-    response = _testCase.getResponse();
-    Header header = response.getResponseHeader("WWW-Authenticate");
-    wwwAuthenticate = header == null ? null : header.getValue();
-  }
+    protected void invokeRequest() throws Fault {
+        setProperty(REQUEST, buildRequest("GET", URL));
+        invoke();
+        response = _testCase.getResponse();
+        Header header = response.getResponseHeader("WWW-Authenticate");
+        wwwAuthenticate = header == null ? null : header.getValue();
+    }
 }

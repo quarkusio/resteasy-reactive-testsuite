@@ -38,199 +38,199 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf;
 
 @Path(value = "/PathParamTest")
 public class PathParamTest {
-  @Produces(MediaType.TEXT_HTML)
-  @GET
-  @Path("/{id}")
-  public String single(@PathParam("id") String id) {
-    return "single=" + id;
-  }
-
-  @Produces(MediaType.TEXT_HTML)
-  @GET
-  @Path("/{id}/{id1}")
-  public String two(@PathParam("id") String id,
-      @PathParam("id1") PathSegment id1) {
-    return "double=" + id + id1.getPath();
-  }
-
-  @GET
-  @Path("/{id}/{id1}/{id2}")
-  public String triple(@PathParam("id") int id,
-      @PathParam("id1") PathSegment id1, @PathParam("id2") float id2) {
-    return "triple=" + id + id1.getPath() + id2;
-  }
-
-  @GET
-  @Path("/{id}/{id1}/{id2}/{id3}")
-  public String quard(@PathParam("id") double id, @PathParam("id1") boolean id1,
-      @PathParam("id2") byte id2, @PathParam("id3") PathSegment id3) {
-    return "quard=" + id + id1 + id2 + id3.getPath();
-  }
-
-  @GET
-  @Path("/{id}/{id1}/{id2}/{id3}/{id4}")
-  public String penta(@PathParam("id") long id, @PathParam("id1") String id1,
-      @PathParam("id2") short id2, @PathParam("id3") boolean id3,
-      @PathParam("id4") PathSegment id4) {
-    return "penta=" + id + id1 + id2 + id3 + id4.getPath();
-  }
-
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/{id}/{id}/{id}/{id}/{id}/{id}")
-  public String list(@PathParam("id") List<String> id) {
-    StringBuffer sb = new StringBuffer();
-    sb.append("list=");
-    for (String tmp : id) {
-      sb.append(tmp);
+    @Produces(MediaType.TEXT_HTML)
+    @GET
+    @Path("/{id}")
+    public String single(@PathParam("id") String id) {
+        return "single=" + id;
     }
-    return sb.toString();
-  }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/matrix/{id}")
-  public String matrixparamtest(@PathParam("id") PathSegment id) {
-    StringBuffer sb = new StringBuffer();
-    sb.append("matrix=");
-
-    sb.append("/" + id.getPath());
-    MultivaluedMap<String, String> matrix = id.getMatrixParameters();
-    Set<String> keys = matrix.keySet();
-    for (Object key : keys) {
-      sb.append(";" + key.toString() + "=" + matrix.getFirst(key.toString()));
-
+    @Produces(MediaType.TEXT_HTML)
+    @GET
+    @Path("/{id}/{id1}")
+    public String two(@PathParam("id") String id,
+            @PathParam("id1") PathSegment id1) {
+        return "double=" + id + id1.getPath();
     }
-    return sb.toString();
-  }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/ParamEntityWithConstructor/{id}")
-  public String paramEntityWithConstructorTest(
-      @DefaultValue("PathParamTest") @PathParam("id") ParamEntityWithConstructor paramEntityWithConstructor) {
-    return paramEntityWithConstructor.getValue();
-  }
+    @GET
+    @Path("/{id}/{id1}/{id2}")
+    public String triple(@PathParam("id") int id,
+            @PathParam("id1") PathSegment id1, @PathParam("id2") float id2) {
+        return "triple=" + id + id1.getPath() + id2;
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/ParamEntityWithFromString/{id}")
-  public String paramEntityWithFromStringTest(
-      @Encoded @DefaultValue("PathParamTest") @PathParam("id") ParamEntityWithFromString paramEntityWithFromString) {
-    return paramEntityWithFromString.getValue();
-  }
+    @GET
+    @Path("/{id}/{id1}/{id2}/{id3}")
+    public String quard(@PathParam("id") double id, @PathParam("id1") boolean id1,
+            @PathParam("id2") byte id2, @PathParam("id3") PathSegment id3) {
+        return "quard=" + id + id1 + id2 + id3.getPath();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/ParamEntityWithValueOf/{id}")
-  public String paramEntityWithValueOfTest(
-      @DefaultValue("PathParamTest") @PathParam("id") ParamEntityWithValueOf paramEntityWithValueOf) {
-    return paramEntityWithValueOf.getValue();
-  }
+    @GET
+    @Path("/{id}/{id1}/{id2}/{id3}/{id4}")
+    public String penta(@PathParam("id") long id, @PathParam("id1") String id1,
+            @PathParam("id2") short id2, @PathParam("id3") boolean id3,
+            @PathParam("id4") PathSegment id4) {
+        return "penta=" + id + id1 + id2 + id3 + id4.getPath();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/SetParamEntityWithFromString/{id}")
-  public String setParamEntityWithFromStringTest(
-      @DefaultValue("PathParamTest") @PathParam("id") Set<ParamEntityWithFromString> setParamEntityWithFromString) {
-    return setParamEntityWithFromString.iterator().next().getValue();
-  }
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/{id}/{id}/{id}/{id}/{id}/{id}")
+    public String list(@PathParam("id") List<String> id) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("list=");
+        for (String tmp : id) {
+            sb.append(tmp);
+        }
+        return sb.toString();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/SortedSetParamEntityWithFromString/{id}")
-  public String sortedSetParamEntityWithFromStringTest(
-      @DefaultValue("PathParamTest") @PathParam("id") SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString) {
-    return sortedSetParamEntityWithFromString.iterator().next().getValue();
-  }
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/matrix/{id}")
+    public String matrixparamtest(@PathParam("id") PathSegment id) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("matrix=");
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/ListParamEntityWithFromString/{id}")
-  public String listParamEntityWithFromStringTest(
-      @DefaultValue("PathParamTest") @PathParam("id") List<ParamEntityWithFromString> listParamEntityWithFromString) {
-    return listParamEntityWithFromString.iterator().next().getValue();
-  }
+        sb.append("/" + id.getPath());
+        MultivaluedMap<String, String> matrix = id.getMatrixParameters();
+        Set<String> keys = matrix.keySet();
+        for (Object key : keys) {
+            sb.append(";" + key.toString() + "=" + matrix.getFirst(key.toString()));
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/ParamEntityThrowingWebApplicationException/{id}")
-  public String paramEntityThrowingWebApplicationException(
-      @PathParam("id") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException) {
-    return "";
-  }
+        }
+        return sb.toString();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/ParamEntityThrowingExceptionGivenByName/{id}")
-  public String paramEntityThrowingExceptionGivenByName(
-      @PathParam("id") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
-    return "";
-  }
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/ParamEntityWithConstructor/{id}")
+    public String paramEntityWithConstructorTest(
+            @DefaultValue("PathParamTest") @PathParam("id") ParamEntityWithConstructor paramEntityWithConstructor) {
+        return paramEntityWithConstructor.getValue();
+    }
 
-  @DefaultValue("PathParamTest")
-  @PathParam("FieldParamEntityWithConstructor")
-  ParamEntityWithConstructor fieldParamEntityWithConstructor;
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/ParamEntityWithFromString/{id}")
+    public String paramEntityWithFromStringTest(
+            @Encoded @DefaultValue("PathParamTest") @PathParam("id") ParamEntityWithFromString paramEntityWithFromString) {
+        return paramEntityWithFromString.getValue();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/FieldParamEntityWithConstructor/{FieldParamEntityWithConstructor}")
-  public String fieldEntityWithConstructorTest() {
-    return fieldParamEntityWithConstructor.getValue();
-  }
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/ParamEntityWithValueOf/{id}")
+    public String paramEntityWithValueOfTest(
+            @DefaultValue("PathParamTest") @PathParam("id") ParamEntityWithValueOf paramEntityWithValueOf) {
+        return paramEntityWithValueOf.getValue();
+    }
 
-  @DefaultValue("PathParamTest")
-  @PathParam("FieldParamEntityWithFromString")
-  ParamEntityWithFromString fieldParamEntityWithFromString;
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/SetParamEntityWithFromString/{id}")
+    public String setParamEntityWithFromStringTest(
+            @DefaultValue("PathParamTest") @PathParam("id") Set<ParamEntityWithFromString> setParamEntityWithFromString) {
+        return setParamEntityWithFromString.iterator().next().getValue();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/FieldParamEntityWithFromString/{FieldParamEntityWithFromString}")
-  public String fieldEntityWithFromStringTest() {
-    return fieldParamEntityWithFromString.getValue();
-  }
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/SortedSetParamEntityWithFromString/{id}")
+    public String sortedSetParamEntityWithFromStringTest(
+            @DefaultValue("PathParamTest") @PathParam("id") SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString) {
+        return sortedSetParamEntityWithFromString.iterator().next().getValue();
+    }
 
-  @DefaultValue("PathParamTest")
-  @PathParam("FieldParamEntityWithValueOf")
-  ParamEntityWithValueOf fieldParamEntityWithValueOf;
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/ListParamEntityWithFromString/{id}")
+    public String listParamEntityWithFromStringTest(
+            @DefaultValue("PathParamTest") @PathParam("id") List<ParamEntityWithFromString> listParamEntityWithFromString) {
+        return listParamEntityWithFromString.iterator().next().getValue();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/FieldParamEntityWithValueOf/{FieldParamEntityWithValueOf}")
-  public String fieldEntityWithValueOfTest() {
-    return fieldParamEntityWithValueOf.getValue();
-  }
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/ParamEntityThrowingWebApplicationException/{id}")
+    public String paramEntityThrowingWebApplicationException(
+            @PathParam("id") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException) {
+        return "";
+    }
 
-  @DefaultValue("PathParamTest")
-  @PathParam("FieldSetParamEntityWithFromString")
-  Set<ParamEntityWithFromString> fieldSetParamEntityWithFromString;
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/ParamEntityThrowingExceptionGivenByName/{id}")
+    public String paramEntityThrowingExceptionGivenByName(
+            @PathParam("id") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
+        return "";
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/FieldSetParamEntityWithFromString/{FieldSetParamEntityWithFromString}")
-  public String fieldSetParamEntityWithFromStringTest() {
-    return fieldSetParamEntityWithFromString.iterator().next().getValue();
-  }
+    @DefaultValue("PathParamTest")
+    @PathParam("FieldParamEntityWithConstructor")
+    ParamEntityWithConstructor fieldParamEntityWithConstructor;
 
-  @DefaultValue("PathParamTest")
-  @PathParam("FieldSortedSetParamEntityWithFromString")
-  SortedSet<ParamEntityWithFromString> fieldSortedSetParamEntityWithFromString;
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/FieldParamEntityWithConstructor/{FieldParamEntityWithConstructor}")
+    public String fieldEntityWithConstructorTest() {
+        return fieldParamEntityWithConstructor.getValue();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/FieldSortedSetParamEntityWithFromString/{FieldSortedSetParamEntityWithFromString}")
-  public String fieldSortedSetParamEntityWithFromStringTest() {
-    return fieldSortedSetParamEntityWithFromString.iterator().next().getValue();
-  }
+    @DefaultValue("PathParamTest")
+    @PathParam("FieldParamEntityWithFromString")
+    ParamEntityWithFromString fieldParamEntityWithFromString;
 
-  @DefaultValue("PathParamTest")
-  @PathParam("FieldListParamEntityWithFromString")
-  List<ParamEntityWithFromString> fieldListParamEntityWithFromString;
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/FieldParamEntityWithFromString/{FieldParamEntityWithFromString}")
+    public String fieldEntityWithFromStringTest() {
+        return fieldParamEntityWithFromString.getValue();
+    }
 
-  @Produces(MediaType.TEXT_PLAIN)
-  @GET
-  @Path("/FieldListParamEntityWithFromString/{FieldListParamEntityWithFromString}")
-  public String fieldListParamEntityWithFromStringTest() {
-    return fieldListParamEntityWithFromString.iterator().next().getValue();
-  }
+    @DefaultValue("PathParamTest")
+    @PathParam("FieldParamEntityWithValueOf")
+    ParamEntityWithValueOf fieldParamEntityWithValueOf;
+
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/FieldParamEntityWithValueOf/{FieldParamEntityWithValueOf}")
+    public String fieldEntityWithValueOfTest() {
+        return fieldParamEntityWithValueOf.getValue();
+    }
+
+    @DefaultValue("PathParamTest")
+    @PathParam("FieldSetParamEntityWithFromString")
+    Set<ParamEntityWithFromString> fieldSetParamEntityWithFromString;
+
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/FieldSetParamEntityWithFromString/{FieldSetParamEntityWithFromString}")
+    public String fieldSetParamEntityWithFromStringTest() {
+        return fieldSetParamEntityWithFromString.iterator().next().getValue();
+    }
+
+    @DefaultValue("PathParamTest")
+    @PathParam("FieldSortedSetParamEntityWithFromString")
+    SortedSet<ParamEntityWithFromString> fieldSortedSetParamEntityWithFromString;
+
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/FieldSortedSetParamEntityWithFromString/{FieldSortedSetParamEntityWithFromString}")
+    public String fieldSortedSetParamEntityWithFromStringTest() {
+        return fieldSortedSetParamEntityWithFromString.iterator().next().getValue();
+    }
+
+    @DefaultValue("PathParamTest")
+    @PathParam("FieldListParamEntityWithFromString")
+    List<ParamEntityWithFromString> fieldListParamEntityWithFromString;
+
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Path("/FieldListParamEntityWithFromString/{FieldListParamEntityWithFromString}")
+    public String fieldListParamEntityWithFromStringTest() {
+        return fieldListParamEntityWithFromString.iterator().next().getValue();
+    }
 }

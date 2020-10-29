@@ -35,40 +35,40 @@ import javax.ws.rs.ext.Provider;
 @Consumes(MediaType.TEXT_PLAIN)
 @Produces(MediaType.TEXT_PLAIN)
 public class TckBooleanProvider
-    implements MessageBodyReader<Boolean>, MessageBodyWriter<Boolean> {
+        implements MessageBodyReader<Boolean>, MessageBodyWriter<Boolean> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == Boolean.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == Boolean.class;
+    }
 
-  @Override
-  public long getSize(Boolean t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return 4;
-  }
+    @Override
+    public long getSize(Boolean t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return 4;
+    }
 
-  @Override
-  public void writeTo(Boolean t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write("true".getBytes());
-  }
+    @Override
+    public void writeTo(Boolean t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write("true".getBytes());
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public Boolean readFrom(Class<Boolean> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return true;
-  }
+    @Override
+    public Boolean readFrom(Class<Boolean> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return true;
+    }
 
 }

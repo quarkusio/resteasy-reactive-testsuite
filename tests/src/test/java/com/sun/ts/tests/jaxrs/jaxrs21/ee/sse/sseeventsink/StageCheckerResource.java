@@ -32,26 +32,26 @@ import io.quarkus.rest.Blocking;
 
 @Path("stage")
 public class StageCheckerResource {
-  public static final String DONE = "CompletionStage has been done";
+    public static final String DONE = "CompletionStage has been done";
 
-  @GET
-  @Produces(MediaType.SERVER_SENT_EVENTS)
-  // QUARKUS: is blocking the event loop
-  @Blocking
-  public void send(@Context SseEventSink sink, @Context Sse sse) {
-    try (SseEventSink s = sink) {
-      CompletableFuture<?> stage = s.send(sse.newEvent(MESSAGE))
-          .toCompletableFuture();
-      while (!stage.isDone()) {
-        try {
-          Thread.sleep(200L);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-          sse.newEvent(e.getMessage());
-          return;
+    @GET
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    // QUARKUS: is blocking the event loop
+    @Blocking
+    public void send(@Context SseEventSink sink, @Context Sse sse) {
+        try (SseEventSink s = sink) {
+            CompletableFuture<?> stage = s.send(sse.newEvent(MESSAGE))
+                    .toCompletableFuture();
+            while (!stage.isDone()) {
+                try {
+                    Thread.sleep(200L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    sse.newEvent(e.getMessage());
+                    return;
+                }
+            }
+            s.send(sse.newEvent(DONE));
         }
-      }
-      s.send(sse.newEvent(DONE));
     }
-  }
 }

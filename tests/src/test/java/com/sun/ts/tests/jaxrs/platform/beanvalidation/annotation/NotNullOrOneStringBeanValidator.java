@@ -22,18 +22,18 @@ import javax.validation.ConstraintValidatorContext;
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 public class NotNullOrOneStringBeanValidator
-    implements ConstraintValidator<NotNullOrOne, StringBean> {
+        implements ConstraintValidator<NotNullOrOne, StringBean> {
 
-  @Override
-  public void initialize(NotNullOrOne arg0) {
-  }
+    @Override
+    public void initialize(NotNullOrOne arg0) {
+    }
 
-  @Override
-  public boolean isValid(StringBean bean, ConstraintValidatorContext context) {
-    String value = bean.get();
-    if (value == null || value.length() < 2)
-      return false;
-    return true;
-  }
+    @Override
+    public boolean isValid(StringBean bean, ConstraintValidatorContext context) {
+        String value = bean.get();
+        if (value == null || value.length() < 2)
+            return false;
+        return true;
+    }
 
 }

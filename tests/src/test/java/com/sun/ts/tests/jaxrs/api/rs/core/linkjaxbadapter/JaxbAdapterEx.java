@@ -23,30 +23,30 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class JaxbAdapterEx extends XmlAdapter<JaxbLinkEx, Link> {
 
-  /**
-   * Convert a {@link JaxbLink} into a {@link Link}.
-   * 
-   * @param v
-   *          instance of type {@link JaxbLink}.
-   * @return mapped instance of type {@link JaxbLink}
-   */
-  @Override
-  public Link unmarshal(JaxbLinkEx ex) {
-    JaxbLink link = new JaxbLink(ex.getUri(), ex.getParams());
-    return new JaxbAdapter().unmarshal(link);
-  }
+    /**
+     * Convert a {@link JaxbLink} into a {@link Link}.
+     * 
+     * @param v
+     *        instance of type {@link JaxbLink}.
+     * @return mapped instance of type {@link JaxbLink}
+     */
+    @Override
+    public Link unmarshal(JaxbLinkEx ex) {
+        JaxbLink link = new JaxbLink(ex.getUri(), ex.getParams());
+        return new JaxbAdapter().unmarshal(link);
+    }
 
-  /**
-   * Convert a {@link Link} into a {@link JaxbLink}.
-   * 
-   * @param v
-   *          instance of type {@link Link}.
-   * @return mapped instance of type {@link JaxbLink}.
-   */
-  @Override
-  public JaxbLinkEx marshal(Link v) {
-    JaxbLink link = new JaxbAdapter().marshal(v);
-    JaxbLinkEx jle = new JaxbLinkEx(link.getUri(), link.getParams());
-    return jle;
-  }
+    /**
+     * Convert a {@link Link} into a {@link JaxbLink}.
+     * 
+     * @param v
+     *        instance of type {@link Link}.
+     * @return mapped instance of type {@link JaxbLink}.
+     */
+    @Override
+    public JaxbLinkEx marshal(Link v) {
+        JaxbLink link = new JaxbAdapter().marshal(v);
+        JaxbLinkEx jle = new JaxbLinkEx(link.getUri(), link.getParams());
+        return jle;
+    }
 }

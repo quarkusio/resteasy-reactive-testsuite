@@ -26,26 +26,26 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class RuntimeExceptionMapper
-    implements ExceptionMapper<RuntimeException> {
+        implements ExceptionMapper<RuntimeException> {
 
-  public static final String THROW_AGAIN = "ThrowExceptionOnceAgain";
+    public static final String THROW_AGAIN = "ThrowExceptionOnceAgain";
 
-  @Override
-  public Response toResponse(RuntimeException exception) {
-    String message = exception.getMessage();
-    // Throw again from this mapper
-    if (message.equals(THROW_AGAIN))
-      throw new RuntimeException("100000");
-    // Throw again from postmatching filter
-    if (message.equals(PostMatchingThrowingFilter.EXCEPTION_FIRING_HEADER))
-      return Response.ok("100000").header(message, "500").build();
-    // Throw again from prematching filter
-    if (message.equals(PreMatchingThrowingFilter.EXCEPTION_FIRING_HEADER))
-      return Response.ok("100000").header(message, "500").build();
-    // Once the exception is thrown, this mapper should not be used to handle it
-    // returning status 500
-    // Do not throw again
-    return Response.ok(message).build();
-  }
+    @Override
+    public Response toResponse(RuntimeException exception) {
+        String message = exception.getMessage();
+        // Throw again from this mapper
+        if (message.equals(THROW_AGAIN))
+            throw new RuntimeException("100000");
+        // Throw again from postmatching filter
+        if (message.equals(PostMatchingThrowingFilter.EXCEPTION_FIRING_HEADER))
+            return Response.ok("100000").header(message, "500").build();
+        // Throw again from prematching filter
+        if (message.equals(PreMatchingThrowingFilter.EXCEPTION_FIRING_HEADER))
+            return Response.ok("100000").header(message, "500").build();
+        // Once the exception is thrown, this mapper should not be used to handle it
+        // returning status 500
+        // Do not throw again
+        return Response.ok(message).build();
+    }
 
 }

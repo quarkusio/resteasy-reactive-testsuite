@@ -24,7 +24,7 @@ import javax.ws.rs.ext.Provider;
 @Priority(100)
 public class AddOneInterceptor extends AbstractAddInterceptor {
 
-  public AddOneInterceptor() {
-    super(1);
-  }
+    public AddOneInterceptor() {
+        super(1);
+    }
 }

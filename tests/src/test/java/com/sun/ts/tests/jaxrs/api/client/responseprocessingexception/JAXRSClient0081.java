@@ -32,297 +32,297 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0081 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 4199815250447993450L;
+    private static final long serialVersionUID = 4199815250447993450L;
 
-  static final Status STATUS = Status.EXPECTATION_FAILED;
+    static final Status STATUS = Status.EXPECTATION_FAILED;
 
-  static final String MESSAGE = "Exception thrown by TCK";
+    static final String MESSAGE = "Exception thrown by TCK";
 
-  public JAXRSClient0081() {
-    setContextRoot("/jaxrs_api_rs_processingexception_web");
-  }
+    public JAXRSClient0081() {
+        setContextRoot("/jaxrs_api_rs_processingexception_web");
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0081().run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0081().run(args);
+    }
 
-  /* Run test */
+    /* Run test */
 
-  /*
-   * @testName: constructorWithRuntimeExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1027; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy:Constructs a new JAX-RS runtime response processing
-   * exception for a specific response with the specified cause and a detail
-   * message of (cause==null ? null : cause.toString())
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithRuntimeExceptionTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    IllegalStateException ile = new IllegalStateException("TCK exception");
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        ile);
-    assertCause(mpe, ile);
-    assertMessage(mpe, ile.getMessage());
-    assertResponse(mpe);
-  }
+    /*
+     * @testName: constructorWithRuntimeExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1027; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy:Constructs a new JAX-RS runtime response processing
+     * exception for a specific response with the specified cause and a detail
+     * message of (cause==null ? null : cause.toString())
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithRuntimeExceptionTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        IllegalStateException ile = new IllegalStateException("TCK exception");
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                ile);
+        assertCause(mpe, ile);
+        assertMessage(mpe, ile.getMessage());
+        assertResponse(mpe);
+    }
 
-  /*
-   * @testName: constructorWithCheckedExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1027; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy:Constructs a new JAX-RS runtime response processing
-   * exception for a specific response with the specified cause and a detail
-   * message of (cause==null ? null : cause.toString())
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithCheckedExceptionTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    IOException ioe = new IOException("TCK exception");
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        ioe);
-    assertCause(mpe, ioe);
-    assertMessage(mpe, ioe.getMessage());
-    assertResponse(mpe);
-  }
+    /*
+     * @testName: constructorWithCheckedExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1027; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy:Constructs a new JAX-RS runtime response processing
+     * exception for a specific response with the specified cause and a detail
+     * message of (cause==null ? null : cause.toString())
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithCheckedExceptionTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        IOException ioe = new IOException("TCK exception");
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                ioe);
+        assertCause(mpe, ioe);
+        assertMessage(mpe, ioe.getMessage());
+        assertResponse(mpe);
+    }
 
-  /*
-   * @testName: constructorWithNullThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1027; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
-   * the specified cause and a detail message of (cause==null ? null :
-   * cause.toString())
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithNullThrowableTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        (Throwable) null);
-    assertResponse(mpe);
-    assertNull(mpe.getCause(),
-        "getCause does not work for ResponseProcessingException and null cause");
-    assertNull(mpe.getMessage(),
-        "getMessage does not work for ResponseProcessingException and null cause");
-  }
+    /*
+     * @testName: constructorWithNullThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1027; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime processing exception with
+     * the specified cause and a detail message of (cause==null ? null :
+     * cause.toString())
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithNullThrowableTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                (Throwable) null);
+        assertResponse(mpe);
+        assertNull(mpe.getCause(),
+                "getCause does not work for ResponseProcessingException and null cause");
+        assertNull(mpe.getMessage(),
+                "getMessage does not work for ResponseProcessingException and null cause");
+    }
 
-  /*
-   * @testName: constructorWithNullThrowableNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message and cause.
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithNullThrowableNullMessageTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        (String) null, (Throwable) null);
-    assertResponse(mpe);
-    assertNull(mpe.getCause(),
-        "getCause does not work for ResponseProcessingException and null cause");
-    assertNull(mpe.getMessage(),
-        "getMessage does not work for ResponseProcessingException and null cause");
-  }
+    /*
+     * @testName: constructorWithNullThrowableNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message and cause.
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithNullThrowableNullMessageTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                (String) null, (Throwable) null);
+        assertResponse(mpe);
+        assertNull(mpe.getCause(),
+                "getCause does not work for ResponseProcessingException and null cause");
+        assertNull(mpe.getMessage(),
+                "getMessage does not work for ResponseProcessingException and null cause");
+    }
 
-  /*
-   * @testName: constructorWithNullThrowableNotNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message and cause.
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithNullThrowableNotNullMessageTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        MESSAGE, (Throwable) null);
-    assertResponse(mpe);
-    assertNull(mpe.getCause(),
-        "getCause does not work for ResponseProcessingException and null cause and not null message");
-    assertMessage(mpe, MESSAGE);
-  }
+    /*
+     * @testName: constructorWithNullThrowableNotNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message and cause.
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithNullThrowableNotNullMessageTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                MESSAGE, (Throwable) null);
+        assertResponse(mpe);
+        assertNull(mpe.getCause(),
+                "getCause does not work for ResponseProcessingException and null cause and not null message");
+        assertMessage(mpe, MESSAGE);
+    }
 
-  /*
-   * @testName: constructorWithRuntimeExceptionNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message and cause.
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithRuntimeExceptionNullMessageTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    IllegalStateException ise = new IllegalStateException(
-        "JAXRS TCK exception");
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        (String) null, ise);
-    assertResponse(mpe);
-    assertCause(mpe, ise);
-    assertNull(mpe.getMessage(), "getMessage does not work for",
-        "ResponseProcessingException and RuntimeException and null message");
-  }
+    /*
+     * @testName: constructorWithRuntimeExceptionNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message and cause.
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithRuntimeExceptionNullMessageTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        IllegalStateException ise = new IllegalStateException(
+                "JAXRS TCK exception");
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                (String) null, ise);
+        assertResponse(mpe);
+        assertCause(mpe, ise);
+        assertNull(mpe.getMessage(), "getMessage does not work for",
+                "ResponseProcessingException and RuntimeException and null message");
+    }
 
-  /*
-   * @testName: constructorWithCheckedExceptionNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message and cause.
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithCheckedExceptionNullMessageTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    IOException ioe = new IOException("JAXRS TCK exception");
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        (String) null, ioe);
-    assertResponse(mpe);
-    assertCause(mpe, ioe);
-    assertNull(mpe.getMessage(), "getMessage does not work for",
-        "ResponseProcessingException and CheckedException and null message");
-  }
+    /*
+     * @testName: constructorWithCheckedExceptionNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message and cause.
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithCheckedExceptionNullMessageTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        IOException ioe = new IOException("JAXRS TCK exception");
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                (String) null, ioe);
+        assertResponse(mpe);
+        assertCause(mpe, ioe);
+        assertNull(mpe.getMessage(), "getMessage does not work for",
+                "ResponseProcessingException and CheckedException and null message");
+    }
 
-  /*
-   * @testName: constructorWithRuntimeExceptionAndNotNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message and cause.
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithRuntimeExceptionAndNotNullMessageTest()
-      throws Fault {
-    Response response = buildResponse(STATUS);
-    IllegalStateException ise = new IllegalStateException(
-        "JAXRS TCK exception");
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        MESSAGE, ise);
-    assertResponse(mpe);
-    assertCause(mpe, ise);
-    assertMessage(mpe, MESSAGE);
-  }
+    /*
+     * @testName: constructorWithRuntimeExceptionAndNotNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message and cause.
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithRuntimeExceptionAndNotNullMessageTest()
+            throws Fault {
+        Response response = buildResponse(STATUS);
+        IllegalStateException ise = new IllegalStateException(
+                "JAXRS TCK exception");
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                MESSAGE, ise);
+        assertResponse(mpe);
+        assertCause(mpe, ise);
+        assertMessage(mpe, MESSAGE);
+    }
 
-  /*
-   * @testName: constructorWithCheckedExceptionAndNotNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message and cause.
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithCheckedExceptionAndNotNullMessageTest()
-      throws Fault {
-    Response response = buildResponse(STATUS);
-    IOException ioe = new IOException("JAXRS TCK exception");
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        MESSAGE, ioe);
-    assertResponse(mpe);
-    assertCause(mpe, ioe);
-    assertMessage(mpe, MESSAGE);
-  }
+    /*
+     * @testName: constructorWithCheckedExceptionAndNotNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1028; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message and cause.
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithCheckedExceptionAndNotNullMessageTest()
+            throws Fault {
+        Response response = buildResponse(STATUS);
+        IOException ioe = new IOException("JAXRS TCK exception");
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                MESSAGE, ioe);
+        assertResponse(mpe);
+        assertCause(mpe, ioe);
+        assertMessage(mpe, MESSAGE);
+    }
 
-  /*
-   * @testName: constructorWithNotNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1029; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message. The cause is not initialized
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithNotNullMessageTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        MESSAGE);
-    assertNull(mpe.getCause(),
-        "getCause does not work for ResponseProcessingException and not null message");
-    assertResponse(mpe);
-    assertMessage(mpe, MESSAGE);
-  }
+    /*
+     * @testName: constructorWithNotNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1029; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message. The cause is not initialized
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithNotNullMessageTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                MESSAGE);
+        assertNull(mpe.getCause(),
+                "getCause does not work for ResponseProcessingException and not null message");
+        assertResponse(mpe);
+        assertMessage(mpe, MESSAGE);
+    }
 
-  /*
-   * @testName: constructorWithNullMessageTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1029; JAXRS:JAVADOC:1026;
-   * 
-   * @test_Strategy: Constructs a new JAX-RS runtime response processing
-   * exception with the specified detail message. The cause is not initialized
-   * 
-   * ResponseProcessingException.getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorWithNullMessageTest() throws Fault {
-    Response response = buildResponse(STATUS);
-    ResponseProcessingException mpe = new ResponseProcessingException(response,
-        (String) null);
-    assertResponse(mpe);
-    assertNull(mpe.getCause(),
-        "getCause does not work for ResponseProcessingException and null message");
-    assertNull(mpe.getMessage(),
-        "getMessage does not work for ResponseProcessingException and null message");
-  }
+    /*
+     * @testName: constructorWithNullMessageTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1029; JAXRS:JAVADOC:1026;
+     * 
+     * @test_Strategy: Constructs a new JAX-RS runtime response processing
+     * exception with the specified detail message. The cause is not initialized
+     * 
+     * ResponseProcessingException.getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorWithNullMessageTest() throws Fault {
+        Response response = buildResponse(STATUS);
+        ResponseProcessingException mpe = new ResponseProcessingException(response,
+                (String) null);
+        assertResponse(mpe);
+        assertNull(mpe.getCause(),
+                "getCause does not work for ResponseProcessingException and null message");
+        assertNull(mpe.getMessage(),
+                "getMessage does not work for ResponseProcessingException and null message");
+    }
 
-  // /////////////////////////////////////////////////////////////
-  protected Response buildResponse(Status status) {
-    return Response.status(status).build();
-  }
+    // /////////////////////////////////////////////////////////////
+    protected Response buildResponse(Status status) {
+        return Response.status(status).build();
+    }
 
-  protected void assertResponse(ResponseProcessingException e) throws Fault {
-    assertNotNull(e.getResponse(), "#getResponse is null");
-    Response response = e.getResponse();
-    assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
-        "response contains unexpected status", response.getStatus());
-    logMsg("response contains expected", STATUS, "status");
-  }
+    protected void assertResponse(ResponseProcessingException e) throws Fault {
+        assertNotNull(e.getResponse(), "#getResponse is null");
+        Response response = e.getResponse();
+        assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
+                "response contains unexpected status", response.getStatus());
+        logMsg("response contains expected", STATUS, "status");
+    }
 
-  protected void assertCause(ResponseProcessingException e, Throwable expected)
-      throws Fault {
-    assertEquals(e.getCause(), expected, "#getCause does not contain expected",
-        expected, "but", e.getCause());
-    logMsg("getCause contains expected", expected);
-  }
+    protected void assertCause(ResponseProcessingException e, Throwable expected)
+            throws Fault {
+        assertEquals(e.getCause(), expected, "#getCause does not contain expected",
+                expected, "but", e.getCause());
+        logMsg("getCause contains expected", expected);
+    }
 
-  protected void assertMessage(ResponseProcessingException e, String message)
-      throws Fault {
-    assertNotNull(e.getMessage(), "#getMessage is null");
-    assertContains(e.getMessage(), message,
-        "ResponseProcessingException#getMessage()",
-        "does not contain expected message", message, "but", e.getMessage());
-    logMsg("ResponseProcessingException#getMesaage contains expected message",
-        message);
-  }
+    protected void assertMessage(ResponseProcessingException e, String message)
+            throws Fault {
+        assertNotNull(e.getMessage(), "#getMessage is null");
+        assertContains(e.getMessage(), message,
+                "ResponseProcessingException#getMessage()",
+                "does not contain expected message", message, "but", e.getMessage());
+        logMsg("ResponseProcessingException#getMesaage contains expected message",
+                message);
+    }
 }

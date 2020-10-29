@@ -36,76 +36,76 @@ import javax.ws.rs.ext.Providers;
 
 @Provider
 public class DummyWriter implements MessageBodyWriter<DummyClass> {
-  private HttpHeaders headers;
+    private HttpHeaders headers;
 
-  private UriInfo info;
+    private UriInfo info;
 
-  private Application application;
+    private Application application;
 
-  private Request request;
+    private Request request;
 
-  private Providers provider;
+    private Providers provider;
 
-  protected DummyWriter(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request,
-      @Context Providers provider) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-    this.provider = provider;
-  }
+    protected DummyWriter(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request,
+            @Context Providers provider) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+        this.provider = provider;
+    }
 
-  @Inject
-  public DummyWriter(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-  }
+    @Inject
+    public DummyWriter(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+    }
 
-  public DummyWriter(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-  }
+    public DummyWriter(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+    }
 
-  public DummyWriter(@Context HttpHeaders headers, @Context UriInfo info) {
-    super();
-    this.headers = headers;
-    this.info = info;
-  }
+    public DummyWriter(@Context HttpHeaders headers, @Context UriInfo info) {
+        super();
+        this.headers = headers;
+        this.info = info;
+    }
 
-  public DummyWriter(@Context HttpHeaders headers) {
-    super();
-    this.headers = headers;
-  }
+    public DummyWriter(@Context HttpHeaders headers) {
+        super();
+        this.headers = headers;
+    }
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == DummyClass.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == DummyClass.class;
+    }
 
-  @Override
-  public long getSize(DummyClass t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return HolderClass.OK.length();
-  }
+    @Override
+    public long getSize(DummyClass t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return HolderClass.OK.length();
+    }
 
-  @Override
-  public void writeTo(DummyClass t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream
-        .write(new HolderClass(headers, info, application, request, provider)
-            .toResponse().getEntity().toString().getBytes());
-  }
+    @Override
+    public void writeTo(DummyClass t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream
+                .write(new HolderClass(headers, info, application, request, provider)
+                        .toResponse().getEntity().toString().getBytes());
+    }
 
 }

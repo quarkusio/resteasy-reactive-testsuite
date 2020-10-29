@@ -24,9 +24,9 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 @Path("resource")
 public class Resource {
 
-  @POST
-  public StringBean out(StringBean in) {
-    return in;
-  }
+    @POST
+    public StringBean out(StringBean in) {
+        return in;
+    }
 
 }

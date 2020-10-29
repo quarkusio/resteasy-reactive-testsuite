@@ -28,30 +28,30 @@ import javax.ws.rs.ext.Providers;
 @Path("resource")
 public class Resource {
 
-  @Path("contextresolver")
-  @GET
-  public Response contextresolver(@Context Providers providers) {
-    ContextResolver<HolderClass> holder = providers
-        .getContextResolver(HolderClass.class, MediaType.WILDCARD_TYPE);
-    return holder.getContext(HolderClass.class).toResponse();
-  }
+    @Path("contextresolver")
+    @GET
+    public Response contextresolver(@Context Providers providers) {
+        ContextResolver<HolderClass> holder = providers
+                .getContextResolver(HolderClass.class, MediaType.WILDCARD_TYPE);
+        return holder.getContext(HolderClass.class).toResponse();
+    }
 
-  @Path("exceptionmapper")
-  @GET
-  public String exceptionMapper() {
-    throw new VisibilityException();
-  }
+    @Path("exceptionmapper")
+    @GET
+    public String exceptionMapper() {
+        throw new VisibilityException();
+    }
 
-  @Path("bodywriter")
-  @GET
-  public DummyClass bodyWriter() {
-    return new DummyClass();
-  }
+    @Path("bodywriter")
+    @GET
+    public DummyClass bodyWriter() {
+        return new DummyClass();
+    }
 
-  @Path("bodyreader")
-  @POST
-  public String bodyWriter(String text) {
-    return text;
-  }
+    @Path("bodyreader")
+    @POST
+    public String bodyWriter(String text) {
+        return text;
+    }
 
 }

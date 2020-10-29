@@ -23,36 +23,36 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 
 public class ProceedException extends WebApplicationException {
 
-  private static final long serialVersionUID = -8012949565468746147L;
+    private static final long serialVersionUID = -8012949565468746147L;
 
-  private String msg;
+    private String msg;
 
-  public ProceedException(String msg) {
-    super(
-        Response.ok(msg)
-            .header(TemplateInterceptorBody.OPERATION,
-                ContextOperation.FROMPROCEEDTHROWSWEBAPPEXCEPTION.name())
-            .build());
-    this.msg = msg;
-  }
+    public ProceedException(String msg) {
+        super(
+                Response.ok(msg)
+                        .header(TemplateInterceptorBody.OPERATION,
+                                ContextOperation.FROMPROCEEDTHROWSWEBAPPEXCEPTION.name())
+                        .build());
+        this.msg = msg;
+    }
 
-  /**
-   * Acyclic getCause() returns equivalent of this
-   */
-  @Override
-  public Throwable getCause() {
-    return new ProceedException(msg) {
-      private static final long serialVersionUID = 256996856963444570L;
+    /**
+     * Acyclic getCause() returns equivalent of this
+     */
+    @Override
+    public Throwable getCause() {
+        return new ProceedException(msg) {
+            private static final long serialVersionUID = 256996856963444570L;
 
-      @Override
-      public Throwable getCause() {
-        return null;
-      }
-    };
-  }
+            @Override
+            public Throwable getCause() {
+                return null;
+            }
+        };
+    }
 
-  @Override
-  public String getMessage() {
-    return msg;
-  }
+    @Override
+    public String getMessage() {
+        return msg;
+    }
 }

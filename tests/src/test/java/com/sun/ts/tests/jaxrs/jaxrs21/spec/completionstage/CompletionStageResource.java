@@ -27,19 +27,19 @@ import javax.ws.rs.WebApplicationException;
 @Path("/async")
 public class CompletionStageResource {
 
-  public static final String MESSAGE = CompletionStageResource.class.getName();
+    public static final String MESSAGE = CompletionStageResource.class.getName();
 
-  @GET
-  public CompletionStage<String> async() {
-    CompletableFuture<String> cs = new CompletableFuture<>();
-    Executors.newSingleThreadExecutor().submit(() -> {
-      try {
-        Thread.sleep(1000L);
-      } catch (InterruptedException e) {
-        throw new WebApplicationException(e);
-      }
-      cs.complete(MESSAGE);
-    });
-    return cs;
-  }
+    @GET
+    public CompletionStage<String> async() {
+        CompletableFuture<String> cs = new CompletableFuture<>();
+        Executors.newSingleThreadExecutor().submit(() -> {
+            try {
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+                throw new WebApplicationException(e);
+            }
+            cs.complete(MESSAGE);
+        });
+        return cs;
+    }
 }

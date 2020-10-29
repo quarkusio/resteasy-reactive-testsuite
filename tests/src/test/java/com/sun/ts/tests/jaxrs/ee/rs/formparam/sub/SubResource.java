@@ -23,9 +23,9 @@ import com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest;
 @Path("resource")
 public class SubResource extends FormParamTest {
 
-  @Path("sub")
-  public SubResource sub() {
-    return this;
-  }
+    @Path("sub")
+    public SubResource sub() {
+        return this;
+    }
 
 }

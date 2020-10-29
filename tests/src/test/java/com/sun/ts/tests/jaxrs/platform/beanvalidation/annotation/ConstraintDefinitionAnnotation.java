@@ -24,16 +24,16 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 
 @Target({ ElementType.FIELD, ElementType.TYPE, ElementType.CONSTRUCTOR,
-    ElementType.PARAMETER, ElementType.METHOD })
+        ElementType.PARAMETER, ElementType.METHOD })
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ConstraintDefinitionValidator.class)
 public @interface ConstraintDefinitionAnnotation {
 
-	// QUARKUS: these were only added because Quarkus doesn't even build when the methods are missing
+    // QUARKUS: these were only added because Quarkus doesn't even build when the methods are missing
 
-	String message() default "";
+    String message() default "";
 
-	Class[] groups() default {};
+    Class[] groups() default {};
 
-	Class[] payload() default {};
+    Class[] payload() default {};
 }

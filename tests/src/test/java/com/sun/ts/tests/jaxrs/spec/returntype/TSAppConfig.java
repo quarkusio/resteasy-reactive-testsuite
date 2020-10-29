@@ -24,11 +24,11 @@ import javax.ws.rs.core.Application;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.EntityMessageWriter;
 
 public class TSAppConfig extends Application {
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(ReturnTypeTest.class);
-    resources.add(UUIDWriter.class);
-    resources.add(EntityMessageWriter.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(ReturnTypeTest.class);
+        resources.add(UUIDWriter.class);
+        resources.add(EntityMessageWriter.class);
+        return resources;
+    }
 }

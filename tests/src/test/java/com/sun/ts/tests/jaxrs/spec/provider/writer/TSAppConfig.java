@@ -23,20 +23,20 @@ import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    // resources.add(PrintingErrorHandler.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        // resources.add(PrintingErrorHandler.class);
+        return resources;
+    }
 
-  @Override
-  public Set<Object> getSingletons() {
-    Set<Object> singletons = new HashSet<Object>();
-    singletons.add(new AppXmlObjectWriter());
-    singletons.add(new AppJavaEntityWriter());
-    singletons.add(new DefaultEntityWriter());
-    singletons.add(new AppAnyEntityWriter());
-    return singletons;
-  }
+    @Override
+    public Set<Object> getSingletons() {
+        Set<Object> singletons = new HashSet<Object>();
+        singletons.add(new AppXmlObjectWriter());
+        singletons.add(new AppJavaEntityWriter());
+        singletons.add(new DefaultEntityWriter());
+        singletons.add(new AppAnyEntityWriter());
+        return singletons;
+    }
 }

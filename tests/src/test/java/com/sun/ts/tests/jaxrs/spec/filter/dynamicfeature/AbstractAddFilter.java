@@ -26,23 +26,23 @@ import javax.ws.rs.core.MediaType;
 
 public abstract class AbstractAddFilter implements ContainerResponseFilter {
 
-  protected int amount;
+    protected int amount;
 
-  public AbstractAddFilter(int amount) {
-    this.amount = amount;
-  }
-
-  @Override
-  public void filter(ContainerRequestContext requestContext,
-      ContainerResponseContext responseContext) throws IOException {
-    int status = responseContext.getStatus();
-    if (status != 500) {
-      String entity = (String) responseContext.getEntity();
-      Integer i = Integer.valueOf(entity);
-      entity = String.valueOf(i + amount);
-      responseContext.setEntity(entity, (Annotation[]) null,
-          MediaType.WILDCARD_TYPE);
+    public AbstractAddFilter(int amount) {
+        this.amount = amount;
     }
-  }
+
+    @Override
+    public void filter(ContainerRequestContext requestContext,
+            ContainerResponseContext responseContext) throws IOException {
+        int status = responseContext.getStatus();
+        if (status != 500) {
+            String entity = (String) responseContext.getEntity();
+            Integer i = Integer.valueOf(entity);
+            entity = String.valueOf(i + amount);
+            responseContext.setEntity(entity, (Annotation[]) null,
+                    MediaType.WILDCARD_TYPE);
+        }
+    }
 
 }

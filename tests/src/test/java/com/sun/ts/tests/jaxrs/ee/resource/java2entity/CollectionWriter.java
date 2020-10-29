@@ -40,60 +40,60 @@ import com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW;
  */
 @Provider
 public class CollectionWriter extends AbstractMessageBodyRW
-    implements MessageBodyWriter<Collection<?>> {
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    String path = getPathValue(annotations);
-    // Return type : Other
-    if (path.equalsIgnoreCase(type.getSimpleName()))
-      return checkOther(type, genericType);
-    else if (path.equalsIgnoreCase("response/linkedlist"))
-      return checkResponseNongeneric(type, genericType);
-    else if (path.equalsIgnoreCase("response/genericentity/linkedlist"))
-      return checkGeneric(type, genericType);
-    else if (path.equalsIgnoreCase("genericentity/linkedlist"))
-      return checkGeneric(type, genericType);
-    return false;
-  }
+        implements MessageBodyWriter<Collection<?>> {
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        String path = getPathValue(annotations);
+        // Return type : Other
+        if (path.equalsIgnoreCase(type.getSimpleName()))
+            return checkOther(type, genericType);
+        else if (path.equalsIgnoreCase("response/linkedlist"))
+            return checkResponseNongeneric(type, genericType);
+        else if (path.equalsIgnoreCase("response/genericentity/linkedlist"))
+            return checkGeneric(type, genericType);
+        else if (path.equalsIgnoreCase("genericentity/linkedlist"))
+            return checkGeneric(type, genericType);
+        return false;
+    }
 
-  private static boolean checkOther(Class<?> type, Type genericType) {
-    if (!(genericType instanceof ParameterizedType))
-      return false;
-    ParameterizedType pType = (ParameterizedType) genericType;
-    boolean ok = pType.getRawType().equals(LinkedList.class);
-    ok &= pType.getActualTypeArguments()[0].equals(String.class);
-    return ok;
-  }
+    private static boolean checkOther(Class<?> type, Type genericType) {
+        if (!(genericType instanceof ParameterizedType))
+            return false;
+        ParameterizedType pType = (ParameterizedType) genericType;
+        boolean ok = pType.getRawType().equals(LinkedList.class);
+        ok &= pType.getActualTypeArguments()[0].equals(String.class);
+        return ok;
+    }
 
-  private static boolean checkResponseNongeneric(Class<?> type,
-      Type genericType) {
-    boolean ok = genericType.equals(LinkedList.class);
-    ok &= type.equals(LinkedList.class);
-    return ok;
-  }
+    private static boolean checkResponseNongeneric(Class<?> type,
+            Type genericType) {
+        boolean ok = genericType.equals(LinkedList.class);
+        ok &= type.equals(LinkedList.class);
+        return ok;
+    }
 
-  private static boolean checkGeneric(Class<?> type, Type genericType) {
-    if (ParameterizedType.class.isInstance(genericType))
-      genericType = ((ParameterizedType) genericType).getRawType();
-    boolean ok = genericType.getClass().equals(List.class)
-        || genericType.equals(LinkedList.class);
-    ok &= type.equals(LinkedList.class);
-    return ok;
-  }
+    private static boolean checkGeneric(Class<?> type, Type genericType) {
+        if (ParameterizedType.class.isInstance(genericType))
+            genericType = ((ParameterizedType) genericType).getRawType();
+        boolean ok = genericType.getClass().equals(List.class)
+                || genericType.equals(LinkedList.class);
+        ok &= type.equals(LinkedList.class);
+        return ok;
+    }
 
-  @Override
-  public long getSize(Collection<?> t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return Response.Status.OK.name().length();
-  }
+    @Override
+    public long getSize(Collection<?> t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return Response.Status.OK.name().length();
+    }
 
-  @Override
-  public void writeTo(Collection<?> t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(Response.Status.OK.name().getBytes());
-  }
+    @Override
+    public void writeTo(Collection<?> t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(Response.Status.OK.name().getBytes());
+    }
 
 }

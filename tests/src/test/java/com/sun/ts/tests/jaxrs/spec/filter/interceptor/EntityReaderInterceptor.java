@@ -28,22 +28,22 @@ import javax.ws.rs.ext.ReaderInterceptorContext;
 @Provider
 public class EntityReaderInterceptor implements ReaderInterceptor {
 
-  @Override
-  public Object aroundReadFrom(ReaderInterceptorContext context)
-      throws IOException, WebApplicationException {
-    MultivaluedMap<String, String> headers = context.getHeaders();
-    String header = headers.getFirst(Resource.HEADERNAME);
-    if (header != null && header.startsWith(getClass().getName())) {
-      StringBuilder sb = new StringBuilder().append("<interceptor>")
-          .append(getClass().getName());
-      if (header.contains(Resource.DIRECTION))
-        sb.append(Resource.DIRECTION);
-      sb.append("</interceptor>");
-      String content = sb.toString();
-      ByteArrayInputStream stream = new ByteArrayInputStream(
-          content.getBytes());
-      context.setInputStream(stream);
+    @Override
+    public Object aroundReadFrom(ReaderInterceptorContext context)
+            throws IOException, WebApplicationException {
+        MultivaluedMap<String, String> headers = context.getHeaders();
+        String header = headers.getFirst(Resource.HEADERNAME);
+        if (header != null && header.startsWith(getClass().getName())) {
+            StringBuilder sb = new StringBuilder().append("<interceptor>")
+                    .append(getClass().getName());
+            if (header.contains(Resource.DIRECTION))
+                sb.append(Resource.DIRECTION);
+            sb.append("</interceptor>");
+            String content = sb.toString();
+            ByteArrayInputStream stream = new ByteArrayInputStream(
+                    content.getBytes());
+            context.setInputStream(stream);
+        }
+        return context.proceed();
     }
-    return context.proceed();
-  }
 }

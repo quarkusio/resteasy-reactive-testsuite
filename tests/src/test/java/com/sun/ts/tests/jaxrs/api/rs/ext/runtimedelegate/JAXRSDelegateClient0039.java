@@ -27,39 +27,39 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSDelegateClient0039 extends JAXRSCommonClient {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSDelegateClient0039().run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSDelegateClient0039().run(args);
+    }
 
-  /**
-   * Check what is the RuntimeDelegate
-   * 
-   * @param wantTckRuntimeDelegate
-   * @throws Fault
-   *           when wantTckRuntimeDelegate && RuntimeDelegate.getInstance !=
-   *           TckRuntimeDelegate when !wantTckRuntimeDelegate &&
-   *           RuntimeDelegate.getInstance == TckRuntimeDelegate
-   */
-  protected void assertRuntimeDelegate(boolean wantTckRuntimeDelegate)
-      throws Fault {
-    RuntimeDelegate delegate = RuntimeDelegate.getInstance();
-    Class<? extends RuntimeDelegate> clazz = delegate.getClass();
-    boolean check = clazz == TckRuntimeDelegate.class;
-    check = (wantTckRuntimeDelegate ? check : !check);
-    assertFault(check, "TckRuntimeDelegate was",
-        wantTckRuntimeDelegate ? "" : " not ", "set", "got ", clazz.getName());
-    logMsg("Found", clazz.getName());
-  }
+    /**
+     * Check what is the RuntimeDelegate
+     * 
+     * @param wantTckRuntimeDelegate
+     * @throws Fault
+     *         when wantTckRuntimeDelegate && RuntimeDelegate.getInstance !=
+     *         TckRuntimeDelegate when !wantTckRuntimeDelegate &&
+     *         RuntimeDelegate.getInstance == TckRuntimeDelegate
+     */
+    protected void assertRuntimeDelegate(boolean wantTckRuntimeDelegate)
+            throws Fault {
+        RuntimeDelegate delegate = RuntimeDelegate.getInstance();
+        Class<? extends RuntimeDelegate> clazz = delegate.getClass();
+        boolean check = clazz == TckRuntimeDelegate.class;
+        check = (wantTckRuntimeDelegate ? check : !check);
+        assertFault(check, "TckRuntimeDelegate was",
+                wantTckRuntimeDelegate ? "" : " not ", "set", "got ", clazz.getName());
+        logMsg("Found", clazz.getName());
+    }
 
-  protected void assertRuntimeDelegate() throws Fault {
-    assertRuntimeDelegate(true);
-  }
+    protected void assertRuntimeDelegate() throws Fault {
+        assertRuntimeDelegate(true);
+    }
 
 }

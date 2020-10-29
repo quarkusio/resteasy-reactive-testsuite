@@ -26,26 +26,26 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * @param <CONTEXTOPERATION>
  */
 public abstract class WriterClient0097<CONTEXTOPERATION extends Enum<?>>
-    extends JaxrsCommonClient {
+        extends JaxrsCommonClient {
 
-  private static final long serialVersionUID = -9222693803307311300L;
+    private static final long serialVersionUID = -9222693803307311300L;
 
-  /**
-   * Invoke and convert CONTEXTOPERATION to a path
-   */
-  protected void invoke(CONTEXTOPERATION op) throws Fault {
-    setProperty(Property.REQUEST,
-        buildRequest(Request.GET, op.name().toLowerCase()));
-    super.invoke();
-  }
+    /**
+     * Invoke and convert CONTEXTOPERATION to a path
+     */
+    protected void invoke(CONTEXTOPERATION op) throws Fault {
+        setProperty(Property.REQUEST,
+                buildRequest(Request.GET, op.name().toLowerCase()));
+        super.invoke();
+    }
 
-  /**
-   * Invoke and convert CONTEXTOPERATION to a path
-   */
-  protected void invoke(CONTEXTOPERATION op, Request method) throws Fault {
-    setProperty(Property.REQUEST,
-        buildRequest(method, op.name().toLowerCase()));
-    super.invoke();
-  }
+    /**
+     * Invoke and convert CONTEXTOPERATION to a path
+     */
+    protected void invoke(CONTEXTOPERATION op, Request method) throws Fault {
+        setProperty(Property.REQUEST,
+                buildRequest(method, op.name().toLowerCase()));
+        super.invoke();
+    }
 
 }

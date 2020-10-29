@@ -26,61 +26,61 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException;
 @Path("resource")
 public class LocatorResource extends MiddleResource {
 
-  @Path("locator/{id1}")
-  public MiddleResource locatorHasArguments(@PathParam("id1") String id1) {
-    return new MiddleResource(id1);
-  }
+    @Path("locator/{id1}")
+    public MiddleResource locatorHasArguments(@PathParam("id1") String id1) {
+        return new MiddleResource(id1);
+    }
 
-  @Path("locator/{id1}/{id2}")
-  public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
-      @PathParam("id2") String id2) {
-    return new MiddleResource(id1, id2);
-  }
+    @Path("locator/{id1}/{id2}")
+    public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
+            @PathParam("id2") String id2) {
+        return new MiddleResource(id1, id2);
+    }
 
-  @Path("locatorencoded/{id1}/{id2}")
-  public MiddleResource locatorHasEncodedArguments(@PathParam("id1") String id1,
-      @Encoded @PathParam("id2") String id2) {
-    return new MiddleResource(id1, id2);
-  }
+    @Path("locatorencoded/{id1}/{id2}")
+    public MiddleResource locatorHasEncodedArguments(@PathParam("id1") String id1,
+            @Encoded @PathParam("id2") String id2) {
+        return new MiddleResource(id1, id2);
+    }
 
-  @Path("locator/{id1}/{id2}/{id3}")
-  public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
-      @PathParam("id2") String id2, @PathParam("id3") String id3) {
-    return new MiddleResource(id1, id2, id3);
-  }
+    @Path("locator/{id1}/{id2}/{id3}")
+    public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
+            @PathParam("id2") String id2, @PathParam("id3") String id3) {
+        return new MiddleResource(id1, id2, id3);
+    }
 
-  @Path("locator/{id1}/{id2}/{id3}/{id4}")
-  public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
-      @PathParam("id2") String id2, @PathParam("id3") String id3,
-      @PathParam("id4") String id4) {
-    return new MiddleResource(id1, id2, id3, id4);
-  }
+    @Path("locator/{id1}/{id2}/{id3}/{id4}")
+    public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
+            @PathParam("id2") String id2, @PathParam("id3") String id3,
+            @PathParam("id4") String id4) {
+        return new MiddleResource(id1, id2, id3, id4);
+    }
 
-  @Path("locator/{id1}/{id2}/{id3}/{id4}/{id5}")
-  public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
-      @PathParam("id2") String id2, @PathParam("id3") String id3,
-      @PathParam("id4") String id4, @PathParam("id5") String id5) {
-    return new MiddleResource(id1, id2, id3, id4, id5);
-  }
+    @Path("locator/{id1}/{id2}/{id3}/{id4}/{id5}")
+    public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
+            @PathParam("id2") String id2, @PathParam("id3") String id3,
+            @PathParam("id4") String id4, @PathParam("id5") String id5) {
+        return new MiddleResource(id1, id2, id3, id4, id5);
+    }
 
-  @Path("locator/{id1}/{id2}/{id3}/{id4}/{id5}/{id6}")
-  public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
-      @PathParam("id2") String id2, @PathParam("id3") String id3,
-      @PathParam("id4") String id4, @PathParam("id5") String id5,
-      @PathParam("id6") String id6) {
-    return new MiddleResource(id1, id2, id3, id4, id5, id6);
-  }
+    @Path("locator/{id1}/{id2}/{id3}/{id4}/{id5}/{id6}")
+    public MiddleResource locatorHasArguments(@PathParam("id1") String id1,
+            @PathParam("id2") String id2, @PathParam("id3") String id3,
+            @PathParam("id4") String id4, @PathParam("id5") String id5,
+            @PathParam("id6") String id6) {
+        return new MiddleResource(id1, id2, id3, id4, id5, id6);
+    }
 
-  @Path("/locator/ParamEntityThrowingWebApplicationException/{id}")
-  public MiddleResource locatorHasArguments(
-      @PathParam("id") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException) {
-    return null;
-  }
+    @Path("/locator/ParamEntityThrowingWebApplicationException/{id}")
+    public MiddleResource locatorHasArguments(
+            @PathParam("id") ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException) {
+        return null;
+    }
 
-  @Path("/locator/ParamEntityThrowingExceptionGivenByName/{id}")
-  public MiddleResource locatorHasArguments(
-      @PathParam("id") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
-    return null;
-  }
+    @Path("/locator/ParamEntityThrowingExceptionGivenByName/{id}")
+    public MiddleResource locatorHasArguments(
+            @PathParam("id") ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
+        return null;
+    }
 
 }

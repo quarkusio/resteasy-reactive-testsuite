@@ -22,29 +22,29 @@ import javax.ws.rs.core.Response;
 
 @Path("resource")
 public class Resource {
-  public static final String MESSAGE = "ConstrainedTo message";
+    public static final String MESSAGE = "ConstrainedTo message";
 
-  @POST
-  @Path("echo")
-  public String post(String entity) {
-    return entity;
-  }
+    @POST
+    @Path("echo")
+    public String post(String entity) {
+        return entity;
+    }
 
-  @POST
-  @Path("media")
-  public Response buildResponseWithMedia(String media) {
-    Response r = Response.ok().entity(MESSAGE).type(media).build();
-    return r;
-  }
+    @POST
+    @Path("media")
+    public Response buildResponseWithMedia(String media) {
+        Response r = Response.ok().entity(MESSAGE).type(media).build();
+        return r;
+    }
 
-  @POST
-  @Path("clientwriter")
-  public Response return201IfWriterWorkedOnClient(String entity) {
-    Response r = null;
-    if (ClientSideWriter.FAKE_MESSAGE.equals(entity))
-      r = Response.noContent().build();
-    else
-      r = Response.ok().build();
-    return r;
-  }
+    @POST
+    @Path("clientwriter")
+    public Response return201IfWriterWorkedOnClient(String entity) {
+        Response r = null;
+        if (ClientSideWriter.FAKE_MESSAGE.equals(entity))
+            r = Response.noContent().build();
+        else
+            r = Response.ok().build();
+        return r;
+    }
 }

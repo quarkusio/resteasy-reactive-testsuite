@@ -24,10 +24,10 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("/")
 public class TSAppConfig extends Application {
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(SubResource.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(SubResource.class);
+        return resources;
+    }
 }

@@ -27,14 +27,14 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class PostMatchingThrowingFilter implements ContainerRequestFilter {
 
-  public static final String EXCEPTION_FIRING_HEADER = "PostMatchingFilterThrowsException";
+    public static final String EXCEPTION_FIRING_HEADER = "PostMatchingFilterThrowsException";
 
-  @Override
-  public void filter(ContainerRequestContext requestContext)
-      throws IOException {
-    String header = requestContext.getHeaderString(EXCEPTION_FIRING_HEADER);
-    if (header != null)
-      throw new RuntimeException(header);
-  }
+    @Override
+    public void filter(ContainerRequestContext requestContext)
+            throws IOException {
+        String header = requestContext.getHeaderString(EXCEPTION_FIRING_HEADER);
+        if (header != null)
+            throw new RuntimeException(header);
+    }
 
 }

@@ -40,49 +40,49 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
  *      super-classes.
  */
 public abstract class TemplateWriterInterceptor
-    implements WriterInterceptor, InterceptorCallbackMethods {
+        implements WriterInterceptor, InterceptorCallbackMethods {
 
-  protected WriterInterceptorContext writerCtx;
+    protected WriterInterceptorContext writerCtx;
 
-  protected TemplateInterceptorBody<WriterInterceptorContext> interceptorBody;
+    protected TemplateInterceptorBody<WriterInterceptorContext> interceptorBody;
 
-  public TemplateWriterInterceptor(
-      TemplateInterceptorBody<WriterInterceptorContext> interceptorBody) {
-    super();
-    this.interceptorBody = interceptorBody;
-  }
-
-  @Override
-  public void aroundWriteTo(WriterInterceptorContext ctx) throws IOException {
-    this.writerCtx = ctx;
-    interceptorBody.executeMethod(writerCtx, this);
-  }
-
-  @Override
-  public void writeEntity(String entity) {
-    Type type = writerCtx.getGenericType();
-    if (type instanceof Class) {
-      Class<?> clazz = ((Class<?>) type);
-      if (clazz == InputStreamReader.class) {
-        ByteArrayInputStream bis = new ByteArrayInputStream(entity.getBytes());
-        InputStreamReader reader = new InputStreamReader(bis);
-        writerCtx.setEntity(reader);
-      } else {
-        writerCtx.setEntity(entity);
-      }
+    public TemplateWriterInterceptor(
+            TemplateInterceptorBody<WriterInterceptorContext> interceptorBody) {
+        super();
+        this.interceptorBody = interceptorBody;
     }
-  }
 
-  @Override
-  public Object proceed() throws IOException {
-    writerCtx.proceed();
-    return null;
-  }
+    @Override
+    public void aroundWriteTo(WriterInterceptorContext ctx) throws IOException {
+        this.writerCtx = ctx;
+        interceptorBody.executeMethod(writerCtx, this);
+    }
 
-  @Override
-  public String getHeaderString() {
-    MultivaluedMap<String, Object> headers = writerCtx.getHeaders();
-    return (String) headers.getFirst(TemplateInterceptorBody.OPERATION);
-  }
+    @Override
+    public void writeEntity(String entity) {
+        Type type = writerCtx.getGenericType();
+        if (type instanceof Class) {
+            Class<?> clazz = ((Class<?>) type);
+            if (clazz == InputStreamReader.class) {
+                ByteArrayInputStream bis = new ByteArrayInputStream(entity.getBytes());
+                InputStreamReader reader = new InputStreamReader(bis);
+                writerCtx.setEntity(reader);
+            } else {
+                writerCtx.setEntity(entity);
+            }
+        }
+    }
+
+    @Override
+    public Object proceed() throws IOException {
+        writerCtx.proceed();
+        return null;
+    }
+
+    @Override
+    public String getHeaderString() {
+        MultivaluedMap<String, Object> headers = writerCtx.getHeaders();
+        return (String) headers.getFirst(TemplateInterceptorBody.OPERATION);
+    }
 
 }

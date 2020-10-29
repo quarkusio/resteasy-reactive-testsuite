@@ -21,26 +21,26 @@ package com.sun.ts.tests.jaxrs.ee.rs;
  * and overrides equals and hashCode for cases when it is in a sorted set
  */
 public class ParamEntityWithFromString extends ParamEntityPrototype
-    implements java.lang.Comparable<ParamEntityWithFromString> {
+        implements java.lang.Comparable<ParamEntityWithFromString> {
 
-  public static ParamEntityWithFromString fromString(String arg) {
-    ParamEntityWithFromString newEntity = new ParamEntityWithFromString();
-    newEntity.value = arg;
-    return newEntity;
-  }
+    public static ParamEntityWithFromString fromString(String arg) {
+        ParamEntityWithFromString newEntity = new ParamEntityWithFromString();
+        newEntity.value = arg;
+        return newEntity;
+    }
 
-  @Override
-  public int compareTo(ParamEntityWithFromString o) {
-    return this.value.compareTo(o.value);
-  }
+    @Override
+    public int compareTo(ParamEntityWithFromString o) {
+        return this.value.compareTo(o.value);
+    }
 
-  @Override
-  public boolean equals(Object obj) {
-    return this.value.equals(obj);
-  }
+    @Override
+    public boolean equals(Object obj) {
+        return this.value.equals(obj);
+    }
 
-  @Override
-  public int hashCode() {
-    return this.value.hashCode();
-  }
+    @Override
+    public int hashCode() {
+        return this.value.hashCode();
+    }
 }

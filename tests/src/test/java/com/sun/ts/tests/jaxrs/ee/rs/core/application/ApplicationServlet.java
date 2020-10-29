@@ -30,61 +30,61 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 @Path("ApplicationTest")
 public class ApplicationServlet {
 
-  @GET
-  @Path("/GetSingletons")
-  public Response testGetSingletons(@Context Application application) {
-    // Derived from the default, thus return empty implementation
-    if (application.getSingletons() == null)
-      return Response.status(Response.Status.NOT_ACCEPTABLE).build();
-    // Passed
-    return Response.ok(String.valueOf(application.getSingletons().size()))
-        .build();
-  }
-
-  @GET
-  @Path("/GetClasses")
-  public Response testGetClasses(@Context Application application) {
-    // Context Issue
-    application = getDeproxiedApplication(application);
-    if (!application.getClasses().contains(ApplicationServlet.class))
-      return Response.status(Response.Status.NOT_ACCEPTABLE).build();
-    // Passed
-    return Response.ok(String.valueOf(application.getClasses().size())).build();
-  }
-
-  @Path("properties")
-  @GET
-  public Response getProperties(@Context Application application) {
-    Response response = null;
-    application = getDeproxiedApplication(application);
-    Map<String, Object> properties = application.getProperties();
-    if (properties == null || properties.size() == 0) {
-      response = Response.noContent().build();
-    } else {
-      Object val0 = properties.get(TSAppConfig.KEYS[0]);
-      Object val1 = properties.get(TSAppConfig.KEYS[1]);
-      if (TSAppConfig.VALUES[0].equals(val0)
-          && TSAppConfig.VALUES[1].equals(val1))
-        response = Response.ok(JaxrsUtil.mapToString(properties)).build();
-      else
-        response = Response.status(Response.Status.NOT_ACCEPTABLE).build();
+    @GET
+    @Path("/GetSingletons")
+    public Response testGetSingletons(@Context Application application) {
+        // Derived from the default, thus return empty implementation
+        if (application.getSingletons() == null)
+            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        // Passed
+        return Response.ok(String.valueOf(application.getSingletons().size()))
+                .build();
     }
-    return response;
-  }
 
-  // ////////////////////////////////////////////////////////////////////////
+    @GET
+    @Path("/GetClasses")
+    public Response testGetClasses(@Context Application application) {
+        // Context Issue
+        application = getDeproxiedApplication(application);
+        if (!application.getClasses().contains(ApplicationServlet.class))
+            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        // Passed
+        return Response.ok(String.valueOf(application.getClasses().size())).build();
+    }
 
-  /**
-   * Deproxy
-   */
-  protected static Application getDeproxiedApplication(
-      Application application) {
-    Set<Object> singletons = application.getSingletons();
-    for (Object s : singletons)
-      if (s.getClass() == ApplicationHolderSingleton.class)
-        return ((ApplicationHolderSingleton) s).getApplication();
-    throw new IllegalStateException(
-        "ApplicationHolderSingleton has not been found in a list of singletons");
-  }
+    @Path("properties")
+    @GET
+    public Response getProperties(@Context Application application) {
+        Response response = null;
+        application = getDeproxiedApplication(application);
+        Map<String, Object> properties = application.getProperties();
+        if (properties == null || properties.size() == 0) {
+            response = Response.noContent().build();
+        } else {
+            Object val0 = properties.get(TSAppConfig.KEYS[0]);
+            Object val1 = properties.get(TSAppConfig.KEYS[1]);
+            if (TSAppConfig.VALUES[0].equals(val0)
+                    && TSAppConfig.VALUES[1].equals(val1))
+                response = Response.ok(JaxrsUtil.mapToString(properties)).build();
+            else
+                response = Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        }
+        return response;
+    }
+
+    // ////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Deproxy
+     */
+    protected static Application getDeproxiedApplication(
+            Application application) {
+        Set<Object> singletons = application.getSingletons();
+        for (Object s : singletons)
+            if (s.getClass() == ApplicationHolderSingleton.class)
+                return ((ApplicationHolderSingleton) s).getApplication();
+        throw new IllegalStateException(
+                "ApplicationHolderSingleton has not been found in a list of singletons");
+    }
 
 }

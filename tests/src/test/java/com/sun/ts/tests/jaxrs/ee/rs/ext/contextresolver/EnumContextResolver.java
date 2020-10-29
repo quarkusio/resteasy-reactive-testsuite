@@ -26,9 +26,9 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class EnumContextResolver implements ContextResolver<EnumProvider> {
 
-  @Override
-  public EnumProvider getContext(Class<?> type) {
-    return type == EnumProvider.class ? EnumProvider.JAXRS : null;
-  }
+    @Override
+    public EnumProvider getContext(Class<?> type) {
+        return type == EnumProvider.class ? EnumProvider.JAXRS : null;
+    }
 
 }

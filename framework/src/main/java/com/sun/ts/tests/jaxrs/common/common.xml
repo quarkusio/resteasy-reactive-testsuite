@@ -43,45 +43,27 @@
 	</target>
     -->
 	<target name="package" if="resource.classes">
-        <propertyregex property="unified.resource.classes"
-                  input="${resource.classes}"
-				  regexp="\\"
-				  replace="/"
-        	      defaultvalue="${resource.classes}"
-				  casesensitive="false" />	
-        <propertyregex property="relative.resource.classes"
-                  input="${unified.resource.classes}"
-                  regexp="(.*)/src/(.*)"
-        		  defaultvalue="${unified.resource.classes}"
-                  select="\2" />
-        <propertyregex property="resource.sources"
-                  input="${relative.resource.classes}"
-                  regexp=".class"
-                  replace=".java"
-                  casesensitive="false" />
-		
-        <propertyregex property="unified.appconfig.class"
-                  input="${appconfig.class}"
-				  regexp="\\"
-				  replace="/"
-				  casesensitive="false"
-        		  defaultvalue="${appconfig.class}"/>		
-        <propertyregex property="relative.appconfig.class"
-                  input="${unified.appconfig.class}"
-				  regexp="(.*)/src/(.*)"
-        		  defaultvalue="${unified.appconfig.class}"
-				  select="\2" />		
-        <propertyregex property="appconfig.source"
-                  input="${relative.appconfig.class}"
-                  regexp=".class"
-                  replace=".java"
-                  casesensitive="false" />
-		
+		<propertyregex property="unified.resource.classes" input="${resource.classes}" regexp="\\" replace="/"
+			defaultvalue="${resource.classes}" casesensitive="false" />
+		<propertyregex property="relative.resource.classes" input="${unified.resource.classes}" regexp="(.*)/src/(.*)"
+			defaultvalue="${unified.resource.classes}" select="\2" />
+		<propertyregex property="resource.sources" input="${relative.resource.classes}" regexp=".class" replace=".java"
+			casesensitive="false" />
+
+		<propertyregex property="unified.appconfig.class" input="${appconfig.class}" regexp="\\" replace="/"
+			casesensitive="false" defaultvalue="${appconfig.class}" />
+		<propertyregex property="relative.appconfig.class" input="${unified.appconfig.class}" regexp="(.*)/src/(.*)"
+			defaultvalue="${unified.appconfig.class}" select="\2" />
+		<propertyregex property="appconfig.source" input="${relative.appconfig.class}" regexp=".class" replace=".java"
+			casesensitive="false" />
+
 		<mkdir dir="${ts.home}/dist/${pkg.dir}" />
-		<ts.war	archivename="${app.name}" descriptor="web.xml.template">
-			<zipfileset dir="${ts.home}/classes" includes="${unified.resource.classes}, ${unified.appconfig.class}" prefix="WEB-INF/classes" />			
+		<ts.war archivename="${app.name}" descriptor="web.xml.template">
+			<zipfileset dir="${ts.home}/classes" includes="${unified.resource.classes}, ${unified.appconfig.class}"
+				prefix="WEB-INF/classes" />
 		</ts.war>
-		<move file="${ts.home}/dist/${pkg.dir}/${app.name}_web.war" tofile="${ts.home}/dist/${pkg.dir}/${app.name}_web.war.template" />
+		<move file="${ts.home}/dist/${pkg.dir}/${app.name}_web.war"
+			tofile="${ts.home}/dist/${pkg.dir}/${app.name}_web.war.template" />
 	</target>
 
 	<target name="update.war" if="resource.classes" description="Updates war with servlet adaptor">

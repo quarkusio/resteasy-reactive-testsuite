@@ -29,60 +29,60 @@ import javax.ws.rs.core.SecurityContext;
  */
 public class SecurityContextImpl implements SecurityContext {
 
-  /**
-   * Representation of principal, role, scheme, and secure connection
-   */
-  public SecurityContextImpl(String principal, boolean isUserInRole,
-      boolean isSecure, String scheme) {
-    super();
-    this.principal = principal;
-    this.isUserInRole = isUserInRole;
-    this.isSecure = isSecure;
-    this.scheme = scheme;
-  }
-
-  private String principal = null;
-
-  private boolean isUserInRole = false;
-
-  private boolean isSecure = false;
-
-  private String scheme = null;
-
-  /**
-   * Dummy security context
-   */
-  public SecurityContextImpl() {
-  }
-
-  @Override
-  public Principal getUserPrincipal() {
-    if (principal == null)
-      return null;
-    else {
-      Principal p = new Principal() {
-        @Override
-        public String getName() {
-          return principal;
-        }
-      };
-      return p;
+    /**
+     * Representation of principal, role, scheme, and secure connection
+     */
+    public SecurityContextImpl(String principal, boolean isUserInRole,
+            boolean isSecure, String scheme) {
+        super();
+        this.principal = principal;
+        this.isUserInRole = isUserInRole;
+        this.isSecure = isSecure;
+        this.scheme = scheme;
     }
-  }
 
-  @Override
-  public boolean isUserInRole(String role) {
-    return isUserInRole;
-  }
+    private String principal = null;
 
-  @Override
-  public boolean isSecure() {
-    return isSecure;
-  }
+    private boolean isUserInRole = false;
 
-  @Override
-  public String getAuthenticationScheme() {
-    return scheme;
-  }
+    private boolean isSecure = false;
+
+    private String scheme = null;
+
+    /**
+     * Dummy security context
+     */
+    public SecurityContextImpl() {
+    }
+
+    @Override
+    public Principal getUserPrincipal() {
+        if (principal == null)
+            return null;
+        else {
+            Principal p = new Principal() {
+                @Override
+                public String getName() {
+                    return principal;
+                }
+            };
+            return p;
+        }
+    }
+
+    @Override
+    public boolean isUserInRole(String role) {
+        return isUserInRole;
+    }
+
+    @Override
+    public boolean isSecure() {
+        return isSecure;
+    }
+
+    @Override
+    public String getAuthenticationScheme() {
+        return scheme;
+    }
 
 }

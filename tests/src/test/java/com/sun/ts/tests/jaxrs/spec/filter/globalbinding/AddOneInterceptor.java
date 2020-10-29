@@ -21,7 +21,7 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @GlobalNameBinding
 public class AddOneInterceptor extends AbstractAddInterceptor {
-  public AddOneInterceptor() {
-    super(1);
-  }
+    public AddOneInterceptor() {
+        super(1);
+    }
 }

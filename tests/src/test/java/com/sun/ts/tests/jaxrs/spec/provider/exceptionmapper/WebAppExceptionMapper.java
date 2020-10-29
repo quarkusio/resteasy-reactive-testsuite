@@ -23,11 +23,11 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class WebAppExceptionMapper
-    implements ExceptionMapper<WebApplicationException> {
+        implements ExceptionMapper<WebApplicationException> {
 
-  @Override
-  public Response toResponse(WebApplicationException exception) {
-    return Response.ok(getClass().getName()).build();
-  }
+    @Override
+    public Response toResponse(WebApplicationException exception) {
+        return Response.ok(getClass().getName()).build();
+    }
 
 }

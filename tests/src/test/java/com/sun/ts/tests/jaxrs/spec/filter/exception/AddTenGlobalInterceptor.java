@@ -27,18 +27,18 @@ import javax.ws.rs.ext.ReaderInterceptorContext;
 @Priority(500)
 public class AddTenGlobalInterceptor extends AbstractAddInterceptor {
 
-  public static final String EXCEPTION_FIRING_HEADER = "AddTenInterceptorThrowsException";
+    public static final String EXCEPTION_FIRING_HEADER = "AddTenInterceptorThrowsException";
 
-  public AddTenGlobalInterceptor() {
-    super(10);
-  }
+    public AddTenGlobalInterceptor() {
+        super(10);
+    }
 
-  @Override
-  public Object aroundReadFrom(ReaderInterceptorContext context)
-      throws IOException, WebApplicationException {
-    String header = context.getHeaders().getFirst(EXCEPTION_FIRING_HEADER);
-    if (header != null)
-      throw new RuntimeException(header);
-    return super.aroundReadFrom(context);
-  }
+    @Override
+    public Object aroundReadFrom(ReaderInterceptorContext context)
+            throws IOException, WebApplicationException {
+        String header = context.getHeaders().getFirst(EXCEPTION_FIRING_HEADER);
+        if (header != null)
+            throw new RuntimeException(header);
+        return super.aroundReadFrom(context);
+    }
 }

@@ -33,44 +33,44 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 @Provider
 public class ExceptionThrowingStringBeanEntityProvider
-    implements MessageBodyReader<ExceptionThrowingStringBean>,
-    MessageBodyWriter<ExceptionThrowingStringBean> {
+        implements MessageBodyReader<ExceptionThrowingStringBean>,
+        MessageBodyWriter<ExceptionThrowingStringBean> {
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return type == ExceptionThrowingStringBean.class;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return type == ExceptionThrowingStringBean.class;
+    }
 
-  @Override
-  public long getSize(ExceptionThrowingStringBean t, Class<?> type,
-      Type genericType, Annotation[] annotations, MediaType mediaType) {
-    return t.get().length();
-  }
+    @Override
+    public long getSize(ExceptionThrowingStringBean t, Class<?> type,
+            Type genericType, Annotation[] annotations, MediaType mediaType) {
+        return t.get().length();
+    }
 
-  @Override
-  public void writeTo(ExceptionThrowingStringBean t, Class<?> type,
-      Type genericType, Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write(t.get().getBytes());
-  }
+    @Override
+    public void writeTo(ExceptionThrowingStringBean t, Class<?> type,
+            Type genericType, Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write(t.get().getBytes());
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public ExceptionThrowingStringBean readFrom(
-      Class<ExceptionThrowingStringBean> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    String entity = JaxrsUtil.readFromStream(entityStream);
-    entityStream.close();
-    return new ExceptionThrowingStringBean(entity);
-  }
+    @Override
+    public ExceptionThrowingStringBean readFrom(
+            Class<ExceptionThrowingStringBean> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        String entity = JaxrsUtil.readFromStream(entityStream);
+        entityStream.close();
+        return new ExceptionThrowingStringBean(entity);
+    }
 
 }

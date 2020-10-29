@@ -22,9 +22,9 @@ import javax.ws.rs.Path;
 @Path("resource")
 public class Resource {
 
-  @POST
-  public String post(String entity) {
-    return entity;
-  }
+    @POST
+    public String post(String entity) {
+        return entity;
+    }
 
 }

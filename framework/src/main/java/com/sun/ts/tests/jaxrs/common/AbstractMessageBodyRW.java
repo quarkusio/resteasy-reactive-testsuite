@@ -28,29 +28,29 @@ import javax.ws.rs.Path;
  */
 public abstract class AbstractMessageBodyRW {
 
-  public static String getPathValue(Annotation[] annotations) {
-    return getSpecifiedAnnotationValue(annotations, Path.class);
-  }
-
-  @SuppressWarnings("unchecked")
-  public static <T extends Annotation> T getSpecifiedAnnotation(
-      Annotation[] annotations, Class<T> clazz) {
-    T t = null;
-    for (Annotation a : annotations)
-      if (a.annotationType() == clazz)
-        t = (T) a;
-    return t != null ? t : null;
-  }
-
-  public static <T extends Annotation> String getSpecifiedAnnotationValue(
-      Annotation[] annotations, Class<T> clazz) {
-    T t = getSpecifiedAnnotation(annotations, clazz);
-    try {
-      Method m = clazz.getMethod("value");
-      return (String) m.invoke(t);
-    } catch (Exception e) {
-      return null;
+    public static String getPathValue(Annotation[] annotations) {
+        return getSpecifiedAnnotationValue(annotations, Path.class);
     }
-  }
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Annotation> T getSpecifiedAnnotation(
+            Annotation[] annotations, Class<T> clazz) {
+        T t = null;
+        for (Annotation a : annotations)
+            if (a.annotationType() == clazz)
+                t = (T) a;
+        return t != null ? t : null;
+    }
+
+    public static <T extends Annotation> String getSpecifiedAnnotationValue(
+            Annotation[] annotations, Class<T> clazz) {
+        T t = getSpecifiedAnnotation(annotations, clazz);
+        try {
+            Method m = clazz.getMethod("value");
+            return (String) m.invoke(t);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 }

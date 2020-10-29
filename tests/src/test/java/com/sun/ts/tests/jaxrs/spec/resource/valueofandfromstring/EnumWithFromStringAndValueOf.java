@@ -22,8 +22,10 @@ package com.sun.ts.tests.jaxrs.spec.resource.valueofandfromstring;
  */
 
 public enum EnumWithFromStringAndValueOf {
-  FROMSTRING, VALUEOF;
-  public static EnumWithFromStringAndValueOf fromString(String string) {
-    return FROMSTRING;
-  }
+    FROMSTRING,
+    VALUEOF;
+
+    public static EnumWithFromStringAndValueOf fromString(String string) {
+        return FROMSTRING;
+    }
 }

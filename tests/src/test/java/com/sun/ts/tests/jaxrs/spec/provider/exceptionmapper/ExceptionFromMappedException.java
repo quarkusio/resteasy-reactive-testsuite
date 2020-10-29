@@ -23,13 +23,13 @@ package com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper;
  */
 public class ExceptionFromMappedException extends RuntimeException {
 
-  public ExceptionFromMappedException(String string) {
-    super(string);
-  }
+    public ExceptionFromMappedException(String string) {
+        super(string);
+    }
 
-  public ExceptionFromMappedException() {
-    super("This is intentional exception");
-  }
+    public ExceptionFromMappedException() {
+        super("This is intentional exception");
+    }
 
-  private static final long serialVersionUID = -2119170102914335228L;
+    private static final long serialVersionUID = -2119170102914335228L;
 }

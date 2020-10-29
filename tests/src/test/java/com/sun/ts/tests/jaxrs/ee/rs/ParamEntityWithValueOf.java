@@ -21,9 +21,9 @@ package com.sun.ts.tests.jaxrs.ee.rs;
  */
 public class ParamEntityWithValueOf extends ParamEntityPrototype {
 
-  public static ParamEntityWithValueOf valueOf(String arg) {
-    ParamEntityWithValueOf newEntity = new ParamEntityWithValueOf();
-    newEntity.value = arg;
-    return newEntity;
-  }
+    public static ParamEntityWithValueOf valueOf(String arg) {
+        ParamEntityWithValueOf newEntity = new ParamEntityWithValueOf();
+        newEntity.value = arg;
+        return newEntity;
+    }
 }

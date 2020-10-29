@@ -33,37 +33,37 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString;
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf;
 
 public class QueryBeanParamEntity {
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @QueryParam(Constants.PARAM_ENTITY_WITH_CONSTRUCTOR)
-  public ParamEntityWithConstructor paramEntityWithConstructor;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @QueryParam(Constants.PARAM_ENTITY_WITH_CONSTRUCTOR)
+    public ParamEntityWithConstructor paramEntityWithConstructor;
 
-  @Encoded
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @QueryParam(Constants.PARAM_ENTITY_WITH_FROMSTRING)
-  public ParamEntityWithFromString paramEntityWithFromString;
+    @Encoded
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @QueryParam(Constants.PARAM_ENTITY_WITH_FROMSTRING)
+    public ParamEntityWithFromString paramEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @QueryParam(Constants.PARAM_ENTITY_WITH_VALUEOF)
-  public ParamEntityWithValueOf paramEntityWithValueOf;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @QueryParam(Constants.PARAM_ENTITY_WITH_VALUEOF)
+    public ParamEntityWithValueOf paramEntityWithValueOf;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @QueryParam(Constants.SET_PARAM_ENTITY_WITH_FROMSTRING)
-  public Set<ParamEntityWithFromString> setParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @QueryParam(Constants.SET_PARAM_ENTITY_WITH_FROMSTRING)
+    public Set<ParamEntityWithFromString> setParamEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @QueryParam(Constants.SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING)
-  public SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @QueryParam(Constants.SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING)
+    public SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @QueryParam(Constants.LIST_PARAM_ENTITY_WITH_FROMSTRING)
-  public List<ParamEntityWithFromString> listParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @QueryParam(Constants.LIST_PARAM_ENTITY_WITH_FROMSTRING)
+    public List<ParamEntityWithFromString> listParamEntityWithFromString;
 
-  @QueryParam(Constants.ENTITY_THROWING_WEBAPPLICATIONEXCEPTION)
-  public ParamEntityThrowingWebApplicationException entityThrowingWebApplicationException;
+    @QueryParam(Constants.ENTITY_THROWING_WEBAPPLICATIONEXCEPTION)
+    public ParamEntityThrowingWebApplicationException entityThrowingWebApplicationException;
 
-  @QueryParam(Constants.ENTITY_THROWING_EXCEPTION_BY_NAME)
-  public ParamEntityThrowingExceptionGivenByName entityThrowingExceptionGivenByName;
+    @QueryParam(Constants.ENTITY_THROWING_EXCEPTION_BY_NAME)
+    public ParamEntityThrowingExceptionGivenByName entityThrowingExceptionGivenByName;
 
-  @BeanParam
-  public InnerQueryBeanParamEntity inner;
+    @BeanParam
+    public InnerQueryBeanParamEntity inner;
 }

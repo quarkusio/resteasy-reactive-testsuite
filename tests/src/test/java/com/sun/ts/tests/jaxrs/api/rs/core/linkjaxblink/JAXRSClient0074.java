@@ -33,106 +33,106 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0074 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = -6053007016837644641L;
+    private static final long serialVersionUID = -6053007016837644641L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0074().run(args);
-  }
-
-  /*
-   * @testName: defaultConstructorTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:822; JAXRS:JAVADOC:820; JAXRS:JAVADOC:821;
-   * 
-   * @test_Strategy: Default constructor needed during unmarshalling.
-   * JaxbLink.getParams; JaxbLink.getUri
-   */
-  @org.junit.jupiter.api.Test
-  public void defaultConstructorTest() throws Fault {
-    Link.JaxbLink jaxbLink = new Link.JaxbLink();
-    boolean getUri = jaxbLink.getUri() == null
-        || jaxbLink.getUri().toASCIIString() == null
-        || jaxbLink.getUri().toASCIIString().isEmpty();
-    assertTrue(getUri, "JaxbLink.getUri() is unexpectedly preset to",
-        jaxbLink.getUri());
-    logMsg("Link.JaxbLink.getUri() is empty as expected");
-    boolean params = jaxbLink.getParams() == null
-        || jaxbLink.getParams().isEmpty();
-    assertTrue(params, "JaxbLink.getParams() is unexpectedly preset to",
-        jaxbLink.getParams());
-    logMsg("Link.JaxbLink.getParams() is empty as expected");
-  }
-
-  /*
-   * @testName: uriConstructorTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:823; JAXRS:JAVADOC:820; JAXRS:JAVADOC:821;
-   * 
-   * @test_Strategy: Construct an instance from a URI and no parameters.
-   * JaxbLink.getParams; JaxbLink.getUri
-   */
-  @org.junit.jupiter.api.Test
-  public void uriConstructorTest() throws Fault {
-    String uri = "protocol://domain2.domain1:port";
-    URI fromString = uriFromString(uri);
-    Link.JaxbLink jaxbLink = new Link.JaxbLink(fromString);
-
-    boolean getUri = jaxbLink.getUri().equals(fromString);
-    assertTrue(getUri, "JaxbLink.getUri() is unexpectedly preset to",
-        jaxbLink.getUri());
-    logMsg("Link.JaxbLink.getUri() is", uri, "as expected");
-
-    boolean params = jaxbLink.getParams() == null
-        || jaxbLink.getParams().isEmpty();
-    assertTrue(params, "JaxbLink.getParams() is unexpectedly preset to",
-        jaxbLink.getParams());
-    logMsg("Link.JaxbLink.getParams() is empty as expected");
-  }
-
-  /*
-   * @testName: uriParamsConstructorTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:824; JAXRS:JAVADOC:820; JAXRS:JAVADOC:821;
-   * 
-   * @test_Strategy: Construct an instance from a URI and some parameters.
-   * JaxbLink.getParams; JaxbLink.getUri
-   */
-  @org.junit.jupiter.api.Test
-  public void uriParamsConstructorTest() throws Fault {
-    String uri = "protocol://domain2.domain1:port";
-    String q = "qName";
-    QName qName = new QName(q);
-    URI fromString = uriFromString(uri);
-    java.util.Map<QName, Object> map;
-    map = new HashMap<QName, Object>();
-    map.put(qName, q);
-    Link.JaxbLink jaxbLink = new Link.JaxbLink(fromString, map);
-
-    boolean getUri = jaxbLink.getUri().equals(fromString);
-    assertTrue(getUri, "JaxbLink.getUri() is unexpectedly preset to",
-        jaxbLink.getUri());
-    logMsg("Link.JaxbLink.getUri() is", uri, "as expected");
-
-    boolean params = jaxbLink.getParams().containsKey(qName)
-        && jaxbLink.getParams().get(qName).equals(q);
-    assertTrue(params, "JaxbLink.getParams() is unexpectedly set to",
-        jaxbLink.getParams());
-    logMsg("Link.JaxbLink.getParams() contains", q, "as expected");
-  }
-
-  // //////////////////////////////////////////////////////////////////////
-  private static URI uriFromString(String uri) throws Fault {
-    URI fromString = null;
-    try {
-      fromString = new URI(uri);
-    } catch (URISyntaxException e) {
-      throw new Fault(e);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0074().run(args);
     }
-    return fromString;
-  }
+
+    /*
+     * @testName: defaultConstructorTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:822; JAXRS:JAVADOC:820; JAXRS:JAVADOC:821;
+     * 
+     * @test_Strategy: Default constructor needed during unmarshalling.
+     * JaxbLink.getParams; JaxbLink.getUri
+     */
+    @org.junit.jupiter.api.Test
+    public void defaultConstructorTest() throws Fault {
+        Link.JaxbLink jaxbLink = new Link.JaxbLink();
+        boolean getUri = jaxbLink.getUri() == null
+                || jaxbLink.getUri().toASCIIString() == null
+                || jaxbLink.getUri().toASCIIString().isEmpty();
+        assertTrue(getUri, "JaxbLink.getUri() is unexpectedly preset to",
+                jaxbLink.getUri());
+        logMsg("Link.JaxbLink.getUri() is empty as expected");
+        boolean params = jaxbLink.getParams() == null
+                || jaxbLink.getParams().isEmpty();
+        assertTrue(params, "JaxbLink.getParams() is unexpectedly preset to",
+                jaxbLink.getParams());
+        logMsg("Link.JaxbLink.getParams() is empty as expected");
+    }
+
+    /*
+     * @testName: uriConstructorTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:823; JAXRS:JAVADOC:820; JAXRS:JAVADOC:821;
+     * 
+     * @test_Strategy: Construct an instance from a URI and no parameters.
+     * JaxbLink.getParams; JaxbLink.getUri
+     */
+    @org.junit.jupiter.api.Test
+    public void uriConstructorTest() throws Fault {
+        String uri = "protocol://domain2.domain1:port";
+        URI fromString = uriFromString(uri);
+        Link.JaxbLink jaxbLink = new Link.JaxbLink(fromString);
+
+        boolean getUri = jaxbLink.getUri().equals(fromString);
+        assertTrue(getUri, "JaxbLink.getUri() is unexpectedly preset to",
+                jaxbLink.getUri());
+        logMsg("Link.JaxbLink.getUri() is", uri, "as expected");
+
+        boolean params = jaxbLink.getParams() == null
+                || jaxbLink.getParams().isEmpty();
+        assertTrue(params, "JaxbLink.getParams() is unexpectedly preset to",
+                jaxbLink.getParams());
+        logMsg("Link.JaxbLink.getParams() is empty as expected");
+    }
+
+    /*
+     * @testName: uriParamsConstructorTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:824; JAXRS:JAVADOC:820; JAXRS:JAVADOC:821;
+     * 
+     * @test_Strategy: Construct an instance from a URI and some parameters.
+     * JaxbLink.getParams; JaxbLink.getUri
+     */
+    @org.junit.jupiter.api.Test
+    public void uriParamsConstructorTest() throws Fault {
+        String uri = "protocol://domain2.domain1:port";
+        String q = "qName";
+        QName qName = new QName(q);
+        URI fromString = uriFromString(uri);
+        java.util.Map<QName, Object> map;
+        map = new HashMap<QName, Object>();
+        map.put(qName, q);
+        Link.JaxbLink jaxbLink = new Link.JaxbLink(fromString, map);
+
+        boolean getUri = jaxbLink.getUri().equals(fromString);
+        assertTrue(getUri, "JaxbLink.getUri() is unexpectedly preset to",
+                jaxbLink.getUri());
+        logMsg("Link.JaxbLink.getUri() is", uri, "as expected");
+
+        boolean params = jaxbLink.getParams().containsKey(qName)
+                && jaxbLink.getParams().get(qName).equals(q);
+        assertTrue(params, "JaxbLink.getParams() is unexpectedly set to",
+                jaxbLink.getParams());
+        logMsg("Link.JaxbLink.getParams() contains", q, "as expected");
+    }
+
+    // //////////////////////////////////////////////////////////////////////
+    private static URI uriFromString(String uri) throws Fault {
+        URI fromString = null;
+        try {
+            fromString = new URI(uri);
+        } catch (URISyntaxException e) {
+            throw new Fault(e);
+        }
+        return fromString;
+    }
 }

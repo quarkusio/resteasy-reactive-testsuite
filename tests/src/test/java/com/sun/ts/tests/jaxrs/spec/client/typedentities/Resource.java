@@ -28,31 +28,31 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritable
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("readerprovider")
-  public ReadableWritableEntity clientReader() {
-    return new ReadableWritableEntity(getClass().getName());
-  }
+    @GET
+    @Path("readerprovider")
+    public ReadableWritableEntity clientReader() {
+        return new ReadableWritableEntity(getClass().getName());
+    }
 
-  @POST
-  @Path("writerprovider")
-  public String clientWriter(ReadableWritableEntity entity) {
-    return entity.toXmlString();
-  }
+    @POST
+    @Path("writerprovider")
+    public String clientWriter(ReadableWritableEntity entity) {
+        return entity.toXmlString();
+    }
 
-  @GET
-  @Path("standardreader")
-  public String bytearrayreader(@Context HttpHeaders headers) {
-    String name = Resource.class.getName();
-    MediaType type = headers.getAcceptableMediaTypes().iterator().next();
-    if (type != null && type.getSubtype().contains("xml"))
-      name = "<resource>" + name + "</resource>";
-    return name;
-  }
+    @GET
+    @Path("standardreader")
+    public String bytearrayreader(@Context HttpHeaders headers) {
+        String name = Resource.class.getName();
+        MediaType type = headers.getAcceptableMediaTypes().iterator().next();
+        if (type != null && type.getSubtype().contains("xml"))
+            name = "<resource>" + name + "</resource>";
+        return name;
+    }
 
-  @POST
-  @Path("standardwriter")
-  public String bytearraywriter(String value) {
-    return value;
-  }
+    @POST
+    @Path("standardwriter")
+    public String bytearraywriter(String value) {
+        return value;
+    }
 }

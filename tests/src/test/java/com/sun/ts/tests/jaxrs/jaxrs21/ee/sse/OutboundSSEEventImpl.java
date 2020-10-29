@@ -23,68 +23,68 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.sse.OutboundSseEvent;
 
 public class OutboundSSEEventImpl extends SSEEventImpl
-    implements OutboundSseEvent {
-  public Class<?> type = String.class;
+        implements OutboundSseEvent {
+    public Class<?> type = String.class;
 
-  public Type genericType = new GenericType<String>(type) {
-  }.getType();
+    public Type genericType = new GenericType<String>(type) {
+    }.getType();
 
-  public Object data = null;
+    public Object data = null;
 
-  public MediaType media = MediaType.TEXT_PLAIN_TYPE;
+    public MediaType media = MediaType.TEXT_PLAIN_TYPE;
 
-  public OutboundSSEEventImpl(Object data) {
-    setData(data);
-  }
+    public OutboundSSEEventImpl(Object data) {
+        setData(data);
+    }
 
-  public OutboundSSEEventImpl(Object data, String comment, String id,
-      String name, int delay) {
-    super(comment, id, name, delay);
-    setData(data);
-  }
+    public OutboundSSEEventImpl(Object data, String comment, String id,
+            String name, int delay) {
+        super(comment, id, name, delay);
+        setData(data);
+    }
 
-  @Override
-  public boolean isReconnectDelaySet() {
-    return delay != 0;
-  }
+    @Override
+    public boolean isReconnectDelaySet() {
+        return delay != 0;
+    }
 
-  @Override
-  public Class<?> getType() {
-    return type;
-  }
+    @Override
+    public Class<?> getType() {
+        return type;
+    }
 
-  @Override
-  public Type getGenericType() {
-    return type;
-  }
+    @Override
+    public Type getGenericType() {
+        return type;
+    }
 
-  @Override
-  public MediaType getMediaType() {
-    return media;
-  }
+    @Override
+    public MediaType getMediaType() {
+        return media;
+    }
 
-  @Override
-  public Object getData() {
-    return data;
-  }
+    @Override
+    public Object getData() {
+        return data;
+    }
 
-  public OutboundSSEEventImpl setType(Class<?> type) {
-    this.type = type;
-    return this;
-  }
+    public OutboundSSEEventImpl setType(Class<?> type) {
+        this.type = type;
+        return this;
+    }
 
-  public OutboundSSEEventImpl setGenericType(Type genericType) {
-    this.genericType = genericType;
-    return this;
-  }
+    public OutboundSSEEventImpl setGenericType(Type genericType) {
+        this.genericType = genericType;
+        return this;
+    }
 
-  public OutboundSSEEventImpl setData(Object data) {
-    this.data = data;
-    return this;
-  }
+    public OutboundSSEEventImpl setData(Object data) {
+        this.data = data;
+        return this;
+    }
 
-  public OutboundSSEEventImpl setData(Object data, MediaType type) {
-    this.data = data;
-    return this;
-  }
+    public OutboundSSEEventImpl setData(Object data, MediaType type) {
+        this.data = data;
+        return this;
+    }
 }

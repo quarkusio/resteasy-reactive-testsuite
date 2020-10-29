@@ -17,14 +17,15 @@
 package com.sun.ts.tests.jaxrs.spec.client.resource;
 
 import java.util.function.Supplier;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -43,38 +44,36 @@ public class JAXRSClient0027 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.client.resource.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.client.resource.Resource.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.client.resource.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.client.resource.Resource.class);
                 }
             });
 
+    private static final long serialVersionUID = 1339633069677106930L;
 
-  private static final long serialVersionUID = 1339633069677106930L;
+    public JAXRSClient0027() {
+        setContextRoot("/jaxrs_spec_client_resource_web/resource");
+    }
 
-  public JAXRSClient0027() {
-    setContextRoot("/jaxrs_spec_client_resource_web/resource");
-  }
+    public static void main(String[] args) {
+        new JAXRSClient0027().run(args);
+    }
 
-  public static void main(String[] args) {
-    new JAXRSClient0027().run(args);
-  }
-
-  /* Run test */
-  /*
-   * @testName: checkClientConceptTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:65;
-   * 
-   * @test_Strategy: Conceptually, the steps required to submit a request are
-   * the following: (i) obtain an instance of Client (ii) create a WebTarget
-   * (iii) create a request from the WebTarget and (iv) submit a request or get
-   * a prepared Invocation for later submission
-   */
-  @Test
-  public void checkClientConceptTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "concept"));
-    setProperty(Property.SEARCH_STRING, "concept");
-    invoke();
-  }
+    /* Run test */
+    /*
+     * @testName: checkClientConceptTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:65;
+     * 
+     * @test_Strategy: Conceptually, the steps required to submit a request are
+     * the following: (i) obtain an instance of Client (ii) create a WebTarget
+     * (iii) create a request from the WebTarget and (iv) submit a request or get
+     * a prepared Invocation for later submission
+     */
+    @Test
+    public void checkClientConceptTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "concept"));
+        setProperty(Property.SEARCH_STRING, "concept");
+        invoke();
+    }
 }

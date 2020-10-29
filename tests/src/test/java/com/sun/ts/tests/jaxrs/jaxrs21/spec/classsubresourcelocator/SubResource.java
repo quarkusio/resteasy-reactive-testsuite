@@ -19,8 +19,8 @@ package com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator;
 import javax.ws.rs.GET;
 
 public class SubResource {
-  @GET
-  public String ok() {
-    return "OK";
-  }
+    @GET
+    public String ok() {
+        return "OK";
+    }
 }

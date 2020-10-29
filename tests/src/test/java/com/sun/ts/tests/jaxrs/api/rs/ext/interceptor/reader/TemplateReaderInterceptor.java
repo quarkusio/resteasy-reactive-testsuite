@@ -39,39 +39,39 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
  *      super-classes.
  */
 public abstract class TemplateReaderInterceptor
-    implements ReaderInterceptor, InterceptorCallbackMethods {
+        implements ReaderInterceptor, InterceptorCallbackMethods {
 
-  protected ReaderInterceptorContext readerCtx;
+    protected ReaderInterceptorContext readerCtx;
 
-  protected TemplateInterceptorBody<ReaderInterceptorContext> interceptorBody;
+    protected TemplateInterceptorBody<ReaderInterceptorContext> interceptorBody;
 
-  public TemplateReaderInterceptor(
-      TemplateInterceptorBody<ReaderInterceptorContext> interceptorBody) {
-    super();
-    this.interceptorBody = interceptorBody;
-  }
+    public TemplateReaderInterceptor(
+            TemplateInterceptorBody<ReaderInterceptorContext> interceptorBody) {
+        super();
+        this.interceptorBody = interceptorBody;
+    }
 
-  @Override
-  public Object aroundReadFrom(ReaderInterceptorContext ctx)
-      throws IOException, WebApplicationException {
-    this.readerCtx = ctx;
-    return interceptorBody.executeMethod(readerCtx, this);
-  }
+    @Override
+    public Object aroundReadFrom(ReaderInterceptorContext ctx)
+            throws IOException, WebApplicationException {
+        this.readerCtx = ctx;
+        return interceptorBody.executeMethod(readerCtx, this);
+    }
 
-  @Override
-  public void writeEntity(String entity) {
-    readerCtx.setInputStream(new ByteArrayInputStream(entity.getBytes()));
-  }
+    @Override
+    public void writeEntity(String entity) {
+        readerCtx.setInputStream(new ByteArrayInputStream(entity.getBytes()));
+    }
 
-  @Override
-  public Object proceed() throws IOException {
-    return readerCtx.proceed();
-  }
+    @Override
+    public Object proceed() throws IOException {
+        return readerCtx.proceed();
+    }
 
-  @Override
-  public String getHeaderString() {
-    MultivaluedMap<String, String> headers = readerCtx.getHeaders();
-    return headers.getFirst(TemplateInterceptorBody.OPERATION);
-  }
+    @Override
+    public String getHeaderString() {
+        MultivaluedMap<String, String> headers = readerCtx.getHeaders();
+        return headers.getFirst(TemplateInterceptorBody.OPERATION);
+    }
 
 }

@@ -17,14 +17,15 @@
 package com.sun.ts.tests.jaxrs.spec.filter.globalbinding;
 
 import java.util.function.Supplier;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -46,70 +47,68 @@ public class JAXRSClient0023 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.filter.globalbinding.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AbstractAddInterceptor.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AbstractAddFilter.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.Resource.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AddOneInterceptor.class
-                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.GlobalNameBinding.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AddTenFilter.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.filter.globalbinding.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AbstractAddInterceptor.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AbstractAddFilter.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.globalbinding.Resource.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AddOneInterceptor.class,
+                                    com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.globalbinding.GlobalNameBinding.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.globalbinding.AddTenFilter.class);
                 }
             });
 
+    private static final long serialVersionUID = -3785330089447087404L;
 
-  private static final long serialVersionUID = -3785330089447087404L;
+    public JAXRSClient0023() {
+        setContextRoot("/jaxrs_spec_filter_globalbinding_web/resource");
+    }
 
-  public JAXRSClient0023() {
-    setContextRoot("/jaxrs_spec_filter_globalbinding_web/resource");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0023().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0023().run(args);
-  }
+    /* Run test */
 
-  /* Run test */
+    /*
+     * @testName: nameBoundResourceTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:89;
+     * 
+     * @test_Strategy: If providers are decorated with at least one name binding
+     * annotation, the application subclass must be annotated as shown above in
+     * order for those filters or interceptors to be globally bound
+     */
+    @Test
+    public void nameBoundResourceTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "bind"));
+        setProperty(Property.CONTENT, "0");
+        setProperty(Property.SEARCH_STRING, "12");
+        invoke();
+        logMsg("Bound as expected");
+    }
 
-  /*
-   * @testName: nameBoundResourceTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:89;
-   * 
-   * @test_Strategy: If providers are decorated with at least one name binding
-   * annotation, the application subclass must be annotated as shown above in
-   * order for those filters or interceptors to be globally bound
-   */
-  @Test
-  public void nameBoundResourceTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "bind"));
-    setProperty(Property.CONTENT, "0");
-    setProperty(Property.SEARCH_STRING, "12");
-    invoke();
-    logMsg("Bound as expected");
-  }
-
-  /*
-   * @testName: globalBoundResourceTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:89;
-   * 
-   * @test_Strategy: If providers are decorated with at least one name binding
-   * annotation, the application subclass must be annotated as shown above in
-   * order for those filters or interceptors to be globally bound
-   */
-  @Test
-  public void globalBoundResourceTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "nobind"));
-    setProperty(Property.CONTENT, "0");
-    setProperty(Property.SEARCH_STRING, "12");
-    invoke();
-    logMsg("Bound as expected");
-  }
+    /*
+     * @testName: globalBoundResourceTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:89;
+     * 
+     * @test_Strategy: If providers are decorated with at least one name binding
+     * annotation, the application subclass must be annotated as shown above in
+     * order for those filters or interceptors to be globally bound
+     */
+    @Test
+    public void globalBoundResourceTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "nobind"));
+        setProperty(Property.CONTENT, "0");
+        setProperty(Property.SEARCH_STRING, "12");
+        invoke();
+        logMsg("Bound as expected");
+    }
 
 }

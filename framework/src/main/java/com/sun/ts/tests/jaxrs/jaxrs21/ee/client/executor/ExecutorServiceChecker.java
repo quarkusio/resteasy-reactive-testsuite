@@ -32,44 +32,44 @@ import javax.ws.rs.core.Response;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
 public interface ExecutorServiceChecker extends Closeable {
-  final static String THREADPREFIX = "JAXRS_TCK_THREAD";
+    final static String THREADPREFIX = "JAXRS_TCK_THREAD";
 
-  static final ThreadFactory THREAD_FACTORY = new ThreadFactory() {
-    AtomicInteger ai = new AtomicInteger();
+    static final ThreadFactory THREAD_FACTORY = new ThreadFactory() {
+        AtomicInteger ai = new AtomicInteger();
 
-    @Override
-    public Thread newThread(Runnable r) {
-      return new Thread(r, THREADPREFIX + ai.incrementAndGet());
-    }
-  };
-
-  final static ExecutorService EXECUTOR_SERVICE = Executors
-      .newFixedThreadPool(5, THREAD_FACTORY);
-
-  default Client createClient() {
-    Client c = ClientBuilder.newBuilder().executorService(EXECUTOR_SERVICE)
-        .build();
-    c.register(threadNameChecker());
-    return c;
-  }
-
-  default ClientRequestFilter threadNameChecker() {
-    return new ClientRequestFilter() {
-      @Override
-      public void filter(ClientRequestContext requestContext)
-          throws IOException {
-        Thread t = Thread.currentThread();
-        if (!t.getName().startsWith(THREADPREFIX))
-          requestContext.abortWith(Response.notAcceptable(null)
-              .entity("ThreadExecutor check failed").build());
-        JAXRSCommonClient.logMsg(
-            "[Client EXECUTOR SERVICE check]: running from thread",
-            t.getName());
-      }
+        @Override
+        public Thread newThread(Runnable r) {
+            return new Thread(r, THREADPREFIX + ai.incrementAndGet());
+        }
     };
-  }
 
-  default void close() throws IOException {
-    EXECUTOR_SERVICE.shutdown();
-  }
+    final static ExecutorService EXECUTOR_SERVICE = Executors
+            .newFixedThreadPool(5, THREAD_FACTORY);
+
+    default Client createClient() {
+        Client c = ClientBuilder.newBuilder().executorService(EXECUTOR_SERVICE)
+                .build();
+        c.register(threadNameChecker());
+        return c;
+    }
+
+    default ClientRequestFilter threadNameChecker() {
+        return new ClientRequestFilter() {
+            @Override
+            public void filter(ClientRequestContext requestContext)
+                    throws IOException {
+                Thread t = Thread.currentThread();
+                if (!t.getName().startsWith(THREADPREFIX))
+                    requestContext.abortWith(Response.notAcceptable(null)
+                            .entity("ThreadExecutor check failed").build());
+                JAXRSCommonClient.logMsg(
+                        "[Client EXECUTOR SERVICE check]: running from thread",
+                        t.getName());
+            }
+        };
+    }
+
+    default void close() throws IOException {
+        EXECUTOR_SERVICE.shutdown();
+    }
 }

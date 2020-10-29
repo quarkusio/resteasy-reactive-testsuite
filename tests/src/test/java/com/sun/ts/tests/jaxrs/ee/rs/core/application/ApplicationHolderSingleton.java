@@ -34,30 +34,30 @@ import javax.ws.rs.ext.Provider;
  * conform requirement on Provider
  */
 public class ApplicationHolderSingleton
-    implements MessageBodyReader<Application> {
-  private Application application;
+        implements MessageBodyReader<Application> {
+    private Application application;
 
-  public ApplicationHolderSingleton(Application application) {
-    super();
-    this.application = application;
-  }
+    public ApplicationHolderSingleton(Application application) {
+        super();
+        this.application = application;
+    }
 
-  public Application getApplication() {
-    return application;
-  }
+    public Application getApplication() {
+        return application;
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return true;
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return true;
+    }
 
-  @Override
-  public Application readFrom(Class<Application> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return null;
-  }
+    @Override
+    public Application readFrom(Class<Application> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return null;
+    }
 
 }

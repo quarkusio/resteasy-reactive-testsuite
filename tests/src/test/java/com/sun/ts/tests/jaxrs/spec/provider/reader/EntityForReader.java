@@ -17,14 +17,14 @@
 package com.sun.ts.tests.jaxrs.spec.provider.reader;
 
 public class EntityForReader {
-  private String value;
+    private String value;
 
-  public EntityForReader(String value) {
-    this.value = value;
-  }
+    public EntityForReader(String value) {
+        this.value = value;
+    }
 
-  @Override
-  public String toString() {
-    return value;
-  }
+    @Override
+    public String toString() {
+        return value;
+    }
 }

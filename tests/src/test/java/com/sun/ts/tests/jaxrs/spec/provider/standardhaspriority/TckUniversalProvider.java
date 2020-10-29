@@ -36,66 +36,66 @@ import javax.ws.rs.ext.Provider;
 @Consumes(MediaType.WILDCARD)
 @Produces(MediaType.WILDCARD)
 public class TckUniversalProvider extends AbstractProvider
-    implements MessageBodyReader<Object>, MessageBodyWriter<Object> {
-  private static ProviderWalker visitor = new ProviderWalker();
+        implements MessageBodyReader<Object>, MessageBodyWriter<Object> {
+    private static ProviderWalker visitor = new ProviderWalker();
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return visitor.isWritable(type);
-  }
-
-  @Override
-  public long getSize(Object t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    Method m = getMethod("getSize", type);
-    return (Long) invoke(m, type, genericType, annotations, mediaType);
-  }
-
-  @Override
-  public void writeTo(Object t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    Method m = getMethod("writeTo", type);
-    invoke(m, type, genericType, annotations, mediaType, httpHeaders,
-        entityStream);
-  }
-
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isWriteable(type, genericType, annotations, mediaType);
-  }
-
-  @Override
-  public Object readFrom(Class<Object> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    Method m = getMethod("readFrom", type);
-    return invoke(m, type.cast(null), type, genericType, annotations, mediaType,
-        httpHeaders, entityStream);
-  }
-
-  private static Method getMethod(String methodName, Class<?> type) {
-    Method[] methods = visitor.getClass().getMethods();
-    for (Method m : methods)
-      if (m.getName().equals(methodName))
-        if (m.getParameterTypes()[0] == type || m.getReturnType() == type)
-          return m;
-    return null;
-  }
-
-  private static Object invoke(Method m, Object... args) {
-    Object ret = null;
-    try {
-      ret = m.invoke(visitor, args);
-    } catch (Exception e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return visitor.isWritable(type);
     }
-    return ret;
-  }
+
+    @Override
+    public long getSize(Object t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        Method m = getMethod("getSize", type);
+        return (Long) invoke(m, type, genericType, annotations, mediaType);
+    }
+
+    @Override
+    public void writeTo(Object t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        Method m = getMethod("writeTo", type);
+        invoke(m, type, genericType, annotations, mediaType, httpHeaders,
+                entityStream);
+    }
+
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isWriteable(type, genericType, annotations, mediaType);
+    }
+
+    @Override
+    public Object readFrom(Class<Object> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        Method m = getMethod("readFrom", type);
+        return invoke(m, type.cast(null), type, genericType, annotations, mediaType,
+                httpHeaders, entityStream);
+    }
+
+    private static Method getMethod(String methodName, Class<?> type) {
+        Method[] methods = visitor.getClass().getMethods();
+        for (Method m : methods)
+            if (m.getName().equals(methodName))
+                if (m.getParameterTypes()[0] == type || m.getReturnType() == type)
+                    return m;
+        return null;
+    }
+
+    private static Object invoke(Method m, Object... args) {
+        Object ret = null;
+        try {
+            ret = m.invoke(visitor, args);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return ret;
+    }
 
 }

@@ -31,116 +31,116 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0173 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 21L;
+    private static final long serialVersionUID = 21L;
 
-  public JAXRSClient0173() {
-    setContextRoot("/jaxrs21_api_client_invocationbuilder_web/resource");
-  }
-
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0173().run(args);
-  }
-
-  /*
-   * @testName: testRxClassGetsClassInstance
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
-   * 
-   * @test_Strategy: Access a reactive invoker based on provider RxInvoker
-   * subclass. Note that corresponding RxInvokerProvider must be registered to
-   * client runtime.
-   */
-  @org.junit.jupiter.api.Test
-  public void testRxClassGetsClassInstance() throws Fault {
-    TCKRxInvoker invoker = ClientBuilder.newClient()
-        .register(TCKRxInvokerProvider.class).target("somewhere").request()
-        .rx(TCKRxInvoker.class);
-    assertNotNull(invoker, "rx did not instantiated the invoker");
-    assertEquals(invoker.getClass(), TCKRxInvoker.class,
-        "Custom rxInvoker has not been created");
-
-    invoker = ClientBuilder.newClient().target("somewhere")
-        .register(TCKRxInvokerProvider.class).request().rx(TCKRxInvoker.class);
-    assertNotNull(invoker, "rx did not instantiated the invoker");
-    assertEquals(invoker.getClass(), TCKRxInvoker.class,
-        "Custom rxInvoker has not been created");
-
-    System.out.println("Custom rxInvoker has been created as expected");
-  }
-
-  /*
-   * @testName: testRxClassThrowsWhenNotRegistered
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
-   * 
-   * @test_Strategy: Access a reactive invoker based on provider RxInvoker
-   * subclass. Note that corresponding RxInvokerProvider must be registered to
-   * client runtime.
-   */
-  @org.junit.jupiter.api.Test
-  public void testRxClassThrowsWhenNotRegistered() throws Fault {
-    try {
-      ClientBuilder.newClient().target("somewhere").request()
-          .rx(TCKRxInvoker.class);
-      System.out.println(
-          "Illegal state exception has not been thrown when no provider is registered");
-    } catch (IllegalStateException e) {
-      System.out.println(
-          "Illegal state exception has been thrown when no provider is registered as expected");
+    public JAXRSClient0173() {
+        setContextRoot("/jaxrs21_api_client_invocationbuilder_web/resource");
     }
-  }
 
-  /*
-   * @testName: testRxClassExceutorServiceGetsClassInstance
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
-   * 
-   * @test_Strategy: Access a reactive invoker based on provider RxInvoker
-   * subclass. Note that corresponding RxInvokerProvider must be registered to
-   * client runtime.
-   */
-  @org.junit.jupiter.api.Test
-  public void testRxClassExceutorServiceGetsClassInstance() throws Fault {
-    TCKRxInvoker invoker = ClientBuilder.newClient()
-        .register(TCKRxInvokerProvider.class).target("somewhere").request()
-        .rx(TCKRxInvoker.class);
-    assertNotNull(invoker, "rx did not instantiated the invoker");
-    assertEquals(invoker.getClass(), TCKRxInvoker.class,
-        "Custom rxInvoker has not been created");
-
-    invoker = ClientBuilder.newClient().target("somewhere")
-        .register(TCKRxInvokerProvider.class).request().rx(TCKRxInvoker.class);
-    assertNotNull(invoker, "rx did not instantiated the invoker");
-    assertEquals(invoker.getClass(), TCKRxInvoker.class,
-        "Custom rxInvoker has not been created");
-
-    System.out.println("Custom rxInvoker has been created as expected");
-  }
-
-  /*
-   * @testName: testRxClassExecutorServiceThrowsWhenNotRegistered
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
-   * 
-   * @test_Strategy: Access a reactive invoker based on provider RxInvoker
-   * subclass. Note that corresponding RxInvokerProvider must be registered to
-   * client runtime.
-   */
-  @org.junit.jupiter.api.Test
-  public void testRxClassExecutorServiceThrowsWhenNotRegistered() throws Fault {
-    try {
-      ClientBuilder.newClient().target("somewhere").request()
-          .rx(TCKRxInvoker.class);
-      System.out.println(
-          "Illegal state exception has not been thrown when no provider is registered");
-    } catch (IllegalStateException e) {
-      System.out.println(
-          "Illegal state exception has been thrown when no provider is registered as expected");
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0173().run(args);
     }
-  }
+
+    /*
+     * @testName: testRxClassGetsClassInstance
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
+     * 
+     * @test_Strategy: Access a reactive invoker based on provider RxInvoker
+     * subclass. Note that corresponding RxInvokerProvider must be registered to
+     * client runtime.
+     */
+    @org.junit.jupiter.api.Test
+    public void testRxClassGetsClassInstance() throws Fault {
+        TCKRxInvoker invoker = ClientBuilder.newClient()
+                .register(TCKRxInvokerProvider.class).target("somewhere").request()
+                .rx(TCKRxInvoker.class);
+        assertNotNull(invoker, "rx did not instantiated the invoker");
+        assertEquals(invoker.getClass(), TCKRxInvoker.class,
+                "Custom rxInvoker has not been created");
+
+        invoker = ClientBuilder.newClient().target("somewhere")
+                .register(TCKRxInvokerProvider.class).request().rx(TCKRxInvoker.class);
+        assertNotNull(invoker, "rx did not instantiated the invoker");
+        assertEquals(invoker.getClass(), TCKRxInvoker.class,
+                "Custom rxInvoker has not been created");
+
+        System.out.println("Custom rxInvoker has been created as expected");
+    }
+
+    /*
+     * @testName: testRxClassThrowsWhenNotRegistered
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
+     * 
+     * @test_Strategy: Access a reactive invoker based on provider RxInvoker
+     * subclass. Note that corresponding RxInvokerProvider must be registered to
+     * client runtime.
+     */
+    @org.junit.jupiter.api.Test
+    public void testRxClassThrowsWhenNotRegistered() throws Fault {
+        try {
+            ClientBuilder.newClient().target("somewhere").request()
+                    .rx(TCKRxInvoker.class);
+            System.out.println(
+                    "Illegal state exception has not been thrown when no provider is registered");
+        } catch (IllegalStateException e) {
+            System.out.println(
+                    "Illegal state exception has been thrown when no provider is registered as expected");
+        }
+    }
+
+    /*
+     * @testName: testRxClassExceutorServiceGetsClassInstance
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
+     * 
+     * @test_Strategy: Access a reactive invoker based on provider RxInvoker
+     * subclass. Note that corresponding RxInvokerProvider must be registered to
+     * client runtime.
+     */
+    @org.junit.jupiter.api.Test
+    public void testRxClassExceutorServiceGetsClassInstance() throws Fault {
+        TCKRxInvoker invoker = ClientBuilder.newClient()
+                .register(TCKRxInvokerProvider.class).target("somewhere").request()
+                .rx(TCKRxInvoker.class);
+        assertNotNull(invoker, "rx did not instantiated the invoker");
+        assertEquals(invoker.getClass(), TCKRxInvoker.class,
+                "Custom rxInvoker has not been created");
+
+        invoker = ClientBuilder.newClient().target("somewhere")
+                .register(TCKRxInvokerProvider.class).request().rx(TCKRxInvoker.class);
+        assertNotNull(invoker, "rx did not instantiated the invoker");
+        assertEquals(invoker.getClass(), TCKRxInvoker.class,
+                "Custom rxInvoker has not been created");
+
+        System.out.println("Custom rxInvoker has been created as expected");
+    }
+
+    /*
+     * @testName: testRxClassExecutorServiceThrowsWhenNotRegistered
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1163; JAXRS:JAVADOC:1189;
+     * 
+     * @test_Strategy: Access a reactive invoker based on provider RxInvoker
+     * subclass. Note that corresponding RxInvokerProvider must be registered to
+     * client runtime.
+     */
+    @org.junit.jupiter.api.Test
+    public void testRxClassExecutorServiceThrowsWhenNotRegistered() throws Fault {
+        try {
+            ClientBuilder.newClient().target("somewhere").request()
+                    .rx(TCKRxInvoker.class);
+            System.out.println(
+                    "Illegal state exception has not been thrown when no provider is registered");
+        } catch (IllegalStateException e) {
+            System.out.println(
+                    "Illegal state exception has been thrown when no provider is registered as expected");
+        }
+    }
 }

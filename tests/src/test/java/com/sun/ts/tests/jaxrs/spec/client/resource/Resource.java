@@ -22,9 +22,9 @@ import javax.ws.rs.Path;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("concept")
-  public String concept() {
-    return "concept";
-  }
+    @GET
+    @Path("concept")
+    public String concept() {
+        return "concept";
+    }
 }

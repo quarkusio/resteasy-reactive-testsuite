@@ -24,24 +24,24 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class WebApplicationExceptionMapper
-    implements ExceptionMapper<WebApplicationException> {
+        implements ExceptionMapper<WebApplicationException> {
 
-  @Override
-  public Response toResponse(WebApplicationException exception) {
-    Response response = exception.getResponse();
-    Status status = Status.fromStatusCode(response.getStatus());
-    StringBuilder sb = new StringBuilder();
-    // Note mapper applied
-    sb.append(getClass().getSimpleName());
-    // note what status there might have been
-    if (status != null)
-      sb.append("|status=").append(status.name());
-    // Note what source exceptions there might have been
-    for (Throwable t = exception.getCause(); t != null; t = t.getCause()) {
-      sb.append("|msg=").append(t.getMessage());
-      sb.append("|ex=").append(t.getClass().getName());
+    @Override
+    public Response toResponse(WebApplicationException exception) {
+        Response response = exception.getResponse();
+        Status status = Status.fromStatusCode(response.getStatus());
+        StringBuilder sb = new StringBuilder();
+        // Note mapper applied
+        sb.append(getClass().getSimpleName());
+        // note what status there might have been
+        if (status != null)
+            sb.append("|status=").append(status.name());
+        // Note what source exceptions there might have been
+        for (Throwable t = exception.getCause(); t != null; t = t.getCause()) {
+            sb.append("|msg=").append(t.getMessage());
+            sb.append("|ex=").append(t.getClass().getName());
+        }
+        return Response.ok(sb.toString()).build();
     }
-    return Response.ok(sb.toString()).build();
-  }
 
 }

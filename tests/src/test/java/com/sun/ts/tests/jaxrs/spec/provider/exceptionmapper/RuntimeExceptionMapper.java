@@ -22,11 +22,11 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class RuntimeExceptionMapper
-    implements ExceptionMapper<RuntimeException> {
+        implements ExceptionMapper<RuntimeException> {
 
-  @Override
-  public Response toResponse(RuntimeException exception) {
-    return Response.ok(getClass().getName()).build();
-  }
+    @Override
+    public Response toResponse(RuntimeException exception) {
+        return Response.ok(getClass().getName()).build();
+    }
 
 }

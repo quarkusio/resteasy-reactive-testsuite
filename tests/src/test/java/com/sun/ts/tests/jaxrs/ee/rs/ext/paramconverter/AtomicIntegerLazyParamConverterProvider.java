@@ -26,15 +26,15 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class AtomicIntegerLazyParamConverterProvider
-    implements ParamConverterProvider {
+        implements ParamConverterProvider {
 
-  @SuppressWarnings("unchecked")
-  @Override
-  public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType,
-      Annotation[] annotations) {
-    if (rawType == AtomicInteger.class)
-      return (ParamConverter<T>) new AtomicIntegerLazyParamConverter();
-    return null;
-  }
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType,
+            Annotation[] annotations) {
+        if (rawType == AtomicInteger.class)
+            return (ParamConverter<T>) new AtomicIntegerLazyParamConverter();
+        return null;
+    }
 
 }

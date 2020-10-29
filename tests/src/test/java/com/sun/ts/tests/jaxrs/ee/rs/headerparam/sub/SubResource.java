@@ -23,8 +23,8 @@ import com.sun.ts.tests.jaxrs.ee.rs.headerparam.HeaderParamTest;
 @Path("resource")
 public class SubResource extends HeaderParamTest {
 
-  @Path("subresource")
-  public SubResource subresource() {
-    return this;
-  }
+    @Path("subresource")
+    public SubResource subresource() {
+        return this;
+    }
 }

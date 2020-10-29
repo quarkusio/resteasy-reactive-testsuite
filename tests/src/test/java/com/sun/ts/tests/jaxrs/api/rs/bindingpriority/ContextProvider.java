@@ -28,33 +28,33 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class ContextProvider implements ClientRequestFilter {
 
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    throw new Fault("this TCK method is not implemented yet");
-  }
-
-  @Override
-  public void filter(ClientRequestContext context) throws IOException {
-    try {
-      checkFilterContext(context);
-    } catch (Fault e) {
-      throw new IOException(e);
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        throw new Fault("this TCK method is not implemented yet");
     }
-  }
 
-  /**
-   * @param conditionTrue
-   * @param message
-   * @throws Fault
-   *           when conditionTrue is not met with message provided
-   */
-  protected static void //
-      assertFault(boolean conditionTrue, Object... message) throws Fault {
-    if (!conditionTrue) {
-      StringBuilder sb = new StringBuilder();
-      for (Object msg : message)
-        sb.append(msg).append(" ");
-      throw new Fault(sb.toString());
+    @Override
+    public void filter(ClientRequestContext context) throws IOException {
+        try {
+            checkFilterContext(context);
+        } catch (Fault e) {
+            throw new IOException(e);
+        }
     }
-  }
+
+    /**
+     * @param conditionTrue
+     * @param message
+     * @throws Fault
+     *         when conditionTrue is not met with message provided
+     */
+    protected static void //
+            assertFault(boolean conditionTrue, Object... message) throws Fault {
+        if (!conditionTrue) {
+            StringBuilder sb = new StringBuilder();
+            for (Object msg : message)
+                sb.append(msg).append(" ");
+            throw new Fault(sb.toString());
+        }
+    }
 
 }

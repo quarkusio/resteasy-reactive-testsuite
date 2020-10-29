@@ -24,50 +24,50 @@ import javax.ws.rs.core.Response;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 public class RemovePropertyProvider extends ContextProvider {
-  private AtomicInteger counter;
+    private AtomicInteger counter;
 
-  public RemovePropertyProvider(AtomicInteger counter) {
-    super();
-    this.counter = counter;
-  }
-
-  @Override
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    String propName = "PROPERTY";
-    switch (counter.incrementAndGet()) {
-    case 1:
-      Object property = context.getProperty(propName);
-      assertFault(property == null, "property already exist");
-      context.setProperty(propName, propName);
-      break;
-    case 2:
-      property = context.getProperty(propName);
-      assertFault(property != null, "property not exist");
-      context.removeProperty(propName);
-      break;
-    case 3:
-      property = context.getProperty(propName);
-      assertFault(property == null, "property already exist");
-      Response response = Response.ok("NULL").build();
-      context.abortWith(response);
-      break;
+    public RemovePropertyProvider(AtomicInteger counter) {
+        super();
+        this.counter = counter;
     }
-  }
 
-  /**
-   * @param conditionTrue
-   * @param message
-   * @throws Fault
-   *           when conditionTrue is not met with message provided
-   */
-  protected static void //
-      assertFault(boolean conditionTrue, Object... message) throws Fault {
-    if (!conditionTrue) {
-      StringBuilder sb = new StringBuilder();
-      for (Object msg : message)
-        sb.append(msg).append(" ");
-      throw new Fault(sb.toString());
+    @Override
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        String propName = "PROPERTY";
+        switch (counter.incrementAndGet()) {
+            case 1:
+                Object property = context.getProperty(propName);
+                assertFault(property == null, "property already exist");
+                context.setProperty(propName, propName);
+                break;
+            case 2:
+                property = context.getProperty(propName);
+                assertFault(property != null, "property not exist");
+                context.removeProperty(propName);
+                break;
+            case 3:
+                property = context.getProperty(propName);
+                assertFault(property == null, "property already exist");
+                Response response = Response.ok("NULL").build();
+                context.abortWith(response);
+                break;
+        }
     }
-  }
+
+    /**
+     * @param conditionTrue
+     * @param message
+     * @throws Fault
+     *         when conditionTrue is not met with message provided
+     */
+    protected static void //
+            assertFault(boolean conditionTrue, Object... message) throws Fault {
+        if (!conditionTrue) {
+            StringBuilder sb = new StringBuilder();
+            for (Object msg : message)
+                sb.append(msg).append(" ");
+            throw new Fault(sb.toString());
+        }
+    }
 
 }

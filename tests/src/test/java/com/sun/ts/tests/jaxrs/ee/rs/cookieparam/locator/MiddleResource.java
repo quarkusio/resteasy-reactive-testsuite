@@ -32,32 +32,32 @@ import com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest;
 
 public class MiddleResource extends CookieParamTest {
 
-  private final Response returnValue;
+    private final Response returnValue;
 
-  public MiddleResource() {
-    returnValue = null;
-  }
+    public MiddleResource() {
+        returnValue = null;
+    }
 
-  protected MiddleResource(String todo, String value,
-      ParamEntityWithConstructor paramEntityWithConstructor,
-      ParamEntityWithFromString paramEntityWithFromString,
-      ParamEntityWithValueOf paramEntityWithValueOf,
-      Set<ParamEntityWithFromString> setParamEntityWithFromString,
-      SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
-      List<ParamEntityWithFromString> listParamEntityWithFromString,
-      ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
-      ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
-    returnValue = cookieParamHandling(todo, value, paramEntityWithConstructor,
-        paramEntityWithFromString, paramEntityWithValueOf,
-        setParamEntityWithFromString, sortedSetParamEntityWithFromString,
-        listParamEntityWithFromString,
-        paramEntityThrowingWebApplicationException,
-        paramEntityThrowingExceptionGivenByName);
-  }
+    protected MiddleResource(String todo, String value,
+            ParamEntityWithConstructor paramEntityWithConstructor,
+            ParamEntityWithFromString paramEntityWithFromString,
+            ParamEntityWithValueOf paramEntityWithValueOf,
+            Set<ParamEntityWithFromString> setParamEntityWithFromString,
+            SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
+            List<ParamEntityWithFromString> listParamEntityWithFromString,
+            ParamEntityThrowingWebApplicationException paramEntityThrowingWebApplicationException,
+            ParamEntityThrowingExceptionGivenByName paramEntityThrowingExceptionGivenByName) {
+        returnValue = cookieParamHandling(todo, value, paramEntityWithConstructor,
+                paramEntityWithFromString, paramEntityWithValueOf,
+                setParamEntityWithFromString, sortedSetParamEntityWithFromString,
+                listParamEntityWithFromString,
+                paramEntityThrowingWebApplicationException,
+                paramEntityThrowingExceptionGivenByName);
+    }
 
-  @POST
-  public Response returnValue() {
-    return returnValue;
-  }
+    @POST
+    public Response returnValue() {
+        return returnValue;
+    }
 
 }

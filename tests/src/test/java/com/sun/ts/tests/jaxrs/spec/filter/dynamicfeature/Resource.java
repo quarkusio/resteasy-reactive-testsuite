@@ -22,15 +22,15 @@ import javax.ws.rs.Path;
 @Path("resource")
 public class Resource {
 
-  @POST
-  @Path("dynamic")
-  public String echo(String echo) {
-    return echo;
-  }
+    @POST
+    @Path("dynamic")
+    public String echo(String echo) {
+        return echo;
+    }
 
-  @POST
-  @Path("nobinding")
-  public String noBindingEcho(String echo) {
-    return echo;
-  }
+    @POST
+    @Path("nobinding")
+    public String noBindingEcho(String echo) {
+        return echo;
+    }
 }

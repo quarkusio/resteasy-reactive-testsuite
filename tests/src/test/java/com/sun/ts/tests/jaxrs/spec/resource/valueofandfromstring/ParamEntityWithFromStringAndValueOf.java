@@ -24,15 +24,15 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype;
  */
 public class ParamEntityWithFromStringAndValueOf extends ParamEntityPrototype {
 
-  public static ParamEntityWithFromStringAndValueOf valueOf(String arg) {
-    ParamEntityWithFromStringAndValueOf newEntity = new ParamEntityWithFromStringAndValueOf();
-    newEntity.value = EnumWithFromStringAndValueOf.VALUEOF.name();
-    return newEntity;
-  }
+    public static ParamEntityWithFromStringAndValueOf valueOf(String arg) {
+        ParamEntityWithFromStringAndValueOf newEntity = new ParamEntityWithFromStringAndValueOf();
+        newEntity.value = EnumWithFromStringAndValueOf.VALUEOF.name();
+        return newEntity;
+    }
 
-  public static ParamEntityWithFromStringAndValueOf fromString(String arg) {
-    ParamEntityWithFromStringAndValueOf newEntity = new ParamEntityWithFromStringAndValueOf();
-    newEntity.value = EnumWithFromStringAndValueOf.FROMSTRING.name();
-    return newEntity;
-  }
+    public static ParamEntityWithFromStringAndValueOf fromString(String arg) {
+        ParamEntityWithFromStringAndValueOf newEntity = new ParamEntityWithFromStringAndValueOf();
+        newEntity.value = EnumWithFromStringAndValueOf.FROMSTRING.name();
+        return newEntity;
+    }
 }

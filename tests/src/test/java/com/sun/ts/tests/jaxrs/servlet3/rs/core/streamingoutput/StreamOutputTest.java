@@ -28,36 +28,36 @@ import javax.ws.rs.core.StreamingOutput;
 @Path(value = "/StreamOutputTest")
 public class StreamOutputTest {
 
-  @GET
-  @Path("/Test1")
-  public StreamingOutput streamingOutput() {
-    return new StreamingOutput() {
-      public void write(OutputStream output) throws IOException {
-        output.write("StreamingOutputTest1".getBytes());
-      }
-    };
-  }
+    @GET
+    @Path("/Test1")
+    public StreamingOutput streamingOutput() {
+        return new StreamingOutput() {
+            public void write(OutputStream output) throws IOException {
+                output.write("StreamingOutputTest1".getBytes());
+            }
+        };
+    }
 
-  @GET
-  @Path("/Test2")
-  public StreamingOutput test2() {
-    return new StreamingOutput() {
-      public void write(OutputStream output) throws IOException {
-        throw new WebApplicationException(404);
-      }
-    };
-  }
+    @GET
+    @Path("/Test2")
+    public StreamingOutput test2() {
+        return new StreamingOutput() {
+            public void write(OutputStream output) throws IOException {
+                throw new WebApplicationException(404);
+            }
+        };
+    }
 
-  @GET
-  @Path("IOExceptionTest")
-  public Response testIOException() {
-    StreamingOutput so = new StreamingOutput() {
-      public void write(OutputStream output) throws IOException {
-        throw new IOException("TckIOExceptionTest");
-      }
-    };
-    Response response = Response.ok(so).build();
-    return response;
-  }
+    @GET
+    @Path("IOExceptionTest")
+    public Response testIOException() {
+        StreamingOutput so = new StreamingOutput() {
+            public void write(OutputStream output) throws IOException {
+                throw new IOException("TckIOExceptionTest");
+            }
+        };
+        Response response = Response.ok(so).build();
+        return response;
+    }
 
 }

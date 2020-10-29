@@ -37,55 +37,55 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 @Path("resource/noentity")
 public class ResponseWithNoEntityUsesMapperResource {
 
-  public static final String MESSAGE = "Use mapper";
+    public static final String MESSAGE = "Use mapper";
 
-  private static Response buildResponse(int status) {
-    ResponseBuilder rb = Response.status(status);
-    return rb.build();
-  }
-
-  @Path("{id}")
-  public Response getException(@PathParam("id") int id) {
-    WebApplicationException wae = null;
-    switch (id) {
-    case 4000:
-      wae = new ClientErrorException(MESSAGE, buildResponse(400));
-      break;
-    case 400:
-      wae = new BadRequestException(MESSAGE, buildResponse(id));
-      break;
-    case 403:
-      wae = new ForbiddenException(MESSAGE, buildResponse(id));
-      break;
-    case 406:
-      wae = new NotAcceptableException(MESSAGE, buildResponse(id));
-      break;
-    case 405:
-      wae = new NotAllowedException(MESSAGE, buildResponse(id));
-      break;
-    case 401:
-      wae = new NotAuthorizedException(MESSAGE, buildResponse(id));
-      break;
-    case 404:
-      wae = new NotFoundException(MESSAGE, buildResponse(id));
-      break;
-    case 415:
-      wae = new NotSupportedException(MESSAGE, buildResponse(id));
-      break;
-    case 3000:
-      wae = new RedirectionException(MESSAGE, buildResponse(300));
-      break;
-    case 5000:
-      wae = new ServerErrorException(MESSAGE, buildResponse(500));
-      break;
-    case 500:
-      wae = new InternalServerErrorException(MESSAGE, buildResponse(id));
-      break;
-    case 503:
-      wae = new ServiceUnavailableException(MESSAGE, buildResponse(id));
-      break;
+    private static Response buildResponse(int status) {
+        ResponseBuilder rb = Response.status(status);
+        return rb.build();
     }
-    throw wae;
-  }
+
+    @Path("{id}")
+    public Response getException(@PathParam("id") int id) {
+        WebApplicationException wae = null;
+        switch (id) {
+            case 4000:
+                wae = new ClientErrorException(MESSAGE, buildResponse(400));
+                break;
+            case 400:
+                wae = new BadRequestException(MESSAGE, buildResponse(id));
+                break;
+            case 403:
+                wae = new ForbiddenException(MESSAGE, buildResponse(id));
+                break;
+            case 406:
+                wae = new NotAcceptableException(MESSAGE, buildResponse(id));
+                break;
+            case 405:
+                wae = new NotAllowedException(MESSAGE, buildResponse(id));
+                break;
+            case 401:
+                wae = new NotAuthorizedException(MESSAGE, buildResponse(id));
+                break;
+            case 404:
+                wae = new NotFoundException(MESSAGE, buildResponse(id));
+                break;
+            case 415:
+                wae = new NotSupportedException(MESSAGE, buildResponse(id));
+                break;
+            case 3000:
+                wae = new RedirectionException(MESSAGE, buildResponse(300));
+                break;
+            case 5000:
+                wae = new ServerErrorException(MESSAGE, buildResponse(500));
+                break;
+            case 500:
+                wae = new InternalServerErrorException(MESSAGE, buildResponse(id));
+                break;
+            case 503:
+                wae = new ServiceUnavailableException(MESSAGE, buildResponse(id));
+                break;
+        }
+        throw wae;
+    }
 
 }

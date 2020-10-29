@@ -16,25 +16,25 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.rx;
 
-import java.util.function.Supplier;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.Future;
+import java.util.function.Supplier;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
 import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
 import com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.ExecutorServiceChecker;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -46,8 +46,8 @@ import com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.ExecutorServiceChecker;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0182
-    extends com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.JAXRSClient0180
-    implements ExecutorServiceChecker {
+        extends com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.JAXRSClient0180
+        implements ExecutorServiceChecker {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
@@ -58,450 +58,448 @@ public class JAXRSClient0182
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.rx.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class
-                            , com.sun.ts.tests.jaxrs.common.impl.TRACE.class
-                            );
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.rx.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class,
+                                    com.sun.ts.tests.jaxrs.common.impl.TRACE.class);
                 }
             });
 
+    private static final long serialVersionUID = 21L;
 
-  private static final long serialVersionUID = 21L;
-
-  public JAXRSClient0182() {
-    setContextRoot("/jaxrs_jaxrs21_ee_client_executor_rx_web/resource");
-  }
-
-  @Override
-  public void setup(String[] args, Properties p) throws Fault {
-    super.setup(args, p);
-  }
-
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSClient0182 c = new JAXRSClient0182();
-    c.run(args);
-    try {
-      c.close();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+    public JAXRSClient0182() {
+        setContextRoot("/jaxrs_jaxrs21_ee_client_executor_rx_web/resource");
     }
-  }
 
-  /* Run test */
-  // --------------------------------------------------------------------
-  // ---------------------- DELETE --------------------------------------
-  // --------------------------------------------------------------------
-  /*
-   * @testName: deleteTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP DELETE method for the current request.
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> deleteTest() throws Fault {
-    return super.deleteTest();
-  }
+    @Override
+    public void setup(String[] args, Properties p) throws Fault {
+        super.setup(args, p);
+    }
 
-  /*
-   * @testName: deleteWithStringClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP DELETE method for the current request
-   * 
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> deleteWithStringClassTest() throws Fault {
-    return super.deleteWithStringClassTest();
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSClient0182 c = new JAXRSClient0182();
+        c.run(args);
+        try {
+            c.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-  /*
-   * @testName: deleteWithResponseClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP DELETE method for the current request
-   * 
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> deleteWithResponseClassTest() throws Fault {
-    return super.deleteWithResponseClassTest();
-  }
+    /* Run test */
+    // --------------------------------------------------------------------
+    // ---------------------- DELETE --------------------------------------
+    // --------------------------------------------------------------------
+    /*
+     * @testName: deleteTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP DELETE method for the current request.
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> deleteTest() throws Fault {
+        return super.deleteTest();
+    }
 
-  /*
-   * @testName: deleteWithGenericTypeStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP DELETE method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> deleteWithGenericTypeStringTest() throws Fault {
-    return super.deleteWithGenericTypeStringTest();
-  }
+    /*
+     * @testName: deleteWithStringClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP DELETE method for the current request
+     * 
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> deleteWithStringClassTest() throws Fault {
+        return super.deleteWithStringClassTest();
+    }
 
-  /*
-   * @testName: deleteWithGenericTypeResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP DELETE method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> deleteWithGenericTypeResponseTest() throws Fault {
-    return super.deleteWithGenericTypeResponseTest();
-  }
+    /*
+     * @testName: deleteWithResponseClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP DELETE method for the current request
+     * 
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> deleteWithResponseClassTest() throws Fault {
+        return super.deleteWithResponseClassTest();
+    }
 
-  // ------------------------------------------------------------------
-  // ---------------------------GET------------------------------------
-  // ------------------------------------------------------------------
+    /*
+     * @testName: deleteWithGenericTypeStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP DELETE method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> deleteWithGenericTypeStringTest() throws Fault {
+        return super.deleteWithGenericTypeStringTest();
+    }
 
-  /*
-   * @testName: getTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP GET method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> getTest() throws Fault {
-    return super.getTest();
-  }
+    /*
+     * @testName: deleteWithGenericTypeResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP DELETE method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> deleteWithGenericTypeResponseTest() throws Fault {
+        return super.deleteWithGenericTypeResponseTest();
+    }
 
-  /*
-   * @testName: getWithStringClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP GET method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> getWithStringClassTest() throws Fault {
-    return super.getWithStringClassTest();
-  }
+    // ------------------------------------------------------------------
+    // ---------------------------GET------------------------------------
+    // ------------------------------------------------------------------
 
-  /*
-   * @testName: getWithResponseClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP GET method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> getWithResponseClassTest() throws Fault {
-    return super.getWithResponseClassTest();
-  }
+    /*
+     * @testName: getTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP GET method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> getTest() throws Fault {
+        return super.getTest();
+    }
 
-  /*
-   * @testName: getWithGenericTypeStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP GET method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> getWithGenericTypeStringTest() throws Fault {
-    return super.getWithGenericTypeStringTest();
-  }
+    /*
+     * @testName: getWithStringClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP GET method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> getWithStringClassTest() throws Fault {
+        return super.getWithStringClassTest();
+    }
 
-  /*
-   * @testName: getWithGenericTypeResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP GET method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> getWithGenericTypeResponseTest() throws Fault {
-    return super.getWithGenericTypeResponseTest();
-  }
+    /*
+     * @testName: getWithResponseClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP GET method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> getWithResponseClassTest() throws Fault {
+        return super.getWithResponseClassTest();
+    }
 
-  // ------------------------------------------------------------------
-  // ---------------------------HEAD-----------------------------------
-  // ------------------------------------------------------------------
+    /*
+     * @testName: getWithGenericTypeStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP GET method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> getWithGenericTypeStringTest() throws Fault {
+        return super.getWithGenericTypeStringTest();
+    }
 
-  /*
-   * @testName: headTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP HEAD method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> headTest() throws Fault {
-    return super.headTest();
-  }
+    /*
+     * @testName: getWithGenericTypeResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP GET method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> getWithGenericTypeResponseTest() throws Fault {
+        return super.getWithGenericTypeResponseTest();
+    }
 
-  // ------------------------------------------------------------------
-  // ---------------------------OPTIONS--------------------------------
-  // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+    // ---------------------------HEAD-----------------------------------
+    // ------------------------------------------------------------------
 
-  /*
-   * @testName: optionsTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP options method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> optionsTest() throws Fault {
-    return super.optionsTest();
-  }
+    /*
+     * @testName: headTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP HEAD method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> headTest() throws Fault {
+        return super.headTest();
+    }
 
-  /*
-   * @testName: optionsWithStringClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP options method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> optionsWithStringClassTest() throws Fault {
-    return super.optionsWithStringClassTest();
-  }
+    // ------------------------------------------------------------------
+    // ---------------------------OPTIONS--------------------------------
+    // ------------------------------------------------------------------
 
-  /*
-   * @testName: optionsWithResponseClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP options method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> optionsWithResponseClassTest() throws Fault {
-    return super.optionsWithResponseClassTest();
-  }
+    /*
+     * @testName: optionsTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP options method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> optionsTest() throws Fault {
+        return super.optionsTest();
+    }
 
-  /*
-   * @testName: optionsWithGenericTypeStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP options method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> optionsWithGenericTypeStringTest() throws Fault {
-    return super.optionsWithGenericTypeStringTest();
-  }
+    /*
+     * @testName: optionsWithStringClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP options method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> optionsWithStringClassTest() throws Fault {
+        return super.optionsWithStringClassTest();
+    }
 
-  /*
-   * @testName: optionsWithGenericTypeResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP options method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> optionsWithGenericTypeResponseTest() throws Fault {
-    return super.optionsWithGenericTypeResponseTest();
-  }
+    /*
+     * @testName: optionsWithResponseClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP options method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> optionsWithResponseClassTest() throws Fault {
+        return super.optionsWithResponseClassTest();
+    }
 
-  // ------------------------------------------------------------------
-  // ---------------------------POST-----------------------------------
-  // ------------------------------------------------------------------
+    /*
+     * @testName: optionsWithGenericTypeStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP options method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> optionsWithGenericTypeStringTest() throws Fault {
+        return super.optionsWithGenericTypeStringTest();
+    }
 
-  /*
-   * @testName: postTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP post method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> postTest() throws Fault {
-    return super.postTest();
-  }
+    /*
+     * @testName: optionsWithGenericTypeResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP options method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> optionsWithGenericTypeResponseTest() throws Fault {
+        return super.optionsWithGenericTypeResponseTest();
+    }
 
-  /*
-   * @testName: postWithStringClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP post method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> postWithStringClassTest() throws Fault {
-    return super.postWithStringClassTest();
-  }
+    // ------------------------------------------------------------------
+    // ---------------------------POST-----------------------------------
+    // ------------------------------------------------------------------
 
-  /*
-   * @testName: postWithResponseClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP post method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> postWithResponseClassTest() throws Fault {
-    return super.postWithResponseClassTest();
-  }
+    /*
+     * @testName: postTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP post method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> postTest() throws Fault {
+        return super.postTest();
+    }
 
-  /*
-   * @testName: postWithGenericTypeStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP post method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> postWithGenericTypeStringTest() throws Fault {
-    return super.postWithGenericTypeStringTest();
-  }
+    /*
+     * @testName: postWithStringClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP post method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> postWithStringClassTest() throws Fault {
+        return super.postWithStringClassTest();
+    }
 
-  /*
-   * @testName: postWithGenericTypeResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP post method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> postWithGenericTypeResponseTest() throws Fault {
-    return super.postWithGenericTypeResponseTest();
-  }
+    /*
+     * @testName: postWithResponseClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP post method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> postWithResponseClassTest() throws Fault {
+        return super.postWithResponseClassTest();
+    }
 
-  // ------------------------------------------------------------------
-  // ---------------------------PUT -----------------------------------
-  // ------------------------------------------------------------------
+    /*
+     * @testName: postWithGenericTypeStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP post method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> postWithGenericTypeStringTest() throws Fault {
+        return super.postWithGenericTypeStringTest();
+    }
 
-  /*
-   * @testName: putTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP PUT method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> putTest() throws Fault {
-    return super.putTest();
-  }
+    /*
+     * @testName: postWithGenericTypeResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP post method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> postWithGenericTypeResponseTest() throws Fault {
+        return super.postWithGenericTypeResponseTest();
+    }
 
-  /*
-   * @testName: putWithStringClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP put method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> putWithStringClassTest() throws Fault {
-    return super.putWithStringClassTest();
-  }
+    // ------------------------------------------------------------------
+    // ---------------------------PUT -----------------------------------
+    // ------------------------------------------------------------------
 
-  /*
-   * @testName: putWithResponseClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP put method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> putWithResponseClassTest() throws Fault {
-    return super.putWithResponseClassTest();
-  }
+    /*
+     * @testName: putTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP PUT method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> putTest() throws Fault {
+        return super.putTest();
+    }
 
-  /*
-   * @testName: putWithGenericTypeStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP put method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> putWithGenericTypeStringTest() throws Fault {
-    return super.putWithGenericTypeStringTest();
-  }
+    /*
+     * @testName: putWithStringClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP put method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> putWithStringClassTest() throws Fault {
+        return super.putWithStringClassTest();
+    }
 
-  /*
-   * @testName: putWithGenericTypeResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP put method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> putWithGenericTypeResponseTest() throws Fault {
-    return super.putWithGenericTypeResponseTest();
-  }
+    /*
+     * @testName: putWithResponseClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP put method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> putWithResponseClassTest() throws Fault {
+        return super.putWithResponseClassTest();
+    }
 
-  // ------------------------------------------------------------------
-  // ---------------------------TRACE -----------------------------------
-  // ------------------------------------------------------------------
+    /*
+     * @testName: putWithGenericTypeStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP put method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> putWithGenericTypeStringTest() throws Fault {
+        return super.putWithGenericTypeStringTest();
+    }
 
-  /*
-   * @testName: traceTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP trace method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> traceTest() throws Fault {
-    return super.traceTest();
-  }
+    /*
+     * @testName: putWithGenericTypeResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP put method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> putWithGenericTypeResponseTest() throws Fault {
+        return super.putWithGenericTypeResponseTest();
+    }
 
-  /*
-   * @testName: traceWithStringClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP trace method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> traceWithStringClassTest() throws Fault {
-    return super.traceWithStringClassTest();
-  }
+    // ------------------------------------------------------------------
+    // ---------------------------TRACE -----------------------------------
+    // ------------------------------------------------------------------
 
-  /*
-   * @testName: traceWithResponseClassTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP trace method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> traceWithResponseClassTest() throws Fault {
-    return super.traceWithResponseClassTest();
-  }
+    /*
+     * @testName: traceTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP trace method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> traceTest() throws Fault {
+        return super.traceTest();
+    }
 
-  /*
-   * @testName: traceWithGenericTypeStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP trace method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<String> traceWithGenericTypeStringTest() throws Fault {
-    return super.traceWithGenericTypeStringTest();
-  }
+    /*
+     * @testName: traceWithStringClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP trace method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> traceWithStringClassTest() throws Fault {
+        return super.traceWithStringClassTest();
+    }
 
-  /*
-   * @testName: traceWithGenericTypeResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1131;
-   * 
-   * @test_Strategy: Invoke HTTP trace method for the current request
-   */
-  @org.junit.jupiter.api.Test
-  public Future<Response> traceWithGenericTypeResponseTest() throws Fault {
-    return super.traceWithGenericTypeResponseTest();
-  }
+    /*
+     * @testName: traceWithResponseClassTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP trace method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> traceWithResponseClassTest() throws Fault {
+        return super.traceWithResponseClassTest();
+    }
 
-  // ///////////////////////////////////////////////////////////////////////
-  // utility methods
+    /*
+     * @testName: traceWithGenericTypeStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP trace method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<String> traceWithGenericTypeStringTest() throws Fault {
+        return super.traceWithGenericTypeStringTest();
+    }
 
-  protected Invocation.Builder startBuilderForMethod(String methodName) {
-    Client client = createClient();
-    client.register(new JdkLoggingFilter(false));
-    WebTarget target = client.target(getAbsoluteUrl(methodName));
-    Invocation.Builder ib = target.request();
-    return ib;
-  }
+    /*
+     * @testName: traceWithGenericTypeResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1131;
+     * 
+     * @test_Strategy: Invoke HTTP trace method for the current request
+     */
+    @org.junit.jupiter.api.Test
+    public Future<Response> traceWithGenericTypeResponseTest() throws Fault {
+        return super.traceWithGenericTypeResponseTest();
+    }
+
+    // ///////////////////////////////////////////////////////////////////////
+    // utility methods
+
+    protected Invocation.Builder startBuilderForMethod(String methodName) {
+        Client client = createClient();
+        client.register(new JdkLoggingFilter(false));
+        WebTarget target = client.target(getAbsoluteUrl(methodName));
+        Invocation.Builder ib = target.request();
+        return ib;
+    }
 }

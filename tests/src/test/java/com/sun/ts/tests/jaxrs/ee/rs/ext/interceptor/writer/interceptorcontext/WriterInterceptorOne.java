@@ -27,8 +27,8 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.TemplateWriterInterce
 @Priority(100)
 public class WriterInterceptorOne extends TemplateWriterInterceptor {
 
-  public WriterInterceptorOne() {
-    super(new InterceptorBodyOne<WriterInterceptorContext>());
-  }
+    public WriterInterceptorOne() {
+        super(new InterceptorBodyOne<WriterInterceptorContext>());
+    }
 
 }

@@ -23,15 +23,15 @@ import javax.ws.rs.client.SyncInvoker;
 
 public class TCKRxInvokerProvider implements RxInvokerProvider<TCKRxInvoker> {
 
-  @Override
-  public boolean isProviderFor(Class<?> clazz) {
-    return clazz == TCKRxInvoker.class;
-  }
+    @Override
+    public boolean isProviderFor(Class<?> clazz) {
+        return clazz == TCKRxInvoker.class;
+    }
 
-  @Override
-  public TCKRxInvoker getRxInvoker(SyncInvoker syncInvoker,
-      ExecutorService executorService) {
-    return new TCKRxInvoker();
-  }
+    @Override
+    public TCKRxInvoker getRxInvoker(SyncInvoker syncInvoker,
+            ExecutorService executorService) {
+        return new TCKRxInvoker();
+    }
 
 }

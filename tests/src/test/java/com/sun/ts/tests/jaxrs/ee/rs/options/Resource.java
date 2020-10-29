@@ -25,16 +25,16 @@ import javax.ws.rs.core.Response.Status;
 @Path("Options")
 public class Resource {
 
-  @OPTIONS
-  @Path("options")
-  public Response options() {
-    return Response.status(Status.ACCEPTED).build();
-  }
+    @OPTIONS
+    @Path("options")
+    public Response options() {
+        return Response.status(Status.ACCEPTED).build();
+    }
 
-  @GET
-  @Path("get")
-  public Response get() {
-    return Response.status(Status.CONFLICT).build();
-  }
+    @GET
+    @Path("get")
+    public Response get() {
+        return Response.status(Status.CONFLICT).build();
+    }
 
 }

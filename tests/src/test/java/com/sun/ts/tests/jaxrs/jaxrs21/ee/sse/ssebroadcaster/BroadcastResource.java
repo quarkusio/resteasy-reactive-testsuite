@@ -35,71 +35,71 @@ import com.sun.ts.tests.jaxrs.common.util.Holder;
 
 @Path("broadcast")
 public class BroadcastResource {
-  private static final List<SseEventSink> sinkList = Collections
-      .synchronizedList(new LinkedList<>());
+    private static final List<SseEventSink> sinkList = Collections
+            .synchronizedList(new LinkedList<>());
 
-  private volatile static Holder<SseBroadcaster> broadcaster = new Holder<>();
+    private volatile static Holder<SseBroadcaster> broadcaster = new Holder<>();
 
-  private final static Holder<SseEventSink> onCloseSink = new Holder<>();
+    private final static Holder<SseEventSink> onCloseSink = new Holder<>();
 
-  private static int cnt;
+    private static int cnt;
 
-  @GET
-  @Path("clear")
-  public String clear() {
-    sinkList.clear();
-    onCloseSink.set(null);
-    broadcaster.set(null);
-    cnt = 0;
-    return "CLEAR";
-  }
-
-  @GET
-  @Path("register")
-  @Produces(MediaType.SERVER_SENT_EVENTS)
-  public void register(@Context SseEventSink sink, @Context Sse sse) {
-    synchronized (broadcaster) {
-      if (broadcaster.get() == null)
-        broadcaster.set(sse.newBroadcaster());
-      onCloseSink.set(null);
-      broadcaster.get().register(sink);
-      broadcaster.get().onClose(onCloseSink::set);
-      sinkList.add(sink);
+    @GET
+    @Path("clear")
+    public String clear() {
+        sinkList.clear();
+        onCloseSink.set(null);
+        broadcaster.set(null);
+        cnt = 0;
+        return "CLEAR";
     }
-    sink.send(sse.newEvent("WELCOME" + cnt++));
-  }
 
-  @POST
-  @Path("broadcast")
-  public String broadcast(@Context Sse sse, String message) {
-    synchronized (broadcaster) {
-      broadcaster.get().broadcast(sse.newEvent(message));
+    @GET
+    @Path("register")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public void register(@Context SseEventSink sink, @Context Sse sse) {
+        synchronized (broadcaster) {
+            if (broadcaster.get() == null)
+                broadcaster.set(sse.newBroadcaster());
+            onCloseSink.set(null);
+            broadcaster.get().register(sink);
+            broadcaster.get().onClose(onCloseSink::set);
+            sinkList.add(sink);
+        }
+        sink.send(sse.newEvent("WELCOME" + cnt++));
     }
-    return message;
-  }
 
-  @GET
-  @Path("close")
-  public String close() {
-    synchronized (broadcaster) {
-      broadcaster.get().close();
+    @POST
+    @Path("broadcast")
+    public String broadcast(@Context Sse sse, String message) {
+        synchronized (broadcaster) {
+            broadcaster.get().broadcast(sse.newEvent(message));
+        }
+        return message;
     }
-    return "CLOSE";
-  }
 
-  @GET
-  @Path("check")
-  public String check() {
-    StringBuffer sb = new StringBuffer();
-    synchronized (broadcaster) {
-      Iterator<SseEventSink> si = sinkList.iterator();
-      for (int i = 0; i != sinkList.size(); i++) {
-        sb.append("SseEventSink number ").append(i).append(" is closed:")
-            .append(si.next().isClosed());
-      }
-      sb.append("OnCloseSink has been called:")
-          .append(onCloseSink.get() != null);
+    @GET
+    @Path("close")
+    public String close() {
+        synchronized (broadcaster) {
+            broadcaster.get().close();
+        }
+        return "CLOSE";
     }
-    return sb.toString();
-  }
+
+    @GET
+    @Path("check")
+    public String check() {
+        StringBuffer sb = new StringBuffer();
+        synchronized (broadcaster) {
+            Iterator<SseEventSink> si = sinkList.iterator();
+            for (int i = 0; i != sinkList.size(); i++) {
+                sb.append("SseEventSink number ").append(i).append(" is closed:")
+                        .append(si.next().isClosed());
+            }
+            sb.append("OnCloseSink has been called:")
+                    .append(onCloseSink.get() != null);
+        }
+        return sb.toString();
+    }
 }

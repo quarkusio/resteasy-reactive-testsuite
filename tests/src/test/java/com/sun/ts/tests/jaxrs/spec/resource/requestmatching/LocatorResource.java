@@ -22,20 +22,20 @@ import javax.ws.rs.Path;
 @Path("resource/locator")
 public class LocatorResource {
 
-  @Path("locator")
-  public AnotherResourceLocator locator() {
-    return new AnotherResourceLocator();
-  }
+    @Path("locator")
+    public AnotherResourceLocator locator() {
+        return new AnotherResourceLocator();
+    }
 
-  @GET
-  @Path("locator")
-  public String subresourcePrecedence() {
-    return getClass().getSimpleName();
-  }
+    @GET
+    @Path("locator")
+    public String subresourcePrecedence() {
+        return getClass().getSimpleName();
+    }
 
-  @Path("sub")
-  public AnotherResourceLocator foundAnotherResourceLocatorByPath() {
-    return new AnotherResourceLocator();
-  }
+    @Path("sub")
+    public AnotherResourceLocator foundAnotherResourceLocatorByPath() {
+        return new AnotherResourceLocator();
+    }
 
 }

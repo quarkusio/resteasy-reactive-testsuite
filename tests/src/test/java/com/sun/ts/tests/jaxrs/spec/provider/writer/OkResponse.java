@@ -34,142 +34,142 @@ import javax.ws.rs.core.Response;
 
 public class OkResponse extends Response {
 
-  Response r;
+    Response r;
 
-  public OkResponse(String entity) {
-    r = Response.ok(new EntityForWriter(entity)).build();
-  }
+    public OkResponse(String entity) {
+        r = Response.ok(new EntityForWriter(entity)).build();
+    }
 
-  @Override
-  public Object getEntity() {
-    return r.getEntity();
-  }
+    @Override
+    public Object getEntity() {
+        return r.getEntity();
+    }
 
-  @Override
-  public int getStatus() {
-    return r.getStatus();
-  }
+    @Override
+    public int getStatus() {
+        return r.getStatus();
+    }
 
-  @Override
-  public MultivaluedMap<String, Object> getMetadata() {
-    return r.getMetadata();
-  }
+    @Override
+    public MultivaluedMap<String, Object> getMetadata() {
+        return r.getMetadata();
+    }
 
-  @Override
-  public boolean hasEntity() {
-    return r.hasEntity();
-  }
+    @Override
+    public boolean hasEntity() {
+        return r.hasEntity();
+    }
 
-  @Override
-  public Set<String> getAllowedMethods() {
-    return r.getAllowedMethods();
-  }
+    @Override
+    public Set<String> getAllowedMethods() {
+        return r.getAllowedMethods();
+    }
 
-  @Override
-  public Map<String, NewCookie> getCookies() {
-    return r.getCookies();
-  }
+    @Override
+    public Map<String, NewCookie> getCookies() {
+        return r.getCookies();
+    }
 
-  @Override
-  public Date getDate() {
-    return null;
-  }
+    @Override
+    public Date getDate() {
+        return null;
+    }
 
-  @Override
-  public EntityTag getEntityTag() {
-    return r.getEntityTag();
-  }
+    @Override
+    public EntityTag getEntityTag() {
+        return r.getEntityTag();
+    }
 
-  @Override
-  public String getHeaderString(String arg0) {
-    return r.getHeaderString(arg0);
-  }
+    @Override
+    public String getHeaderString(String arg0) {
+        return r.getHeaderString(arg0);
+    }
 
-  @Override
-  public Locale getLanguage() {
-    return r.getLanguage();
-  }
+    @Override
+    public Locale getLanguage() {
+        return r.getLanguage();
+    }
 
-  @Override
-  public Date getLastModified() {
-    return r.getDate();
-  }
+    @Override
+    public Date getLastModified() {
+        return r.getDate();
+    }
 
-  @Override
-  public int getLength() {
-    return r.getLength();
-  }
+    @Override
+    public int getLength() {
+        return r.getLength();
+    }
 
-  @Override
-  public Link getLink(String arg0) {
-    return r.getLink(arg0);
-  }
+    @Override
+    public Link getLink(String arg0) {
+        return r.getLink(arg0);
+    }
 
-  @Override
-  public Builder getLinkBuilder(String arg0) {
-    return r.getLinkBuilder(arg0);
-  }
+    @Override
+    public Builder getLinkBuilder(String arg0) {
+        return r.getLinkBuilder(arg0);
+    }
 
-  @Override
-  public Set<Link> getLinks() {
-    return r.getLinks();
-  }
+    @Override
+    public Set<Link> getLinks() {
+        return r.getLinks();
+    }
 
-  @Override
-  public URI getLocation() {
-    return r.getLocation();
-  }
+    @Override
+    public URI getLocation() {
+        return r.getLocation();
+    }
 
-  @Override
-  public MediaType getMediaType() {
-    return r.getMediaType();
-  }
+    @Override
+    public MediaType getMediaType() {
+        return r.getMediaType();
+    }
 
-  @Override
-  public StatusType getStatusInfo() {
-    return r.getStatusInfo();
-  }
+    @Override
+    public StatusType getStatusInfo() {
+        return r.getStatusInfo();
+    }
 
-  @Override
-  public boolean hasLink(String arg0) {
-    return r.hasLink(arg0);
-  }
+    @Override
+    public boolean hasLink(String arg0) {
+        return r.hasLink(arg0);
+    }
 
-  @Override
-  public boolean bufferEntity() {
-    return r.bufferEntity();
-  }
+    @Override
+    public boolean bufferEntity() {
+        return r.bufferEntity();
+    }
 
-  @Override
-  public void close() {
-    r.close();
-  }
+    @Override
+    public void close() {
+        r.close();
+    }
 
-  @Override
-  public <T> T readEntity(Class<T> arg0) throws IllegalStateException {
-    return r.readEntity(arg0);
-  }
+    @Override
+    public <T> T readEntity(Class<T> arg0) throws IllegalStateException {
+        return r.readEntity(arg0);
+    }
 
-  @Override
-  public <T> T readEntity(GenericType<T> arg0) throws IllegalStateException {
-    return r.readEntity(arg0);
-  }
+    @Override
+    public <T> T readEntity(GenericType<T> arg0) throws IllegalStateException {
+        return r.readEntity(arg0);
+    }
 
-  @Override
-  public <T> T readEntity(Class<T> arg0, Annotation[] arg1)
-      throws IllegalStateException {
-    return r.readEntity(arg0, arg1);
-  }
+    @Override
+    public <T> T readEntity(Class<T> arg0, Annotation[] arg1)
+            throws IllegalStateException {
+        return r.readEntity(arg0, arg1);
+    }
 
-  @Override
-  public <T> T readEntity(GenericType<T> arg0, Annotation[] arg1)
-      throws IllegalStateException {
-    return r.readEntity(arg0, arg1);
-  }
+    @Override
+    public <T> T readEntity(GenericType<T> arg0, Annotation[] arg1)
+            throws IllegalStateException {
+        return r.readEntity(arg0, arg1);
+    }
 
-  @Override
-  public MultivaluedMap<String, String> getStringHeaders() {
-    return r.getStringHeaders();
-  }
+    @Override
+    public MultivaluedMap<String, String> getStringHeaders() {
+        return r.getStringHeaders();
+    }
 
 }

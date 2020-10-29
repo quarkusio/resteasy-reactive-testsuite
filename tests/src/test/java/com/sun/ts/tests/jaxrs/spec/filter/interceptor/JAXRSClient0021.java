@@ -16,22 +16,12 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.interceptor;
 
-import java.util.function.Supplier;
-
-import com.sun.ts.tests.jaxrs.QuarkusRest;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.function.Supplier;
 
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
@@ -40,10 +30,19 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
 import com.sun.ts.tests.jaxrs.common.impl.StringDataSource;
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -65,894 +64,892 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.filter.interceptor.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource.class
-                            , com.sun.ts.tests.jaxrs.spec.filter.interceptor.EntityReaderInterceptor.class
-//                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
-                            , com.sun.ts.tests.jaxrs.common.provider.StringBean.class
-                            , com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class
-                            , com.sun.ts.tests.jaxrs.common.impl.StringSource.class
-                            , com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput.class
-                            , com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream.class
-                            , com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class
-                            , EntityWriterInterceptor.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.filter.interceptor.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource.class,
+                                    com.sun.ts.tests.jaxrs.spec.filter.interceptor.EntityReaderInterceptor.class
+                    //                            , com.sun.ts.tests.jaxrs.common.impl.StringDataSource.class
+                    , com.sun.ts.tests.jaxrs.common.provider.StringBean.class,
+                                    com.sun.ts.tests.jaxrs.common.util.JaxrsUtil.class,
+                                    com.sun.ts.tests.jaxrs.common.impl.StringSource.class,
+                                    com.sun.ts.tests.jaxrs.common.impl.StringStreamingOutput.class,
+                                    com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream.class,
+                                    com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider.class,
+                                    EntityWriterInterceptor.class);
                 }
             });
 
+    private static final long serialVersionUID = 3841348335979312551L;
 
-  private static final long serialVersionUID = 3841348335979312551L;
+    public static final String plaincontent = JAXRSClient0021.class.getName();
 
-  public static final String plaincontent = JAXRSClient0021.class.getName();
+    public static final String content = "<content>" + plaincontent
+            + "</content>";
 
-  public static final String content = "<content>" + plaincontent
-      + "</content>";
-
-  private static String getJaxbToken() {
-    JAXBElement<String> element = new JAXBElement<String>(new QName("content"),
-        String.class, plaincontent);
-    try {
-      JAXBContext context = JAXBContext.newInstance(String.class);
-      java.io.StringWriter writer = new java.io.StringWriter();
-      context.createMarshaller().marshal(element, writer);
-      return writer.toString();
-    } catch (JAXBException e) {
-      throw new RuntimeException(e);
+    private static String getJaxbToken() {
+        JAXBElement<String> element = new JAXBElement<String>(new QName("content"),
+                String.class, plaincontent);
+        try {
+            JAXBContext context = JAXBContext.newInstance(String.class);
+            java.io.StringWriter writer = new java.io.StringWriter();
+            context.createMarshaller().marshal(element, writer);
+            return writer.toString();
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
     }
-  }
 
-  public JAXRSClient0021() {
-    setContextRoot("/jaxrs_spec_filter_interceptor_web/resource");
-  }
-
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0021().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: byteArrayReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void byteArrayReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postbytearray"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered reader interceptor for bytearray provider");
-  }
-
-  /*
-   * @testName: byteArrayReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void byteArrayReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postbytearray"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING, content);
-    invoke();
-  }
-
-  /*
-   * @testName: byteArrayWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void byteArrayWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getbytearray"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for bytearray provider");
-  }
-
-  /*
-   * @testName: byteArrayWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void byteArrayWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getbytearray"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    invoke();
-  }
-
-  /*
-   * @testName: byteArrayWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void byteArrayWriterClientInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    addProvider(EntityWriterInterceptor.class);
-    setRequestContentEntity(content.getBytes());
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for bytearray provider");
-  }
-
-  // ------------------------- String -----------------------------------
-
-  /*
-   * @testName: stringReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void stringReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered reader interceptor for string provider");
-  }
-
-  /*
-   * @testName: stringReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void stringReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING, content);
-    invoke();
-  }
-
-  /*
-   * @testName: stringWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void stringWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getstring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for string provider");
-  }
-
-  /*
-   * @testName: stringWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void stringWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getstring"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    invoke();
-  }
-
-  /*
-   * @testName: stringWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void stringWriterClientInterceptorTest() throws Fault {
-    addProvider(EntityWriterInterceptor.class);
-    addInterceptors(EntityWriterInterceptor.class);
-    setRequestContentEntity(content);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for string provider");
-  }
-
-  // ------------------------- InputStream -----------------------------------
-
-  /*
-   * @testName: inputStreamReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void inputStreamReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST,
-        buildRequest(Request.POST, "postinputstream"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered reader interceptor for inputstream provider");
-  }
-
-  /*
-   * @testName: inputStreamReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void inputStreamReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST,
-        buildRequest(Request.POST, "postinputstream"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING, content);
-    invoke();
-  }
-
-  /*
-   * @testName: inputStreamWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void inputStreamWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getinputstream"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered writer interceptor for inputstream provider");
-  }
-
-  /*
-   * @testName: inputStreamWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void inputStreamWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getinputstream"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    invoke();
-  }
-
-  /*
-   * @testName: inputStreamWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void inputStreamWriterClientInterceptorTest() throws Fault {
-    ByteArrayInputStream stream = new ByteArrayInputStream(content.getBytes());
-    addProvider(EntityWriterInterceptor.class);
-    addInterceptors(EntityWriterInterceptor.class);
-    setRequestContentEntity(stream);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered writer interceptor for inputstream provider");
-  }
-
-  // ------------------------- Reader -----------------------------------
-  /*
-   * @testName: readerReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void readerReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postreader"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered reader interceptor for reader provider");
-  }
-
-  /*
-   * @testName: readerReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void readerReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postreader"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING, content);
-    invoke();
-  }
-
-  /*
-   * @testName: readerWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void readerWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getreader"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for reader provider");
-  }
-
-  /*
-   * @testName: readerWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void readerWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getreader"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    invoke();
-  }
-
-  /*
-   * @testName: readerWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void readerWriterClientInterceptorTest() throws Fault {
-    ByteArrayInputStream bais = new ByteArrayInputStream(content.getBytes());
-    InputStreamReader reader = new InputStreamReader(bais);
-    addProvider(EntityWriterInterceptor.class);
-    addInterceptors(EntityWriterInterceptor.class);
-    setRequestContentEntity(reader);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for reader provider");
-  }
-
-  // ------------------------- File -----------------------------------
-
-  /*
-   * @testName: fileReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void fileReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postfile"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered reader interceptor for file provider");
-  }
-
-  /*
-   * @testName: fileReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void fileReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postfile"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING, content);
-    invoke();
-  }
-
-  /*
-   * @testName: fileWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void fileWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getfile"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for file provider");
-  }
-
-  /*
-   * @testName: fileWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void fileWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getfile"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    invoke();
-  }
-
-  /*
-   * @testName: fileWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void fileWriterClientInterceptorTest() throws Fault {
-    try {
-      File file = File.createTempFile("temp", "tmp");
-      FileWriter fw = new FileWriter(file);
-      fw.append(content);
-      fw.close();
-      setRequestContentEntity(file);
-    } catch (IOException e) {
-      throw new Fault(e);
+    public JAXRSClient0021() {
+        setContextRoot("/jaxrs_spec_filter_interceptor_web/resource");
     }
-    addProvider(EntityWriterInterceptor.class);
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for file provider");
-  }
 
-  // ------------------------- DataSource -----------------------------------
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0021().run(args);
+    }
 
-  /*
-   * @testName: dataSourceReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Disabled(QuarkusRest.Unsupported_DataSource)
-  @Test
-  public void dataSourceReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered reader interceptor for dataSource provider");
-  }
+    /* Run test */
 
-  /*
-   * @testName: dataSourceReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Disabled(QuarkusRest.Unsupported_DataSource)
-  @Test
-  public void dataSourceReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING, content);
-    invoke();
-  }
+    /*
+     * @testName: byteArrayReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void byteArrayReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postbytearray"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered reader interceptor for bytearray provider");
+    }
 
-  /*
-   * @testName: dataSourceWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Disabled(QuarkusRest.Unsupported_DataSource)
-  @Test
-  public void dataSourceWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getdatasource"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered writer interceptor for dataSource provider");
-  }
+    /*
+     * @testName: byteArrayReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void byteArrayReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postbytearray"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING, content);
+        invoke();
+    }
 
-  /*
-   * @testName: dataSourceWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Disabled(QuarkusRest.Unsupported_DataSource)
-  @Test
-  public void dataSourceWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getdatasource"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    invoke();
-  }
+    /*
+     * @testName: byteArrayWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void byteArrayWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getbytearray"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for bytearray provider");
+    }
 
-  /*
-   * @testName: dataSourceWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Disabled(QuarkusRest.Unsupported_DataSource)
-  @Test
-  public void dataSourceWriterClientInterceptorTest() throws Fault {
-    StringDataSource source = new StringDataSource(content,
-        MediaType.WILDCARD_TYPE);
-    addProvider(EntityWriterInterceptor.class);
-    addInterceptors(EntityWriterInterceptor.class);
-    setRequestContentEntity(source);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered writer interceptor for dataSource provider");
-  }
+    /*
+     * @testName: byteArrayWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void byteArrayWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getbytearray"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        invoke();
+    }
 
-  // ------------------------- Source -----------------------------------
+    /*
+     * @testName: byteArrayWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void byteArrayWriterClientInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        addProvider(EntityWriterInterceptor.class);
+        setRequestContentEntity(content.getBytes());
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for bytearray provider");
+    }
 
-  /*
-   * @testName: sourceWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void sourceWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getsource"));
-    setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for source provider");
-  }
+    // ------------------------- String -----------------------------------
 
-  /*
-   * @testName: sourceWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  @Disabled(QuarkusRest.Unsupported_Source)
-  public void sourceWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getsource"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
-    invoke();
-  }
+    /*
+     * @testName: stringReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void stringReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered reader interceptor for string provider");
+    }
 
-  // ------------------------- JAXBElement -----------------------------------
+    /*
+     * @testName: stringReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void stringReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING, content);
+        invoke();
+    }
 
-  /*
-   * @testName: jaxbReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  @Disabled(QuarkusRest.Unsupported_Xml)
-  public void jaxbReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postjaxb"));
-    setRequestContentEntity(getJaxbToken());
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.REQUEST_HEADERS,
-        buildContentType(MediaType.TEXT_XML_TYPE));
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered reader interceptor for jaxb provider");
-  }
+    /*
+     * @testName: stringWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void stringWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getstring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for string provider");
+    }
 
-  /*
-   * @testName: jaxbReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  @Disabled(QuarkusRest.Unsupported_Xml)
-  public void jaxbReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "postjaxb"));
-    setRequestContentEntity(getJaxbToken());
-    setProperty(Property.REQUEST_HEADERS,
-        buildContentType(MediaType.TEXT_XML_TYPE));
-    setProperty(Property.SEARCH_STRING, plaincontent);
-    invoke();
-  }
+    /*
+     * @testName: stringWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void stringWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getstring"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        invoke();
+    }
 
-  /*
-   * @testName: jaxbWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void jaxbWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getjaxb"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg("JAXRS called registered writer interceptor for jaxb provider");
-  }
+    /*
+     * @testName: stringWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void stringWriterClientInterceptorTest() throws Fault {
+        addProvider(EntityWriterInterceptor.class);
+        addInterceptors(EntityWriterInterceptor.class);
+        setRequestContentEntity(content);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for string provider");
+    }
 
-  /*
-   * @testName: jaxbWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  @Disabled(QuarkusRest.Unsupported_Xml)
-  public void jaxbWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getjaxb"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
-    invoke();
-  }
+    // ------------------------- InputStream -----------------------------------
 
-  /*
-   * @testName: jaxbWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when mapping representations to Java types and vice versa.
-   */
-  @Test
-  public void jaxbWriterClientInterceptorTest() throws Fault {
-    JAXBElement<String> element = new JAXBElement<String>(new QName("element"),
-        String.class, content);
-    GenericEntity<JAXBElement<String>> entity = new GenericEntity<JAXBElement<String>>(
-        element) {
-    };
-    addProvider(EntityWriterInterceptor.class);
-    addInterceptors(EntityWriterInterceptor.class);
-    setRequestContentEntity(entity);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.REQUEST_HEADERS,
-        buildContentType(MediaType.TEXT_XML_TYPE));
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered writer interceptor for JAXBElement provider");
-  }
+    /*
+     * @testName: inputStreamReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void inputStreamReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST,
+                buildRequest(Request.POST, "postinputstream"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered reader interceptor for inputstream provider");
+    }
 
-  // ------------------------- StringBean -----------------------------------
+    /*
+     * @testName: inputStreamReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void inputStreamReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST,
+                buildRequest(Request.POST, "postinputstream"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING, content);
+        invoke();
+    }
 
-  /*
-   * @testName: stringBeanReaderContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when stringBeanping representations to Java types and vice
-   * versa.
-   */
-  @Test
-  public void stringBeanReaderContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityReaderInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststringbean"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING,
-        EntityReaderInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered reader interceptor for StringBean provider");
-  }
+    /*
+     * @testName: inputStreamWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void inputStreamWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getinputstream"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered writer interceptor for inputstream provider");
+    }
 
-  /*
-   * @testName: stringBeanReaderNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when stringBeanping representations to Java types and vice
-   * versa.
-   */
-  @Test
-  public void stringBeanReaderNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststringbean"));
-    setRequestContentEntity(content);
-    setProperty(Property.SEARCH_STRING, content);
-    invoke();
-  }
+    /*
+     * @testName: inputStreamWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void inputStreamWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getinputstream"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        invoke();
+    }
 
-  /*
-   * @testName: stringBeanWriterContainerInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when stringBeanping representations to Java types and vice
-   * versa.
-   */
-  @Test
-  public void stringBeanWriterContainerInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getstringbean"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered writer interceptor for StringBean provider");
-  }
+    /*
+     * @testName: inputStreamWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void inputStreamWriterClientInterceptorTest() throws Fault {
+        ByteArrayInputStream stream = new ByteArrayInputStream(content.getBytes());
+        addProvider(EntityWriterInterceptor.class);
+        addInterceptors(EntityWriterInterceptor.class);
+        setRequestContentEntity(stream);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered writer interceptor for inputstream provider");
+    }
 
-  /*
-   * @testName: stringBeanWriterNoInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when stringBeanping representations to Java types and vice
-   * versa.
-   */
-  @Test
-  public void stringBeanWriterNoInterceptorTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "getstringbean"));
-    setProperty(Property.SEARCH_STRING, Resource.getName());
-    invoke();
-  }
+    // ------------------------- Reader -----------------------------------
+    /*
+     * @testName: readerReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void readerReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postreader"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered reader interceptor for reader provider");
+    }
 
-  /*
-   * @testName: stringBeanWriterClientInterceptorTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:84;
-   * 
-   * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
-   * interceptors when stringBeanping representations to Java types and vice
-   * versa.
-   */
-  @Test
-  public void stringBeanWriterClientInterceptorTest() throws Fault {
-    addInterceptors(EntityWriterInterceptor.class);
-    addProvider(EntityWriterInterceptor.class);
-    addProvider(StringBeanEntityProvider.class);
-    setRequestContentEntity(new StringBean(content));
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
-    setProperty(Property.SEARCH_STRING,
-        EntityWriterInterceptor.class.getName());
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
-    invoke();
-    logMsg(
-        "JAXRS called registered writer interceptor for StringBean provider");
-  }
+    /*
+     * @testName: readerReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void readerReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postreader"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING, content);
+        invoke();
+    }
 
-  // ------------------------- String -----------------------------------
+    /*
+     * @testName: readerWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void readerWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getreader"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for reader provider");
+    }
 
-  // //////////////////////////////////////////////////////////////////////
-  private void addInterceptors(Class<?> clazz) {
-    setProperty(Property.REQUEST_HEADERS,
-        Resource.HEADERNAME + ":" + clazz.getName());
-  }
+    /*
+     * @testName: readerWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void readerWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getreader"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        invoke();
+    }
+
+    /*
+     * @testName: readerWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void readerWriterClientInterceptorTest() throws Fault {
+        ByteArrayInputStream bais = new ByteArrayInputStream(content.getBytes());
+        InputStreamReader reader = new InputStreamReader(bais);
+        addProvider(EntityWriterInterceptor.class);
+        addInterceptors(EntityWriterInterceptor.class);
+        setRequestContentEntity(reader);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for reader provider");
+    }
+
+    // ------------------------- File -----------------------------------
+
+    /*
+     * @testName: fileReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void fileReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postfile"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered reader interceptor for file provider");
+    }
+
+    /*
+     * @testName: fileReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void fileReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postfile"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING, content);
+        invoke();
+    }
+
+    /*
+     * @testName: fileWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void fileWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getfile"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for file provider");
+    }
+
+    /*
+     * @testName: fileWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void fileWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getfile"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        invoke();
+    }
+
+    /*
+     * @testName: fileWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void fileWriterClientInterceptorTest() throws Fault {
+        try {
+            File file = File.createTempFile("temp", "tmp");
+            FileWriter fw = new FileWriter(file);
+            fw.append(content);
+            fw.close();
+            setRequestContentEntity(file);
+        } catch (IOException e) {
+            throw new Fault(e);
+        }
+        addProvider(EntityWriterInterceptor.class);
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for file provider");
+    }
+
+    // ------------------------- DataSource -----------------------------------
+
+    /*
+     * @testName: dataSourceReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Disabled(QuarkusRest.Unsupported_DataSource)
+    @Test
+    public void dataSourceReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered reader interceptor for dataSource provider");
+    }
+
+    /*
+     * @testName: dataSourceReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Disabled(QuarkusRest.Unsupported_DataSource)
+    @Test
+    public void dataSourceReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING, content);
+        invoke();
+    }
+
+    /*
+     * @testName: dataSourceWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Disabled(QuarkusRest.Unsupported_DataSource)
+    @Test
+    public void dataSourceWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getdatasource"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered writer interceptor for dataSource provider");
+    }
+
+    /*
+     * @testName: dataSourceWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Disabled(QuarkusRest.Unsupported_DataSource)
+    @Test
+    public void dataSourceWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getdatasource"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        invoke();
+    }
+
+    /*
+     * @testName: dataSourceWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Disabled(QuarkusRest.Unsupported_DataSource)
+    @Test
+    public void dataSourceWriterClientInterceptorTest() throws Fault {
+        StringDataSource source = new StringDataSource(content,
+                MediaType.WILDCARD_TYPE);
+        addProvider(EntityWriterInterceptor.class);
+        addInterceptors(EntityWriterInterceptor.class);
+        setRequestContentEntity(source);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postdatasource"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered writer interceptor for dataSource provider");
+    }
+
+    // ------------------------- Source -----------------------------------
+
+    /*
+     * @testName: sourceWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void sourceWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getsource"));
+        setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for source provider");
+    }
+
+    /*
+     * @testName: sourceWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    @Disabled(QuarkusRest.Unsupported_Source)
+    public void sourceWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getsource"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
+        invoke();
+    }
+
+    // ------------------------- JAXBElement -----------------------------------
+
+    /*
+     * @testName: jaxbReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    @Disabled(QuarkusRest.Unsupported_Xml)
+    public void jaxbReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postjaxb"));
+        setRequestContentEntity(getJaxbToken());
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.TEXT_XML_TYPE));
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered reader interceptor for jaxb provider");
+    }
+
+    /*
+     * @testName: jaxbReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    @Disabled(QuarkusRest.Unsupported_Xml)
+    public void jaxbReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "postjaxb"));
+        setRequestContentEntity(getJaxbToken());
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.TEXT_XML_TYPE));
+        setProperty(Property.SEARCH_STRING, plaincontent);
+        invoke();
+    }
+
+    /*
+     * @testName: jaxbWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void jaxbWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getjaxb"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg("JAXRS called registered writer interceptor for jaxb provider");
+    }
+
+    /*
+     * @testName: jaxbWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    @Disabled(QuarkusRest.Unsupported_Xml)
+    public void jaxbWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getjaxb"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
+        invoke();
+    }
+
+    /*
+     * @testName: jaxbWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when mapping representations to Java types and vice versa.
+     */
+    @Test
+    public void jaxbWriterClientInterceptorTest() throws Fault {
+        JAXBElement<String> element = new JAXBElement<String>(new QName("element"),
+                String.class, content);
+        GenericEntity<JAXBElement<String>> entity = new GenericEntity<JAXBElement<String>>(
+                element) {
+        };
+        addProvider(EntityWriterInterceptor.class);
+        addInterceptors(EntityWriterInterceptor.class);
+        setRequestContentEntity(entity);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.TEXT_XML_TYPE));
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered writer interceptor for JAXBElement provider");
+    }
+
+    // ------------------------- StringBean -----------------------------------
+
+    /*
+     * @testName: stringBeanReaderContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when stringBeanping representations to Java types and vice
+     * versa.
+     */
+    @Test
+    public void stringBeanReaderContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityReaderInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststringbean"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING,
+                EntityReaderInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered reader interceptor for StringBean provider");
+    }
+
+    /*
+     * @testName: stringBeanReaderNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when stringBeanping representations to Java types and vice
+     * versa.
+     */
+    @Test
+    public void stringBeanReaderNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststringbean"));
+        setRequestContentEntity(content);
+        setProperty(Property.SEARCH_STRING, content);
+        invoke();
+    }
+
+    /*
+     * @testName: stringBeanWriterContainerInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when stringBeanping representations to Java types and vice
+     * versa.
+     */
+    @Test
+    public void stringBeanWriterContainerInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getstringbean"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.SEARCH_STRING, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered writer interceptor for StringBean provider");
+    }
+
+    /*
+     * @testName: stringBeanWriterNoInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when stringBeanping representations to Java types and vice
+     * versa.
+     */
+    @Test
+    public void stringBeanWriterNoInterceptorTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "getstringbean"));
+        setProperty(Property.SEARCH_STRING, Resource.getName());
+        invoke();
+    }
+
+    /*
+     * @testName: stringBeanWriterClientInterceptorTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:84;
+     * 
+     * @test_Strategy: JAX-RS implementations are REQUIRED to call registered
+     * interceptors when stringBeanping representations to Java types and vice
+     * versa.
+     */
+    @Test
+    public void stringBeanWriterClientInterceptorTest() throws Fault {
+        addInterceptors(EntityWriterInterceptor.class);
+        addProvider(EntityWriterInterceptor.class);
+        addProvider(StringBeanEntityProvider.class);
+        setRequestContentEntity(new StringBean(content));
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "poststring"));
+        setProperty(Property.SEARCH_STRING,
+                EntityWriterInterceptor.class.getName());
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, Resource.DIRECTION);
+        invoke();
+        logMsg(
+                "JAXRS called registered writer interceptor for StringBean provider");
+    }
+
+    // ------------------------- String -----------------------------------
+
+    // //////////////////////////////////////////////////////////////////////
+    private void addInterceptors(Class<?> clazz) {
+        setProperty(Property.REQUEST_HEADERS,
+                Resource.HEADERNAME + ":" + clazz.getName());
+    }
 }

@@ -34,41 +34,41 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("{id}")
-  public Response genericResponse(@PathParam("id") String path) {
-    ContextOperation op = ContextOperation.valueOf(path.toUpperCase());
-    ResponseBuilder builder = createResponseBuilderWithHeader(op);
-    switch (op) {
-    case GETANNOTATIONS:
-      Annotation[] annotations = ContextOperation.class.getAnnotations();
-      builder = builder.entity(TemplateInterceptorBody.ENTITY, annotations);
-      break;
-    case GETMEDIATYPE:
-      builder = builder.type(MediaType.APPLICATION_JSON_TYPE);
-      break;
-    case SETTYPE:
-      ByteArrayInputStream bais = new ByteArrayInputStream(
-          TemplateInterceptorBody.ENTITY.getBytes());
-      Reader reader = new InputStreamReader(bais);
-      builder = builder.entity(reader);
-      break;
-    default:
-      break;
+    @GET
+    @Path("{id}")
+    public Response genericResponse(@PathParam("id") String path) {
+        ContextOperation op = ContextOperation.valueOf(path.toUpperCase());
+        ResponseBuilder builder = createResponseBuilderWithHeader(op);
+        switch (op) {
+            case GETANNOTATIONS:
+                Annotation[] annotations = ContextOperation.class.getAnnotations();
+                builder = builder.entity(TemplateInterceptorBody.ENTITY, annotations);
+                break;
+            case GETMEDIATYPE:
+                builder = builder.type(MediaType.APPLICATION_JSON_TYPE);
+                break;
+            case SETTYPE:
+                ByteArrayInputStream bais = new ByteArrayInputStream(
+                        TemplateInterceptorBody.ENTITY.getBytes());
+                Reader reader = new InputStreamReader(bais);
+                builder = builder.entity(reader);
+                break;
+            default:
+                break;
+        }
+        Response response = builder.build();
+        return response;
     }
-    Response response = builder.build();
-    return response;
-  }
 
-  // ///////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////
 
-  ResponseBuilder createResponseBuilderWithHeader(ContextOperation op) {
-    Response.ResponseBuilder builder = Response.ok();
-    // set a header with ContextOperation so that the filter knows what to
-    // do
-    builder = builder.header(TemplateInterceptorBody.OPERATION, op.name());
-    builder = builder.entity(TemplateInterceptorBody.ENTITY);
-    return builder;
-  }
+    ResponseBuilder createResponseBuilderWithHeader(ContextOperation op) {
+        Response.ResponseBuilder builder = Response.ok();
+        // set a header with ContextOperation so that the filter knows what to
+        // do
+        builder = builder.header(TemplateInterceptorBody.OPERATION, op.name());
+        builder = builder.entity(TemplateInterceptorBody.ENTITY);
+        return builder;
+    }
 
 }

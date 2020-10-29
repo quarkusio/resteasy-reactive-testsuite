@@ -26,18 +26,18 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Consumes("application/java")
 public class AppJavaReader extends AbstractReader {
-  // Do not inherit
-  private static boolean isReadable = false;
+    // Do not inherit
+    private static boolean isReadable = false;
 
-  public static void setWritable(boolean bool) {
-    isReadable = bool;
-  }
+    public static void setWritable(boolean bool) {
+        isReadable = bool;
+    }
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    AbstractReader.readerSet.append(getClass().getSimpleName());
-    return isReadable;
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        AbstractReader.readerSet.append(getClass().getSimpleName());
+        return isReadable;
+    }
 
 }

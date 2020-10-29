@@ -17,17 +17,19 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.patch.server;
 
 import java.util.function.Supplier;
+
+import javax.ws.rs.core.MediaType;
+
+import org.apache.http.client.methods.HttpPatch;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
-import javax.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.common.webclient.http.HttpRequest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -49,51 +51,47 @@ public class JAXRSClient0179 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.jaxrs21.ee.patch.server.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.jaxrs21.ee.patch.Resource.class
-                            , AdaptiveHttpRequest.class
-                            , AdaptiveMethodFactory.class
-                            , PatchMethod.class
-                            );
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.patch.server.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.patch.Resource.class, AdaptiveHttpRequest.class,
+                                    AdaptiveMethodFactory.class, HttpPatch.class);
                 }
             });
 
+    private static final long serialVersionUID = 21L;
 
-  private static final long serialVersionUID = 21L;
+    public JAXRSClient0179() {
+        setContextRoot("/jaxrs_jaxrs21_ee_patch_server_web/resource");
+    }
 
-  public JAXRSClient0179() {
-    setContextRoot("/jaxrs_jaxrs21_ee_patch_server_web/resource");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0179().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0179().run(args);
-  }
+    /*
+     * @testName: patchTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:124;
+     * 
+     */
+    @Test
+    public void patchTest() throws Fault {
+        AdaptiveMethodFactory.getMethodMap().put("PATCH", HttpPatch.class);
+        setProperty(Property.REQUEST, buildRequest("PATCH", "patch"));
+        setProperty(Property.CONTENT, "patch");
+        setProperty(Property.SEARCH_STRING, "patch");
+        setProperty(Property.REQUEST_HEADERS,
+                buildAccept(MediaType.TEXT_PLAIN_TYPE));
+        invoke();
+    }
 
-  /*
-   * @testName: patchTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:124;
-   * 
-   */
-  @Test
-  public void patchTest() throws Fault {
-    AdaptiveMethodFactory.getMethodMap().put("PATCH", PatchMethod.class);
-    setProperty(Property.REQUEST, buildRequest("PATCH", "patch"));
-    setProperty(Property.CONTENT, "patch");
-    setProperty(Property.SEARCH_STRING, "patch");
-    setProperty(Property.REQUEST_HEADERS,
-        buildAccept(MediaType.TEXT_PLAIN_TYPE));
-    invoke();
-  }
-
-  @Override
-  protected HttpRequest createHttpRequest(String requestLine, String host,
-      int port) {
-    return new AdaptiveHttpRequest(requestLine, host, port);
-  };
+    @Override
+    protected HttpRequest createHttpRequest(String requestLine, String host,
+            int port) {
+        return new AdaptiveHttpRequest(requestLine, host, port);
+    };
 }

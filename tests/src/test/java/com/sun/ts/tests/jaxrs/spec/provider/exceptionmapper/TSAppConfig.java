@@ -23,19 +23,19 @@ import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(ThrowableMapper.class);
-    resources.add(PlainExceptionMapper.class);
-    resources.add(RuntimeExceptionMapper.class);
-    resources.add(WebAppExceptionMapper.class);
-    resources.add(ClientErrorExceptionMapper.class);
-    // --for JAXRS:SPEC:82, but affects all responses
-    resources.add(FilterChainTestExceptionMapper.class);
-    resources.add(ResponseFilter.class);
-    // --for JAXRS:SPEC:83
-    resources.add(ExceptionFromMappedExceptionMapper.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(ThrowableMapper.class);
+        resources.add(PlainExceptionMapper.class);
+        resources.add(RuntimeExceptionMapper.class);
+        resources.add(WebAppExceptionMapper.class);
+        resources.add(ClientErrorExceptionMapper.class);
+        // --for JAXRS:SPEC:82, but affects all responses
+        resources.add(FilterChainTestExceptionMapper.class);
+        resources.add(ResponseFilter.class);
+        // --for JAXRS:SPEC:83
+        resources.add(ExceptionFromMappedExceptionMapper.class);
+        return resources;
+    }
 }

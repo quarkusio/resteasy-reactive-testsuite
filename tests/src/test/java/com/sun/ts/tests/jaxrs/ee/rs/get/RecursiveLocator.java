@@ -20,17 +20,17 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 public class RecursiveLocator {
-  private int level = 0;
+    private int level = 0;
 
-  @Path("{id}")
-  public RecursiveLocator recursion() {
-    level++;
-    return this;
-  }
+    @Path("{id}")
+    public RecursiveLocator recursion() {
+        level++;
+        return this;
+    }
 
-  @GET
-  public String getLevel() {
-    return String.valueOf(level);
-  }
+    @GET
+    public String getLevel() {
+        return String.valueOf(level);
+    }
 
 }

@@ -34,321 +34,321 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0047 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = -2548045403083271236L;
+    private static final long serialVersionUID = -2548045403083271236L;
 
-  private static final Status STATUS = Status.FORBIDDEN;
+    private static final Status STATUS = Status.FORBIDDEN;
 
-  protected static final String MESSAGE = "TCK ForbiddenException description";
+    protected static final String MESSAGE = "TCK ForbiddenException description";
 
-  protected static final String HOST = "www.jcp.org";
+    protected static final String HOST = "www.jcp.org";
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0047().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: constructorTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:970; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorTest() throws Fault {
-    ForbiddenException e = new ForbiddenException();
-    assertResponse(e);
-  }
-
-  /*
-   * @testName: constructorResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:971; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 403.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseTest() throws Fault {
-    Response response = buildResponse();
-    ForbiddenException e = new ForbiddenException(response);
-    assertResponse(e, HOST);
-  }
-
-  /*
-   * @testName: constructorResponseThrowsExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:971;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 403.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowsExceptionTest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS)
-        try {
-          Response response = Response.status(status).build();
-          ForbiddenException e = new ForbiddenException(response);
-          fault("IllegalArgumentException has not been thrown; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg("IllegalArgumentException has been thrown for status", status,
-              "as expected");
-        }
-  }
-
-  /*
-   * @testName: constructorThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:972; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception. cause - the
-   * underlying cause of the exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      ForbiddenException e = new ForbiddenException(t);
-      assertResponse(e);
-      assertCause(e, t);
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0047().run(args);
     }
-  }
 
-  /*
-   * @testName: constructorResponseThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:973; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 403.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowableTest() throws Fault {
-    Response response = buildResponse();
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      ForbiddenException e = new ForbiddenException(response, t);
-      assertResponse(e, HOST);
-      assertCause(e, t);
+    /* Run test */
+
+    /*
+     * @testName: constructorTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:970; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorTest() throws Fault {
+        ForbiddenException e = new ForbiddenException();
+        assertResponse(e);
     }
-  }
 
-  /*
-   * @testName: constructorResponseThrowableThrowsExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:973;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 403.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS) {
-        Response response = Response.status(status).build();
-        try {
-          ForbiddenException e = new ForbiddenException(response,
-              new Throwable());
-          fault("ForbiddenException has not been thrown for status", status,
-              "; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been sucessfully thrown for status",
-              status);
-        }
-      }
-  }
-
-  /*
-   * @testName: constructorStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1066; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception. getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringTest() throws Fault {
-    ForbiddenException e = new ForbiddenException(MESSAGE);
-    assertResponse(e);
-    assertMessage(e);
-  }
-
-  /*
-   * @testName: constructorStringResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1067; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception. getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseTest() throws Fault {
-    Response response = buildResponse();
-    ForbiddenException e = new ForbiddenException(MESSAGE, response);
-    assertResponse(e, HOST);
-    assertMessage(e);
-  }
-
-  /*
-   * @testName: constructorStringResponseThrowsIAETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1067;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 403.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowsIAETest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS)
-        try {
-          Response response = Response.status(status).build();
-          ForbiddenException e = new ForbiddenException(MESSAGE, response);
-          fault("IllegalArgumentException has not been thrown; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg("IllegalArgumentException has been thrown for status", status,
-              "as expected");
-        }
-  }
-
-  /*
-   * @testName: constructorStringThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1068; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception. cause - the
-   * underlying cause of the exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      ForbiddenException e = new ForbiddenException(MESSAGE, t);
-      assertResponse(e);
-      assertCause(e, t);
-      assertMessage(e);
+    /*
+     * @testName: constructorResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:971; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 403.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseTest() throws Fault {
+        Response response = buildResponse();
+        ForbiddenException e = new ForbiddenException(response);
+        assertResponse(e, HOST);
     }
-  }
 
-  /*
-   * @testName: constructorStringResponseThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1069; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowableTest() throws Fault {
-    Response response = buildResponse();
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      ForbiddenException e = new ForbiddenException(MESSAGE, response, t);
-      assertResponse(e, HOST);
-      assertCause(e, t);
-      assertMessage(e);
+    /*
+     * @testName: constructorResponseThrowsExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:971;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 403.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowsExceptionTest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS)
+                try {
+                    Response response = Response.status(status).build();
+                    ForbiddenException e = new ForbiddenException(response);
+                    fault("IllegalArgumentException has not been thrown; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg("IllegalArgumentException has been thrown for status", status,
+                            "as expected");
+                }
     }
-  }
 
-  /*
-   * @testName: constructorStringResponseThrowableThrowsIAETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1069;
-   * 
-   * @test_Strategy: Construct a new "forbidden" exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 403.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowableThrowsIAETest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS) {
-        Response response = Response.status(status).build();
-        try {
-          ForbiddenException e = new ForbiddenException(MESSAGE, response,
-              new Throwable());
-          fault("ForbiddenException has not been thrown for status", status,
-              "; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been sucessfully thrown for status",
-              status);
+    /*
+     * @testName: constructorThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:972; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception. cause - the
+     * underlying cause of the exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            ForbiddenException e = new ForbiddenException(t);
+            assertResponse(e);
+            assertCause(e, t);
         }
-      }
-  }
+    }
 
-  // /////////////////////////////////////////////////////////////
+    /*
+     * @testName: constructorResponseThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:973; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 403.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowableTest() throws Fault {
+        Response response = buildResponse();
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            ForbiddenException e = new ForbiddenException(response, t);
+            assertResponse(e, HOST);
+            assertCause(e, t);
+        }
+    }
 
-  protected void assertResponse(ForbiddenException e) throws Fault {
-    assertNotNull(e.getResponse(), "#getResponse is null");
-    Response response = e.getResponse();
-    assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
-        "response cobtains unexpected status", response.getStatus());
-    logMsg("response contains expected", STATUS, "status");
-  }
+    /*
+     * @testName: constructorResponseThrowableThrowsExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:973;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 403.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS) {
+                Response response = Response.status(status).build();
+                try {
+                    ForbiddenException e = new ForbiddenException(response,
+                            new Throwable());
+                    fault("ForbiddenException has not been thrown for status", status,
+                            "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been sucessfully thrown for status",
+                            status);
+                }
+            }
+    }
 
-  /**
-   * Check the given exception contains a prebuilt response containing the http
-   * header HOST
-   * 
-   * @param e
-   * @param host
-   *          HOST property
-   * @throws Fault
-   */
-  protected void assertResponse(ForbiddenException e, String host)
-      throws Fault {
-    assertResponse(e);
-    String header = e.getResponse().getHeaderString(HttpHeaders.HOST);
-    assertNotNull(header, "http header", HttpHeaders.HOST,
-        " of response is null");
-    assertEquals(host, header, "Found unexpected http", HttpHeaders.HOST,
-        "header", header);
-    logMsg("Found expected http", HttpHeaders.HOST, "header");
-  }
+    /*
+     * @testName: constructorStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1066; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception. getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringTest() throws Fault {
+        ForbiddenException e = new ForbiddenException(MESSAGE);
+        assertResponse(e);
+        assertMessage(e);
+    }
 
-  protected void assertMessage(ForbiddenException e) throws Fault {
-    assertNotNull(e.getMessage(), "getMessage() is null");
-    assertContains(e.getMessage(), MESSAGE, "Unexpected getMessage()",
-        e.getMessage());
-    logMsg("found expected getMessage()=", e.getMessage());
-  }
+    /*
+     * @testName: constructorStringResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1067; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception. getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseTest() throws Fault {
+        Response response = buildResponse();
+        ForbiddenException e = new ForbiddenException(MESSAGE, response);
+        assertResponse(e, HOST);
+        assertMessage(e);
+    }
 
-  protected void assertCause(WebApplicationException e, Throwable expected)
-      throws Fault {
-    assertCause(e, expected.getClass(), "#getCause does not contain expected",
-        expected, "but", e.getCause());
-    logMsg("getCause contains expected", expected);
-  }
+    /*
+     * @testName: constructorStringResponseThrowsIAETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1067;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 403.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowsIAETest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS)
+                try {
+                    Response response = Response.status(status).build();
+                    ForbiddenException e = new ForbiddenException(MESSAGE, response);
+                    fault("IllegalArgumentException has not been thrown; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg("IllegalArgumentException has been thrown for status", status,
+                            "as expected");
+                }
+    }
 
-  protected Response buildResponse() {
-    Response r = Response.status(STATUS).header(HttpHeaders.HOST, HOST).build();
-    return r;
-  }
+    /*
+     * @testName: constructorStringThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1068; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception. cause - the
+     * underlying cause of the exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            ForbiddenException e = new ForbiddenException(MESSAGE, t);
+            assertResponse(e);
+            assertCause(e, t);
+            assertMessage(e);
+        }
+    }
+
+    /*
+     * @testName: constructorStringResponseThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1069; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowableTest() throws Fault {
+        Response response = buildResponse();
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            ForbiddenException e = new ForbiddenException(MESSAGE, response, t);
+            assertResponse(e, HOST);
+            assertCause(e, t);
+            assertMessage(e);
+        }
+    }
+
+    /*
+     * @testName: constructorStringResponseThrowableThrowsIAETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1069;
+     * 
+     * @test_Strategy: Construct a new "forbidden" exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 403.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowableThrowsIAETest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS) {
+                Response response = Response.status(status).build();
+                try {
+                    ForbiddenException e = new ForbiddenException(MESSAGE, response,
+                            new Throwable());
+                    fault("ForbiddenException has not been thrown for status", status,
+                            "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been sucessfully thrown for status",
+                            status);
+                }
+            }
+    }
+
+    // /////////////////////////////////////////////////////////////
+
+    protected void assertResponse(ForbiddenException e) throws Fault {
+        assertNotNull(e.getResponse(), "#getResponse is null");
+        Response response = e.getResponse();
+        assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
+                "response cobtains unexpected status", response.getStatus());
+        logMsg("response contains expected", STATUS, "status");
+    }
+
+    /**
+     * Check the given exception contains a prebuilt response containing the http
+     * header HOST
+     * 
+     * @param e
+     * @param host
+     *        HOST property
+     * @throws Fault
+     */
+    protected void assertResponse(ForbiddenException e, String host)
+            throws Fault {
+        assertResponse(e);
+        String header = e.getResponse().getHeaderString(HttpHeaders.HOST);
+        assertNotNull(header, "http header", HttpHeaders.HOST,
+                " of response is null");
+        assertEquals(host, header, "Found unexpected http", HttpHeaders.HOST,
+                "header", header);
+        logMsg("Found expected http", HttpHeaders.HOST, "header");
+    }
+
+    protected void assertMessage(ForbiddenException e) throws Fault {
+        assertNotNull(e.getMessage(), "getMessage() is null");
+        assertContains(e.getMessage(), MESSAGE, "Unexpected getMessage()",
+                e.getMessage());
+        logMsg("found expected getMessage()=", e.getMessage());
+    }
+
+    protected void assertCause(WebApplicationException e, Throwable expected)
+            throws Fault {
+        assertCause(e, expected.getClass(), "#getCause does not contain expected",
+                expected, "but", e.getCause());
+        logMsg("getCause contains expected", expected);
+    }
+
+    protected Response buildResponse() {
+        Response r = Response.status(STATUS).header(HttpHeaders.HOST, HOST).build();
+        return r;
+    }
 }

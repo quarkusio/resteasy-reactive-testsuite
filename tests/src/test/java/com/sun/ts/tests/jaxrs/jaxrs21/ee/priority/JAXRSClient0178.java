@@ -17,14 +17,15 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.priority;
 
 import java.util.function.Supplier;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -43,61 +44,59 @@ public class JAXRSClient0178 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TckPriorityException.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperThree.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionResource.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderOne.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderAnother.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterResource.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperOne.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperTwo.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderTwo.class
-                            );
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.TckPriorityException.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperThree.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionResource.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderOne.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderAnother.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterResource.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperOne.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ExceptionMapperTwo.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.priority.ParamConverterProviderTwo.class);
                 }
             });
 
+    private static final long serialVersionUID = 21L;
 
-  private static final long serialVersionUID = 21L;
+    public JAXRSClient0178() {
+        setContextRoot("/jaxrs_jaxrs21_ee_priority_web");
+    }
 
-  public JAXRSClient0178() {
-    setContextRoot("/jaxrs_jaxrs21_ee_priority_web");
-  }
+    public static void main(String[] args) {
+        new JAXRSClient0178().run(args);
+    }
 
-  public static void main(String[] args) {
-    new JAXRSClient0178().run(args);
-  }
+    /* Run test */
 
-  /* Run test */
+    /*
+     * @testName: exceptionMapperPriorityTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:127;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void exceptionMapperPriorityTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "exception"));
+        setProperty(Property.SEARCH_STRING, ExceptionMapperOne.class.getName());
+        invoke();
+    }
 
-  /*
-   * @testName: exceptionMapperPriorityTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:127;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void exceptionMapperPriorityTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "exception"));
-    setProperty(Property.SEARCH_STRING, ExceptionMapperOne.class.getName());
-    invoke();
-  }
-
-  /*
-   * @testName: paramConverterPriorityTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:127;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void paramConverterPriorityTest() throws Fault {
-    setProperty(Property.REQUEST,
-        buildRequest(Request.GET, "converter?id=something"));
-    setProperty(Property.SEARCH_STRING,
-        ParamConverterProviderOne.class.getName());
-    invoke();
-  }
+    /*
+     * @testName: paramConverterPriorityTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:127;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void paramConverterPriorityTest() throws Fault {
+        setProperty(Property.REQUEST,
+                buildRequest(Request.GET, "converter?id=something"));
+        setProperty(Property.SEARCH_STRING,
+                ParamConverterProviderOne.class.getName());
+        invoke();
+    }
 
 }

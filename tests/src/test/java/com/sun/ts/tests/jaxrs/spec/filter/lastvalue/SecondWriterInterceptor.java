@@ -31,26 +31,26 @@ import com.sun.ts.tests.jaxrs.spec.filter.interceptor.Resource;
 @Priority(200)
 public class SecondWriterInterceptor implements WriterInterceptor {
 
-  @Override
-  public void aroundWriteTo(WriterInterceptorContext context)
-      throws IOException, WebApplicationException {
-    MultivaluedMap<String, Object> headers = context.getHeaders();
-    String header = (String) headers.getFirst(Resource.HEADERNAME);
-    if (header != null
-        && header.equals(FirstWriterInterceptor.class.getName())) {
-      context.setAnnotations(getClass().getAnnotations());
-      context.setEntity(toList(getClass().getName()));
-      context.setGenericType(String.class);
-      context.setMediaType(MediaType.TEXT_PLAIN_TYPE);
-      context.setType(ArrayList.class);
+    @Override
+    public void aroundWriteTo(WriterInterceptorContext context)
+            throws IOException, WebApplicationException {
+        MultivaluedMap<String, Object> headers = context.getHeaders();
+        String header = (String) headers.getFirst(Resource.HEADERNAME);
+        if (header != null
+                && header.equals(FirstWriterInterceptor.class.getName())) {
+            context.setAnnotations(getClass().getAnnotations());
+            context.setEntity(toList(getClass().getName()));
+            context.setGenericType(String.class);
+            context.setMediaType(MediaType.TEXT_PLAIN_TYPE);
+            context.setType(ArrayList.class);
+        }
+        context.proceed();
     }
-    context.proceed();
-  }
 
-  private static <T> ArrayList<T> toList(T o) {
-    ArrayList<T> list = new ArrayList<T>();
-    list.add(o);
-    return list;
-  }
+    private static <T> ArrayList<T> toList(T o) {
+        ArrayList<T> list = new ArrayList<T>();
+        list.add(o);
+        return list;
+    }
 
 }

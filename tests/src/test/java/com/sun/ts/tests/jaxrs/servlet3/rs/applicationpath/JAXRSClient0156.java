@@ -17,16 +17,17 @@
 package com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath;
 
 import java.util.function.Supplier;
+
+import javax.ws.rs.core.Response.Status;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
-import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -45,62 +46,61 @@ public class JAXRSClient0156 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath.TSAppConfig.class
-                            , com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath.Resource.class
-                            );
+                                    com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.servlet3.rs.applicationpath.Resource.class);
                 }
             });
 
-  public JAXRSClient0156() {
-    setContextRoot("/jaxrs_ee_applicationpath_web");
-  }
+    public JAXRSClient0156() {
+        setContextRoot("/jaxrs_ee_applicationpath_web");
+    }
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSClient0156 theTests = new JAXRSClient0156();
-    theTests.run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSClient0156 theTests = new JAXRSClient0156();
+        theTests.run(args);
+    }
 
-  /*
-   * @testName: applicationPathAnnotationEncodedTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:297
-   * 
-   * @test_Strategy: Check the ApplicationPath annotation on Application works
-   * 
-   * Note that percent encoded values are allowed in the value, an
-   * implementation will recognize such values and will not double encode the
-   * '%' character.
-   */
-  @Test
-  public void applicationPathAnnotationEncodedTest() throws Fault {
-    setProperty(Property.REQUEST,
-        buildRequest(Request.GET, "ApplicationPath!/Resource"));
-    invoke();
-  }
+    /*
+     * @testName: applicationPathAnnotationEncodedTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:297
+     * 
+     * @test_Strategy: Check the ApplicationPath annotation on Application works
+     * 
+     * Note that percent encoded values are allowed in the value, an
+     * implementation will recognize such values and will not double encode the
+     * '%' character.
+     */
+    @Test
+    public void applicationPathAnnotationEncodedTest() throws Fault {
+        setProperty(Property.REQUEST,
+                buildRequest(Request.GET, "ApplicationPath!/Resource"));
+        invoke();
+    }
 
-  /*
-   * @testName: applicationPathAnnotationNotUsedTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:297
-   * 
-   * @test_Strategy: Check the ApplicationPath is used properly
-   */
-  @Test
-  public void applicationPathAnnotationNotUsedTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "Resource"));
-    setProperty(Property.STATUS_CODE, "-1");
-    invoke();
-    Status status = getResponseStatusCode();
-    assertTrue(status != Status.OK && status != Status.NO_CONTENT,
-        "unexpected status code received", status);
-    logMsg("Received expected status code", status);
-  }
+    /*
+     * @testName: applicationPathAnnotationNotUsedTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:297
+     * 
+     * @test_Strategy: Check the ApplicationPath is used properly
+     */
+    @Test
+    public void applicationPathAnnotationNotUsedTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "Resource"));
+        setProperty(Property.STATUS_CODE, "-1");
+        invoke();
+        Status status = getResponseStatusCode();
+        assertTrue(status != Status.OK && status != Status.NO_CONTENT,
+                "unexpected status code received", status);
+        logMsg("Received expected status code", status);
+    }
 
 }

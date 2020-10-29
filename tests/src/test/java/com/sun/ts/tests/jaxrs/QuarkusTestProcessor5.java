@@ -29,8 +29,7 @@ import org.xml.sax.SAXException;
  */
 public class QuarkusTestProcessor5 {
     public static void main(String[] args) throws IOException, ParserConfigurationException {
-        DocumentBuilderFactory factory =
-                DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Path srcPath = Paths.get("src/test/java");
         Files.walkFileTree(srcPath, new FileVisitor<Path>() {
@@ -40,8 +39,8 @@ public class QuarkusTestProcessor5 {
                 private Path client;
                 private String application;
             }
+
             private Stack<State> states = new Stack<>();
-            
 
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
@@ -54,18 +53,18 @@ public class QuarkusTestProcessor5 {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 State state = states.peek();
-                if(file.endsWith("build.xml")) {
+                if (file.endsWith("build.xml")) {
                     try {
                         Document document = builder.parse(file.toFile());
                         NodeList properties = document.getElementsByTagName("property");
-                        for(int i=0;i<properties.getLength();i++) {
+                        for (int i = 0; i < properties.getLength(); i++) {
                             Node property = properties.item(i);
-                            if(property.getNodeType() == Node.ELEMENT_NODE) {
+                            if (property.getNodeType() == Node.ELEMENT_NODE) {
                                 Element el = (Element) property;
                                 String name = el.getAttribute("name");
-                                if("appconfig.class".equals(name)) {
+                                if ("appconfig.class".equals(name)) {
                                     String value = el.getAttribute("value");
-                                    if(value != null) {
+                                    if (value != null) {
                                         value = value.replace("${basedir}", state.baseDir);
                                         state.application = value;
                                         break;
@@ -78,7 +77,7 @@ public class QuarkusTestProcessor5 {
                         e.printStackTrace();
                     }
 
-                } else if(file.getFileName().toString().matches(".*Client\\d\\d\\d\\d\\.java")) {
+                } else if (file.getFileName().toString().matches(".*Client\\d\\d\\d\\d\\.java")) {
                     state.client = file;
                 }
                 return FileVisitResult.CONTINUE;
@@ -92,8 +91,8 @@ public class QuarkusTestProcessor5 {
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
                 State state = states.pop();
-                if(state.client != null && state.application != null) {
-                    System.err.println("Adding application "+state.application+" to test class "+state.client);
+                if (state.client != null && state.application != null) {
+                    System.err.println("Adding application " + state.application + " to test class " + state.client);
                     addApplicationToTest(state.client, state.application);
                 }
                 return FileVisitResult.CONTINUE;
@@ -103,17 +102,17 @@ public class QuarkusTestProcessor5 {
 
     protected static void addApplicationToTest(Path client, String application) {
         String original = client.toString();
-        String target = client.toString()+".tmp";
-        try(BufferedReader reader = new BufferedReader(new FileReader(original));
-                BufferedWriter writer = new BufferedWriter(new FileWriter(target))){
+        String target = client.toString() + ".tmp";
+        try (BufferedReader reader = new BufferedReader(new FileReader(original));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
             String line;
             boolean addedContext = false;
-            while((line = reader.readLine()) != null) {
-                if(!addedContext && line.startsWith("                            .addClasses(")) {
+            while ((line = reader.readLine()) != null) {
+                if (!addedContext && line.startsWith("                            .addClasses(")) {
                     addedContext = true;
                     writer.write(line);
                     writer.newLine();
-                    writer.write("                            "+application.replace('/', '.')+",\n");
+                    writer.write("                            " + application.replace('/', '.') + ",\n");
                     // let's not write the original line twice
                     continue;
                 }

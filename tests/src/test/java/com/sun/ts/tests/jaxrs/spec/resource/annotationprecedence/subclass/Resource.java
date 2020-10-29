@@ -30,12 +30,12 @@ import com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.SuperClass;
 @Path("resource")
 public class Resource extends SuperClass implements ResourceInterface {
 
-  @PUT
-  @Path("put")
-  @Consumes(MediaType.TEXT_HTML)
-  @Produces(MediaType.TEXT_HTML)
-  public String get(
-      @DefaultValue("subclass") @MatrixParam("ijk") String param) {
-    return param;
-  }
+    @PUT
+    @Path("put")
+    @Consumes(MediaType.TEXT_HTML)
+    @Produces(MediaType.TEXT_HTML)
+    public String get(
+            @DefaultValue("subclass") @MatrixParam("ijk") String param) {
+        return param;
+    }
 }

@@ -22,19 +22,20 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
+
 import io.quarkus.hibernate.validator.runtime.jaxrs.QuarkusRestViolationExceptionMapper;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(ConstraintDeclarationResource.class);
-    resources.add(ConstraintDefinitionResource.class);
-    resources.add(ValidateExecutableResource.class);
-    resources.add(NotShortNorFiveEntityProvider.class);
-    resources.add(StringBeanEntityProvider.class);
-    resources.add(QuarkusRestViolationExceptionMapper.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(ConstraintDeclarationResource.class);
+        resources.add(ConstraintDefinitionResource.class);
+        resources.add(ValidateExecutableResource.class);
+        resources.add(NotShortNorFiveEntityProvider.class);
+        resources.add(StringBeanEntityProvider.class);
+        resources.add(QuarkusRestViolationExceptionMapper.class);
+        return resources;
+    }
 }

@@ -20,8 +20,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.sun.ts.tests.jaxrs.common.provider.StringBean;
-
 @Consumes(MediaType.TEXT_PLAIN)
 @Produces(MediaType.TEXT_PLAIN)
 /**
@@ -31,7 +29,7 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
  */
 public class StringBeanWithAnnotation extends StringBean {
 
-  public StringBeanWithAnnotation(String header) {
-    super(header);
-  }
+    public StringBeanWithAnnotation(String header) {
+        super(header);
+    }
 }

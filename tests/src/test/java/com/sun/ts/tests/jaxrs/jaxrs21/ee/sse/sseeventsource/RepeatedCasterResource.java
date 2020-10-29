@@ -28,54 +28,54 @@ import javax.ws.rs.sse.SseEventSink;
 @Path("repeat")
 public class RepeatedCasterResource {
 
-  private static boolean cast = false;
+    private static boolean cast = false;
 
-  private static volatile Boolean isOpen = false;
+    private static volatile Boolean isOpen = false;
 
-  private static int cnt = 0;
+    private static int cnt = 0;
 
-  @POST
-  @Path("set")
-  @Produces(MediaType.TEXT_PLAIN)
-  public boolean set(boolean b) {
-    isOpen = false;
-    cast = b;
-    cnt = 0;
-    return cast;
-  }
-
-  @GET
-  @Path("cast")
-  @Produces(MediaType.SERVER_SENT_EVENTS)
-  public void send(@Context SseEventSink sink, @Context Sse sse) {
-    new Thread() {
-      public void run() {
-        synchronized (isOpen) {
-          isOpen = !sink.isClosed();
-        }
-        while (!sink.isClosed() && cast) {
-          sink.send(sse.newEvent(String.valueOf(cnt++)));
-          try {
-            Thread.sleep(500L);
-          } catch (InterruptedException e1) {
-            cast = false;
-          }
-          synchronized (isOpen) {
-            isOpen = !sink.isClosed();
-            System.out.println("ISOPEN " + isOpen);
-          }
-        }
-        cast = false;
-      };
-    }.start();
-  }
-
-  @GET
-  @Path("isopen")
-  public boolean isOpen() {
-    synchronized (isOpen) {
-      System.out.println("ASKED ISOPEN " + isOpen);
-      return isOpen;
+    @POST
+    @Path("set")
+    @Produces(MediaType.TEXT_PLAIN)
+    public boolean set(boolean b) {
+        isOpen = false;
+        cast = b;
+        cnt = 0;
+        return cast;
     }
-  }
+
+    @GET
+    @Path("cast")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public void send(@Context SseEventSink sink, @Context Sse sse) {
+        new Thread() {
+            public void run() {
+                synchronized (isOpen) {
+                    isOpen = !sink.isClosed();
+                }
+                while (!sink.isClosed() && cast) {
+                    sink.send(sse.newEvent(String.valueOf(cnt++)));
+                    try {
+                        Thread.sleep(500L);
+                    } catch (InterruptedException e1) {
+                        cast = false;
+                    }
+                    synchronized (isOpen) {
+                        isOpen = !sink.isClosed();
+                        System.out.println("ISOPEN " + isOpen);
+                    }
+                }
+                cast = false;
+            };
+        }.start();
+    }
+
+    @GET
+    @Path("isopen")
+    public boolean isOpen() {
+        synchronized (isOpen) {
+            System.out.println("ASKED ISOPEN " + isOpen);
+            return isOpen;
+        }
+    }
 }

@@ -28,58 +28,58 @@ import javax.ws.rs.ext.Providers;
 
 @Provider
 public class HolderResolver implements ContextResolver<HolderClass> {
-  private HttpHeaders headers;
+    private HttpHeaders headers;
 
-  private UriInfo info;
+    private UriInfo info;
 
-  private Application application;
+    private Application application;
 
-  private Request request;
+    private Request request;
 
-  private Providers provider;
+    private Providers provider;
 
-  protected HolderResolver(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request,
-      @Context Providers provider) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-    this.provider = provider;
-  }
+    protected HolderResolver(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request,
+            @Context Providers provider) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+        this.provider = provider;
+    }
 
-  @Inject
-  public HolderResolver(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-  }
+    @Inject
+    public HolderResolver(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+    }
 
-  public HolderResolver(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-  }
+    public HolderResolver(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+    }
 
-  public HolderResolver(@Context HttpHeaders headers, @Context UriInfo info) {
-    super();
-    this.headers = headers;
-    this.info = info;
-  }
+    public HolderResolver(@Context HttpHeaders headers, @Context UriInfo info) {
+        super();
+        this.headers = headers;
+        this.info = info;
+    }
 
-  public HolderResolver(@Context HttpHeaders headers) {
-    super();
-    this.headers = headers;
-  }
+    public HolderResolver(@Context HttpHeaders headers) {
+        super();
+        this.headers = headers;
+    }
 
-  @Override
-  public HolderClass getContext(Class<?> type) {
-    return new HolderClass(headers, info, application, request, provider);
-  }
+    @Override
+    public HolderClass getContext(Class<?> type) {
+        return new HolderClass(headers, info, application, request, provider);
+    }
 }

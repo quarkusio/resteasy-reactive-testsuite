@@ -24,30 +24,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JaxbKeyValueBean {
-  @XmlElement
-  public String key;
-  @XmlElement
-  public String value;
+    @XmlElement
+    public String key;
+    @XmlElement
+    public String value;
 
-  public String getKey() {
-    return key;
-  }
+    public String getKey() {
+        return key;
+    }
 
-  public void setKey(String key) {
-    this.key = key;
-  }
+    public void setKey(String key) {
+        this.key = key;
+    }
 
-  public String getValue() {
-    return value;
-  }
+    public String getValue() {
+        return value;
+    }
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+    public void setValue(String value) {
+        this.value = value;
+    }
 
-  public JaxbKeyValueBean set(String key, String value) {
-    setKey(key);
-    setValue(value);
-    return this;
-  }
+    public JaxbKeyValueBean set(String key, String value) {
+        setKey(key);
+        setValue(value);
+        return this;
+    }
 }

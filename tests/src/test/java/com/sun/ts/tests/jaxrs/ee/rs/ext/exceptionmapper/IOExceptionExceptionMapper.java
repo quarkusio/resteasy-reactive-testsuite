@@ -29,11 +29,11 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 public class IOExceptionExceptionMapper
-    implements ExceptionMapper<IOException> {
+        implements ExceptionMapper<IOException> {
 
-  @Override
-  public Response toResponse(IOException exception) {
-    return Response.status(Status.ACCEPTED).build();
-  }
+    @Override
+    public Response toResponse(IOException exception) {
+        return Response.status(Status.ACCEPTED).build();
+    }
 
 }

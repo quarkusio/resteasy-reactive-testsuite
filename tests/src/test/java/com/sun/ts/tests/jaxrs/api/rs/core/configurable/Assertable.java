@@ -22,31 +22,31 @@ import javax.ws.rs.client.WebTarget;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 public abstract class Assertable {
-  final static String[] LOCATION = { "Client", "WebTarget",
-      "Invocation.Builder", "Invocation" };
+    final static String[] LOCATION = { "Client", "WebTarget",
+            "Invocation.Builder", "Invocation" };
 
-  private int locationIndex = 0;
+    private int locationIndex = 0;
 
-  public abstract void check1OnClient(Client client) throws Fault;
+    public abstract void check1OnClient(Client client) throws Fault;
 
-  public abstract void check2OnTarget(WebTarget target) throws Fault;
+    public abstract void check2OnTarget(WebTarget target) throws Fault;
 
-  public void incrementLocation() {
-    locationIndex = (locationIndex + 1 == LOCATION.length) ? 0
-        : locationIndex + 1;
-  }
+    public void incrementLocation() {
+        locationIndex = (locationIndex + 1 == LOCATION.length) ? 0
+                : locationIndex + 1;
+    }
 
-  public String getLocation() {
-    return new StringBuilder().append("on ").append(LOCATION[locationIndex])
-        .append(" configuration").toString();
-  }
+    public String getLocation() {
+        return new StringBuilder().append("on ").append(LOCATION[locationIndex])
+                .append(" configuration").toString();
+    }
 
-  public static String getLocation(int index) {
-    return LOCATION[index];
-  }
+    public static String getLocation(int index) {
+        return LOCATION[index];
+    }
 
-  public int getLocationIndex() {
-    return locationIndex;
-  }
+    public int getLocationIndex() {
+        return locationIndex;
+    }
 
 }

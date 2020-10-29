@@ -40,135 +40,134 @@ import io.quarkus.test.QuarkusUnitTest;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSBasicClient0126
-    extends com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.JAXRSClient0127 {
+        extends com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.JAXRSClient0127 {
 
-  private static final long serialVersionUID = 340277879725875946L;
+    private static final long serialVersionUID = 340277879725875946L;
 
-  @RegisterExtension
-  static QuarkusUnitTest test = new QuarkusUnitTest()
-          .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_core_securitycontext_basic_web")
-          .overrideConfigKey("quarkus.http.auth.basic", "true")
-          .overrideConfigKey("quarkus.security.users.embedded.plain-text", "true")
-          .overrideConfigKey("quarkus.security.users.embedded.enabled", "true")
-          .overrideConfigKey("quarkus.security.users.embedded.users.j2ee", "jb0ss1")
-          .overrideConfigKey("quarkus.security.users.embedded.roles.j2ee", "DIRECTOR")
-          .overrideConfigKey("quarkus.security.users.embedded.users.javajoe", "jb0ss2")
-          .overrideConfigKey("quarkus.security.users.embedded.roles.javajoe", "OTHERROLE")
-          .setArchiveProducer(new Supplier<JavaArchive>() {
-              @Override
-              public JavaArchive get() {
-                  return ShrinkWrap.create(JavaArchive.class)
-                          .addClasses(
-                          com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TSAppConfig.class,
-                          com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.class
-                          );
-              }
-          });
+    @RegisterExtension
+    static QuarkusUnitTest test = new QuarkusUnitTest()
+            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_core_securitycontext_basic_web")
+            .overrideConfigKey("quarkus.http.auth.basic", "true")
+            .overrideConfigKey("quarkus.security.users.embedded.plain-text", "true")
+            .overrideConfigKey("quarkus.security.users.embedded.enabled", "true")
+            .overrideConfigKey("quarkus.security.users.embedded.users.j2ee", "jb0ss1")
+            .overrideConfigKey("quarkus.security.users.embedded.roles.j2ee", "DIRECTOR")
+            .overrideConfigKey("quarkus.security.users.embedded.users.javajoe", "jb0ss2")
+            .overrideConfigKey("quarkus.security.users.embedded.roles.javajoe", "OTHERROLE")
+            .setArchiveProducer(new Supplier<JavaArchive>() {
+                @Override
+                public JavaArchive get() {
+                    return ShrinkWrap.create(JavaArchive.class)
+                            .addClasses(
+                                    com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.TestServlet.class);
+                }
+            });
 
-  public JAXRSBasicClient0126() {
-    setContextRoot("/jaxrs_ee_core_securitycontext_basic_web/Servlet");
-    user = "j2ee";
-    password = "jb0ss1";
-    authuser = "javajoe";
-    authpassword = "jb0ss2";
-  }
+    public JAXRSBasicClient0126() {
+        setContextRoot("/jaxrs_ee_core_securitycontext_basic_web/Servlet");
+        user = "j2ee";
+        password = "jb0ss1";
+        authuser = "javajoe";
+        authpassword = "jb0ss2";
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSBasicClient0126 theTests = new JAXRSBasicClient0126();
-    theTests.run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSBasicClient0126 theTests = new JAXRSBasicClient0126();
+        theTests.run(args);
+    }
 
-  /* Run test */
+    /* Run test */
 
-  /*
-   * @testName: noAuthorizationTest
-   * 
-   * @assertion_ids:
-   * 
-   * @test_Strategy: Send no authorization, make sure of 401 response
-   */
-  @org.junit.jupiter.api.Test
-  public void noAuthorizationTest() throws Fault {
-    super.noAuthorizationTest();
-  }
+    /*
+     * @testName: noAuthorizationTest
+     * 
+     * @assertion_ids:
+     * 
+     * @test_Strategy: Send no authorization, make sure of 401 response
+     */
+    @org.junit.jupiter.api.Test
+    public void noAuthorizationTest() throws Fault {
+        super.noAuthorizationTest();
+    }
 
-  /*
-   * @testName: basicAuthorizationAdminTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:169; JAXRS:JAVADOC:170; JAXRS:JAVADOC:171;
-   * JAXRS:JAVADOC:172; JAXRS:SPEC:40;
-   * 
-   * @test_Strategy: Send basic authorization, check security context
-   */
-  @org.junit.jupiter.api.Test
-  public void basicAuthorizationAdminTest() throws Fault {
-    setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
-    setProperty(Property.BASIC_AUTH_USER, user);
-    setProperty(Property.BASIC_AUTH_PASSWD, password);
+    /*
+     * @testName: basicAuthorizationAdminTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:169; JAXRS:JAVADOC:170; JAXRS:JAVADOC:171;
+     * JAXRS:JAVADOC:172; JAXRS:SPEC:40;
+     * 
+     * @test_Strategy: Send basic authorization, check security context
+     */
+    @org.junit.jupiter.api.Test
+    public void basicAuthorizationAdminTest() throws Fault {
+        setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
+        setProperty(Property.BASIC_AUTH_USER, user);
+        setProperty(Property.BASIC_AUTH_PASSWD, password);
 
-    setProperty(Property.SEARCH_STRING, TestServlet.Security.UNSECURED.name());
-    setProperty(Property.SEARCH_STRING, TestServlet.Role.DIRECTOR.name());
-    setProperty(Property.SEARCH_STRING, user);
-    setProperty(Property.SEARCH_STRING, TestServlet.Scheme.BASIC.name());
-    invokeRequest();
-  }
+        setProperty(Property.SEARCH_STRING, TestServlet.Security.UNSECURED.name());
+        setProperty(Property.SEARCH_STRING, TestServlet.Role.DIRECTOR.name());
+        setProperty(Property.SEARCH_STRING, user);
+        setProperty(Property.SEARCH_STRING, TestServlet.Scheme.BASIC.name());
+        invokeRequest();
+    }
 
-  /*
-   * @testName: basicAuthorizationIncorrectUserTest
-   * 
-   * @assertion_ids:
-   * 
-   * @test_Strategy: Send basic authorization, check security context
-   */
-  @org.junit.jupiter.api.Test
-  public void basicAuthorizationIncorrectUserTest() throws Fault {
-    setProperty(Property.STATUS_CODE,
-        getStatusCode(Response.Status.UNAUTHORIZED));
-    setProperty(Property.BASIC_AUTH_USER, Scheme.NOSCHEME.name());
-    setProperty(Property.BASIC_AUTH_PASSWD, password);
-    invokeRequest();
-  }
+    /*
+     * @testName: basicAuthorizationIncorrectUserTest
+     * 
+     * @assertion_ids:
+     * 
+     * @test_Strategy: Send basic authorization, check security context
+     */
+    @org.junit.jupiter.api.Test
+    public void basicAuthorizationIncorrectUserTest() throws Fault {
+        setProperty(Property.STATUS_CODE,
+                getStatusCode(Response.Status.UNAUTHORIZED));
+        setProperty(Property.BASIC_AUTH_USER, Scheme.NOSCHEME.name());
+        setProperty(Property.BASIC_AUTH_PASSWD, password);
+        invokeRequest();
+    }
 
-  /*
-   * @testName: basicAuthorizationIncorrectPasswordTest
-   * 
-   * @assertion_ids:
-   * 
-   * @test_Strategy: Send basic authorization, check security context
-   */
-  @org.junit.jupiter.api.Test
-  public void basicAuthorizationIncorrectPasswordTest() throws Fault {
-    setProperty(Property.STATUS_CODE,
-        getStatusCode(Response.Status.UNAUTHORIZED));
-    setProperty(Property.BASIC_AUTH_USER, authuser);
-    setProperty(Property.BASIC_AUTH_PASSWD, password);
-    invokeRequest();
-  }
+    /*
+     * @testName: basicAuthorizationIncorrectPasswordTest
+     * 
+     * @assertion_ids:
+     * 
+     * @test_Strategy: Send basic authorization, check security context
+     */
+    @org.junit.jupiter.api.Test
+    public void basicAuthorizationIncorrectPasswordTest() throws Fault {
+        setProperty(Property.STATUS_CODE,
+                getStatusCode(Response.Status.UNAUTHORIZED));
+        setProperty(Property.BASIC_AUTH_USER, authuser);
+        setProperty(Property.BASIC_AUTH_PASSWD, password);
+        invokeRequest();
+    }
 
-  /*
-   * @testName: basicAuthorizationStandardUserTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:169; JAXRS:JAVADOC:170; JAXRS:JAVADOC:171;
-   * JAXRS:JAVADOC:172; JAXRS:SPEC:40;
-   * 
-   * @test_Strategy: Send basic authorization with made up Realm, check security
-   * context
-   */
-  @org.junit.jupiter.api.Test
-  public void basicAuthorizationStandardUserTest() throws Fault {
-    setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
-    setProperty(Property.BASIC_AUTH_USER, authuser);
-    setProperty(Property.BASIC_AUTH_PASSWD, authpassword);
+    /*
+     * @testName: basicAuthorizationStandardUserTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:169; JAXRS:JAVADOC:170; JAXRS:JAVADOC:171;
+     * JAXRS:JAVADOC:172; JAXRS:SPEC:40;
+     * 
+     * @test_Strategy: Send basic authorization with made up Realm, check security
+     * context
+     */
+    @org.junit.jupiter.api.Test
+    public void basicAuthorizationStandardUserTest() throws Fault {
+        setProperty(Property.STATUS_CODE, getStatusCode(Response.Status.OK));
+        setProperty(Property.BASIC_AUTH_USER, authuser);
+        setProperty(Property.BASIC_AUTH_PASSWD, authpassword);
 
-    setProperty(Property.SEARCH_STRING, TestServlet.Security.UNSECURED.name());
-    setProperty(Property.SEARCH_STRING, TestServlet.Role.OTHERROLE.name());
-    setProperty(Property.SEARCH_STRING, authuser);
-    setProperty(Property.SEARCH_STRING, TestServlet.Scheme.BASIC.name());
-    invokeRequest();
-  }
+        setProperty(Property.SEARCH_STRING, TestServlet.Security.UNSECURED.name());
+        setProperty(Property.SEARCH_STRING, TestServlet.Role.OTHERROLE.name());
+        setProperty(Property.SEARCH_STRING, authuser);
+        setProperty(Property.SEARCH_STRING, TestServlet.Scheme.BASIC.name());
+        invokeRequest();
+    }
 }

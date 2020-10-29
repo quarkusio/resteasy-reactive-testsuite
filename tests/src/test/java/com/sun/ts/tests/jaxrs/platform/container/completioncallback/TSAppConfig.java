@@ -25,12 +25,12 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBeanEntityProvider;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(CallbackResource.class);
-    resources.add(StringBeanEntityProvider.class);
-    // there might be no PrintingErrorHandler as only unhandled exception
-    // is propagated to the onComplete method of the callback
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(CallbackResource.class);
+        resources.add(StringBeanEntityProvider.class);
+        // there might be no PrintingErrorHandler as only unhandled exception
+        // is propagated to the onComplete method of the callback
+        return resources;
+    }
 }

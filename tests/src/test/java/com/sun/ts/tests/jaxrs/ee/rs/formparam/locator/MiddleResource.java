@@ -33,63 +33,63 @@ import com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest;
 
 public class MiddleResource {
 
-  private Response returnValue;
+    private Response returnValue;
 
-  FormParamTest resource;
+    FormParamTest resource;
 
-  public MiddleResource() {
-    returnValue = null;
-  }
-
-  protected MiddleResource(String path, String arg) {
-    Method m = getMethod(path);
-    Object o = getMethodArgument(path, arg);
-    resource = new FormParamTest();
-    try {
-      returnValue = (Response) m.invoke(resource, o);
-    } catch (Exception e) {
-      returnValue = Response.ok(e).build();
+    public MiddleResource() {
+        returnValue = null;
     }
-  }
 
-  @POST
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public Response returnValue() {
-    return returnValue;
-  }
-
-  private static Method getMethod(String id) {
-    Method[] methods = FormParamTest.class.getMethods();
-    for (Method m : methods) {
-      String path = AbstractMessageBodyRW.getPathValue(m.getAnnotations());
-      if (path != null && path.substring(1, path.length()).startsWith(id))
-        return m;
+    protected MiddleResource(String path, String arg) {
+        Method m = getMethod(path);
+        Object o = getMethodArgument(path, arg);
+        resource = new FormParamTest();
+        try {
+            returnValue = (Response) m.invoke(resource, o);
+        } catch (Exception e) {
+            returnValue = Response.ok(e).build();
+        }
     }
-    return null;
-  }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
-  private static Object getMethodArgument(String path, String arg) {
-    Object o;
-    // Choose entity
-    if (path.contains("Constructor"))
-      o = new ParamEntityWithConstructor(arg);
-    else if (path.contains("FromString"))
-      o = ParamEntityWithFromString.fromString(arg);
-    else if (path.contains("ValueOf"))
-      o = ParamEntityWithValueOf.valueOf(arg);
-    else
-      o = arg;
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response returnValue() {
+        return returnValue;
+    }
 
-    // Choose collection
-    if (path.contains("SortedSet"))
-      o = new TreeSet(Collections.singleton(o));
-    else if (path.contains("Set"))
-      o = Collections.singleton(o);
-    else if (path.contains("List"))
-      o = Collections.singletonList(o);
+    private static Method getMethod(String id) {
+        Method[] methods = FormParamTest.class.getMethods();
+        for (Method m : methods) {
+            String path = AbstractMessageBodyRW.getPathValue(m.getAnnotations());
+            if (path != null && path.substring(1, path.length()).startsWith(id))
+                return m;
+        }
+        return null;
+    }
 
-    return o;
-  }
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    private static Object getMethodArgument(String path, String arg) {
+        Object o;
+        // Choose entity
+        if (path.contains("Constructor"))
+            o = new ParamEntityWithConstructor(arg);
+        else if (path.contains("FromString"))
+            o = ParamEntityWithFromString.fromString(arg);
+        else if (path.contains("ValueOf"))
+            o = ParamEntityWithValueOf.valueOf(arg);
+        else
+            o = arg;
+
+        // Choose collection
+        if (path.contains("SortedSet"))
+            o = new TreeSet(Collections.singleton(o));
+        else if (path.contains("Set"))
+            o = Collections.singleton(o);
+        else if (path.contains("List"))
+            o = Collections.singletonList(o);
+
+        return o;
+    }
 
 }

@@ -23,9 +23,9 @@ import javax.xml.bind.JAXBElement;
 @Path("resource")
 public class Resource {
 
-  @Path("jaxb")
-  @POST
-  public JAXBElement<String> jaxb(JAXBElement<String> jaxb) {
-    return jaxb;
-  }
+    @Path("jaxb")
+    @POST
+    public JAXBElement<String> jaxb(JAXBElement<String> jaxb) {
+        return jaxb;
+    }
 }

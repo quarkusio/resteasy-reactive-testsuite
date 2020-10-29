@@ -22,68 +22,68 @@ import java.util.Set;
 import java.util.SortedSet;
 
 public class ParamTest {
-  protected boolean noparam = true;
+    protected boolean noparam = true;
 
-  protected StringBuilder sb;
+    protected StringBuilder sb;
 
-  public static final String FIELD = "Field";
+    public static final String FIELD = "Field";
 
-  // public static final String BEAN = "Bean";
-  public static final String PARAM = "Param";
+    // public static final String BEAN = "Bean";
+    public static final String PARAM = "Param";
 
-  protected void appendNonNullSetNoParam(String name, Number value) {
-    if (value.doubleValue() != 0d) {
-      noparam = false;
-      sb.append(name).append("=").append(value);
+    protected void appendNonNullSetNoParam(String name, Number value) {
+        if (value.doubleValue() != 0d) {
+            noparam = false;
+            sb.append(name).append("=").append(value);
+        }
     }
-  }
 
-  protected void appendTrueSetNoParam(String name, boolean value) {
-    if (value) {
-      noparam = false;
-      sb.append(name).append("=").append(value);
+    protected void appendTrueSetNoParam(String name, boolean value) {
+        if (value) {
+            noparam = false;
+            sb.append(name).append("=").append(value);
+        }
     }
-  }
 
-  protected void append(Class<? extends ParamEntityPrototype> clazz,
-      ParamEntityPrototype entity, String... prefix) {
-    // add prefix
-    for (String p : prefix)
-      sb.append(p);
-    sb.append(clazz.getSimpleName()).append("=");
-    sb.append(entity != null ? entity.getValue() : "null");
-  }
+    protected void append(Class<? extends ParamEntityPrototype> clazz,
+            ParamEntityPrototype entity, String... prefix) {
+        // add prefix
+        for (String p : prefix)
+            sb.append(p);
+        sb.append(clazz.getSimpleName()).append("=");
+        sb.append(entity != null ? entity.getValue() : "null");
+    }
 
-  protected void append(Class<? extends ParamEntityPrototype> clazz,
-      Collection<? extends ParamEntityPrototype> collection, String... prefix) {
-    // add prefix
-    for (String p : prefix)
-      sb.append(p);
-    sb.append(clazz.getSimpleName()).append("=");
-    if (collection != null && collection.iterator().hasNext())
-      sb.append(collection.iterator().next().getValue());
-    else
-      sb.append("null");
-  }
+    protected void append(Class<? extends ParamEntityPrototype> clazz,
+            Collection<? extends ParamEntityPrototype> collection, String... prefix) {
+        // add prefix
+        for (String p : prefix)
+            sb.append(p);
+        sb.append(clazz.getSimpleName()).append("=");
+        if (collection != null && collection.iterator().hasNext())
+            sb.append(collection.iterator().next().getValue());
+        else
+            sb.append("null");
+    }
 
-  protected void setReturnValues(
-      ParamEntityWithConstructor paramEntityWithConstructor,
-      ParamEntityWithFromString paramEntityWithFromString,
-      ParamEntityWithValueOf paramEntityWithValueOf,
-      Set<ParamEntityWithFromString> setParamEntityWithFromString,
-      SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
-      List<ParamEntityWithFromString> listParamEntityWithFromString,
-      String prefix) {
-    append(ParamEntityWithConstructor.class, paramEntityWithConstructor,
-        prefix);
-    append(ParamEntityWithFromString.class, paramEntityWithFromString, prefix);
-    append(ParamEntityWithValueOf.class, paramEntityWithValueOf, prefix);
+    protected void setReturnValues(
+            ParamEntityWithConstructor paramEntityWithConstructor,
+            ParamEntityWithFromString paramEntityWithFromString,
+            ParamEntityWithValueOf paramEntityWithValueOf,
+            Set<ParamEntityWithFromString> setParamEntityWithFromString,
+            SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString,
+            List<ParamEntityWithFromString> listParamEntityWithFromString,
+            String prefix) {
+        append(ParamEntityWithConstructor.class, paramEntityWithConstructor,
+                prefix);
+        append(ParamEntityWithFromString.class, paramEntityWithFromString, prefix);
+        append(ParamEntityWithValueOf.class, paramEntityWithValueOf, prefix);
 
-    append(ParamEntityWithFromString.class, setParamEntityWithFromString,
-        prefix, JaxrsParamClient0151.CollectionName.SET.value());
-    append(ParamEntityWithFromString.class, sortedSetParamEntityWithFromString,
-        prefix, JaxrsParamClient0151.CollectionName.SORTED_SET.value());
-    append(ParamEntityWithFromString.class, listParamEntityWithFromString,
-        prefix, JaxrsParamClient0151.CollectionName.LIST.value());
-  }
+        append(ParamEntityWithFromString.class, setParamEntityWithFromString,
+                prefix, JaxrsParamClient0151.CollectionName.SET.value());
+        append(ParamEntityWithFromString.class, sortedSetParamEntityWithFromString,
+                prefix, JaxrsParamClient0151.CollectionName.SORTED_SET.value());
+        append(ParamEntityWithFromString.class, listParamEntityWithFromString,
+                prefix, JaxrsParamClient0151.CollectionName.LIST.value());
+    }
 }

@@ -27,17 +27,17 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 @Priority(Integer.MAX_VALUE)
 // the lower the number the higher the priority
 public class LowerPriorityProvider extends ContextProvider {
-  private AtomicInteger counter;
+    private AtomicInteger counter;
 
-  public LowerPriorityProvider(AtomicInteger counter) {
-    super();
-    this.counter = counter;
-  }
+    public LowerPriorityProvider(AtomicInteger counter) {
+        super();
+        this.counter = counter;
+    }
 
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    assertFault(counter.incrementAndGet() == 2,
-        "Lower provider priority has been called as ", counter.get(), "st");
-    Response response = Response.ok().build();
-    context.abortWith(response);
-  }
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        assertFault(counter.incrementAndGet() == 2,
+                "Lower provider priority has been called as ", counter.get(), "st");
+        Response response = Response.ok().build();
+        context.abortWith(response);
+    }
 }

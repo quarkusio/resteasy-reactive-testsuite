@@ -21,19 +21,19 @@ import java.lang.reflect.Constructor;
 import javax.ws.rs.WebApplicationException;
 
 public class ParamEntityThrowingExceptionGivenByName
-    extends ParamEntityThrowingWebApplicationException {
+        extends ParamEntityThrowingWebApplicationException {
 
-  public static final String ERROR_MSG = "ParamEntityThrowingExceptionGivenByName created unexpected error";
+    public static final String ERROR_MSG = "ParamEntityThrowingExceptionGivenByName created unexpected error";
 
-  public static ParamEntityThrowingExceptionGivenByName fromString(String arg) {
-    Object o;
-    try {
-      Class<?> clazz = Class.forName(parseArg(arg));
-      Constructor<?> constructor = clazz.getConstructor();
-      o = constructor.newInstance();
-    } catch (Exception e) {
-      throw new WebApplicationException(new RuntimeException(ERROR_MSG));
+    public static ParamEntityThrowingExceptionGivenByName fromString(String arg) {
+        Object o;
+        try {
+            Class<?> clazz = Class.forName(parseArg(arg));
+            Constructor<?> constructor = clazz.getConstructor();
+            o = constructor.newInstance();
+        } catch (Exception e) {
+            throw new WebApplicationException(new RuntimeException(ERROR_MSG));
+        }
+        throw (RuntimeException) o;
     }
-    throw (RuntimeException) o;
-  }
 }

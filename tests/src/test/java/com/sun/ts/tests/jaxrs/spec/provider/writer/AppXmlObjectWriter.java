@@ -31,53 +31,53 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Produces("application/xml")
 public class AppXmlObjectWriter implements MessageBodyWriter<Object> {
-  // Pass information from any Writer
-  // Each resource method call is a new thread
-  static StringBuilder writerSet = new StringBuilder();
+    // Pass information from any Writer
+    // Each resource method call is a new thread
+    static StringBuilder writerSet = new StringBuilder();
 
-  public static void resetSet() {
-    writerSet = new StringBuilder();
-  }
+    public static void resetSet() {
+        writerSet = new StringBuilder();
+    }
 
-  public static void addClass(String string) {
-    writerSet.append(string).append(";");
-  }
+    public static void addClass(String string) {
+        writerSet.append(string).append(";");
+    }
 
-  public static int getCount() {
-    String[] split = writerSet.toString().split(";");
-    return split.length;
-  }
+    public static int getCount() {
+        String[] split = writerSet.toString().split(";");
+        return split.length;
+    }
 
-  // Do not inherit
-  private static boolean isWritable = false;
+    // Do not inherit
+    private static boolean isWritable = false;
 
-  public static void setWritable(boolean bool) {
-    isWritable = bool;
-  }
+    public static void setWritable(boolean bool) {
+        isWritable = bool;
+    }
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    addClass(AppXmlObjectWriter.class.getSimpleName());
-    return isWritable;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        addClass(AppXmlObjectWriter.class.getSimpleName());
+        return isWritable;
+    }
 
-  @Override
-  public long getSize(Object t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    addClass(getClass().getSimpleName().toUpperCase());
-    return writerSet.length();
-  }
+    @Override
+    public long getSize(Object t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        addClass(getClass().getSimpleName().toUpperCase());
+        return writerSet.length();
+    }
 
-  @Override
-  public void writeTo(Object t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    // in case getSize() is not used,
-    // otherwise these additional characters are omitted.
-    getSize(entityStream, type, genericType, annotations, mediaType);
-    entityStream.write(writerSet.toString().getBytes());
-  }
+    @Override
+    public void writeTo(Object t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        // in case getSize() is not used,
+        // otherwise these additional characters are omitted.
+        getSize(entityStream, type, genericType, annotations, mediaType);
+        entityStream.write(writerSet.toString().getBytes());
+    }
 
 }

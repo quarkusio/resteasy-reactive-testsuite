@@ -22,14 +22,14 @@ import javax.ws.rs.Path;
 
 @Path("resource/cookie")
 public class CookieResource {
-  String param;
+    String param;
 
-  public CookieResource(@CookieParam("param") String param) {
-    this.param = param;
-  }
+    public CookieResource(@CookieParam("param") String param) {
+        this.param = param;
+    }
 
-  @GET
-  public String get() {
-    return param;
-  }
+    @GET
+    public String get() {
+        return param;
+    }
 }

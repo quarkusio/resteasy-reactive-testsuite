@@ -17,14 +17,15 @@
 package com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator;
 
 import java.util.function.Supplier;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -46,43 +47,41 @@ public class JAXRSClient0171 extends JaxrsCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.SubResource.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.Resource.class
-                            );
+                                    com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.SubResource.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator.Resource.class);
                 }
             });
 
+    private static final long serialVersionUID = 21L;
 
-  private static final long serialVersionUID = 21L;
+    public JAXRSClient0171() {
+        setContextRoot("/jaxrs_jaxrs21_spec_classsubresourcelocator_web/resource");
+    }
 
-  public JAXRSClient0171() {
-    setContextRoot("/jaxrs_jaxrs21_spec_classsubresourcelocator_web/resource");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSClient0171 c = new JAXRSClient0171();
+        c.run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSClient0171 c = new JAXRSClient0171();
-    c.run(args);
-  }
-
-  /* Run test */
-  /*
-   * @testName: subResourceLocatorAsClassTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:125;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void subResourceLocatorAsClassTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "sub"));
-    setProperty(Property.SEARCH_STRING, "OK");
-    invoke();
-  }
+    /* Run test */
+    /*
+     * @testName: subResourceLocatorAsClassTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:125;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void subResourceLocatorAsClassTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "sub"));
+        setProperty(Property.SEARCH_STRING, "OK");
+        invoke();
+    }
 
 }

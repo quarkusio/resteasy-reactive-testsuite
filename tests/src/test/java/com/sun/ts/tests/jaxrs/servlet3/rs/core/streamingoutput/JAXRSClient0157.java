@@ -18,18 +18,18 @@ package com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput;
 
 import java.util.function.Supplier;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
+import javax.ws.rs.core.Response.Status;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
 
-
-import javax.ws.rs.core.Response.Status;
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -49,75 +49,74 @@ public class JAXRSClient0157 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput.TSAppConfig.class
-                            , com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput.StreamOutputTest.class
-                            );
+                                    com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.servlet3.rs.core.streamingoutput.StreamOutputTest.class);
                 }
             });
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  public static final String _root = "/jaxrs_ee_core_streamoutput_web/StreamOutputTest";
+    public static final String _root = "/jaxrs_ee_core_streamoutput_web/StreamOutputTest";
 
-  public JAXRSClient0157() {
-    setContextRoot(_root);
-  }
+    public JAXRSClient0157() {
+        setContextRoot(_root);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSClient0157 theTests = new JAXRSClient0157();
-    theTests.run(args);
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSClient0157 theTests = new JAXRSClient0157();
+        theTests.run(args);
+    }
 
-  /* Run test */
+    /* Run test */
 
-  /*
-   * @testName: writeTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:173;
-   * 
-   * @test_Strategy: Client send a request. Verify that
-   * StreamingOutput.write(OutputStream) works.
-   */
-  @Test
-  public void writeTest() throws Fault {
-    setProperty(REQUEST, buildRequest(GET, "Test1"));
-    setProperty(SEARCH_STRING, "StreamingOutputTest1");
-    invoke();
-  }
+    /*
+     * @testName: writeTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:173;
+     * 
+     * @test_Strategy: Client send a request. Verify that
+     * StreamingOutput.write(OutputStream) works.
+     */
+    @Test
+    public void writeTest() throws Fault {
+        setProperty(REQUEST, buildRequest(GET, "Test1"));
+        setProperty(SEARCH_STRING, "StreamingOutputTest1");
+        invoke();
+    }
 
-  /*
-   * @testName: writeIOExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:174; JAXRS:JAVADOC:132;
-   * 
-   * @test_Strategy: Client send a request. Verify that
-   * StreamingOutput.write(OutputStream) throws IOException (Servlet container
-   * shall return 500 - ResponseBuilder responsibility).
-   */
-  @Test
-  public void writeIOExceptionTest() throws Fault {
-    setProperty(REQUEST, buildRequest(GET, "IOExceptionTest"));
-    setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
-    invoke();
-  }
+    /*
+     * @testName: writeIOExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:174; JAXRS:JAVADOC:132;
+     * 
+     * @test_Strategy: Client send a request. Verify that
+     * StreamingOutput.write(OutputStream) throws IOException (Servlet container
+     * shall return 500 - ResponseBuilder responsibility).
+     */
+    @Test
+    public void writeIOExceptionTest() throws Fault {
+        setProperty(REQUEST, buildRequest(GET, "IOExceptionTest"));
+        setProperty(STATUS_CODE, getStatusCode(Status.INTERNAL_SERVER_ERROR));
+        invoke();
+    }
 
-  /*
-   * @testName: writeWebApplicationExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:175;
-   * 
-   * @test_Strategy: Client send a request. Verify that
-   * StreamingOutput.write(OutputStream) throws WebApplicationException works.
-   */
-  @Test
-  public void writeWebApplicationExceptionTest() throws Fault {
-    setProperty(REQUEST, buildRequest(GET, "Test2"));
-    setProperty(STATUS_CODE, getStatusCode(Status.NOT_FOUND));
-    invoke();
-  }
+    /*
+     * @testName: writeWebApplicationExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:175;
+     * 
+     * @test_Strategy: Client send a request. Verify that
+     * StreamingOutput.write(OutputStream) throws WebApplicationException works.
+     */
+    @Test
+    public void writeWebApplicationExceptionTest() throws Fault {
+        setProperty(REQUEST, buildRequest(GET, "Test2"));
+        setProperty(STATUS_CODE, getStatusCode(Status.NOT_FOUND));
+        invoke();
+    }
 }

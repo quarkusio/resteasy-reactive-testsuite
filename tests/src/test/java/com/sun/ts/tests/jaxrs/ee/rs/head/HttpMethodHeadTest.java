@@ -25,28 +25,28 @@ import javax.ws.rs.core.Response;
 @Path(value = "/HeadTest")
 public class HttpMethodHeadTest {
 
-  @HEAD
-  @Produces(value = "text/plain")
-  public Response headPlain() {
-    return Response.ok().header("CTS-HEAD", "text-plain").build();
-  }
+    @HEAD
+    @Produces(value = "text/plain")
+    public Response headPlain() {
+        return Response.ok().header("CTS-HEAD", "text-plain").build();
+    }
 
-  @HEAD
-  @Produces(value = "text/html")
-  public Response headHtml() {
-    return Response.ok().header("CTS-HEAD", "text-html").build();
-  }
+    @HEAD
+    @Produces(value = "text/html")
+    public Response headHtml() {
+        return Response.ok().header("CTS-HEAD", "text-html").build();
+    }
 
-  @HEAD
-  @Path(value = "/sub")
-  @Produces(value = "text/html")
-  public Response headSub() {
-    return Response.ok().header("CTS-HEAD", "sub-text-html").build();
-  }
+    @HEAD
+    @Path(value = "/sub")
+    @Produces(value = "text/html")
+    public Response headSub() {
+        return Response.ok().header("CTS-HEAD", "sub-text-html").build();
+    }
 
-  @GET
-  @Path(value = "/get")
-  public Response get() {
-    return Response.ok("HEAD-GET").header("CTS-HEAD", "get").build();
-  }
+    @GET
+    @Path(value = "/get")
+    public Response get() {
+        return Response.ok("HEAD-GET").header("CTS-HEAD", "get").build();
+    }
 }

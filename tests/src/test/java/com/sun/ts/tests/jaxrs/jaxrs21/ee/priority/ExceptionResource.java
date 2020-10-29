@@ -23,9 +23,9 @@ import javax.ws.rs.core.MediaType;
 
 @Path("exception")
 public class ExceptionResource {
-  @GET
-  @Produces(MediaType.TEXT_PLAIN)
-  public String get() {
-    throw new TckPriorityException();
-  }
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String get() {
+        throw new TckPriorityException();
+    }
 }

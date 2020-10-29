@@ -22,14 +22,14 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 public class StringBeanParamConverter implements ParamConverter<StringBean> {
 
-  @Override
-  public StringBean fromString(String value) throws IllegalArgumentException {
-    return new StringBean(value);
-  }
+    @Override
+    public StringBean fromString(String value) throws IllegalArgumentException {
+        return new StringBean(value);
+    }
 
-  @Override
-  public String toString(StringBean value) throws IllegalArgumentException {
-    return value.get();
-  }
+    @Override
+    public String toString(StringBean value) throws IllegalArgumentException {
+        return value.get();
+    }
 
 }

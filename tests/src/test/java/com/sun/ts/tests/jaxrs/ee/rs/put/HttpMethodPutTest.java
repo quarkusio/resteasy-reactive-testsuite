@@ -24,26 +24,26 @@ import javax.ws.rs.Produces;
 
 public class HttpMethodPutTest {
 
-  static String html_content = "<html>"
-      + "<head><title>CTS-get text/html</title></head>"
-      + "<body>CTS-put text/html</body></html>";
+    static String html_content = "<html>"
+            + "<head><title>CTS-get text/html</title></head>"
+            + "<body>CTS-put text/html</body></html>";
 
-  @PUT
-  @Produces(value = "text/plain")
-  public String getPlain() {
-    return "CTS-put text/plain";
-  }
+    @PUT
+    @Produces(value = "text/plain")
+    public String getPlain() {
+        return "CTS-put text/plain";
+    }
 
-  @PUT
-  @Produces(value = "text/html")
-  public String getHtml() {
-    return html_content;
-  }
+    @PUT
+    @Produces(value = "text/html")
+    public String getHtml() {
+        return html_content;
+    }
 
-  @PUT
-  @Path(value = "/sub")
-  @Produces(value = "text/html")
-  public String getSub() {
-    return html_content;
-  }
+    @PUT
+    @Path(value = "/sub")
+    @Produces(value = "text/html")
+    public String getSub() {
+        return html_content;
+    }
 }

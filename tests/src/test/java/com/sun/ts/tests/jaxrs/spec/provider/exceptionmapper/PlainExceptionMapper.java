@@ -21,11 +21,11 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class PlainExceptionMapper
-    implements javax.ws.rs.ext.ExceptionMapper<Exception> {
+        implements javax.ws.rs.ext.ExceptionMapper<Exception> {
 
-  @Override
-  public Response toResponse(Exception exception) {
-    return Response.ok(getClass().getName()).build();
-  }
+    @Override
+    public Response toResponse(Exception exception) {
+        return Response.ok(getClass().getName()).build();
+    }
 
 }

@@ -29,65 +29,65 @@ import javax.ws.rs.core.Response;
 @Path("resource")
 public class MediaResource {
 
-  @GET
-  @Path("responseoverride")
-  @Produces(MediaType.APPLICATION_FORM_URLENCODED)
-  public Response override() {
-    return Response.ok(" ").type(MediaType.APPLICATION_XML_TYPE).build();
-  }
+    @GET
+    @Path("responseoverride")
+    @Produces(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response override() {
+        return Response.ok(" ").type(MediaType.APPLICATION_XML_TYPE).build();
+    }
 
-  @GET
-  @Path("method")
-  @Produces(MediaType.APPLICATION_ATOM_XML)
-  public Response method() {
-    return Response.ok(" ").build();
-  }
+    @GET
+    @Path("method")
+    @Produces(MediaType.APPLICATION_ATOM_XML)
+    public Response method() {
+        return Response.ok(" ").build();
+    }
 
-  @GET
-  @Path("class")
-  public Response clazz() {
-    return Response.ok(" ").build();
-  }
+    @GET
+    @Path("class")
+    public Response clazz() {
+        return Response.ok(" ").build();
+    }
 
-  @POST
-  @Produces("text/plain")
-  public String plain() {
-    return MediaType.TEXT_PLAIN;
-  }
+    @POST
+    @Produces("text/plain")
+    public String plain() {
+        return MediaType.TEXT_PLAIN;
+    }
 
-  @POST
-  public String html(@Context Request req) {
-    return MediaType.TEXT_HTML;
-  }
+    @POST
+    public String html(@Context Request req) {
+        return MediaType.TEXT_HTML;
+    }
 
-  @POST
-  @Produces("text/xml")
-  public String xml() {
-    return MediaType.TEXT_XML;
-  }
+    @POST
+    @Produces("text/xml")
+    public String xml() {
+        return MediaType.TEXT_XML;
+    }
 
-  @POST
-  @Produces("application/*")
-  public String app() {
-    return MediaType.WILDCARD;
-  }
+    @POST
+    @Produces("application/*")
+    public String app() {
+        return MediaType.WILDCARD;
+    }
 
-  @POST
-  @Produces("application/xml")
-  public String appxml() {
-    return MediaType.APPLICATION_XML;
-  }
+    @POST
+    @Produces("application/xml")
+    public String appxml() {
+        return MediaType.APPLICATION_XML;
+    }
 
-  @POST
-  @Produces("image/png")
-  public String png() {
-    return "image/png";
-  }
+    @POST
+    @Produces("image/png")
+    public String png() {
+        return "image/png";
+    }
 
-  @POST
-  @Produces("image/*")
-  public String image() {
-    return "image/any";
-  }
+    @POST
+    @Produces("image/*")
+    public String image() {
+        return "image/any";
+    }
 
 }

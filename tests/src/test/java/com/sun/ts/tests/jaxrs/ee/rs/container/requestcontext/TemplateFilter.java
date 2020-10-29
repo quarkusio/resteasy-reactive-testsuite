@@ -28,71 +28,71 @@ import javax.ws.rs.core.Response.Status;
 
 public abstract class TemplateFilter implements ContainerRequestFilter {
 
-  public static final String OPERATION = "OPERATION";
+    public static final String OPERATION = "OPERATION";
 
-  public static final String PROPERTYNAME = "getSetProperty";
+    public static final String PROPERTYNAME = "getSetProperty";
 
-  protected ContainerRequestContext requestContext;
+    protected ContainerRequestContext requestContext;
 
-  @Override
-  public void filter(ContainerRequestContext requestContext)
-      throws IOException {
-    this.requestContext = requestContext;
-    String operation = getHeaderString();
-    Method[] methods = getClass().getMethods();
-    for (Method method : methods)
-      if (operation.equalsIgnoreCase(method.getName())) {
-        try {
-          method.invoke(this);
-          return;
-        } catch (Exception e) {
-          e.printStackTrace();
-          Response response = Response.status(Status.SERVICE_UNAVAILABLE)
-              .entity(e.getMessage()).build();
-          requestContext.abortWith(response);
-        }
-      }
-    Response response = Response.status(Status.SERVICE_UNAVAILABLE)
-        .entity("Operation " + operation + " not implemented").build();
-    requestContext.abortWith(response);
-  }
-
-  // ////////////////////////////////////////////////////////////////////
-  protected static <T> String collectionToString(Collection<T> collection) {
-    StringBuilder sb = new StringBuilder();
-    for (T item : collection) {
-      String replace = item.toString().toLowerCase().replace("_", "-")
-          .replace(" ", "");
-      sb.append(replace).append(" ");
+    @Override
+    public void filter(ContainerRequestContext requestContext)
+            throws IOException {
+        this.requestContext = requestContext;
+        String operation = getHeaderString();
+        Method[] methods = getClass().getMethods();
+        for (Method method : methods)
+            if (operation.equalsIgnoreCase(method.getName())) {
+                try {
+                    method.invoke(this);
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Response response = Response.status(Status.SERVICE_UNAVAILABLE)
+                            .entity(e.getMessage()).build();
+                    requestContext.abortWith(response);
+                }
+            }
+        Response response = Response.status(Status.SERVICE_UNAVAILABLE)
+                .entity("Operation " + operation + " not implemented").build();
+        requestContext.abortWith(response);
     }
-    return sb.toString();
-  }
 
-  protected void abortWithEntity(String entity) {
-    StringBuilder sb = new StringBuilder();
-    if (entity != null)
-      sb.append(entity).append(";");
-    sb.append(getHeaderString());
-    Response response = Response.ok(sb.toString()).build();
-    requestContext.abortWith(response);
-  }
+    // ////////////////////////////////////////////////////////////////////
+    protected static <T> String collectionToString(Collection<T> collection) {
+        StringBuilder sb = new StringBuilder();
+        for (T item : collection) {
+            String replace = item.toString().toLowerCase().replace("_", "-")
+                    .replace(" ", "");
+            sb.append(replace).append(" ");
+        }
+        return sb.toString();
+    }
 
-  protected boolean assertTrue(boolean conditionTrue, Object... msg) {
-    if (conditionTrue)
-      return false;
-    StringBuilder sb = new StringBuilder();
-    if (msg != null)
-      for (Object str : msg)
-        sb.append(str).append(" ");
-    Response response = Response.status(Status.NOT_ACCEPTABLE)
-        .entity(sb.toString()).build();
-    requestContext.abortWith(response);
-    return true;
-  }
+    protected void abortWithEntity(String entity) {
+        StringBuilder sb = new StringBuilder();
+        if (entity != null)
+            sb.append(entity).append(";");
+        sb.append(getHeaderString());
+        Response response = Response.ok(sb.toString()).build();
+        requestContext.abortWith(response);
+    }
 
-  // might be replaced with ctx.getStringHeader()
-  protected String getHeaderString() {
-    MultivaluedMap<String, String> headers = requestContext.getHeaders();
-    return headers.getFirst(OPERATION);
-  }
+    protected boolean assertTrue(boolean conditionTrue, Object... msg) {
+        if (conditionTrue)
+            return false;
+        StringBuilder sb = new StringBuilder();
+        if (msg != null)
+            for (Object str : msg)
+                sb.append(str).append(" ");
+        Response response = Response.status(Status.NOT_ACCEPTABLE)
+                .entity(sb.toString()).build();
+        requestContext.abortWith(response);
+        return true;
+    }
+
+    // might be replaced with ctx.getStringHeader()
+    protected String getHeaderString() {
+        MultivaluedMap<String, String> headers = requestContext.getHeaders();
+        return headers.getFirst(OPERATION);
+    }
 }

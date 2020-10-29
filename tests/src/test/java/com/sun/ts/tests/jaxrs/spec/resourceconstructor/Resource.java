@@ -30,83 +30,83 @@ import javax.ws.rs.ext.Providers;
 
 @Path("resource")
 public class Resource {
-  private HttpHeaders headers;
+    private HttpHeaders headers;
 
-  private UriInfo info;
+    private UriInfo info;
 
-  private Application application;
+    private Application application;
 
-  private Request request;
+    private Request request;
 
-  private Providers provider;
+    private Providers provider;
 
-  public Resource() {
-  }
+    public Resource() {
+    }
 
-  public Resource(@Context HttpHeaders headers) {
-    this.headers = headers;
-  }
+    public Resource(@Context HttpHeaders headers) {
+        this.headers = headers;
+    }
 
-  public Resource(@Context HttpHeaders headers, @Context UriInfo info) {
-    this.headers = headers;
-    this.info = info;
-  }
+    public Resource(@Context HttpHeaders headers, @Context UriInfo info) {
+        this.headers = headers;
+        this.info = info;
+    }
 
-  public Resource(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application) {
-    this.application = application;
-    this.headers = headers;
-    this.info = info;
-  }
+    public Resource(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application) {
+        this.application = application;
+        this.headers = headers;
+        this.info = info;
+    }
 
-  @Inject
-  public Resource(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request) {
-    this.application = application;
-    this.headers = headers;
-    this.info = info;
-    this.request = request;
-  }
+    @Inject
+    public Resource(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request) {
+        this.application = application;
+        this.headers = headers;
+        this.info = info;
+        this.request = request;
+    }
 
-  protected Resource(@Context HttpHeaders headers, @Context UriInfo info,
-      @Context Application application, @Context Request request,
-      @Context Providers provider) {
-    this.application = application;
-    this.headers = headers;
-    this.info = info;
-    this.request = request;
-    this.provider = provider;
-  }
+    protected Resource(@Context HttpHeaders headers, @Context UriInfo info,
+            @Context Application application, @Context Request request,
+            @Context Providers provider) {
+        this.application = application;
+        this.headers = headers;
+        this.info = info;
+        this.request = request;
+        this.provider = provider;
+    }
 
-  @GET
-  @Path("mostAttributes")
-  public Response isUsedConstructorWithMostAttributes() {
-    boolean ok = application != null;
-    ok &= headers != null;
-    ok &= info != null;
-    ok &= request != null;
-    ok &= provider == null;
-    Status status = ok ? Status.OK : Status.NOT_ACCEPTABLE;
-    return Response.status(status).build();
-  }
+    @GET
+    @Path("mostAttributes")
+    public Response isUsedConstructorWithMostAttributes() {
+        boolean ok = application != null;
+        ok &= headers != null;
+        ok &= info != null;
+        ok &= request != null;
+        ok &= provider == null;
+        Status status = ok ? Status.OK : Status.NOT_ACCEPTABLE;
+        return Response.status(status).build();
+    }
 
-  @GET
-  @Path("packageVisibility")
-  Response isAvailablePackageVisibility() {
-    return Response.ok().build();
-  }
+    @GET
+    @Path("packageVisibility")
+    Response isAvailablePackageVisibility() {
+        return Response.ok().build();
+    }
 
-  @GET
-  @Path("protectedVisibility")
-  protected Response isAvailabeProtectedVisibility() {
-    return Response.ok().build();
-  }
+    @GET
+    @Path("protectedVisibility")
+    protected Response isAvailabeProtectedVisibility() {
+        return Response.ok().build();
+    }
 
-  @SuppressWarnings({ "static-method" })
-  @GET
-  @Path("privateVisibility")
-  private Response isAvailabePrivateVisibility() {
-    return Response.ok().build();
-  }
+    @SuppressWarnings({ "static-method" })
+    @GET
+    @Path("privateVisibility")
+    private Response isAvailabePrivateVisibility() {
+        return Response.ok().build();
+    }
 
 }

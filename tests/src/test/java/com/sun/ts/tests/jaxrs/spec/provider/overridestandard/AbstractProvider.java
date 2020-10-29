@@ -17,20 +17,20 @@
 package com.sun.ts.tests.jaxrs.spec.provider.overridestandard;
 
 public abstract class AbstractProvider {
-  public long getLength() {
-    String name = getClass().getSimpleName().replace("Provider", "");
-    long size = "writer".length() + name.length();
-    return 2 * size;
-  }
+    public long getLength() {
+        String name = getClass().getSimpleName().replace("Provider", "");
+        long size = "writer".length() + name.length();
+        return 2 * size;
+    }
 
-  public String getWriterName() {
-    String name = getClass().getSimpleName().replace("Provider", "Writer");
-    return name;
-  }
+    public String getWriterName() {
+        String name = getClass().getSimpleName().replace("Provider", "Writer");
+        return name;
+    }
 
-  public String getReaderName() {
-    String name = getClass().getSimpleName().replace("Provider", "Reader");
-    return name;
-  }
+    public String getReaderName() {
+        String name = getClass().getSimpleName().replace("Provider", "Reader");
+        return name;
+    }
 
 }

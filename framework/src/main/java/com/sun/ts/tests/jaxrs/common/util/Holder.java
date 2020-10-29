@@ -18,20 +18,20 @@ package com.sun.ts.tests.jaxrs.common.util;
 
 public class Holder<TYPE> {
 
-  public Holder() {
-  };
+    public Holder() {
+    };
 
-  public Holder(TYPE type) {
-    set(type);
-  }
+    public Holder(TYPE type) {
+        set(type);
+    }
 
-  public TYPE value;
+    public TYPE value;
 
-  public void set(TYPE value) {
-    this.value = value;
-  }
+    public void set(TYPE value) {
+        this.value = value;
+    }
 
-  public TYPE get() {
-    return value;
-  }
+    public TYPE get() {
+        return value;
+    }
 }

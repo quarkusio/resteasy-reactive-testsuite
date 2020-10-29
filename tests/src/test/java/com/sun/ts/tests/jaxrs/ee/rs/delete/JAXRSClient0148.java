@@ -20,16 +20,17 @@
 package com.sun.ts.tests.jaxrs.ee.rs.delete;
 
 import java.util.function.Supplier;
+
+import javax.ws.rs.core.Response.Status;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
-import javax.ws.rs.core.Response.Status;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0148 extends JAXRSCommonClient {
@@ -43,98 +44,96 @@ public class JAXRSClient0148 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.delete.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.delete.HttpMethodDeleteTest.class
-                            );
+                                    com.sun.ts.tests.jaxrs.ee.rs.delete.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.delete.HttpMethodDeleteTest.class);
                 }
             });
 
+    private static final long serialVersionUID = 204493956987397506L;
 
-  private static final long serialVersionUID = 204493956987397506L;
+    public JAXRSClient0148() {
+        setContextRoot("/jaxrs_ee_rs_delete_web");
+    }
 
-  public JAXRSClient0148() {
-    setContextRoot("/jaxrs_ee_rs_delete_web");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0148().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0148().run(args);
-  }
+    /*
+     * @class.setup_props: webServerHost; webServerPort; ts_home;
+     */
+    /* Run test */
+    /*
+     * @testName: deleteTest1
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:6; JAXRS:JAVADOC:10;
+     * 
+     * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
+     * Verify that right Method is invoked.
+     */
+    @Test
+    public void deleteTest1() throws Fault {
+        setProperty(REQUEST_HEADERS, "Accept:text/plain");
+        setProperty(REQUEST, "DELETE " + getContextRoot() + "/DeleteTest HTTP/1.1");
+        setProperty(SEARCH_STRING, "CTS-Delete text/plain");
+        invoke();
+    }
 
-  /*
-   * @class.setup_props: webServerHost; webServerPort; ts_home;
-   */
-  /* Run test */
-  /*
-   * @testName: deleteTest1
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:6; JAXRS:JAVADOC:10;
-   * 
-   * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
-   * Verify that right Method is invoked.
-   */
-  @Test
-  public void deleteTest1() throws Fault {
-    setProperty(REQUEST_HEADERS, "Accept:text/plain");
-    setProperty(REQUEST, "DELETE " + getContextRoot() + "/DeleteTest HTTP/1.1");
-    setProperty(SEARCH_STRING, "CTS-Delete text/plain");
-    invoke();
-  }
+    /*
+     * @testName: deleteTest2
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:6; JAXRS:JAVADOC:10;
+     * 
+     * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
+     * Verify that right Method is invoked.
+     */
+    @Test
+    public void deleteTest2() throws Fault {
+        setProperty(REQUEST_HEADERS, "Accept:text/html");
+        setProperty(REQUEST,
+                "DELETE " + getContextRoot() + "/DeleteTest  HTTP/1.1");
+        setProperty(SEARCH_STRING, "CTS-Delete text/html");
+        invoke();
+    }
 
-  /*
-   * @testName: deleteTest2
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:6; JAXRS:JAVADOC:10;
-   * 
-   * @test_Strategy: Client invokes Delete on root resource at /DeleteTest;
-   * Verify that right Method is invoked.
-   */
-  @Test
-  public void deleteTest2() throws Fault {
-    setProperty(REQUEST_HEADERS, "Accept:text/html");
-    setProperty(REQUEST,
-        "DELETE " + getContextRoot() + "/DeleteTest  HTTP/1.1");
-    setProperty(SEARCH_STRING, "CTS-Delete text/html");
-    invoke();
-  }
+    /*
+     * @testName: deleteSubTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:20.1; JAXRS:JAVADOC:6; JAXRS:JAVADOC:10;
+     * JAXRS:JAVADOC:8;
+     * 
+     * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
+     * Verify that right Method is invoked.
+     */
+    @Test
+    public void deleteSubTest() throws Fault {
+        setProperty(REQUEST_HEADERS, "Accept:text/html");
+        setProperty(REQUEST,
+                "DELETE " + getContextRoot() + "/DeleteTest/sub HTTP/1.1");
+        setProperty(SEARCH_STRING, "CTS-Delete text/html");
+        invoke();
+    }
 
-  /*
-   * @testName: deleteSubTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:20.1; JAXRS:JAVADOC:6; JAXRS:JAVADOC:10;
-   * JAXRS:JAVADOC:8;
-   * 
-   * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
-   * Verify that right Method is invoked.
-   */
-  @Test
-  public void deleteSubTest() throws Fault {
-    setProperty(REQUEST_HEADERS, "Accept:text/html");
-    setProperty(REQUEST,
-        "DELETE " + getContextRoot() + "/DeleteTest/sub HTTP/1.1");
-    setProperty(SEARCH_STRING, "CTS-Delete text/html");
-    invoke();
-  }
-
-  /*
-   * @testName: deleteSubTest1
-   * 
-   * @assertion_ids: JAXRS:SPEC:20.1; JAXRS:SPEC:21; JAXRS:SPEC:25.6;
-   * JAXRS:JAVADOC:6; JAXRS:JAVADOC:10; JAXRS:JAVADOC:8;
-   * 
-   * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
-   * Verify that no Method is invoked.
-   */
-  @Test
-  public void deleteSubTest1() throws Fault {
-    setProperty(REQUEST_HEADERS, "Accept:text/plain");
-    setProperty(REQUEST,
-        "DELETE " + getContextRoot() + "/DeleteTest/sub HTTP/1.1");
-    setProperty(STATUS_CODE, getStatusCode(Status.NOT_ACCEPTABLE));
-    invoke();
-  }
+    /*
+     * @testName: deleteSubTest1
+     * 
+     * @assertion_ids: JAXRS:SPEC:20.1; JAXRS:SPEC:21; JAXRS:SPEC:25.6;
+     * JAXRS:JAVADOC:6; JAXRS:JAVADOC:10; JAXRS:JAVADOC:8;
+     * 
+     * @test_Strategy: Client invokes Delete on a sub resource at /DeleteTest/sub;
+     * Verify that no Method is invoked.
+     */
+    @Test
+    public void deleteSubTest1() throws Fault {
+        setProperty(REQUEST_HEADERS, "Accept:text/plain");
+        setProperty(REQUEST,
+                "DELETE " + getContextRoot() + "/DeleteTest/sub HTTP/1.1");
+        setProperty(STATUS_CODE, getStatusCode(Status.NOT_ACCEPTABLE));
+        invoke();
+    }
 }

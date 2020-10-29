@@ -24,11 +24,11 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Priority(10)
 public class ExceptionMapperOne
-    implements ExceptionMapper<TckPriorityException> {
+        implements ExceptionMapper<TckPriorityException> {
 
-  @Override
-  public Response toResponse(TckPriorityException exception) {
-    return Response.ok().entity(getClass().getName()).build();
-  }
+    @Override
+    public Response toResponse(TckPriorityException exception) {
+        return Response.ok().entity(getClass().getName()).build();
+    }
 
 }

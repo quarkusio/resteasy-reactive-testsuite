@@ -26,34 +26,34 @@ import com.sun.ts.tests.jaxrs.common.impl.SecurityContextImpl;
 
 @Provider
 public class ResponseFilter extends ResponseTemplateFilter {
-  public void abortWith() {
-    try {
-      requestContext.abortWith(Response.ok().build());
-      setEntity(NOEXCEPTION);
-    } catch (IllegalStateException e) {
-      setEntity(ISEXCEPTION);
+    public void abortWith() {
+        try {
+            requestContext.abortWith(Response.ok().build());
+            setEntity(NOEXCEPTION);
+        } catch (IllegalStateException e) {
+            setEntity(ISEXCEPTION);
+        }
     }
-  }
 
-  public void setEntityStream() {
-    try {
-      ByteArrayInputStream bais = new ByteArrayInputStream(
-          NOEXCEPTION.getBytes());
-      requestContext.setEntityStream(bais);
-      setEntity(NOEXCEPTION);
-    } catch (IllegalStateException e) {
-      setEntity(ISEXCEPTION);
+    public void setEntityStream() {
+        try {
+            ByteArrayInputStream bais = new ByteArrayInputStream(
+                    NOEXCEPTION.getBytes());
+            requestContext.setEntityStream(bais);
+            setEntity(NOEXCEPTION);
+        } catch (IllegalStateException e) {
+            setEntity(ISEXCEPTION);
+        }
     }
-  }
 
-  public void setSecurityContext() {
-    SecurityContext ctx = new SecurityContextImpl();
-    try {
-      requestContext.setSecurityContext(ctx);
-      setEntity(NOEXCEPTION);
-    } catch (IllegalStateException e) {
-      setEntity(ISEXCEPTION);
+    public void setSecurityContext() {
+        SecurityContext ctx = new SecurityContextImpl();
+        try {
+            requestContext.setSecurityContext(ctx);
+            setEntity(NOEXCEPTION);
+        } catch (IllegalStateException e) {
+            setEntity(ISEXCEPTION);
+        }
     }
-  }
 
 }

@@ -26,15 +26,14 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.HttpMethodBase;
-import org.apache.commons.httpclient.HttpVersion;
-import org.apache.commons.httpclient.methods.DeleteMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.HeadMethod;
-import org.apache.commons.httpclient.methods.OptionsMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.PutMethod;
+import org.apache.http.ProtocolVersion;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpHead;
+import org.apache.http.client.methods.HttpOptions;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpRequestBase;
 
 /**
  * Simple factory class which returns HttpMethod implementations based on a
@@ -47,131 +46,119 @@ import org.apache.commons.httpclient.methods.PutMethod;
 
 public class AdaptiveMethodFactory {
 
-  /**
-   * HTTP GET
-   */
-  private static final String GET_METHOD = "GET";
+    /**
+     * HTTP GET
+     */
+    private static final String GET_METHOD = "GET";
 
-  /**
-   * HTTP POST
-   */
-  private static final String POST_METHOD = "POST";
+    /**
+     * HTTP POST
+     */
+    private static final String POST_METHOD = "POST";
 
-  /**
-   * HTTP HEAD
-   */
-  private static final String HEAD_METHOD = "HEAD";
+    /**
+     * HTTP HEAD
+     */
+    private static final String HEAD_METHOD = "HEAD";
 
-  /**
-   * HTTP PUT
-   */
-  private static final String PUT_METHOD = "PUT";
+    /**
+     * HTTP PUT
+     */
+    private static final String PUT_METHOD = "PUT";
 
-  /**
-   * HTTP DELETE
-   */
-  private static final String DELETE_METHOD = "DELETE";
+    /**
+     * HTTP DELETE
+     */
+    private static final String DELETE_METHOD = "DELETE";
 
-  /**
-   * HTTP OPTIONS
-   */
-  private static final String OPTIONS_METHOD = "OPTIONS";
+    /**
+     * HTTP OPTIONS
+     */
+    private static final String OPTIONS_METHOD = "OPTIONS";
 
-  private static final Map<String, Class<? extends HttpMethodBase>> METHOD_MAP = new HashMap<>();
-  static {
-    METHOD_MAP.put(GET_METHOD, GetMethod.class);
-    METHOD_MAP.put(POST_METHOD, PostMethod.class);
-    METHOD_MAP.put(PUT_METHOD, PutMethod.class);
-    METHOD_MAP.put(DELETE_METHOD, DeleteMethod.class);
-    METHOD_MAP.put(HEAD_METHOD, HeadMethod.class);
-    METHOD_MAP.put(OPTIONS_METHOD, OptionsMethod.class);
-  }
-
-  /**
-   * Private constructor as all interaction with this class is through the
-   * getInstance() method.
-   */
-  private AdaptiveMethodFactory() {
-  }
-
-  /*
-   * public methods
-   * ========================================================================
-   */
-
-  public static final Map<String, Class<? extends HttpMethodBase>> getMethodMap() {
-    return METHOD_MAP;
-  }
-
-  /**
-   * Returns the approriate request method based on the provided request string.
-   * The request must be in the format of METHOD URI_PATH HTTP_VERSION, i.e. GET
-   * /index.jsp HTTP/1.1.
-   *
-   * @return HttpMethod based in request.
-   */
-  public static HttpMethod getInstance(String request) {
-    StringTokenizer st = new StringTokenizer(request);
-    String method;
-    String query = null;
-    String uri;
-    String version;
-    try {
-      method = st.nextToken();
-      uri = st.nextToken();
-      version = st.nextToken();
-    } catch (NoSuchElementException nsee) {
-      throw new IllegalArgumentException(
-          "Request provided: " + request + " is malformed.");
+    private static final Map<String, Class<? extends HttpRequestBase>> METHOD_MAP = new HashMap<>();
+    static {
+        METHOD_MAP.put(GET_METHOD, HttpGet.class);
+        METHOD_MAP.put(POST_METHOD, HttpPost.class);
+        METHOD_MAP.put(PUT_METHOD, HttpPut.class);
+        METHOD_MAP.put(DELETE_METHOD, HttpDelete.class);
+        METHOD_MAP.put(HEAD_METHOD, HttpHead.class);
+        METHOD_MAP.put(OPTIONS_METHOD, HttpOptions.class);
     }
 
-    // check to see if there is a query string appended
-    // to the URI
-    int queryStart = uri.indexOf('?');
-    if (queryStart != -1) {
-      query = uri.substring(queryStart + 1);
-      uri = uri.substring(0, queryStart);
+    /**
+     * Private constructor as all interaction with this class is through the
+     * getInstance() method.
+     */
+    private AdaptiveMethodFactory() {
     }
 
-    HttpMethodBase req;
-    Class<? extends HttpMethodBase> methodClass = METHOD_MAP.get(method);
-    if (methodClass == null) {
-      throw new IllegalArgumentException("Invalid method: " + method);
+    /*
+     * public methods
+     * ========================================================================
+     */
+
+    public static final Map<String, Class<? extends HttpRequestBase>> getMethodMap() {
+        return METHOD_MAP;
     }
 
-    Constructor<? extends HttpMethodBase> constructor;
-    try {
-      constructor = methodClass.getDeclaredConstructor(String.class);
-      req = constructor.newInstance(uri);
-    } catch (Exception e) {
-      throw new IllegalStateException(e);
+    /**
+     * Returns the approriate request method based on the provided request string.
+     * The request must be in the format of METHOD URI_PATH HTTP_VERSION, i.e. GET
+     * /index.jsp HTTP/1.1.
+     *
+     * @return HttpMethod based in request.
+     */
+    public static HttpRequestBase getInstance(String request) {
+        StringTokenizer st = new StringTokenizer(request);
+        String method;
+        String query = null;
+        String uri;
+        String version;
+        try {
+            method = st.nextToken();
+            uri = st.nextToken();
+            version = st.nextToken();
+        } catch (NoSuchElementException nsee) {
+            throw new IllegalArgumentException(
+                    "Request provided: " + request + " is malformed.");
+        }
+
+        HttpRequestBase req;
+        Class<? extends HttpRequestBase> methodClass = METHOD_MAP.get(method);
+        if (methodClass == null) {
+            throw new IllegalArgumentException("Invalid method: " + method);
+        }
+
+        Constructor<? extends HttpRequestBase> constructor;
+        try {
+            constructor = methodClass.getDeclaredConstructor(String.class);
+            req = constructor.newInstance(uri);
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+
+        setHttpVersion(version, req);
+
+        return req;
     }
 
-    setHttpVersion(version, req);
+    /*
+     * private methods
+     * ========================================================================
+     */
 
-    if (query != null) {
-      req.setQueryString(query);
+    /**
+     * Sets the HTTP version for the method in question.
+     *
+     * @param version
+     *        HTTP version to use for this request
+     * @param method
+     *        method to adjust HTTP version
+     */
+    private static void setHttpVersion(String version, HttpRequestBase method) {
+        final String oneOne = "HTTP/1.1";
+        method.setProtocolVersion(
+                version.equals(oneOne) ? new ProtocolVersion("HTTP", 1, 1) : new ProtocolVersion("HTTP", 1, 0));
     }
-
-    return req;
-  }
-
-  /*
-   * private methods
-   * ========================================================================
-   */
-
-  /**
-   * Sets the HTTP version for the method in question.
-   *
-   * @param version
-   *          HTTP version to use for this request
-   * @param method
-   *          method to adjust HTTP version
-   */
-  private static void setHttpVersion(String version, HttpMethodBase method) {
-    final String oneOne = "HTTP/1.1";
-    method.getParams().setVersion(
-        (version.equals(oneOne) ? HttpVersion.HTTP_1_1 : HttpVersion.HTTP_1_0));
-  }
 }

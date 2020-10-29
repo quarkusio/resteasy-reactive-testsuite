@@ -23,17 +23,17 @@ import javax.ws.rs.ext.ParamConverter.Lazy;
 
 @Lazy
 public class AtomicIntegerLazyParamConverter
-    implements ParamConverter<AtomicInteger> {
+        implements ParamConverter<AtomicInteger> {
 
-  @Override
-  public AtomicInteger fromString(String value)
-      throws IllegalArgumentException {
-    return new AtomicInteger(Integer.parseInt(value));
-  }
+    @Override
+    public AtomicInteger fromString(String value)
+            throws IllegalArgumentException {
+        return new AtomicInteger(Integer.parseInt(value));
+    }
 
-  @Override
-  public String toString(AtomicInteger value) throws IllegalArgumentException {
-    return String.valueOf(value.get());
-  }
+    @Override
+    public String toString(AtomicInteger value) throws IllegalArgumentException {
+        return String.valueOf(value.get());
+    }
 
 }

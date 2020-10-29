@@ -25,19 +25,19 @@ import javax.xml.bind.Validator;
 @SuppressWarnings("deprecation")
 public class SomeJaxbContext extends JAXBContext {
 
-  @Override
-  public Marshaller createMarshaller() throws JAXBException {
-    return new SomeMarshaller();
-  }
+    @Override
+    public Marshaller createMarshaller() throws JAXBException {
+        return new SomeMarshaller();
+    }
 
-  @Override
-  public Unmarshaller createUnmarshaller() throws JAXBException {
-    return new SomeUnmarshaller();
-  }
+    @Override
+    public Unmarshaller createUnmarshaller() throws JAXBException {
+        return new SomeUnmarshaller();
+    }
 
-  @Override
-  public Validator createValidator() throws JAXBException {
-    return null;
-  }
+    @Override
+    public Validator createValidator() throws JAXBException {
+        return null;
+    }
 
 }

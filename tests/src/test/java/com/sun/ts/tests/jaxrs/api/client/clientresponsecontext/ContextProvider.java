@@ -31,20 +31,20 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class ContextProvider implements ClientResponseFilter {
 
-  protected void checkFilterContext(ClientRequestContext requestContext,
-      ClientResponseContext responseContext) throws Fault {
-    throw new Fault("this TCK method is not implemented yet");
-  }
-
-  @Override
-  public void filter(ClientRequestContext requestContext,
-      ClientResponseContext responseContext) throws IOException {
-    try {
-      checkFilterContext(requestContext, responseContext);
-    } catch (Fault e) {
-      throw new IOException(e);
+    protected void checkFilterContext(ClientRequestContext requestContext,
+            ClientResponseContext responseContext) throws Fault {
+        throw new Fault("this TCK method is not implemented yet");
     }
 
-  }
+    @Override
+    public void filter(ClientRequestContext requestContext,
+            ClientResponseContext responseContext) throws IOException {
+        try {
+            checkFilterContext(requestContext, responseContext);
+        } catch (Fault e) {
+            throw new IOException(e);
+        }
+
+    }
 
 }

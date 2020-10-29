@@ -23,14 +23,14 @@ import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(ArrayListEntityProvider.class);
-    resources.add(FirstReaderInterceptor.class);
-    resources.add(FirstWriterInterceptor.class);
-    resources.add(SecondWriterInterceptor.class);
-    resources.add(SecondReaderInterceptor.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(ArrayListEntityProvider.class);
+        resources.add(FirstReaderInterceptor.class);
+        resources.add(FirstWriterInterceptor.class);
+        resources.add(SecondWriterInterceptor.class);
+        resources.add(SecondReaderInterceptor.class);
+        return resources;
+    }
 }

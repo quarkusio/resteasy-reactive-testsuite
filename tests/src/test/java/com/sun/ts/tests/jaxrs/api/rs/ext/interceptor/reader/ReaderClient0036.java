@@ -33,67 +33,67 @@ import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
  * @param <CONTEXTOPERATION>
  */
 public abstract class ReaderClient0036<CONTEXTOPERATION extends Enum<?>>
-    extends JaxrsCommonClient {
+        extends JaxrsCommonClient {
 
-  private static final long serialVersionUID = 7145627888730121260L;
+    private static final long serialVersionUID = 7145627888730121260L;
 
-  /**
-   * Create response to be faked as returned from server
-   */
-  protected Response.ResponseBuilder createResponse(CONTEXTOPERATION op) {
-    Response.ResponseBuilder builder = Response.ok()
-        .header(TemplateInterceptorBody.OPERATION, op.name())
-        .entity(TemplateInterceptorBody.ENTITY);
-    return builder;
-  }
-
-  /**
-   * Create a request filter to be aborted with given fake response simulating
-   * the resource from a request
-   * 
-   * @param response
-   * @return
-   */
-  protected static ClientRequestFilter createRequestFilter(
-      final Response response) {
-    ClientRequestFilter outFilter = new ClientRequestFilter() {
-
-      @Override
-      public void filter(ClientRequestContext context) throws IOException {
-        Response r;
-        if (response == null)
-          r = Response.ok().build();
-        else
-          r = response;
-        context.abortWith(r);
-      }
-    };
-    return outFilter;
-  }
-
-  /**
-   * Invoke and convert IOException to Fault
-   */
-  protected void invoke() throws Fault {
-    try {
-      setProperty(Property.REQUEST, buildRequest(Request.GET, "404URL/"));
-      super.invoke();
-    } catch (Exception cause) {
-      if (cause instanceof IOException)
-        throw new Fault(cause.getMessage());
-      else
-        throw new Fault(cause);
+    /**
+     * Create response to be faked as returned from server
+     */
+    protected Response.ResponseBuilder createResponse(CONTEXTOPERATION op) {
+        Response.ResponseBuilder builder = Response.ok()
+                .header(TemplateInterceptorBody.OPERATION, op.name())
+                .entity(TemplateInterceptorBody.ENTITY);
+        return builder;
     }
-  }
 
-  /**
-   * Register providers to client configuration
-   * 
-   * @param response
-   *          ClientRequestFilter#abortWith response
-   */
-  protected void addProviders(Response response) throws Fault {
-    ClientRequestFilter requestFilter = createRequestFilter(response);
-    addProvider(requestFilter);
-  }
+    /**
+     * Create a request filter to be aborted with given fake response simulating
+     * the resource from a request
+     * 
+     * @param response
+     * @return
+     */
+    protected static ClientRequestFilter createRequestFilter(
+            final Response response) {
+        ClientRequestFilter outFilter = new ClientRequestFilter() {
+
+            @Override
+            public void filter(ClientRequestContext context) throws IOException {
+                Response r;
+                if (response == null)
+                    r = Response.ok().build();
+                else
+                    r = response;
+                context.abortWith(r);
+            }
+        };
+        return outFilter;
+    }
+
+    /**
+     * Invoke and convert IOException to Fault
+     */
+    protected void invoke() throws Fault {
+        try {
+            setProperty(Property.REQUEST, buildRequest(Request.GET, "404URL/"));
+            super.invoke();
+        } catch (Exception cause) {
+            if (cause instanceof IOException)
+                throw new Fault(cause.getMessage());
+            else
+                throw new Fault(cause);
+        }
+    }
+
+    /**
+     * Register providers to client configuration
+     * 
+     * @param response
+     *        ClientRequestFilter#abortWith response
+     */
+    protected void addProviders(Response response) throws Fault {
+        ClientRequestFilter requestFilter = createRequestFilter(response);
+        addProvider(requestFilter);
+    }
 }

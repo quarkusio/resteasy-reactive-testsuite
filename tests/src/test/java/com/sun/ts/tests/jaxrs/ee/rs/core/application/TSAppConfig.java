@@ -16,41 +16,41 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.core.application;
 
-import javax.ws.rs.core.Application;
-
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.HashSet;
 import java.util.TreeMap;
 
+import javax.ws.rs.core.Application;
+
 public class TSAppConfig extends Application {
-  static final String[] KEYS = { "key1", "key2" };
+    static final String[] KEYS = { "key1", "key2" };
 
-  static final String[] VALUES = { "value1", "value2" };
+    static final String[] VALUES = { "value1", "value2" };
 
-  private Map<String, Object> properties = new TreeMap<String, Object>();
+    private Map<String, Object> properties = new TreeMap<String, Object>();
 
-  public TSAppConfig() {
-    properties.put(KEYS[0], VALUES[0]);
-    properties.put(KEYS[1], VALUES[1]);
-  }
+    public TSAppConfig() {
+        properties.put(KEYS[0], VALUES[0]);
+        properties.put(KEYS[1], VALUES[1]);
+    }
 
-  @Override
-  public Set<Object> getSingletons() {
-    Set<Object> set = new HashSet<Object>();
-    set.add(new ApplicationHolderSingleton(this));
-    return set;
-  }
+    @Override
+    public Set<Object> getSingletons() {
+        Set<Object> set = new HashSet<Object>();
+        set.add(new ApplicationHolderSingleton(this));
+        return set;
+    }
 
-  @Override
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(ApplicationServlet.class);
-    return resources;
-  }
+    @Override
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(ApplicationServlet.class);
+        return resources;
+    }
 
-  @Override
-  public Map<String, Object> getProperties() {
-    return properties;
-  }
+    @Override
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
 }

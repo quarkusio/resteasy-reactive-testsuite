@@ -25,58 +25,58 @@ import javax.ws.rs.core.MediaType;
 
 @Path("resource")
 public class MainResource {
-  public static final String ID = "resource";
+    public static final String ID = "resource";
 
-  @GET
-  public String main() {
-    return ID;
-  }
+    @GET
+    public String main() {
+        return ID;
+    }
 
-  @Path(MainSubResource.ID)
-  @GET
-  public String sub() {
-    return MainResource.class.getSimpleName();
-  }
+    @Path(MainSubResource.ID)
+    @GET
+    public String sub() {
+        return MainResource.class.getSimpleName();
+    }
 
-  @GET
-  @Path("locator/locator/locator")
-  public String locator() {
-    return MainResourceLocator.class.getSimpleName();
-  }
+    @GET
+    @Path("locator/locator/locator")
+    public String locator() {
+        return MainResourceLocator.class.getSimpleName();
+    }
 
-  @GET
-  @Path("{id}")
-  public String id() {
-    return ID;
-  }
+    @GET
+    @Path("{id}")
+    public String id() {
+        return ID;
+    }
 
-  @POST
-  @Path("consumes")
-  @Consumes(MediaType.TEXT_PLAIN)
-  public String consumes() {
-    return getClass().getSimpleName();
-  }
+    @POST
+    @Path("consumes")
+    @Consumes(MediaType.TEXT_PLAIN)
+    public String consumes() {
+        return getClass().getSimpleName();
+    }
 
-  @Path("consumeslocator")
-  public MainResourceLocator consumeslocator() {
-    return new MainResourceLocator();
-  }
+    @Path("consumeslocator")
+    public MainResourceLocator consumeslocator() {
+        return new MainResourceLocator();
+    }
 
-  @POST
-  @Path("produces")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String produces() {
-    return getClass().getSimpleName();
-  }
+    @POST
+    @Path("produces")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String produces() {
+        return getClass().getSimpleName();
+    }
 
-  @Path("produceslocator")
-  public MainResourceLocator produceslocator() {
-    return new MainResourceLocator();
-  }
+    @Path("produceslocator")
+    public MainResourceLocator produceslocator() {
+        return new MainResourceLocator();
+    }
 
-  @Path("l2locator")
-  public Object l2locator() {
-    return new MainResourceLocator();
-  }
+    @Path("l2locator")
+    public Object l2locator() {
+        return new MainResourceLocator();
+    }
 
 }

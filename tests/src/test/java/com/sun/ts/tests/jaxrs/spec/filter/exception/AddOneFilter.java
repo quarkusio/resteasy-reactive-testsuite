@@ -28,14 +28,14 @@ import javax.ws.rs.ext.Provider;
 @Priority(100)
 public class AddOneFilter extends AbstractAddFilter {
 
-  public AddOneFilter() {
-    super(1000);
-  }
+    public AddOneFilter() {
+        super(1000);
+    }
 
-  @Override
-  public void filter(ContainerRequestContext requestContext,
-      ContainerResponseContext responseContext) throws IOException {
-    super.filter(requestContext, responseContext);
-  }
+    @Override
+    public void filter(ContainerRequestContext requestContext,
+            ContainerResponseContext responseContext) throws IOException {
+        super.filter(requestContext, responseContext);
+    }
 
 }

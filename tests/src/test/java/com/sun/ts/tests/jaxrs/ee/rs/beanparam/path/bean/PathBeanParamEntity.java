@@ -33,37 +33,37 @@ import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString;
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf;
 
 public class PathBeanParamEntity {
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @PathParam(Constants.PARAM_ENTITY_WITH_CONSTRUCTOR)
-  public ParamEntityWithConstructor paramEntityWithConstructor;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @PathParam(Constants.PARAM_ENTITY_WITH_CONSTRUCTOR)
+    public ParamEntityWithConstructor paramEntityWithConstructor;
 
-  @Encoded
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @PathParam(Constants.PARAM_ENTITY_WITH_FROMSTRING)
-  public ParamEntityWithFromString paramEntityWithFromString;
+    @Encoded
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @PathParam(Constants.PARAM_ENTITY_WITH_FROMSTRING)
+    public ParamEntityWithFromString paramEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @PathParam(Constants.PARAM_ENTITY_WITH_VALUEOF)
-  public ParamEntityWithValueOf paramEntityWithValueOf;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @PathParam(Constants.PARAM_ENTITY_WITH_VALUEOF)
+    public ParamEntityWithValueOf paramEntityWithValueOf;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @PathParam(Constants.SET_PARAM_ENTITY_WITH_FROMSTRING)
-  public Set<ParamEntityWithFromString> setParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @PathParam(Constants.SET_PARAM_ENTITY_WITH_FROMSTRING)
+    public Set<ParamEntityWithFromString> setParamEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @PathParam(Constants.SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING)
-  public SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @PathParam(Constants.SORTED_SET_PARAM_ENTITY_WITH_FROMSTRING)
+    public SortedSet<ParamEntityWithFromString> sortedSetParamEntityWithFromString;
 
-  @DefaultValue(Constants.DEFAULT_VALUE)
-  @PathParam(Constants.LIST_PARAM_ENTITY_WITH_FROMSTRING)
-  public List<ParamEntityWithFromString> listParamEntityWithFromString;
+    @DefaultValue(Constants.DEFAULT_VALUE)
+    @PathParam(Constants.LIST_PARAM_ENTITY_WITH_FROMSTRING)
+    public List<ParamEntityWithFromString> listParamEntityWithFromString;
 
-  @PathParam(Constants.ENTITY_THROWING_WEBAPPLICATIONEXCEPTION)
-  public ParamEntityThrowingWebApplicationException entityThrowingWebApplicationException;
+    @PathParam(Constants.ENTITY_THROWING_WEBAPPLICATIONEXCEPTION)
+    public ParamEntityThrowingWebApplicationException entityThrowingWebApplicationException;
 
-  @PathParam(Constants.ENTITY_THROWING_EXCEPTION_BY_NAME)
-  public ParamEntityThrowingExceptionGivenByName entityThrowingExceptionGivenByName;
+    @PathParam(Constants.ENTITY_THROWING_EXCEPTION_BY_NAME)
+    public ParamEntityThrowingExceptionGivenByName entityThrowingExceptionGivenByName;
 
-  @BeanParam
-  public InnerPathBeanParamEntity inner;
+    @BeanParam
+    public InnerPathBeanParamEntity inner;
 }

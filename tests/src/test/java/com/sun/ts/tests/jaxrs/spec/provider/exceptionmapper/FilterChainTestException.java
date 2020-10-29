@@ -18,6 +18,6 @@ package com.sun.ts.tests.jaxrs.spec.provider.exceptionmapper;
 
 public class FilterChainTestException extends RuntimeException {
 
-  private static final long serialVersionUID = -1713993194299900848L;
+    private static final long serialVersionUID = -1713993194299900848L;
 
 }

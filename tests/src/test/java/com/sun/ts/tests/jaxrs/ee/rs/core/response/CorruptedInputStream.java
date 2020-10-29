@@ -22,34 +22,34 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CorruptedInputStream extends ByteArrayInputStream {
 
-  AtomicInteger atomic;
+    AtomicInteger atomic;
 
-  private boolean corrupted = false;
+    private boolean corrupted = false;
 
-  public static final int CLOSEVALUE = 999;
+    public static final int CLOSEVALUE = 999;
 
-  public static final String IOETEXT = "CorruptedInputStream tck test IOException";
+    public static final String IOETEXT = "CorruptedInputStream tck test IOException";
 
-  public CorruptedInputStream(byte[] buf, AtomicInteger atomic) {
-    super(buf);
-    this.atomic = atomic;
-  }
-
-  @Override
-  public void close() throws IOException {
-    if (corrupted) {
-      atomic.set(CLOSEVALUE);
-      throw new IOException(IOETEXT);
+    public CorruptedInputStream(byte[] buf, AtomicInteger atomic) {
+        super(buf);
+        this.atomic = atomic;
     }
-    super.close();
-  }
 
-  public boolean isCorrupted() {
-    return corrupted;
-  }
+    @Override
+    public void close() throws IOException {
+        if (corrupted) {
+            atomic.set(CLOSEVALUE);
+            throw new IOException(IOETEXT);
+        }
+        super.close();
+    }
 
-  public void setCorrupted(boolean corrupted) {
-    this.corrupted = corrupted;
-  }
+    public boolean isCorrupted() {
+        return corrupted;
+    }
+
+    public void setCorrupted(boolean corrupted) {
+        this.corrupted = corrupted;
+    }
 
 }

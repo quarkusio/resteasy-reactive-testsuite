@@ -31,36 +31,36 @@ import javax.ws.rs.ext.Provider;
 @Produces("application/java")
 @Provider
 public class AppJavaEntityWriter implements MessageBodyWriter<EntityForWriter> {
-  // Do not inherit
-  private static boolean isWritable = false;
+    // Do not inherit
+    private static boolean isWritable = false;
 
-  public static void setWritable(boolean bool) {
-    isWritable = bool;
-  }
+    public static void setWritable(boolean bool) {
+        isWritable = bool;
+    }
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    AppXmlObjectWriter.addClass(getClass().getSimpleName());
-    return isWritable;
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        AppXmlObjectWriter.addClass(getClass().getSimpleName());
+        return isWritable;
+    }
 
-  @Override
-  public long getSize(EntityForWriter t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    AppXmlObjectWriter.addClass(getClass().getSimpleName().toUpperCase());
-    return AppXmlObjectWriter.writerSet.length();
-  }
+    @Override
+    public long getSize(EntityForWriter t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        AppXmlObjectWriter.addClass(getClass().getSimpleName().toUpperCase());
+        return AppXmlObjectWriter.writerSet.length();
+    }
 
-  @Override
-  public void writeTo(EntityForWriter t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    // in case getSize() is not used,
-    // otherwise these additional characters are omitted.
-    getSize(t, type, genericType, annotations, mediaType);
-    entityStream.write(AppXmlObjectWriter.writerSet.toString().getBytes());
-  }
+    @Override
+    public void writeTo(EntityForWriter t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        // in case getSize() is not used,
+        // otherwise these additional characters are omitted.
+        getSize(t, type, genericType, annotations, mediaType);
+        entityStream.write(AppXmlObjectWriter.writerSet.toString().getBytes());
+    }
 
 }

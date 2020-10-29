@@ -31,139 +31,139 @@ import com.sun.ts.tests.jaxrs.common.impl.TRACE;
 @Path("resource")
 public class Resource {
 
-  public static final long SLEEP_TIME = 2000L;
+    public static final long SLEEP_TIME = 2000L;
 
-  @GET
-  @Path("get")
-  public String get() {
-    return "get";
-  }
+    @GET
+    @Path("get")
+    public String get() {
+        return "get";
+    }
 
-  @GET
-  @Path("getandwait")
-  public String getAndWait() throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return "get";
-  }
+    @GET
+    @Path("getandwait")
+    public String getAndWait() throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return "get";
+    }
 
-  @GET
-  @Path("getnotok")
-  public Response getReturnsStatusNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @GET
+    @Path("getnotok")
+    public Response getReturnsStatusNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @HEAD
-  @Path("head")
-  public String head() {
-    return "head";
-  }
+    @HEAD
+    @Path("head")
+    public String head() {
+        return "head";
+    }
 
-  @HEAD
-  @Path("headandwait")
-  public String headAndWait() throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return "head";
-  }
+    @HEAD
+    @Path("headandwait")
+    public String headAndWait() throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return "head";
+    }
 
-  @HEAD
-  @Path("headnotok")
-  public Response headReturnsStatusNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @HEAD
+    @Path("headnotok")
+    public Response headReturnsStatusNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @PUT
-  @Path("put")
-  public String put(String value) {
-    return value;
-  }
+    @PUT
+    @Path("put")
+    public String put(String value) {
+        return value;
+    }
 
-  @PUT
-  @Path("putandwait")
-  public String putAndWait(String value) throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return value;
-  }
+    @PUT
+    @Path("putandwait")
+    public String putAndWait(String value) throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return value;
+    }
 
-  @PUT
-  @Path("putnotok")
-  public Response putReturnsStatusNotOk(String value) {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @PUT
+    @Path("putnotok")
+    public Response putReturnsStatusNotOk(String value) {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @POST
-  @Path("post")
-  public String post(String value) {
-    return value;
-  }
+    @POST
+    @Path("post")
+    public String post(String value) {
+        return value;
+    }
 
-  @POST
-  @Path("postandwait")
-  public String postAndWait(String value) throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return value;
-  }
+    @POST
+    @Path("postandwait")
+    public String postAndWait(String value) throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return value;
+    }
 
-  @POST
-  @Path("postnotok")
-  public Response postReturnsStatusNotOk(String string) {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @POST
+    @Path("postnotok")
+    public Response postReturnsStatusNotOk(String string) {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @DELETE
-  @Path("delete")
-  public String delete() {
-    return "delete";
-  }
+    @DELETE
+    @Path("delete")
+    public String delete() {
+        return "delete";
+    }
 
-  @DELETE
-  @Path("deleteandwait")
-  public String deleteAndWait() throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return "delete";
-  }
+    @DELETE
+    @Path("deleteandwait")
+    public String deleteAndWait() throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return "delete";
+    }
 
-  @DELETE
-  @Path("deletenotok")
-  public Response deleteReturnsStatusNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @DELETE
+    @Path("deletenotok")
+    public Response deleteReturnsStatusNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @OPTIONS
-  @Path("options")
-  public String options() {
-    return "options";
-  }
+    @OPTIONS
+    @Path("options")
+    public String options() {
+        return "options";
+    }
 
-  @OPTIONS
-  @Path("optionsandwait")
-  public String optionsAndWait() throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return "options";
-  }
+    @OPTIONS
+    @Path("optionsandwait")
+    public String optionsAndWait() throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return "options";
+    }
 
-  @OPTIONS
-  @Path("optionsnotok")
-  public Response optionsReturnsStatusNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @OPTIONS
+    @Path("optionsnotok")
+    public Response optionsReturnsStatusNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @TRACE
-  @Path("trace")
-  public String trace() {
-    return "trace";
-  }
+    @TRACE
+    @Path("trace")
+    public String trace() {
+        return "trace";
+    }
 
-  @TRACE
-  @Path("tracenotok")
-  public Response traceReturnsStatusNotOk() {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @TRACE
+    @Path("tracenotok")
+    public Response traceReturnsStatusNotOk() {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @TRACE
-  @Path("traceandwait")
-  public String traceAndWait() throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return trace();
-  }
+    @TRACE
+    @Path("traceandwait")
+    public String traceAndWait() throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return trace();
+    }
 
 }

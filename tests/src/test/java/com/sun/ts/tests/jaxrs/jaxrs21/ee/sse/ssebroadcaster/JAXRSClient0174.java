@@ -16,27 +16,27 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster;
 
-import java.util.function.Supplier;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
-
 import java.util.List;
 import java.util.Properties;
+import java.util.function.Supplier;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.sse.InboundSseEvent;
 import javax.ws.rs.sse.SseEventSource;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.jaxrs.common.util.LinkedHolder;
 import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEJAXRSClient0177;
 import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -58,172 +58,170 @@ public class JAXRSClient0174 extends SSEJAXRSClient0177 {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.common.util.Holder.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage.class
-                            , com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster.BroadcastResource.class
-                            );
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.common.util.Holder.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage.class,
+                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.ssebroadcaster.BroadcastResource.class);
                 }
             });
 
+    private static final long serialVersionUID = 21L;
 
-  private static final long serialVersionUID = 21L;
+    private static final int CLIENTS = 5;
 
-  private static final int CLIENTS = 5;
-
-  public JAXRSClient0174() {
-    setContextRoot("/jaxrs_jaxrs21_ee_sse_ssebroadcaster_web");
-  }
-
-  // QUARKUS: make this a JUnit method
-  @BeforeEach
-//  @Override
-//  public void setup(String[] args, Properties p) throws Fault {
-  public void setup() throws Fault {
-    super.setup(new String[0], new Properties());
-    target = ClientBuilder.newClient()
-        .target(getAbsoluteUrl("broadcast/register"));
-    clients = new BroadCasterClient[CLIENTS];
-  }
-
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0174().run(args);
-  }
-
-  @Override
-  public void cleanup() throws Fault {
-    super.cleanup();
-    try {
-      for (int i = 0; i != clients.length; i++) {
-        System.out.println("cleanup" + i);
-        clients[i].close();
-      }
-    } catch (Exception e) {
-      throw new Fault(e);
-    }
-  }
-
-  private BroadCasterClient[] clients;
-
-  /* Run test */
-  ///////////////////////////////////////////////////////////////////////////////////////////
-
-  /*
-   * @testName: sseBroadcastTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1216; JAXRS:JAVADOC:1220; JAXRS:JAVADOC:1221;
-   * JAXRS:JAVADOC:1222; JAXRS:JAVADOC:1224;
-   * 
-   * @test_Strategy:
-   */
-  @Test
-  public void sseBroadcastTest() throws Fault {
-    int MSG_MAX = 7;
-    int wait = 25;
-
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "broadcast/clear"));
-    setProperty(Property.SEARCH_STRING, "CLEAR");
-    invoke();
-
-    clients = new BroadCasterClient[CLIENTS];
-    for (int i = 0; i != CLIENTS; i++) {
-      clients[i] = new BroadCasterClient();
-      Thread t = new Thread(clients[i]);
-      t.start();
+    public JAXRSClient0174() {
+        setContextRoot("/jaxrs_jaxrs21_ee_sse_ssebroadcaster_web");
     }
 
-    for (int i = 0; i != CLIENTS; i++) {
-      while (clients[i].getEvents().size() == 0 && wait-- > 0)
-        TestUtil.sleep(100);
+    // QUARKUS: make this a JUnit method
+    @BeforeEach
+    //  @Override
+    //  public void setup(String[] args, Properties p) throws Fault {
+    public void setup() throws Fault {
+        super.setup(new String[0], new Properties());
+        target = ClientBuilder.newClient()
+                .target(getAbsoluteUrl("broadcast/register"));
+        clients = new BroadCasterClient[CLIENTS];
     }
 
-    for (int i = 0; i != MSG_MAX; i++) {
-      setProperty(Property.CONTENT, SSEMessage.MESSAGE + i);
-      setProperty(Property.REQUEST,
-          buildRequest(Request.POST, "broadcast/broadcast"));
-      setProperty(Property.SEARCH_STRING, TEST_PROPS.get(Property.CONTENT));
-      invoke();
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0174().run(args);
     }
-
-    wait = 25;
-    while (clients[0].holder.size() <= MSG_MAX && wait > 0) {
-      TestUtil.sleep(200);
-      wait--;
-    }
-
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "broadcast/close"));
-    setProperty(Property.SEARCH_STRING, "CLOSE");
-    invoke();
-
-    for (int i = 0; i != CLIENTS; i++) {
-      List<String> events = clients[i].getEvents();
-      for (String e : events) {
-        logMsg("Client", i, "Received message", e);
-      }
-    }
-
-    for (int i = 0; i != CLIENTS; i++) {
-      List<String> events = clients[i].getEvents();
-      assertEquals(events.size(), MSG_MAX + 1,
-          "Received unexpected number of events", events.size());
-      assertTrue(events.get(0).contains("WELCOME"),
-          "Received unexpected message", events.get(0));
-      for (int j = 0; j != MSG_MAX; j++)
-        assertEquals(events.get(j + 1), SSEMessage.MESSAGE + j,
-            "Received unexpected message", events.get(j + 1));
-    }
-
-    setProperty(Property.REQUEST, buildRequest(Request.GET, "broadcast/check"));
-    invoke();
-    String response = getResponseBody();
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i != CLIENTS; i++) {
-      sb.append("SseEventSink number ").append(i).append(" is closed:true");
-    }
-    sb.append("OnCloseSink has been called:true");
-    assertEquals(response, sb.toString(), "Unexpected check message received",
-        response);
-  }
-
-  private WebTarget target;
-
-  class BroadCasterClient implements Runnable, AutoCloseable {
-    MsgHolder holder = new MsgHolder();
-
-    volatile boolean isClosed = false;
 
     @Override
-    public void run() {
-      try (SseEventSource source = SseEventSource.target(target).build()) {
-        source.register(holder::add);
-        source.open();
-        while (!isClosed) {
-          sleepUntilHolderGetsFilled(holder);
-          System.out.append("WAITING:").println(toString());
+    public void cleanup() throws Fault {
+        super.cleanup();
+        try {
+            for (int i = 0; i != clients.length; i++) {
+                System.out.println("cleanup" + i);
+                clients[i].close();
+            }
+        } catch (Exception e) {
+            throw new Fault(e);
         }
-      }
     }
 
-    @Override
-    public void close() throws Exception {
-      isClosed = true;
+    private BroadCasterClient[] clients;
+
+    /* Run test */
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    /*
+     * @testName: sseBroadcastTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1216; JAXRS:JAVADOC:1220; JAXRS:JAVADOC:1221;
+     * JAXRS:JAVADOC:1222; JAXRS:JAVADOC:1224;
+     * 
+     * @test_Strategy:
+     */
+    @Test
+    public void sseBroadcastTest() throws Fault {
+        int MSG_MAX = 7;
+        int wait = 25;
+
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "broadcast/clear"));
+        setProperty(Property.SEARCH_STRING, "CLEAR");
+        invoke();
+
+        clients = new BroadCasterClient[CLIENTS];
+        for (int i = 0; i != CLIENTS; i++) {
+            clients[i] = new BroadCasterClient();
+            Thread t = new Thread(clients[i]);
+            t.start();
+        }
+
+        for (int i = 0; i != CLIENTS; i++) {
+            while (clients[i].getEvents().size() == 0 && wait-- > 0)
+                TestUtil.sleep(100);
+        }
+
+        for (int i = 0; i != MSG_MAX; i++) {
+            setProperty(Property.CONTENT, SSEMessage.MESSAGE + i);
+            setProperty(Property.REQUEST,
+                    buildRequest(Request.POST, "broadcast/broadcast"));
+            setProperty(Property.SEARCH_STRING, TEST_PROPS.get(Property.CONTENT));
+            invoke();
+        }
+
+        wait = 25;
+        while (clients[0].holder.size() <= MSG_MAX && wait > 0) {
+            TestUtil.sleep(200);
+            wait--;
+        }
+
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "broadcast/close"));
+        setProperty(Property.SEARCH_STRING, "CLOSE");
+        invoke();
+
+        for (int i = 0; i != CLIENTS; i++) {
+            List<String> events = clients[i].getEvents();
+            for (String e : events) {
+                logMsg("Client", i, "Received message", e);
+            }
+        }
+
+        for (int i = 0; i != CLIENTS; i++) {
+            List<String> events = clients[i].getEvents();
+            assertEquals(events.size(), MSG_MAX + 1,
+                    "Received unexpected number of events", events.size());
+            assertTrue(events.get(0).contains("WELCOME"),
+                    "Received unexpected message", events.get(0));
+            for (int j = 0; j != MSG_MAX; j++)
+                assertEquals(events.get(j + 1), SSEMessage.MESSAGE + j,
+                        "Received unexpected message", events.get(j + 1));
+        }
+
+        setProperty(Property.REQUEST, buildRequest(Request.GET, "broadcast/check"));
+        invoke();
+        String response = getResponseBody();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i != CLIENTS; i++) {
+            sb.append("SseEventSink number ").append(i).append(" is closed:true");
+        }
+        sb.append("OnCloseSink has been called:true");
+        assertEquals(response, sb.toString(), "Unexpected check message received",
+                response);
     }
 
-    public List<String> getEvents() {
-      return holder.asList();
-    }
-  }
+    private WebTarget target;
 
-  static class MsgHolder extends LinkedHolder<String> {
-    public void add(InboundSseEvent value) {
-      String data = value.readData();
-      super.add(data);
-      System.out.println("Received" + data);
+    class BroadCasterClient implements Runnable, AutoCloseable {
+        MsgHolder holder = new MsgHolder();
+
+        volatile boolean isClosed = false;
+
+        @Override
+        public void run() {
+            try (SseEventSource source = SseEventSource.target(target).build()) {
+                source.register(holder::add);
+                source.open();
+                while (!isClosed) {
+                    sleepUntilHolderGetsFilled(holder);
+                    System.out.append("WAITING:").println(toString());
+                }
+            }
+        }
+
+        @Override
+        public void close() throws Exception {
+            isClosed = true;
+        }
+
+        public List<String> getEvents() {
+            return holder.asList();
+        }
     }
-  }
+
+    static class MsgHolder extends LinkedHolder<String> {
+        public void add(InboundSseEvent value) {
+            String data = value.readData();
+            super.add(data);
+            System.out.println("Received" + data);
+        }
+    }
 }

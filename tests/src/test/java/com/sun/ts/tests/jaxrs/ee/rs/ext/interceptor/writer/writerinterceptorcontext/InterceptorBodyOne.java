@@ -28,71 +28,71 @@ import com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 public class InterceptorBodyOne
-    extends TemplateInterceptorBody<WriterInterceptorContext> {
+        extends TemplateInterceptorBody<WriterInterceptorContext> {
 
-  public void getEntity() {
-    Object entity = context.getEntity();
-    setEntity(entity);
-  }
-
-  public void getHeaders() {
-    MultivaluedMap<String, Object> headers = context.getHeaders();
-    String keys = JaxrsUtil.iterableToString(";", headers.keySet());
-    setEntity(keys);
-  }
-
-  public void getHeadersIsMutable() {
-    MultivaluedMap<String, Object> headers = context.getHeaders();
-    Object o = headers.getFirst(PROPERTY);
-    assertTrue(o == null, PROPERTY, "header allready exist");
-    headers.add(PROPERTY, PROPERTY);
-  }
-
-  public void getOutputStream() throws IOException {
-    setEntityToOutputStream(NULL);
-  }
-
-  public void proceedThrowsIOException() {
-    try {
-      context.proceed(); // Should throw IOException which is wrapped in
-      setEntity(NULL); // TemplateWriterInterceptor to RuntimeExecption
-    } catch (IOException ioe) {
-      setEntity(IOE); // let the client know
-    } catch (Throwable t) {
-      throw new RuntimeException(t);
+    public void getEntity() {
+        Object entity = context.getEntity();
+        setEntity(entity);
     }
-  }
 
-  public String proceedThrowsWebAppException() throws IOException {
-    try {
-      context.proceed(); // Should throw WebApplicationException in
-      throw new ProceedException(NULL); // TemplateWriterInterceptor
-    } catch (WebApplicationException e) {
-      throw new ProceedException(WAE);
-    } catch (IOException e) {
-      throw new ProceedException(NULL); // TemplateWriterInterceptor to
-      // RuntimeExecption
+    public void getHeaders() {
+        MultivaluedMap<String, Object> headers = context.getHeaders();
+        String keys = JaxrsUtil.iterableToString(";", headers.keySet());
+        setEntity(keys);
     }
-  }
 
-  public void fromProceedThrowsWebAppException() throws IOException {
-    // intentionally blank, no need to do enything
-    // this is called on an interceptor on a response given by
-    // ProceedException.getResponse()
-  }
+    public void getHeadersIsMutable() {
+        MultivaluedMap<String, Object> headers = context.getHeaders();
+        Object o = headers.getFirst(PROPERTY);
+        assertTrue(o == null, PROPERTY, "header allready exist");
+        headers.add(PROPERTY, PROPERTY);
+    }
 
-  public void setEntity() {
-    context.setEntity(OPERATION);
-  }
+    public void getOutputStream() throws IOException {
+        setEntityToOutputStream(NULL);
+    }
 
-  public void setOutputStream() throws IOException {
-    OutputStream originalStream = context.getOutputStream();
-    OutputStream replace = new ReplacingOutputStream(originalStream, 't', 'x');
-    context.setOutputStream(replace);
-  }
+    public void proceedThrowsIOException() {
+        try {
+            context.proceed(); // Should throw IOException which is wrapped in
+            setEntity(NULL); // TemplateWriterInterceptor to RuntimeExecption
+        } catch (IOException ioe) {
+            setEntity(IOE); // let the client know
+        } catch (Throwable t) {
+            throw new RuntimeException(t);
+        }
+    }
 
-  private void setEntityToOutputStream(String entity) throws IOException {
-    OutputStream stream = context.getOutputStream();
-    stream.write(entity.getBytes());
-  }
+    public String proceedThrowsWebAppException() throws IOException {
+        try {
+            context.proceed(); // Should throw WebApplicationException in
+            throw new ProceedException(NULL); // TemplateWriterInterceptor
+        } catch (WebApplicationException e) {
+            throw new ProceedException(WAE);
+        } catch (IOException e) {
+            throw new ProceedException(NULL); // TemplateWriterInterceptor to
+            // RuntimeExecption
+        }
+    }
+
+    public void fromProceedThrowsWebAppException() throws IOException {
+        // intentionally blank, no need to do enything
+        // this is called on an interceptor on a response given by
+        // ProceedException.getResponse()
+    }
+
+    public void setEntity() {
+        context.setEntity(OPERATION);
+    }
+
+    public void setOutputStream() throws IOException {
+        OutputStream originalStream = context.getOutputStream();
+        OutputStream replace = new ReplacingOutputStream(originalStream, 't', 'x');
+        context.setOutputStream(replace);
+    }
+
+    private void setEntityToOutputStream(String entity) throws IOException {
+        OutputStream stream = context.getOutputStream();
+        stream.write(entity.getBytes());
+    }
 }

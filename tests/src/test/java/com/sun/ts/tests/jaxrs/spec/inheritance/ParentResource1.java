@@ -21,7 +21,7 @@ import javax.ws.rs.Produces;
 
 public interface ParentResource1 {
 
-  @GET
-  @Produces("text/xml")
-  public String secondtest();
+    @GET
+    @Produces("text/xml")
+    public String secondtest();
 }

@@ -27,31 +27,31 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 public class InterceptorTwoBody
-    extends TemplateInterceptorBody<ReaderInterceptorContext> {
-  @Override
-  protected Object operationMethodNotFound(String operation)
-      throws IOException {
-    return proceed();
-  }
+        extends TemplateInterceptorBody<ReaderInterceptorContext> {
+    @Override
+    protected Object operationMethodNotFound(String operation)
+            throws IOException {
+        return proceed();
+    }
 
-  public void getHeadersIsMutable() {
-    MultivaluedMap<String, String> headers = context.getHeaders();
-    String first = headers.getFirst(PROPERTY);
-    setEntity(first == null ? NULL : PROPERTY);
-  }
+    public void getHeadersIsMutable() {
+        MultivaluedMap<String, String> headers = context.getHeaders();
+        String first = headers.getFirst(PROPERTY);
+        setEntity(first == null ? NULL : PROPERTY);
+    }
 
-  public void proceedThrowsIOException() throws IOException {
-    throw new IOException("Interceptor#proceed IOException tck test");
-  }
+    public void proceedThrowsIOException() throws IOException {
+        throw new IOException("Interceptor#proceed IOException tck test");
+    }
 
-  public Object proceedThrowsWebAppException()
-      throws WebApplicationException, IOException {
-    return context.proceed();
-  }
+    public Object proceedThrowsWebAppException()
+            throws WebApplicationException, IOException {
+        return context.proceed();
+    }
 
-  public void setInputStream() throws IOException {
-    InputStream stream = context.getInputStream();
-    String entity = JaxrsUtil.readFromStream(stream);
-    setEntity(NULL.equals(entity) ? ENTITY2 : NULL);
-  }
+    public void setInputStream() throws IOException {
+        InputStream stream = context.getInputStream();
+        String entity = JaxrsUtil.readFromStream(stream);
+        setEntity(NULL.equals(entity) ? ENTITY2 : NULL);
+    }
 }

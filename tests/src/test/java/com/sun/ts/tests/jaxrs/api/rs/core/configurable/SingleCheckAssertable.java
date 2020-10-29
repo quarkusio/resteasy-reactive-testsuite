@@ -24,16 +24,16 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 
 public abstract class SingleCheckAssertable extends Assertable {
 
-  protected abstract void check(Configurable<?> configurable) throws Fault;
+    protected abstract void check(Configurable<?> configurable) throws Fault;
 
-  @Override
-  public void check1OnClient(Client client) throws Fault {
-    check(client);
-  }
+    @Override
+    public void check1OnClient(Client client) throws Fault {
+        check(client);
+    }
 
-  @Override
-  public void check2OnTarget(WebTarget target) throws Fault {
-    check(target);
-  }
+    @Override
+    public void check2OnTarget(WebTarget target) throws Fault {
+        check(target);
+    }
 
 }

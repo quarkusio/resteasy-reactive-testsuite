@@ -27,17 +27,17 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class ResponseFilter implements ContainerResponseFilter {
 
-  @Override
-  public void filter(ContainerRequestContext requestContext,
-      ContainerResponseContext responseContext) throws IOException {
-    Object objectEntity = responseContext.getEntity();
-    if (objectEntity != null) {
-      String entity = objectEntity.toString();
-      // Affect only one single test of JAXRS:SPEC:82;
-      if (entity.equals(FilterChainTestExceptionMapper.class.getName()))
-        responseContext.setEntity(getClass().getName(), (Annotation[]) null,
-            responseContext.getMediaType());
+    @Override
+    public void filter(ContainerRequestContext requestContext,
+            ContainerResponseContext responseContext) throws IOException {
+        Object objectEntity = responseContext.getEntity();
+        if (objectEntity != null) {
+            String entity = objectEntity.toString();
+            // Affect only one single test of JAXRS:SPEC:82;
+            if (entity.equals(FilterChainTestExceptionMapper.class.getName()))
+                responseContext.setEntity(getClass().getName(), (Annotation[]) null,
+                        responseContext.getMediaType());
+        }
     }
-  }
 
 }

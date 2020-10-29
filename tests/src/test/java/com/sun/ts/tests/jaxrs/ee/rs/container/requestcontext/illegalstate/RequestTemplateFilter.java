@@ -25,30 +25,30 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 public abstract class RequestTemplateFilter extends TemplateFilter
-    implements ContainerRequestFilter {
-  @Override
-  public void filter(ContainerRequestContext requestContext)
-      throws IOException {
-    this.requestContext = requestContext;
-    String operation = requestContext.getHeaderString(OPERATION);
-    Method[] methods = getClass().getMethods();
-    for (Method method : methods)
-      if (operation.equalsIgnoreCase(method.getName())) {
-        try {
-          method.invoke(this);
-          if (entity != null) {
-            Response response = Response.ok(entity).build();
-            requestContext.abortWith(response);
-          }
-          return;
-        } catch (Exception e) {
-          e.printStackTrace();
-          Response response = Response.status(Status.SERVICE_UNAVAILABLE)
-              .entity(e.getMessage()).build();
-          requestContext.abortWith(response);
-        }
-      }
-    // If method not found, it is response context operation
-  }
+        implements ContainerRequestFilter {
+    @Override
+    public void filter(ContainerRequestContext requestContext)
+            throws IOException {
+        this.requestContext = requestContext;
+        String operation = requestContext.getHeaderString(OPERATION);
+        Method[] methods = getClass().getMethods();
+        for (Method method : methods)
+            if (operation.equalsIgnoreCase(method.getName())) {
+                try {
+                    method.invoke(this);
+                    if (entity != null) {
+                        Response response = Response.ok(entity).build();
+                        requestContext.abortWith(response);
+                    }
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Response response = Response.status(Status.SERVICE_UNAVAILABLE)
+                            .entity(e.getMessage()).build();
+                    requestContext.abortWith(response);
+                }
+            }
+        // If method not found, it is response context operation
+    }
 
 }

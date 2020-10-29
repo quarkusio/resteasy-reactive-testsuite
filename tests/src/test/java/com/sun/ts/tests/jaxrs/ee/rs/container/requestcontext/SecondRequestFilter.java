@@ -35,57 +35,57 @@ import javax.ws.rs.ext.Provider;
 @PreMatching
 public class SecondRequestFilter extends TemplateFilter {
 
-  public void abortWith() {
-    throw new RuntimeException("The filter chain has not been broken");
-  }
+    public void abortWith() {
+        throw new RuntimeException("The filter chain has not been broken");
+    }
 
-  public void getHeadersIsMutable() {
-    String key = "KEY";
-    MultivaluedMap<String, String> headers = requestContext.getHeaders();
-    if (assertTrue(headers.containsKey(key), "Key", key, "not found"))
-      return;
-    abortWithEntity("#getHeaders() is mutable as expected");
-  }
+    public void getHeadersIsMutable() {
+        String key = "KEY";
+        MultivaluedMap<String, String> headers = requestContext.getHeaders();
+        if (assertTrue(headers.containsKey(key), "Key", key, "not found"))
+            return;
+        abortWithEntity("#getHeaders() is mutable as expected");
+    }
 
-  public void setProperty() {
-    Object o = requestContext.getProperty(PROPERTYNAME);
-    // If the name specified
-    // is already used for a property, this method will replace
-    // the value of the property with the new value.
-    if (assertTrue(o.equals(PROPERTYNAME + PROPERTYNAME), o, "is unexpected"))
-      return;
-    requestContext.setProperty(PROPERTYNAME, PROPERTYNAME);
-    o = requestContext.getProperty(PROPERTYNAME);
-    abortWithEntity(o == null ? "NULL" : o.toString());
-  }
+    public void setProperty() {
+        Object o = requestContext.getProperty(PROPERTYNAME);
+        // If the name specified
+        // is already used for a property, this method will replace
+        // the value of the property with the new value.
+        if (assertTrue(o.equals(PROPERTYNAME + PROPERTYNAME), o, "is unexpected"))
+            return;
+        requestContext.setProperty(PROPERTYNAME, PROPERTYNAME);
+        o = requestContext.getProperty(PROPERTYNAME);
+        abortWithEntity(o == null ? "NULL" : o.toString());
+    }
 
-  public void setPropertyContext() {
-    // servletRequest injection not working here
-  }
+    public void setPropertyContext() {
+        // servletRequest injection not working here
+    }
 
-  public void getPropertyNames() {
-    Collection<String> names = requestContext.getPropertyNames();
-    if (assertTrue(names.size() >= 5,
-        "#getPropertyNames has unexpected number of elements", names.size(),
-        "{", collectionToString(names), "}"))
-      return;
-    abortWithEntity(collectionToString(names));
-  }
+    public void getPropertyNames() {
+        Collection<String> names = requestContext.getPropertyNames();
+        if (assertTrue(names.size() >= 5,
+                "#getPropertyNames has unexpected number of elements", names.size(),
+                "{", collectionToString(names), "}"))
+            return;
+        abortWithEntity(collectionToString(names));
+    }
 
-  public void setSecurityContext() {
-    SecurityContext secCtx = requestContext.getSecurityContext();
-    Principal principal = secCtx.getUserPrincipal();
-    if (assertTrue(principal != null, "injected principal is null"))
-      return;
-    abortWithEntity(principal.getName());
-  }
+    public void setSecurityContext() {
+        SecurityContext secCtx = requestContext.getSecurityContext();
+        Principal principal = secCtx.getUserPrincipal();
+        if (assertTrue(principal != null, "injected principal is null"))
+            return;
+        abortWithEntity(principal.getName());
+    }
 
-  public void setMethod() {
-    // void, just do not return Operation SETMETHOD not implemented
-  }
+    public void setMethod() {
+        // void, just do not return Operation SETMETHOD not implemented
+    }
 
-  public void setRequestUri1() {
-    // void, just do not return Operation SETREQUESTURI1 not implemented
-  }
+    public void setRequestUri1() {
+        // void, just do not return Operation SETREQUESTURI1 not implemented
+    }
 
 }

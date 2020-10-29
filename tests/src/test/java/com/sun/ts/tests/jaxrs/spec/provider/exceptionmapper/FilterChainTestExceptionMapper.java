@@ -22,11 +22,11 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class FilterChainTestExceptionMapper
-    implements ExceptionMapper<FilterChainTestException> {
+        implements ExceptionMapper<FilterChainTestException> {
 
-  @Override
-  public Response toResponse(FilterChainTestException exception) {
-    return Response.ok(getClass().getName()).build();
-  }
+    @Override
+    public Response toResponse(FilterChainTestException exception) {
+        return Response.ok(getClass().getName()).build();
+    }
 
 }

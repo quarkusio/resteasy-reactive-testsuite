@@ -29,10 +29,10 @@ import javax.ws.rs.ext.Provider;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class FirstFilter implements ClientRequestFilter {
 
-  @Override
-  public void filter(ClientRequestContext requestContext) throws IOException {
-    requestContext.setEntity(getClass().getName(), null,
-        MediaType.WILDCARD_TYPE);
-  }
+    @Override
+    public void filter(ClientRequestContext requestContext) throws IOException {
+        requestContext.setEntity(getClass().getName(), null,
+                MediaType.WILDCARD_TYPE);
+    }
 
 }

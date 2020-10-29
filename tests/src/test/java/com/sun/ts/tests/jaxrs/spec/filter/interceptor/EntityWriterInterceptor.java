@@ -29,23 +29,23 @@ import com.sun.ts.tests.jaxrs.common.impl.ReplacingOutputStream;
 @Provider
 public class EntityWriterInterceptor implements WriterInterceptor {
 
-  @Override
-  public void aroundWriteTo(WriterInterceptorContext context)
-      throws IOException, WebApplicationException {
-    MultivaluedMap<String, Object> headers = context.getHeaders();
-    String header = (String) headers.getFirst(Resource.HEADERNAME);
-    if (header != null && header.startsWith(getClass().getName())) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("<interceptor>").append(getClass().getName());
-      if (header.contains(Resource.DIRECTION))
-        sb.append(Resource.DIRECTION);
-      sb.append("</interceptor>");
-      String content = sb.toString();
-      ReplacingOutputStream stream = new ReplacingOutputStream(
-          context.getOutputStream(), content);
-      context.setOutputStream(stream);
-      headers.remove(Resource.HEADERNAME);
+    @Override
+    public void aroundWriteTo(WriterInterceptorContext context)
+            throws IOException, WebApplicationException {
+        MultivaluedMap<String, Object> headers = context.getHeaders();
+        String header = (String) headers.getFirst(Resource.HEADERNAME);
+        if (header != null && header.startsWith(getClass().getName())) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("<interceptor>").append(getClass().getName());
+            if (header.contains(Resource.DIRECTION))
+                sb.append(Resource.DIRECTION);
+            sb.append("</interceptor>");
+            String content = sb.toString();
+            ReplacingOutputStream stream = new ReplacingOutputStream(
+                    context.getOutputStream(), content);
+            context.setOutputStream(stream);
+            headers.remove(Resource.HEADERNAME);
+        }
+        context.proceed();
     }
-    context.proceed();
-  }
 }

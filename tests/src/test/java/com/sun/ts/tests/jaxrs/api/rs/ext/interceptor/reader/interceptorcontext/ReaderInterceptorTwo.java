@@ -27,7 +27,7 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.TemplateReaderInterc
 @Priority(200)
 public class ReaderInterceptorTwo extends TemplateReaderInterceptor {
 
-  public ReaderInterceptorTwo() {
-    super(new InterceptorBodyTwo<ReaderInterceptorContext>());
-  }
+    public ReaderInterceptorTwo() {
+        super(new InterceptorBodyTwo<ReaderInterceptorContext>());
+    }
 }

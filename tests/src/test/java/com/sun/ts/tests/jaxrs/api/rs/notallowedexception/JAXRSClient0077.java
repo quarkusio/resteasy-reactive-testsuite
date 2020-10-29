@@ -34,511 +34,511 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0077 extends JAXRSCommonClient {
 
-  private static final long serialVersionUID = 6905238461163637999L;
+    private static final long serialVersionUID = 6905238461163637999L;
 
-  private static final Status STATUS = Status.METHOD_NOT_ALLOWED;
+    private static final Status STATUS = Status.METHOD_NOT_ALLOWED;
 
-  protected static final String MESSAGE = "TCK NotAllowedException description";
+    protected static final String MESSAGE = "TCK NotAllowedException description";
 
-  protected static final String HOST = "www.jcp.org";
+    protected static final String HOST = "www.jcp.org";
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0077().run(args);
-  }
-
-  /* Run test */
-
-  /*
-   * @testName: constructorStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1078; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringTest() throws Fault {
-    NotAllowedException e = new NotAllowedException(Request.OPTIONS.name(),
-        new String[] { Request.HEAD.name() });
-    assertResponse(e);
-  }
-
-  /*
-   * @testName: constructorStringThrowsNPETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1078;
-   * 
-   * @test_Strategy: Throws: java.lang.NullPointerException - in case the
-   * allowed method is null.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringThrowsNPETest() throws Fault {
-    try {
-      NotAllowedException e = new NotAllowedException((String) null,
-          new String[] { Request.HEAD.name() });
-      fault(
-          "NullPointerException has not been thrown for null method, built exception",
-          e);
-    } catch (NullPointerException e) {
-      logMsg(
-          "NullPointerException has been thrown as expected, for null method");
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0077().run(args);
     }
-  }
 
-  /*
-   * @testName: constructorResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:331; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 405.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseTest() throws Fault {
-    NotAllowedException e = new NotAllowedException(buildResponse(STATUS));
-    assertResponse(e, HOST);
-  }
+    /* Run test */
 
-  /*
-   * @testName: constructorResponseThrowsExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:331;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 405.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowsExceptionTest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS) {
+    /*
+     * @testName: constructorStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1078; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringTest() throws Fault {
+        NotAllowedException e = new NotAllowedException(Request.OPTIONS.name(),
+                new String[] { Request.HEAD.name() });
+        assertResponse(e);
+    }
+
+    /*
+     * @testName: constructorStringThrowsNPETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1078;
+     * 
+     * @test_Strategy: Throws: java.lang.NullPointerException - in case the
+     * allowed method is null.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringThrowsNPETest() throws Fault {
         try {
-          NotAllowedException e = new NotAllowedException(
-              buildResponse(status));
-          fault("IllegalArgumentException has not been thrown for status",
-              status, "; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
+            NotAllowedException e = new NotAllowedException((String) null,
+                    new String[] { Request.HEAD.name() });
+            fault(
+                    "NullPointerException has not been thrown for null method, built exception",
+                    e);
+        } catch (NullPointerException e) {
+            logMsg(
+                    "NullPointerException has been thrown as expected, for null method");
         }
-      }
-  }
-
-  /*
-   * @testName: constructorResponseDoesNotThrowWhenNoAllowHeaderTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:331; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Note that this constructor does not validate the presence
-   * of HTTP Allow header. I.e. it is possible to use the constructor to create
-   * a client-side exception instance even for an invalid HTTP 405 response
-   * content returned from a server.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseDoesNotThrowWhenNoAllowHeaderTest()
-      throws Fault {
-    Response response = Response.status(STATUS).header(HttpHeaders.HOST, HOST)
-        .build();
-    NotAllowedException e = new NotAllowedException(response);
-    assertResponse(e, HOST);
-  }
-
-  /*
-   * @testName: constructorThrowableStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:332; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorThrowableStringTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      NotAllowedException e = new NotAllowedException(t, Request.DELETE.name());
-      assertResponse(e);
-      assertCause(e, t);
     }
-  }
 
-  /*
-   * @testName: constructorThrowableStringThrowsIAETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:332;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception. Throws -
-   * java.lang.IllegalArgumentException - in case the allowed methods varargs
-   * are null.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorThrowableStringThrowsIAETest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      try {
-        NotAllowedException e = new NotAllowedException(t, (String[]) null);
-        fault(
-            "IllegalArgumentException has NOT been thrown for null methods; exception",
-            e);
-      } catch (IllegalArgumentException iae) {
-        logMsg(
-            "IllegalArgumentException has been thrown as expected for null methods");
-      }
+    /*
+     * @testName: constructorResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:331; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 405.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseTest() throws Fault {
+        NotAllowedException e = new NotAllowedException(buildResponse(STATUS));
+        assertResponse(e, HOST);
     }
-  }
 
-  /*
-   * @testName: constructorResponseThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:333; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 405. getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      NotAllowedException e = new NotAllowedException(buildResponse(STATUS), t);
-      assertResponse(e, HOST);
-      assertCause(e, t);
+    /*
+     * @testName: constructorResponseThrowsExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:331;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 405.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowsExceptionTest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS) {
+                try {
+                    NotAllowedException e = new NotAllowedException(
+                            buildResponse(status));
+                    fault("IllegalArgumentException has not been thrown for status",
+                            status, "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
+            }
     }
-  }
 
-  /*
-   * @testName: constructorResponseThrowableThrowsExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:333;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 405.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS) {
+    /*
+     * @testName: constructorResponseDoesNotThrowWhenNoAllowHeaderTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:331; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Note that this constructor does not validate the presence
+     * of HTTP Allow header. I.e. it is possible to use the constructor to create
+     * a client-side exception instance even for an invalid HTTP 405 response
+     * content returned from a server.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseDoesNotThrowWhenNoAllowHeaderTest()
+            throws Fault {
+        Response response = Response.status(STATUS).header(HttpHeaders.HOST, HOST)
+                .build();
+        NotAllowedException e = new NotAllowedException(response);
+        assertResponse(e, HOST);
+    }
+
+    /*
+     * @testName: constructorThrowableStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:332; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorThrowableStringTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            NotAllowedException e = new NotAllowedException(t, Request.DELETE.name());
+            assertResponse(e);
+            assertCause(e, t);
+        }
+    }
+
+    /*
+     * @testName: constructorThrowableStringThrowsIAETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:332;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception. Throws -
+     * java.lang.IllegalArgumentException - in case the allowed methods varargs
+     * are null.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorThrowableStringThrowsIAETest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            try {
+                NotAllowedException e = new NotAllowedException(t, (String[]) null);
+                fault(
+                        "IllegalArgumentException has NOT been thrown for null methods; exception",
+                        e);
+            } catch (IllegalArgumentException iae) {
+                logMsg(
+                        "IllegalArgumentException has been thrown as expected for null methods");
+            }
+        }
+    }
+
+    /*
+     * @testName: constructorResponseThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:333; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 405. getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            NotAllowedException e = new NotAllowedException(buildResponse(STATUS), t);
+            assertResponse(e, HOST);
+            assertCause(e, t);
+        }
+    }
+
+    /*
+     * @testName: constructorResponseThrowableThrowsExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:333;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 405.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowableThrowsExceptionTest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS) {
+                try {
+                    NotAllowedException e = new NotAllowedException(buildResponse(status),
+                            new Throwable());
+                    fault("IllegalArgumentException has not been thrown for status",
+                            status, "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
+            }
+    }
+
+    /*
+     * @testName: constructorResponseThrowableThrowsIAEWhenNoAllowHeaderTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:333;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the response does not contain
+     * an HTTP Allow header.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorResponseThrowableThrowsIAEWhenNoAllowHeaderTest()
+            throws Fault {
         try {
-          NotAllowedException e = new NotAllowedException(buildResponse(status),
-              new Throwable());
-          fault("IllegalArgumentException has not been thrown for status",
-              status, "; exception", e);
+            Response response = Response.status(STATUS).build();
+            NotAllowedException e = new NotAllowedException(response,
+                    new Throwable());
+            fault(
+                    "IllegalArgumentException has not been thrown when no allow header exception",
+                    e);
         } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
+            logMsg(
+                    "IllegalArgumentException has been thrown as expected for when no allow http header");
         }
-      }
-  }
-
-  /*
-   * @testName: constructorResponseThrowableThrowsIAEWhenNoAllowHeaderTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:333;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the response does not contain
-   * an HTTP Allow header.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorResponseThrowableThrowsIAEWhenNoAllowHeaderTest()
-      throws Fault {
-    try {
-      Response response = Response.status(STATUS).build();
-      NotAllowedException e = new NotAllowedException(response,
-          new Throwable());
-      fault(
-          "IllegalArgumentException has not been thrown when no allow header exception",
-          e);
-    } catch (IllegalArgumentException e) {
-      logMsg(
-          "IllegalArgumentException has been thrown as expected for when no allow http header");
     }
-  }
 
-  /*
-   * @testName: constructorStringStringStringsTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1079; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringStringStringsTest() throws Fault {
-    NotAllowedException e = new NotAllowedException(MESSAGE,
-        Request.OPTIONS.name(), new String[] { Request.HEAD.name() });
-    assertResponse(e);
-    assertMessage(e);
-  }
-
-  /*
-   * @testName: constructorStringStringStringsThrowsNPETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1079;
-   * 
-   * @test_Strategy: Throws: java.lang.NullPointerException - in case the
-   * allowed method is null.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringStringStringsThrowsNPETest() throws Fault {
-    try {
-      NotAllowedException e = new NotAllowedException(MESSAGE, (String) null,
-          new String[] { Request.HEAD.name() });
-      fault(
-          "NullPointerException has not been thrown for null method, built exception",
-          e);
-    } catch (NullPointerException e) {
-      logMsg(
-          "NullPointerException has been thrown as expected, for null method");
+    /*
+     * @testName: constructorStringStringStringsTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1079; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringStringStringsTest() throws Fault {
+        NotAllowedException e = new NotAllowedException(MESSAGE,
+                Request.OPTIONS.name(), new String[] { Request.HEAD.name() });
+        assertResponse(e);
+        assertMessage(e);
     }
-  }
 
-  /*
-   * @testName: constructorStringResponseTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1080; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseTest() throws Fault {
-    NotAllowedException e = new NotAllowedException(MESSAGE,
-        buildResponse(STATUS));
-    assertResponse(e, HOST);
-    assertMessage(e);
-  }
-
-  /*
-   * @testName: constructorStringResponseThrowsIAETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1080;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 405.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowsIAETest() throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS) {
+    /*
+     * @testName: constructorStringStringStringsThrowsNPETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1079;
+     * 
+     * @test_Strategy: Throws: java.lang.NullPointerException - in case the
+     * allowed method is null.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringStringStringsThrowsNPETest() throws Fault {
         try {
-          NotAllowedException e = new NotAllowedException(
-              buildResponse(status));
-          fault("IllegalArgumentException has not been thrown for status",
-              status, "; exception", e);
-        } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
+            NotAllowedException e = new NotAllowedException(MESSAGE, (String) null,
+                    new String[] { Request.HEAD.name() });
+            fault(
+                    "NullPointerException has not been thrown for null method, built exception",
+                    e);
+        } catch (NullPointerException e) {
+            logMsg(
+                    "NullPointerException has been thrown as expected, for null method");
         }
-      }
-  }
-
-  /*
-   * @testName: constructorStringResponseDoesNotThrowWhenNoAllowHeaderTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1080; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Note that this constructor does not validate the presence
-   * of HTTP Allow header. I.e. it is possible to use the constructor to create
-   * a client-side exception instance even for an invalid HTTP 405 response
-   * content returned from a server.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseDoesNotThrowWhenNoAllowHeaderTest()
-      throws Fault {
-    Response response = Response.status(STATUS).header(HttpHeaders.HOST, HOST)
-        .build();
-    NotAllowedException e = new NotAllowedException(MESSAGE, response);
-    assertResponse(e, HOST);
-    assertMessage(e);
-  }
-
-  /*
-   * @testName: constructorStringThrowableStringsTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1081; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * 
-   * getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringThrowableStringsTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      NotAllowedException e = new NotAllowedException(MESSAGE, t,
-          Request.DELETE.name());
-      assertResponse(e);
-      assertCause(e, t);
-      assertMessage(e);
     }
-  }
 
-  /*
-   * @testName: constructorStringThrowableStringsThrowsIAETest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1081;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception. Throws -
-   * java.lang.IllegalArgumentException - in case the allowed methods varargs
-   * are null.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringThrowableStringsThrowsIAETest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      try {
-        NotAllowedException e = new NotAllowedException(MESSAGE, t,
-            (String[]) null);
-        fault(
-            "IllegalArgumentException has NOT been thrown for null methods; exception",
-            e);
-      } catch (IllegalArgumentException iae) {
-        logMsg(
-            "IllegalArgumentException has been thrown as expected for null methods");
-      }
+    /*
+     * @testName: constructorStringResponseTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1080; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseTest() throws Fault {
+        NotAllowedException e = new NotAllowedException(MESSAGE,
+                buildResponse(STATUS));
+        assertResponse(e, HOST);
+        assertMessage(e);
     }
-  }
 
-  /*
-   * @testName: constructorStringResponseThrowableTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1082; JAXRS:JAVADOC:12;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 405. getResponse
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowableTest() throws Fault {
-    Throwable[] throwables = new Throwable[] { new RuntimeException(),
-        new IOException(), new Error(), new Throwable() };
-    for (Throwable t : throwables) {
-      NotAllowedException e = new NotAllowedException(MESSAGE,
-          buildResponse(STATUS), t);
-      assertResponse(e, HOST);
-      assertCause(e, t);
-      assertMessage(e);
+    /*
+     * @testName: constructorStringResponseThrowsIAETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1080;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 405.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowsIAETest() throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS) {
+                try {
+                    NotAllowedException e = new NotAllowedException(
+                            buildResponse(status));
+                    fault("IllegalArgumentException has not been thrown for status",
+                            status, "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
+            }
     }
-  }
 
-  /*
-   * @testName: constructorStringResponseThrowableThrowsExceptionTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1082;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the status code set in the
-   * response is not HTTP 405.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowableThrowsExceptionTest()
-      throws Fault {
-    for (Status status : Status.values())
-      if (status != STATUS) {
+    /*
+     * @testName: constructorStringResponseDoesNotThrowWhenNoAllowHeaderTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1080; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Note that this constructor does not validate the presence
+     * of HTTP Allow header. I.e. it is possible to use the constructor to create
+     * a client-side exception instance even for an invalid HTTP 405 response
+     * content returned from a server.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseDoesNotThrowWhenNoAllowHeaderTest()
+            throws Fault {
+        Response response = Response.status(STATUS).header(HttpHeaders.HOST, HOST)
+                .build();
+        NotAllowedException e = new NotAllowedException(MESSAGE, response);
+        assertResponse(e, HOST);
+        assertMessage(e);
+    }
+
+    /*
+     * @testName: constructorStringThrowableStringsTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1081; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * 
+     * getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringThrowableStringsTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            NotAllowedException e = new NotAllowedException(MESSAGE, t,
+                    Request.DELETE.name());
+            assertResponse(e);
+            assertCause(e, t);
+            assertMessage(e);
+        }
+    }
+
+    /*
+     * @testName: constructorStringThrowableStringsThrowsIAETest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1081;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception. Throws -
+     * java.lang.IllegalArgumentException - in case the allowed methods varargs
+     * are null.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringThrowableStringsThrowsIAETest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            try {
+                NotAllowedException e = new NotAllowedException(MESSAGE, t,
+                        (String[]) null);
+                fault(
+                        "IllegalArgumentException has NOT been thrown for null methods; exception",
+                        e);
+            } catch (IllegalArgumentException iae) {
+                logMsg(
+                        "IllegalArgumentException has been thrown as expected for null methods");
+            }
+        }
+    }
+
+    /*
+     * @testName: constructorStringResponseThrowableTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1082; JAXRS:JAVADOC:12;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 405. getResponse
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowableTest() throws Fault {
+        Throwable[] throwables = new Throwable[] { new RuntimeException(),
+                new IOException(), new Error(), new Throwable() };
+        for (Throwable t : throwables) {
+            NotAllowedException e = new NotAllowedException(MESSAGE,
+                    buildResponse(STATUS), t);
+            assertResponse(e, HOST);
+            assertCause(e, t);
+            assertMessage(e);
+        }
+    }
+
+    /*
+     * @testName: constructorStringResponseThrowableThrowsExceptionTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1082;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the status code set in the
+     * response is not HTTP 405.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowableThrowsExceptionTest()
+            throws Fault {
+        for (Status status : Status.values())
+            if (status != STATUS) {
+                try {
+                    NotAllowedException e = new NotAllowedException(MESSAGE,
+                            buildResponse(status), new Throwable());
+                    fault("IllegalArgumentException has not been thrown for status",
+                            status, "; exception", e);
+                } catch (IllegalArgumentException e) {
+                    logMsg(
+                            "IllegalArgumentException has been thrown as expected for status",
+                            status);
+                }
+            }
+    }
+
+    /*
+     * @testName: constructorStringResponseThrowableThrowsIAEWhenNoAllowHeaderTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:1082;
+     * 
+     * @test_Strategy: Construct a new method not allowed exception.
+     * java.lang.IllegalArgumentException - in case the response does not contain
+     * an HTTP Allow header.
+     */
+    @org.junit.jupiter.api.Test
+    public void constructorStringResponseThrowableThrowsIAEWhenNoAllowHeaderTest()
+            throws Fault {
         try {
-          NotAllowedException e = new NotAllowedException(MESSAGE,
-              buildResponse(status), new Throwable());
-          fault("IllegalArgumentException has not been thrown for status",
-              status, "; exception", e);
+            Response response = Response.status(STATUS).build();
+            NotAllowedException e = new NotAllowedException(MESSAGE, response,
+                    new Throwable());
+            fault(
+                    "IllegalArgumentException has not been thrown when no allow header exception",
+                    e);
         } catch (IllegalArgumentException e) {
-          logMsg(
-              "IllegalArgumentException has been thrown as expected for status",
-              status);
+            logMsg(
+                    "IllegalArgumentException has been thrown as expected for when no allow http header");
         }
-      }
-  }
-
-  /*
-   * @testName: constructorStringResponseThrowableThrowsIAEWhenNoAllowHeaderTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:1082;
-   * 
-   * @test_Strategy: Construct a new method not allowed exception.
-   * java.lang.IllegalArgumentException - in case the response does not contain
-   * an HTTP Allow header.
-   */
-  @org.junit.jupiter.api.Test
-  public void constructorStringResponseThrowableThrowsIAEWhenNoAllowHeaderTest()
-      throws Fault {
-    try {
-      Response response = Response.status(STATUS).build();
-      NotAllowedException e = new NotAllowedException(MESSAGE, response,
-          new Throwable());
-      fault(
-          "IllegalArgumentException has not been thrown when no allow header exception",
-          e);
-    } catch (IllegalArgumentException e) {
-      logMsg(
-          "IllegalArgumentException has been thrown as expected for when no allow http header");
     }
-  }
 
-  // /////////////////////////////////////////////////////////////
-  protected Response buildResponse(Status status) {
-    return Response.status(status).header("allow", Request.OPTIONS)
-        .header("allow", Request.HEAD).header(HttpHeaders.HOST, HOST).build();
-  }
+    // /////////////////////////////////////////////////////////////
+    protected Response buildResponse(Status status) {
+        return Response.status(status).header("allow", Request.OPTIONS)
+                .header("allow", Request.HEAD).header(HttpHeaders.HOST, HOST).build();
+    }
 
-  /**
-   * Check the given exception contains a prebuilt response containing the http
-   * header HOST
-   */
-  protected void assertResponse(NotAllowedException e, String host)
-      throws Fault {
-    assertResponse(e);
-    String header = e.getResponse().getHeaderString(HttpHeaders.HOST);
-    assertNotNull(header, "http header", HttpHeaders.HOST,
-        " of response is null");
-    assertEquals(host, header, "Found unexpected http", HttpHeaders.HOST,
-        "header", header);
-    logMsg("Found expected http", HttpHeaders.HOST, "header");
-  }
+    /**
+     * Check the given exception contains a prebuilt response containing the http
+     * header HOST
+     */
+    protected void assertResponse(NotAllowedException e, String host)
+            throws Fault {
+        assertResponse(e);
+        String header = e.getResponse().getHeaderString(HttpHeaders.HOST);
+        assertNotNull(header, "http header", HttpHeaders.HOST,
+                " of response is null");
+        assertEquals(host, header, "Found unexpected http", HttpHeaders.HOST,
+                "header", header);
+        logMsg("Found expected http", HttpHeaders.HOST, "header");
+    }
 
-  protected void assertResponse(NotAllowedException e) throws Fault {
-    assertNotNull(e.getResponse(), "#getResponse is null");
-    Response response = e.getResponse();
-    assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
-        "response cobtains unexpected status", response.getStatus());
-    logMsg("response contains expected", STATUS, "status");
-  }
+    protected void assertResponse(NotAllowedException e) throws Fault {
+        assertNotNull(e.getResponse(), "#getResponse is null");
+        Response response = e.getResponse();
+        assertEqualsInt(response.getStatus(), STATUS.getStatusCode(),
+                "response cobtains unexpected status", response.getStatus());
+        logMsg("response contains expected", STATUS, "status");
+    }
 
-  protected void assertCause(WebApplicationException e, Throwable expected)
-      throws Fault {
-    assertEquals(e.getCause(), expected, "#getCause does not contain expected",
-        expected, "but", e.getCause());
-    logMsg("getCause contains expected", expected);
-  }
+    protected void assertCause(WebApplicationException e, Throwable expected)
+            throws Fault {
+        assertEquals(e.getCause(), expected, "#getCause does not contain expected",
+                expected, "but", e.getCause());
+        logMsg("getCause contains expected", expected);
+    }
 
-  protected void assertMessage(NotAllowedException e) throws Fault {
-    assertNotNull(e.getMessage(), "getMessage() is null");
-    assertContains(e.getMessage(), MESSAGE, "Unexpected getMessage()",
-        e.getMessage());
-    logMsg("found expected getMessage()=", e.getMessage());
-  }
+    protected void assertMessage(NotAllowedException e) throws Fault {
+        assertNotNull(e.getMessage(), "getMessage() is null");
+        assertContains(e.getMessage(), MESSAGE, "Unexpected getMessage()",
+                e.getMessage());
+        logMsg("found expected getMessage()=", e.getMessage());
+    }
 }

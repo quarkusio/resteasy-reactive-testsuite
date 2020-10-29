@@ -23,67 +23,72 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@RolesAllowed({"DIRECTOR", "OTHERROLE"})
+@RolesAllowed({ "DIRECTOR", "OTHERROLE" })
 @Path("/Servlet")
 public class TestServlet {
-  public static enum Security {
-    SECURED, UNSECURED
-  };
+    public static enum Security {
+        SECURED,
+        UNSECURED
+    };
 
-  public static enum Scheme {
-    BASIC, DIGEST, NOSCHEME
-  }
+    public static enum Scheme {
+        BASIC,
+        DIGEST,
+        NOSCHEME
+    }
 
-  public static enum Role {
-    DIRECTOR, OTHERROLE, NOROLE
-  }
+    public static enum Role {
+        DIRECTOR,
+        OTHERROLE,
+        NOROLE
+    }
 
-  private static void addSecuredInfo(SecurityContext context,
-      StringBuilder sb) {
-    Security security;
-    security = context.isSecure() ? Security.SECURED : Security.UNSECURED;
-    sb.append(security).append("|");
-  }
+    private static void addSecuredInfo(SecurityContext context,
+            StringBuilder sb) {
+        Security security;
+        security = context.isSecure() ? Security.SECURED : Security.UNSECURED;
+        sb.append(security).append("|");
+    }
 
-  private static void addSchemaInfo(SecurityContext context, StringBuilder sb) {
-    Scheme scheme;
-    String authScheme = context.getAuthenticationScheme();
-    if (authScheme == null)
-      scheme = Scheme.NOSCHEME;
-    else if (authScheme.equalsIgnoreCase(Scheme.BASIC.name()))
-      scheme = Scheme.BASIC;
-    else
-      scheme = Scheme.DIGEST;
-    sb.append(scheme).append("|");
-  }
+    private static void addSchemaInfo(SecurityContext context, StringBuilder sb) {
+        Scheme scheme;
+        String authScheme = context.getAuthenticationScheme();
+        if (authScheme == null)
+            scheme = Scheme.NOSCHEME;
+        else if (authScheme.equalsIgnoreCase(Scheme.BASIC.name()))
+            scheme = Scheme.BASIC;
+        else
+            scheme = Scheme.DIGEST;
+        sb.append(scheme).append("|");
+    }
 
-  private static void addRoleInfo(SecurityContext context, StringBuilder sb) {
-    java.security.Principal userPrincipal = context.getUserPrincipal();
-    String principal = userPrincipal == null ? "" : userPrincipal.getName();
-    sb.append(principal).append("|");
-  }
+    private static void addRoleInfo(SecurityContext context, StringBuilder sb) {
+        java.security.Principal userPrincipal = context.getUserPrincipal();
+        String principal = userPrincipal == null ? "" : userPrincipal.getName();
+        sb.append(principal).append("|");
+    }
 
-  private static void addPrincipalInfo(SecurityContext context,
-      StringBuilder sb) {
-    Role role;
-    if (context.isUserInRole(Role.DIRECTOR.name()))
-      role = Role.DIRECTOR;
-    else if (context.isUserInRole(Role.OTHERROLE.name()))
-      role = Role.OTHERROLE;
-    else
-      role = Role.NOROLE;
-    sb.append(role).append("|");
-  }
+    private static void addPrincipalInfo(SecurityContext context,
+            StringBuilder sb) {
+        Role role;
+        if (context.isUserInRole(Role.DIRECTOR.name()))
+            role = Role.DIRECTOR;
+        else if (context.isUserInRole(Role.OTHERROLE.name()))
+            role = Role.OTHERROLE;
+        else
+            role = Role.NOROLE;
+        sb.append(role).append("|");
+    }
 
-  @GET
-  @Path("/Context")
-  public Response test(@Context SecurityContext context) {
-    StringBuilder sb = new StringBuilder();
-    addSecuredInfo(context, sb);
-    addPrincipalInfo(context, sb);
-    addRoleInfo(context, sb);
-    addSchemaInfo(context, sb);
-    return Response.ok(sb.toString()).build();
-  }
+    @GET
+    @Path("/Context")
+    public Response test(@Context SecurityContext context) {
+        StringBuilder sb = new StringBuilder();
+        addSecuredInfo(context, sb);
+        addPrincipalInfo(context, sb);
+        addRoleInfo(context, sb);
+        addSchemaInfo(context, sb);
+        return Response.ok(sb.toString()).build();
+    }
 
 }

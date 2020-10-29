@@ -22,15 +22,15 @@ import javax.validation.ConstraintValidatorContext;
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 public class ConstraintDeclarationValidator implements
-    ConstraintValidator<ConstraintDeclarationAnnotation, StringBean> {
+        ConstraintValidator<ConstraintDeclarationAnnotation, StringBean> {
 
-  @Override
-  public void initialize(ConstraintDeclarationAnnotation ann) {
-  }
+    @Override
+    public void initialize(ConstraintDeclarationAnnotation ann) {
+    }
 
-  @Override
-  public boolean isValid(StringBean bean, ConstraintValidatorContext ctx) {
-    return true;
-  }
+    @Override
+    public boolean isValid(StringBean bean, ConstraintValidatorContext ctx) {
+        return true;
+    }
 
 }

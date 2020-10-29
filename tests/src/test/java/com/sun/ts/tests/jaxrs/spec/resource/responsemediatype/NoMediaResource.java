@@ -26,16 +26,16 @@ import javax.ws.rs.core.Response;
 @Path("nomedia")
 public class NoMediaResource {
 
-  @GET
-  @Path("list")
-  public List<String> serializable() {
-    return java.util.Collections.singletonList("AA");
-  }
+    @GET
+    @Path("list")
+    public List<String> serializable() {
+        return java.util.Collections.singletonList("AA");
+    }
 
-  @GET
-  @Path("responseoverride")
-  public Response overrideNoProduces() {
-    return Response.ok("<a>responseoverride</a>")
-        .type(MediaType.APPLICATION_XML_TYPE).build();
-  }
+    @GET
+    @Path("responseoverride")
+    public Response overrideNoProduces() {
+        return Response.ok("<a>responseoverride</a>")
+                .type(MediaType.APPLICATION_XML_TYPE).build();
+    }
 }

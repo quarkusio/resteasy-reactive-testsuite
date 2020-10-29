@@ -22,16 +22,16 @@ import javax.ws.rs.Path;
 @Path("resource")
 public class Resource {
 
-  @POST
-  @Path("bind")
-  @GlobalNameBinding
-  public String echoWithBind(String echo) {
-    return echo;
-  }
+    @POST
+    @Path("bind")
+    @GlobalNameBinding
+    public String echoWithBind(String echo) {
+        return echo;
+    }
 
-  @POST
-  @Path("nobind")
-  public String echoNoBind(String echo) {
-    return echo;
-  }
+    @POST
+    @Path("nobind")
+    public String echoNoBind(String echo) {
+        return echo;
+    }
 }

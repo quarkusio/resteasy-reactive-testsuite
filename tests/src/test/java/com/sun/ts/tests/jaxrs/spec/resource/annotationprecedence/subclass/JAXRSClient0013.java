@@ -17,17 +17,18 @@
 package com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass;
 
 import java.util.function.Supplier;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
-
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -46,234 +47,232 @@ public class JAXRSClient0013 extends JAXRSCommonClient {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass.TSAppConfig.class,
-                              com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.SuperClass.class
-                            , com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass.Resource.class
-                            , com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.ResourceInterface.class
-                            );
+                                    com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.SuperClass.class,
+                                    com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass.Resource.class,
+                                    com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.ResourceInterface.class);
                 }
             });
 
+    private static final long serialVersionUID = 1L;
 
-  private static final long serialVersionUID = 1L;
+    public JAXRSClient0013() {
+        setContextRoot(
+                "/jaxrs_spec_resource_annotationprecedence_subclass_web/resource");
+    }
 
-  public JAXRSClient0013() {
-    setContextRoot(
-        "/jaxrs_spec_resource_annotationprecedence_subclass_web/resource");
-  }
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        new JAXRSClient0013().run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    new JAXRSClient0013().run(args);
-  }
+    /* Run test */
+    /*
+     * @testName: correctTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored.
+     */
+    @Test
+    public void correctTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
+        invoke();
+    }
 
-  /* Run test */
-  /*
-   * @testName: correctTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored.
-   */
-  @Test
-  public void correctTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
-    invoke();
-  }
+    /*
+     * @testName: incorrectPathOnClassTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (@Path)
+     */
+    @Test
+    public void incorrectPathOnClassTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put")
+                .replace("/resource", "/interfaceresource"));
+        setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
+        invoke();
+    }
 
-  /*
-   * @testName: incorrectPathOnClassTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (@Path)
-   */
-  @Test
-  public void incorrectPathOnClassTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put")
-        .replace("/resource", "/interfaceresource"));
-    setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
-    invoke();
-  }
+    /*
+     * @testName: incorrectPathOnClassAndRequestTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (@Path)
+     */
+    @Test
+    public void incorrectPathOnClassAndRequestTest() throws Fault {
+        setProperty(Property.REQUEST,
+                buildRequest(Request.POST, "post").replace("/resource", "/super"));
+        setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
+        invoke();
+    }
 
-  /*
-   * @testName: incorrectPathOnClassAndRequestTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (@Path)
-   */
-  @Test
-  public void incorrectPathOnClassAndRequestTest() throws Fault {
-    setProperty(Property.REQUEST,
-        buildRequest(Request.POST, "post").replace("/resource", "/super"));
-    setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
-    invoke();
-  }
+    /*
+     * @testName: incorrectPathOnMethodTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (@Path)
+     */
+    @Test
+    public void incorrectPathOnMethodTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "post"));
+        setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
+        invoke();
+    }
 
-  /*
-   * @testName: incorrectPathOnMethodTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (@Path)
-   */
-  @Test
-  public void incorrectPathOnMethodTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "post"));
-    setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_FOUND));
-    invoke();
-  }
+    /*
+     * @testName: correctRequestTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (@POST)
+     */
+    @Test
+    public void correctRequestTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.POST, "put"));
+        setProperty(Property.STATUS_CODE, "!" + getStatusCode(Status.OK));
+        invoke();
+    }
 
-  /*
-   * @testName: correctRequestTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (@POST)
-   */
-  @Test
-  public void correctRequestTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.POST, "put"));
-    setProperty(Property.STATUS_CODE, "!" + getStatusCode(Status.OK));
-    invoke();
-  }
+    /*
+     * @testName: incorrectConsumesTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored.(Content-Type)
+     */
+    @Test
+    public void incorrectConsumesTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.TEXT_XML_TYPE));
+        setProperty(Property.STATUS_CODE,
+                getStatusCode(Status.UNSUPPORTED_MEDIA_TYPE));
+        invoke();
+    }
 
-  /*
-   * @testName: incorrectConsumesTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored.(Content-Type)
-   */
-  @Test
-  public void incorrectConsumesTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
-    setProperty(Property.REQUEST_HEADERS,
-        buildContentType(MediaType.TEXT_XML_TYPE));
-    setProperty(Property.STATUS_CODE,
-        getStatusCode(Status.UNSUPPORTED_MEDIA_TYPE));
-    invoke();
-  }
+    /*
+     * @testName: incorrectProdecesTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (Accept)
+     */
+    @Test
+    public void incorrectProdecesTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
+        setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
+        setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_ACCEPTABLE));
+        invoke();
+    }
 
-  /*
-   * @testName: incorrectProdecesTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (Accept)
-   */
-  @Test
-  public void incorrectProdecesTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
-    setProperty(Property.REQUEST_HEADERS, buildAccept(MediaType.TEXT_XML_TYPE));
-    setProperty(Property.STATUS_CODE, getStatusCode(Status.NOT_ACCEPTABLE));
-    invoke();
-  }
+    /*
+     * @testName: correctProducesConsumesTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (Accept, Content-type)
+     */
+    @Test
+    public void correctProducesConsumesTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
+        setProperty(Property.REQUEST_HEADERS,
+                buildAccept(MediaType.TEXT_HTML_TYPE));
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.TEXT_HTML_TYPE));
+        setProperty(Property.STATUS_CODE, getStatusCode(Status.OK));
+        invoke();
+    }
 
-  /*
-   * @testName: correctProducesConsumesTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (Accept, Content-type)
-   */
-  @Test
-  public void correctProducesConsumesTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
-    setProperty(Property.REQUEST_HEADERS,
-        buildAccept(MediaType.TEXT_HTML_TYPE));
-    setProperty(Property.REQUEST_HEADERS,
-        buildContentType(MediaType.TEXT_HTML_TYPE));
-    setProperty(Property.STATUS_CODE, getStatusCode(Status.OK));
-    invoke();
-  }
+    /*
+     * @testName: formParamTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (formparam=pqr)
+     */
+    @Test
+    public void formParamTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
+        setProperty(Property.CONTENT, "pqr=hello");
+        setProperty(Property.SEARCH_STRING, "subclass");
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, "hello");
+        invoke();
+    }
 
-  /*
-   * @testName: formParamTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (formparam=pqr)
-   */
-  @Test
-  public void formParamTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put"));
-    setProperty(Property.CONTENT, "pqr=hello");
-    setProperty(Property.SEARCH_STRING, "subclass");
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, "hello");
-    invoke();
-  }
+    /*
+     * @testName: queryParamXyzTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (queryParam=xyz)
+     */
+    @Test
+    public void queryParamXyzTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put?xyz=hello"));
+        setProperty(Property.SEARCH_STRING, "subclass");
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, "hello");
+        invoke();
+    }
 
-  /*
-   * @testName: queryParamXyzTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (queryParam=xyz)
-   */
-  @Test
-  public void queryParamXyzTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put?xyz=hello"));
-    setProperty(Property.SEARCH_STRING, "subclass");
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, "hello");
-    invoke();
-  }
+    /*
+     * @testName: queryParamPqrTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (queryParam=pqr)
+     */
+    @Test
+    public void queryParamPqrTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put?pqr=hello"));
+        setProperty(Property.SEARCH_STRING, "subclass");
+        setProperty(Property.UNEXPECTED_RESPONSE_MATCH, "hello");
+        invoke();
+    }
 
-  /*
-   * @testName: queryParamPqrTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (queryParam=pqr)
-   */
-  @Test
-  public void queryParamPqrTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put?pqr=hello"));
-    setProperty(Property.SEARCH_STRING, "subclass");
-    setProperty(Property.UNEXPECTED_RESPONSE_MATCH, "hello");
-    invoke();
-  }
-
-  /*
-   * @testName: matrixParamPqrTest
-   * 
-   * @assertion_ids: JAXRS:SPEC:24;
-   * 
-   * @test_Strategy: If a subclass or implementation method has any JAX-RS
-   * annotations then all of the annotations on the super class or interface
-   * method are ignored. (queryParam=pqr)
-   */
-  @Test
-  public void matrixParamPqrTest() throws Fault {
-    setProperty(Property.REQUEST, buildRequest(Request.PUT, "put;ijk=hello"));
-    setProperty(Property.SEARCH_STRING, "hello");
-    invoke();
-  }
+    /*
+     * @testName: matrixParamPqrTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:24;
+     * 
+     * @test_Strategy: If a subclass or implementation method has any JAX-RS
+     * annotations then all of the annotations on the super class or interface
+     * method are ignored. (queryParam=pqr)
+     */
+    @Test
+    public void matrixParamPqrTest() throws Fault {
+        setProperty(Property.REQUEST, buildRequest(Request.PUT, "put;ijk=hello"));
+        setProperty(Property.SEARCH_STRING, "hello");
+        invoke();
+    }
 }

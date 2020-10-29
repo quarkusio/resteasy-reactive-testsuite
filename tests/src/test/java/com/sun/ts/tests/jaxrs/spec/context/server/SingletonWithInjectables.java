@@ -17,14 +17,14 @@
 package com.sun.ts.tests.jaxrs.spec.context.server;
 
 public class SingletonWithInjectables {
-  public SingletonWithInjectables(TSAppConfig config) {
-    super();
-    this.config = config;
-  }
+    public SingletonWithInjectables(TSAppConfig config) {
+        super();
+        this.config = config;
+    }
 
-  private TSAppConfig config;
+    private TSAppConfig config;
 
-  public String getInjectedContextValues() {
-    return config.getInjectedContextValues();
-  }
+    public String getInjectedContextValues() {
+        return config.getInjectedContextValues();
+    }
 }

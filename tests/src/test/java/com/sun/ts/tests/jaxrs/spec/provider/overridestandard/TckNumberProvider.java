@@ -35,40 +35,40 @@ import javax.ws.rs.ext.Provider;
 @Consumes(MediaType.TEXT_PLAIN)
 @Produces(MediaType.TEXT_PLAIN)
 public class TckNumberProvider
-    implements MessageBodyWriter<Number>, MessageBodyReader<Number> {
+        implements MessageBodyWriter<Number>, MessageBodyReader<Number> {
 
-  @Override
-  public boolean isReadable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return Number.class.isAssignableFrom(type);
-  }
+    @Override
+    public boolean isReadable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return Number.class.isAssignableFrom(type);
+    }
 
-  @Override
-  public Number readFrom(Class<Number> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
-      throws IOException, WebApplicationException {
-    return 1;
-  }
+    @Override
+    public Number readFrom(Class<Number> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
+            throws IOException, WebApplicationException {
+        return 1;
+    }
 
-  @Override
-  public boolean isWriteable(Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return isReadable(type, genericType, annotations, mediaType);
-  }
+    @Override
+    public boolean isWriteable(Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return isReadable(type, genericType, annotations, mediaType);
+    }
 
-  @Override
-  public long getSize(Number t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType) {
-    return 1;
-  }
+    @Override
+    public long getSize(Number t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType) {
+        return 1;
+    }
 
-  @Override
-  public void writeTo(Number t, Class<?> type, Type genericType,
-      Annotation[] annotations, MediaType mediaType,
-      MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
-      throws IOException, WebApplicationException {
-    entityStream.write("2".getBytes());
-  }
+    @Override
+    public void writeTo(Number t, Class<?> type, Type genericType,
+            Annotation[] annotations, MediaType mediaType,
+            MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
+            throws IOException, WebApplicationException {
+        entityStream.write("2".getBytes());
+    }
 
 }

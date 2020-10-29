@@ -23,25 +23,25 @@ import javax.ws.rs.core.Response.Status;
 
 @Path("resource")
 public class Resource {
-  public static final long SLEEP_TIME = 1500L;
+    public static final long SLEEP_TIME = 1500L;
 
-  @PATCH
-  @Path("patch")
-  public String patch(String in) {
-    return in;
-  }
+    @PATCH
+    @Path("patch")
+    public String patch(String in) {
+        return in;
+    }
 
-  @PATCH
-  @Path("patchnotok")
-  public Response patchNotOk(String value) {
-    return Response.status(Status.NOT_ACCEPTABLE).build();
-  }
+    @PATCH
+    @Path("patchnotok")
+    public Response patchNotOk(String value) {
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
 
-  @PATCH
-  @Path("patchandwait")
-  public String postAndWait(String value) throws InterruptedException {
-    Thread.sleep(SLEEP_TIME);
-    return value;
-  }
+    @PATCH
+    @Path("patchandwait")
+    public String postAndWait(String value) throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        return value;
+    }
 
 }

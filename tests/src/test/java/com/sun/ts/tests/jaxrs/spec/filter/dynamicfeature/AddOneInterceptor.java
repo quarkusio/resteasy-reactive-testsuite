@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature;
 
 public class AddOneInterceptor extends AbstractAddInterceptor {
 
-  public AddOneInterceptor() {
-    super(1);
-  }
+    public AddOneInterceptor() {
+        super(1);
+    }
 }

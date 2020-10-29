@@ -32,75 +32,75 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter.ReadableWritable
 @Path(value = "/ReturnTypeTest")
 public class ReturnTypeTest {
 
-  public static final long serialVersionUID = 6121223518891332649L;
+    public static final long serialVersionUID = 6121223518891332649L;
 
-  @GET
-  @Path("void")
-  public String voidTest() {
-    return null;
-  }
+    @GET
+    @Path("void")
+    public String voidTest() {
+        return null;
+    }
 
-  @GET
-  @Path("nullResponse")
-  public Response nullResponse() {
-    return null;
-  }
+    @GET
+    @Path("nullResponse")
+    public Response nullResponse() {
+        return null;
+    }
 
-  @GET
-  @Path("nullEntityResponse")
-  public Response nullEntityResponse() {
-    RuntimeDelegate rd = RuntimeDelegate.getInstance();
-    ResponseBuilder rb = rd.createResponseBuilder();
-    return rb.entity(null).build();
-  }
+    @GET
+    @Path("nullEntityResponse")
+    public Response nullEntityResponse() {
+        RuntimeDelegate rd = RuntimeDelegate.getInstance();
+        ResponseBuilder rb = rd.createResponseBuilder();
+        return rb.entity(null).build();
+    }
 
-  @GET
-  @Path("default")
-  public String defaultTest() {
-    return "I am OK";
-  }
+    @GET
+    @Path("default")
+    public String defaultTest() {
+        return "I am OK";
+    }
 
-  @GET
-  @Produces(MediaType.TEXT_PLAIN)
-  @Path("notAcceptable")
-  public String notAcceptableTest() {
-    return "I am OK";
-  }
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("notAcceptable")
+    public String notAcceptableTest() {
+        return "I am OK";
+    }
 
-  @GET
-  @Path("nullGenericEntityTest")
-  public GenericEntity<?> nullGenericEntityTest() {
-    return null;
-  }
+    @GET
+    @Path("nullGenericEntityTest")
+    public GenericEntity<?> nullGenericEntityTest() {
+        return null;
+    }
 
-  @GET
-  @Path("genericEntityTest")
-  public GenericEntity<UUID> genericEntityTest() {
-    UUID uuid = new UUID(serialVersionUID, serialVersionUID >> 1);
-    return new GenericEntity<UUID>(uuid,
-        uuid.getClass().getGenericSuperclass());
-  }
+    @GET
+    @Path("genericEntityTest")
+    public GenericEntity<UUID> genericEntityTest() {
+        UUID uuid = new UUID(serialVersionUID, serialVersionUID >> 1);
+        return new GenericEntity<UUID>(uuid,
+                uuid.getClass().getGenericSuperclass());
+    }
 
-  @GET
-  @Path("nullEntityTest")
-  public ReadableWritableEntity nullEntity() {
-    return null;
-  }
+    @GET
+    @Path("nullEntityTest")
+    public ReadableWritableEntity nullEntity() {
+        return null;
+    }
 
-  @GET
-  @Path("entitybodytest")
-  @Produces(MediaType.TEXT_XML)
-  public ReadableWritableEntity entityTest() {
-    return new ReadableWritableEntity(String.valueOf(serialVersionUID));
-  }
+    @GET
+    @Path("entitybodytest")
+    @Produces(MediaType.TEXT_XML)
+    public ReadableWritableEntity entityTest() {
+        return new ReadableWritableEntity(String.valueOf(serialVersionUID));
+    }
 
-  @GET
-  @Path("entitybodyresponsetest")
-  public Response entityResponseTest() {
-    RuntimeDelegate rd = RuntimeDelegate.getInstance();
-    ResponseBuilder rb = rd.createResponseBuilder();
-    ReadableWritableEntity rwe = entityTest();
-    return rb.entity(rwe).build();
-  }
+    @GET
+    @Path("entitybodyresponsetest")
+    public Response entityResponseTest() {
+        RuntimeDelegate rd = RuntimeDelegate.getInstance();
+        ResponseBuilder rb = rd.createResponseBuilder();
+        ReadableWritableEntity rwe = entityTest();
+        return rb.entity(rwe).build();
+    }
 
 }

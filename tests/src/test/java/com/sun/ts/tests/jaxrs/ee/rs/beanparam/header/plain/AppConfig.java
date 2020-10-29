@@ -16,21 +16,21 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.beanparam.header.plain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.ws.rs.core.Application;
 
 import com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper;
 import com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper;
 
-import java.util.Set;
-import java.util.HashSet;
-
 public class AppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(Resource.class);
-    resources.add(RuntimeExceptionMapper.class);
-    resources.add(WebApplicationExceptionMapper.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(Resource.class);
+        resources.add(RuntimeExceptionMapper.class);
+        resources.add(WebApplicationExceptionMapper.class);
+        return resources;
+    }
 }

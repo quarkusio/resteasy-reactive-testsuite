@@ -28,9 +28,9 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Produces(MediaType.TEXT_PLAIN)
 public class TextPlainEnumContextResolver
-    implements ContextResolver<EnumProvider> {
-  @Override
-  public EnumProvider getContext(Class<?> type) {
-    return type == EnumProvider.class ? EnumProvider.CTS : null;
-  }
+        implements ContextResolver<EnumProvider> {
+    @Override
+    public EnumProvider getContext(Class<?> type) {
+        return type == EnumProvider.class ? EnumProvider.CTS : null;
+    }
 }

@@ -33,61 +33,61 @@ import com.sun.ts.tests.jaxrs.ee.rs.beanparam.cookie.bean.CookieBeanParamEntity;
 @Path(value = "resource")
 public class Resource extends ParamTest {
 
-  @BeanParam
-  CookieBeanParamEntity field;
+    @BeanParam
+    CookieBeanParamEntity field;
 
-  @POST
-  @Path("Field")
-  @Produces(MediaType.TEXT_PLAIN)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public String field() {
-    sb = new StringBuilder();
-    setReturnValues(field.paramEntityWithConstructor,
-        field.paramEntityWithFromString, field.paramEntityWithValueOf,
-        field.setParamEntityWithFromString,
-        field.sortedSetParamEntityWithFromString,
-        field.listParamEntityWithFromString, FIELD);
-    setReturnValues(field.inner.paramEntityWithConstructor,
-        field.inner.paramEntityWithFromString,
-        field.inner.paramEntityWithValueOf,
-        field.inner.setParamEntityWithFromString,
-        field.inner.sortedSetParamEntityWithFromString,
-        field.inner.listParamEntityWithFromString, Constants.INNER + FIELD);
-    return sb.toString();
-  }
-
-  @POST
-  @Path("Param")
-  @Produces(MediaType.TEXT_PLAIN)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public String stringParamHandling(@BeanParam CookieBeanParamEntity bean) {
-    sb = new StringBuilder();
-    setReturnValues(bean.paramEntityWithConstructor,
-        bean.paramEntityWithFromString, bean.paramEntityWithValueOf,
-        bean.setParamEntityWithFromString,
-        bean.sortedSetParamEntityWithFromString,
-        bean.listParamEntityWithFromString, PARAM);
-    setReturnValues(bean.inner.paramEntityWithConstructor,
-        bean.inner.paramEntityWithFromString, bean.inner.paramEntityWithValueOf,
-        bean.inner.setParamEntityWithFromString,
-        bean.inner.sortedSetParamEntityWithFromString,
-        bean.inner.listParamEntityWithFromString, Constants.INNER + PARAM);
-    return sb.toString();
-  }
-
-  @POST
-  @Path("Set")
-  @Produces(MediaType.TEXT_PLAIN)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public Response set(String content) {
-    ResponseBuilder rb = Response.ok();
-    if (content != null) {
-      String[] cookies1 = content.split(";");
-      for (String cookie : cookies1) {
-        String[] nameVal = cookie.split("="); // name=0, value=1
-        rb.cookie(new NewCookie(nameVal[0], nameVal[1]));
-      }
+    @POST
+    @Path("Field")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String field() {
+        sb = new StringBuilder();
+        setReturnValues(field.paramEntityWithConstructor,
+                field.paramEntityWithFromString, field.paramEntityWithValueOf,
+                field.setParamEntityWithFromString,
+                field.sortedSetParamEntityWithFromString,
+                field.listParamEntityWithFromString, FIELD);
+        setReturnValues(field.inner.paramEntityWithConstructor,
+                field.inner.paramEntityWithFromString,
+                field.inner.paramEntityWithValueOf,
+                field.inner.setParamEntityWithFromString,
+                field.inner.sortedSetParamEntityWithFromString,
+                field.inner.listParamEntityWithFromString, Constants.INNER + FIELD);
+        return sb.toString();
     }
-    return rb.build();
-  }
+
+    @POST
+    @Path("Param")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String stringParamHandling(@BeanParam CookieBeanParamEntity bean) {
+        sb = new StringBuilder();
+        setReturnValues(bean.paramEntityWithConstructor,
+                bean.paramEntityWithFromString, bean.paramEntityWithValueOf,
+                bean.setParamEntityWithFromString,
+                bean.sortedSetParamEntityWithFromString,
+                bean.listParamEntityWithFromString, PARAM);
+        setReturnValues(bean.inner.paramEntityWithConstructor,
+                bean.inner.paramEntityWithFromString, bean.inner.paramEntityWithValueOf,
+                bean.inner.setParamEntityWithFromString,
+                bean.inner.sortedSetParamEntityWithFromString,
+                bean.inner.listParamEntityWithFromString, Constants.INNER + PARAM);
+        return sb.toString();
+    }
+
+    @POST
+    @Path("Set")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response set(String content) {
+        ResponseBuilder rb = Response.ok();
+        if (content != null) {
+            String[] cookies1 = content.split(";");
+            for (String cookie : cookies1) {
+                String[] nameVal = cookie.split("="); // name=0, value=1
+                rb.cookie(new NewCookie(nameVal[0], nameVal[1]));
+            }
+        }
+        return rb.build();
+    }
 }

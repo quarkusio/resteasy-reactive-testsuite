@@ -24,16 +24,16 @@ import javax.ws.rs.core.StreamingOutput;
 
 public class StringStreamingOutput implements StreamingOutput {
 
-  private String value;
+    private String value;
 
-  public StringStreamingOutput(String value) {
-    this.value = value;
-  }
+    public StringStreamingOutput(String value) {
+        this.value = value;
+    }
 
-  @Override
-  public void write(OutputStream output)
-      throws IOException, WebApplicationException {
-    output.write(value.getBytes());
-  }
+    @Override
+    public void write(OutputStream output)
+            throws IOException, WebApplicationException {
+        output.write(value.getBytes());
+    }
 
 }

@@ -26,31 +26,31 @@ import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient.Fault;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 
 public class GetPropertyNamesProvider extends ContextProvider {
-  private AtomicInteger counter;
+    private AtomicInteger counter;
 
-  public GetPropertyNamesProvider(AtomicInteger counter) {
-    super();
-    this.counter = counter;
-  }
-
-  @Override
-  protected void checkFilterContext(ClientRequestContext context) throws Fault {
-    if (counter.incrementAndGet() == 2) {
-      Collection<String> properties = context.getPropertyNames();
-      String entity = properties == null ? "NULL"
-          : JaxrsUtil.iterableToString(";", properties);
-      Response r = Response.ok(entity).build();
-      context.abortWith(r);
-    } else {
-      context.setProperty("PROPERTY1", "value1");
-      context.setProperty("PROPERTY2", "value2");
+    public GetPropertyNamesProvider(AtomicInteger counter) {
+        super();
+        this.counter = counter;
     }
-  }
 
-  protected static <T> String collectionToString(Collection<T> collection) {
-    StringBuilder sb = new StringBuilder();
-    for (T t : collection)
-      sb.append(t).append(";");
-    return sb.toString();
-  }
+    @Override
+    protected void checkFilterContext(ClientRequestContext context) throws Fault {
+        if (counter.incrementAndGet() == 2) {
+            Collection<String> properties = context.getPropertyNames();
+            String entity = properties == null ? "NULL"
+                    : JaxrsUtil.iterableToString(";", properties);
+            Response r = Response.ok(entity).build();
+            context.abortWith(r);
+        } else {
+            context.setProperty("PROPERTY1", "value1");
+            context.setProperty("PROPERTY2", "value2");
+        }
+    }
+
+    protected static <T> String collectionToString(Collection<T> collection) {
+        StringBuilder sb = new StringBuilder();
+        for (T t : collection)
+            sb.append(t).append(";");
+        return sb.toString();
+    }
 }

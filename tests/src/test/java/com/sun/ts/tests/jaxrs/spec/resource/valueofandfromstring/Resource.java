@@ -27,73 +27,73 @@ import javax.ws.rs.QueryParam;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("enummatrix")
-  public String enummatrix(
-      @MatrixParam("param") EnumWithFromStringAndValueOf param) {
-    return param.name();
-  }
+    @GET
+    @Path("enummatrix")
+    public String enummatrix(
+            @MatrixParam("param") EnumWithFromStringAndValueOf param) {
+        return param.name();
+    }
 
-  @GET
-  @Path("enumquery")
-  public String enumquery(
-      @QueryParam("param") EnumWithFromStringAndValueOf param) {
-    return param.name();
-  }
+    @GET
+    @Path("enumquery")
+    public String enumquery(
+            @QueryParam("param") EnumWithFromStringAndValueOf param) {
+        return param.name();
+    }
 
-  @GET
-  @Path("enumpath/{param}")
-  public String enumpath(
-      @PathParam("param") EnumWithFromStringAndValueOf param) {
-    return param.name();
-  }
+    @GET
+    @Path("enumpath/{param}")
+    public String enumpath(
+            @PathParam("param") EnumWithFromStringAndValueOf param) {
+        return param.name();
+    }
 
-  @GET
-  @Path("enumcookie")
-  public String enumcookie(
-      @CookieParam("param") EnumWithFromStringAndValueOf param) {
-    return param.name();
-  }
+    @GET
+    @Path("enumcookie")
+    public String enumcookie(
+            @CookieParam("param") EnumWithFromStringAndValueOf param) {
+        return param.name();
+    }
 
-  @GET
-  @Path("enumheader")
-  public String enumheader(
-      @HeaderParam("param") EnumWithFromStringAndValueOf param) {
-    return param.name();
-  }
+    @GET
+    @Path("enumheader")
+    public String enumheader(
+            @HeaderParam("param") EnumWithFromStringAndValueOf param) {
+        return param.name();
+    }
 
-  @GET
-  @Path("entitymatrix")
-  public String entitymatrix(
-      @MatrixParam("param") ParamEntityWithFromStringAndValueOf param) {
-    return param.getValue();
-  }
+    @GET
+    @Path("entitymatrix")
+    public String entitymatrix(
+            @MatrixParam("param") ParamEntityWithFromStringAndValueOf param) {
+        return param.getValue();
+    }
 
-  @GET
-  @Path("entityquery")
-  public String entityquery(
-      @QueryParam("param") ParamEntityWithFromStringAndValueOf param) {
-    return param.getValue();
-  }
+    @GET
+    @Path("entityquery")
+    public String entityquery(
+            @QueryParam("param") ParamEntityWithFromStringAndValueOf param) {
+        return param.getValue();
+    }
 
-  @GET
-  @Path("entitypath/{param}")
-  public String entitypath(
-      @PathParam("param") ParamEntityWithFromStringAndValueOf param) {
-    return param.getValue();
-  }
+    @GET
+    @Path("entitypath/{param}")
+    public String entitypath(
+            @PathParam("param") ParamEntityWithFromStringAndValueOf param) {
+        return param.getValue();
+    }
 
-  @GET
-  @Path("entitycookie")
-  public String entitycookie(
-      @CookieParam("param") ParamEntityWithFromStringAndValueOf param) {
-    return param.getValue();
-  }
+    @GET
+    @Path("entitycookie")
+    public String entitycookie(
+            @CookieParam("param") ParamEntityWithFromStringAndValueOf param) {
+        return param.getValue();
+    }
 
-  @GET
-  @Path("entityheader")
-  public String entityheader(
-      @HeaderParam("param") ParamEntityWithFromStringAndValueOf param) {
-    return param.getValue();
-  }
+    @GET
+    @Path("entityheader")
+    public String entityheader(
+            @HeaderParam("param") ParamEntityWithFromStringAndValueOf param) {
+        return param.getValue();
+    }
 }

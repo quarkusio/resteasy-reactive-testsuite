@@ -21,8 +21,8 @@ import javax.ws.rs.Produces;
 
 public interface ParentResource {
 
-  @GET
-  @Produces("text/plain")
-  public String firstest();
+    @GET
+    @Produces("text/plain")
+    public String firstest();
 
 }

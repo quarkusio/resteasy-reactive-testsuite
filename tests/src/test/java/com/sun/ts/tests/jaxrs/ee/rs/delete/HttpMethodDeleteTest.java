@@ -24,26 +24,26 @@ import javax.ws.rs.Produces;
 
 public class HttpMethodDeleteTest {
 
-  static String html_content = "<html>"
-      + "<head><title>CTS-Delete text/html</title></head>"
-      + "<body>CTS-Delete text/html</body></html>";
+    static String html_content = "<html>"
+            + "<head><title>CTS-Delete text/html</title></head>"
+            + "<body>CTS-Delete text/html</body></html>";
 
-  @DELETE
-  @Produces(value = "text/plain")
-  public String getPlain() {
-    return "CTS-Delete text/plain";
-  }
+    @DELETE
+    @Produces(value = "text/plain")
+    public String getPlain() {
+        return "CTS-Delete text/plain";
+    }
 
-  @DELETE
-  @Produces(value = "text/html")
-  public String getHtml() {
-    return html_content;
-  }
+    @DELETE
+    @Produces(value = "text/html")
+    public String getHtml() {
+        return html_content;
+    }
 
-  @DELETE
-  @Path(value = "/sub")
-  @Produces(value = "text/html")
-  public String getSub() {
-    return html_content;
-  }
+    @DELETE
+    @Path(value = "/sub")
+    @Produces(value = "text/html")
+    public String getSub() {
+        return html_content;
+    }
 }

@@ -21,31 +21,31 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.messagebodyreaderwriter;
  * com.sun.ts.tests.jaxrs.ee.rs.ext.providers.ProvidersServlet
  */
 public class ReadableWritableEntity {
-  private String entity;
+    private String entity;
 
-  public static final String NAME = "READABLEWRITEABLE";
+    public static final String NAME = "READABLEWRITEABLE";
 
-  private static final String PREFIX = "<" + NAME + ">";
+    private static final String PREFIX = "<" + NAME + ">";
 
-  private static final String SUFFIX = "</" + NAME + ">";
+    private static final String SUFFIX = "</" + NAME + ">";
 
-  public ReadableWritableEntity(String entity) {
-    this.entity = entity;
-  }
+    public ReadableWritableEntity(String entity) {
+        this.entity = entity;
+    }
 
-  public String toXmlString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append(PREFIX).append(entity).append(SUFFIX);
-    return sb.toString();
-  }
+    public String toXmlString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(PREFIX).append(entity).append(SUFFIX);
+        return sb.toString();
+    }
 
-  @Override
-  public String toString() {
-    return entity;
-  }
+    @Override
+    public String toString() {
+        return entity;
+    }
 
-  public static ReadableWritableEntity fromString(String stream) {
-    String entity = stream.replaceAll(PREFIX, "").replaceAll(SUFFIX, "");
-    return new ReadableWritableEntity(entity);
-  }
+    public static ReadableWritableEntity fromString(String stream) {
+        String entity = stream.replaceAll(PREFIX, "").replaceAll(SUFFIX, "");
+        return new ReadableWritableEntity(entity);
+    }
 }

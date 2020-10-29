@@ -23,7 +23,7 @@ import javax.ws.rs.ext.Provider;
 @ComplementNameBinding
 public class AddTenInterceptor extends AbstractAddInterceptor {
 
-  public AddTenInterceptor() {
-    super(10);
-  }
+    public AddTenInterceptor() {
+        super(10);
+    }
 }

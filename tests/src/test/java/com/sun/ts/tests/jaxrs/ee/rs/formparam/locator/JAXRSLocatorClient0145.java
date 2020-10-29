@@ -18,15 +18,16 @@ package com.sun.ts.tests.jaxrs.ee.rs.formparam.locator;
 
 import java.util.function.Supplier;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import io.quarkus.test.QuarkusUnitTest;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient0146;
+
+import io.quarkus.test.QuarkusUnitTest;
 
 /*
  * @class.setup_props: webServerHost;
@@ -45,166 +46,164 @@ public class JAXRSLocatorClient0145 extends JAXRSClient0146 {
                 public JavaArchive get() {
                     return ShrinkWrap.create(JavaArchive.class)
                             .addClasses(
-                            com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.TSAppConfig.class,
-                            com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.LocatorResource.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.MiddleResource.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class
-                            , com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class
-                            , com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class
-                            );
+                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.TSAppConfig.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.LocatorResource.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.MiddleResource.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
+                                    com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
+                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
                 }
             });
 
+    public JAXRSLocatorClient0145() {
+        setContextRoot("/jaxrs_ee_formparam_locator_web/resource/locator");
+    }
 
-  public JAXRSLocatorClient0145() {
-    setContextRoot("/jaxrs_ee_formparam_locator_web/resource/locator");
-  }
+    private static final long serialVersionUID = 1L;
 
-  private static final long serialVersionUID = 1L;
+    /**
+     * Entry point for different-VM execution. It should delegate to method
+     * run(String[], PrintWriter, PrintWriter), and this method should not contain
+     * any test configuration.
+     */
+    public static void main(String[] args) {
+        JAXRSLocatorClient0145 theTests = new JAXRSLocatorClient0145();
+        theTests.run(args);
+    }
 
-  /**
-   * Entry point for different-VM execution. It should delegate to method
-   * run(String[], PrintWriter, PrintWriter), and this method should not contain
-   * any test configuration.
-   */
-  public static void main(String[] args) {
-    JAXRSLocatorClient0145 theTests = new JAXRSLocatorClient0145();
-    theTests.run(args);
-  }
+    /*
+     * @testName: nonDefaultFormParamNothingSentTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test sending no content;
+     */
+    @Test
+    public void nonDefaultFormParamNothingSentTest() throws Fault {
+        super.nonDefaultFormParamNothingSentTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamNothingSentTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test sending no content;
-   */
-  @Test
-  public void nonDefaultFormParamNothingSentTest() throws Fault {
-    super.nonDefaultFormParamNothingSentTest();
-  }
+    /*
+     * @testName: nonDefaultFormParamValueOfTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test creating a ParamEntityWithValueOf from sending a
+     * String;
+     */
+    @Test
+    public void nonDefaultFormParamValueOfTest() throws Fault {
+        super.nonDefaultFormParamValueOfTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamValueOfTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test creating a ParamEntityWithValueOf from sending a
-   * String;
-   */
-  @Test
-  public void nonDefaultFormParamValueOfTest() throws Fault {
-    super.nonDefaultFormParamValueOfTest();
-  }
+    /*
+     * @testName: nonDefaultFormParamFromStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test creating a ParamEntityWithFromString from sending a
+     * String;
+     */
+    @Test
+    public void nonDefaultFormParamFromStringTest() throws Fault {
+        _contextRoot += "encoded";
+        super.nonDefaultFormParamFromStringTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamFromStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test creating a ParamEntityWithFromString from sending a
-   * String;
-   */
-  @Test
-  public void nonDefaultFormParamFromStringTest() throws Fault {
-    _contextRoot += "encoded";
-    super.nonDefaultFormParamFromStringTest();
-  }
+    /*
+     * @testName: nonDefaultFormParamFromConstructorTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
+     * String;
+     */
+    @Test
+    public void nonDefaultFormParamFromConstructorTest() throws Fault {
+        super.nonDefaultFormParamFromConstructorTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamFromConstructorTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
-   * String;
-   */
-  @Test
-  public void nonDefaultFormParamFromConstructorTest() throws Fault {
-    super.nonDefaultFormParamFromConstructorTest();
-  }
+    /*
+     * @testName: nonDefaultFormParamFromListConstructorTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
+     * String;
+     */
+    @Test
+    public void nonDefaultFormParamFromListConstructorTest() throws Fault {
+        super.nonDefaultFormParamFromListConstructorTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamFromListConstructorTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
-   * String;
-   */
-  @Test
-  public void nonDefaultFormParamFromListConstructorTest() throws Fault {
-    super.nonDefaultFormParamFromListConstructorTest();
-  }
+    /*
+     * @testName: nonDefaultFormParamFromSetFromStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
+     * a String;
+     */
+    @Test
+    public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
+        _contextRoot += "encoded";
+        super.nonDefaultFormParamFromSetFromStringTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamFromSetFromStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
-   * a String;
-   */
-  @Test
-  public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
-    _contextRoot += "encoded";
-    super.nonDefaultFormParamFromSetFromStringTest();
-  }
+    /*
+     * @testName: nonDefaultFormParamFromSortedSetFromStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
+     * a String;
+     */
+    @Test
+    public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
+        _contextRoot += "encoded";
+        super.nonDefaultFormParamFromSortedSetFromStringTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamFromSortedSetFromStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
-   * a String;
-   */
-  @Test
-  public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
-    _contextRoot += "encoded";
-    super.nonDefaultFormParamFromSortedSetFromStringTest();
-  }
+    /*
+     * @testName: nonDefaultFormParamFromListFromStringTest
+     * 
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
+     * a String;
+     */
+    @Test
+    public void nonDefaultFormParamFromListFromStringTest() throws Fault {
+        _contextRoot += "encoded";
+        super.nonDefaultFormParamFromListFromStringTest();
+    }
 
-  /*
-   * @testName: nonDefaultFormParamFromListFromStringTest
-   * 
-   * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
-   * a String;
-   */
-  @Test
-  public void nonDefaultFormParamFromListFromStringTest() throws Fault {
-    _contextRoot += "encoded";
-    super.nonDefaultFormParamFromListFromStringTest();
-  }
-
-  /*
-   * @assertion_ids: JAXRS:SPEC:7; JAXRS:SPEC:12;JAXRS:SPEC:12.2; JAXRS:SPEC:20;
-   * JAXRS:SPEC:20.3;
-   * 
-   * @test_Strategy: Verify that named FormParam @Encoded is handled
-   */
-  @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
-  @Test
-  public void formParamEntityWithEncodedTest() throws Fault {
-    _contextRoot += "encoded";
-    super.paramEntityWithEncodedTest();
-  }
+    /*
+     * @assertion_ids: JAXRS:SPEC:7; JAXRS:SPEC:12;JAXRS:SPEC:12.2; JAXRS:SPEC:20;
+     * JAXRS:SPEC:20.3;
+     * 
+     * @test_Strategy: Verify that named FormParam @Encoded is handled
+     */
+    @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
+    @Test
+    public void formParamEntityWithEncodedTest() throws Fault {
+        _contextRoot += "encoded";
+        super.paramEntityWithEncodedTest();
+    }
 
 }

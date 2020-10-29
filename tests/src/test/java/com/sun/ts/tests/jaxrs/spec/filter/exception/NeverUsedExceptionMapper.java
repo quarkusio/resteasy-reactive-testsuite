@@ -31,9 +31,9 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class NeverUsedExceptionMapper implements ExceptionMapper<Exception> {
 
-  @Override
-  public Response toResponse(Exception exception) {
-    return Response.ok(Integer.MIN_VALUE).build();
-  }
+    @Override
+    public Response toResponse(Exception exception) {
+        return Response.ok(Integer.MIN_VALUE).build();
+    }
 
 }

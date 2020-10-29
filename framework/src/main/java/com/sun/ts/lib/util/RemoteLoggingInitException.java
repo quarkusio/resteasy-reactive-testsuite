@@ -28,20 +28,20 @@ package com.sun.ts.lib.util;
  * @author Kyle Grucci
  */
 public class RemoteLoggingInitException extends java.lang.Exception {
-  /**
-   * creates a RemoteLoggingInitException
-   */
-  public RemoteLoggingInitException() {
-    super();
-  }
+    /**
+     * creates a RemoteLoggingInitException
+     */
+    public RemoteLoggingInitException() {
+        super();
+    }
 
-  /**
-   * creates a RemoteLoggingInitException with a message
-   * 
-   * @param s
-   *          the message
-   */
-  public RemoteLoggingInitException(String s) {
-    super(s);
-  }
+    /**
+     * creates a RemoteLoggingInitException with a message
+     * 
+     * @param s
+     *        the message
+     */
+    public RemoteLoggingInitException(String s) {
+        super(s);
+    }
 }

@@ -25,13 +25,13 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Target({ ElementType.FIELD, ElementType.TYPE, ElementType.CONSTRUCTOR,
-    ElementType.PARAMETER, ElementType.METHOD })
+        ElementType.PARAMETER, ElementType.METHOD })
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ConstraintDeclarationValidator.class)
 public @interface ConstraintDeclarationAnnotation {
-  String message() default "{com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.ConstraintDeclarationAnnotation.message}";
+    String message() default "{com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.ConstraintDeclarationAnnotation.message}";
 
-  Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-  Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 }

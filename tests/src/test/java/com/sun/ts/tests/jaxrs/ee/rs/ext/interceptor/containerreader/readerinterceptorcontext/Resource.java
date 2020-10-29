@@ -24,16 +24,16 @@ import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcon
 @Path("resource")
 public class Resource {
 
-  @POST
-  @Path("string")
-  public String post(String entity) {
-    return entity;
-  }
+    @POST
+    @Path("string")
+    public String post(String entity) {
+        return entity;
+    }
 
-  @POST
-  @Path("errorbean")
-  public String errorBean(ExceptionThrowingStringBean bean) {
-    return bean.get();
-  }
+    @POST
+    @Path("errorbean")
+    public String errorBean(ExceptionThrowingStringBean bean) {
+        return bean.get();
+    }
 
 }

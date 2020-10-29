@@ -22,14 +22,14 @@ import javax.ws.rs.QueryParam;
 
 @Path("resource/query")
 public class QueryResource {
-  String param;
+    String param;
 
-  public QueryResource(@QueryParam("param") String param) {
-    this.param = param;
-  }
+    public QueryResource(@QueryParam("param") String param) {
+        this.param = param;
+    }
 
-  @GET
-  public String get() {
-    return param;
-  }
+    @GET
+    public String get() {
+        return param;
+    }
 }

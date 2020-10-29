@@ -20,28 +20,28 @@ package com.sun.ts.tests.jaxrs.api.rs.core.responseclient;
  * Verification holder structure
  */
 public class VerificationResult {
-  public boolean pass;
+    public boolean pass;
 
-  public StringBuilder message;
+    public StringBuilder message;
 
-  public VerificationResult() {
-    pass = true;
-    message = new StringBuilder();
-  }
+    public VerificationResult() {
+        pass = true;
+        message = new StringBuilder();
+    }
 
-  public VerificationResult(VerificationResult result) {
-    this.pass = result.pass;
-    this.message = new StringBuilder().append(message);
-  }
+    public VerificationResult(VerificationResult result) {
+        this.pass = result.pass;
+        this.message = new StringBuilder().append(message);
+    }
 
-  public VerificationResult append(VerificationResult result) {
-    this.pass &= result.pass;
-    this.message.append(result.message).append("\n");
-    return this;
-  }
+    public VerificationResult append(VerificationResult result) {
+        this.pass &= result.pass;
+        this.message.append(result.message).append("\n");
+        return this;
+    }
 
-  @Override
-  public String toString() {
-    return message.toString();
-  }
+    @Override
+    public String toString() {
+        return message.toString();
+    }
 }

@@ -16,16 +16,17 @@
 
 package com.sun.ts.tests.jaxrs.spec.inheritance;
 
-import javax.ws.rs.core.Application;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+
+import javax.ws.rs.core.Application;
 
 public class TSAppConfig extends Application {
 
-  public java.util.Set<java.lang.Class<?>> getClasses() {
-    Set<Class<?>> resources = new HashSet<Class<?>>();
-    resources.add(ChildResource.class);
-    resources.add(ChildResource1.class);
-    return resources;
-  }
+    public java.util.Set<java.lang.Class<?>> getClasses() {
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        resources.add(ChildResource.class);
+        resources.add(ChildResource1.class);
+        return resources;
+    }
 }

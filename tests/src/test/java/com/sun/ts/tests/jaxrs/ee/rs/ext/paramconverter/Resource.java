@@ -36,70 +36,70 @@ import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
 @Path("resource")
 public class Resource {
-  public static final String NULL = "NULL";
+    public static final String NULL = "NULL";
 
-  public static final String DEFAULT = "DEFAULT";
+    public static final String DEFAULT = "DEFAULT";
 
-  @Path("sbquery")
-  @GET
-  public String stringBeanQuery(
-      @DefaultValue(DEFAULT) @QueryParam("param") StringBean param) {
-    return param.get();
-  }
+    @Path("sbquery")
+    @GET
+    public String stringBeanQuery(
+            @DefaultValue(DEFAULT) @QueryParam("param") StringBean param) {
+        return param.get();
+    }
 
-  // QUARKUS: disabled as we don't support javax.activation.DataSource
-//  @Path("dsquery")
-//  @GET
-  public String dataSourceQuery(@QueryParam("param") DataSource param) {
-    return param.getName();
-  }
+    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    //  @Path("dsquery")
+    //  @GET
+    public String dataSourceQuery(@QueryParam("param") DataSource param) {
+        return param.getName();
+    }
 
-  @Path("aiquery")
-  @GET
-  public String atomicIntegerQuery(
-      @DefaultValue(DEFAULT) @QueryParam("param") AtomicInteger param) {
-    return String.valueOf(param.get());
-  }
+    @Path("aiquery")
+    @GET
+    public String atomicIntegerQuery(
+            @DefaultValue(DEFAULT) @QueryParam("param") AtomicInteger param) {
+        return String.valueOf(param.get());
+    }
 
-  @Path("sbpath/{param}")
-  @GET
-  public String stringBeanPath(@PathParam("param") StringBean param) {
-    return param.get();
-  }
+    @Path("sbpath/{param}")
+    @GET
+    public String stringBeanPath(@PathParam("param") StringBean param) {
+        return param.get();
+    }
 
-  @Path("sbpath/default")
-  @GET
-  public String stringBeanPathNeverHere(
-      @DefaultValue(DEFAULT) @PathParam("param") StringBean param) {
-    return param.get();
-  }
+    @Path("sbpath/default")
+    @GET
+    public String stringBeanPathNeverHere(
+            @DefaultValue(DEFAULT) @PathParam("param") StringBean param) {
+        return param.get();
+    }
 
-  @Path("sbmatrix")
-  @GET
-  public String stringBeanMatrix(
-      @DefaultValue(DEFAULT) @MatrixParam("param") StringBean param) {
-    return param.get();
-  }
+    @Path("sbmatrix")
+    @GET
+    public String stringBeanMatrix(
+            @DefaultValue(DEFAULT) @MatrixParam("param") StringBean param) {
+        return param.get();
+    }
 
-  @Path("sbform")
-  @POST
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public String stringBeanForm(
-      @DefaultValue(DEFAULT) @FormParam("param") StringBean param) {
-    return param.get();
-  }
+    @Path("sbform")
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String stringBeanForm(
+            @DefaultValue(DEFAULT) @FormParam("param") StringBean param) {
+        return param.get();
+    }
 
-  @Path("sbcookie")
-  @GET
-  public String stringBeanCookie(
-      @DefaultValue(DEFAULT) @CookieParam("param") StringBean param) {
-    return param.get();
-  }
+    @Path("sbcookie")
+    @GET
+    public String stringBeanCookie(
+            @DefaultValue(DEFAULT) @CookieParam("param") StringBean param) {
+        return param.get();
+    }
 
-  @Path("sbheader")
-  @GET
-  public String stringBeanHeader(
-      @DefaultValue(DEFAULT) @HeaderParam("param") StringBean param) {
-    return param.get();
-  }
+    @Path("sbheader")
+    @GET
+    public String stringBeanHeader(
+            @DefaultValue(DEFAULT) @HeaderParam("param") StringBean param) {
+        return param.get();
+    }
 }

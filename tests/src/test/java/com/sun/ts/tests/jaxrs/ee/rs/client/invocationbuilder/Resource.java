@@ -36,76 +36,76 @@ import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 @Path("resource")
 public class Resource {
 
-  @GET
-  @Path("languages")
-  public String languages(@Context HttpHeaders headers) {
-    return JaxrsUtil.iterableToString(" ", headers.getAcceptableLanguages());
-  }
+    @GET
+    @Path("languages")
+    public String languages(@Context HttpHeaders headers) {
+        return JaxrsUtil.iterableToString(" ", headers.getAcceptableLanguages());
+    }
 
-  @GET
-  @Path("headerstostring")
-  public String headersToString(@Context HttpHeaders headers) {
-    MultivaluedMap<String, String> map = headers.getRequestHeaders();
-    StringBuilder sb = new StringBuilder();
-    for (Entry<String, List<String>> header : map.entrySet())
-      sb.append(header.getKey()).append(":")
-          .append(JaxrsUtil.iterableToString(" ", header.getValue()))
-          .append(";");
-    return sb.toString();
-  }
+    @GET
+    @Path("headerstostring")
+    public String headersToString(@Context HttpHeaders headers) {
+        MultivaluedMap<String, String> map = headers.getRequestHeaders();
+        StringBuilder sb = new StringBuilder();
+        for (Entry<String, List<String>> header : map.entrySet())
+            sb.append(header.getKey()).append(":")
+                    .append(JaxrsUtil.iterableToString(" ", header.getValue()))
+                    .append(";");
+        return sb.toString();
+    }
 
-  @GET
-  @Path("cookie")
-  public String cookie(@CookieParam("tck") String cookie) {
-    return cookie;
-  }
+    @GET
+    @Path("cookie")
+    public String cookie(@CookieParam("tck") String cookie) {
+        return cookie;
+    }
 
-  @GET
-  @Path("allow")
-  public String allow() {
-    return "allow";
-  }
+    @GET
+    @Path("allow")
+    public String allow() {
+        return "allow";
+    }
 
-  @DELETE
-  @Path("forbid")
-  public String forbid() {
-    return "forbid";
-  }
+    @DELETE
+    @Path("forbid")
+    public String forbid() {
+        return "forbid";
+    }
 
-  @GET
-  @Path("get")
-  public String get() {
-    return "get";
-  }
+    @GET
+    @Path("get")
+    public String get() {
+        return "get";
+    }
 
-  @HEAD
-  @Path("head")
-  public String head() {
-    return "head";
-  }
+    @HEAD
+    @Path("head")
+    public String head() {
+        return "head";
+    }
 
-  @PUT
-  @Path("put")
-  public String put(String value) {
-    return value;
-  }
+    @PUT
+    @Path("put")
+    public String put(String value) {
+        return value;
+    }
 
-  @POST
-  @Path("post")
-  public String post(String value) {
-    return value;
-  }
+    @POST
+    @Path("post")
+    public String post(String value) {
+        return value;
+    }
 
-  @DELETE
-  @Path("delete")
-  public String delete() {
-    return "delete";
-  }
+    @DELETE
+    @Path("delete")
+    public String delete() {
+        return "delete";
+    }
 
-  @OPTIONS
-  @Path("options")
-  public String options() {
-    return "options";
-  }
+    @OPTIONS
+    @Path("options")
+    public String options() {
+        return "options";
+    }
 
 }

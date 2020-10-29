@@ -29,8 +29,7 @@ import org.xml.sax.SAXException;
  */
 public class QuarkusTestProcessor3 {
     public static void main(String[] args) throws IOException, ParserConfigurationException {
-        DocumentBuilderFactory factory =
-                DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Path srcPath = Paths.get("src/test/java");
         Files.walkFileTree(srcPath, new FileVisitor<Path>() {
@@ -40,8 +39,8 @@ public class QuarkusTestProcessor3 {
                 private Path client;
                 private String contextPath;
             }
+
             private Stack<State> states = new Stack<>();
-            
 
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
@@ -54,18 +53,18 @@ public class QuarkusTestProcessor3 {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 State state = states.peek();
-                if(file.endsWith("build.xml")) {
+                if (file.endsWith("build.xml")) {
                     try {
                         Document document = builder.parse(file.toFile());
                         NodeList properties = document.getElementsByTagName("property");
-                        for(int i=0;i<properties.getLength();i++) {
+                        for (int i = 0; i < properties.getLength(); i++) {
                             Node property = properties.item(i);
-                            if(property.getNodeType() == Node.ELEMENT_NODE) {
+                            if (property.getNodeType() == Node.ELEMENT_NODE) {
                                 Element el = (Element) property;
                                 String name = el.getAttribute("name");
-                                if("app.name".equals(name)) {
+                                if ("app.name".equals(name)) {
                                     String value = el.getAttribute("value");
-                                    if(value != null) {
+                                    if (value != null) {
                                         state.contextPath = value;
                                         break;
                                     }
@@ -77,7 +76,7 @@ public class QuarkusTestProcessor3 {
                         e.printStackTrace();
                     }
 
-                } else if(file.getFileName().toString().endsWith("Client.java")) {
+                } else if (file.getFileName().toString().endsWith("Client.java")) {
                     state.client = file;
                 }
                 return FileVisitResult.CONTINUE;
@@ -91,9 +90,9 @@ public class QuarkusTestProcessor3 {
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
                 State state = states.pop();
-                if(state.client != null && state.contextPath != null) {
-                    System.err.println("Adding context path "+state.contextPath+"_web to test class "+state.client);
-                    addContextPathToTest(state.client, "/"+state.contextPath+"_web");
+                if (state.client != null && state.contextPath != null) {
+                    System.err.println("Adding context path " + state.contextPath + "_web to test class " + state.client);
+                    addContextPathToTest(state.client, "/" + state.contextPath + "_web");
                 }
                 return FileVisitResult.CONTINUE;
             }
@@ -101,23 +100,23 @@ public class QuarkusTestProcessor3 {
     }
 
     protected static void addContextPathToTest(Path client, String contextPath) {
-/*
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest()
-                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_get_web")
-             */
+        /*
+         * @RegisterExtension
+         * static QuarkusUnitTest test = new QuarkusUnitTest()
+         * .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_get_web")
+         */
         String original = client.toString();
-        String target = client.toString()+".tmp";
-        try(BufferedReader reader = new BufferedReader(new FileReader(original));
-                BufferedWriter writer = new BufferedWriter(new FileWriter(target))){
+        String target = client.toString() + ".tmp";
+        try (BufferedReader reader = new BufferedReader(new FileReader(original));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
             String line;
             boolean addedContext = false;
-            while((line = reader.readLine()) != null) {
-                if(!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest()")) {
+            while ((line = reader.readLine()) != null) {
+                if (!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest()")) {
                     addedContext = true;
                     writer.write(line);
                     writer.newLine();
-                    writer.write("            .overrideConfigKey(\"quarkus.http.root-path\", \""+contextPath+"\")\n");
+                    writer.write("            .overrideConfigKey(\"quarkus.http.root-path\", \"" + contextPath + "\")\n");
                     // let's not write the original line twice
                     continue;
                 }

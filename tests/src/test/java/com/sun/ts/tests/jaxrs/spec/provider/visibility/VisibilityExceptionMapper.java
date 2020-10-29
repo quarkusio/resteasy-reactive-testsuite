@@ -29,63 +29,63 @@ import javax.ws.rs.ext.Providers;
 
 @Provider
 public class VisibilityExceptionMapper
-    implements ExceptionMapper<VisibilityException> {
-  private HttpHeaders headers;
+        implements ExceptionMapper<VisibilityException> {
+    private HttpHeaders headers;
 
-  private UriInfo info;
+    private UriInfo info;
 
-  private Application application;
+    private Application application;
 
-  private Request request;
+    private Request request;
 
-  private Providers provider;
+    private Providers provider;
 
-  protected VisibilityExceptionMapper(@Context HttpHeaders headers,
-      @Context UriInfo info, @Context Application application,
-      @Context Request request, @Context Providers provider) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-    this.provider = provider;
-  }
+    protected VisibilityExceptionMapper(@Context HttpHeaders headers,
+            @Context UriInfo info, @Context Application application,
+            @Context Request request, @Context Providers provider) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+        this.provider = provider;
+    }
 
-  @Inject
-  public VisibilityExceptionMapper(@Context HttpHeaders headers,
-      @Context UriInfo info, @Context Application application,
-      @Context Request request) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-    this.request = request;
-  }
+    @Inject
+    public VisibilityExceptionMapper(@Context HttpHeaders headers,
+            @Context UriInfo info, @Context Application application,
+            @Context Request request) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+        this.request = request;
+    }
 
-  public VisibilityExceptionMapper(@Context HttpHeaders headers,
-      @Context UriInfo info, @Context Application application) {
-    super();
-    this.headers = headers;
-    this.info = info;
-    this.application = application;
-  }
+    public VisibilityExceptionMapper(@Context HttpHeaders headers,
+            @Context UriInfo info, @Context Application application) {
+        super();
+        this.headers = headers;
+        this.info = info;
+        this.application = application;
+    }
 
-  public VisibilityExceptionMapper(@Context HttpHeaders headers,
-      @Context UriInfo info) {
-    super();
-    this.headers = headers;
-    this.info = info;
-  }
+    public VisibilityExceptionMapper(@Context HttpHeaders headers,
+            @Context UriInfo info) {
+        super();
+        this.headers = headers;
+        this.info = info;
+    }
 
-  public VisibilityExceptionMapper(@Context HttpHeaders headers) {
-    super();
-    this.headers = headers;
-  }
+    public VisibilityExceptionMapper(@Context HttpHeaders headers) {
+        super();
+        this.headers = headers;
+    }
 
-  @Override
-  public Response toResponse(VisibilityException exception) {
-    return new HolderClass(headers, info, application, request, provider)
-        .toResponse();
-  }
+    @Override
+    public Response toResponse(VisibilityException exception) {
+        return new HolderClass(headers, info, application, request, provider)
+                .toResponse();
+    }
 
 }

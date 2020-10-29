@@ -21,19 +21,19 @@ import javax.ws.rs.POST;
 
 public class SubResource {
 
-  @MatrixParam("submatrix")
-  private String submatrix;
+    @MatrixParam("submatrix")
+    private String submatrix;
 
-  private String resmatrix;
+    private String resmatrix;
 
-  public SubResource(String resmatrix) {
-    super();
-    this.resmatrix = resmatrix;
-  }
+    public SubResource(String resmatrix) {
+        super();
+        this.resmatrix = resmatrix;
+    }
 
-  @POST
-  public LocatorEntity entity() {
-    return new LocatorEntity(resmatrix, submatrix);
-  }
+    @POST
+    public LocatorEntity entity() {
+        return new LocatorEntity(resmatrix, submatrix);
+    }
 
 }

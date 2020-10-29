@@ -24,22 +24,22 @@ import javax.ws.rs.core.Response;
 
 @Path("resource")
 public class Resource {
-  @Context
-  HttpHeaders headers;
+    @Context
+    HttpHeaders headers;
 
-  @Path("plain")
-  @POST
-  public String plain(EntityForReader efr) {
-    AbstractReader.resetSet();
-    return efr.toString() + ";"
-        + headers.getHeaderString(HttpHeaders.CONTENT_TYPE);
-  }
+    @Path("plain")
+    @POST
+    public String plain(EntityForReader efr) {
+        AbstractReader.resetSet();
+        return efr.toString() + ";"
+                + headers.getHeaderString(HttpHeaders.CONTENT_TYPE);
+    }
 
-  @Path("appjava")
-  @POST
-  public Response enableAppJava(boolean enable) {
-    AppJavaReader.setWritable(enable);
-    AbstractReader.resetSet();
-    return Response.ok().build();
-  }
+    @Path("appjava")
+    @POST
+    public Response enableAppJava(boolean enable) {
+        AppJavaReader.setWritable(enable);
+        AbstractReader.resetSet();
+        return Response.ok().build();
+    }
 }

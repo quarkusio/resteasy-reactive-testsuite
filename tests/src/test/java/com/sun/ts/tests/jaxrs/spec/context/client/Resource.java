@@ -22,9 +22,9 @@ import javax.ws.rs.Path;
 @Path("resource")
 public class Resource {
 
-  @POST
-  @Path("echo")
-  public String returnGivenString(String string) {
-    return string;
-  }
+    @POST
+    @Path("echo")
+    public String returnGivenString(String string) {
+        return string;
+    }
 }

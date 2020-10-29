@@ -27,58 +27,58 @@ import java.util.LinkedList;
  */
 public class LinkedHolder<TYPE> extends Holder<TYPE> implements Iterable<TYPE> {
 
-  private LinkedList<TYPE> list = new LinkedList<TYPE>();
+    private LinkedList<TYPE> list = new LinkedList<TYPE>();
 
-  public LinkedHolder(TYPE type) {
-    add(type);
-  }
-
-  public LinkedHolder() {
-  }
-
-  public void add(TYPE value) {
-    list.add(value);
-    super.set(value);
-  }
-
-  /**
-   * Replace the last item in the list
-   */
-  @Override
-  public void set(TYPE value) {
-    if (list.size() != 0) {
-      list.set(list.size() - 1, value);
-      super.set(value);
+    public LinkedHolder(TYPE type) {
+        add(type);
     }
-    if (value == null) {
-      super.set(null);
-    } else {
-      add(value);
+
+    public LinkedHolder() {
     }
-  }
 
-  public TYPE get(int index) {
-    if (index >= list.size())
-      return null;
-    return list.get(index);
-  }
+    public void add(TYPE value) {
+        list.add(value);
+        super.set(value);
+    }
 
-  public int size() {
-    return list.size();
-  }
+    /**
+     * Replace the last item in the list
+     */
+    @Override
+    public void set(TYPE value) {
+        if (list.size() != 0) {
+            list.set(list.size() - 1, value);
+            super.set(value);
+        }
+        if (value == null) {
+            super.set(null);
+        } else {
+            add(value);
+        }
+    }
 
-  public void clear() {
-    super.set(null);
-    list.clear();
-  }
+    public TYPE get(int index) {
+        if (index >= list.size())
+            return null;
+        return list.get(index);
+    }
 
-  @Override
-  public Iterator<TYPE> iterator() {
-    return list.iterator();
-  }
+    public int size() {
+        return list.size();
+    }
 
-  public LinkedList<TYPE> asList() {
-    return list;
-  }
+    public void clear() {
+        super.set(null);
+        list.clear();
+    }
+
+    @Override
+    public Iterator<TYPE> iterator() {
+        return list.iterator();
+    }
+
+    public LinkedList<TYPE> asList() {
+        return list;
+    }
 
 }
