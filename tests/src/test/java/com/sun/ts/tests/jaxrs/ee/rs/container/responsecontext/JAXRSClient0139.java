@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import io.quarkus.rest.runtime.jaxrs.QuarkusRestSseEventSink;
+import io.quarkus.rest.server.runtime.jaxrs.QuarkusRestSseEventSink;
 import io.quarkus.test.QuarkusUnitTest;
 
 
