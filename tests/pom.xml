@@ -111,7 +111,7 @@
              (the leak occurs because the Thread uses the QCL as the TCCL - the use of the property ensures that the shutdown hook is never created)
              Configuration of the vertx threads is done in order to limit the thread use to only what is necessary for these tests
           -->
-          <argLine>-Xmx5000m -XX:MaxMetaspaceSize=768m -Dquarkus.vertx.event-loops-pool-size=2 -Dquarkus.vertx.worker-pool-size=2 -Dquarkus.vertx.classpath-resolving=false</argLine>
+          <argLine>-Xmx5000m -XX:MaxMetaspaceSize=768m -Dquarkus.vertx.event-loops-pool-size=4 -Dquarkus.vertx.worker-pool-size=4 -Dquarkus.vertx.classpath-resolving=false</argLine>
         </configuration>
       </plugin>
     </plugins>
