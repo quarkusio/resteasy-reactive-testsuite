@@ -27,7 +27,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.sse.Sse;
 import javax.ws.rs.sse.SseEventSink;
-import org.jboss.resteasy.reactive.Blocking;
+
+import io.smallrye.common.annotation.Blocking;
 
 @Path("stage")
 public class StageCheckerResource {
