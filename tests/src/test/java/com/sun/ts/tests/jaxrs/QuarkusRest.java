@@ -47,4 +47,6 @@ public class QuarkusRest {
     public static final String Unsupported_Client_Server_Injection_Separation = "Quarkus-REST bug wrt injection we need to solve";
     // 1
     public static final String SSE_Hangs = "SSE related test hangs";
+
+    public static final String Flaky = "Test is flaky";
 }

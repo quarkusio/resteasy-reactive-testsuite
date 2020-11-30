@@ -29,8 +29,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -228,6 +230,7 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * 
      * Register asynchronous processing lifecycle callback classes
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void argumentContainsExceptionInTwoCallbackClassesTest() throws Fault {
         invokeClear();
