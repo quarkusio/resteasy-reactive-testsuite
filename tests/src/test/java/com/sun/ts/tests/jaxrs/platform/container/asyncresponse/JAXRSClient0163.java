@@ -22,6 +22,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 import javax.ws.rs.client.AsyncInvoker;
@@ -37,6 +38,7 @@ import javax.ws.rs.core.Response.Status;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
@@ -55,6 +57,7 @@ import io.quarkus.test.QuarkusUnitTest;
  * Servlet 2.5 spec by default
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
+@Timeout(value = 1, unit = TimeUnit.MINUTES)
 public class JAXRSClient0163 extends JaxrsCommonClient {
 
     @RegisterExtension
