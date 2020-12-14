@@ -469,6 +469,7 @@ public class JAXRSClient0003 extends JaxrsCommonClient {
      * for a zero-length response entities returns null or a corresponding Java
      * object that represents zero-length data.
      */
+    @Disabled(QuarkusRest.Unsupported_Xml)
     @Test
     public void clientJaxbProviderTest() throws Fault {
         setProperty(Property.REQUEST, buildRequest(Request.GET, "null"));
