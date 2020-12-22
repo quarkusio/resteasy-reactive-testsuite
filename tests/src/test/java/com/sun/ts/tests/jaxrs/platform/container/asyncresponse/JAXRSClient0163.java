@@ -328,6 +328,7 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * cancelled. Method returns true if this asynchronous response has been
      * canceled before completion.
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void isCanceledWhenCanceledTest() throws Fault {
         cancelVoidTest();
@@ -344,6 +345,7 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * cancelled. Method returns true if this asynchronous response has been
      * canceled before completion.
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void isCanceledWhenSuspendedTest() throws Fault {
         invokeClear();
