@@ -296,6 +296,7 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * been resumed has no effect and the method call is ignored while returning
      * true when canceled
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void cancelDateOnCanceledTest() throws Fault {
         cancelVoidTest();
@@ -457,6 +458,7 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * suspended and has not finished processing yet (either by resuming or
      * canceling the response).
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void isSuspendedWhenSuspendedTest() throws Fault {
         invokeClear();
