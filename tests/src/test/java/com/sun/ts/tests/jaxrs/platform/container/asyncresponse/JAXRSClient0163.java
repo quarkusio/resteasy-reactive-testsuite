@@ -35,10 +35,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -297,7 +295,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * been resumed has no effect and the method call is ignored while returning
      * true when canceled
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void cancelDateOnCanceledTest() throws Fault {
         cancelVoidTest();
@@ -330,7 +327,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * cancelled. Method returns true if this asynchronous response has been
      * canceled before completion.
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void isCanceledWhenCanceledTest() throws Fault {
         cancelVoidTest();
@@ -347,7 +343,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * cancelled. Method returns true if this asynchronous response has been
      * canceled before completion.
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void isCanceledWhenSuspendedTest() throws Fault {
         invokeClear();
@@ -459,7 +454,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * suspended and has not finished processing yet (either by resuming or
      * canceling the response).
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void isSuspendedWhenSuspendedTest() throws Fault {
         invokeClear();
@@ -599,7 +593,6 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
      * @test_Strategy: returns false in case the request processing is not
      * suspended and could not be resumed.
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void resumeWithExceptionReturnsFalseWhenResumedTest() throws Fault {
         suspendResumeTest();

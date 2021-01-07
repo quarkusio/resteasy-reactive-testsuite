@@ -30,10 +30,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -126,7 +124,6 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * 
      * Register an asynchronous processing lifecycle callback instance
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void argumentContainsExceptionTest() throws Fault {
         invokeClear();
@@ -160,7 +157,6 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * 
      * Register an asynchronous processing lifecycle callback instance
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void argumentContainsExceptionWhenSendingIoExceptionTest()
             throws Fault {
@@ -236,7 +232,6 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * 
      * Register asynchronous processing lifecycle callback classes
      */
-    @Disabled(QuarkusRest.Flaky)
     @Test
     public void argumentContainsExceptionInTwoCallbackClassesTest() throws Fault {
         invokeClear();
@@ -328,7 +323,6 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * Register asynchronous processing lifecycle callback classes
      */
     @Test
-    @Disabled(QuarkusRest.Flaky)
     public void argumentContainsExceptionInTwoCallbackInstancesTest()
             throws Fault {
         invokeClear();

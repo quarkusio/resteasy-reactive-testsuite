@@ -61,8 +61,12 @@ public class BroadcastResource {
         synchronized (broadcaster) {
             if (broadcaster.get() == null)
                 broadcaster.set(sse.newBroadcaster());
-            onCloseSink.set(null);
+            // Quarkus: we may get an automated reconnect after we close the broadcaster
+            // in which case, this will throw, so let's not clear onCloseSink until after
+            // we know the broadcaster is still open, or it will clear our onCloseSink
+            // success value set upon closing (Stef has inverted the two following lines)
             broadcaster.get().register(sink);
+            onCloseSink.set(null);
             broadcaster.get().onClose(onCloseSink::set);
             sinkList.add(sink);
         }

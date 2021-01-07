@@ -21,10 +21,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 
+import io.smallrye.common.annotation.Blocking;
+
 @Path("resource")
 public class CallbackResource
         extends com.sun.ts.tests.jaxrs.platform.container.asyncresponse.Resource {
 
+    @Blocking
     @GET
     @Path("register")
     public String registerObject(@QueryParam("stage") String stage) {
@@ -34,6 +37,7 @@ public class CallbackResource
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerclass")
     public String registerClass(@QueryParam("stage") String stage) {
@@ -43,6 +47,7 @@ public class CallbackResource
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerobjects")
     public String registerObjectObject(@QueryParam("stage") String stage) {
@@ -53,6 +58,7 @@ public class CallbackResource
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerclasses")
     public String registerClasses(@QueryParam("stage") String stage) {
@@ -63,6 +69,7 @@ public class CallbackResource
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerthrows")
     public String registerObjectThrowsNpe(@QueryParam("stage") String stage) {
@@ -78,6 +85,7 @@ public class CallbackResource
         return FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerclassthrows")
     public String registerClassThrowsNpe(@QueryParam("stage") String stage) {
@@ -93,6 +101,7 @@ public class CallbackResource
         return FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerobjectsthrows1")
     public String registerObjectsThrowsNpe1(@QueryParam("stage") String stage) {
@@ -108,6 +117,7 @@ public class CallbackResource
         return FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerobjectsthrows2")
     public String registerObjectsThrowsNpe2(@QueryParam("stage") String stage) {
@@ -123,6 +133,7 @@ public class CallbackResource
         return FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerclassesthrows1")
     public String registerClassesThrowsNpe1(@QueryParam("stage") String stage) {
@@ -138,6 +149,7 @@ public class CallbackResource
         return FALSE;
     }
 
+    @Blocking
     @GET
     @Path("registerclassesthrows2")
     public String registerClassesThrowsNpe2(@QueryParam("stage") String stage) {
@@ -153,6 +165,7 @@ public class CallbackResource
         return FALSE;
     }
 
+    @Blocking
     @GET
     @Path("exception")
     public String throwExceptionOnAsyncResponse(

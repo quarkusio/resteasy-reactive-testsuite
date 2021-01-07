@@ -31,6 +31,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
+import io.smallrye.common.annotation.Blocking;
+
 @Path("resource")
 public class Resource {
 
@@ -62,6 +64,7 @@ public class Resource {
             stage[i].clear();
     }
 
+    @Blocking
     @GET
     @Path("cancelvoid")
     public String cancel(@QueryParam("stage") String stage) {
@@ -75,6 +78,7 @@ public class Resource {
         return ret ? TRUE : FALSE;
     }
 
+    @Blocking
     @POST
     @Path("cancelretry")
     public String cancelretry(@QueryParam("stage") String stage,
@@ -90,6 +94,7 @@ public class Resource {
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @POST
     @Path("canceldate")
     public String cancelDate(@QueryParam("stage") String stage,
@@ -105,6 +110,7 @@ public class Resource {
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("iscanceled")
     public String isCanceled(@QueryParam("stage") String stage) {
@@ -114,6 +120,7 @@ public class Resource {
         return is ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("isdone")
     public String isDone(@QueryParam("stage") String stage) {
@@ -123,6 +130,7 @@ public class Resource {
         return is ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("issuspended")
     public String isSuspended(@QueryParam("stage") String stage) {
@@ -132,6 +140,7 @@ public class Resource {
         return is ? TRUE : FALSE;
     }
 
+    @Blocking
     @POST
     @Path("resume")
     public String resume(@QueryParam("stage") String stage, String response) {
@@ -141,6 +150,7 @@ public class Resource {
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("resumechecked")
     public String resumeWithCheckedException(@QueryParam("stage") String stage) {
@@ -150,6 +160,7 @@ public class Resource {
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @GET
     @Path("resumeruntime")
     public String resumeWithRuntimeException(@QueryParam("stage") String stage) {
@@ -159,6 +170,7 @@ public class Resource {
         return b ? TRUE : FALSE;
     }
 
+    @Blocking
     @POST
     @Path("settimeout")
     public void setTimeOut(@QueryParam("stage") String stage, String milis) {
@@ -167,6 +179,7 @@ public class Resource {
         addResponse(async, stage);
     }
 
+    @Blocking
     @POST
     @Path("timeouthandler")
     public void setTimeoutHandler(@QueryParam("stage") String stage,

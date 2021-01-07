@@ -25,11 +25,9 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.sse.InboundSseEvent;
 import javax.ws.rs.sse.SseEventSource;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -49,7 +47,6 @@ import io.quarkus.test.QuarkusUnitTest;
  * @since 2.1
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-@Disabled(QuarkusRest.SSE_Hangs)
 public class JAXRSClient0174 extends SSEJAXRSClient0177 {
 
     @RegisterExtension
@@ -202,7 +199,8 @@ public class JAXRSClient0174 extends SSEJAXRSClient0177 {
         @Override
         public void run() {
             try (SseEventSource source = SseEventSource.target(target).build()) {
-                source.register(holder::add);
+                // Quarkus: make sure we stop reconnecting on completion
+                source.register(holder::add, this::collectError, this::collectCompletion);
                 source.open();
                 while (!isClosed) {
                     sleepUntilHolderGetsFilled(holder);
@@ -210,7 +208,15 @@ public class JAXRSClient0174 extends SSEJAXRSClient0177 {
                 }
             }
         }
+        
+        private void collectError(Throwable t) {
+            t.printStackTrace();
+        }
 
+        private void collectCompletion() {
+            isClosed = true;
+        }
+        
         @Override
         public void close() throws Exception {
             isClosed = true;
