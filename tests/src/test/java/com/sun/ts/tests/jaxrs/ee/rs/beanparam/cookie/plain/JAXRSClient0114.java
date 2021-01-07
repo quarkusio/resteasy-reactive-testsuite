@@ -41,6 +41,7 @@ public class JAXRSClient0114 extends BeanParamCommonClient0117 {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+            .overrideConfigKey("quarkus.rest.object-default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_beanparam_cookie_plain_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override

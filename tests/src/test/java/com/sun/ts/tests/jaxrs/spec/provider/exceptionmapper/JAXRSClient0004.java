@@ -43,6 +43,7 @@ public class JAXRSClient0004 extends JAXRSCommonClient {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+            .overrideConfigKey("quarkus.rest.object-default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_spec_provider_exceptionmapper_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override

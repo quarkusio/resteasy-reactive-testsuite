@@ -40,6 +40,7 @@ public class JAXRSClient0096 extends WriterClient0097<ContextOperation> {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+            .overrideConfigKey("quarkus.rest.object-default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path",
                     "/jaxrs_ee_rs_ext_interceptor_containerwriter_writerinterceptorcontext_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
