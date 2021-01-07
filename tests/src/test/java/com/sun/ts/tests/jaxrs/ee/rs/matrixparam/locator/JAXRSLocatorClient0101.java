@@ -37,7 +37,7 @@ public class JAXRSLocatorClient0101
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.object-default-produces", "false")
+            .overrideConfigKey("quarkus.rest.default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_matrixparam_locator_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
                 @Override

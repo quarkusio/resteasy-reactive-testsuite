@@ -46,7 +46,7 @@ public class JAXRSClient0136 extends JaxrsCommonClient {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest()
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.object-default-produces", "false")
+            .overrideConfigKey("quarkus.rest.default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_container_requestcontext_security_web")
             .overrideConfigKey("quarkus.http.auth.basic", "true")
             .overrideConfigKey("quarkus.security.users.embedded.plain-text", "true")
