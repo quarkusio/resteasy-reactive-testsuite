@@ -320,6 +320,7 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
      * SseEventSink is closed, invoking any method other than this one and
      * isClosed() would result in an IllegalStateException being thrown.
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void closeTest() throws Fault {
         Holder<InboundSseEvent> holder = querySSEEndpoint("close/reset");
