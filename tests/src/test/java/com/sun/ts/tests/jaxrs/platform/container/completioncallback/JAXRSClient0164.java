@@ -16,10 +16,18 @@
 
 package com.sun.ts.tests.jaxrs.platform.container.completioncallback;
 
-import java.io.IOException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBeanEntityProvider;
+import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
+import com.sun.ts.tests.jaxrs.platform.container.asyncresponse.Resource;
+import io.quarkus.test.QuarkusUnitTest;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import javax.ws.rs.client.AsyncInvoker;
 import javax.ws.rs.client.Client;
@@ -29,22 +37,10 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import com.sun.ts.tests.jaxrs.QuarkusRest;
-import io.quarkus.test.junit.QuarkusTest;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.extension.RegisterExtension;
-
-import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.reader.readerinterceptorcontext.ExceptionThrowingStringBeanEntityProvider;
-import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
-import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
-import com.sun.ts.tests.jaxrs.platform.container.asyncresponse.Resource;
-
-import io.quarkus.test.QuarkusUnitTest;
+import java.io.IOException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 /*
  * @class.setup_props: webServerHost;
@@ -236,6 +232,7 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * 
      * Register asynchronous processing lifecycle callback classes
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void argumentContainsExceptionInTwoCallbackClassesTest() throws Fault {
         invokeClear();
