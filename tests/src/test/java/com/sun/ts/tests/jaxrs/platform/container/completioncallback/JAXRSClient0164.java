@@ -123,6 +123,7 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * 
      * Register an asynchronous processing lifecycle callback instance
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void argumentContainsExceptionTest() throws Fault {
         invokeClear();
