@@ -324,6 +324,7 @@ public class JAXRSClient0164 extends JaxrsCommonClient {
      * 
      * Register asynchronous processing lifecycle callback classes
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void argumentContainsExceptionInTwoCallbackInstancesTest()
             throws Fault {
