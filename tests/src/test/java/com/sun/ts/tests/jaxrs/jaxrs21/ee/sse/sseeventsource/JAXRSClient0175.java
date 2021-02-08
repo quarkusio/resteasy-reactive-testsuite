@@ -16,14 +16,19 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.sseeventsource;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+import com.sun.ts.tests.jaxrs.common.impl.JaxbKeyValueBean;
+import com.sun.ts.tests.jaxrs.common.util.Holder;
+import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
+import com.sun.ts.tests.jaxrs.common.util.LinkedHolder;
+import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEJAXRSClient0177;
+import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
+import io.quarkus.test.QuarkusUnitTest;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import javax.activation.DataSource;
 import javax.ws.rs.client.ClientBuilder;
@@ -36,22 +41,14 @@ import javax.ws.rs.sse.SseEventSource;
 import javax.xml.bind.JAXBElement;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-
-import com.sun.ts.tests.jaxrs.QuarkusRest;
-import com.sun.ts.tests.jaxrs.common.impl.JaxbKeyValueBean;
-import com.sun.ts.tests.jaxrs.common.util.Holder;
-import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
-import com.sun.ts.tests.jaxrs.common.util.LinkedHolder;
-import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEJAXRSClient0177;
-import com.sun.ts.tests.jaxrs.jaxrs21.ee.sse.SSEMessage;
-
-import io.quarkus.test.QuarkusUnitTest;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+import java.util.function.BiPredicate;
+import java.util.function.Supplier;
 
 /*
  * @class.setup_props: webServerHost;
@@ -590,6 +587,7 @@ public class JAXRSClient0175 extends SSEJAXRSClient0177 {
      * 
      * @test_Strategy:
      */
+    @Disabled(QuarkusRest.Flaky)
     @Test
     public void closeTest() throws Fault {
         boolean isOpen = true;
