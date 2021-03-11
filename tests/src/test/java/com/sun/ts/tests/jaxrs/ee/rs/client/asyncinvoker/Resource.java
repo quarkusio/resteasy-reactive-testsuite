@@ -16,6 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker;
 
+import com.sun.ts.tests.jaxrs.common.impl.TRACE;
+import io.smallrye.common.annotation.Blocking;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
@@ -26,8 +29,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.sun.ts.tests.jaxrs.common.impl.TRACE;
-
+@Blocking
 @Path("resource")
 public class Resource {
 
