@@ -16,9 +16,16 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.function.Supplier;
+import com.sun.ts.lib.util.TestUtil;
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
+import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
+import io.quarkus.test.QuarkusUnitTest;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.AsyncInvoker;
@@ -31,23 +38,16 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-
-import com.sun.ts.lib.util.TestUtil;
-import com.sun.ts.tests.jaxrs.common.client.JaxrsCommonClient;
-import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
-
-import io.quarkus.test.QuarkusUnitTest;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.function.Supplier;
 
 /*
  * @class.setup_props: webServerHost;
  *                     webServerPort;
  *                     ts_home;
  */
+@Disabled(QuarkusRest.Vertx4)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0118 extends JaxrsCommonClient {
 

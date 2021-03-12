@@ -49,4 +49,6 @@ public class QuarkusRest {
     public static final String SSE_Hangs = "SSE related test hangs";
 
     public static final String Flaky = "Test is flaky";
+
+    public static final String Vertx4 = "Disabled temporariy for the Vert.4 migration";
 }
