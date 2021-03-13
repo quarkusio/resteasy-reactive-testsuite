@@ -47,7 +47,6 @@ import java.util.function.Supplier;
  *                     webServerPort;
  *                     ts_home;
  */
-@Disabled(QuarkusRest.Vertx4)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0118 extends JaxrsCommonClient {
 
@@ -103,6 +102,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> deleteTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("delete");
         Future<Response> future = async.delete();
@@ -112,13 +112,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:375;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> deleteWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
         Future<Response> future = async.delete();
@@ -128,15 +129,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteThrowsExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:375;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteThrowsExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("delete");
@@ -146,13 +148,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithStringClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:376;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> deleteWithStringClassWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -163,13 +166,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithResponseClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:376;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> deleteWithResponseClassWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -180,15 +184,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:376;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithClassThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("delete");
@@ -198,9 +203,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:376;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -208,6 +213,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithClassThrowsWebApplicationExceptionTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
         Future<String> future = async.delete(String.class);
@@ -216,9 +222,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:376;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -226,6 +232,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithClassThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -235,13 +242,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:377;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> deleteWithGenericTypeStringWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -253,13 +261,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeResponseWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:377;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> deleteWithGenericTypeResponseWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -271,15 +280,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:377;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithGenericTypeThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -291,9 +301,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:377;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -301,6 +311,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithGenericTypeThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -312,9 +323,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * deleteWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:377;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -322,6 +333,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -332,13 +344,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:378;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> deleteWithCallbackWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
         InvocationCallback<Response> callback = createCallback(true);
@@ -350,13 +363,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithCallbackStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:378;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> deleteWithCallbackStringWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deleteandwait");
@@ -369,15 +383,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithCallbackStringThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:378;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithCallbackStringThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -389,9 +404,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithCallbackStringThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:378;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -399,6 +414,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithCallbackStringThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -409,9 +425,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: deleteWithCallbackThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:378;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -419,6 +435,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void deleteWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("deletenotok");
@@ -432,13 +449,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     // ------------------------------------------------------------------
     /*
      * @testName: getTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:379;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> getTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("get");
         Future<Response> future = async.get();
@@ -448,13 +466,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:379;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> getWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
         Future<Response> future = async.get();
@@ -464,15 +483,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:379;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("get");
@@ -482,13 +502,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithStringClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:380;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> getWithStringClassWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
         Future<String> future = async.get(String.class);
@@ -498,13 +519,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithResponseClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:380;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> getWithResponseClassWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -515,15 +537,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:380;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithClassThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("get");
@@ -533,9 +556,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:380;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -543,6 +566,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithClassThrowsWebApplicationExceptionTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
         Future<String> future = async.get(String.class);
@@ -551,9 +575,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:380;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -561,6 +585,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithClassThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -570,13 +595,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithGenericTypeStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:381;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> getWithGenericTypeStringWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -588,13 +614,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithGenericTypeResponseWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:381;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> getWithGenericTypeResponseWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -606,15 +633,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:381;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("get");
@@ -625,9 +653,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:381;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -635,6 +663,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithGenericTypeThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -645,9 +674,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:381;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -655,6 +684,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -665,13 +695,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:382;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> getWithCallbackWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
         InvocationCallback<Response> callback = createCallback(true);
@@ -683,13 +714,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithCallbackStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:382;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> getWithCallbackStringWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getandwait");
@@ -702,15 +734,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithCallbackStringThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:382;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithCallbackStringThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -722,9 +755,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithCallbackStringThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:382;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -732,6 +765,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithCallbackStringThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -742,9 +776,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: getWithCallbackThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:382;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -752,6 +786,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void getWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("getnotok");
@@ -766,13 +801,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: headTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:383;
-     * 
+     *
      * @test_Strategy: Invoke HTTP HEAD method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> headTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("head");
         Future<Response> future = async.head();
@@ -782,13 +818,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: headWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:383;
-     * 
+     *
      * @test_Strategy: Invoke HTTP HEAD method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> headWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("headandwait");
         Future<Response> future = async.head();
@@ -798,15 +835,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: headThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:383;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void headThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("head");
@@ -816,13 +854,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: headWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:384;
-     * 
+     *
      * @test_Strategy: Invoke HTTP HEAD method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> headWithCallbackWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("headandwait");
         InvocationCallback<Response> callback = createCallback(true);
@@ -834,15 +873,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: headWithCallbackStringThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:384;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void headWithCallbackStringThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -858,13 +898,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:385;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodTest() throws Fault {
         Future<Response> future = null;
         for (String method : METHODS) {
@@ -877,13 +918,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:385;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWhileServerWaitTest() throws Fault {
         Future<Response> future = null;
         for (String method : METHODS) {
@@ -897,15 +939,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:385;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Future<Response> future = null;
@@ -918,13 +961,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithStringClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:386;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> methodWithStringClassWhileServerWaitTest()
             throws Fault {
         Future<String> future = null;
@@ -939,13 +983,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithResponseClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:386;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWithResponseClassWhileServerWaitTest()
             throws Fault {
         Future<Response> future = null;
@@ -960,15 +1005,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:386;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithClassThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Future<String> future = null;
@@ -981,9 +1027,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:386;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -991,6 +1037,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithClassThrowsWebApplicationExceptionTest() throws Fault {
         Future<String> future = null;
         for (String method : METHODS) {
@@ -1003,9 +1050,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:386;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1013,6 +1060,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithClassThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Future<Response> future = null;
@@ -1026,13 +1074,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:387;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> methodWithGenericTypeStringWhileServerWaitTest()
             throws Fault {
         GenericType<String> generic = createGeneric(String.class);
@@ -1048,13 +1097,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeResponseWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:387;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWithGenericTypeResponseWhileServerWaitTest()
             throws Fault {
         GenericType<Response> generic = createGeneric(Response.class);
@@ -1070,15 +1120,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:387;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithGenericTypeThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -1093,9 +1144,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:387;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1103,6 +1154,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithGenericTypeThrowsWebApplicationExceptionTest()
             throws Fault {
         Future<String> future = null;
@@ -1118,9 +1170,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * methodWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:387;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1128,6 +1180,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Future<Response> future = null;
@@ -1142,13 +1195,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:388;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWithCallbackWhileServerWaitTest() throws Fault {
         InvocationCallback<Response> callback = createCallback(true);
         Future<Response> future = null;
@@ -1164,13 +1218,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:388;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> methodWithCallbackStringWhileServerWaitTest()
             throws Fault {
         InvocationCallback<String> callback = createStringCallback(true);
@@ -1187,15 +1242,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:388;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithCallbackThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Future<String> future = null;
@@ -1209,9 +1265,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:388;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1219,6 +1275,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithCallbackThrowsWebApplicationExceptionTest()
             throws Fault {
         Future<String> future = null;
@@ -1233,9 +1290,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:388;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1243,6 +1300,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Future<Response> future = null;
@@ -1257,13 +1315,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithEntityWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:389;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWithEntityWhileServerWaitTest() throws Fault {
         Future<Response> future = null;
         for (String method : ENTITY_METHODS) {
@@ -1278,15 +1337,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithEntityThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:389;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithEntityThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Future<Response> future = null;
@@ -1300,13 +1360,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithStringClassWithEntityWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:390;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> methodWithStringClassWithEntityWhileServerWaitTest()
             throws Fault {
         Future<String> future = null;
@@ -1322,13 +1383,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithResponseClassWithEntityWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:390;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWithResponseClassWithEntityWhileServerWaitTest()
             throws Fault {
         Future<Response> future = null;
@@ -1344,15 +1406,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithClassWithEntityThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:390;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithClassWithEntityThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -1367,9 +1430,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithClassWithEntityThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:390;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1377,6 +1440,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithClassWithEntityThrowsWebApplicationExceptionTest()
             throws Fault {
         Future<String> future = null;
@@ -1392,9 +1456,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * methodWithClassWithEntityThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:390;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1402,6 +1466,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithClassWithEntityThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Future<Response> future = null;
@@ -1416,13 +1481,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeStringWithEntityWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:391;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> methodWithGenericTypeStringWithEntityWhileServerWaitTest()
             throws Fault {
         Future<String> future = null;
@@ -1439,13 +1505,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeResponseWithEntityWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:391;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWithGenericTypeResponseWithEntityWhileServerWaitTest()
             throws Fault {
         Future<Response> future = null;
@@ -1462,15 +1529,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeWithEntityThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:391;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithGenericTypeWithEntityThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -1486,9 +1554,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithGenericTypeWithEntityThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:391;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1496,6 +1564,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithGenericTypeWithEntityThrowsWebApplicationExceptionTest()
             throws Fault {
         Future<String> future = null;
@@ -1512,9 +1581,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * methodWithGenericTypeWithEntityThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:391;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1522,6 +1591,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithGenericTypeWithEntityThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Future<Response> future = null;
@@ -1537,13 +1607,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackWithEntityWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:392;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> methodWithCallbackWithEntityWhileServerWaitTest()
             throws Fault {
         Future<Response> future = null;
@@ -1561,13 +1632,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackStringWithEntityWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:392;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> methodWithCallbackStringWithEntityWhileServerWaitTest()
             throws Fault {
         Future<String> future = null;
@@ -1585,15 +1657,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackWithEntityThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:392;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithCallbackWithEntityThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -1609,9 +1682,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: methodWithCallbackWithEntityThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:392;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1619,6 +1692,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithCallbackWithEntityThrowsWebApplicationExceptionTest()
             throws Fault {
         Future<String> future = null;
@@ -1635,9 +1709,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * methodWithCallbackWithEntityThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:392;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1645,6 +1719,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void methodWithCallbackWithEntityThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Future<Response> future = null;
@@ -1664,13 +1739,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:393;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> optionsTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("options");
         Future<Response> future = async.options();
@@ -1680,13 +1756,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:393;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> optionsWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
         Future<Response> future = async.options();
@@ -1696,15 +1773,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:393;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("options");
@@ -1714,13 +1792,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithStringClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:394;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> optionsWithStringClassWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1731,13 +1810,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithResponseClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:394;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> optionsWithResponseClassWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1748,15 +1828,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:394;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithClassThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("options");
@@ -1766,9 +1847,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:394;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1776,6 +1857,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithClassThrowsWebApplicationExceptionTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
         Future<String> future = async.options(String.class);
@@ -1784,9 +1866,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:394;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1794,6 +1876,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithClassThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1803,13 +1886,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:395;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> optionsWithGenericTypeStringWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1821,13 +1905,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeResponseWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:395;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> optionsWithGenericTypeResponseWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1839,15 +1924,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:395;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithGenericTypeThrowsProcessingExceptionTest()
             throws Fault {
         _hostname = NONEXISTING_SITE;
@@ -1859,9 +1945,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:395;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1869,6 +1955,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithGenericTypeThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1880,9 +1967,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * optionsWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:395;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1890,6 +1977,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1900,13 +1988,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:396;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> optionsWithCallbackWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1919,13 +2008,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithStringCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:396;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> optionsWithStringCallbackWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsandwait");
@@ -1938,15 +2028,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithCallbackThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:396;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithCallbackThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("options");
@@ -1957,9 +2048,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: optionsWithCallbackThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:396;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1967,6 +2058,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithCallbackThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -1978,9 +2070,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * optionsWithCallbackThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:396;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -1988,6 +2080,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void optionsWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("optionsnotok");
@@ -2002,13 +2095,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:397;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> postTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("post");
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2019,13 +2113,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:397;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> postWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("postandwait");
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2036,15 +2131,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:397;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("post");
@@ -2055,13 +2151,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithStringClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:398;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> postWithStringClassWhileServerWaitTest() throws Fault {
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
         AsyncInvoker async = startAsyncInvokerForMethod("postandwait");
@@ -2072,13 +2169,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithResponseClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:398;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> postWithResponseClassWhileServerWaitTest()
             throws Fault {
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2090,15 +2188,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:398;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithClassThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2109,9 +2208,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:398;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2119,6 +2218,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithClassThrowsWebApplicationExceptionTest() throws Fault {
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
         AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2128,9 +2228,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:398;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2138,6 +2238,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithClassThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2148,13 +2249,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithGenericTypeStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:399;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> postWithGenericTypeStringWhileServerWaitTest()
             throws Fault {
         GenericType<String> generic = createGeneric(String.class);
@@ -2167,13 +2269,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithGenericTypeResponseWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:399;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> postWithGenericTypeResponseWhileServerWaitTest()
             throws Fault {
         GenericType<Response> generic = createGeneric(Response.class);
@@ -2186,15 +2289,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:399;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2206,9 +2310,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:399;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2216,6 +2320,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithGenericTypeThrowsWebApplicationExceptionTest()
             throws Fault {
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2228,9 +2333,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * postWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:399;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2238,6 +2343,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2249,13 +2355,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:400;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> postWithCallbackWhileServerWaitTest() throws Fault {
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
         InvocationCallback<Response> callback = createCallback(true);
@@ -2268,15 +2375,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithCallbackThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:400;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithCallbackThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
@@ -2288,9 +2396,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithCallbackThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:400;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2298,6 +2406,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithCallbackThrowsWebApplicationExceptionTest() throws Fault {
         Entity<String> entity = Entity.entity("post", MediaType.WILDCARD_TYPE);
         InvocationCallback<String> callback = createStringCallback(false);
@@ -2308,9 +2417,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: postWithCallbackThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:400;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2318,6 +2427,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void postWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("postnotok");
@@ -2333,13 +2443,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:401;
-     * 
+     *
      * @test_Strategy: Invoke HTTP PUT method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> putTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("put");
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2350,13 +2461,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:401;
-     * 
+     *
      * @test_Strategy: Invoke HTTP PUT method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> putWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("putandwait");
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2367,15 +2479,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:401;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("put");
@@ -2386,13 +2499,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithStringClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:402;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> putWithStringClassWhileServerWaitTest() throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
         AsyncInvoker async = startAsyncInvokerForMethod("putandwait");
@@ -2403,13 +2517,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithResponseClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:402;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> putWithResponseClassWhileServerWaitTest()
             throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2421,15 +2536,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:402;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithClassThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2440,9 +2556,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:402;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2450,6 +2566,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithClassThrowsWebApplicationExceptionTest() throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
         AsyncInvoker async = startAsyncInvokerForMethod("putnotok");
@@ -2459,9 +2576,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:402;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2469,6 +2586,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithClassThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2479,13 +2597,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithGenericTypeStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:403;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> putWithGenericTypeStringWhileServerWaitTest()
             throws Fault {
         GenericType<String> generic = createGeneric(String.class);
@@ -2498,13 +2617,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithGenericTypeResponseWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:403;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> putWithGenericTypeResponseWhileServerWaitTest()
             throws Fault {
         GenericType<Response> generic = createGeneric(Response.class);
@@ -2517,15 +2637,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:403;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         GenericType<String> generic = createGeneric(String.class);
@@ -2537,9 +2658,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:403;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2547,6 +2668,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithGenericTypeThrowsWebApplicationExceptionTest()
             throws Fault {
         GenericType<String> generic = createGeneric(String.class);
@@ -2558,9 +2680,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:403;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2568,6 +2690,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2579,13 +2702,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:404;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> putWithCallbackWhileServerWaitTest() throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
         InvocationCallback<Response> callback = createCallback(true);
@@ -2598,13 +2722,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithStringCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:404;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> putWithStringCallbackWhileServerWaitTest()
             throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2618,15 +2743,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithCallbackThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:404;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithCallbackThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         InvocationCallback<String> callback = createStringCallback(false);
@@ -2638,9 +2764,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithCallbackThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:404;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2648,6 +2774,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithCallbackThrowsWebApplicationExceptionTest() throws Fault {
         InvocationCallback<String> callback = createStringCallback(false);
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2658,9 +2785,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: putWithCallbackThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:404;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2668,6 +2795,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void putWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         Entity<String> entity = Entity.entity("put", MediaType.WILDCARD_TYPE);
@@ -2683,13 +2811,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:405;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> traceTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("trace");
         Future<Response> future = async.trace();
@@ -2699,13 +2828,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:405;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> traceWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
         Future<Response> future = async.trace();
@@ -2715,15 +2845,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:405;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("trace");
@@ -2733,13 +2864,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithStringClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:406;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> traceWithStringClassWhileServerWaitTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
         Future<String> future = async.trace(String.class);
@@ -2749,13 +2881,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithResponseClassWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:406;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> traceWithResponseClassWhileServerWaitTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
@@ -2766,15 +2899,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:406;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithClassThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         AsyncInvoker async = startAsyncInvokerForMethod("trace");
@@ -2784,9 +2918,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:406;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2794,6 +2928,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithClassThrowsWebApplicationExceptionTest() throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
         Future<String> future = async.trace(String.class);
@@ -2802,9 +2937,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:406;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2812,6 +2947,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithClassThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -2821,13 +2957,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithGenericTypeStringWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:407;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> traceWithGenericTypeStringWhileServerWaitTest()
             throws Fault {
         GenericType<String> generic = createGeneric(String.class);
@@ -2839,13 +2976,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithGenericTypeResponseWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:407;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> traceWithGenericTypeResponseWhileServerWaitTest()
             throws Fault {
         GenericType<Response> generic = createGeneric(Response.class);
@@ -2857,15 +2995,16 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:407;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
      * javax.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithGenericTypeThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         GenericType<String> generic = createGeneric(String.class);
@@ -2876,9 +3015,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:407;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2886,6 +3025,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithGenericTypeThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -2897,9 +3037,9 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
     /*
      * @testName:
      * traceWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:407;
-     * 
+     *
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps a
      * WebApplicationException or one of its subclasses thrown in case the
@@ -2907,6 +3047,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -2917,13 +3058,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:408;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<Response> traceWithCallbackWhileServerWaitTest() throws Fault {
         InvocationCallback<Response> callback = createCallback(true);
         AsyncInvoker async = startAsyncInvokerForMethod("traceandwait");
@@ -2935,13 +3077,14 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
 
     /*
      * @testName: traceWithStringCallbackWhileServerWaitTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:408;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      * asynchronously.
      */
     @org.junit.jupiter.api.Test
+    @Disabled(QuarkusRest.Vertx4)
     public Future<String> traceWithStringCallbackWhileServerWaitTest()
             throws Fault {
         InvocationCallback<String> callback = createStringCallback(true);
@@ -2963,6 +3106,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * failure.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithCallbackThrowsProcessingExceptionTest() throws Fault {
         _hostname = NONEXISTING_SITE;
         InvocationCallback<String> callback = createStringCallback(false);
@@ -2983,6 +3127,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithCallbackThrowsWebApplicationExceptionTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
@@ -3003,6 +3148,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * type is not Response.
      */
     @Test
+    @Disabled(QuarkusRest.Vertx4)
     public void traceWithCallbackThrowsNoWebApplicationExceptionForResponseTest()
             throws Fault {
         AsyncInvoker async = startAsyncInvokerForMethod("tracenotok");
