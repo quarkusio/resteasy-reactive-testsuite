@@ -19,6 +19,7 @@ package com.sun.ts.tests.jaxrs.spec.filter.interceptor;
 import java.io.IOException;
 
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.WriterInterceptor;
@@ -47,5 +48,7 @@ public class EntityWriterInterceptor implements WriterInterceptor {
             headers.remove(Resource.HEADERNAME);
         }
         context.proceed();
+        // RR: make sure we remove this header since we mucked with the content
+        context.getHeaders().remove(HttpHeaders.CONTENT_LENGTH);
     }
 }
