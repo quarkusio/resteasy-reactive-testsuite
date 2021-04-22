@@ -16,14 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.clientwriter.writerinterceptorcontext;
 
-import java.util.function.Supplier;
-
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.InterceptorCallbackMethods;
 import com.sun.ts.tests.jaxrs.api.rs.ext.interceptor.TemplateInterceptorBody;
 import com.sun.ts.tests.jaxrs.common.client.TextCaser;
@@ -37,8 +30,15 @@ import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcont
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.ProceedException;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.WriterInterceptorOne;
 import com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.writer.writerinterceptorcontext.WriterInterceptorTwo;
-
 import io.quarkus.test.QuarkusUnitTest;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
+import java.util.function.Supplier;
 
 /*
  * @class.setup_props: webServerHost;
@@ -217,6 +217,7 @@ public class JAXRSClient0093 extends WriterClient0094<ContextOperation> {
      *
      * WriterInterceptor.aroundWriteTo
      */
+    @Disabled(QuarkusRest.Underspecified) // spec does not mention whether or ClientResponseFilter should run when an exception is thrown
     @Test
     public void proceedThrowsWebApplicationExceptionTest() throws Fault {
         addProvider(StringBeanEntityProvider.class);
