@@ -45,7 +45,7 @@ public class JAXRSBasicClient0126
     private static final long serialVersionUID = 340277879725875946L;
 
     @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest()
+    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_core_securitycontext_basic_web")
             .overrideConfigKey("quarkus.http.auth.basic", "true")
             .overrideConfigKey("quarkus.security.users.embedded.plain-text", "true")

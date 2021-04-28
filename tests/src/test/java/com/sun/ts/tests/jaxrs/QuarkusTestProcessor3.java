@@ -102,7 +102,7 @@ public class QuarkusTestProcessor3 {
     protected static void addContextPathToTest(Path client, String contextPath) {
         /*
          * @RegisterExtension
-         * static QuarkusUnitTest test = new QuarkusUnitTest()
+         * static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
          * .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_get_web")
          */
         String original = client.toString();
@@ -112,7 +112,7 @@ public class QuarkusTestProcessor3 {
             String line;
             boolean addedContext = false;
             while ((line = reader.readLine()) != null) {
-                if (!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest()")) {
+                if (!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)")) {
                     addedContext = true;
                     writer.write(line);
                     writer.newLine();

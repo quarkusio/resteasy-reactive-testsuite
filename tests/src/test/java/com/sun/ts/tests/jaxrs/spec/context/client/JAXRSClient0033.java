@@ -42,7 +42,7 @@ import io.quarkus.test.QuarkusUnitTest;
 public class JAXRSClient0033 extends JaxrsCommonClient {
 
     @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest()
+    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
             .overrideConfigKey("quarkus.rest.default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_spec_context_client_web")

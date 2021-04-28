@@ -62,7 +62,7 @@ import java.util.function.Supplier;
 public class JAXRSClient0175 extends SSEJAXRSClient0177 {
 
     @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest()
+    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
             .overrideConfigKey("quarkus.rest.default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_jaxrs21_ee_sse_sseeventsource_web")

@@ -75,7 +75,7 @@ public class QuarkusTestProcessor6 {
             String line;
             boolean addedContext = false;
             while ((line = reader.readLine()) != null) {
-                if (!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest()")) {
+                if (!addedContext && line.startsWith("    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)")) {
                     addedContext = true;
                     writer.write(line);
                     writer.newLine();

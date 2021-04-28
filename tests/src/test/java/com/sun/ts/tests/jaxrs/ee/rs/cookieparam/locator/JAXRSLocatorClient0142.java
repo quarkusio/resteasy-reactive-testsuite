@@ -35,7 +35,7 @@ public class JAXRSLocatorClient0142
         extends com.sun.ts.tests.jaxrs.ee.rs.cookieparam.JAXRSClient0143 {
 
     @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest()
+    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
             .overrideConfigKey("quarkus.rest.default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_cookieparam_locator_web")

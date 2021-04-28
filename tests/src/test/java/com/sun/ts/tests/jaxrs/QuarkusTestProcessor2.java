@@ -119,7 +119,7 @@ public class QuarkusTestProcessor2 {
     protected static void addResourcesToTest(Path client, Set<String> resources) {
         /*
          * @RegisterExtension
-         * static QuarkusUnitTest test = new QuarkusUnitTest()
+         * static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
          * .setArchiveProducer(new Supplier<JavaArchive>() {
          * 
          * @Override
@@ -190,7 +190,7 @@ public class QuarkusTestProcessor2 {
 
     private static void writeExtension(BufferedWriter writer, Set<String> resources) throws IOException {
         writer.write("    @RegisterExtension\n");
-        writer.write("    static QuarkusUnitTest test = new QuarkusUnitTest()\n");
+        writer.write("    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)\n");
         writer.write("            .setArchiveProducer(new Supplier<JavaArchive>() {\n");
         writer.write("                @Override\n");
         writer.write("                public JavaArchive get() {\n");
