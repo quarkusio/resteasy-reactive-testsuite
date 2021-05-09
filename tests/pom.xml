@@ -113,6 +113,7 @@
              Configuration of the vertx threads is done in order to limit the thread use to only what is necessary for these tests
           -->
           <argLine>-Xmx5000m -XX:MaxMetaspaceSize=768m -Dquarkus.vertx.event-loops-pool-size=4 -Dquarkus.vertx.worker-pool-size=4 -Dquarkus.vertx.classpath-resolving=false</argLine>
+          <excludedEnvironmentVariables>MAVEN_OPTS</excludedEnvironmentVariables>
         </configuration>
       </plugin>
     </plugins>
@@ -142,6 +143,7 @@
                     <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                     <maven.home>${maven.home}</maven.home>
                   </systemPropertyVariables>
+                  <excludedEnvironmentVariables>MAVEN_OPTS</excludedEnvironmentVariables>
                 </configuration>
               </execution>
             </executions>
