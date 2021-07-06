@@ -43,6 +43,7 @@ public class JAXRSClient0150 extends JaxrsParamClient0151 {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+            .overrideConfigKey("quarkus.resteasy-reactive.fail-on-duplicate", "false")
             .overrideConfigKey("quarkus.rest.default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_queryparam_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
