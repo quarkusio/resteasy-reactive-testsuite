@@ -41,15 +41,15 @@ Instructions for building and running JakartaEE TCK bundle from scratch is avail
 
 ### CTS Overview
 
-A Java EE 8 CTS is a set of tools and tests used to verify that a licensee's
-implementation of Java EE 8 technology conforms to the applicable specification.
+A Jakarta EE 8 CTS is a set of tools and tests used to verify that a licensee's
+implementation of Jakarta EE 8 technology conforms to the applicable specification.
 
 All tests in the CTS are based on the written specifications for the Java
 platform. The CTS tests compatibility of a licensee's implementation of a
 technology to the applicable specification of the technology. Compatibility
 testing is a means of ensuring correctness, completeness, and consistency
 across all implementations developed by technology licensees.
-The set of tests included with the Java EE 8 CTS is called the test suite. All
+The set of tests included with the Jakarta EE 8 CTS is called the test suite. All
 tests in the CTS test suite are self-checking, but some tests may require tester
 interaction. Most tests return either a Pass or Fail status. For a given platform
 to be certified, all of the required tests must pass. The definition of required
@@ -57,21 +57,21 @@ tests may change from platform to platform.
 
 The definition of required tests will change over time. Before your final
 certification test pass, be sure to download the latest Exclude List for the
-Java EE 8 CTS.
+Jakarta EE 8 CTS.
 
-### About JavaEE8 CTS
+### About Jakarta EE8 CTS
 
-Java EE 8 CTS is a portable, configurable, automated test suite for
-verifying the compliance of a licensee's implementation of the Java EE 8 technologies.
-Java EE 8 CTS includes version 5.0 of the JT harness.
+Jakarta EE 8 CTS is a portable, configurable, automated test suite for
+verifying the compliance of a licensee's implementation of the Jakarta EE 8 technologies.
+Jakarta EE 8 CTS includes version 5.0 of the JT harness.
 
-For documentation on the test harness used for running the Java EE 8 CTS test
+For documentation on the test harness used for running the Jakarta EE 8 CTS test
 suite, see https://wiki.openjdk.java.net/display/CodeTools/Documentation.
 
 ### Hardware Requirements
 
-The following section lists the hardware requirements for the Java EE 8 CTS
-software, using the Java EE 8 RI or Java EE 8 Web Profile RI. Hardware requirements for
+The following section lists the hardware requirements for the Jakarta EE 8 CTS
+software, using the Jakarta EE 8 RI or Jakarta EE 8 Web Profile RI. Hardware requirements for
 other reference implementations will vary.
 
 All systems should meet the following recommended hardware requirements:
@@ -82,13 +82,13 @@ All systems should meet the following recommended hardware requirements:
 
 * 2 GB of swap space , if required
 
-* 6 GB of free disk space for writing data to log files, the Java EE 8 repository, and the database
+* 6 GB of free disk space for writing data to log files, the Jakarta EE 8 repository, and the database
 
 * Network access to the Internet
 
 ### Software Requirements
 
-You can run the Java EE 8 CTS software on platforms running the Solaris,
+You can run the Jakarta EE 8 CTS software on platforms running the Solaris,
 Linux, Windows, and Mac OS software that meet the following software requirements:
 
 * Operating Systems:
@@ -109,7 +109,7 @@ Linux, Windows, and Mac OS software that meet the following software requirement
 
 * Java SE 8 SDK
 
-* Java EE 8 RI or Java EE 8 Web Profile RI
+* Jakarta EE 8 RI or Jakarta EE 8 Web Profile RI
 
 * Mail server that supports the IMAP and SMTP protocols
 
@@ -129,10 +129,10 @@ Linux, Windows, and Mac OS software that meet the following software requirement
 
   - Java DB
 
-### Additional Java EE 8 CTS Requirements
+### Additional Jakarta EE 8 CTS Requirements
 
 In addition to the instructions and requirements described in this document,
-all Java EE 8 and Java EE 8 Web Profile implementations must also pass the standalone
+all Jakarta EE 8 and Jakarta EE 8 Web Profile implementations must also pass the standalone
 TCKs for the following technologies:
 
 * Contexts and Dependency Injection for Java 2.0 (JSR 365)
@@ -144,12 +144,12 @@ TCKs for the following technologies:
 ## Installation
 
 ### Install CTS bundle
-Complete the following procedure to install the Java EE 8 CTS on a system
+Complete the following procedure to install the Jakarta EE 8 CTS on a system
 running the Solaris, Linux, or Windows operating system.
 
 1. Copy or download the CTS 8 software.
 
-2. Change to the directory in which you want to install the Java EE 8 CTS
+2. Change to the directory in which you want to install the Jakarta EE 8 CTS
 software and use the unzip command to extract the bundle:
     ```
     cd install_directory
@@ -192,15 +192,15 @@ You can modify the following test suite components only:
 
 * Any files in `<TS_HOME>/bin` and `<TS_HOME>/bin/xml` (except for `ts.*` files)
 
-### Configuring the Java EE 8 RI as the VI
+### Configuring the Jakarta EE 8 RI as the VI
 
-To configure the Java EE 8 RI as the server under test (that is, to use the
-Java EE 8 RI as the VI) follow the steps listed below.
+To configure the Jakarta EE 8 RI as the server under test (that is, to use the
+Jakarta EE 8 RI as the VI) follow the steps listed below.
 
-In this scenario, the goal is simply to test the Java EE 8 RI against
+In this scenario, the goal is simply to test the Jakarta EE 8 RI against
 the CTS for the purposes of familiarizing yourself with CTS test procedures.
 You may also want to refer to the Quick Start guides included with
-the Java EE 8 CTS for similar instructions.
+the Jakarta EE 8 CTS for similar instructions.
 
 1. Set server properties in your `<TS_HOME>/bin/ts.jte` file to suit your test
 environment.
@@ -234,15 +234,15 @@ property to enable the Security Manager in the application client container:
 
 Add this option to the list of other `-D` JVM options for this property.
 As mentioned previously, these settings can vary, but must match whatever you
-used when setting up the Java EE 8 RI server.
+used when setting up the Jakarta EE 8 RI server.
 
-2. Install the Java EE 8 RI and configure basic settings, as described in
+2. Install the Jakarta EE 8 RI and configure basic settings, as described in
 
-3. Start the Java EE 8 RI application server.
+3. Start the Jakarta EE 8 RI application server.
 Refer to the application server documentation for complete instructions.
 
 4. Enable the Security Manager.
-If you are using the Java EE 8 RI, execute the following command from the
+If you are using the Jakarta EE 8 RI, execute the following command from the
 command line:
     ```
     asadmin create-jvm-options -Djava.security.manager
@@ -279,7 +279,7 @@ target:
 The special webservices tests under the `webservices12/specialcases` directory
 have prebuilt endpoints, but the clients are not prebuilt. The clients will be
 built after the endpoints are first predeployed to the application server under
-test.  During the build, the clients import the WSDLs (by means of the Java EE
+test.  During the build, the clients import the WSDLs (by means of the Jakarta EE
 `wsimport` and `wsgen` tools) from the predeployed webservices endpoints. This process
 verifies that importing a WSDL from a predeployed webservice endpoint works
 properly.
@@ -290,7 +290,7 @@ To build the special webservices clients, the following command must be executed
 ## Executing tests
 ### Running tests in CLI mode
 
-1. Set the `TS_HOME` environment variable to the directory in which Java EE 8 CTS was
+1. Set the `TS_HOME` environment variable to the directory in which Jakarta EE 8 CTS was
 installed.
 
 2. Set the `JAVA_HOME` environment variable to the latest version of JDK 8
@@ -312,7 +312,7 @@ installed.
     ```
 This runs all tests in the current directory and any subdirectories.
 
-8. To run the Java EE 8 CTS signature tests, enter the following commands:
+8. To run the Jakarta EE 8 CTS signature tests, enter the following commands:
     ```
     cd <TS_HOME>/src/com/sun/ts/tests/signaturetest/javaee
     ant runclient
