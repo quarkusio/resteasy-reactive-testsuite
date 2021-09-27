@@ -17,11 +17,12 @@
 package com.sun.ts.tests.jaxrs.platform.container.asyncresponse;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import javax.ws.rs.container.AsyncResponse;
 
 public class AsyncResponseBlockingQueue
-        extends ArrayBlockingQueue<AsyncResponse> {
+        extends LinkedBlockingDeque<AsyncResponse> {
 
     private static final long serialVersionUID = -2445906740359075621L;
 
