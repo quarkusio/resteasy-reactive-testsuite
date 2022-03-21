@@ -573,6 +573,7 @@ public class JAXRSClient0021 extends JaxrsCommonClient {
      * interceptors when mapping representations to Java types and vice versa.
      */
     @Test
+    @Disabled(QuarkusRest.File_handling)
     public void fileWriterClientInterceptorTest() throws Fault {
         try {
             File file = File.createTempFile("temp", "tmp");

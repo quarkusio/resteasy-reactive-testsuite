@@ -49,4 +49,6 @@ public class QuarkusRest {
     public static final String SSE_Hangs = "SSE related test hangs";
 
     public static final String Flaky = "Test is flaky";
+
+    public static final String File_handling = "In Quarkus, we want file handling to be done by Vert.x in order to avoid OOM and InputStream limits";
 }
