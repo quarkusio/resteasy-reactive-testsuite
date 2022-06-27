@@ -2,9 +2,6 @@ name: Jakarta Rewrite
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-    - main
 jobs:
   rewrite:
     runs-on: ubuntu-latest
