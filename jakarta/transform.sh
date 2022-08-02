@@ -37,6 +37,12 @@ convert_service_file () {
   mv "$1" "$newName"
 }
 
+sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' pom.xml
+sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' pom.xml
+sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' framework/pom.xml
+sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' framework/pom.xml
+sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' tests/pom.xml
+sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' tests/pom.xml
 sed -s 's/jboss-jaxrs-api_2\.1_spec/jboss-jaxrs-api_3.0_spec/g' -i framework/pom.xml
 sed -s 's/org\.jboss\.spec\.javax\.xml\.bind/jakarta.xml.bind/g' -i framework/pom.xml
 sed -s 's/jboss-jaxb-api_2\.3_spec/jakarta.xml.bind-api/g' -i framework/pom.xml
