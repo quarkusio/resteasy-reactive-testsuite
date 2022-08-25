@@ -43,8 +43,19 @@ sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<qua
 sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' framework/pom.xml
 sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' tests/pom.xml
 sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' tests/pom.xml
-sed -s 's/jboss-jaxrs-api_2\.1_spec/jboss-jaxrs-api_3.0_spec/g' -i framework/pom.xml
+sed -s 's/org\.jboss\.spec\.javax\.ws\.rs/jakarta.ws.rs/g' -i framework/pom.xml
+sed -s 's/jboss-jaxrs-api_2\.1_spec/jakarta.ws.rs-api/g' -i framework/pom.xml
 sed -s 's/org\.jboss\.spec\.javax\.xml\.bind/jakarta.xml.bind/g' -i framework/pom.xml
 sed -s 's/jboss-jaxb-api_2\.3_spec/jakarta.xml.bind-api/g' -i framework/pom.xml
+
 transform_module framework/src
 transform_module tests/src
+
+sed -i '/import jakarta.xml.bind.Validator;/d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeJaxbContext.java
+sed -i '37,41d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeJaxbContext.java
+sed -i 's/<A extends XmlAdapter>/<A extends XmlAdapter<?, ?>>/g' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeMarshaller.java
+sed -i 's/<A extends XmlAdapter>/<A extends XmlAdapter<?, ?>>/g' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
+sed -i '118,121d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
+sed -i '84,88d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
+
+./mvnw clean install -DskipTests -DskipITs
