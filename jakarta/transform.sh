@@ -57,5 +57,3 @@ sed -i 's/<A extends XmlAdapter>/<A extends XmlAdapter<?, ?>>/g' tests/src/test/
 sed -i 's/<A extends XmlAdapter>/<A extends XmlAdapter<?, ?>>/g' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
 sed -i '118,121d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
 sed -i '84,88d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
-
-./mvnw clean install -DskipTests -DskipITs
