@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.exception;
 
-import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.ExceptionMapper;
+import jakarta.ws.rs.ext.Provider;
 
 /**
  * This exception mapper shall never be used. If used, than the Spec. is not

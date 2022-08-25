@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 import com.sun.ts.tests.jaxrs.common.provider.StringBean;
 
@@ -26,7 +26,7 @@ public class ConstraintDefinitionResource {
 
     @POST
     @Path("constraintdefinitionexception")
-    // javax.validation.ConstraintDefinitionException: HV000074:
+    // jakarta.validation.ConstraintDefinitionException: HV000074:
     // com.sun.ts.tests.jaxrs.spec.beanvalidation.annotation.ConstraintViolationAnnotation
     // contains Constraint annotation, but does not contain a message parameter.
     public String constraintDefinitionException(

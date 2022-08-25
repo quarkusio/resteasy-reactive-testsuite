@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.entitytag;
 
-import javax.ws.rs.core.EntityTag;
+import jakarta.ws.rs.core.EntityTag;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 

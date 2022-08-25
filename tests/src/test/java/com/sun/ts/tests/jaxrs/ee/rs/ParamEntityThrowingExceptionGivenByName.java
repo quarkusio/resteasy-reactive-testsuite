@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs;
 
 import java.lang.reflect.Constructor;
 
-import javax.ws.rs.WebApplicationException;
+import jakarta.ws.rs.WebApplicationException;
 
 public class ParamEntityThrowingExceptionGivenByName
         extends ParamEntityThrowingWebApplicationException {

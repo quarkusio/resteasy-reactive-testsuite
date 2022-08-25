@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext.basic;
 
 import java.util.function.Supplier;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

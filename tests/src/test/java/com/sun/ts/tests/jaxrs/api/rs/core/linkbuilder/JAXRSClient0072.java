@@ -22,12 +22,12 @@ import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Map;
 
-import javax.ws.rs.core.Link;
-import javax.ws.rs.core.Link.Builder;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.UriBuilder;
-import javax.ws.rs.core.UriBuilderException;
-import javax.ws.rs.ext.RuntimeDelegate;
+import jakarta.ws.rs.core.Link;
+import jakarta.ws.rs.core.Link.Builder;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.UriBuilder;
+import jakarta.ws.rs.core.UriBuilderException;
+import jakarta.ws.rs.ext.RuntimeDelegate;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
@@ -169,7 +169,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * 
      * @test_Strategy: Set an arbitrary parameter on this link.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void paramTest() throws Fault {
@@ -192,7 +192,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: throws IlleagalArgumentException - if either the name or
      * value are null
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void paramThrowsExceptionWhenNullNameTest() throws Fault {
@@ -214,7 +214,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: throws IlleagalArgumentException - if either the name or
      * value are null
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder *
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder *
      */
     @org.junit.jupiter.api.Test
     public void paramThrowsExceptionWhenNullValueTest() throws Fault {
@@ -236,7 +236,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: Convenience method to set a link relation. More than one
      * rel value can be specified using this method.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void relTest() throws Fault {
@@ -261,7 +261,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * of calling this method is cumulative; relations are appended using a single
      * space character as separator.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void relMoreNamesTest() throws Fault {
@@ -285,7 +285,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: Convenience method to set a title on this link. If called
      * more than once, the previous value of title is overwritten.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void titleTest() throws Fault {
@@ -309,7 +309,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: Convenience method to set a type on this link. If called
      * more than once, the previous value of title is overwritten.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void typeTest() throws Fault {
@@ -331,7 +331,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * 
      * @test_Strategy: Set underlying URI template for the link being constructed.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void uriUriTest() throws Fault {
@@ -352,7 +352,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: Set underlying string representing URI template for the
      * link being constructed.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void uriStringTest() throws Fault {
@@ -372,7 +372,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: throws IllegalArgumentException - if string representation
      * of URI is invalid
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void uriStringThrowsIAETest() throws Fault {
@@ -393,7 +393,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: Set underlying URI builder representing the URI template
      * for the link being constructed.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void uriBuilderTest() throws Fault {
@@ -417,7 +417,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * 
      * @test_Strategy: Set the base URI for resolution of relative URIs.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void baseUriURITest() throws Fault {
@@ -442,7 +442,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: Set the base URI for resolution of relative URIs. Provide a
      * URI that is not just base, i.e. schema and authority, but also a path
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void baseUriIsNotJustBaseURITest() throws Fault {
@@ -465,7 +465,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: If the underlying URI is already absolute, the base URI is
      * ignored.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void baseUriIsIgnoredURITest() throws Fault {
@@ -496,7 +496,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: Set the base URI as a string for resolution of relative
      * URIs.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void baseUriStringTest() throws Fault {
@@ -521,7 +521,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @test_Strategy: throws java.lang.IllegalArgumentException - if string
      * representation of URI is invalid.
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void baseUriStringThrowsIAETest() throws Fault {
@@ -543,7 +543,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * URIs. Provide a URI that is not just base, i.e. schema and authority, but
      * also a path
      * 
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void baseUriIsNotJustBaseStringTest() throws Fault {
@@ -564,7 +564,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * @assertion_ids: JAXRS:JAVADOC:1126; JAXRS:JAVADOC:1053;
      * 
      * @test_Strategy: If the underlying URI is already absolute, the base URI is
-     * ignored. javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * ignored. jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void baseUriIsIgnoredStringTest() throws Fault {
@@ -588,7 +588,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * 
      * @test_Strategy: Finish building this link using the supplied values as URI
      * parameters and relativize the result with respect to the supplied URI.
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void buildRelativizedTest() throws Fault {
@@ -730,7 +730,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * 
      * @test_Strategy: Throws: UriBuilderException - if a URI cannot be
      * constructed based on the current state of the underlying URI builder.
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void buildRelativizedThrowsUriBuilderExceptionTest() throws Fault {
@@ -756,7 +756,7 @@ public class JAXRSClient0072 extends JAXRSCommonClient {
      * 
      * @test_Strategy: Initialize builder using another link. Sets underlying URI
      * and copies all parameters.
-     * javax.ws.rs.ext.RuntimeDelegate.createLinkBuilder
+     * jakarta.ws.rs.ext.RuntimeDelegate.createLinkBuilder
      */
     @org.junit.jupiter.api.Test
     public void linkLinkTest() throws Fault {

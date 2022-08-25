@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.ext.runtimedelegate.setinstance;
 
-import javax.ws.rs.ext.RuntimeDelegate;
+import jakarta.ws.rs.ext.RuntimeDelegate;
 
 import com.sun.ts.tests.jaxrs.api.rs.ext.runtimedelegate.JAXRSDelegateClient0039;
 import com.sun.ts.tests.jaxrs.api.rs.ext.runtimedelegate.TckRuntimeDelegate;

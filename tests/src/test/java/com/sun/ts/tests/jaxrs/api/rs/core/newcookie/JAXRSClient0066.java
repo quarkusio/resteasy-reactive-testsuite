@@ -19,8 +19,8 @@ package com.sun.ts.tests.jaxrs.api.rs.core.newcookie;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.ws.rs.core.Cookie;
-import javax.ws.rs.core.NewCookie;
+import jakarta.ws.rs.core.Cookie;
+import jakarta.ws.rs.core.NewCookie;
 
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -63,7 +63,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String comment = "";
         String domain = "";
         String path = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -91,7 +91,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -119,7 +119,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "";
         String domain = "y.x.foo.com";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -147,7 +147,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "y.x.foo.com";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -176,7 +176,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "y.x.foo.com";
         int version = 0;
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         boolean secure = false;
 
         Cookie ck5 = new Cookie(name, value, path, domain, version);
@@ -203,7 +203,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String comment = "";
         String domain = "";
         String path = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -232,7 +232,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -262,7 +262,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "";
         String domain = "y.x.foo.com";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -292,7 +292,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "y.x.foo.com";
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -323,7 +323,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "y.x.foo.com";
         int version = 1;
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         boolean secure = true;
 
         NewCookie nck10 = new NewCookie(name, value, path, domain, comment, maxage,
@@ -382,7 +382,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -412,7 +412,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "";
         String domain = "y.x.foo.com";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -442,7 +442,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "y.x.foo.com";
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -473,7 +473,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "y.x.foo.com";
         int version = 0;
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         boolean secure = true;
 
         NewCookie nck15 = new NewCookie(name, value, path, domain, version, comment,
@@ -504,7 +504,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "y.x.foo.com";
         int version = 0;
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         boolean secure = true;
 
         NewCookie nck16 = new NewCookie(name, value, path, domain, version, comment,
@@ -563,7 +563,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String comment = "";
         String domain = "";
         String path = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -593,7 +593,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -622,7 +622,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "";
         String domain = "y.x.foo.com";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -651,7 +651,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String path = "/acme";
         String domain = "y.x.foo.com";
         String comment = "";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         int version = 1;
         boolean secure = false;
 
@@ -681,7 +681,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "y.x.foo.com";
         int version = 1;
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         boolean secure = false;
 
         Cookie ck22 = new Cookie(name, value, path, domain, version);
@@ -710,7 +710,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "y.x.foo.com";
         int version = 0;
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         boolean secure = false;
 
         Cookie ck22 = new Cookie(name, value, path, domain, version);
@@ -739,7 +739,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "y.x.foo.com";
         int version = 1;
         String comment = "cts test comment";
-        int maxage = javax.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
+        int maxage = jakarta.ws.rs.core.NewCookie.DEFAULT_MAX_AGE;
         boolean secure = true;
 
         Cookie ck24 = new Cookie(name, value, path, domain, version);
@@ -796,7 +796,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "";
         int version = 1;
 
-        NewCookie nck26 = javax.ws.rs.core.NewCookie.valueOf(NewCookie_toParse);
+        NewCookie nck26 = jakarta.ws.rs.core.NewCookie.valueOf(NewCookie_toParse);
 
         verifyNewCookie(nck26, name, value, path, domain, version, "", -1, false);
     }
@@ -820,7 +820,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
         String domain = "";
         int version = 1;
 
-        NewCookie nck27 = javax.ws.rs.core.NewCookie.valueOf(newCookie_toParse);
+        NewCookie nck27 = jakarta.ws.rs.core.NewCookie.valueOf(newCookie_toParse);
 
         verifyNewCookie(nck27, name, value, path, domain, version, "", -1, false);
     }
@@ -836,7 +836,7 @@ public class JAXRSClient0066 extends JAXRSCommonClient {
     @org.junit.jupiter.api.Test
     public void parseTest3() throws Fault {
         try {
-            javax.ws.rs.core.NewCookie.valueOf(null);
+            jakarta.ws.rs.core.NewCookie.valueOf(null);
             throw new Fault(
                     "Expected IllegalArgumentException not thrown. Test Failed.");
         } catch (IllegalArgumentException ilex) {

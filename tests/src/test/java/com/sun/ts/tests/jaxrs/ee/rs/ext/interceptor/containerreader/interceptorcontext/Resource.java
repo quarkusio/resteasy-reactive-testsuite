@@ -19,10 +19,10 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.interceptor.containerreader.interceptor
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 import com.sun.ts.tests.jaxrs.common.util.JaxrsUtil;
 

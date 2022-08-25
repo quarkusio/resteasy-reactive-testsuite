@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.container.completioncallback;
 
-import javax.ws.rs.container.CompletionCallback;
+import jakarta.ws.rs.container.CompletionCallback;
 
 public class SecondSettingCompletionCallback implements CompletionCallback {
 

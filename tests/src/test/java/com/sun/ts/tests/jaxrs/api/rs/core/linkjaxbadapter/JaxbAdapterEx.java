@@ -16,10 +16,10 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.linkjaxbadapter;
 
-import javax.ws.rs.core.Link;
-import javax.ws.rs.core.Link.JaxbAdapter;
-import javax.ws.rs.core.Link.JaxbLink;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.ws.rs.core.Link;
+import jakarta.ws.rs.core.Link.JaxbAdapter;
+import jakarta.ws.rs.core.Link.JaxbLink;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class JaxbAdapterEx extends XmlAdapter<JaxbLinkEx, Link> {
 

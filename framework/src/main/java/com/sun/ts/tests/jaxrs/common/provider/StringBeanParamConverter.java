@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.common.provider;
 
-import javax.ws.rs.ext.ParamConverter;
+import jakarta.ws.rs.ext.ParamConverter;
 
 public class StringBeanParamConverter implements ParamConverter<StringBean> {
 

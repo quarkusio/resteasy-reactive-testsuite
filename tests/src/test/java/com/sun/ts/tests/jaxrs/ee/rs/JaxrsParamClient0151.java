@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs;
 
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.junit.jupiter.api.AfterEach;
 

@@ -18,17 +18,17 @@ package com.sun.ts.tests.jaxrs.ee.rs.client.syncinvoker;
 
 import java.util.function.Supplier;
 
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.SyncInvoker;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.ProcessingException;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.SyncInvoker;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -106,7 +106,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:541;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.delete throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -156,7 +156,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:543;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.delete( Class ) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -177,7 +177,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:543;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.delete( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -200,7 +200,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:543;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.delete( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -250,7 +250,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:546;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.delete( Class ) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -272,7 +272,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:546;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.delete( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -296,7 +296,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:546;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.delete( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.delete( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -333,7 +333,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:549;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.get throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.get throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -383,7 +383,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:551;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.get( Class ) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -403,7 +403,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:551;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.get( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -426,7 +426,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:551;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.get( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -476,7 +476,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:554;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( GenericType ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.get( GenericType ) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -498,7 +498,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:554;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( GenericType ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.get( GenericType ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -522,7 +522,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:554;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.get( GenericType ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.get( GenericType ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -562,7 +562,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:557;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.head throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.head throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -604,7 +604,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:559;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -662,7 +662,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:561;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -687,7 +687,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:561;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -713,7 +713,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:561;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -770,7 +770,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:564;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -794,7 +794,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:564;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(GenericType<String>)
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(GenericType<String>)
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -822,7 +822,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * @assertion_ids: JAXRS:JAVADOC:564;
      * 
      * @test_Strategy:
-     * javax.ws.rs.client.SyncInvoker.method(GenericType<Response>) throws
+     * jakarta.ws.rs.client.SyncInvoker.method(GenericType<Response>) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -864,7 +864,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:567;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity)
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String, Entity)
      * throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -925,7 +925,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:569;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String, Entity,
      * Class) throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -949,7 +949,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:569;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String, Entity,
      * Class) throws WebApplicationException - in case the response status code of
      * the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -977,7 +977,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:569;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String, Entity,
      * Class) throws WebApplicationException - in case the response status code of
      * the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1040,7 +1040,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:572;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String, Entity,
      * GenericType) throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -1066,7 +1066,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:572;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String, Entity,
      * GenericType) throws WebApplicationException - in case the response status
      * code of the response returned by the server is not successful and the
      * specified response type is not Response.
@@ -1095,7 +1095,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:572;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.method(String, Entity,
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.method(String, Entity,
      * GenericType) throws WebApplicationException - in case the response status
      * code of the response returned by the server is not successful and the
      * specified response type is not Response.
@@ -1137,7 +1137,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:575;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.options throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.options throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -1187,7 +1187,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:577;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.options( Class ) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -1207,7 +1207,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:577;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.options( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -1230,7 +1230,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:577;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.options( Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -1280,7 +1280,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:580;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.options( GenericType )
      * throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -1302,7 +1302,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:580;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.options( GenericType )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1327,7 +1327,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:580;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.options( GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.options( GenericType )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1366,7 +1366,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:583;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.post(Entity) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.post(Entity) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -1419,7 +1419,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:585;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.post( Entity, Class ) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -1440,7 +1440,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:585;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.post( Entity, Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -1464,7 +1464,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:585;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.post( Entity, Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -1517,7 +1517,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:588;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.post( Entity, GenericType )
      * throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -1540,7 +1540,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:588;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.post( Entity, GenericType )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1565,7 +1565,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:588;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.post( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.post( Entity, GenericType )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1605,7 +1605,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:591;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.put(Entity) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.put(Entity) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -1658,7 +1658,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:593;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.put( Entity, Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.put( Entity, Class ) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -1679,7 +1679,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:593;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.put( Entity, Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.put( Entity, Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -1703,7 +1703,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:593;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.put( Entity, Class ) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.put( Entity, Class ) throws
      * WebApplicationException - in case the response status code of the response
      * returned by the server is not successful and the specified response type is
      * not Response.
@@ -1756,7 +1756,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:596;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.put( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.put( Entity, GenericType )
      * throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -1779,7 +1779,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:596;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.put( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.put( Entity, GenericType )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1842,7 +1842,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:599;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace(Entity) throws
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.trace(Entity) throws
      * ProcessingException in case the invocation failed.
      */
     @Test
@@ -1892,7 +1892,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:601;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, Class )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.trace( Entity, Class )
      * throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -1912,7 +1912,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:601;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, Class )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.trace( Entity, Class )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1935,7 +1935,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:601;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, Class )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.trace( Entity, Class )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1985,7 +1985,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:604;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.trace( Entity, GenericType )
      * throws ProcessingException in case the invocation failed.
      */
     @Test
@@ -2007,7 +2007,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:604;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.trace( Entity, GenericType )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.
@@ -2031,7 +2031,7 @@ public class JAXRSClient0120 extends JaxrsCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:604;
      * 
-     * @test_Strategy: javax.ws.rs.client.SyncInvoker.trace( Entity, GenericType )
+     * @test_Strategy: jakarta.ws.rs.client.SyncInvoker.trace( Entity, GenericType )
      * throws WebApplicationException - in case the response status code of the
      * response returned by the server is not successful and the specified
      * response type is not Response.

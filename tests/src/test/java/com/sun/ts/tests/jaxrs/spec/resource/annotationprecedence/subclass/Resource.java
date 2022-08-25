@@ -16,13 +16,13 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.subclass;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.MatrixParam;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DefaultValue;
+import jakarta.ws.rs.MatrixParam;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 import com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.ResourceInterface;
 import com.sun.ts.tests.jaxrs.spec.resource.annotationprecedence.SuperClass;

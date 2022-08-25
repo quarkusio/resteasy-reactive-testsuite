@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.beanparam;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.junit.jupiter.api.AfterEach;
 

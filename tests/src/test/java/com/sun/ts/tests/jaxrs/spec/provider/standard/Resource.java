@@ -20,15 +20,15 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.Reader;
 
-import javax.activation.DataSource;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.activation.DataSource;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import javax.xml.transform.Source;
 
 @Path("resource")
@@ -106,14 +106,14 @@ public class Resource {
         return file;
     }
 
-    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    // QUARKUS: disabled as we don't support jakarta.activation.DataSource
     //  @Path("datasource")
     //  @POST
     public DataSource datasource(DataSource datasource) {
         return datasource;
     }
 
-    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    // QUARKUS: disabled as we don't support jakarta.activation.DataSource
     //  @Path("datasourcesvg")
     //  @Produces(MediaType.APPLICATION_SVG_XML)
     //  @Consumes(MediaType.APPLICATION_SVG_XML)
@@ -122,14 +122,14 @@ public class Resource {
         return datasource;
     }
 
-    // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+    // QUARKUS: Disable as we don't support jakarta.ws.rs.core.StreamingOutput
     //  @Path("streamingoutput")
     //  @POST
     //  public StreamingOutput streamingoutput(String streamingoutput) {
     //    return new StringStreamingOutput(streamingoutput);
     //  }
 
-    // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+    // QUARKUS: Disable as we don't support jakarta.ws.rs.core.StreamingOutput
     //  @Path("streamingoutputsvg")
     //  @Produces(MediaType.APPLICATION_SVG_XML)
     //  @Consumes(MediaType.APPLICATION_SVG_XML)

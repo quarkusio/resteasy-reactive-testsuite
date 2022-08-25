@@ -20,12 +20,12 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.Reader;
 
-import javax.activation.DataSource;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response.Status;
+import jakarta.activation.DataSource;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.Response.Status;
 import javax.xml.transform.Source;
 
 @Path("resource")
@@ -60,7 +60,7 @@ public class Resource {
         return file;
     }
 
-    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    // QUARKUS: disabled as we don't support jakarta.activation.DataSource
     //  @Path("datasource")
     //  @POST
     public DataSource datasource(DataSource datasource) {
@@ -88,7 +88,7 @@ public class Resource {
         return map;
     }
 
-    // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+    // QUARKUS: Disable as we don't support jakarta.ws.rs.core.StreamingOutput
     //  @Path("streamingoutput")
     //  @POST
     //  public StreamingOutput streamingoutput(StreamingOutput streamingoutput) {
