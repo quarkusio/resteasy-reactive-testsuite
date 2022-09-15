@@ -16,6 +16,10 @@
 
 package com.sun.ts.tests.jaxrs.common.provider;
 
+import java.util.concurrent.CompletionStage;
+
+import jakarta.ws.rs.SeBootstrap.Configuration;
+import jakarta.ws.rs.SeBootstrap.Instance;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.Link.Builder;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
@@ -87,5 +91,25 @@ public class StringBeanRuntimeDelegate extends RuntimeDelegate {
     @Override
     public Builder createLinkBuilder() {
         return original.createLinkBuilder();
+    }
+
+    @Override
+    public jakarta.ws.rs.SeBootstrap.Configuration.Builder createConfigurationBuilder() {
+        return null;
+    }
+
+    @Override
+    public CompletionStage<Instance> bootstrap(Application application, Configuration configuration) {
+        return null;
+    }
+
+    @Override
+    public CompletionStage<Instance> bootstrap(Class<? extends Application> clazz, Configuration configuration) {
+        return null;
+    }
+
+    @Override
+    public jakarta.ws.rs.core.EntityPart.Builder createEntityPartBuilder(String partName) throws IllegalArgumentException {
+        return null;
     }
 }
