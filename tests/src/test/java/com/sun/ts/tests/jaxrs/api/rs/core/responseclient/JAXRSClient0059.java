@@ -60,10 +60,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
     protected final Response.Status[] resp_status = { Response.Status.OK,
             Response.Status.CREATED, Response.Status.ACCEPTED,
             Response.Status.NO_CONTENT, Response.Status.RESET_CONTENT,
-            Response.Status.PARTIAL_CONTENT, Response.Status.MOVED_PERMANENTLY,
+            Response.Status.PARTIAL_CONTENT, Response.Status.MULTIPLE_CHOICES, Response.Status.MOVED_PERMANENTLY,
             Response.Status.FOUND, Response.Status.SEE_OTHER,
             Response.Status.NOT_MODIFIED, Response.Status.USE_PROXY,
-            Response.Status.TEMPORARY_REDIRECT, Response.Status.BAD_REQUEST,
+            Response.Status.TEMPORARY_REDIRECT, Response.Status.PERMANENT_REDIRECT, Response.Status.BAD_REQUEST,
             Response.Status.UNAUTHORIZED, Response.Status.PAYMENT_REQUIRED,
             Response.Status.FORBIDDEN, Response.Status.NOT_FOUND,
             Response.Status.METHOD_NOT_ALLOWED, Response.Status.NOT_ACCEPTABLE,
@@ -78,6 +78,7 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
             Response.Status.EXPECTATION_FAILED, Response.Status.PRECONDITION_REQUIRED,
             Response.Status.TOO_MANY_REQUESTS,
             Response.Status.REQUEST_HEADER_FIELDS_TOO_LARGE,
+            Response.Status.UNAVAILABLE_FOR_LEGAL_REASONS,
             Response.Status.INTERNAL_SERVER_ERROR, Response.Status.NOT_IMPLEMENTED,
             Response.Status.BAD_GATEWAY, Response.Status.SERVICE_UNAVAILABLE,
             Response.Status.GATEWAY_TIMEOUT,
@@ -85,9 +86,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
             Response.Status.NETWORK_AUTHENTICATION_REQUIRED };
 
     // name it to ensure sorting
-    protected final int[] status_codes = { 200, 201, 202, 204, 205, 206, 301, 302,
-            303, 304, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410,
-            411, 412, 413, 414, 415, 416, 417, 428, 429, 431, 500, 501, 502, 503, 504,
+    protected final int[] status_codes = { 200, 201, 202, 204, 205, 206, 300, 301, 302,
+            303, 304, 305, 307, 308, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410,
+            411, 412, 413, 414, 415, 416, 417, 428, 429, 431, 451, 500, 501, 502, 503, 504,
             505, 511 };
 
     // name it to ensure sorting
@@ -98,6 +99,7 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
             Response.Status.Family.REDIRECTION, Response.Status.Family.REDIRECTION,
             Response.Status.Family.REDIRECTION, Response.Status.Family.REDIRECTION,
             Response.Status.Family.REDIRECTION, Response.Status.Family.REDIRECTION,
+            Response.Status.Family.REDIRECTION, Response.Status.Family.REDIRECTION,
             Response.Status.Family.CLIENT_ERROR, Response.Status.Family.CLIENT_ERROR,
             Response.Status.Family.CLIENT_ERROR, Response.Status.Family.CLIENT_ERROR,
             Response.Status.Family.CLIENT_ERROR, Response.Status.Family.CLIENT_ERROR,
@@ -108,6 +110,7 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
             Response.Status.Family.CLIENT_ERROR, Response.Status.Family.CLIENT_ERROR,
             Response.Status.Family.CLIENT_ERROR, Response.Status.Family.CLIENT_ERROR,
             Response.Status.Family.CLIENT_ERROR, Response.Status.Family.CLIENT_ERROR,
+            Response.Status.Family.CLIENT_ERROR,
             Response.Status.Family.CLIENT_ERROR, Response.Status.Family.SERVER_ERROR,
             Response.Status.Family.SERVER_ERROR, Response.Status.Family.SERVER_ERROR,
             Response.Status.Family.SERVER_ERROR, Response.Status.Family.SERVER_ERROR,
@@ -120,8 +123,8 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
             Response.Status.Family.SERVER_ERROR, Response.Status.Family.SUCCESSFUL };
 
     protected final String[] status = { "OK", "Created", "Accepted", "No Content",
-            "Reset Content", "Partial Content", "Moved Permanently", "Found",
-            "See Other", "Not Modified", "Use Proxy", "Temporary Redirect",
+            "Reset Content", "Partial Content", "Multiple Choices", "Moved Permanently", "Found",
+            "See Other", "Not Modified", "Use Proxy", "Temporary Redirect", "Permanent Redirect",
             "Bad Request", "Unauthorized", "Payment Required", "Forbidden",
             "Not Found", "Method Not Allowed", "Not Acceptable",
             "Proxy Authentication Required", "Request Timeout", "Conflict", "Gone",
@@ -129,7 +132,7 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
             "Request-URI Too Long", "Unsupported Media Type",
             "Requested Range Not Satisfiable", "Expectation Failed",
             "Precondition Required", "Too Many Requests",
-            "Request Header Fields Too Large", "Internal Server Error",
+            "Request Header Fields Too Large", "Unavailable For Legal Reasons", "Internal Server Error",
             "Not Implemented", "Bad Gateway", "Service Unavailable",
             "Gateway Timeout", "HTTP Version Not Supported",
             "Network Authentication Required" };
@@ -151,10 +154,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: okTest1
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:131; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using Response.ok().build()
      * verify that correct status code is returned
      */
@@ -171,10 +174,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: okTest2
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:132; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ok(String).build() verify that correct status code is returned
      */
@@ -193,10 +196,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: okTest3
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:134; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using Response.ok(String,
      * String).build() verify that correct status code is returned
      */
@@ -217,10 +220,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: okTest4
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:133; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using Response.ok(String,
      * MediaType).build() verify that correct status code is returned
      */
@@ -243,12 +246,12 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: okTest5
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:135; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125; JAXRS:JAVADOC:91; JAXRS:JAVADOC:268;
      * JAXRS:JAVADOC:267; JAXRS:JAVADOC:266; JAXRS:JAVADOC:265; JAXRS:JAVADOC:263;
      * JAXRS:JAVADOC:264;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using Response.ok(String,
      * Variant).build() verify that correct status code is returned
      */
@@ -279,10 +282,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: noContentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:126; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.noContent().build() verify that correct status code is returned
      */
@@ -301,12 +304,12 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: notAcceptableTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:127; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125; JAXRS:JAVADOC:91; JAXRS:JAVADOC:268;
      * JAXRS:JAVADOC:267; JAXRS:JAVADOC:266; JAXRS:JAVADOC:265; JAXRS:JAVADOC:263;
      * JAXRS:JAVADOC:264;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.notAcceptable(vts).build() verify that correct status code is
      * returned
@@ -331,10 +334,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: notModifiedTest1
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:128; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.notModified().build() verify that correct status code is returned
      */
@@ -353,10 +356,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: notModifiedTest2
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:130; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.notModified(String).build() verify that correct status code is
      * returned
@@ -379,10 +382,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: notModifiedTest3
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:129; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.notModified(EntityTag).build() verify that correct status code is
      * returned
@@ -408,10 +411,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusTest1
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:123; JAXRS:JAVADOC:124;
      * JAXRS:JAVADOC:125; JAXRS:SPEC:14.2;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.status(int).build() verify that correct status code is returned
      */
@@ -430,10 +433,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusTest2
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:138; JAXRS:JAVADOC:123; JAXRS:JAVADOC:124;
      * JAXRS:JAVADOC:125; JAXRS:SPEC:14.2;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.status(Response.Status).build() verify that correct status code is
      * returned
@@ -453,10 +456,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusTest3
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:131; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125; JAXRS:SPEC:14.2;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.status(int).build() verify that correct status
      * code is returned
@@ -476,10 +479,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusTest4
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:138; JAXRS:JAVADOC:131; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125; JAXRS:SPEC:14.2;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.status(Response.Status).build() verify that
      * correct status code is returned
@@ -499,10 +502,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: createdTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:121; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.created(URI).build() verify that correct status code is returned
      */
@@ -538,10 +541,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: serverErrorTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:137; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.serverError().build() verify that correct status code is returned
      */
@@ -557,10 +560,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: seeOtherTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:136; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.seeOther(URI).build() verify that correct status code is returned
      */
@@ -588,10 +591,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: temporaryRedirectTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:140; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.temporaryRedirect(URI).build() verify that correct status code is
      * returned
@@ -620,10 +623,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: fromResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:122; JAXRS:JAVADOC:141; JAXRS:JAVADOC:123;
      * JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.fromResponse(Response).build() verify that correct status code is
      * returned
@@ -657,10 +660,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: entityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:146;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.entity(String).build() verify that correct status
      * code is returned
@@ -681,10 +684,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: languageTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:149;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.language(String).build() verify that correct
      * status code is returned
@@ -707,10 +710,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: languageTest1
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:150;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.language(Locale).build() verify that correct
      * status code is returned
@@ -731,10 +734,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: typeTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:158;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.type(String).build() verify that correct status
      * code is returned
@@ -754,10 +757,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: typeTest1
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:157;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.type(MediaType).build() verify that correct status
      * code is returned
@@ -781,10 +784,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: tagTest1
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:156;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.tag(String).build() verify that correct status
      * code is returned
@@ -807,10 +810,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: tagTest2
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:155;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.tag(EntityTag).build() verify that correct status
      * code is returned
@@ -834,10 +837,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: variantTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:159;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.status(int).variant(Variant).build() verify that correct status
      * code is returned
@@ -865,10 +868,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: variantsTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:160;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.status(int).variants(List<Variant>).build() verify that correct
      * status code is returned
@@ -893,10 +896,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: locationTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:152;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.status(status).location(URI).build() verify that correct status
      * code is returned
@@ -933,10 +936,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: contentLocationTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:144;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.status(status).contentLocation(URI).build() verify that correct
      * status code is returned
@@ -973,10 +976,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: cacheControlTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:142;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.cacheControl(String).build() verify that correct
      * status code is returned
@@ -1001,10 +1004,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: cookieTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:145;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.cookie(NewCookie).build() verify that correct
      * status code is returned
@@ -1049,10 +1052,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: lastModifiedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:151;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125; JAXRS:JAVADOC:97;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.lastModified(Date).build() verify that correct
      * status code is returned
@@ -1075,10 +1078,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: headerTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:148;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125; JAXRS:JAVADOC:97;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.header(String, Object).build() verify that correct
      * status code is returned
@@ -1117,10 +1120,10 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: cloneTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:139; JAXRS:JAVADOC:141; JAXRS:JAVADOC:143;
      * JAXRS:JAVADOC:123; JAXRS:JAVADOC:124; JAXRS:JAVADOC:125;
-     * 
+     *
      * @test_Strategy: Create an instance of Response using
      * Response.ResponseBuilder.clone() verify that correct status code is
      * returned
@@ -1178,9 +1181,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusTest5
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:161;
-     * 
+     *
      * @test_Strategy: Call Response.Status.fromStatusCode(int) verify that
      * correct Response.Status is returned
      */
@@ -1204,9 +1207,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getFamilyTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:162;
-     * 
+     *
      * @test_Strategy: Call Response.Status.getFamily() verify that correct
      * Response.Status.Family is returned
      */
@@ -1233,9 +1236,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusTest7
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:163;
-     * 
+     *
      * @test_Strategy: Call Response.Status.getStatusCode() verify that correct
      * status code is returned
      */
@@ -1261,9 +1264,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: toStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:164;
-     * 
+     *
      * @test_Strategy: Call Response.Status.toString() verify that correct reason
      * phase is returned
      */
@@ -1289,9 +1292,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getReasonPhraseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:301; JAXRS:JAVADOC:166;
-     * 
+     *
      * @test_Strategy: Call Response.Status.getReasonPhrase() verify that correct
      * reason phase is returned
      */
@@ -1320,9 +1323,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusValueOfTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:165; JAXRS:JAVADOC:166;
-     * 
+     *
      * @test_Strategy: Call Response.Status.valueOf(String) verify that correct
      * Status is returned
      */
@@ -1354,9 +1357,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusFamilyValueOfTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:167; JAXRS:JAVADOC:168;
-     * 
+     *
      * @test_Strategy: Call Response.Status.Family.valueOf() verify that correct
      * Family is returned
      */
@@ -1375,9 +1378,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: statusFamilyValuesTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:168;
-     * 
+     *
      * @test_Strategy: Call Response.Status.Family.values() verify that correct
      * Family is returned
      */
@@ -1395,9 +1398,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: acceptedNoArgTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:836;
-     * 
+     *
      * @test_Strategy: Create a new ResponseBuilder with an ACCEPTED status.
      */
     @org.junit.jupiter.api.Test
@@ -1412,9 +1415,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: acceptedStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:837;
-     * 
+     *
      * @test_Strategy: Create a new ResponseBuilder with an ACCEPTED status that
      * contains a representation. It is the callers responsibility to wrap the
      * actual entity with GenericEntity if preservation of its generic type is
@@ -1434,9 +1437,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: acceptedGenericEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:837;
-     * 
+     *
      * @test_Strategy: Create a new ResponseBuilder with an ACCEPTED status that
      * contains a representation. It is the callers responsibility to wrap the
      * actual entity with GenericEntity if preservation of its generic type is
@@ -1457,9 +1460,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: bufferEntityIgnoreNoBackingStreamTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:838;
-     * 
+     *
      * @test_Strategy: In case the response entity instance is not backed by an
      * unconsumed input stream an invocation of bufferEntity method is ignored and
      * the method returns false.
@@ -1474,9 +1477,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: bufferEntityThrowsIllegalStateExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:838;
-     * 
+     *
      * @test_Strategy: throws IllegalStateException - in case the response has
      * been #close() closed.
      */
@@ -1494,9 +1497,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getAllowedMethodsTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:843;
-     * 
+     *
      * @test_Strategy: Get the allowed HTTP methods from the Allow HTTP header.
      */
     @org.junit.jupiter.api.Test
@@ -1519,9 +1522,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getCookiesTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:844;
-     * 
+     *
      * @test_Strategy: Get any new cookies set on the response message.
      */
     @org.junit.jupiter.api.Test
@@ -1552,9 +1555,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getCookiesIsImmutableTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:844;
-     * 
+     *
      * @test_Strategy: returns a read-only map of cookie name (String) to Cookie.
      */
     @org.junit.jupiter.api.Test
@@ -1578,9 +1581,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getDateTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:845;
-     * 
+     *
      * @test_Strategy: Get message date.
      */
     @org.junit.jupiter.api.Test
@@ -1596,9 +1599,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getDateNotPresentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:845;
-     * 
+     *
      * @test_Strategy: Get null if not present.
      */
     @org.junit.jupiter.api.Test
@@ -1612,9 +1615,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getEntityThrowsIllegalStateExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:123;
-     * 
+     *
      * @test_Strategy: if the entity was previously fully consumed as an
      * InputStream input stream, or if the response has been #close() closed.
      */
@@ -1632,9 +1635,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getEntityTagTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:847;
-     * 
+     *
      * @test_Strategy: Get the entity tag.
      */
     @org.junit.jupiter.api.Test
@@ -1649,9 +1652,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getEntityTagNotPresentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:847;
-     * 
+     *
      * @test_Strategy: Get null if not present.
      */
     @org.junit.jupiter.api.Test
@@ -1665,9 +1668,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getHeadersTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:848;
-     * 
+     *
      * @test_Strategy: Get view of the response headers and their object values.
      */
     @org.junit.jupiter.api.Test
@@ -1712,9 +1715,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getHeadersIsMutableTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:848;
-     * 
+     *
      * @test_Strategy: Get view of the response headers and their object values.
      * Changes in the underlying header data are reflected in this view.
      */
@@ -1735,9 +1738,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getHeaderStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:849;
-     * 
+     *
      * @test_Strategy: Get a message header as a single string value.
      */
     @org.junit.jupiter.api.Test
@@ -1776,9 +1779,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getHeaderStringUsingHeaderDelegateTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:849;
-     * 
+     *
      * @test_Strategy: Get a message header as a single string value. Each single
      * header value is converted to String using a RuntimeDelegate.HeaderDelegate
      * or using its toString
@@ -1802,9 +1805,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getHeaderStringUsingToStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:849;
-     * 
+     *
      * @test_Strategy: Get a message header as a single string value. Each single
      * header value is converted to String using a RuntimeDelegate.HeaderDelegate
      * or using its toString
@@ -1828,9 +1831,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLanguageTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:850;
-     * 
+     *
      * @test_Strategy: Get the language of the message entity.
      */
     @org.junit.jupiter.api.Test
@@ -1844,9 +1847,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLanguageNotPresentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:850;
-     * 
+     *
      * @test_Strategy: Get null if not present.
      */
     @org.junit.jupiter.api.Test
@@ -1860,9 +1863,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLastModifiedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:851;
-     * 
+     *
      * @test_Strategy: Get the last modified date.
      */
     @org.junit.jupiter.api.Test
@@ -1877,9 +1880,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLastModifiedNotPresentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:851;
-     * 
+     *
      * @test_Strategy: Get null if not present.
      */
     @org.junit.jupiter.api.Test
@@ -1893,9 +1896,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLengthTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:852;
-     * 
+     *
      * @test_Strategy: Get Content-Length value.
      */
     @org.junit.jupiter.api.Test
@@ -1910,9 +1913,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLengthNotPresentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:852;
-     * 
+     *
      * @test_Strategy: In other cases returns -1.
      */
     @org.junit.jupiter.api.Test
@@ -1926,9 +1929,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLinkTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:853;
-     * 
+     *
      * @test_Strategy: Get the link for the relation.
      */
     @org.junit.jupiter.api.Test
@@ -1943,9 +1946,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLinkNotPresentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:853;
-     * 
+     *
      * @test_Strategy: returns null if not present.
      */
     @org.junit.jupiter.api.Test
@@ -1959,9 +1962,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLinkBuilderForTheRelationTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:854;
-     * 
+     *
      * @test_Strategy: Convenience method that returns a Link.Builder for the
      * relation.
      */
@@ -1978,9 +1981,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLinkBuilderForTheNotPresentRelationTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:854;
-     * 
+     *
      * @test_Strategy: returns null if not present.
      */
     @org.junit.jupiter.api.Test
@@ -1994,9 +1997,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLinksTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:855;
-     * 
+     *
      * @test_Strategy: Get the links attached to the message as header.
      */
     @org.junit.jupiter.api.Test
@@ -2016,9 +2019,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLinksIsNotNullTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:855;
-     * 
+     *
      * @test_Strategy: Does not return null.
      */
     @org.junit.jupiter.api.Test
@@ -2033,9 +2036,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLocationTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:856;
-     * 
+     *
      * @test_Strategy: Get the location.
      */
     @org.junit.jupiter.api.Test
@@ -2050,9 +2053,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getLocationNotPresentTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:856;
-     * 
+     *
      * @test_Strategy: Get null when no present.
      */
     @org.junit.jupiter.api.Test
@@ -2066,9 +2069,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getMediaTypeTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:857;
-     * 
+     *
      * @test_Strategy: Get the media type of the message entity.
      */
     @org.junit.jupiter.api.Test
@@ -2084,9 +2087,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getMediaTypeNoMediaTypeTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:857;
-     * 
+     *
      * @test_Strategy: null if there is no response entity.
      */
     @org.junit.jupiter.api.Test
@@ -2100,9 +2103,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getStatusInfoTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:858;
-     * 
+     *
      * @test_Strategy: Get the complete status information associated with the
      * response.
      */
@@ -2119,9 +2122,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getStringHeadersUsingToStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:859;
-     * 
+     *
      * @test_Strategy: Get view of the response headers and their string values.
      * Each single header value is converted to String using a
      * RuntimeDelegate.HeaderDelegate or using its toString
@@ -2155,9 +2158,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: getStringHeadersUsingHeaderDelegateTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:859;
-     * 
+     *
      * @test_Strategy: Get view of the response headers and their string values.
      * Each single header value is converted to String using a
      * RuntimeDelegate.HeaderDelegate or using its toString
@@ -2187,9 +2190,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: hasEntityWhenEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:860;
-     * 
+     *
      * @test_Strategy: Check if there is an entity available in the response.
      */
     @org.junit.jupiter.api.Test
@@ -2201,9 +2204,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: hasEntityWhenNoEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:860;
-     * 
+     *
      * @test_Strategy: Check if there is an entity available in the response.
      */
     @org.junit.jupiter.api.Test
@@ -2215,9 +2218,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: hasEntityThrowsIllegalStateExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:860;
-     * 
+     *
      * @test_Strategy: throws java.lang.IllegalStateException - in case the
      * response has been closed.
      */
@@ -2236,9 +2239,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: hasLinkWhenLinkTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:862;
-     * 
+     *
      * @test_Strategy: Check if link for relation exists.
      */
     @org.junit.jupiter.api.Test
@@ -2251,9 +2254,9 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
 
     /*
      * @testName: hasLinkWhenNoLinkTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:862;
-     * 
+     *
      * @test_Strategy: Check if link for relation exists.
      */
     @org.junit.jupiter.api.Test
@@ -2302,6 +2305,7 @@ public class JAXRSClient0059 extends JAXRSCommonClient {
                     .append(status).append(newline);
         }
         result.message.append(newline);
+
         return result;
     }
 
