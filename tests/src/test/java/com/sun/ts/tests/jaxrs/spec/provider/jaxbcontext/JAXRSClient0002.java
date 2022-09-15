@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext;
 
 import java.util.function.Supplier;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -94,7 +94,7 @@ public class JAXRSClient0002 extends JAXRSCommonClient {
      * @assertion_ids: JAXRS:SPEC:34
      * 
      * @test_Strategy: The implementation-supplied entity provider(s) for
-     * javax.xml.bind.JAXBElement and application supplied JAXB classes MUST use
+     * jakarta.xml.bind.JAXBElement and application supplied JAXB classes MUST use
      * JAXBContext instances provided by application-supplied context resolvers,
      * see Section 4.3.
      */

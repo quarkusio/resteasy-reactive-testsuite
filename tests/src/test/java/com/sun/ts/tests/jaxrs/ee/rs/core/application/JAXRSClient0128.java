@@ -20,8 +20,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.Application;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

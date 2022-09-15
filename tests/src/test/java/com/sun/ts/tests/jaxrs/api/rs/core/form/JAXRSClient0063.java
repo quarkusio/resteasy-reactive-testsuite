@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.form;
 
-import javax.ws.rs.core.Form;
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.Form;
+import jakarta.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 

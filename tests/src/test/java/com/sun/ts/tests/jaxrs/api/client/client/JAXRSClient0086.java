@@ -22,14 +22,14 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Link;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.UriBuilder;
-import javax.ws.rs.ext.MessageBodyReader;
-import javax.ws.rs.ext.MessageBodyWriter;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Link;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.UriBuilder;
+import jakarta.ws.rs.ext.MessageBodyReader;
+import jakarta.ws.rs.ext.MessageBodyWriter;
 
 import com.sun.ts.lib.util.TestUtil;
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
@@ -861,7 +861,7 @@ public class JAXRSClient0086 extends JAXRSCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:411;
      * 
-     * @test_Strategy: javax.ws.rs.client.Client.invocation( Link ) throws
+     * @test_Strategy: jakarta.ws.rs.client.Client.invocation( Link ) throws
      * NullPointerException in case argument is null.
      */
     @org.junit.jupiter.api.Test
@@ -890,7 +890,7 @@ public class JAXRSClient0086 extends JAXRSCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:413;
      * 
-     * @test_Strategy: javax.ws.rs.client.Client.target( String ) throws
+     * @test_Strategy: jakarta.ws.rs.client.Client.target( String ) throws
      * IllegalArgumentException in case the supplied string is not a valid URI
      * template.
      */
@@ -919,7 +919,7 @@ public class JAXRSClient0086 extends JAXRSCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:413;
      * 
-     * @test_Strategy: javax.ws.rs.client.Client.target( String ) throws throws
+     * @test_Strategy: jakarta.ws.rs.client.Client.target( String ) throws throws
      * NullPointerException in case the supplied argument is null.
      */
     @org.junit.jupiter.api.Test
@@ -953,7 +953,7 @@ public class JAXRSClient0086 extends JAXRSCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:416;
      * 
-     * @test_Strategy: javax.ws.rs.client.Client.target( URI ) throws throws
+     * @test_Strategy: jakarta.ws.rs.client.Client.target( URI ) throws throws
      * NullPointerException in case the supplied argument is null.
      */
     @org.junit.jupiter.api.Test
@@ -987,7 +987,7 @@ public class JAXRSClient0086 extends JAXRSCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:418;
      * 
-     * @test_Strategy: javax.ws.rs.client.Client.target( URI ) throws throws
+     * @test_Strategy: jakarta.ws.rs.client.Client.target( URI ) throws throws
      * NullPointerException in case the supplied argument is null.
      */
     @org.junit.jupiter.api.Test
@@ -1022,7 +1022,7 @@ public class JAXRSClient0086 extends JAXRSCommonClient {
      * 
      * @assertion_ids: JAXRS:JAVADOC:420;
      * 
-     * @test_Strategy: javax.ws.rs.client.Client.target( URI ) throws throws
+     * @test_Strategy: jakarta.ws.rs.client.Client.target( URI ) throws throws
      * NullPointerException in case the supplied argument is null.
      */
     @org.junit.jupiter.api.Test

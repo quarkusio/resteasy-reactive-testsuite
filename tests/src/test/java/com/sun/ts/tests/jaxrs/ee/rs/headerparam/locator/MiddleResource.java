@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 
-import javax.ws.rs.POST;
+import jakarta.ws.rs.POST;
 
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName;
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException;

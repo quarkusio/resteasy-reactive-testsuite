@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.illegalstate;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.ws.rs.core.Application;
+import jakarta.ws.rs.core.Application;
 
 import com.sun.ts.tests.jaxrs.common.provider.PrintingErrorHandler;
 

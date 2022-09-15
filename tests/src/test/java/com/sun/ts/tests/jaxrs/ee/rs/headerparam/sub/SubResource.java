@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.headerparam.sub;
 
-import javax.ws.rs.Path;
+import jakarta.ws.rs.Path;
 
 import com.sun.ts.tests.jaxrs.ee.rs.headerparam.HeaderParamTest;
 

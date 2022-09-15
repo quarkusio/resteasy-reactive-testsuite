@@ -22,12 +22,12 @@ import java.io.Reader;
 import java.math.BigDecimal;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.activation.DataSource;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
+import jakarta.activation.DataSource;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.Response;
 import javax.xml.transform.Source;
 
 @Path("resource")
@@ -67,7 +67,7 @@ public class Resource {
         return isNull(file);
     }
 
-    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    // QUARKUS: disabled as we don't support jakarta.activation.DataSource
     //  @Path("datasource")
     //  @POST
     public String datasource(DataSource datasource) {
@@ -94,7 +94,7 @@ public class Resource {
         return isNull(map);
     }
 
-    // QUARKUS: Disable as we don't support javax.ws.rs.core.StreamingOutput
+    // QUARKUS: Disable as we don't support jakarta.ws.rs.core.StreamingOutput
     //  @Path("streamingoutput")
     //  @POST
     //  public StreamingOutput streamingoutput(String streamingoutput) {

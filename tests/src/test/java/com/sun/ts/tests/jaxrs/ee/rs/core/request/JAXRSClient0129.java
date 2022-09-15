@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.core.request;
 
 import java.util.function.Supplier;
 
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.apache.http.Header;
 import org.jboss.shrinkwrap.api.ShrinkWrap;

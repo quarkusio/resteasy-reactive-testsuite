@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.core.securitycontext;
 
 import java.util.Properties;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import org.apache.http.Header;
 

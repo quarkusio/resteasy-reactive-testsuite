@@ -23,14 +23,14 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.sse.Sse;
-import javax.ws.rs.sse.SseEventSink;
-import javax.xml.bind.JAXBElement;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.sse.Sse;
+import jakarta.ws.rs.sse.SseEventSink;
+import jakarta.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
 import com.sun.ts.tests.jaxrs.common.impl.SinglevaluedMap;
@@ -76,7 +76,7 @@ public class MBWCheckResource {
         }
     }
 
-    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    // QUARKUS: disabled as we don't support jakarta.activation.DataSource
     //  @GET
     //  @Path("datasource")
     //  @Produces(MediaType.SERVER_SENT_EVENTS)

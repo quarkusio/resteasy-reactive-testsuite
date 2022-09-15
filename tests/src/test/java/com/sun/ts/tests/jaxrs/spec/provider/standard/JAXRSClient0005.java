@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.zip.Deflater;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -312,7 +312,7 @@ public class JAXRSClient0005 extends JAXRSCommonClient {
      * MessageBodyReader and MessageBodyWriter implementations for the following
      * Java and media type combinations
      * 
-     * javax.xml.bind.JAXBElement and application-supplied JAXB classes XML media
+     * jakarta.xml.bind.JAXBElement and application-supplied JAXB classes XML media
      * types (text/xml, application/xml and application/*+xml)
      */
     @Disabled(QuarkusRest.Unsupported_Xml)

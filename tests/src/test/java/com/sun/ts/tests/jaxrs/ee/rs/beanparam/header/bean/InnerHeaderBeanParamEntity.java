@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.HeaderParam;
+import jakarta.ws.rs.DefaultValue;
+import jakarta.ws.rs.HeaderParam;
 
 import com.sun.ts.tests.jaxrs.ee.rs.Constants;
 import com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName;

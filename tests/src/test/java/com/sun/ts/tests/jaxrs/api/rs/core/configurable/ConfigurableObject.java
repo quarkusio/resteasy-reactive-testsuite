@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.configurable;
 
-import javax.ws.rs.core.Configurable;
+import jakarta.ws.rs.core.Configurable;
 
 /**
  * Wraps Client, WebTarget and Invocation objects that have configuration()

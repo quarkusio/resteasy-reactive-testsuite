@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.spec.filter.dynamicfeature;
 
 import java.io.IOException;
 
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerResponseContext;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.container.ContainerResponseContext;
 
 public class AddTenFilter extends AbstractAddFilter {
 

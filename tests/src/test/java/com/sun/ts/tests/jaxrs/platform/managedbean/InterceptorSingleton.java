@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.platform.managedbean;
 
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.InvocationContext;
+import jakarta.interceptor.AroundInvoke;
+import jakarta.interceptor.InvocationContext;
 
 public class InterceptorSingleton {
     @AroundInvoke

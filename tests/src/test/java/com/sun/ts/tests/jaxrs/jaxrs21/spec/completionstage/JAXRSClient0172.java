@@ -19,8 +19,8 @@ package com.sun.ts.tests.jaxrs.jaxrs21.spec.completionstage;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
 
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.core.Response;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

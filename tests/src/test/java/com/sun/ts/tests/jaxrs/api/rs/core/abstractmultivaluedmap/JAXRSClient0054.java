@@ -25,8 +25,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.ws.rs.core.AbstractMultivaluedMap;
-import javax.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.AbstractMultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedHashMap;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
