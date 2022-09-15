@@ -58,6 +58,9 @@ sed -i 's/<A extends XmlAdapter>/<A extends XmlAdapter<?, ?>>/g' tests/src/test/
 sed -i '118,121d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
 sed -i '84,88d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
 
+git add .
+git commit -m 'Transform sources to Jakarta'
+
 # Upgrade to EE 10
 # TODO: maybe we should move the other changes to the branch now that we have a branch
 # let's do it if main changes too much
