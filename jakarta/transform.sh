@@ -57,3 +57,9 @@ sed -i 's/<A extends XmlAdapter>/<A extends XmlAdapter<?, ?>>/g' tests/src/test/
 sed -i 's/<A extends XmlAdapter>/<A extends XmlAdapter<?, ?>>/g' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
 sed -i '118,121d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
 sed -i '84,88d' tests/src/test/java/com/sun/ts/tests/jaxrs/spec/provider/jaxbcontext/SomeUnmarshaller.java
+
+# Upgrade to EE 10
+# TODO: maybe we should move the other changes to the branch now that we have a branch
+# let's do it if main changes too much
+git fetch origin jakarta-10-jaxrs
+git rev-list c5785f3465fa87395574fde1274c1712b3aa728b..origin/jakarta-10-jaxrs | tac | xargs git cherry-pick -x
