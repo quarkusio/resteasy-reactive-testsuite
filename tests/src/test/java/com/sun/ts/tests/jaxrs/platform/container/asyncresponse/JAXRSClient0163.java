@@ -16,6 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.platform.container.asyncresponse;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.ParseException;
@@ -37,6 +38,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -56,6 +58,7 @@ import io.quarkus.test.QuarkusUnitTest;
  * These test are in the platform package since async is not available in 
  * Servlet 2.5 spec by default
  */
+@Disabled(QuarkusRest.AsyncResponse)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 @Timeout(value = 1, unit = TimeUnit.MINUTES)
 public class JAXRSClient0163 extends JaxrsCommonClient {
@@ -92,9 +95,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelVoidTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:980;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. When a request
      * processing is cancelled using this method, the JAX-RS implementation MUST
      * indicate to the client that the request processing has been cancelled by
@@ -111,9 +114,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelVoidOnResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:980;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. Invoking a
      * cancel(...) method on an asynchronous response instance that has already
      * been resumed has no effect and the method call is ignored while returning
@@ -128,9 +131,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelVoidOnCanceledTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:980;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. Invoking a
      * cancel(...) method on an asynchronous response instance that has already
      * been resumed has no effect and the method call is ignored while returning
@@ -145,9 +148,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeCanceledTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:980;
-     * 
+     *
      * @test_Strategy: returns false in case the request processing is not
      * suspended and could not be resumed.
      */
@@ -160,9 +163,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelIntTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:980;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. When a request
      * processing is cancelled using this method, the JAX-RS implementation MUST
      * indicate to the client that the request processing has been cancelled by
@@ -187,9 +190,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelIntOnResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:981;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. Invoking a
      * cancel(...) method on an asynchronous response instance that has already
      * been resumed has no effect and the method call is ignored while returning
@@ -204,9 +207,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelIntOnCanceledTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:981;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. Invoking a
      * cancel(...) method on an asynchronous response instance that has already
      * been resumed has no effect and the method call is ignored while returning
@@ -221,9 +224,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeCanceledIntTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:981;
-     * 
+     *
      * @test_Strategy: returns false in case the request processing is not
      * suspended and could not be resumed.
      */
@@ -236,9 +239,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelDateTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:982;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. When a request
      * processing is cancelled using this method, the JAX-RS implementation MUST
      * indicate to the client that the request processing has been cancelled by
@@ -270,9 +273,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelDateOnResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:982;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. Invoking a
      * cancel(...) method on an asynchronous response instance that has already
      * been resumed has no effect and the method call is ignored while returning
@@ -288,9 +291,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: cancelDateOnCanceledTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:982;
-     * 
+     *
      * @test_Strategy: Cancel the suspended request processing. Invoking a
      * cancel(...) method on an asynchronous response instance that has already
      * been resumed has no effect and the method call is ignored while returning
@@ -306,9 +309,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeCanceledDateTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:982;
-     * 
+     *
      * @test_Strategy: returns false in case the request processing is not
      * suspended and could not be resumed.
      */
@@ -321,9 +324,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isCanceledWhenCanceledTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:628;
-     * 
+     *
      * @test_Strategy: Check if the asynchronous response instance has been
      * cancelled. Method returns true if this asynchronous response has been
      * canceled before completion.
@@ -337,9 +340,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isCanceledWhenSuspendedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:628;
-     * 
+     *
      * @test_Strategy: Check if the asynchronous response instance has been
      * cancelled. Method returns true if this asynchronous response has been
      * canceled before completion.
@@ -354,9 +357,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isCanceledWhenResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:628;
-     * 
+     *
      * @test_Strategy: Check if the asynchronous response instance has been
      * cancelled. Method returns true if this asynchronous response has been
      * canceled before completion.
@@ -370,9 +373,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isDoneWhenResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:629;
-     * 
+     *
      * @test_Strategy: Check if the processing of a request this asynchronous
      * response instance belongs to has finished. Method returns true if the
      * processing of a request this asynchronous response is bound to is finished.
@@ -389,9 +392,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isDoneWhenSuspendedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:629;
-     * 
+     *
      * @test_Strategy: Check if the processing of a request this asynchronous
      * response instance belongs to has finished. Method returns true if the
      * processing of a request this asynchronous response is bound to is finished.
@@ -409,9 +412,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isDoneWhenCanceledTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:629;
-     * 
+     *
      * @test_Strategy: Check if the processing of a request this asynchronous
      * response instance belongs to has finished. Method returns true if the
      * processing of a request this asynchronous response is bound to is finished.
@@ -428,9 +431,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isDoneWhenTimedOutTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:629;
-     * 
+     *
      * @test_Strategy: Check if the processing of a request this asynchronous
      * response instance belongs to has finished. Method returns true if the
      * processing of a request this asynchronous response is bound to is finished.
@@ -447,9 +450,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isSuspendedWhenSuspendedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:630;
-     * 
+     *
      * @test_Strategy: Check if the asynchronous response instance is in a
      * suspended state. Method returns true if this asynchronous response is still
      * suspended and has not finished processing yet (either by resuming or
@@ -465,9 +468,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isSuspendedWhenCanceledTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:630;
-     * 
+     *
      * @test_Strategy: Check if the asynchronous response instance is in a
      * suspended state. Method returns true if this asynchronous response is still
      * suspended and has not finished processing yet (either by resuming or
@@ -482,9 +485,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: isSuspendedWhenResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:630;
-     * 
+     *
      * @test_Strategy: Check if the asynchronous response instance is in a
      * suspended state. Method returns true if this asynchronous response is still
      * suspended and has not finished processing yet (either by resuming or
@@ -499,9 +502,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: suspendResumeTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:983;
-     * 
+     *
      * @test_Strategy: Resume the suspended request processing using the provided
      * response data.
      */
@@ -517,9 +520,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeAnyJavaObjectInputStreamTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:983;
-     * 
+     *
      * @test_Strategy: Resume the suspended request processing using the provided
      * response data. The provided response data can be of any Java type that can
      * be returned from a JAX-RS resource method.
@@ -537,9 +540,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:983;
-     * 
+     *
      * @test_Strategy: returns false in case the request processing is not
      * suspended and could not be resumed.
      */
@@ -552,9 +555,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeWithCheckedExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:641;
-     * 
+     *
      * @test_Strategy: Resume the suspended request processing using the provided
      * throwable. For the provided throwable same rules apply as for an exception
      * thrown by a JAX-RS resource method.
@@ -570,9 +573,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeWithRuntimeExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:984;
-     * 
+     *
      * @test_Strategy: Resume the suspended request processing using the provided
      * throwable. For the provided throwable same rules apply as for an exception
      * thrown by a JAX-RS resource method.
@@ -588,9 +591,9 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: resumeWithExceptionReturnsFalseWhenResumedTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:984;
-     * 
+     *
      * @test_Strategy: returns false in case the request processing is not
      * suspended and could not be resumed.
      */
@@ -603,17 +606,17 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: setTimeoutTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1034; JAXRS:SPEC:103; JAXRS:SPEC:104;
-     * 
+     *
      * @test_Strategy: The new suspend timeout values override any timeout value
      * previously specified.
-     * 
+     *
      * JAX-RS implementations are REQUIRED to generate a
      * ServiceUnavailableException, a subclass of WebApplicationException with its
      * status set to 503, if the timeout value is reached and no timeout handler
      * is registered.
-     * 
+     *
      * The exception MUST be processed as described in section 3.3.4.
      */
     @Test
@@ -633,16 +636,16 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: updateTimeoutTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1034; JAXRS:SPEC:103; JAXRS:SPEC:104;
-     * 
+     *
      * @test_Strategy: Set/update the suspend timeout.
-     * 
+     *
      * JAX-RS implementations are REQUIRED to generate a
      * ServiceUnavailableException, a subclass of WebApplicationException with its
      * status set to 503, if the timeout value is reached and no timeout handler
      * is registered.
-     * 
+     *
      * The exception MUST be processed as described in section 3.3.4.
      */
     @Test
@@ -665,14 +668,14 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: handleTimeOutWaitsForeverTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:725; JAXRS:JAVADOC:645; JAXRS:SPEC:105;
-     * 
+     *
      * @test_Strategy: Invoked when the suspended asynchronous response is about
      * to time out.
-     * 
+     *
      * Set/replace a time-out handler for the suspended asynchronous response.
-     * 
+     *
      * If a registered timeout handler resets the timeout value or resumes the
      * connection and returns a response, JAX-RS implementations MUST NOT generate
      * an exception.
@@ -691,12 +694,12 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: handleTimeoutCancelsTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:725; JAXRS:JAVADOC:645;
-     * 
+     *
      * @test_Strategy: Invoked when the suspended asynchronous response is about
      * to time out.
-     * 
+     *
      * Set/replace a time-out handler for the suspended asynchronous response.
      */
     @Test
@@ -713,14 +716,14 @@ public class JAXRSClient0163 extends JaxrsCommonClient {
 
     /*
      * @testName: handleTimeoutResumesTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:725; JAXRS:JAVADOC:645; JAXRS:SPEC:105;
-     * 
+     *
      * @test_Strategy: Invoked when the suspended asynchronous response is about
      * to time out.
-     * 
+     *
      * Set/replace a time-out handler for the suspended asynchronous response.
-     * 
+     *
      * If a registered timeout handler resets the timeout value or resumes the
      * connection and returns a response, JAX-RS implementations MUST NOT generate
      * an exception.

@@ -51,6 +51,7 @@ import java.util.function.Supplier;
  * These test are in the platform package since async is not available in 
  * Servlet 2.5 spec by default
  */
+@Disabled(QuarkusRest.AsyncResponse)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 @Timeout(value = 1, unit = TimeUnit.MINUTES)
 public class JAXRSClient0164 extends JaxrsCommonClient {
