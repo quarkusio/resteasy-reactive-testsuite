@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.common.impl;
 
 import java.security.Principal;
 
-import javax.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.SecurityContext;
 
 /**
  * This is simple implementation of a SecurityContext interface There are two

@@ -25,20 +25,20 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
 
-import javax.activation.DataSource;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
-import javax.xml.bind.JAXBElement;
+import jakarta.activation.DataSource;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.GenericEntity;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
+import jakarta.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import javax.xml.transform.Source;
 
@@ -132,7 +132,7 @@ public class Resource {
         return buildResponse(text);
     }
 
-    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    // QUARKUS: disabled as we don't support jakarta.activation.DataSource
     //  @GET
     //  @Path("getdatasource")
     public Response getDataSource() {
@@ -141,7 +141,7 @@ public class Resource {
         return buildResponse((DataSource) source);
     }
 
-    // QUARKUS: disabled as we don't support javax.activation.DataSource
+    // QUARKUS: disabled as we don't support jakarta.activation.DataSource
     //  @POST
     //  @Path("postdatasource")
     public Response postDataSource(DataSource source) throws IOException {

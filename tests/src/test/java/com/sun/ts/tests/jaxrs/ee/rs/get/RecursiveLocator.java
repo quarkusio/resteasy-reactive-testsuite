@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.get;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 public class RecursiveLocator {
     private int level = 0;

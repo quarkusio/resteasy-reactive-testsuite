@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.platform.beanvalidation.constraintviolationexcept
 
 import java.util.function.Supplier;
 
-import javax.validation.ConstraintViolationException;
-import javax.ws.rs.core.Response.Status;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

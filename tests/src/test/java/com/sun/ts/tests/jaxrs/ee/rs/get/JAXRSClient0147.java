@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.get;
 
 import java.util.function.Supplier;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

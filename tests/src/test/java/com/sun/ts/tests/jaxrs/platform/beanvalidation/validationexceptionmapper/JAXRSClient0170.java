@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.platform.beanvalidation.validationexceptionmapper
 
 import java.util.function.Supplier;
 
-import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.ValidationException;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

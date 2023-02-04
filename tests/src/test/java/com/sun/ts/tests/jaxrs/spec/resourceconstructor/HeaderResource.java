@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.spec.resourceconstructor;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.HeaderParam;
+import jakarta.ws.rs.Path;
 
 @Path("resource/header")
 public class HeaderResource {

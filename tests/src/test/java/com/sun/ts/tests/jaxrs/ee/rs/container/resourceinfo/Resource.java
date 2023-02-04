@@ -18,10 +18,10 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.resourceinfo;
 
 import java.lang.reflect.Method;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.container.ResourceInfo;
-import javax.ws.rs.core.Context;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.container.ResourceInfo;
+import jakarta.ws.rs.core.Context;
 
 @Path("resource")
 public class Resource {

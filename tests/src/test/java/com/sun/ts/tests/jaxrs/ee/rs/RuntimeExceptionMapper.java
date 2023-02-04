@@ -19,10 +19,10 @@ package com.sun.ts.tests.jaxrs.ee.rs;
 import java.util.IllegalFormatException;
 import java.util.MissingFormatArgumentException;
 
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
+import jakarta.ws.rs.ext.ExceptionMapper;
+import jakarta.ws.rs.ext.Provider;
 
 @Provider
 public class RuntimeExceptionMapper

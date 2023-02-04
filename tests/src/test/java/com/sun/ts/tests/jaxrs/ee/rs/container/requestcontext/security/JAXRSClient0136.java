@@ -19,7 +19,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security;
 import java.util.Properties;
 import java.util.function.Supplier;
 
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

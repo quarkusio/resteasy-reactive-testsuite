@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.contextresolver;
 
-import javax.ws.rs.ext.ContextResolver;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.ext.ContextResolver;
+import jakarta.ws.rs.ext.Provider;
 
 /**
  * This class is used by
