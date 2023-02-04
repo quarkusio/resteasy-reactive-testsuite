@@ -26,14 +26,14 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.PropertyException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.UnmarshallerHandler;
-import javax.xml.bind.ValidationEventHandler;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-import javax.xml.bind.attachment.AttachmentUnmarshaller;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.PropertyException;
+import jakarta.xml.bind.Unmarshaller;
+import jakarta.xml.bind.UnmarshallerHandler;
+import jakarta.xml.bind.ValidationEventHandler;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.attachment.AttachmentUnmarshaller;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamReader;
@@ -47,7 +47,7 @@ import org.xml.sax.InputSource;
 public class SomeUnmarshaller implements Unmarshaller {
 
     @Override
-    public <A extends XmlAdapter> A getAdapter(Class<A> type) {
+    public <A extends XmlAdapter<?, ?>> A getAdapter(Class<A> type) {
         return null;
     }
 
@@ -82,16 +82,11 @@ public class SomeUnmarshaller implements Unmarshaller {
     }
 
     @Override
-    public boolean isValidating() throws JAXBException {
-        return false;
-    }
-
-    @Override
     public void setAdapter(XmlAdapter adapter) {
     }
 
     @Override
-    public <A extends XmlAdapter> void setAdapter(Class<A> type, A adapter) {
+    public <A extends XmlAdapter<?, ?>> void setAdapter(Class<A> type, A adapter) {
     }
 
     @Override
@@ -113,10 +108,6 @@ public class SomeUnmarshaller implements Unmarshaller {
 
     @Override
     public void setSchema(Schema schema) {
-    }
-
-    @Override
-    public void setValidating(boolean validating) throws JAXBException {
     }
 
     @Override

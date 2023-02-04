@@ -16,11 +16,11 @@
 
 package com.sun.ts.tests.jaxrs.platform.beanvalidation.annotation;
 
-import javax.validation.Valid;
-import javax.validation.executable.ExecutableType;
-import javax.validation.executable.ValidateOnExecution;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.validation.Valid;
+import jakarta.validation.executable.ExecutableType;
+import jakarta.validation.executable.ValidateOnExecution;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("resource/executable")
 @ValidateOnExecution(type = ExecutableType.NON_GETTER_METHODS)

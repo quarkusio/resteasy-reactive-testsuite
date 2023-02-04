@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response.Status;
 
 public class ParamEntityThrowingWebApplicationException
         extends ParamEntityWithFromString {

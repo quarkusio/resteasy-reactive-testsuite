@@ -18,8 +18,8 @@ package com.sun.ts.tests.jaxrs.ee.rs.ext.paramconverter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.ws.rs.ext.ParamConverter;
-import javax.ws.rs.ext.ParamConverter.Lazy;
+import jakarta.ws.rs.ext.ParamConverter;
+import jakarta.ws.rs.ext.ParamConverter.Lazy;
 
 @Lazy
 public class AtomicIntegerLazyParamConverter

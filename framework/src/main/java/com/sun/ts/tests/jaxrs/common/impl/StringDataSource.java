@@ -23,8 +23,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
-import javax.activation.DataSource;
-import javax.ws.rs.core.MediaType;
+import jakarta.activation.DataSource;
+import jakarta.ws.rs.core.MediaType;
 
 public class StringDataSource implements DataSource {
 

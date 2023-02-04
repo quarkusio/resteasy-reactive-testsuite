@@ -18,10 +18,10 @@ package com.sun.ts.tests.jaxrs.jaxrs21.platform.providers.jsonp;
 
 import java.util.function.Supplier;
 
-import javax.json.Json;
-import javax.json.JsonNumber;
-import javax.json.JsonString;
-import javax.ws.rs.core.MediaType;
+import jakarta.json.Json;
+import jakarta.json.JsonNumber;
+import jakarta.json.JsonString;
+import jakarta.ws.rs.core.MediaType;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;

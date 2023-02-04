@@ -19,10 +19,10 @@ package com.sun.ts.tests.jaxrs.ee.resource.java2entity;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.GenericEntity;
+import jakarta.ws.rs.core.Response;
 
 @Path("resource")
 public class Resource {

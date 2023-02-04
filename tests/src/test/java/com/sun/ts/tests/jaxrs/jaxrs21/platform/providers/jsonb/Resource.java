@@ -32,13 +32,13 @@ import java.util.OptionalInt;
 import java.util.OptionalLong;
 import java.util.TimeZone;
 
-import javax.json.JsonNumber;
-import javax.json.JsonString;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.json.JsonNumber;
+import jakarta.json.JsonString;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 @Path("resource")
 public class Resource {

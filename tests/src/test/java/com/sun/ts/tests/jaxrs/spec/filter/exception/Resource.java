@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.exception;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 @Path("resource")
 public class Resource {

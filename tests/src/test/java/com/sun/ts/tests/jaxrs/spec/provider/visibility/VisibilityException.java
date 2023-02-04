@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.visibility;
 
-import javax.ws.rs.WebApplicationException;
+import jakarta.ws.rs.WebApplicationException;
 
 public class VisibilityException extends WebApplicationException {
 

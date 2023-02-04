@@ -16,8 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.spec.resource.requestmatching;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("resource/locator")
 public class LocatorResource {

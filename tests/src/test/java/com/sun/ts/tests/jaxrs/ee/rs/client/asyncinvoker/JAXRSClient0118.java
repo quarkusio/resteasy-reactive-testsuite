@@ -20,17 +20,17 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.client.AsyncInvoker;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.InvocationCallback;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.client.AsyncInvoker;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.InvocationCallback;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -134,7 +134,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -186,7 +186,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -277,7 +277,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -375,7 +375,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -470,7 +470,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -521,7 +521,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -612,7 +612,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -708,7 +708,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -804,7 +804,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -840,7 +840,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -903,7 +903,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -966,7 +966,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1076,7 +1076,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1193,7 +1193,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1284,7 +1284,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1350,7 +1350,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1468,7 +1468,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1591,7 +1591,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1702,7 +1702,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1754,7 +1754,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1845,7 +1845,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -1944,7 +1944,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2042,7 +2042,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2096,7 +2096,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2192,7 +2192,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2274,7 +2274,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2373,7 +2373,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2427,7 +2427,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2523,7 +2523,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2624,7 +2624,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2721,7 +2721,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2772,7 +2772,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2863,7 +2863,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -2960,7 +2960,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
      * 
      * @test_Strategy: Note that calling the Future.get() method on the returned
      * Future instance may throw an ExecutionException that wraps an
-     * javax.ws.rs.ProcessingException thrown in case of an invocation processing
+     * jakarta.ws.rs.ProcessingException thrown in case of an invocation processing
      * failure.
      */
     @Test
@@ -3108,7 +3108,7 @@ public class JAXRSClient0118 extends JaxrsCommonClient {
             assertProcessingExceptionIsCauseAndLog(ExecutionException e)
                     throws Fault {
         logMsg("ExecutionException has been thrown as expected", e);
-        assertTrue(hasWrapped(e, javax.ws.rs.ProcessingException.class),
+        assertTrue(hasWrapped(e, jakarta.ws.rs.ProcessingException.class),
                 "ExecutionException wrapped", e.getCause(),
                 "rather then ProcessingException");
         logMsg("ExecutionException.getCause is ProcessingException as expected");

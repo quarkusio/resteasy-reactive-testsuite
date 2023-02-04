@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.container.requestcontext.security;
 
-import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 @RolesAllowed("DIRECTOR")
 @Path("resource")

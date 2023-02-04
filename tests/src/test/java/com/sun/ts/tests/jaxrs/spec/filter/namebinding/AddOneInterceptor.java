@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.spec.filter.namebinding;
 
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.ext.Provider;
 
 @Provider
 @SingleNameBinding

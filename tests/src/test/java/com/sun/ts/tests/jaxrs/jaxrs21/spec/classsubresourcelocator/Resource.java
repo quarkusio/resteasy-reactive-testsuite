@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.spec.classsubresourcelocator;
 
-import javax.ws.rs.Path;
+import jakarta.ws.rs.Path;
 
 @Path("resource")
 public class Resource {

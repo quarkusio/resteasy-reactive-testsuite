@@ -16,7 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.api.rs.core.cookie;
 
-import javax.ws.rs.core.Cookie;
+import jakarta.ws.rs.core.Cookie;
 
 import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 
@@ -164,7 +164,7 @@ public class JAXRSClient0067 extends JAXRSCommonClient {
         String domain = "";
         int version = 0;
 
-        Cookie ck6 = javax.ws.rs.core.Cookie.valueOf(cookie_toParse);
+        Cookie ck6 = jakarta.ws.rs.core.Cookie.valueOf(cookie_toParse);
         verifyCookie(ck6, name, value, path, domain, version);
     }
 
@@ -186,7 +186,7 @@ public class JAXRSClient0067 extends JAXRSCommonClient {
         String domain = "";
         int version = 1;
 
-        Cookie ck7 = javax.ws.rs.core.Cookie.valueOf(cookie_toParse);
+        Cookie ck7 = jakarta.ws.rs.core.Cookie.valueOf(cookie_toParse);
 
         verifyCookie(ck7, name, value, path, domain, version);
     }
@@ -202,7 +202,7 @@ public class JAXRSClient0067 extends JAXRSCommonClient {
     @org.junit.jupiter.api.Test
     public void parseTest3() throws Fault {
         try {
-            javax.ws.rs.core.Cookie.valueOf(null);
+            jakarta.ws.rs.core.Cookie.valueOf(null);
             throw new Fault(
                     "Expectecd IllegalArgumentException not thrown.  Test Failed");
         } catch (java.lang.IllegalArgumentException ilex) {

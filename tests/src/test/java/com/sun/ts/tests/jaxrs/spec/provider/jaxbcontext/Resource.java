@@ -16,9 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.spec.provider.jaxbcontext;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.xml.bind.JAXBElement;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.xml.bind.JAXBElement;
 
 @Path("resource")
 public class Resource {

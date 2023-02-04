@@ -18,7 +18,7 @@ package com.sun.ts.tests.jaxrs.jaxrs21.ee.patch.server;
 
 import java.util.function.Supplier;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.apache.http.client.methods.HttpPatch;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
