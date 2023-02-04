@@ -37,12 +37,12 @@ convert_service_file () {
   mv "$1" "$newName"
 }
 
-sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' pom.xml
-sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' pom.xml
-sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' framework/pom.xml
-sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' framework/pom.xml
-sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' tests/pom.xml
-sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' tests/pom.xml
+#sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' pom.xml
+#sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' pom.xml
+#sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' framework/pom.xml
+#sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' framework/pom.xml
+#sed -i 's@<quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>@<quarkus.platform.version>999-jakarta-SNAPSHOT</quarkus.platform.version>@g' tests/pom.xml
+#sed -i 's@<quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>@<quarkus-plugin.version>999-jakarta-SNAPSHOT</quarkus-plugin.version>@g' tests/pom.xml
 sed -s 's/org\.jboss\.spec\.javax\.ws\.rs/jakarta.ws.rs/g' -i framework/pom.xml
 sed -s 's/jboss-jaxrs-api_2\.1_spec/jakarta.ws.rs-api/g' -i framework/pom.xml
 sed -s 's/org\.jboss\.spec\.javax\.xml\.bind/jakarta.xml.bind/g' -i framework/pom.xml
@@ -64,5 +64,5 @@ git commit -m 'Transform sources to Jakarta'
 # Upgrade to EE 10
 # TODO: maybe we should move the other changes to the branch now that we have a branch
 # let's do it if main changes too much
-git fetch origin jakarta-10-jaxrs
-git rev-list c5785f3465fa87395574fde1274c1712b3aa728b..origin/jakarta-10-jaxrs | tac | xargs git cherry-pick -x
+git fetch upstream jakarta-10-jaxrs
+git rev-list c5785f3465fa87395574fde1274c1712b3aa728b..upstream/jakarta-10-jaxrs | tac | xargs git cherry-pick -x
