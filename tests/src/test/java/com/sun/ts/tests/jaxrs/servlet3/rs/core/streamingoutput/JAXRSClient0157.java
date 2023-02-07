@@ -37,7 +37,6 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     ts_home;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-@Disabled(QuarkusRest.Unsupported_Streaming_Output)
 public class JAXRSClient0157 extends JAXRSCommonClient {
 
     @RegisterExtension

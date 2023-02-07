@@ -305,7 +305,6 @@ public class JAXRSClient0176 extends SSEJAXRSClient0177 {
      * 
      * @test_Strategy:
      */
-    @Disabled(QuarkusRest.Unsupported_Streaming_Output)
     @Test
     public void streamingOutputTest() throws Fault {
         querySSEEndpointAndAssert("mbw/streamingoutput");

@@ -22,7 +22,7 @@ public class QuarkusRest {
     // 17
     public static final String Unsupported_Xml = "XML is not supported yet";
     // 5
-    public static final String Unsupported_Streaming_Output = "StreamingOutput is not supported";
+    public static final String Unsupported_Streaming_Output = "StreamingOutput is not supported on the client";
     // 2
     public static final String Unsupported_Application_Singletons = "Won't be supported in Quarkus-REST";
     // 9
