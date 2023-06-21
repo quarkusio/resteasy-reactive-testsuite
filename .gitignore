@@ -18,3 +18,6 @@ target/
 /user_guides/jakartaee/src/main/jbake/content/attributes.conf
 /nbproject
 *.iml
+.project
+.settings/
+.classpath
