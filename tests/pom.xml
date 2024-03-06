@@ -45,16 +45,16 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive-jsonb</artifactId>
+      <artifactId>quarkus-rest-jsonb</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive-deployment</artifactId>
+      <artifactId>quarkus-rest-deployment</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jaxrs-client-reactive</artifactId>
+      <artifactId>quarkus-rest-client-jaxrs</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
