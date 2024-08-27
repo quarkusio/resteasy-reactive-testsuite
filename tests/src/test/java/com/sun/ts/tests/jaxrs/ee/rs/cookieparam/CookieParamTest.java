@@ -86,7 +86,7 @@ public class CookieParamTest extends ParamTest {
         Response.ResponseBuilder respb = Response.status(200);
 
         if (todo == null) {
-            sb.append("todo=null");
+            sb.append("other stuff");
         } else if (todo.equalsIgnoreCase("setCookie")) {
             String cookie_name = "name1";
             String cookie_value = "value1";
