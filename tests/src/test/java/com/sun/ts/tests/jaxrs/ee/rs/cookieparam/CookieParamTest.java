@@ -86,7 +86,15 @@ public class CookieParamTest extends ParamTest {
         Response.ResponseBuilder respb = Response.status(200);
 
         if (todo == null) {
-            sb.append("other stuff");
+            setReturnValues(paramEntityWithConstructor, paramEntityWithFromString,
+                    paramEntityWithValueOf, setParamEntityWithFromString,
+                    sortedSetParamEntityWithFromString, listParamEntityWithFromString,
+                    "");
+            setReturnValues(fieldParamEntityWithConstructor,
+                    fieldParamEntityWithFromString, fieldParamEntityWithValueOf,
+                    fieldSetParamEntityWithFromString,
+                    fieldSortedSetParamEntityWithFromString,
+                    fieldListParamEntityWithFromString, FIELD);
         } else if (todo.equalsIgnoreCase("setCookie")) {
             String cookie_name = "name1";
             String cookie_value = "value1";
@@ -98,6 +106,7 @@ public class CookieParamTest extends ParamTest {
             sb.append("name1" + "=" + value);
             sb.append("verifyCookie=done");
         } else if (todo.equals("")) {
+            // TODO this block can be removed after https://github.com/quarkusio/quarkus/pull/42468 is merged, kept only for backwards compat
             setReturnValues(paramEntityWithConstructor, paramEntityWithFromString,
                     paramEntityWithValueOf, setParamEntityWithFromString,
                     sortedSetParamEntityWithFromString, listParamEntityWithFromString,
