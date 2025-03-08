@@ -54,7 +54,7 @@ public class JAXRSClient0089 extends ReaderClient0091<ContextOperation> {
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
             .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.resteasy-reactive.fail-on-duplicate", "false")
+            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
             .overrideConfigKey("quarkus.rest.default-produces", "false")
             .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_ext_interceptor_containerreader_interceptorcontext_web")
             .setArchiveProducer(new Supplier<JavaArchive>() {
