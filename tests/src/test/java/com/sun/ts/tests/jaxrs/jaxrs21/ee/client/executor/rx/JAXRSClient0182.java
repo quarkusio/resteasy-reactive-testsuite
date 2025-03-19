@@ -49,22 +49,23 @@ public class JAXRSClient0182
         extends com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.JAXRSClient0180
         implements ExecutorServiceChecker {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_jaxrs21_ee_client_executor_rx_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.rx.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class,
-                                    com.sun.ts.tests.jaxrs.common.impl.TRACE.class);
-                }
-            });
+    public static QuarkusUnitTest createQuarkusUnitTest() {
+        return new QuarkusUnitTest().setFlatClassPath(true)
+                .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+                .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
+                .overrideConfigKey("quarkus.rest.default-produces", "false")
+                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_jaxrs21_ee_client_executor_rx_web")
+                .setArchiveProducer(new Supplier<JavaArchive>() {
+                    @Override
+                    public JavaArchive get() {
+                        return ShrinkWrap.create(JavaArchive.class)
+                                .addClasses(
+                                        com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.rx.TSAppConfig.class,
+                                        com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class,
+                                        com.sun.ts.tests.jaxrs.common.impl.TRACE.class);
+                    }
+                });
+    }
 
     private static final long serialVersionUID = 21L;
 

@@ -16,8 +16,11 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.providers;
 
+import java.io.IOException;
 import java.util.function.Supplier;
 
+import com.sun.ts.tests.common.webclient.http.HttpResponse;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response.Status;
 
@@ -38,7 +41,7 @@ import io.quarkus.test.QuarkusUnitTest;
  */
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSProvidersClient0098
-        extends com.sun.ts.tests.jaxrs.ee.rs.core.application.JAXRSClient0128 {
+        extends JAXRSCommonClient {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
@@ -70,6 +73,10 @@ public class JAXRSProvidersClient0098
 
     private static final long serialVersionUID = -935293219512493643L;
 
+    protected int expectedSingletons = 1;
+
+    protected int expectedClasses = 1;
+
     public JAXRSProvidersClient0098() {
         TSAppConfig cfg = new TSAppConfig();
         setContextRoot("/jaxrs_ee_ext_providers_web/ProvidersServlet");
@@ -91,27 +98,36 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: getSingletonsTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:23
-     * 
-     * @test_Strategy: Check that the implementation returns set of
-     * TSAppConfig.CLASSLIST
+     *
+     * @test_Strategy: Check that vi does not modify the getSingletons()
      */
     @Test
     public void getSingletonsTest() throws Fault {
-        super.getSingletonsTest();
+        setProperty(REQUEST, buildRequest(GET, "GetSingletons"));
+        setProperty(STATUS_CODE, getStatusCode(Status.OK));
+        invoke();
+        assertFault(getReturnedNumber() == expectedSingletons,
+                "Application.getSingletons() return incorrect value:",
+                getReturnedNumber());
     }
 
     /*
      * @testName: getClassesTest
-     * 
-     * @assertion_ids: JAXRS:JAVADOC:22
-     * 
+     *
+     * @assertion_ids: JAXRS:JAVADOC:22; JAXRS:SPEC:40;
+     *
      * @test_Strategy: Check the implementation injects TSAppConfig
      */
     @Test
     public void getClassesTest() throws Fault {
-        super.getClassesTest();
+        setProperty(REQUEST, buildRequest(GET, "GetClasses"));
+        setProperty(STATUS_CODE, getStatusCode(Status.OK));
+        invoke();
+        assertFault(getReturnedNumber() == expectedClasses,
+                "Application.getClasses() return incorrect value:",
+                getReturnedNumber());
     }
 
     /*
@@ -470,4 +486,16 @@ public class JAXRSProvidersClient0098
         invoke();
     }
 
+    // ///////////////////////////////////////////////////////////////////////
+
+    protected int getReturnedNumber() throws Fault {
+        HttpResponse response = _testCase.getResponse();
+        String body;
+        try {
+            body = response.getResponseBodyAsString();
+        } catch (IOException e) {
+            throw new Fault(e);
+        }
+        return Integer.parseInt(body);
+    }
 }

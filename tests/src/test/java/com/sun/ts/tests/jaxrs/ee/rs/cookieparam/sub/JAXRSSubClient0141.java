@@ -34,34 +34,35 @@ import io.quarkus.test.QuarkusUnitTest;
 public class JAXRSSubClient0141
         extends com.sun.ts.tests.jaxrs.ee.rs.cookieparam.JAXRSClient0143 {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_cookieparam_sub_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.ee.rs.cookieparam.sub.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.cookieparam.sub.CookieSubResource.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
-                }
-            });
-
     private static final long serialVersionUID = 1L;
+
+    public static QuarkusUnitTest createQuarkusUnitTest() {
+        return new QuarkusUnitTest().setFlatClassPath(true)
+                .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+                .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
+                .overrideConfigKey("quarkus.rest.default-produces", "false")
+                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_cookieparam_sub_web")
+                .setArchiveProducer(new Supplier<JavaArchive>() {
+                    @Override
+                    public JavaArchive get() {
+                        return ShrinkWrap.create(JavaArchive.class)
+                                .addClasses(
+                                        com.sun.ts.tests.jaxrs.ee.rs.cookieparam.sub.TSAppConfig.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.cookieparam.sub.CookieSubResource.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
+                    }
+                });
+    }
 
     public JAXRSSubClient0141() {
         setContextRoot("/jaxrs_ee_rs_cookieparam_sub_web/Resource/subresource");

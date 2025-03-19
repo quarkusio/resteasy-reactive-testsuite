@@ -20,6 +20,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
 
+import io.quarkus.test.DelegatingQuarkusUnitTestExtension;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.client.AsyncInvoker;
 import jakarta.ws.rs.client.Client;
@@ -48,26 +49,28 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(DelegatingQuarkusUnitTestExtension.class)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0118 extends JaxrsCommonClient {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_client_asyncinvoker_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.Resource.class,
-                                    com.sun.ts.tests.jaxrs.common.provider.StringBean.class,
-                                    com.sun.ts.tests.jaxrs.common.impl.TRACE.class);
-                }
-            });
+    public static QuarkusUnitTest createQuarkusUnitTest() {
+        return new QuarkusUnitTest().setFlatClassPath(true)
+                .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+                .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
+                .overrideConfigKey("quarkus.rest.default-produces", "false")
+                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_client_asyncinvoker_web")
+                .setArchiveProducer(new Supplier<JavaArchive>() {
+                    @Override
+                    public JavaArchive get() {
+                        return ShrinkWrap.create(JavaArchive.class)
+                                .addClasses(
+                                        com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.TSAppConfig.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.Resource.class,
+                                        com.sun.ts.tests.jaxrs.common.provider.StringBean.class,
+                                        com.sun.ts.tests.jaxrs.common.impl.TRACE.class);
+                    }
+                });
+    }
 
     private static final long serialVersionUID = -696868584437674095L;
 

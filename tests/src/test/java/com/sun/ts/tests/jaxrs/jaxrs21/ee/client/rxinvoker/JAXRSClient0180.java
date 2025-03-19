@@ -20,6 +20,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
 
+import io.quarkus.test.DelegatingQuarkusUnitTestExtension;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -51,25 +52,27 @@ import io.quarkus.test.QuarkusUnitTest;
 /**
  * @since 2.1
  */
+@org.junit.jupiter.api.extension.ExtendWith(DelegatingQuarkusUnitTestExtension.class)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0180 extends JAXRSCommonClient {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_jaxrs21_ee_client_rxinvoker_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class,
-                                    com.sun.ts.tests.jaxrs.common.impl.TRACE.class);
-                }
-            });
+    public static QuarkusUnitTest createQuarkusUnitTest() {
+        return new QuarkusUnitTest().setFlatClassPath(true)
+                .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+                .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
+                .overrideConfigKey("quarkus.rest.default-produces", "false")
+                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_jaxrs21_ee_client_rxinvoker_web")
+                .setArchiveProducer(new Supplier<JavaArchive>() {
+                    @Override
+                    public JavaArchive get() {
+                        return ShrinkWrap.create(JavaArchive.class)
+                                .addClasses(
+                                        com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.TSAppConfig.class,
+                                        com.sun.ts.tests.jaxrs.jaxrs21.ee.client.rxinvoker.Resource.class,
+                                        com.sun.ts.tests.jaxrs.common.impl.TRACE.class);
+                    }
+                });
+    }
 
     private static final long serialVersionUID = 21L;
 
@@ -104,9 +107,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     // --------------------------------------------------------------------
     /*
      * @testName: deleteTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1134; JAXRS:JAVADOC:1162;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request.
      */
     @org.junit.jupiter.api.Test
@@ -119,9 +122,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteThrowsExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1134; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1164;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -136,11 +139,11 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithStringClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1135; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1164;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
-     * 
+     *
      */
     @org.junit.jupiter.api.Test
     public Future<String> deleteWithStringClassTest() throws Fault {
@@ -152,11 +155,11 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithResponseClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1135; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1165;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
-     * 
+     *
      */
     @org.junit.jupiter.api.Test
     public Future<Response> deleteWithResponseClassTest() throws Fault {
@@ -168,9 +171,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1135; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1165;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -185,9 +188,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1135; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1165;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -201,9 +204,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1135; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1165;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -218,9 +221,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1136; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1166;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -234,9 +237,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1136; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1166;
-     * 
+     *
      * @test_Strategy: Invoke HTTP DELETE method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -250,9 +253,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1136; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1166;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -269,9 +272,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: deleteWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1136; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1166;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -288,9 +291,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     /*
      * @testName:
      * deleteWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1136; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1166;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -310,9 +313,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1137; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1167;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -325,9 +328,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1137; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1167;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -342,9 +345,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithStringClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1138; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1168;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -357,9 +360,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithResponseClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1138; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1168;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -372,9 +375,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1138; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1168;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -389,9 +392,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1138; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1168;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -405,9 +408,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1138; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1168;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -422,9 +425,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithGenericTypeStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1139; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1169;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -438,9 +441,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithGenericTypeResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1139; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1169;
-     * 
+     *
      * @test_Strategy: Invoke HTTP GET method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -454,9 +457,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1139; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1169;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -472,9 +475,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1139; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1169;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -490,9 +493,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: getWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1139; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1169;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -512,9 +515,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: headTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1140; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1170;
-     * 
+     *
      * @test_Strategy: Invoke HTTP HEAD method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -527,9 +530,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: headThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1140; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1170;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -548,9 +551,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1141; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1171;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -567,9 +570,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1141; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1171;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -588,9 +591,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithStringClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1142; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1172;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -607,9 +610,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithResponseClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1142; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1172;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -626,9 +629,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1142; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1172;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -647,9 +650,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1142; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1172;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -667,9 +670,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1142; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1172;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -688,9 +691,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1143; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1173;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -708,9 +711,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1143; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1173;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -728,9 +731,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1143; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1173;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -751,9 +754,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1143; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1173;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -774,9 +777,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     /*
      * @testName:
      * methodWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1143; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1173;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -796,9 +799,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1144; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1174;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -816,9 +819,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithEntityThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1144; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1174;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -838,9 +841,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithStringClassWithEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1145; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1175;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -858,9 +861,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithResponseClassWithEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1145; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1175;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -878,9 +881,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithClassWithEntityThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1145; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1175;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -901,9 +904,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithClassWithEntityThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1145; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1175;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -924,9 +927,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     /*
      * @testName:
      * methodWithClassWithEntityThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1145; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1175;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -946,9 +949,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeStringWithEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1146; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1176;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -968,9 +971,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeResponseWithEntityTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1146; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1176;
-     * 
+     *
      * @test_Strategy: Invoke an arbitrary method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -990,9 +993,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeWithEntityThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1146; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1176;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1014,9 +1017,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: methodWithGenericTypeWithEntityThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1146; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1176;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1038,9 +1041,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     /*
      * @testName:
      * methodWithGenericTypeWithEntityThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1146; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1176;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1065,9 +1068,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1147; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1177;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1080,9 +1083,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1147; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1177;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1097,9 +1100,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithStringClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1148; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1178;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1112,9 +1115,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithResponseClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1148; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1178;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1127,9 +1130,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1148; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1178;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1144,9 +1147,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1148; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1178;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1160,9 +1163,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1148; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1178;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1177,9 +1180,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1149; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1179;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1193,9 +1196,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1149; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1179;
-     * 
+     *
      * @test_Strategy: Invoke HTTP options method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1209,9 +1212,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1149; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1179;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1228,9 +1231,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: optionsWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1149; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1179;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1247,9 +1250,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     /*
      * @testName:
      * optionsWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1149; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1179;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1269,9 +1272,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1150; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1180;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1285,9 +1288,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1150; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1180;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1303,9 +1306,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithStringClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1151; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1181;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1319,9 +1322,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithResponseClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1151; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1181;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1336,9 +1339,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1151; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1181;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1354,9 +1357,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1151; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1181;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1371,9 +1374,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1151; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1181;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1390,9 +1393,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithGenericTypeStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1152; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1182;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1407,9 +1410,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithGenericTypeResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1152; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1182;
-     * 
+     *
      * @test_Strategy: Invoke HTTP post method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1424,9 +1427,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1152; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1182;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1443,9 +1446,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: postWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1152; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1182;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1463,9 +1466,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     /*
      * @testName:
      * postWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1152; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1182;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1486,9 +1489,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1153; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1183;
-     * 
+     *
      * @test_Strategy: Invoke HTTP PUT method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1502,9 +1505,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1153; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1183;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1520,9 +1523,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithStringClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1154; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1184;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1536,9 +1539,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithResponseClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1154; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1184;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1553,9 +1556,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1154; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1184;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1571,9 +1574,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1154; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1184;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1588,9 +1591,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1154; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1184;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1607,9 +1610,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithGenericTypeStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1155; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1185;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1624,9 +1627,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithGenericTypeResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1155; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1185;
-     * 
+     *
      * @test_Strategy: Invoke HTTP put method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1641,9 +1644,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1155; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1185;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1660,9 +1663,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1155; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1185;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1679,9 +1682,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: putWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1155; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1185;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1702,9 +1705,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1156; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1186;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1717,9 +1720,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1156; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1186;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1734,9 +1737,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithStringClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1157; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1187;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1749,9 +1752,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithResponseClassTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1157; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1187;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1764,9 +1767,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithClassThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1157; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1187;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1781,9 +1784,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithClassThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1157; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1187;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1797,9 +1800,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithClassThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1157; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1187;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1814,9 +1817,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithGenericTypeStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1158; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1188;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1830,9 +1833,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithGenericTypeResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1158; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1188;
-     * 
+     *
      * @test_Strategy: Invoke HTTP trace method for the current request
      */
     @org.junit.jupiter.api.Test
@@ -1846,9 +1849,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithGenericTypeThrowsProcessingExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1158; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1188;
-     * 
+     *
      * @test_Strategy: ResponseProcessingException - in case processing of a
      * received HTTP response fails (e.g. in a filter or during conversion of the
      * response entity data to an instance of a particular Java type).
@@ -1864,9 +1867,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
 
     /*
      * @testName: traceWithGenericTypeThrowsWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1158; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1188;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.
@@ -1883,9 +1886,9 @@ public class JAXRSClient0180 extends JAXRSCommonClient {
     /*
      * @testName:
      * traceWithGenericTypeThrowsNoWebApplicationExceptionForResponseTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:1158; JAXRS:JAVADOC:1162; JAXRS:JAVADOC:1188;
-     * 
+     *
      * @test_Strategy: WebApplicationException - in case the response status code
      * of the response returned by the server is not successful and the specified
      * response type is not Response.

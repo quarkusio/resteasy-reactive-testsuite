@@ -21,6 +21,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.cookieparam;
 
 import java.util.function.Supplier;
 
+import io.quarkus.test.DelegatingQuarkusUnitTestExtension;
 import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -33,41 +34,38 @@ import com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151;
 
 import io.quarkus.test.QuarkusUnitTest;
 
-/*
- * @class.setup_props: webServerHost;
- *                     webServerPort;
- *                     ts_home;
- */
+@org.junit.jupiter.api.extension.ExtendWith(DelegatingQuarkusUnitTestExtension.class)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_cookieparam_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.ee.rs.cookieparam.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
-                }
-            });
-
     private static final long serialVersionUID = 1L;
+
+    public static QuarkusUnitTest createQuarkusUnitTest() {
+        return new QuarkusUnitTest().setFlatClassPath(true)
+                .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+                .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
+                .overrideConfigKey("quarkus.rest.default-produces", "false")
+                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_cookieparam_web")
+                .setArchiveProducer(new Supplier<JavaArchive>() {
+                    @Override
+                    public JavaArchive get() {
+                        return ShrinkWrap.create(JavaArchive.class)
+                                .addClasses(
+                                        com.sun.ts.tests.jaxrs.ee.rs.cookieparam.TSAppConfig.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.cookieparam.CookieParamTest.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
+                    }
+                });
+    }
 
     public JAXRSClient0143() {
         setContextRoot("/jaxrs_ee_rs_cookieparam_web/CookieParamTest");
@@ -85,9 +83,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
     /* Run test */
     /*
      * @testName: cookieParamTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:JAVADOC:145; JAXRS:JAVADOC:2;
-     * 
+     *
      * @test_Strategy: Client invokes GET on root resource at /CookieParamTest;
      * Resource will respond with a cookie; Client verify the cookie is received;
      * Client send request again with the cookie; Verify that the cookie is
@@ -125,10 +123,10 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamEntityWithConstructorTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.2; JAXRS:JAVADOC:12;
      * JAXRS:JAVADOC:12.1;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -138,10 +136,10 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamEntityWithValueOfTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.3; JAXRS:JAVADOC:12;
      * JAXRS:JAVADOC:12.1;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -151,10 +149,10 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.3; JAXRS:JAVADOC:12;
      * JAXRS:JAVADOC:12.1;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -164,10 +162,10 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamSetEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.4; JAXRS:JAVADOC:12;
      * JAXRS:JAVADOC:12.1;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -177,10 +175,10 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamListEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.4; JAXRS:JAVADOC:12;
      * JAXRS:JAVADOC:12.1;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -190,10 +188,10 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamSortedSetEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.4; JAXRS:JAVADOC:12;
      * JAXRS:JAVADOC:12.1;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -203,9 +201,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldParamEntityWithConstructorTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.2; JAXRS:JAVADOC:6;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -215,9 +213,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldParamEntityWithValueOfTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.3; JAXRS:JAVADOC:6;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -227,9 +225,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldParamEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.3; JAXRS:JAVADOC:6;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -239,9 +237,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldParamSetEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -251,9 +249,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldParamListEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -263,9 +261,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldSortedSetEntityWithFromStringTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
-     * 
+     *
      * @test_Strategy: Verify that named CookieParam is handled properly
      */
     @Test
@@ -275,13 +273,13 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamThrowingWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:12.3;
-     * 
+     *
      * @test_Strategy: Exceptions thrown during construction of parameter values
      * are treated the same as exceptions thrown during construction of field or
      * bean property values, see section 3.2.
-     * 
+     *
      */
     @Test
     public void cookieParamThrowingWebApplicationExceptionTest() throws Fault {
@@ -290,9 +288,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldThrowingWebApplicationExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:3.4; JAXRS:SPEC:8;
-     * 
+     *
      * @test_Strategy: A WebApplicationException thrown during construction of
      * field or property values using 2 or 3 above is processed directly as
      * described in section 3.3.4.
@@ -304,9 +302,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieParamThrowingIllegalArgumentExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:9; JAXRS:SPEC:9.2; JAXRS:SPEC:10;
-     * 
+     *
      * @test_Strategy: Other exceptions thrown during construction of field or
      * property values using 2 or 3 above are treated as client errors:
      *
@@ -322,9 +320,9 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
 
     /*
      * @testName: cookieFieldParamThrowingIllegalArgumentExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:SPEC:12.3;
-     * 
+     *
      * @test_Strategy: Exceptions thrown during construction of parameter values
      * are treated the same as exceptions thrown during construction of field or
      * bean property values, see section 3.2.
@@ -397,3 +395,8 @@ public class JAXRSClient0143 extends JaxrsParamClient0151 {
                 "");
     }
 }
+/*
+ * @class.setup_props: webServerHost;
+ *                     webServerPort;
+ *                     ts_home;
+ */

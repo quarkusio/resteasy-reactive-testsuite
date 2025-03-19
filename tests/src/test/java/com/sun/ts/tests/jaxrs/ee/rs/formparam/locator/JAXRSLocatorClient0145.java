@@ -37,32 +37,33 @@ import io.quarkus.test.QuarkusUnitTest;
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSLocatorClient0145 extends JAXRSClient0146 {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_formparam_locator_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.LocatorResource.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.MiddleResource.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
-                                    com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
-                }
-            });
+    public static QuarkusUnitTest createQuarkusUnitTest() {
+        return new QuarkusUnitTest().setFlatClassPath(true)
+                .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+                .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
+                .overrideConfigKey("quarkus.rest.default-produces", "false")
+                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_formparam_locator_web")
+                .setArchiveProducer(new Supplier<JavaArchive>() {
+                    @Override
+                    public JavaArchive get() {
+                        return ShrinkWrap.create(JavaArchive.class)
+                                .addClasses(
+                                        com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.TSAppConfig.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.LocatorResource.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.formparam.locator.MiddleResource.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
+                                        com.sun.ts.tests.jaxrs.common.AbstractMessageBodyRW.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
+                    }
+                });
+    }
 
     public JAXRSLocatorClient0145() {
         setContextRoot("/jaxrs_ee_formparam_locator_web/resource/locator");

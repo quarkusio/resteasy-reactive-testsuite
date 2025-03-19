@@ -18,6 +18,7 @@ package com.sun.ts.tests.jaxrs.ee.rs.pathparam;
 
 import java.util.function.Supplier;
 
+import io.quarkus.test.DelegatingQuarkusUnitTestExtension;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response.Status;
 
@@ -39,33 +40,35 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
+@org.junit.jupiter.api.extension.ExtendWith(DelegatingQuarkusUnitTestExtension.class)
 @org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
 public class JAXRSClient0124 extends JaxrsParamClient0151 {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_pathparam_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.ee.rs.pathparam.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
-                }
-            });
+    public static QuarkusUnitTest createQuarkusUnitTest() {
+        return new QuarkusUnitTest().setFlatClassPath(true)
+                .overrideConfigKey("quarkus.rest.single-default-produces", "false")
+                .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
+                .overrideConfigKey("quarkus.rest.default-produces", "false")
+                .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_pathparam_web")
+                .setArchiveProducer(new Supplier<JavaArchive>() {
+                    @Override
+                    public JavaArchive get() {
+                        return ShrinkWrap.create(JavaArchive.class)
+                                .addClasses(
+                                        com.sun.ts.tests.jaxrs.ee.rs.pathparam.TSAppConfig.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.pathparam.PathParamTest.class,
+                                        com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
+                    }
+                });
+    }
 
     private static final long serialVersionUID = 1L;
 
