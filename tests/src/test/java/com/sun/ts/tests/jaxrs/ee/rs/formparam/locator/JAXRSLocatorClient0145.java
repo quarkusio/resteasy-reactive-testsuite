@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.sun.ts.tests.jaxrs.QuarkusRest;
-import com.sun.ts.tests.jaxrs.ee.rs.formparam.JAXRSClient0146;
+import com.sun.ts.tests.jaxrs.ee.rs.formparam.AbstractJAXRSClient0146;
 
 import io.quarkus.test.QuarkusUnitTest;
 
@@ -34,8 +34,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSLocatorClient0145 extends JAXRSClient0146 {
+public class JAXRSLocatorClient0145 extends AbstractJAXRSClient0146 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
@@ -206,6 +205,85 @@ public class JAXRSLocatorClient0145 extends JAXRSClient0146 {
     public void formParamEntityWithEncodedTest() throws Fault {
         _contextRoot += "encoded";
         super.paramEntityWithEncodedTest();
+    }
+
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamFromConstructorTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamFromListConstructorTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamFromListFromStringTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamFromSetFromStringTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamFromSortedSetFromStringTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamFromStringTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamNoArgSentTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamPutArgSentTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamPutNoArgSentTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamSentTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void defaultFormParamValueOfTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void formParamThrowingIllegalArgumentExceptionTest() {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void formParamThrowingWebApplicationExceptionTest() {
+
     }
 
 }

@@ -16,10 +16,13 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.matrixparam.locator;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+import com.sun.ts.tests.jaxrs.ee.rs.matrixparam.AbstractJAXRSClient0102;
 import java.util.function.Supplier;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -30,9 +33,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSLocatorClient0101
-        extends com.sun.ts.tests.jaxrs.ee.rs.matrixparam.JAXRSClient0102 {
+public class JAXRSLocatorClient0101 extends AbstractJAXRSClient0102 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
@@ -307,6 +308,49 @@ public class JAXRSLocatorClient0101
     @Test
     public void matrixParamThrowingIllegalArgumentExceptionTest() throws Fault {
         super.matrixParamThrowingIllegalArgumentExceptionTest();
+    }
+
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void matrixFieldParamEntityWithConstructorTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void matrixFieldParamEntityWithEncodedTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void matrixFieldParamEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void matrixFieldParamEntityWithValueOfTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void matrixFieldParamListEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void matrixFieldParamSetEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void matrixFieldParamSortedSetEntityWithFromStringTest() throws Fault {
+
     }
 
     @Override

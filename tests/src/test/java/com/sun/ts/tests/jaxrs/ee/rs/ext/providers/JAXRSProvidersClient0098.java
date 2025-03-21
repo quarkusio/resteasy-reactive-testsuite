@@ -16,6 +16,9 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.ext.providers;
 
+import com.sun.ts.tests.common.webclient.http.HttpResponse;
+import com.sun.ts.tests.jaxrs.common.JAXRSCommonClient;
+import java.io.IOException;
 import java.util.function.Supplier;
 
 import jakarta.ws.rs.core.MediaType;
@@ -36,9 +39,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSProvidersClient0098
-        extends com.sun.ts.tests.jaxrs.ee.rs.core.application.JAXRSClient0128 {
+public class JAXRSProvidersClient0098 extends JAXRSCommonClient {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
@@ -70,6 +71,10 @@ public class JAXRSProvidersClient0098
 
     private static final long serialVersionUID = -935293219512493643L;
 
+    protected int expectedSingletons = 1;
+
+    protected int expectedClasses = 1;
+
     public JAXRSProvidersClient0098() {
         TSAppConfig cfg = new TSAppConfig();
         setContextRoot("/jaxrs_ee_ext_providers_web/ProvidersServlet");
@@ -91,44 +96,53 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: getSingletonsTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:23
-     * 
-     * @test_Strategy: Check that the implementation returns set of
-     * TSAppConfig.CLASSLIST
+     *
+     * @test_Strategy: Check that vi does not modify the getSingletons()
      */
     @Test
     public void getSingletonsTest() throws Fault {
-        super.getSingletonsTest();
+        setProperty(REQUEST, buildRequest(GET, "GetSingletons"));
+        setProperty(STATUS_CODE, getStatusCode(Status.OK));
+        invoke();
+        assertFault(getReturnedNumber() == expectedSingletons,
+                "Application.getSingletons() return incorrect value:",
+                getReturnedNumber());
     }
 
     /*
      * @testName: getClassesTest
-     * 
-     * @assertion_ids: JAXRS:JAVADOC:22
-     * 
+     *
+     * @assertion_ids: JAXRS:JAVADOC:22; JAXRS:SPEC:40;
+     *
      * @test_Strategy: Check the implementation injects TSAppConfig
      */
     @Test
     public void getClassesTest() throws Fault {
-        super.getClassesTest();
+        setProperty(REQUEST, buildRequest(GET, "GetClasses"));
+        setProperty(STATUS_CODE, getStatusCode(Status.OK));
+        invoke();
+        assertFault(getReturnedNumber() == expectedClasses,
+                "Application.getClasses() return incorrect value:",
+                getReturnedNumber());
     }
 
     /*
      * @testName: isRegisteredTextPlainContextResolverTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:269; JAXRS:JAVADOC:280; JAXRS:JAVADOC:299;
      * JAXRS:SPEC:40; JAXRS:SPEC:80; JAXRS:SPEC:81;
-     * 
+     *
      * @test_Strategy: Register ContextResolver and try to get proper Provider
-     * 
+     *
      * When injecting an instance of one of the types listed in section 9.2, the
      * instance supplied MUST be capable of selecting the correct context for a
      * particular request.
-     * 
+     *
      * Context providers MAY return null from the getContext method if they do not
      * wish to provide their context for a particular Java type.
-     * 
+     *
      * Context provider implementations MAY restrict the media types they support
      * using the @Produces annotation.
      */
@@ -142,19 +156,19 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredAppJsonContextResolverTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:269; JAXRS:JAVADOC:280; JAXRS:JAVADOC:299;
      * JAXRS:SPEC:40; JAXRS:SPEC:80; JAXRS:SPEC:81;
-     * 
+     *
      * @test_Strategy: Register ContextResolver and try to get proper Provider
-     * 
+     *
      * When injecting an instance of one of the types listed in section 9.2, the
      * instance supplied MUST be capable of selecting the correct context for a
      * particular request.
-     * 
+     *
      * Context providers MAY return null from the getContext method if they do not
      * wish to provide their context for a particular Java type.
-     * 
+     *
      * Context provider implementations MAY restrict the media types they support
      * using the @Produces annotation. Absence implies that any media type is
      * supported.
@@ -169,9 +183,9 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredExceptionMapperRuntimeExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:270; JAXRS:JAVADOC:281; JAXRS:SPEC:40;
-     * 
+     *
      * @test_Strategy: Try to get proper ExceptionMapper
      */
     @Test
@@ -185,9 +199,9 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredExceptionMapperNullExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:281;
-     * 
+     *
      * @test_Strategy: Try to get proper ExceptionMapper
      */
     @Test
@@ -200,9 +214,9 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredRuntimeExceptionExceptionMapperTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:281; JAXRS:JAVADOC:300; JAXRS:SPEC:40;
-     * 
+     *
      * @test_Strategy: Try to get RuntimeExceptionExceptionMapper but there is
      * none
      */
@@ -216,9 +230,9 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredIOExceptionExceptionMapperTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:281;
-     * 
+     *
      * @test_Strategy: Try to get IOExceptionExceptionMapper
      */
     @Test
@@ -231,10 +245,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredMessageBodyWriterWildcardTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:87; JAXRS:JAVADOC:276; JAXRS:JAVADOC:283;
      * JAXRS:JAVADOC:299; JAXRS:SPEC:40;
-     * 
+     *
      * @test_Strategy: Check what is returned for wildcard is for text/plain
      */
     @Test
@@ -247,10 +261,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredMessageBodyWriterXmlTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:87; JAXRS:JAVADOC:276; JAXRS:JAVADOC:283;
      * JAXRS:JAVADOC:299; JAXRS:SPEC:40;
-     * 
+     *
      * @test_Strategy: Check BodyWriter is returned for text/xml
      */
     @Test
@@ -263,10 +277,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredMessageBodyReaderWildcardTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:87; JAXRS:JAVADOC:276; JAXRS:JAVADOC:282;
      * JAXRS:JAVADOC:299; JAXRS:SPEC:40;
-     * 
+     *
      * @test_Strategy: Check what is returned for wildcard is for text/plain
      */
     @Test
@@ -279,10 +293,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: isRegisteredMessageBodReaderXmlTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:87; JAXRS:JAVADOC:276; JAXRS:JAVADOC:282;
      * JAXRS:JAVADOC:299; JAXRS:SPEC:40;
-     * 
+     *
      * @test_Strategy: Check BodyReader is returned for text/xml
      */
     @Test
@@ -295,10 +309,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: writeBodyEntityUsingWriterTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:87; JAXRS:JAVADOC:276; JAXRS:JAVADOC:283;
      * JAXRS:JAVADOC:132; JAXRS:JAVADOC:275; JAXRS:JAVADOC:276; JAXRS:JAVADOC:304;
-     * 
+     *
      * @test_Strategy: Check BodyWriter is used for text/xml to write entity
      */
     @Test
@@ -315,10 +329,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: writeHeaderEntityUsingWriterTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:87; JAXRS:JAVADOC:276; JAXRS:JAVADOC:132;
      * JAXRS:JAVADOC:275; JAXRS:JAVADOC:277; JAXRS:JAVADOC:304;
-     * 
+     *
      * @test_Strategy: Check HeaderWriter is used for text/xml to write entity
      */
     @Test
@@ -336,10 +350,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: writeIOExceptionUsingWriterTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:281; JAXRS:JAVADOC:304; JAXRS:JAVADOC:87;
      * JAXRS:JAVADOC:132; JAXRS:JAVADOC:277; JAXRS:JAVADOC:278;
-     * 
+     *
      * @test_Strategy: Check EntityWriter is used and IOException is written using
      * mapper
      */
@@ -357,9 +371,9 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: writeIOExceptionWithoutWriterTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:304; JAXRS:JAVADOC:281; JAXRS:SPEC:16.2;
-     * 
+     *
      * @test_Strategy: Check IOExceptionExceptionMapper is chosen
      */
     @Test
@@ -373,10 +387,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: readEntityFromHeaderTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:271; JAXRS:JAVADOC:272; JAXRS:JAVADOC:138;
      * JAXRS:JAVADOC:304; JAXRS:JAVADOC:282;
-     * 
+     *
      * @test_Strategy: Put entity to header and read it using reader
      */
     @Test
@@ -394,10 +408,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: readEntityFromBodyTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:271; JAXRS:JAVADOC:272; JAXRS:JAVADOC:138;
      * JAXRS:JAVADOC:304; JAXRS:JAVADOC:282;
-     * 
+     *
      * @test_Strategy: Put entity to body and read it using reader
      */
     @Test
@@ -414,10 +428,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: readEntityIOExceptionTest
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:273; JAXRS:JAVADOC:138; JAXRS:JAVADOC:304;
      * JAXRS:JAVADOC:282; JAXRS:JAVADOC:271; JAXRS:JAVADOC:272;
-     * 
+     *
      * @test_Strategy: Put entity to body and read it using reader
      */
     @Test
@@ -432,10 +446,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: readEntityWebException400Test
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:274; JAXRS:JAVADOC:138; JAXRS:JAVADOC:304;
      * JAXRS:JAVADOC:282; JAXRS:JAVADOC:271; JAXRS:JAVADOC:272; JAXRS:SPEC:16.2;
-     * 
+     *
      * @test_Strategy: Put entity to body and read it using reader
      */
     @Test
@@ -452,10 +466,10 @@ public class JAXRSProvidersClient0098
 
     /*
      * @testName: readEntityWebException410Test
-     * 
+     *
      * @assertion_ids: JAXRS:JAVADOC:274; JAXRS:JAVADOC:138; JAXRS:JAVADOC:304;
      * JAXRS:JAVADOC:282; JAXRS:JAVADOC:271; JAXRS:JAVADOC:272; JAXRS:SPEC:16.2;
-     * 
+     *
      * @test_Strategy: Put entity to body and read it using reader
      */
     @Test
@@ -468,6 +482,19 @@ public class JAXRSProvidersClient0098
         setProperty(Property.REQUEST_HEADERS, code);
         setProperty(Property.STATUS_CODE, getStatusCode(Status.GONE));
         invoke();
+    }
+
+    // ///////////////////////////////////////////////////////////////////////
+
+    protected int getReturnedNumber() throws Fault {
+        HttpResponse response = _testCase.getResponse();
+        String body;
+        try {
+            body = response.getResponseBodyAsString();
+        } catch (IOException e) {
+            throw new Fault(e);
+        }
+        return Integer.parseInt(body);
     }
 
 }

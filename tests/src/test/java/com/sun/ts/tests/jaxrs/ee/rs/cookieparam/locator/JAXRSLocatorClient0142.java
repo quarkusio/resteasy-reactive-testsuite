@@ -16,10 +16,13 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.cookieparam.locator;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+import com.sun.ts.tests.jaxrs.ee.rs.cookieparam.AbstractJAXRSClient0143;
 import java.util.function.Supplier;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -30,9 +33,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSLocatorClient0142
-        extends com.sun.ts.tests.jaxrs.ee.rs.cookieparam.JAXRSClient0143 {
+public class JAXRSLocatorClient0142 extends AbstractJAXRSClient0143 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
@@ -197,6 +198,42 @@ public class JAXRSLocatorClient0142
     @Test
     public void cookieParamThrowingIllegalArgumentExceptionTest() throws Fault {
         super.paramThrowingIllegalArgumentExceptionTest();
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void cookieFieldParamEntityWithConstructorTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void cookieFieldParamEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void cookieFieldParamEntityWithValueOfTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void cookieFieldParamListEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void cookieFieldParamSetEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void cookieFieldSortedSetEntityWithFromStringTest() throws Fault {
+
     }
 
     @Override

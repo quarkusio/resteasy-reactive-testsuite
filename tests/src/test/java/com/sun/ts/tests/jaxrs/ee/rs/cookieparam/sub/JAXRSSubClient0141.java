@@ -16,6 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.cookieparam.sub;
 
+import com.sun.ts.tests.jaxrs.ee.rs.cookieparam.AbstractJAXRSClient0143;
 import java.util.function.Supplier;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -30,9 +31,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSSubClient0141
-        extends com.sun.ts.tests.jaxrs.ee.rs.cookieparam.JAXRSClient0143 {
+public class JAXRSSubClient0141 extends AbstractJAXRSClient0143 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)

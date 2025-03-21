@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2007, 2020 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -14,18 +14,19 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package com.sun.ts.tests.jaxrs.ee.rs.formparam.sub;
+package com.sun.ts.tests.jaxrs.ee.rs.formparam;
 
 import java.util.function.Supplier;
 
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response.Status;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import com.sun.ts.tests.jaxrs.QuarkusRest;
-import com.sun.ts.tests.jaxrs.ee.rs.formparam.AbstractJAXRSClient0146;
+import com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151;
 
 import io.quarkus.test.QuarkusUnitTest;
 
@@ -34,320 +35,278 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-public class JAXRSSubClient0144 extends AbstractJAXRSClient0146 {
+public abstract class AbstractJAXRSClient0146 extends JaxrsParamClient0151 {
 
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_formparam_sub_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.sub.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.sub.SubResource.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.formparam.FormParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
-                }
-            });
+    private static final String ENCODED = "_%60%27%24X+Y%40%22a+a%22";
 
-    public JAXRSSubClient0144() {
-        setContextRoot("/jaxrs_ee_formparam_sub_web/resource/sub");
-    }
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Entry point for different-VM execution. It should delegate to method
-     * run(String[], PrintWriter, PrintWriter), and this method should not contain
-     * any test configuration.
-     */
-    public static void main(String[] args) {
-        JAXRSSubClient0144 theTests = new JAXRSSubClient0144();
-        theTests.run(args);
-    }
+    private static final String DECODED = "_`'$X Y@\"a a\"";
 
     /*
      * @testName: nonDefaultFormParamNothingSentTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test sending no content;
      */
     @Test
     public void nonDefaultFormParamNothingSentTest() throws Fault {
-        super.nonDefaultFormParamNothingSentTest();
+        defaultFormParamAndInvoke(Request.POST, "PostNonDefParam", null);
     }
 
     /*
      * @testName: defaultFormParamSentTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test sending override of default argument content;
      */
     @Test
     public void defaultFormParamSentTest() throws Fault {
-        super.defaultFormParamSentTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "PostDefParam", ENCODED);
     }
 
     /*
      * @testName: defaultFormParamNoArgSentTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test sending no argument content, receiving default;
      */
     @Test
     public void defaultFormParamNoArgSentTest() throws Fault {
-        super.defaultFormParamNoArgSentTest();
+        defaultFormParamAndInvoke(Request.POST, "PostDefParam", "default");
     }
 
     /*
      * @testName: defaultFormParamPutNoArgSentTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test sending no argument content, PUT, receiving default;
      */
     @Test
     public void defaultFormParamPutNoArgSentTest() throws Fault {
-        super.defaultFormParamPutNoArgSentTest();
+        defaultFormParamAndInvoke(Request.PUT, "DefParam", "DefParam");
     }
 
     /*
      * @testName: defaultFormParamPutArgSentTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test sending argument content, PUT;
      */
     @Test
     public void defaultFormParamPutArgSentTest() throws Fault {
-        super.defaultFormParamPutArgSentTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.PUT, "DefParam", DECODED);
     }
 
     /*
      * @testName: defaultFormParamValueOfTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test creating a ParamEntityWithValueOf from default;
      */
     @Test
     public void defaultFormParamValueOfTest() throws Fault {
-        super.defaultFormParamValueOfTest();
+        defaultFormParamAndInvoke(Request.POST, "ParamEntityWithValueOf",
+                "ValueOf");
     }
 
     /*
      * @testName: nonDefaultFormParamValueOfTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test creating a ParamEntityWithValueOf from sending a
      * String;
      */
     @Test
     public void nonDefaultFormParamValueOfTest() throws Fault {
-        super.nonDefaultFormParamValueOfTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "ParamEntityWithValueOf", DECODED);
     }
 
     /*
      * @testName: defaultFormParamFromStringTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test creating a ParamEntityWithFromString from default;
      */
     @Test
     public void defaultFormParamFromStringTest() throws Fault {
-        super.defaultFormParamFromStringTest();
+        defaultFormParamAndInvoke(Request.POST, "ParamEntityWithFromString",
+                "FromString");
     }
 
     /*
      * @testName: nonDefaultFormParamFromStringTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test creating a ParamEntityWithFromString from sending a
      * String;
      */
     @Test
     public void nonDefaultFormParamFromStringTest() throws Fault {
-        super.nonDefaultFormParamFromStringTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "ParamEntityWithFromString",
+                ENCODED);
     }
 
     /*
      * @testName: defaultFormParamFromConstructorTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test creating a ParamEntityWithFromString from default;
      */
     @Test
     public void defaultFormParamFromConstructorTest() throws Fault {
-        super.defaultFormParamFromConstructorTest();
+        defaultFormParamAndInvoke(Request.POST, "Constructor", "Constructor");
     }
 
     /*
      * @testName: nonDefaultFormParamFromConstructorTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
      * String;
      */
     @Test
     public void nonDefaultFormParamFromConstructorTest() throws Fault {
-        super.nonDefaultFormParamFromConstructorTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "Constructor", DECODED);
     }
 
     /*
      * @testName: defaultFormParamFromListConstructorTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test creating a ParamEntityWithConstructor from default;
      */
     @Test
     public void defaultFormParamFromListConstructorTest() throws Fault {
-        super.defaultFormParamFromListConstructorTest();
+        defaultFormParamAndInvoke(Request.POST, "ListConstructor",
+                "ListConstructor");
     }
 
     /*
      * @testName: nonDefaultFormParamFromListConstructorTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test creating a ParamEntityWithConstructor from sending a
      * String;
      */
     @Test
     public void nonDefaultFormParamFromListConstructorTest() throws Fault {
-        super.nonDefaultFormParamFromListConstructorTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "ListConstructor", DECODED);
     }
 
     /*
      * @testName: defaultFormParamFromSetFromStringTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test creating a ParamEntityWithFromString from default;
      */
     @Test
     public void defaultFormParamFromSetFromStringTest() throws Fault {
-        super.defaultFormParamFromSetFromStringTest();
+        defaultFormParamAndInvoke(Request.POST, "SetFromString", "SetFromString");
     }
 
     /*
      * @testName: nonDefaultFormParamFromSetFromStringTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
      * a String;
      */
     @Test
     public void nonDefaultFormParamFromSetFromStringTest() throws Fault {
-        super.nonDefaultFormParamFromSetFromStringTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "SetFromString", ENCODED);
     }
 
     /*
      * @testName: defaultFormParamFromSortedSetFromStringTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test creating a ParamEntityWithFromString from default;
      */
     @Test
     public void defaultFormParamFromSortedSetFromStringTest() throws Fault {
-        super.defaultFormParamFromSortedSetFromStringTest();
+        defaultFormParamAndInvoke(Request.POST, "SortedSetFromString",
+                "SortedSetFromString");
     }
 
     /*
      * @testName: nonDefaultFormParamFromSortedSetFromStringTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
      * a String;
      */
     @Test
     public void nonDefaultFormParamFromSortedSetFromStringTest() throws Fault {
-        super.nonDefaultFormParamFromSortedSetFromStringTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "SortedSetFromString", ENCODED);
     }
 
     /*
      * @testName: defaultFormParamFromListFromStringTest
      * 
      * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:12.1;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Test creating a ParamEntityWithFromString from default;
-     * 
      */
     @Test
     public void defaultFormParamFromListFromStringTest() throws Fault {
-        super.defaultFormParamFromListFromStringTest();
+        defaultFormParamAndInvoke(Request.POST, "ListFromString", "ListFromString");
     }
 
     /*
      * @testName: nonDefaultFormParamFromListFromStringTest
      * 
-     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:JAVADOC:4; JAXRS:SPEC:12;
      * 
      * @test_Strategy: Test creating a ParamEntityWithListConstructor from sending
      * a String;
      */
     @Test
     public void nonDefaultFormParamFromListFromStringTest() throws Fault {
-        super.nonDefaultFormParamFromListFromStringTest();
+        setProperty(Property.CONTENT, "default_argument=" + ENCODED);
+        defaultFormParamAndInvoke(Request.POST, "ListFromString", ENCODED);
     }
 
     /*
-     * @assertion_ids: JAXRS:SPEC:7; JAXRS:SPEC:12;JAXRS:SPEC:12.2; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @testName: formParamEntityWithEncodedTest
+     * 
+     * @assertion_ids: JAXRS:SPEC:7; JAXRS:SPEC:12;JAXRS:SPEC:12.2;
      * 
      * @test_Strategy: Verify that named FormParam @Encoded is handled
      */
-    @Disabled(QuarkusRest.Test_Doesnt_Make_Sense)
     @Test
     public void formParamEntityWithEncodedTest() throws Fault {
+        searchEqualsEncoded = true;
         super.paramEntityWithEncodedTest();
     }
 
     /*
      * @testName: formParamThrowingWebApplicationExceptionTest
      * 
-     * @assertion_ids: JAXRS:SPEC:12.3; JAXRS:SPEC:20; JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:SPEC:12.3;
      * 
      * @test_Strategy: Exceptions thrown during construction of parameter values
      * are treated the same as exceptions thrown during construction of field or
@@ -355,13 +314,13 @@ public class JAXRSSubClient0144 extends AbstractJAXRSClient0146 {
      */
     @Test
     public void formParamThrowingWebApplicationExceptionTest() throws Fault {
-        super.formParamThrowingIllegalArgumentExceptionTest();
+        super.paramThrowingWebApplicationExceptionTest();
     }
 
     /*
      * @testName: formParamThrowingIllegalArgumentExceptionTest
      * 
-     * @assertion_ids: JAXRS:SPEC:12.3; JAXRS:SPEC:20; JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:SPEC:12.3;
      * 
      * @test_Strategy: Exceptions thrown during construction of parameter values
      * are treated the same as exceptions thrown during construction of field or
@@ -371,6 +330,33 @@ public class JAXRSSubClient0144 extends AbstractJAXRSClient0146 {
      */
     @Test
     public void formParamThrowingIllegalArgumentExceptionTest() throws Fault {
-        super.formParamThrowingIllegalArgumentExceptionTest();
+        setProperty(Property.UNORDERED_SEARCH_STRING, Status.BAD_REQUEST.name());
+        super.paramThrowingIllegalArgumentExceptionTest();
+    }
+
+    // ///////////////////////////////////////////////////////////////////////
+
+    private void defaultFormParamAndInvoke(Request request, String method,
+            String arg) throws Fault {
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.APPLICATION_FORM_URLENCODED_TYPE));
+        setProperty(Property.REQUEST, buildRequest(request, method));
+        setProperty(Property.SEARCH_STRING, FormParamTest.response(arg));
+        invoke();
+    }
+
+    @Override
+    protected String buildRequest(String param) {
+        setProperty(Property.REQUEST_HEADERS,
+                buildContentType(MediaType.APPLICATION_FORM_URLENCODED_TYPE));
+        setProperty(Property.CONTENT,
+                "default_argument=" + param.replace("=", "%3d"));
+        return buildRequest(Request.POST, segmentFromParam(param));
+    }
+
+    // not used at the moment
+    @Override
+    protected String getDefaultValueOfParam(String param) {
+        return null;
     }
 }
