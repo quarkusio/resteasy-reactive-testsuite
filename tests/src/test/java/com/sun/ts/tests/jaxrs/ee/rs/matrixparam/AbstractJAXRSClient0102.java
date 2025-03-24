@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2007, 2020 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -14,15 +14,21 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package com.sun.ts.tests.jaxrs.ee.rs.matrixparam.sub;
+/*
+ * $Id$
+ */
+package com.sun.ts.tests.jaxrs.ee.rs.matrixparam;
 
-import com.sun.ts.tests.jaxrs.ee.rs.matrixparam.AbstractJAXRSClient0102;
 import java.util.function.Supplier;
+
+import jakarta.ws.rs.core.Response.Status;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+
+import com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151;
 
 import io.quarkus.test.QuarkusUnitTest;
 
@@ -31,252 +37,258 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-public class JAXRSSubClient0100 extends AbstractJAXRSClient0102 {
-
-    @RegisterExtension
-    static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
-            .overrideConfigKey("quarkus.rest.single-default-produces", "false")
-            .overrideConfigKey("quarkus.rest.fail-on-duplicate", "false")
-            .overrideConfigKey("quarkus.rest.default-produces", "false")
-            .overrideConfigKey("quarkus.http.root-path", "/jaxrs_ee_rs_matrixparam_sub_web")
-            .setArchiveProducer(new Supplier<JavaArchive>() {
-                @Override
-                public JavaArchive get() {
-                    return ShrinkWrap.create(JavaArchive.class)
-                            .addClasses(
-                                    com.sun.ts.tests.jaxrs.ee.rs.matrixparam.sub.TSAppConfig.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.JaxrsParamClient0151.CollectionName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.matrixparam.sub.SubResource.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.WebApplicationExceptionMapper.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.matrixparam.MatrixParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithValueOf.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingExceptionGivenByName.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithFromString.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityThrowingWebApplicationException.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityWithConstructor.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamEntityPrototype.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.ParamTest.class,
-                                    com.sun.ts.tests.jaxrs.ee.rs.RuntimeExceptionMapper.class);
-                }
-            });
-
-    private static final long serialVersionUID = 1L;
-
-    public JAXRSSubClient0100() {
-        setContextRoot("/jaxrs_ee_rs_matrixparam_sub_web/resource/subresource");
-    }
-
-    /**
-     * Entry point for different-VM execution. It should delegate to method
-     * run(String[], PrintWriter, PrintWriter), and this method should not contain
-     * any test configuration.
-     */
-    public static void main(String[] args) {
-        new JAXRSSubClient0100().run(args);
-    }
+public abstract class AbstractJAXRSClient0102 extends JaxrsParamClient0151 {
 
     /* Run test */
     /*
      * @testName: matrixParamStringTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on root resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamStringTest() throws Fault {
-        super.matrixParamStringTest();
+        setProperty(Property.REQUEST, buildRequest("stringtest=cts"));
+        setProperty(Property.SEARCH_STRING, "stringtest=cts");
+        invoke();
+
+        setProperty(Property.REQUEST,
+                buildRequest("stringtest1=cts;stringtest=ri_impl"));
+        setProperty(Property.SEARCH_STRING, "stringtest=ri_impl|stringtest1=cts");
+        invoke();
     }
 
     /*
      * @testName: matrixParamIntTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamIntTest() throws Fault {
-        super.matrixParamIntTest();
+        setProperty(Property.REQUEST, buildRequest("inttest1=2147483647"));
+        setProperty(Property.SEARCH_STRING, "inttest1=2147483647");
+        invoke();
+
+        setProperty(Property.REQUEST,
+                buildRequest("inttest1=2147483647;inttest2=-2147483648"));
+        setProperty(Property.SEARCH_STRING,
+                "inttest1=2147483647|inttest2=-2147483648");
+        invoke();
+
     }
 
     /*
      * @testName: matrixParamDoubleTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamDoubleTest() throws Fault {
-        super.matrixParamDoubleTest();
+        setProperty(Property.REQUEST, buildRequest("doubletest1=123"));
+        setProperty(Property.SEARCH_STRING, "doubletest1=123.0");
+        invoke();
+
+        setProperty(Property.REQUEST,
+                buildRequest("doubletest1=12.345;doubletest2=34.567"));
+        setProperty(Property.SEARCH_STRING,
+                "doubletest1=12.345|doubletest2=34.567");
+        invoke();
+
     }
 
     /*
      * @testName: matrixParamFloatTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamFloatTest() throws Fault {
-        super.matrixParamFloatTest();
+        setProperty(Property.REQUEST, buildRequest("floattest1=123"));
+        setProperty(Property.SEARCH_STRING, "floattest1=123.0");
+        invoke();
+
+        setProperty(Property.REQUEST,
+                buildRequest("floattest1=12.345;floattest2=34.567"));
+        setProperty(Property.SEARCH_STRING, "floattest1=12.345|floattest2=34.567");
+        invoke();
+
     }
 
     /*
      * @testName: matrixParamLongTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamLongTest() throws Fault {
-        super.matrixParamLongTest();
+        setProperty(Property.REQUEST,
+                buildRequest("longtest=-9223372036854775808"));
+        setProperty(Property.SEARCH_STRING, "longtest=-9223372036854775808");
+        invoke();
+
+        setProperty(Property.REQUEST, buildRequest(
+                "longtest1=-9223372036854775808;longtest2=9223372036854775807"));
+        setProperty(Property.SEARCH_STRING,
+                "longtest1=-9223372036854775808|longtest2=9223372036854775807");
+        invoke();
     }
 
     /*
      * @testName: matrixParamShortTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamShortTest() throws Fault {
-        super.matrixParamShortTest();
+        setProperty(Property.REQUEST, buildRequest("shorttest=-32768"));
+        setProperty(Property.SEARCH_STRING, "shorttest=-32768");
+        invoke();
+
+        setProperty(Property.REQUEST,
+                buildRequest("shorttest1=32767;shorttest2=-32768"));
+        setProperty(Property.SEARCH_STRING, "shorttest1=32767|shorttest2=-32768");
+        invoke();
     }
 
     /*
      * @testName: matrixParamByteTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamByteTest() throws Fault {
-        super.matrixParamByteTest();
+        setProperty(Property.REQUEST, buildRequest("bytetest=127"));
+        setProperty(Property.SEARCH_STRING, "bytetest=127");
+        invoke();
+
+        setProperty(Property.REQUEST, buildRequest("bytetest1=123;bytetest2=-128"));
+        setProperty(Property.SEARCH_STRING, "bytetest1=123|bytetest2=-128");
+        invoke();
     }
 
     /*
      * @testName: matrixParamBooleanTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:7;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.1; JAXRS:JAVADOC:7;
      * 
      * @test_Strategy: Client invokes GET on a resource at /MatrixParamTest;
      * Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamBooleanTest() throws Fault {
-        super.matrixParamBooleanTest();
+        setProperty(Property.REQUEST, buildRequest("booleantest=true"));
+        setProperty(Property.SEARCH_STRING, "booleantest=true");
+        invoke();
+
+        setProperty(Property.REQUEST,
+                buildRequest("booleantest1=false;booleantest2=true"));
+        setProperty(Property.SEARCH_STRING, "booleantest1=false|booleantest2=true");
+        invoke();
     }
 
     /*
      * @testName: matrixParamEntityWithConstructorTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.2; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:6; JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.2; JAXRS:JAVADOC:6;
+     * JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamEntityWithConstructorTest() throws Fault {
-        super.matrixParamEntityWithConstructorTest();
+        paramEntityWithConstructorTest();
     }
 
     /*
      * @testName: matrixParamEntityWithValueOfTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:6; JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:JAVADOC:6;
+     * JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamEntityWithValueOfTest() throws Fault {
-        super.matrixParamEntityWithValueOfTest();
+        paramEntityWithValueOfTest();
     }
 
     /*
      * @testName: matrixParamEntityWithFromStringTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:6; JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:JAVADOC:6;
+     * JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamEntityWithFromStringTest() throws Fault {
-        super.matrixParamEntityWithFromStringTest();
+        paramEntityWithFromStringTest();
     }
 
     /*
      * @testName: matrixParamSetEntityWithFromStringTest
      * 
      * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamSetEntityWithFromStringTest() throws Fault {
-        super.matrixParamSetEntityWithFromStringTest();
+        paramCollectionEntityWithFromStringTest(CollectionName.SET);
     }
 
     /*
      * @testName: matrixParamSortedSetEntityWithFromStringTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:6; JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
+     * JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamSortedSetEntityWithFromStringTest() throws Fault {
-        super.matrixParamSortedSetEntityWithFromStringTest();
+        paramCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
     }
 
     /*
      * @testName: matrixParamListEntityWithFromStringTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:JAVADOC:6; JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
+     * JAXRS:JAVADOC:12; JAXRS:JAVADOC:12.1;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
      */
     @Test
     public void matrixParamListEntityWithFromStringTest() throws Fault {
-        super.matrixParamListEntityWithFromStringTest();
+        paramCollectionEntityWithFromStringTest(CollectionName.LIST);
     }
 
     /*
      * @testName: matrixFieldParamEntityWithConstructorTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.2; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:SPEC:4; JAXRS:JAVADOC:6;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.2; JAXRS:JAVADOC:6;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
-     * 
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldParamEntityWithConstructorTest() throws Fault {
@@ -286,118 +298,91 @@ public class JAXRSSubClient0100 extends AbstractJAXRSClient0102 {
     /*
      * @testName: matrixFieldParamEntityWithValueOfTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:SPEC:4; JAXRS:JAVADOC:6;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:JAVADOC:6;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
-     * 
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldParamEntityWithValueOfTest() throws Fault {
-        super.matrixFieldParamEntityWithValueOfTest();
+        fieldEntityWithValueOfTest();
     }
 
     /*
      * @testName: matrixFieldParamEntityWithFromStringTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:SPEC:4; JAXRS:JAVADOC:6;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.3; JAXRS:JAVADOC:6;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
-     * 
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldParamEntityWithFromStringTest() throws Fault {
-        super.matrixFieldParamEntityWithFromStringTest();
+        fieldEntityWithFromStringTest();
     }
 
     /*
      * @testName: matrixFieldParamSetEntityWithFromStringTest
      * 
      * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2; JAXRS:SPEC:4;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
-     * 
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldParamSetEntityWithFromStringTest() throws Fault {
-        super.matrixFieldParamSetEntityWithFromStringTest();
+        fieldCollectionEntityWithFromStringTest(CollectionName.SET);
     }
 
     /*
      * @testName: matrixFieldParamSortedSetEntityWithFromStringTest
      * 
      * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2; JAXRS:SPEC:4;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
-     * 
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldParamSortedSetEntityWithFromStringTest() throws Fault {
-        super.matrixFieldParamSortedSetEntityWithFromStringTest();
+        fieldCollectionEntityWithFromStringTest(CollectionName.SORTED_SET);
     }
 
     /*
      * @testName: matrixFieldParamListEntityWithFromStringTest
      * 
      * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:5.4; JAXRS:JAVADOC:6;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2; JAXRS:SPEC:4;
      * 
      * @test_Strategy: Verify that named MatrixParam is handled properly
-     * 
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldParamListEntityWithFromStringTest() throws Fault {
-        super.matrixFieldParamListEntityWithFromStringTest();
+        fieldCollectionEntityWithFromStringTest(CollectionName.LIST);
     }
 
     /*
      * @testName: matrixParamEntityWithEncodedTest
      * 
      * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:7; JAXRS:SPEC:12.2;
-     * JAXRS:SPEC:20; JAXRS:SPEC:20.2;
      * 
      * @test_Strategy: Verify that named MatrixParam @Encoded is handled
      */
     @Test
     public void matrixParamEntityWithEncodedTest() throws Fault {
-        super.matrixParamEntityWithEncodedTest();
+        super.paramEntityWithEncodedTest();
     }
 
     /*
      * @testName: matrixFieldParamEntityWithEncodedTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:7; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:7;
      * 
      * @test_Strategy: Verify that named MatrixParam @Encoded is handled
      */
     @Test
     public void matrixFieldParamEntityWithEncodedTest() throws Fault {
-        super.matrixFieldParamEntityWithEncodedTest();
+        super.fieldEntityWithEncodedTest();
     }
 
     /*
      * @testName: matrixParamThrowingWebApplicationExceptionTest
      * 
-     * @assertion_ids: JAXRS:SPEC:12.3; JAXRS:SPEC:20; JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:SPEC:12.3;
      * 
      * @test_Strategy: Exceptions thrown during construction of parameter values
      * are treated the same as exceptions thrown during construction of field or
@@ -405,32 +390,27 @@ public class JAXRSSubClient0100 extends AbstractJAXRSClient0102 {
      */
     @Test
     public void matrixParamThrowingWebApplicationExceptionTest() throws Fault {
-        super.matrixParamThrowingWebApplicationExceptionTest();
+        super.paramThrowingWebApplicationExceptionTest();
     }
 
     /*
      * @testName: matrixFieldThrowingWebApplicationExceptionTest
      * 
-     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:8; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:SPEC:4;
+     * @assertion_ids: JAXRS:SPEC:3.1; JAXRS:SPEC:8;
      * 
      * @test_Strategy: A WebApplicationException thrown during construction of
      * field or property values using 2 or 3 above is processed directly as
      * described in section 3.3.4.
-     * 
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldThrowingWebApplicationExceptionTest() throws Fault {
-        super.matrixFieldThrowingWebApplicationExceptionTest();
+        super.fieldThrowingWebApplicationExceptionTest();
     }
 
     /*
      * @testName: matrixParamThrowingIllegalArgumentExceptionTest
      * 
-     * @assertion_ids: JAXRS:SPEC:12.3; JAXRS:SPEC:20; JAXRS:SPEC:20.2;
+     * @assertion_ids: JAXRS:SPEC:12.3;
      * 
      * @test_Strategy: Exceptions thrown during construction of parameter values
      * are treated the same as exceptions thrown during construction of field or
@@ -438,14 +418,14 @@ public class JAXRSSubClient0100 extends AbstractJAXRSClient0102 {
      */
     @Test
     public void matrixParamThrowingIllegalArgumentExceptionTest() throws Fault {
-        super.matrixParamThrowingIllegalArgumentExceptionTest();
+        setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
+        super.paramThrowingIllegalArgumentExceptionTest();
     }
 
     /*
      * @testName: matrixFieldThrowingIllegalArgumentExceptionTest
      * 
-     * @assertion_ids: JAXRS:SPEC:9; JAXRS:SPEC:9.1; JAXRS:SPEC:10; JAXRS:SPEC:20;
-     * JAXRS:SPEC:20.2; JAXRS:SPEC:4;
+     * @assertion_ids: JAXRS:SPEC:9; JAXRS:SPEC:9.1; JAXRS:SPEC:10;
      * 
      * @test_Strategy: Other exceptions thrown during construction of field or
      * property values using 2 or 3 above are treated as client errors:
@@ -455,13 +435,26 @@ public class JAXRSSubClient0100 extends AbstractJAXRSClient0102 {
      * @QueryParam or @PathParam then an implementation MUST generate a
      * WebApplicationException that wraps the thrown exception with a not found
      * response (404 status) and no entity;
-     *
-     * An implementation is only required to set the annotated field and bean
-     * property values of instances created by the implementation runtime. (Check
-     * the resource with resource locator is injected field properties)
      */
     @Test
     public void matrixFieldThrowingIllegalArgumentExceptionTest() throws Fault {
-        super.matrixFieldThrowingIllegalArgumentExceptionTest();
+        setProperty(Property.UNORDERED_SEARCH_STRING, Status.NOT_FOUND.name());
+        super.fieldThrowingIllegalArgumentExceptionTest();
+    }
+
+    @Override
+    protected String buildRequest(String param) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Request.GET.name()).append(" ").append(_contextRoot);
+        sb.append(";").append(param).append(HTTP11);
+        return sb.toString();
+    }
+
+    @Override
+    protected String getDefaultValueOfParam(String param) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(param).append("=");
+        sb.append(MatrixParamTest.class.getSimpleName());
+        return sb.toString();
     }
 }

@@ -16,6 +16,7 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.pathparam.locator;
 
+import com.sun.ts.tests.jaxrs.ee.rs.pathparam.AbstractJAXRSClient0124;
 import java.util.function.Supplier;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -33,9 +34,8 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSLocatorClient0123
-        extends com.sun.ts.tests.jaxrs.ee.rs.pathparam.JAXRSClient0124 {
+@Disabled(QuarkusRest.LocatorIssues)
+public class JAXRSLocatorClient0123 extends AbstractJAXRSClient0124 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)

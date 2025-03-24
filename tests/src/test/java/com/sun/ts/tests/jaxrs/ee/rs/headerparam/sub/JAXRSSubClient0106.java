@@ -19,6 +19,7 @@
  */
 package com.sun.ts.tests.jaxrs.ee.rs.headerparam.sub;
 
+import com.sun.ts.tests.jaxrs.ee.rs.headerparam.AbstractJAXRSClient0108;
 import java.util.function.Supplier;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -33,9 +34,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSSubClient0106
-        extends com.sun.ts.tests.jaxrs.ee.rs.headerparam.JAXRSClient0108 {
+public class JAXRSSubClient0106 extends AbstractJAXRSClient0108 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)

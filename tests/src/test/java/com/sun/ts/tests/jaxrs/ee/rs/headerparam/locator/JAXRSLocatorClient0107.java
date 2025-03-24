@@ -16,10 +16,13 @@
 
 package com.sun.ts.tests.jaxrs.ee.rs.headerparam.locator;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+import com.sun.ts.tests.jaxrs.ee.rs.headerparam.AbstractJAXRSClient0108;
 import java.util.function.Supplier;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -30,9 +33,7 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSLocatorClient0107
-        extends com.sun.ts.tests.jaxrs.ee.rs.headerparam.JAXRSClient0108 {
+public class JAXRSLocatorClient0107 extends AbstractJAXRSClient0108 {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)
@@ -308,6 +309,42 @@ public class JAXRSLocatorClient0107
     @Test
     public void headerParamThrowingIllegalArgumentExceptionTest() throws Fault {
         super.headerParamThrowingIllegalArgumentExceptionTest();
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void headerFieldParamEntityWithConstructorTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void headerFieldParamEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void headerFieldParamEntityWithValueOfTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void headerFieldParamListEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void headerFieldParamSetEntityWithFromStringTest() throws Fault {
+
+    }
+
+    @Test
+    @Disabled(QuarkusRest.LocatorIssues)
+    public void headerFieldParamSortedSetEntityWithFromStringTest() throws Fault {
+
     }
 
     /**

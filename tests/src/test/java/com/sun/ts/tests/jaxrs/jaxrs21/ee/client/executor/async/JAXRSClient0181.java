@@ -16,6 +16,8 @@
 
 package com.sun.ts.tests.jaxrs.jaxrs21.ee.client.executor.async;
 
+import com.sun.ts.tests.jaxrs.QuarkusRest;
+import com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.AbstractJAXRSClient0118;
 import java.io.IOException;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
@@ -27,7 +29,7 @@ import jakarta.ws.rs.core.Response;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.sun.ts.tests.jaxrs.common.client.JdkLoggingFilter;
@@ -40,10 +42,8 @@ import io.quarkus.test.QuarkusUnitTest;
  *                     webServerPort;
  *                     ts_home;
  */
-@org.junit.jupiter.api.extension.ExtendWith(com.sun.ts.tests.TckExtention.class)
-public class JAXRSClient0181
-        extends com.sun.ts.tests.jaxrs.ee.rs.client.asyncinvoker.JAXRSClient0118
-        implements ExecutorServiceChecker {
+@Disabled(QuarkusRest.ThreadingModel)
+public class JAXRSClient0181 extends AbstractJAXRSClient0118 implements ExecutorServiceChecker {
 
     @RegisterExtension
     static QuarkusUnitTest test = new QuarkusUnitTest().setFlatClassPath(true)

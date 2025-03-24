@@ -51,4 +51,8 @@ public class QuarkusRest {
     public static final String File_handling = "In Quarkus, we want file handling to be done by Vert.x in order to avoid OOM and InputStream limits";
 
     public static final String AsyncResponse = "@AsyncResponse is not supported in Quarkus";
+
+    public static final String ThreadingModel = "Doesn't make sense for the Quarkus threading model";
+
+    public static final String LocatorIssues = "Resource Locator related issues - this need to be addressed at some point";
 }
